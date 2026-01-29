@@ -26,20 +26,19 @@ const CookieBanner: React.FC<CookieBannerProps> = () => {
     <Container fluid className="cookie-banner fixed-bottom">
       <Row>
         <Col md={12} lg={6} className="pb-2">
-          Hankkeen nimi -sivusto käyttää evästeitä palvelun kehittämiseen
-          tarvittavan analytiikan takia. Lue lisää{" "}
-          <Link to={routes.PRIVACY}>tietosuojasta</Link>.
+          The Project name site uses cookies for analytics needed to improve the
+          service. Read more <Link to={routes.PRIVACY}>about privacy</Link>.
         </Col>
         <Col className="d-flex flex-wrap align-items-center">
           <PlaylistButton
             buttonType="outline"
             className="mr-3 mb-2"
-            text="Estä evästeet"
+            text="Block cookies"
             onClick={handleDeny}
           />
           <PlaylistButton
             className="mb-2"
-            text="Hyväksy evästeet"
+            text="Accept cookies"
             onClick={handleAllow}
           />
         </Col>

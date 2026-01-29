@@ -13,11 +13,11 @@ const getTitle = (status: RecorderStatus) => {
   switch (status) {
     case "NotInitialized":
     case "WaitingForAccess":
-      return "Anna selaimellesi lupa mikrofonin käyttöön";
+      return "Allow your browser to use the microphone";
     case "AccessDenied":
-      return "Lupaa mikrofonin käyttöön ei annettu";
+      return "Microphone permission was not granted";
     case "NotSupported":
-      return "Palvelu ei toimi selaimellasi";
+      return "The service does not work in your browser";
     default:
       return "";
   }
@@ -29,13 +29,13 @@ const getBodys = (status: RecorderStatus) => {
     case "WaitingForAccess":
     case "AccessDenied":
       return [
-        "Jotta puheen lahjoittaminen onnistuu, sinun pitää antaa selaimellesi lupa käyttää mikrofonia äänityksen ajan. Kameraa palvelu ei käytä. Ainoastaan ääntä tallennetaan.",
-        "Lahjoitettu puhe käsitellään luottamuksellisesti ja sen turvallisesta säilömisestä vastaa yliopistojen Kielipankki.",
+        "To donate speech, you need to allow your browser to use the microphone during recording. The service does not use the camera. Only audio is recorded.",
+        "Donated speech is handled confidentially, and the universities' Language Bank is responsible for its secure storage.",
       ];
     case "NotSupported":
       return [
-        "Puheen lahjoittaminen selaimella onnistuu parhaiten käyttäen uusinta versiota Chromesta tai Firefoxista.",
-        "Voit myös ladata Hankkeen nimi -sovelluksen:",
+        "Donating speech in the browser works best with the latest version of Chrome or Firefox.",
+        "You can also download the Project name app:",
       ];
     default:
       return [];
@@ -58,7 +58,7 @@ const RecorderStatusView: React.FC<RecorderStatusViewProps> = ({ onQuit }) => {
             <AppIcons />
             <PlaylistButton
               className="my-4"
-              text="Palaa etusivulle"
+              text="Back to home"
               onClick={onQuit}
             />
           </>

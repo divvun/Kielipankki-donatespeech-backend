@@ -54,7 +54,7 @@ it("walks through the playlist", async () => {
   const startTitle = schedule.start?.title || schedule.title;
   const foundStartTitle = await display.findByText(getText(startTitle.fi));
   expect(foundStartTitle).toBeInTheDocument();
-  const startButton = display.getByText("aloita", { exact: false });
+  const startButton = display.getByText("start", { exact: false });
   fireEvent.click(startButton);
 
   // Playlist
@@ -84,7 +84,7 @@ it("walks through the playlist", async () => {
       expect(foundBody2).toBeInTheDocument();
     }
 
-    const nextArrowButton = await display.findByLabelText("Seuraava");
+    const nextArrowButton = await display.findByLabelText("Next");
     fireEvent.click(nextArrowButton);
   }
 
@@ -92,7 +92,7 @@ it("walks through the playlist", async () => {
   const finishTitle = schedule.finish?.title || schedule.title;
   const foundFinishTitle = await display.findByText(getText(finishTitle.fi));
   expect(foundFinishTitle).toBeInTheDocument();
-  const againButton = display.getByText("lahjoita lisää", { exact: false });
+  const againButton = display.getByText("donate more", { exact: false });
   expect(againButton).toBeInTheDocument();
   // Quit and clear schedule state (playlistSlice)
   fireEvent.click(againButton);
@@ -104,13 +104,13 @@ it("walks through the playlist", async () => {
 it("uploads metadata and recording when recording stops", async () => {
   const display = init();
 
-  const startButton = await display.findByText("aloita", { exact: false });
+  const startButton = await display.findByText("start", { exact: false });
   fireEvent.click(startButton);
 
   // First item is recording module (isRecording = true) in summer-schedule
-  fireEvent.click(await display.findByText("Äänitä"));
+  fireEvent.click(await display.findByText("Record"));
   // Recording
-  fireEvent.click(await display.findByText("Lopeta äänitys"), { exact: false });
+  fireEvent.click(await display.findByText("Stop recording"), { exact: false });
   // Recording stopped
   // => Recorder manager uploads metadata and recording automatically
 
@@ -123,16 +123,16 @@ it("uploads metadata and recording when recording stops", async () => {
   wait(() => expect(mockedUploadAudioFile).toHaveBeenCalledTimes(1));
 
   // Quit and clear schedule state (playlistSlice)
-  fireEvent.click(await display.findByLabelText("Poistu"));
+  fireEvent.click(await display.findByLabelText("Exit"));
 });
 
 it("uploads metadata answers for prompt module when next module is selected", async () => {
   const display = init();
 
   // First prompt item is the third item (index 2)
-  const startButton = await display.findByText("aloita", { exact: false });
+  const startButton = await display.findByText("start", { exact: false });
   fireEvent.click(startButton);
-  const nextButtonLabel = "Seuraava";
+  const nextButtonLabel = "Next";
   fireEvent.click(await display.findByLabelText(nextButtonLabel));
   fireEvent.click(await display.findByLabelText(nextButtonLabel));
 
@@ -163,7 +163,7 @@ it("uploads metadata answers for prompt module when next module is selected", as
 
   // Go back to prompt item and then again to the next one.
   // Answer has not been change => metadata should NOT be uploaded
-  const previousButtonLabel = "Edellinen";
+  const previousButtonLabel = "Previous";
   fireEvent.click(await display.findByLabelText(previousButtonLabel));
   fireEvent.click(await display.findByLabelText(nextButtonLabel));
   wait(() => expect(mockedInitUpload).toHaveBeenCalledTimes(1));
@@ -176,5 +176,5 @@ it("uploads metadata answers for prompt module when next module is selected", as
   wait(() => expect(mockedInitUpload).toHaveBeenCalledTimes(2));
 
   // Quit and clear schedule state (playlistSlice)
-  fireEvent.click(await display.findByLabelText("Poistu"));
+  fireEvent.click(await display.findByLabelText("Exit"));
 });

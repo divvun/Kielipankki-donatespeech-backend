@@ -12,7 +12,7 @@ const KIELIPANKKI_URL = "https://www.kielipankki.fi";
 const EMAIL_ADDRESS = "your-feedback-email-here";
 
 const largerBodyTextStyle = {
-  fontSize: 'larger'
+  fontSize: "larger",
 };
 
 type TermsAndConditionsViewProps = {};
@@ -21,67 +21,64 @@ const TermsAndConditionsView: React.FC<TermsAndConditionsViewProps> = () => {
   const dispatch = useDispatch();
   return (
     <div className="terms-and-conditions-view">
-      <h4>Kiitos, kun tulit!</h4>
+      <h4>Thanks for joining us!</h4>
       <p>
         <strong style={largerBodyTextStyle}>
-          Tällä sivulla on perustiedot hankkeesta. Kun olet lukenut ne, 
-          pääset sivun alalaidasta aloittamaan lahjoittamisen.
+          This page contains basic information about the project. After reading
+          it, you can start donating at the bottom of the page.
         </strong>
       </p>
-      <h4>Mikä?</h4>
+      <h4>What?</h4>
       <p>
-      Vestibulum lorem turpis, lacinia sed blandit nec, viverra et ligula. In 
-      vestibulum dui eu pretium vestibulum. 
+        Vestibulum lorem turpis, lacinia sed blandit nec, viverra et ligula. In
+        vestibulum dui eu pretium vestibulum.
       </p>
       <p>
-      Aliquam dictum egestas vehicula. Suspendisse potenti. Fusce ut tristique 
-      mi. Donec dictum leo at metus lobortis imperdiet. Donec pellentesque 
-      laoreet ultrices. Mauris tincidunt nunc pretium nunc placerat congue.
+        Aliquam dictum egestas vehicula. Suspendisse potenti. Fusce ut tristique
+        mi. Donec dictum leo at metus lobortis imperdiet. Donec pellentesque
+        laoreet ultrices. Mauris tincidunt nunc pretium nunc placerat congue.
       </p>
       <p>
-        Lisätietoja kampanjasta löytyy
+        More information about the campaign can be found
         {"  "}
-        <Link to={routes.INFO}>täältä</Link>
+        <Link to={routes.INFO}>here</Link>
         {". "}
       </p>
-      <h4>Kuka?</h4>
+      <h4>Who?</h4>
       <p>
-      Pellentesque efficitur efficitur blandit. Sed iaculis enim neque, 
-      cursus mollis sapien venenatis sit amet. In aliquet ligula ac nisi 
-      porttitor ornare. Nullam sit amet odio nec ex semper tempus quis eu 
-      erat. Donec nec elit nec neque feugiat convallis. Maecenas rhoncus 
-      urna nec libero fringilla, nec auctor nisi consectetur.         
+        Pellentesque efficitur efficitur blandit. Sed iaculis enim neque, cursus
+        mollis sapien venenatis sit amet. In aliquet ligula ac nisi porttitor
+        ornare. Nullam sit amet odio nec ex semper tempus quis eu erat. Donec
+        nec elit nec neque feugiat convallis. Maecenas rhoncus urna nec libero
+        fringilla, nec auctor nisi consectetur.
       </p>
-      <h4>Miten henkilötietoja käsitellään?</h4>
+      <h4>How is personal data handled?</h4>
       <p>
-        Lahjoitettu puhe ja muut siihen liittyvät tiedot sisältävät puhujan
-        henkilötietoja. Niiden käsittelyssä noudatetaan Suomessa voimassa olevaa
-        tietosuojalainsäädäntöä. Lisätietoja henkilötietojen käsittelystä löytyy
+        Donated speech and other related information contain personal data about
+        the speaker. We process this data in accordance with Finnish data
+        protection legislation. More information about the processing of
+        personal data can be found
         {"  "}
-        <Link to={routes.PRIVACY}>täältä</Link>
+        <Link to={routes.PRIVACY}>here</Link>
         {". "}
       </p>
-      <h4>Oikeudet puheeseen</h4>
+      <h4>Rights to the speech</h4>
+      <p>You may have copyright or other rights to the speech you donate.</p>
       <p>
-        Sinulla voi olla tekijänoikeuslain mukaisia tai muita oikeuksia
-        lahjoittamaasi puheeseen.
+        You grant these rights to the University of Helsinki to the extent
+        necessary and legally possible for the development and research of
+        speech-understanding or speech-producing AI, linguistic research, or
+        related higher education. The University of Helsinki may further
+        transfer these rights.
       </p>
       <p>
-        Annat Helsingin yliopistolle nämä
-        oikeutesi, siinä määrin kuin se on puhetta ymmärtävän tai tuottavan
-        tekoälyn kehittämisen ja tutkimuksen, kielentutkimuksen tai näihin
-        tarkoituksiin liittyvän korkeakouluopetuksen kannalta tarpeellista ja
-        lain mukaan mahdollista. Helsingin yliopisto saa luovuttaa ne edelleen.
+        Please do not use text written by others in your speech, such as poems,
+        lines from plays, or excerpts, and do not disclose private, sensitive,
+        or confidential information about yourself or others.
       </p>
+      <h4>More information</h4>
       <p>
-        Ethän käytä puheessasi muiden kirjoittamaa tekstiä, kuten
-        runoja, näytelmien vuorosanoja tai tekstin katkelmia etkä kerro itseäsi
-        tai muita ihmisiä koskevia yksityisiä, arkaluonteisia tai
-        luottamuksellisia asioita.
-      </p>
-      <h4>Lisätietoja</h4>
-      <p>
-        Kampanjan sivusto:
+        Campaign website:
         {"  "}
         <a href={CAMPAIGN_URL}>(hankkeen nimi)</a>
         <br />
@@ -95,12 +92,12 @@ const TermsAndConditionsView: React.FC<TermsAndConditionsViewProps> = () => {
       </p>
       <div className="terms-and-conditions-footer">
         <p>
-          Painamalla alla olevaa Hyväksyn-nappia hyväksyn edellä olevat puheen
-          lahjoittamisen ehdot. Jos olen alle 18-vuotias, huoltajani hyväksyy
-          ehdot puolestani.
+          By clicking the I accept button below, I accept the above terms for
+          donating speech. If I am under 18, my guardian accepts the terms on my
+          behalf.
         </p>
         <PlaylistButton
-          text="Hyväksyn"
+          text="I accept"
           onClick={() => dispatch(termsAndConditionAccepted())}
         />
       </div>

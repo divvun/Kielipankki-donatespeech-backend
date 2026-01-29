@@ -80,15 +80,15 @@ const ScheduleView: React.FC<ScheduleViewProps> = ({
                     <button
                       className="schedule-view-header--quit float-left"
                       onClick={handleQuit}
-                      aria-label="Poistu"
+                      aria-label="Exit"
                     >
                       <b>X</b>
-                      <span> Poistu</span>
+                      <span> Exit</span>
                     </button>
                   </Col>
                   <Col>
                     <div className="float-right">
-                      <TotalRecordingDuration label="Olet lahjoittanut:" />
+                      <TotalRecordingDuration label="You have donated:" />
                     </div>
                   </Col>
                 </Row>

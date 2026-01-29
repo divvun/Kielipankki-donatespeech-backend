@@ -20,9 +20,9 @@ const InviteFriend: React.FC<InviteFriendProps> = ({ className }) => {
   const minutes = Math.floor(totalRecDurationSeconds / 60);
   const startText =
     minutes >= 2
-      ? `Lahjoitin puhettani ${minutes} minuuttia.`
-      : "Lahjoitin juuri puhettani.";
-  const twitterQuote = `${startText} Sen avulla saamme tekoälyn ja puheentunnistuksen, joka ymmärtää paremmin suomea. Lahjoita sinäkin ja puhu meille sujuvampi arki!`;
+      ? `I donated my speech for ${minutes} minutes.`
+      : "I just donated my speech.";
+  const twitterQuote = `${startText} It helps us build AI and speech recognition that understand Finnish better. Donate too and help make everyday life more fluent!`;
   const fbQuote = twitterQuote + ` ${config.WEBSITE_URL}`;
   return (
     <div className={`invite-friend ${className}`}>

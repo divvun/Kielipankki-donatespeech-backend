@@ -29,12 +29,12 @@ const RecordButton: React.FC<RecordButtonProps> = ({ itemState }) => {
 
   const getText = () => {
     if (itemState === "finish") {
-      return "Äänitys valmis";
+      return "Recording complete";
     }
     if (itemState === "recording") {
-      return "Lopeta äänitys";
+      return "Stop recording";
     }
-    return "Äänitä";
+    return "Record";
   };
 
   const buttonDisabled = !recorder.isInitialized;
@@ -58,7 +58,7 @@ const RecordButton: React.FC<RecordButtonProps> = ({ itemState }) => {
           </Button>
           <div className="record-button-duration mx-auto">{recDuration}</div>
         </div>
-        {isRecording && <img src={recordIcon} alt="Äänitys" />}
+        {isRecording && <img src={recordIcon} alt="Recording" />}
       </div>
     </>
   );

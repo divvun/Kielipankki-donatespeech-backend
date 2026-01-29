@@ -24,21 +24,20 @@ const ItemStatusLabel: React.FC<ItemStatusLabelProps> = ({
     if (isPrompt) {
       if (item.metaTitle !== null) {
         return item.metaTitle;
-      }
-      else {
-        return "Auta tutkijaa";
+      } else {
+        return "Help the researcher";
       }
     }
 
     if (item.isRecording && recordingItemProgress)
-      return `Lahjoita ${recordingItemProgress.itemNumber}/${recordingItemProgress.totalCount}`;
+      return `Donate ${recordingItemProgress.itemNumber}/${recordingItemProgress.totalCount}`;
 
     const isMedia = item.itemType !== "text";
     if (item.metaTitle !== null) {
       return item.metaTitle;
     }
     if (isMedia) {
-      return "Katso tai kuuntele";
+      return "Watch or listen";
     }
 
     return null;

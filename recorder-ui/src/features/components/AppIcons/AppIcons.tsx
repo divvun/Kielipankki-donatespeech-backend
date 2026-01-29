@@ -4,10 +4,8 @@ import googlePlayIcon from "./Google_Play_Badge_FI.png";
 
 import "./AppIcons.css";
 
-const APP_STORE_LINK =
-  "<your-app-store-url-here>";
-const GOOGLE_PLAY_LINK =
-  "<your-play-store-url-here>";
+const APP_STORE_LINK = "<your-app-store-url-here>";
+const GOOGLE_PLAY_LINK = "<your-play-store-url-here>";
 
 type AppIconsProps = {};
 
@@ -20,7 +18,7 @@ const AppIcons: React.FC<AppIconsProps> = () => {
         href={APP_STORE_LINK}
         rel="noopener noreferrer"
       >
-        <img src={appStoreIcon} alt="Lataa App Storesta" />
+        <img src={appStoreIcon} alt="Download on the App Store" />
       </a>
       <a
         className="google-play-icon"
@@ -28,7 +26,7 @@ const AppIcons: React.FC<AppIconsProps> = () => {
         href={GOOGLE_PLAY_LINK}
         rel="noopener noreferrer"
       >
-        <img src={googlePlayIcon} alt="Lataa Google Playsta" />
+        <img src={googlePlayIcon} alt="Get it on Google Play" />
       </a>
     </div>
   );

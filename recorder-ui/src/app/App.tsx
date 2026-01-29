@@ -58,7 +58,7 @@ function App() {
 
   const renderWipNote = () => {
     return config.SHOW_WIP_NOTE ? (
-      <div className="wip-note py-2">Nettisivut työn alla</div>
+      <div className="wip-note py-2">Website under construction</div>
     ) : null;
   };
 
