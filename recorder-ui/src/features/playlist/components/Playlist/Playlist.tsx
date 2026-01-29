@@ -136,7 +136,7 @@ const Playlist: React.FC<PlaylistProps> = ({
   }
 
   if (configurationError) {
-    return <h3>Teeman haku epäonnistui</h3>;
+    return <h3>Failed to load theme</h3>;
   }
 
   const handlePrevious = () => {
@@ -261,7 +261,7 @@ const Playlist: React.FC<PlaylistProps> = ({
 
   const renderFooterControl = () => {
     if (scheduleStatus === "start") {
-      return <PlaylistButton text="Aloita" onClick={handleNextScheduleState} />;
+      return <PlaylistButton text="Start" onClick={handleNextScheduleState} />;
     }
     if (scheduleStatus === "finish") {
       return (
@@ -269,7 +269,7 @@ const Playlist: React.FC<PlaylistProps> = ({
           <InviteFriend className="mb-1" />
           <PlaylistButton
             buttonType="outline"
-            text="Lahjoita lisää"
+            text="Donate more"
             onClick={onQuit}
           />
         </>
@@ -280,9 +280,13 @@ const Playlist: React.FC<PlaylistProps> = ({
     if (isRecordingItem) {
       return itemState === "finish" ? (
         <>
-          <PlaylistButton className="mb-1" text="Jatka" onClick={handleNext} />
           <PlaylistButton
-            text="Kokeile uudelleen"
+            className="mb-1"
+            text="Continue"
+            onClick={handleNext}
+          />
+          <PlaylistButton
+            text="Try again"
             buttonType="outline"
             onClick={handleRetake}
           />
@@ -296,7 +300,7 @@ const Playlist: React.FC<PlaylistProps> = ({
     if (isPromptItem) {
       return (
         <PlaylistButton
-          text={`${hasAnswer() ? "Jatka" : "Ohita kysymys"}`}
+          text={`${hasAnswer() ? "Continue" : "Skip question"}`}
           buttonType={hasAnswer() ? "normal" : "text"}
           onClick={handleNext}
         />
@@ -304,7 +308,11 @@ const Playlist: React.FC<PlaylistProps> = ({
     }
 
     return isLoadingConfiguration ? null : (
-      <PlaylistButton text="Jatka" buttonType="normal" onClick={handleNext} />
+      <PlaylistButton
+        text="Continue"
+        buttonType="normal"
+        onClick={handleNext}
+      />
     );
   };
 

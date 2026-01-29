@@ -123,7 +123,7 @@ const VideoElement: React.FC<VideoElementProps> = ({
         <div className={`video-element-icon ${iconDisplayClass}`}>
           <img
             className="video-element-icon-img"
-            alt="Käynnistä video"
+            alt="Start video"
             src={playIcon}
           />
         </div>

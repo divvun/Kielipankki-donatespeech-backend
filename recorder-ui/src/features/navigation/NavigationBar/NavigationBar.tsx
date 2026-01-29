@@ -26,30 +26,30 @@ const NavigationBar: React.FC<NavigationBarProps> = () => {
           <NavItem>
             <NavigationItem
               isFirst={true}
-              text="Hankkeen nimi"
+              text="Project name"
               to={routes.HOME}
             />
           </NavItem>
           <NavItem>
-            <NavigationItem text="Yhteistyökumppanit" to={routes.PARTNERS} />
+            <NavigationItem text="Partners" to={routes.PARTNERS} />
           </NavItem>
           <NavItem>
-            <NavigationItem text="Tietosuoja" to={routes.PRIVACY} />
+            <NavigationItem text="Privacy" to={routes.PRIVACY} />
           </NavItem>
           <NavItem>
-            <NavigationItem text="Tietoa hankkeesta" to={routes.INFO} />
+            <NavigationItem text="About the project" to={routes.INFO} />
           </NavItem>
           <Nav.Link
             target="_blank"
             rel="noopener noreferrer"
             href="https://example.com/hankkeen-nimi"
           >
-            Kampanjasivulle
+            Campaign website
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
       <div className="float-right mt-3">
-        <TotalRecordingDuration label="Olet lahjoittanut:" />
+        <TotalRecordingDuration label="You have donated:" />
       </div>
     </Navbar>
   );

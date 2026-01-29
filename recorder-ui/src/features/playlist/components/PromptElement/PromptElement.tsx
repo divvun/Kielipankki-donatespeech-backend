@@ -117,7 +117,7 @@ const PromptElement: React.FunctionComponent<PromptElementProps> = ({
         <Select
           styles={styles}
           isMulti={item.itemType === "multi-choice"}
-          placeholder="Valitse"
+          placeholder="Select"
           value={selectedOption}
           onChange={o => handleSelectChange(o as SelectedOption)}
           options={options}

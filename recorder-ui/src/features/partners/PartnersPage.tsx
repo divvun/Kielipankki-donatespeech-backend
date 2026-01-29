@@ -7,14 +7,14 @@ type PartnersPageProps = {};
 const PartnersPage: React.FC<PartnersPageProps> = () => {
   return (
     <div className="partners-page frame--view">
-      <h2>Yhteistyökumppanit</h2>
+      <h2>Partners</h2>
       <p className="mb-4">
-        Hankkeen nimi -kampanja toteutetaan Helsingin yliopiston
-        ja yhteistyökumppanien yhteistyönä.
+        The “Project name” campaign is carried out in cooperation with the
+        University of Helsinki and partner organizations.
       </p>
       <div className="partner-page--icons partner-page--icons-1 d-flex flex-wrap">
         <div className="d-flex flex-wrap justify-content-center">
-          <img src={hyLogo} alt="Helsingin yliopisto" />
+          <img src={hyLogo} alt="University of Helsinki" />
         </div>
       </div>
     </div>

@@ -10,10 +10,10 @@ interface ArrowButtonProps {
 
 const ArrowButton: React.FC<ArrowButtonProps> = ({ direction, onClick }) => {
   const icon = direction === "forward" ? ArrowForward : ArrowBackward;
-  const ariaLabel = direction === "forward" ? "Seuraava" : "Edellinen";
+  const ariaLabel = direction === "forward" ? "Next" : "Previous";
   return (
     <button onClick={onClick} className="arrow-button" aria-label={ariaLabel}>
-      <img src={icon} alt="Edellinen" />
+      <img src={icon} alt={ariaLabel} />
     </button>
   );
 };
