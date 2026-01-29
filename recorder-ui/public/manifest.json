@@ -1,6 +1,6 @@
 {
-  "short_name": "Hankkeen nimi",
-  "name": "Hankkeen nimi",
+  "short_name": "Project name",
+  "name": "Project name",
   "icons": [
     {
       "src": "android-chrome-192x192.png",

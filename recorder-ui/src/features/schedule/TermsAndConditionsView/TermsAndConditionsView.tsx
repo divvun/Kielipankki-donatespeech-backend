@@ -80,7 +80,7 @@ const TermsAndConditionsView: React.FC<TermsAndConditionsViewProps> = () => {
       <p>
         Campaign website:
         {"  "}
-        <a href={CAMPAIGN_URL}>(hankkeen nimi)</a>
+        <a href={CAMPAIGN_URL}>(Project name)</a>
         <br />
         Helsingin yliopisto, Kielipankki,
         {"  "}

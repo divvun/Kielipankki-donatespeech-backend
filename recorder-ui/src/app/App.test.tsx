@@ -8,5 +8,5 @@ const init = () => {
 
 it("renders navbar brand text", () => {
   const screen = init();
-  expect(screen.getByText("Hankkeen nimi")).toBeInTheDocument();
+  expect(screen.getByText("Project name")).toBeInTheDocument();
 });
