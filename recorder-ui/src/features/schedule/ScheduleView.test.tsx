@@ -1,11 +1,12 @@
 import React from "react";
-import { render, fireEvent, wait } from "../../utils/testUtils";
+import { render, fireEvent, wait, store } from "../../utils/testUtils";
 import ScheduleView from "./ScheduleView";
 import summerSchedule from "../configuration/test-assets/summer-schedule.json";
 import { Schedule } from "../configuration/types";
 import { initUpload, uploadAudioFile } from "../upload/UploadService";
 import { InitUploadDto } from "../upload/types";
 import { RECORDER_AUDIO_MOCK } from "../../utils/__mocks__/AudioRecorder";
+import { schedulePlaylistReset } from "../playlist/playlistSlice";
 
 const schedule = (summerSchedule as unknown) as Schedule;
 
@@ -32,6 +33,7 @@ jest.mock("react-router-dom", () => ({
 
 afterEach(() => {
   jest.clearAllMocks();
+  store.dispatch(schedulePlaylistReset());
 });
 
 const init = () => {
@@ -114,13 +116,13 @@ it("uploads metadata and recording when recording stops", async () => {
   // Recording stopped
   // => Recorder manager uploads metadata and recording automatically
 
-  wait(() => expect(mockedInitUpload).toHaveBeenCalledTimes(1));
+  await wait(() => expect(mockedInitUpload).toHaveBeenCalledTimes(1));
   const args = mockedInitUpload.mock.calls[0];
   const initUploadDto = args[0] as InitUploadDto;
   const expectedFileName = `${RECORDER_AUDIO_MOCK.recordingId}.${RECORDER_AUDIO_MOCK.audioType}`;
   expect(initUploadDto.filename).toEqual(expectedFileName);
 
-  wait(() => expect(mockedUploadAudioFile).toHaveBeenCalledTimes(1));
+  await wait(() => expect(mockedUploadAudioFile).toHaveBeenCalledTimes(1));
 
   // Quit and clear schedule state (playlistSlice)
   fireEvent.click(await display.findByLabelText("Exit"));
@@ -151,7 +153,7 @@ it("uploads metadata answers for prompt module when next module is selected", as
 
   // Next item => metadata is uploaded
   fireEvent.click(await display.findByLabelText(nextButtonLabel));
-  wait(() => expect(mockedInitUpload).toHaveBeenCalledTimes(1));
+  await wait(() => expect(mockedInitUpload).toHaveBeenCalledTimes(1));
   const args = mockedInitUpload.mock.calls[0];
   const initUploadDto = args[0] as InitUploadDto;
   const metadataAnswers = initUploadDto.metadata.user?.answers || [];
@@ -166,14 +168,15 @@ it("uploads metadata answers for prompt module when next module is selected", as
   const previousButtonLabel = "Previous";
   fireEvent.click(await display.findByLabelText(previousButtonLabel));
   fireEvent.click(await display.findByLabelText(nextButtonLabel));
-  wait(() => expect(mockedInitUpload).toHaveBeenCalledTimes(1));
+  await wait(() => expect(mockedInitUpload).toHaveBeenCalledTimes(1));
 
   // Go back to prompt item, change the value and go to the next item.
   // Answer is changed => metadata should be uploaded
   fireEvent.click(await display.findByLabelText(previousButtonLabel));
-  fireEvent.change(inputEl, { target: { value: "100 vuotta" } });
+  const inputEl2 = display.getByLabelText(title);
+  fireEvent.change(inputEl2, { target: { value: "100 vuotta" } });
   fireEvent.click(await display.findByLabelText(nextButtonLabel));
-  wait(() => expect(mockedInitUpload).toHaveBeenCalledTimes(2));
+  await wait(() => expect(mockedInitUpload).toHaveBeenCalledTimes(2));
 
   // Quit and clear schedule state (playlistSlice)
   fireEvent.click(await display.findByLabelText("Exit"));

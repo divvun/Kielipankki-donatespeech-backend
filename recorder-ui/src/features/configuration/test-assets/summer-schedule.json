@@ -1,0 +1,104 @@
+{
+  "scheduleId": "664bc028-a92f-435f-8e33-9ab4921476c1",
+  "title": { "fi": "Kesäaikataulu" },
+  "body1": { "fi": "Tervetuloa lahjoittamaan puhetta." },
+  "body2": { "fi": "" },
+  "start": {
+    "title": { "fi": "Aloitus" },
+    "body1": { "fi": "Aloitetaan." },
+    "body2": { "fi": "" },
+    "imageUrl": ""
+  },
+  "finish": {
+    "title": { "fi": "Kiitos!" },
+    "body1": { "fi": "Lahjoitus valmis." },
+    "body2": { "fi": "" },
+    "imageUrl": ""
+  },
+  "items": [
+    {
+      "itemId": "item-1",
+      "kind": "media",
+      "itemType": "audio",
+      "options": [],
+      "typeId": "audio/mp3",
+      "title": { "fi": "Äänitystehtävä" },
+      "body1": { "fi": "Lue teksti ääneen." },
+      "body2": { "fi": "Paina äänitä aloittaaksesi." },
+      "url": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+      "isRecording": true,
+      "start": {
+        "title": { "fi": "Äänitystehtävä alkaa" },
+        "body1": { "fi": "Paina äänitä kun olet valmis." },
+        "body2": { "fi": "" },
+        "imageUrl": ""
+      },
+      "recording": {
+        "title": { "fi": "Äänitetään" },
+        "body1": { "fi": "Puhu nyt." },
+        "body2": { "fi": "" },
+        "imageUrl": ""
+      },
+      "finish": {
+        "title": { "fi": "Äänitys valmis" },
+        "body1": { "fi": "Hyvin tehty!" },
+        "body2": { "fi": "" },
+        "imageUrl": ""
+      }
+    },
+    {
+      "itemId": "item-2",
+      "kind": "media",
+      "itemType": "image",
+      "options": [],
+      "typeId": "image/png",
+      "title": { "fi": "Toinen moduuli: Kuva" },
+      "body1": { "fi": "Kuvaile näkemäsi." },
+      "body2": { "fi": "Voit kertoa vapaasti." },
+      "url": "https://homepages.cae.wisc.edu/~ece533/images/monarch.png",
+      "isRecording": false,
+      "start": {
+        "title": { "fi": "Toinen moduuli: Kuva" },
+        "body1": { "fi": "Kuvaile näkemäsi." },
+        "body2": { "fi": "Voit kertoa vapaasti." },
+        "imageUrl": ""
+      }
+    },
+    {
+      "itemId": "item-3",
+      "kind": "prompt",
+      "itemType": "text",
+      "options": [],
+      "typeId": "text/plain",
+      "title": { "fi": "Kuinka kauan olet asunut Suomessa?" },
+      "body1": { "fi": "Kirjoita vastauksesi." },
+      "body2": { "fi": "" },
+      "url": "",
+      "isRecording": false,
+      "start": {
+        "title": { "fi": "Kuinka kauan olet asunut Suomessa?" },
+        "body1": { "fi": "Kirjoita vastauksesi." },
+        "body2": { "fi": "" },
+        "imageUrl": ""
+      }
+    },
+    {
+      "itemId": "item-4",
+      "kind": "media",
+      "itemType": "text",
+      "options": [],
+      "typeId": "text/plain",
+      "title": { "fi": "Kiitos vastauksestasi" },
+      "body1": { "fi": "Jatketaan seuraavaan." },
+      "body2": { "fi": "" },
+      "url": "Kiitos!",
+      "isRecording": false,
+      "start": {
+        "title": { "fi": "Kiitos vastauksestasi" },
+        "body1": { "fi": "Jatketaan seuraavaan." },
+        "body2": { "fi": "" },
+        "imageUrl": ""
+      }
+    }
+  ]
+}
