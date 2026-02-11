@@ -4,7 +4,7 @@
 
 ### Initialize audio file upload and store related metadata call
 
-```
+```json
 POST v1/init-upload 
 {
     "filename": "audio.m4a",
@@ -22,7 +22,7 @@ POST v1/init-upload
 
 ### Delete all uploaded metadata and audio for client with the given id or specific session or recording if those parameters are provided
 
-```
+```json
 DELETE v1/upload/[clientID]?session_id=<>&recording_id=<>
 >>>
 
@@ -33,7 +33,7 @@ DELETE v1/upload/[clientID]?session_id=<>&recording_id=<>
 
 ### Load single playlist configuration from s3
 
-```
+```json
 GET v1/configuration/[ID]
 
 >>>
@@ -57,7 +57,7 @@ GET v1/configuration/[ID]
 
 ### Load all playlist configurations
 
-```
+```json
 GET v1/configuration
 
 >>>
@@ -86,7 +86,7 @@ GET v1/configuration
 
 ### Load single theme from s3
 
-```
+```json
 GET v1/theme/[ID]
 
 >>>>
@@ -105,7 +105,7 @@ GET v1/theme/[ID]
 
 ### Load all themes
 
-```
+```json
 GET v1/theme/
 
 >>>
