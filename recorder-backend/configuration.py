@@ -10,7 +10,15 @@ from common import *
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-def pre_process_configuration_file(content: dict):
+def pre_process_configuration_file(content: dict) -> None:
+    """Pre-processes the configuration file content by mapping YLE content URLs to their decrypted media URLs.
+
+    Args:
+        content: The configuration file content as a dictionary to be pre-processed.
+
+    Returns:
+        None. The function modifies the input content dictionary in place.
+    """
     for item in content.get('items'):
         item_type = item.get('itemType')
         if  item_type == "yle-video" or item_type == "yle-audio":
@@ -18,12 +26,35 @@ def pre_process_configuration_file(content: dict):
             item['url'] = map_yle_content(url)
 
 
-def load_s3_conf_file(file):
-        conf_dict = load_s3_file_content(file)
-        pre_process_configuration_file(conf_dict)
-        return conf_dict
+def load_s3_conf_file(file: str) -> dict:
+    """Loads a configuration file from the S3 bucket, pre-processes its content, and returns it as a dictionary.
 
-def load_configuration(event, context):
+    Args:
+        file: The key of the configuration file in the S3 bucket to be loaded.
+    
+    Returns:
+        The content of the configuration file as a dictionary after pre-processing.
+    
+    Raises:
+        FileProcessingError: If there is an error during the loading or pre-processing of the configuration file.
+    """
+    conf_dict = load_s3_file_content(file)
+    pre_process_configuration_file(conf_dict)
+    return conf_dict
+
+def load_configuration(event, context) -> dict:
+    """Loads a specific configuration file from the S3 bucket based on the provided schedule ID and returns its content.
+
+    Args:
+        event: The event data passed to the Lambda function, containing the schedule ID in the path
+        context: The context in which the Lambda function is executed.
+
+    Returns:
+        A dictionary containing the status code, headers, and body with the configuration content.
+    
+    Raises:
+        FileProcessingError: If there is an error during the loading of the configuration file.
+    """
     try:
         schedule_id = event.get('pathParameters').get('id')
         conf_name = 'configuration/' + schedule_id + '.json'
@@ -41,7 +72,19 @@ def load_configuration(event, context):
         raise FileProcessingError("Error reading configuration file: {}".format(conf_name))
 
 
-def load_all_configurations(event, context):
+def load_all_configurations(event, context) -> dict:
+    """Loads all configuration files from the S3 bucket and returns their content.
+
+    Args:
+        event: The event data passed to the Lambda function.
+        context: The context in which the Lambda function is executed.
+
+    Returns:
+        A dictionary containing the status code, headers, and body with the list of all configuration contents.
+    
+    Raises:
+        FileProcessingError: If there is an error during the loading of the configuration files.
+    """
     try:
         list_of_conf_files = s3_client.list_objects_v2(
             Bucket=content_bucket, 

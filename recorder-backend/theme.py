@@ -11,6 +11,18 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 def load_theme(event, context):
+    """Loads a specific theme file from the S3 bucket based on the provided theme ID and returns its content.
+
+    Args:
+        event: The event data passed to the Lambda function, containing the theme ID in the path
+        context: The context in which the Lambda function is executed.
+    
+    Returns:
+        A dictionary containing the status code, headers, and body with the theme content.
+    
+    Raises:
+        FileProcessingError: If there is an error during the loading of the theme file.
+    """
     try:
         theme_id = event.get('pathParameters').get('id')
         theme_dict = load_s3_file_content('theme/' + theme_id + '.json')
@@ -27,6 +39,18 @@ def load_theme(event, context):
         raise FileProcessingError("Error reading theme")
 
 def load_all_themes(event, context):
+    """Loads all theme files from the S3 bucket and returns their contents as a list of dictionaries.
+
+    Args:
+        event: The event data passed to the Lambda function.
+        context: The context in which the Lambda function is executed.
+    
+    Returns:
+        A dictionary containing the status code, headers, and body with the list of theme contents.
+    
+    Raises:
+        FileProcessingError: If there is an error during the loading of theme files.
+    """
     try:
         list_of_theme_files = s3_client.list_objects_v2(
             Bucket=content_bucket, 
