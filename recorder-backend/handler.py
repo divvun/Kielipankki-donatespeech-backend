@@ -11,7 +11,18 @@ file_key_prefix = 'uploads/audio_and_metadata/'
 metadata_prefix = 'metadata/'
 
 def init_upload(event, context):
+    """Initializes the upload process by validating the request body, storing metadata in S3, and generating a presigned URL for uploading the audio file.
+
+    Args:
+        event: The event data passed to the Lambda function, containing the request body with metadata and filename.
+        context: The context in which the Lambda function is executed.  
+
+    Returns:
+        A dictionary containing the status code, headers, and body with the presigned URL for uploading the audio file.
     
+    Raises:
+        FileProcessingError: If there is an error during the initialization of the upload process, such as invalid request parameters or issues with S3 operations.
+    """
     body = event.get('body')
 
     if body is None:
@@ -91,7 +102,17 @@ def init_upload(event, context):
 
 
 def delete_with_prefix(prefix: str):
+    """Deletes all objects in the S3 bucket that have a key starting with the specified prefix.
+
+    Args:
+        prefix: The prefix to filter the objects to be deleted.
+
+    Returns:
+        A dictionary containing the status code, headers, and body indicating the result of the delete operation.
     
+    Raises:
+        FileProcessingError: If there is an error during the deletion of objects from S3.
+    """
     list_of_uploaded_files = s3_client.list_objects_v2(
         Bucket=content_bucket, 
         Prefix=file_key_prefix + prefix,
@@ -123,6 +144,18 @@ def delete_with_prefix(prefix: str):
     }
 
 def delete_stored_client_data(event, context):
+    """Deletes stored client data from S3 based on the provided client ID, session ID, and recording ID.
+
+    Args:
+        event: The event data passed to the Lambda function, containing path parameters and query string parameters.
+        context: The context in which the Lambda function is executed.
+    
+    Returns:
+        A dictionary containing the status code, headers, and body indicating the result of the delete operation.
+    
+    Raises:
+        FileProcessingError: If there is an error during the deletion of stored client data from S3.
+    """
     logger.info("delete_stored_client_data called")
 
     client_id = event.get('pathParameters').get('id')

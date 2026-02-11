@@ -45,11 +45,11 @@ class Info:
         return mime in self.mime
 
 
-def get(obj):
+def get(obj: bytes)-> Info:
     """
     Determines file format and picks suitable file types, extensions and MIME types
     Takes:
-        obj (bytes) -> byte sequence (128 bytes are enough)
+        obj: byte sequence (128 bytes are enough)
     Returns:
         (<class 'fleep.Info'>) -> Class instance
     """

@@ -10,13 +10,24 @@ s3_client = boto3.client('s3')
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-def load_s3_file_content(file):
-        loaded_file = s3_client.get_object(Bucket=content_bucket, Key=file)
-        body = loaded_file.get('Body').read()
-        conf_dict = json.loads(body)
-        return conf_dict
+def load_s3_file_content(file: str) -> dict:
+    """Loads the content of a file from the S3 bucket and returns it as a dictionary.
 
-def get_bad_request_params(info):
+    Args:
+        file: The key of the file in the S3 bucket to be loaded.
+
+    Returns:
+        The content of the file as a dictionary.
+
+    Raises:
+        FileProcessingError: If there is an error during the loading of the file.
+    """
+    loaded_file = s3_client.get_object(Bucket=content_bucket, Key=file)
+    body = loaded_file.get('Body').read()
+    conf_dict = json.loads(body)
+    return conf_dict
+
+def get_bad_request_params(info: str) -> dict:
     return {
             "statusCode": 400,
             "body": json.dumps({
@@ -29,7 +40,7 @@ def rreplace(s, old, new, occurrence):
     li = s.rsplit(old, occurrence)
     return new.join(li)
 
-def validate_uuid_v4(uuid):
+def validate_uuid_v4(uuid: str) -> bool:
     try:
         UUID(uuid, version=4)
         return True

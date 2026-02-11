@@ -9,6 +9,15 @@ audio_prefix = "uploads/audio_and_metadata/"
 metadata_prefix = "uploads/audio_and_metadata/metadata/"
 
 def check_audio_file(event, context):
+    """Checks the validity of audio files uploaded to the S3 bucket and deletes invalid files along with their associated metadata.
+
+    Args:
+        event: The event data passed to the Lambda function, containing S3 object information.
+        context: The context in which the Lambda function is executed.
+
+    Returns:
+        None. The function performs its operations directly on the S3 bucket.
+    """
     event_str = json.dumps(event)
     logger.info(f"Event received ${event_str}")
 
@@ -56,12 +65,20 @@ def check_audio_file(event, context):
             body.close()
 
 
-def is_valid_audio_file(body_start):
+def is_valid_audio_file(body_start: bytes) -> tuple[bool, custom_fleep.Info]:
     info = custom_fleep.get(body_start)
     return (info.type_matches("audio"), info)
 
 
-def delete_audio_and_metadata(key: str, bucket: str):
+def delete_audio_and_metadata(key: str, bucket: str) -> None:
+    """Deletes the audio file and its associated metadata file from the S3 bucket.
+
+    Args:
+        key: The key of the audio file in the S3 bucket to be deleted.
+        bucket: The name of the S3 bucket.
+    Returns:
+        None.
+    """
     try:
         s3_client.delete_object(
                 Bucket= bucket, 
