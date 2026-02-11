@@ -1,15 +1,15 @@
 # Recorder backend
 
-This repository contains the code and configuration for Recorder backend and ui applications. 
-The deployment URLs are (replace with your own, but maintain the pattern):
-
+This repository contains the code and configuration for Recorder backend and ui
+applications. The deployment URLs are (replace with your own, but maintain the
+pattern):
 
 | URL | Meaning |
-|-----|---------|
+| ----- | --------- |
 | example.com | The main production site |
 | endpoint.example.com | APIs for the production environment |
 | dev.example.com | The development site |
-| endpoint.dev.example.com | The development APIs |
+| endpoint.dev.example.com | The development APIs |
 
 Each directory contains its own README file with detailed information.
 
@@ -19,7 +19,7 @@ This folder contains CDK files that build the AWS environment from scratch.
 
 ## [recorder-backend](recorder-backend/README.MD)
 
-The serverless backend for the project implemented in Python. 
+The serverless backend for the project implemented in Python.
 
 ## [recorder-ui](recorder-ui/README.MD)
 
@@ -28,24 +28,23 @@ The web UI files for the project.
 ## Other files worth a mention
 
 | File | Purpose |
-|------|---------|
-| [serverless_build_spec.yml](serverless_build_spec.yml)| contains the CI commands to build 
-the necessary infrastructure and backend resources, including the UI static files. |
+| ------ | --------- |
+| [serverless_build_spec.yml](serverless_build_spec.yml) | contains the CI commands to build the necessary infrastructure and backend resources, including the UI static files. |
 
 ## Metadata
 
-Clients should collect the metadata specified here, and send it to the backend 
-when initiating the upload. The metadata gets saved into a JSON file in Amazon S3 
-and can later be used to get information about the recording.
+Clients should collect the metadata specified here, and send it to the backend
+when initiating the upload. The metadata gets saved into a JSON file in Amazon
+S3 and can later be used to get information about the recording.
 
 ### Technical metadata
 
-Technical metadata is collected automatically by the client, and concerns the recording
-and the client hardware and operating environment. The following metadata keys and
-values should be present:
+Technical metadata is collected automatically by the client, and concerns the
+recording and the client hardware and operating environment. The following
+metadata keys and values should be present:
 
 | Key | Value | Purpose |
-|-----|-------|---------|
+| ----- | ------- | --------- |
 | `clientId` | UUID v4 | Installation ID of the client. Clients should maintain an ID as persistent as possible. With mobile applications, the installation ID is generated when the app is started up, if it does not already exist. Since removing the app from the device deletes all saved user data, this identifier is also destroyed when the app is uninstalled, so it will be recreated when the app is reinstalled and started. |
 | `recordingId` | UUID v4 | The unique identifier of the recording, also used as the filename part of the recording and the metadata file. |
 | `clientPlatformName` | string | Client platform. For mobile applications, this should be "Android" or "iOS". For web clients, use appropriate information from the `User-Agent` string. |
@@ -54,38 +53,44 @@ values should be present:
 | `recordingDuration` | double | The duration of the recording in seconds and milliseonds. |
 | `recordingBitDepth` | integer | The bit depth of the recording, for example, 8, 16, or 24. |
 | `recordingSampleRate` | integer | The sample rate of the recording in Hz. For example, `22050` or `44100`. For variable bitrate (VBR) recordings, use the original sample rate before transcoding to VBR. |
-| `recordingNumberOfChannels` | integer | The number of channels in the recording. For example, should be `1` for a mono recording, and `2` for stereo. | 
+| `recordingNumberOfChannels` | integer | The number of channels in the recording. For example, should be `1` for a mono recording, and `2` for stereo. |
 | `contentType` | string | The media type of the recording, for example `audio/mp4`. |
 
 ### User metadata
 
-The user may be asked some questions during the recording, or some metadata may be automatically generated from the user profile.
+The user may be asked some questions during the recording, or some metadata may
+be automatically generated from the user profile.
 
-User metadata should be collected in a dedicated object named `user`. See exmple below.
+User metadata should be collected in a dedicated object named `user`. See exmple
+below.
 
-Metadata questions and their data types are indicated by the schedules. Each question must have a unique identifier, typically a string representing UUID v4. Typically
-user metadata only needs to contain the identifiers and values of the metadata items:
+Metadata questions and their data types are indicated by the schedules. Each
+question must have a unique identifier, typically a string representing UUID v4.
+Typically user metadata only needs to contain the identifiers and values of the
+metadata items:
 
 | Key | Value | Purpose |
-|-----|-------|---------|
+| ----- | ------- | --------- |
 | itemId | string (UUID v4) | Identified by the key. Value contains an answer to the metadata question. See example below. |
 | timestamp | double | The time into the recording when the metadata question was presented to the user. Any timestamps that indicate past the duration of the recording should be considered invalid. |
 
-All answers to metadata questions should be put inside the `user` object, inside an array with the key `answers`.
+All answers to metadata questions should be put inside the `user` object, inside
+an array with the key `answers`.
 
-If user-related metadata is collected from other sources besides the schedule, it should follow the formats listed here.
+If user-related metadata is collected from other sources besides the schedule,
+it should follow the formats listed here.
 
-At the time of this writing there are no automatically collected user metadata items
-specified, but an example could be the user's location, which could be expressed like
-this:
+At the time of this writing there are no automatically collected user metadata
+items specified, but an example could be the user's location, which could be
+expressed like this:
 
 | Key | Value | Purpose |
-|-----|-------|---------|
+| ----- | ------- | --------- |
 | `location` | JSON object with `latitude` and `longitude` keys | The user's geographical location in WGS84 coordinates |
 
 ### Example of metadata
 
-```
+```json
 {
     "clientId": "431217d9-d1b9-4f75-8479-90f1013f21b4",
     "recordingId": "661b32d1-4e13-4a89-804e-9aa50bf2b783",
@@ -116,22 +121,23 @@ this:
 
 ## Schedules
 
-The clients are driven by schedules described in JSON files and downloaded from the
-server. This section describes the schedules in detail.
+The clients are driven by schedules described in JSON files and downloaded from
+the server. This section describes the schedules in detail.
 
-All elements of the schedule are intended to be presented to the user in a linear
-back-to-back fashion with no overlap. For example, the user may be first shown a video
-clip, and recording may start when the clip starts, or it may be started after the
-user advances to the next schedule item.
+All elements of the schedule are intended to be presented to the user in a
+linear back-to-back fashion with no overlap. For example, the user may be first
+shown a video clip, and recording may start when the clip starts, or it may be
+started after the user advances to the next schedule item.
 
 The schedule items can be video or audio clips, or metadata questions.
 
 ### Description
 
-The schedule contains a description that can be shown to the user by the client. for example in a list of schedules:
+The schedule contains a description that can be shown to the user by the client.
+for example in a list of schedules:
 
 | Key | Value | Purpose |
-|-----|-------|---------|
+| ----- | ------- | --------- |
 | `description` | string | The description of the schedule. |
 
 ### Metadata items
@@ -139,7 +145,7 @@ The schedule contains a description that can be shown to the user by the client.
 All metadata items are described using the same format:
 
 | Key | Value | Purpose |
-|-----|-------|---------|
+| ----- | ------- | --------- |
 | `itemId` | string (UUID v4) | The globally unique identifier of the question. Used to link the answers in the recording metadata to the original questions. |
 | `kind` | string | `media` or `prompt` |
 | `itemType` | string | For kind = `media`: `audio`, `video`, `yle-audio`, `yle-video`, `text` or `image`. For kind = `prompt`: `choice`, `multi-choice`, `super-choice` or `text` |
@@ -151,7 +157,7 @@ All metadata items are described using the same format:
 
 ### Example of a schedule with items
 
-```
+```json
 {
     "scheduleId": "0b5cf885-5049-4e7a-83e0-05a63be53639",
     "description": "Kerro euroviisumuistosi",
@@ -202,10 +208,10 @@ All metadata items are described using the same format:
 
 ## Themes
 
-A theme is a collection of one or more schedules. They are referred to 
-by their unique identifiers (see Schedules above).
+A theme is a collection of one or more schedules. They are referred to by their
+unique identifiers (see Schedules above).
 
-```
+```json
 {
     "description": "Koronavirus 2020",
     "image": "https://example.com/something.jpg",
@@ -218,16 +224,17 @@ by their unique identifiers (see Schedules above).
 
 ## Metadata item types
 
-A metadata item is expressed as an item with `kind` = `prompt` and `itemType` as one of the following:
+A metadata item is expressed as an item with `kind` = `prompt` and `itemType` as
+one of the following:
 
 | itemType | Usage | Notes |
-|-----|-------|---------|
-| `text` | Simple text entry field |  |
+| ----- | ------- | --------- |
+| `text` | Simple text entry field | |
 | `choice` | List of options, user can choose one. | |
 | `multi-choice` | List of options, possibly augmented by a text entry field. User can choose more than one, or enter text. | See `otherEntryLabel` note below. |
 | `super-choice` | List of options augmented by a text entry field. User can choose one, or enter text. | If text is entered, it overrides any list selection. See `otherEntryLabel` note below. |
 
-Note that the `super-choice` and `multi-choice` item types must have an `otherEntryLabel` field 
-in the description. This indicates that the text entry field is desired, and also serves as the 
-label of the text entry field. If this value is not present, the text field will not be created 
-in the layout.
+Note that the `super-choice` and `multi-choice` item types must have an
+`otherEntryLabel` field in the description. This indicates that the text entry
+field is desired, and also serves as the label of the text entry field. If this
+value is not present, the text field will not be created in the layout.
