@@ -18,10 +18,10 @@ provider:
       Action:
         - "s3:*"
       Resource:
-        - ${cf:RecorderBackendResources.ContentBucketArnOut}
-        - ${cf:RecorderBackendResources.ContentBucketArnOut}/*
+        - ${self:custom.cfOutputs.contentBucketArn}
+        - ${self:custom.cfOutputs.contentBucketArn}/*
   environment:
-    CONTENT_BUCKET_NAME: ${cf:RecorderBackendResources.ContentBucketNameOut}
+    CONTENT_BUCKET_NAME: ${self:custom.cfOutputs.contentBucketName}
     YLE_CLIENT_ID: ${ssm:/yle/client/id}
     YLE_CLIENT_KEY: ${ssm:/yle/client/key}
     YLE_DECRYPT: ${ssm:/yle/decrypt~true}
@@ -172,23 +172,36 @@ functions:
     handler: checker.check_audio_file
     events:
       - s3:
-          bucket: ${cf:RecorderBackendResources.ContentBucketNameOut}
+          bucket: ${self:custom.cfOutputs.contentBucketName}
           event: s3:ObjectCreated:*
           rules:
             - prefix: uploads/audio_and_metadata/
           existing: true
 
 custom:
+  cfOutputs:
+    contentBucketName: ${cf:RecorderBackendResources.ContentBucketNameOut, "recorder-content-${self:provider.stage}"}
+    contentBucketArn: ${cf:RecorderBackendResources.ContentBucketArnOut, "arn:aws:s3:::recorder-content-${self:provider.stage}"}
+    hostedZoneId: ${cf:RecorderBackendResources.HostedZoneIdOut, ""}
+    siteDomain: ${cf:RecorderBackendResources.SiteDomainOut, "example.com"}
+    endpointCertArn: ${cf:RecorderBackendResources.EndpointCertificateArnOut, ""}
   pythonRequirements:
-    dockerizePip: true
+    dockerizePip: ${self:custom.dockerizePip.${opt:stage, self:provider.stage}}
   customDomain:
-    hostedZoneId: ${cf:RecorderBackendResources.HostedZoneIdOut}
-    domainName: endpoint.${cf:RecorderBackendResources.SiteDomainOut}
-    certificateArn: ${cf:RecorderBackendResources.EndpointCertificateArnOut}
+    enabled: ${self:custom.domainEnabled.${opt:stage, self:provider.stage}}
+    hostedZoneId: ${self:custom.cfOutputs.hostedZoneId}
+    domainName: endpoint.${self:custom.cfOutputs.siteDomain}
+    certificateArn: ${self:custom.cfOutputs.endpointCertArn}
     basePath: ""
     stage: ${self:provider.stage}
     createRoute53Record: true
     endpointType: edge
+  domainEnabled:
+    dev: false
+    prod: true
+  dockerizePip:
+    dev: false
+    prod: true
   apiGatewayCaching:
     enabled: true
     ttlInSeconds: 600
