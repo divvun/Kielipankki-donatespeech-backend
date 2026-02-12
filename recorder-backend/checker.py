@@ -1,12 +1,11 @@
 import custom_fleep
-import logging
-import boto3
 import json
 from urllib.parse import unquote_plus
-from common import *
+from common import s3_client, logger, rreplace
 
 audio_prefix = "uploads/audio_and_metadata/"
 metadata_prefix = "uploads/audio_and_metadata/metadata/"
+
 
 def check_audio_file(event, context):
     """Checks the validity of audio files uploaded to the S3 bucket and deletes invalid files along with their associated metadata.
@@ -21,25 +20,23 @@ def check_audio_file(event, context):
     event_str = json.dumps(event)
     logger.info(f"Event received ${event_str}")
 
-    for record in event['Records']:
-        bucket = record['s3']['bucket']['name']
-        key = unquote_plus(record['s3']['object']['key'])
+    for record in event["Records"]:
+        bucket = record["s3"]["bucket"]["name"]
+        key = unquote_plus(record["s3"]["object"]["key"])
         logger.info(f"Analyzing {key}")
 
         try:
             res = s3_client.get_object(Bucket=bucket, Key=key)
-        except Exception as e:
+        except Exception:
             logger.error(f"Couldn't read file from s3 with key {key}")
             continue
 
-        content_length = res.get('ContentLength')
+        content_length = res.get("ContentLength")
 
-        if key.endswith('.json'):
+        if key.endswith(".json"):
             if content_length > 100000:
                 logger.warning(f"Too large json file {key}")
-                s3_client.delete_object(
-                    Bucket= bucket, 
-                    Key= key)
+                s3_client.delete_object(Bucket=bucket, Key=key)
             continue
 
         if content_length < 10000 or content_length > 500000000:
@@ -47,10 +44,10 @@ def check_audio_file(event, context):
             delete_audio_and_metadata(key, bucket)
             continue
 
-        body = res.get('Body')
+        body = res.get("Body")
         if body is None:
             continue
-    
+
         try:
             (valid, info) = is_valid_audio_file(body.read(128))
             if valid:
@@ -58,7 +55,7 @@ def check_audio_file(event, context):
             else:
                 logger.warning(f"NOT_VALID: file {key} is not a valid audio file")
                 delete_audio_and_metadata(key, bucket)
-                
+
         except Exception as e:
             logger.error(f"Error determining file type {e}")
         finally:
@@ -80,17 +77,15 @@ def delete_audio_and_metadata(key: str, bucket: str) -> None:
         None.
     """
     try:
-        s3_client.delete_object(
-                Bucket= bucket, 
-                Key= key)
-        
+        s3_client.delete_object(Bucket=bucket, Key=key)
+
         (_, suffix) = key.rsplit(".", 1)
 
-        meta_key = rreplace(key.replace(audio_prefix, metadata_prefix), suffix, "json", 1)
+        meta_key = rreplace(
+            key.replace(audio_prefix, metadata_prefix), suffix, "json", 1
+        )
 
-        s3_client.delete_object(
-                Bucket= bucket, 
-                Key= meta_key)
+        s3_client.delete_object(Bucket=bucket, Key=meta_key)
 
     except Exception as e:
-            logger.error(f"Error deleting files {e}")
+        logger.error(f"Error deleting files {e}")
