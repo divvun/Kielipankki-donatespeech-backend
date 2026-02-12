@@ -11,16 +11,12 @@ phases:
       - npm install -g aws-cdk@1.30.0
   build:
     commands:
-      - cd recorder-ui
-      - npm install
-      - REACT_APP_STAGE=$ENV npm run build
-      - mv build dist
-      - cd ../cdk
+      - cd cdk
       - npm install
       - npm run build
       - echo Env variables Env $ENV branch $BRANCH
       - cdk bootstrap
-      - cdk deploy RecorderBackendCI RecorderBackendResources RecorderWAF RecorderStaticSite --require-approval=never
+      - cdk deploy RecorderBackendCI RecorderBackendResources RecorderWAF --require-approval=never
       - cd ../recorder-backend
       - npm install
       - sls create_domain --stage $ENV
