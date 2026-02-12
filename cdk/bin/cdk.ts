@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
-import * as cdk from '@aws-cdk/core';
+import * as cdk from 'aws-cdk-lib';
 import { RecorderCI } from '../lib/recorder-ci';
 import { RecorderBackendResources } from '../lib/recorder-backend-resources';
 import { RecorderWAF } from '../lib/recorder-waf';
-import { RecorderStaticSite } from '../lib/recorder-frontend-hosting';
 
 const app = new cdk.App();
 
@@ -39,7 +38,4 @@ new RecorderBackendResources(app, 'RecorderBackendResources', {
 
 new RecorderWAF(app, 'RecorderWAF', usRegion);
 
-new RecorderStaticSite(app, "RecorderStaticSite", { 
-        domainName : domain, 
-        siteSubDomain : subdomain,
-    }, euRegion)
+
