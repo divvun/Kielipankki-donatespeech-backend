@@ -83,12 +83,18 @@ def mock_s3_bucket(s3_client):
 @pytest.fixture(scope="function")
 def mock_env(mock_s3_bucket):
     """Set up environment variables for testing."""
+    import os
+    from unittest.mock import patch
+    
     os.environ["CONTENT_BUCKET_NAME"] = TEST_BUCKET_NAME
     os.environ["YLE_CLIENT_ID"] = "test-client-id"
     os.environ["YLE_CLIENT_KEY"] = "test-client-key"
     os.environ["YLE_DECRYPT"] = "false"
     
-    yield
+    # Mock YLE content mapping to avoid external API calls
+    with patch('yle_utils.map_yle_content') as mock_map:
+        mock_map.return_value = "https://mocked-yle-url.com/video.mp4"
+        yield
     
     # Cleanup
     for key in ["CONTENT_BUCKET_NAME", "YLE_CLIENT_ID", "YLE_CLIENT_KEY", "YLE_DECRYPT"]:

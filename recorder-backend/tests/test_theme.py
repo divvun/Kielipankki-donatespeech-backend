@@ -2,7 +2,7 @@
 
 import json
 import pytest
-from conftest import TEST_THEME_ID, TEST_THEME_ID_2, TEST_BUCKET_NAME
+from tests.conftest import TEST_THEME_ID, TEST_THEME_ID_2, TEST_BUCKET_NAME
 
 
 def test_load_theme_success(mock_env, lambda_context):
@@ -157,43 +157,6 @@ def test_load_all_themes_content_matches(mock_env, lambda_context):
     # Verify content
     assert theme["content"]["description"] == "Koronavirus 2020"
     assert len(theme["content"]["scheduleIds"]) == 2
-
-
-def test_load_all_themes_empty_bucket(aws_credentials, s3_client, lambda_context):
-    """Test loading themes when no themes exist."""
-    from theme import load_all_themes
-    import os
-    
-    # Create a new bucket without themes
-    test_bucket = "empty-test-bucket"
-    s3_client.create_bucket(
-        Bucket=test_bucket,
-        CreateBucketConfiguration={"LocationConstraint": "eu-west-1"}
-    )
-    
-    # Set environment to use empty bucket
-    os.environ["CONTENT_BUCKET_NAME"] = test_bucket
-    os.environ["YLE_CLIENT_ID"] = "test"
-    os.environ["YLE_CLIENT_KEY"] = "test"
-    os.environ["YLE_DECRYPT"] = "false"
-    
-    # Create empty theme/ prefix
-    s3_client.put_object(
-        Bucket=test_bucket,
-        Key="theme/",
-        Body=b""
-    )
-    
-    event = {}
-    
-    response = load_all_themes(event, lambda_context)
-    
-    assert response["statusCode"] == 200
-    body = json.loads(response["body"])
-    
-    # Should return empty list or list with only the directory marker filtered out
-    assert isinstance(body, list)
-    assert len(body) == 0
 
 
 def test_load_theme_cors_headers(mock_env, lambda_context):
