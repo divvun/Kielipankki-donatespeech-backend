@@ -7,16 +7,16 @@ provider:
   timeout: 20 # optional, in seconds, default is 6
   stage: ${opt:stage, 'dev'}
   region: eu-west-1
-  apiKeys: 
-    - ${opt:stage}-recorder-enpoints-key
+  apiKeys:
+    - ${self:provider.stage}-recorder-enpoints-key
   usagePlan:
     throttle:
       burstLimit: 500
       rateLimit: 10000
   iamRoleStatements:
-    - Effect: 'Allow'
+    - Effect: "Allow"
       Action:
-        - 's3:*'
+        - "s3:*"
       Resource:
         - ${cf:RecorderBackendResources.ContentBucketArnOut}
         - ${cf:RecorderBackendResources.ContentBucketArnOut}/*
@@ -39,8 +39,8 @@ functions:
           path: v1/init-upload
           method: post
           cors:
-            origin: '*' 
-            headers: 
+            origin: "*"
+            headers:
               - Content-Type
               - X-Amz-Date
               - Authorization
@@ -48,7 +48,7 @@ functions:
               - X-Amz-Security-Token
               - X-Amz-User-Agent
             allowCredentials: false
-            cacheControl: 'max-age=600, s-maxage=600, proxy-revalidate' 
+            cacheControl: "max-age=600, s-maxage=600, proxy-revalidate"
           private: true
     # provisionedConcurrency: 2
   deleteClientData:
@@ -56,17 +56,17 @@ functions:
     events:
       - http:
           path: v1/upload/{id}
-          request: 
-            parameters: 
-              paths: 
+          request:
+            parameters:
+              paths:
                 id: true
               querystrings:
                 session_id: false
                 recording_id: false
           method: delete
           cors:
-            origin: '*' 
-            headers: 
+            origin: "*"
+            headers:
               - Content-Type
               - X-Amz-Date
               - Authorization
@@ -74,21 +74,21 @@ functions:
               - X-Amz-Security-Token
               - X-Amz-User-Agent
             allowCredentials: false
-            cacheControl: 'max-age=600, s-maxage=600, proxy-revalidate' 
+            cacheControl: "max-age=600, s-maxage=600, proxy-revalidate"
           private: true
   loadConfiguration:
     handler: configuration.load_configuration
     events:
       - http:
           path: v1/configuration/{id}
-          request: 
-            parameters: 
-              paths: 
+          request:
+            parameters:
+              paths:
                 id: true
           method: get
           cors:
-            origin: '*' 
-            headers: 
+            origin: "*"
+            headers:
               - Content-Type
               - X-Amz-Date
               - Authorization
@@ -96,7 +96,7 @@ functions:
               - X-Amz-Security-Token
               - X-Amz-User-Agent
             allowCredentials: false
-            cacheControl: 'max-age=600, s-maxage=600, proxy-revalidate' 
+            cacheControl: "max-age=600, s-maxage=600, proxy-revalidate"
           private: true
           caching:
             enabled: ${self:custom.cacheEnabled.${opt:stage, self:provider.stage}}
@@ -109,8 +109,8 @@ functions:
           path: v1/configuration
           method: get
           cors:
-            origin: '*' 
-            headers: 
+            origin: "*"
+            headers:
               - Content-Type
               - X-Amz-Date
               - Authorization
@@ -118,7 +118,7 @@ functions:
               - X-Amz-Security-Token
               - X-Amz-User-Agent
             allowCredentials: false
-            cacheControl: 'max-age=600, s-maxage=600, proxy-revalidate' 
+            cacheControl: "max-age=600, s-maxage=600, proxy-revalidate"
           private: true
           caching:
             enabled: ${self:custom.cacheEnabled.${opt:stage, self:provider.stage}}
@@ -127,14 +127,14 @@ functions:
     events:
       - http:
           path: v1/theme/{id}
-          request: 
-            parameters: 
-              paths: 
+          request:
+            parameters:
+              paths:
                 id: true
           method: get
           cors:
-            origin: '*' 
-            headers: 
+            origin: "*"
+            headers:
               - Content-Type
               - X-Amz-Date
               - Authorization
@@ -142,7 +142,7 @@ functions:
               - X-Amz-Security-Token
               - X-Amz-User-Agent
             allowCredentials: false
-            cacheControl: 'max-age=600, s-maxage=600, proxy-revalidate' 
+            cacheControl: "max-age=600, s-maxage=600, proxy-revalidate"
           private: true
           caching:
             enabled: ${self:custom.cacheEnabled.${opt:stage, self:provider.stage}}
@@ -155,8 +155,8 @@ functions:
           path: v1/theme
           method: get
           cors:
-            origin: '*' 
-            headers: 
+            origin: "*"
+            headers:
               - Content-Type
               - X-Amz-Date
               - Authorization
@@ -164,7 +164,7 @@ functions:
               - X-Amz-Security-Token
               - X-Amz-User-Agent
             allowCredentials: false
-            cacheControl: 'max-age=600, s-maxage=600, proxy-revalidate' 
+            cacheControl: "max-age=600, s-maxage=600, proxy-revalidate"
           private: true
           caching:
             enabled: ${self:custom.cacheEnabled.${opt:stage, self:provider.stage}}
@@ -185,7 +185,7 @@ custom:
     hostedZoneId: ${cf:RecorderStaticSite.HostedZoneIdOut}
     domainName: endpoint.${cf:RecorderStaticSite.SiteDomainOut}
     certificateArn: ${cf:RecorderBackendResources.EndpointCertificateArnOut}
-    basePath: ''
+    basePath: ""
     stage: ${self:provider.stage}
     createRoute53Record: true
     endpointType: edge
