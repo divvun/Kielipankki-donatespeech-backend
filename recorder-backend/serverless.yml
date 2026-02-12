@@ -22,9 +22,9 @@ provider:
         - ${self:custom.cfOutputs.contentBucketArn}/*
   environment:
     CONTENT_BUCKET_NAME: ${self:custom.cfOutputs.contentBucketName}
-    YLE_CLIENT_ID: ${ssm:/yle/client/id}
-    YLE_CLIENT_KEY: ${ssm:/yle/client/key}
-    YLE_DECRYPT: ${ssm:/yle/decrypt~true}
+    YLE_CLIENT_ID: "placeholder-not-configured"
+    YLE_CLIENT_KEY: "placeholder-not-configured"
+    YLE_DECRYPT: "placeholder-not-configured"
 
 plugins:
   - serverless-python-requirements
