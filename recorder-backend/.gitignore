@@ -18,3 +18,10 @@ var/
 
 # Serverless directories
 .serverless
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+*.pyc
+__pycache__/
