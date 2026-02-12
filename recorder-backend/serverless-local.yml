@@ -19,26 +19,25 @@ plugins:
 functions:
   initUpload:
     handler: handler.init_upload
-  
+
   deleteClientData:
     handler: handler.delete_stored_client_data
-  
+
   loadConfiguration:
     handler: configuration.load_configuration
-  
+
   loadAllConfigurations:
     handler: configuration.load_all_configurations
-  
+
   loadTheme:
     handler: theme.load_theme
-  
+
   loadAllThemes:
     handler: theme.load_all_themes
-  
+
   audioFileChecker:
     handler: checker.check_audio_file
 
 custom:
   pythonRequirements:
     dockerizePip: false
-
