@@ -1,0 +1,22 @@
+[run]
+source = .
+omit = 
+    .venv/*
+    tests/*
+    test_local.py
+    custom_fleep/*
+    node_modules/*
+    .serverless/*
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    raise AssertionError
+    raise NotImplementedError
+    if __name__ == .__main__.:
+    if TYPE_CHECKING:
+    @abstractmethod
+
+[html]
+directory = htmlcov
