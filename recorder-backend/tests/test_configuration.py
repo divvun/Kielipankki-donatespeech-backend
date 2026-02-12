@@ -3,7 +3,7 @@
 import json
 import pytest
 from unittest.mock import patch
-from conftest import TEST_PLAYLIST_ID, TEST_PLAYLIST_ID_2, TEST_BUCKET_NAME
+from tests.conftest import TEST_PLAYLIST_ID, TEST_PLAYLIST_ID_2, TEST_BUCKET_NAME
 
 
 def test_load_configuration_success(mock_env, lambda_context):

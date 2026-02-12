@@ -3,7 +3,7 @@
 import json
 import pytest
 from unittest.mock import patch
-from conftest import TEST_BUCKET_NAME, TEST_CLIENT_ID
+from tests.conftest import TEST_BUCKET_NAME, TEST_CLIENT_ID
 
 
 def test_init_upload_success(mock_env, lambda_context):
