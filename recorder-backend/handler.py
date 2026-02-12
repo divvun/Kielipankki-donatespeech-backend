@@ -1,11 +1,7 @@
 import json
-import logging
-import boto3
-import os
-from botocore.exceptions import ClientError
+from botocore.exceptions import ClientError  # type: ignore
 from json import JSONDecodeError
-from common import *
-from uuid import UUID
+from common import logger, get_bad_request_params, FileProcessingError, validate_uuid_v4, content_bucket, s3_client
 
 file_key_prefix = 'uploads/audio_and_metadata/'
 metadata_prefix = 'metadata/'
