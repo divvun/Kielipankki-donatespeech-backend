@@ -1,6 +1,7 @@
 # Recorder Backend API Tests
 
-Comprehensive test suite for the Recorder Backend Lambda functions with mocked AWS S3 services.
+Comprehensive test suite for the Recorder Backend Lambda functions with mocked
+AWS S3 services.
 
 ## Test Coverage
 
@@ -96,10 +97,13 @@ To integrate with CI/CD pipelines:
 ## Troubleshooting
 
 ### Import Errors
-Ensure you're in the project root directory and virtual environment is activated.
+Ensure you're in the project root directory and virtual environment is
+activated.
 
 ### S3 Mocking Issues
-Moto requires specific AWS credentials environment variables. The fixtures handle this automatically.
+Moto requires specific AWS credentials environment variables. The fixtures
+handle this automatically.
 
 ### YLE API Errors
-YLE content mapping is automatically mocked in tests. If you see YLE-related errors, check the `mock_env` fixture in `conftest.py`.
+YLE content mapping is automatically mocked in tests. If you see YLE-related
+errors, check the `mock_env` fixture in `conftest.py`.
