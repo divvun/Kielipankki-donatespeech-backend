@@ -40,43 +40,43 @@ def mock_s3_bucket(s3_client):
     # Create the bucket
     s3_client.create_bucket(
         Bucket=TEST_BUCKET_NAME,
-        CreateBucketConfiguration={"LocationConstraint": "eu-west-1"}
+        CreateBucketConfiguration={"LocationConstraint": "eu-west-1"},
     )
-    
+
     # Load test playlist data
     with open("test/playlist.json", "r") as f:
         playlist_data = json.load(f)
-    
+
     # Load test theme data
     with open("test/theme.json", "r") as f:
         theme_data = json.load(f)
-    
+
     # Upload playlist configurations
     s3_client.put_object(
         Bucket=TEST_BUCKET_NAME,
         Key=f"configuration/{TEST_PLAYLIST_ID}.json",
-        Body=json.dumps(playlist_data)
+        Body=json.dumps(playlist_data),
     )
-    
+
     s3_client.put_object(
         Bucket=TEST_BUCKET_NAME,
         Key=f"configuration/{TEST_PLAYLIST_ID_2}.json",
-        Body=json.dumps(playlist_data)
+        Body=json.dumps(playlist_data),
     )
-    
+
     # Upload theme files
     s3_client.put_object(
         Bucket=TEST_BUCKET_NAME,
         Key=f"theme/{TEST_THEME_ID}.json",
-        Body=json.dumps(theme_data)
+        Body=json.dumps(theme_data),
     )
-    
+
     s3_client.put_object(
         Bucket=TEST_BUCKET_NAME,
         Key=f"theme/{TEST_THEME_ID_2}.json",
-        Body=json.dumps(theme_data)
+        Body=json.dumps(theme_data),
     )
-    
+
     yield s3_client
 
 
@@ -85,19 +85,24 @@ def mock_env(mock_s3_bucket):
     """Set up environment variables for testing."""
     import os
     from unittest.mock import patch
-    
+
     os.environ["CONTENT_BUCKET_NAME"] = TEST_BUCKET_NAME
     os.environ["YLE_CLIENT_ID"] = "test-client-id"
     os.environ["YLE_CLIENT_KEY"] = "test-client-key"
     os.environ["YLE_DECRYPT"] = "false"
-    
+
     # Mock YLE content mapping to avoid external API calls
-    with patch('yle_utils.map_yle_content') as mock_map:
+    with patch("yle_utils.map_yle_content") as mock_map:
         mock_map.return_value = "https://mocked-yle-url.com/video.mp4"
         yield
-    
+
     # Cleanup
-    for key in ["CONTENT_BUCKET_NAME", "YLE_CLIENT_ID", "YLE_CLIENT_KEY", "YLE_DECRYPT"]:
+    for key in [
+        "CONTENT_BUCKET_NAME",
+        "YLE_CLIENT_ID",
+        "YLE_CLIENT_KEY",
+        "YLE_DECRYPT",
+    ]:
         if key in os.environ:
             del os.environ[key]
 
@@ -105,11 +110,14 @@ def mock_env(mock_s3_bucket):
 @pytest.fixture
 def lambda_context():
     """Mock Lambda context object."""
+
     class LambdaContext:
         def __init__(self):
             self.function_name = "test-function"
             self.memory_limit_in_mb = 128
-            self.invoked_function_arn = "arn:aws:lambda:eu-west-1:123456789012:function:test-function"
+            self.invoked_function_arn = (
+                "arn:aws:lambda:eu-west-1:123456789012:function:test-function"
+            )
             self.aws_request_id = "test-request-id"
-    
+
     return LambdaContext()
