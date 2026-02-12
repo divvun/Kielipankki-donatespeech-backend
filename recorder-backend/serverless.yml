@@ -2,7 +2,7 @@ service: recorder-backend
 
 provider:
   name: aws
-  runtime: python3.8
+  runtime: python3.12
   memorySize: 1024 # optional, in MB, default is 1024
   timeout: 20 # optional, in seconds, default is 6
   stage: ${opt:stage, 'dev'}
@@ -182,8 +182,8 @@ custom:
   pythonRequirements:
     dockerizePip: true
   customDomain:
-    hostedZoneId: ${cf:RecorderStaticSite.HostedZoneIdOut}
-    domainName: endpoint.${cf:RecorderStaticSite.SiteDomainOut}
+    hostedZoneId: ${cf:RecorderBackendResources.HostedZoneIdOut}
+    domainName: endpoint.${cf:RecorderBackendResources.SiteDomainOut}
     certificateArn: ${cf:RecorderBackendResources.EndpointCertificateArnOut}
     basePath: ""
     stage: ${self:provider.stage}
