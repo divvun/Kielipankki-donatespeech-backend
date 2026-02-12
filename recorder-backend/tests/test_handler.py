@@ -1,8 +1,6 @@
 """Tests for handler.py - init_upload and delete_stored_client_data endpoints."""
 
 import json
-import pytest
-from unittest.mock import patch
 from tests.conftest import TEST_BUCKET_NAME, TEST_CLIENT_ID
 
 

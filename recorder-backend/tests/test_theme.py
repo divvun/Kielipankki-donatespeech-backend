@@ -2,7 +2,7 @@
 
 import json
 import pytest
-from tests.conftest import TEST_THEME_ID, TEST_THEME_ID_2, TEST_BUCKET_NAME
+from tests.conftest import TEST_THEME_ID, TEST_THEME_ID_2
 
 
 def test_load_theme_success(mock_env, lambda_context):
