@@ -50,6 +50,7 @@ pytest tests/test_handler.py::test_init_upload_success -v
 ## Test Data
 
 Test fixtures use sample data from:
+
 - `test/playlist.json` - Sample playlist configuration
 - `test/theme.json` - Sample theme configuration
 
@@ -97,13 +98,16 @@ To integrate with CI/CD pipelines:
 ## Troubleshooting
 
 ### Import Errors
+
 Ensure you're in the project root directory and virtual environment is
 activated.
 
 ### S3 Mocking Issues
+
 Moto requires specific AWS credentials environment variables. The fixtures
 handle this automatically.
 
 ### YLE API Errors
+
 YLE content mapping is automatically mocked in tests. If you see YLE-related
 errors, check the `mock_env` fixture in `conftest.py`.
