@@ -1,8 +1,9 @@
-import * as cdk from '@aws-cdk/core';
-import waf2 = require('@aws-cdk/aws-wafv2');
+import * as cdk from 'aws-cdk-lib';
+import * as waf2 from 'aws-cdk-lib/aws-wafv2';
+import { Construct } from 'constructs';
 
 export class RecorderWAF extends cdk.Stack {
-  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
+    constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
     const vendorIPs = new waf2.CfnIPSet(this, "VendorIPs", {

@@ -1,21 +1,21 @@
-import * as cdk from '@aws-cdk/core';
-import * as iam from '@aws-cdk/aws-iam';
-import codebuild = require('@aws-cdk/aws-codebuild');
-import codepipeline = require('@aws-cdk/aws-codepipeline');
-import codepipelineActions = require('@aws-cdk/aws-codepipeline-actions');
-import { Artifact } from '@aws-cdk/aws-codepipeline';
-import { Duration } from '@aws-cdk/core';
-import { LinuxBuildImage, BuildSpec } from '@aws-cdk/aws-codebuild';
+import * as cdk from 'aws-cdk-lib';
+import * as iam from 'aws-cdk-lib/aws-iam';
+import * as codebuild from 'aws-cdk-lib/aws-codebuild';
+import * as codepipeline from 'aws-cdk-lib/aws-codepipeline';
+import * as codepipelineActions from 'aws-cdk-lib/aws-codepipeline-actions';
+import { Duration } from 'aws-cdk-lib';
+import { BuildSpec, LinuxBuildImage } from 'aws-cdk-lib/aws-codebuild';
+import { Construct } from 'constructs';
 
 export class RecorderCI extends cdk.Stack {
-  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
     const env = process.env['ENV'] || 'dev'
     const branch = process.env['BRANCH'] || 'master'
 
-    const githubArtifact = Artifact.artifact("GithubArtifact")
-    const serverlessArtifact = Artifact.artifact('ServerlessArtifact');
+    const githubArtifact = new codepipeline.Artifact('GithubArtifact');
+    const serverlessArtifact = new codepipeline.Artifact('ServerlessArtifact');
 
     const pipeline = new codepipeline.Pipeline(this, 'Recorder backend and frontend');
 
@@ -66,7 +66,7 @@ export class RecorderCI extends cdk.Stack {
     const serverlessBuild = new codebuild.PipelineProject(this, "Serverless build and deploy", {
       buildSpec: BuildSpec.fromSourceFilename('serverless_build_spec.yml'),
       environment: {
-        buildImage: LinuxBuildImage.STANDARD_2_0,
+        buildImage: LinuxBuildImage.STANDARD_7_0,
         privileged: true,
         environmentVariables: {
           ENV: {

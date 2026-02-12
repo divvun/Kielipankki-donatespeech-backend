@@ -1,11 +1,12 @@
-import * as cdk from '@aws-cdk/core';
-import s3 = require('@aws-cdk/aws-s3');
-import acm = require('@aws-cdk/aws-certificatemanager');
-import route53 = require('@aws-cdk/aws-route53');
+import * as cdk from 'aws-cdk-lib';
+import * as s3 from 'aws-cdk-lib/aws-s3';
+import * as acm from 'aws-cdk-lib/aws-certificatemanager';
+import * as route53 from 'aws-cdk-lib/aws-route53';
+import { Construct } from 'constructs';
 import { DomainProps, getSiteDomain } from './common';
 
 export class RecorderBackendResources extends cdk.Stack {
-  constructor(scope: cdk.Construct, id: string, domainProps: DomainProps, props?: cdk.StackProps) {
+  constructor(scope: Construct, id: string, domainProps: DomainProps, props?: cdk.StackProps) {
     super(scope, id, props);
 
     const env = process.env['ENV']
@@ -42,6 +43,8 @@ export class RecorderBackendResources extends cdk.Stack {
     new cdk.CfnOutput(this, 'ContentBucketNameOut', { value: contentBucket.bucketName });
     new cdk.CfnOutput(this, 'ContentBucketArnOut', { value: contentBucket.bucketArn });
     new cdk.CfnOutput(this, 'EndpointCertificateArnOut', { value: certificateArn });
+    new cdk.CfnOutput(this, 'HostedZoneIdOut', { value: zone.hostedZoneId });
+    new cdk.CfnOutput(this, 'SiteDomainOut', { value: siteDomain });
 
   }
 }
