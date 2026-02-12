@@ -67,7 +67,7 @@ export class RecorderStaticSite extends cdk.Stack {
     s3Policy.document.addStatements(oaiPolicyStatement);
 
     // TLS certificate
-    const certificateArn = new acm.DnsValidatedCertificate(
+    const certificate = new acm.DnsValidatedCertificate(
       this,
       "SiteCertificate",
       {
@@ -75,21 +75,25 @@ export class RecorderStaticSite extends cdk.Stack {
         hostedZone: zone,
         region: "us-east-1",
       },
-    ).certificateArn;
+    );
 
-    new cdk.CfnOutput(this, "CertificateArnOut", { value: certificateArn });
+    new cdk.CfnOutput(this, "CertificateArnOut", {
+      value: certificate.certificateArn,
+    });
 
     // CloudFront distribution that provides HTTPS
     const distribution = new cloudfront.CloudFrontWebDistribution(
       this,
       "SiteDistribution",
       {
-        aliasConfiguration: {
-          acmCertRef: certificateArn,
-          names: [siteDomain],
-          sslMethod: cloudfront.SSLMethod.SNI,
-          securityPolicy: cloudfront.SecurityPolicyProtocol.TLS_V1_2_2018,
-        },
+        viewerCertificate: cloudfront.ViewerCertificate.fromAcmCertificate(
+          certificate,
+          {
+            aliases: [siteDomain],
+            sslMethod: cloudfront.SSLMethod.SNI,
+            securityPolicy: cloudfront.SecurityPolicyProtocol.TLS_V1_2_2018,
+          },
+        ),
         originConfigs: [
           {
             s3OriginSource: {
@@ -143,7 +147,7 @@ export class RecorderStaticSite extends cdk.Stack {
     // Route53 alias record for the CloudFront distribution
     new route53.ARecord(this, "SiteAliasRecord", {
       recordName: siteDomain,
-      target: route53.AddressRecordTarget.fromAlias(
+      target: route53.RecordTarget.fromAlias(
         new targets.CloudFrontTarget(distribution),
       ),
       zone,
