@@ -2,7 +2,7 @@ service: recorder-backend
 
 provider:
   name: aws
-  runtime: python3.12
+  runtime: python3.11
   memorySize: 1024
   timeout: 20
   stage: ${opt:stage, 'dev'}
