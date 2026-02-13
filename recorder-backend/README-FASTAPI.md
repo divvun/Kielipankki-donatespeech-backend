@@ -13,9 +13,9 @@
 
 ### Prerequisites
 
-- Docker and Docker Compose
+- Docker and Docker Compose (or Podman)
 - Python 3.11+
-- pip
+- [uv](https://github.com/astral-sh/uv) (recommended for fast package management)
 
 ### Setup
 
@@ -48,6 +48,10 @@ docker-compose down
 1. **Install dependencies:**
 
 ```bash
+# Using uv (recommended - much faster)
+uv pip install -r pyproject.toml
+
+# Or using pip
 pip install -r requirements-fastapi.txt
 ```
 
@@ -240,10 +244,13 @@ recorder-backend/
 ├── main.py                     # FastAPI application
 ├── storage.py                  # Azure Blob Storage abstraction
 ├── yle_utils.py               # YLE API integration (unchanged)
-├── requirements-fastapi.txt    # FastAPI dependencies
-├── Dockerfile                  # Container image definition
+├── pyproject.toml             # Python project config (uv-managed)
+├── requirements-fastapi.txt    # Legacy pip requirements (for backwards compat)
+├── .python-version            # Python version specification
+├── Dockerfile                  # Container image definition (uses uv)
 ├── docker-compose.yml          # Local dev environment
 ├── setup-local.sh             # Setup script for local dev
+├── init-storage.py            # Storage initialization helper
 └── custom_fleep/              # File type detection (unchanged)
 ```
 

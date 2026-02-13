@@ -2,9 +2,12 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install dependencies
-COPY requirements-fastapi.txt .
-RUN pip install --no-cache-dir -r requirements-fastapi.txt
+# Install uv for fast package management
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
+
+# Install dependencies using uv
+COPY pyproject.toml .
+RUN uv pip install --system --no-cache -r pyproject.toml
 
 # Copy application code
 COPY main.py .
