@@ -1,20 +1,24 @@
 # Kielipankki Recorder
 
-This repository contains the code for the Kielipankki speech donation recorder backend and UI applications.
+This repository contains the code for the Kielipankki speech donation recorder
+backend and UI applications.
 
 ## Project Structure
 
-### [recorder-backend](recorder-backend/README-FASTAPI.md)
+### [recorder-backend](recorder-backend/README.md)
 
-FastAPI backend service with Azure Blob Storage. See [README-FASTAPI.md](recorder-backend/README-FASTAPI.md) for full documentation.
+FastAPI backend service with Azure Blob Storage. See
+[README.md](recorder-backend/README.md) for full documentation.
 
 **Stack:**
+
 - Python 3.11 with FastAPI
 - Azure Blob Storage
 - Docker/Podman support
 - Local development with Azurite
 
 **Quick start:**
+
 ```bash
 cd recorder-backend
 ./setup-local.sh  # Start local environment

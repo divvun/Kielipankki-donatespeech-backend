@@ -1,6 +1,7 @@
 # Recorder Backend - FastAPI Version
 
-**Note:** This is the modernized FastAPI version running on Azure. The original Lambda version is preserved in `handler.py`, `configuration.py`, and `theme.py`.
+**Note:** This is the modernized FastAPI version running on Azure. The original
+Lambda version is preserved in `handler.py`, `configuration.py`, and `theme.py`.
 
 ## Architecture
 
@@ -15,7 +16,8 @@
 
 - Docker and Docker Compose (or Podman)
 - Python 3.11+
-- [uv](https://github.com/astral-sh/uv) (recommended for fast package management)
+- [uv](https://github.com/astral-sh/uv) (recommended for fast package
+  management)
 
 ### Setup
 
@@ -26,6 +28,7 @@
 ```
 
 This will:
+
 - Start Azurite (Azure Storage emulator)
 - Start the FastAPI backend
 - Create the `recorder-content` container
@@ -33,9 +36,9 @@ This will:
 
 2. **Access the services:**
 
-- FastAPI Backend: http://localhost:8000
-- API Documentation: http://localhost:8000/docs (Swagger UI)
-- Azurite Blob Storage: http://localhost:10000
+- FastAPI Backend: <http://localhost:8000>
+- API Documentation: <http://localhost:8000/docs> (Swagger UI)
+- Azurite Blob Storage: <http://localhost:10000>
 
 3. **Stop services:**
 
@@ -96,6 +99,7 @@ Content-Type: application/json
 ```
 
 Response:
+
 ```json
 {
     "presignedUrl": "https://devstoreaccount1.blob.core.windows.net/recorder-content/uploads/audio_and_metadata/550e8400.../audio.m4a?sp=cw&..."
@@ -113,6 +117,7 @@ DELETE /v1/upload/{clientId}/{sessionId}/{recordingId}
 ```
 
 Response:
+
 ```json
 {
     "message": "Deleted all data for client {clientId}"
@@ -141,7 +146,8 @@ GET /v1/theme
 
 ### Option 1: Azure Container Apps (Recommended)
 
-Azure Container Apps provides automatic scaling, built-in HTTPS, and easy deployment.
+Azure Container Apps provides automatic scaling, built-in HTTPS, and easy
+deployment.
 
 1. **Create Azure Storage Account:**
 
@@ -205,7 +211,8 @@ az webapp config appsettings set \
 
 ## Environment Variables
 
-- `AZURE_STORAGE_CONNECTION_STRING`: Azure Storage connection string (required in production)
+- `AZURE_STORAGE_CONNECTION_STRING`: Azure Storage connection string (required
+  in production)
 - `AZURE_STORAGE_CONTAINER_NAME`: Container name (default: `recorder-content`)
 
 For local development, these default to Azurite values.
@@ -232,6 +239,7 @@ This FastAPI version maintains API compatibility with the Lambda version:
 - Mobile apps only need to update the base URL
 
 **Key differences:**
+
 - Uses Azure Blob Storage SAS URLs instead of S3 presigned URLs
 - Async operations for better performance
 - Direct HTTP server instead of API Gateway + Lambda
@@ -239,7 +247,7 @@ This FastAPI version maintains API compatibility with the Lambda version:
 
 ## File Structure
 
-```
+```text
 recorder-backend/
 ├── main.py                     # FastAPI application
 ├── storage.py                  # Azure Blob Storage abstraction
@@ -270,6 +278,7 @@ These files are preserved for reference but not used in the FastAPI version:
 ### Azurite connection issues
 
 If the API can't connect to Azurite, check:
+
 - Azurite is running: `docker ps | grep azurite`
 - Connection string is correct
 - Container name is `recorder-content`
@@ -283,6 +292,7 @@ If the API can't connect to Azurite, check:
 ### Import errors for Crypto module
 
 This should no longer occur in the FastAPI version, but if you encounter it:
+
 - Ensure `pycryptodome>=3.19.0` is installed
 - The Crypto module is only used by `yle_utils.py` for YLE API
 
