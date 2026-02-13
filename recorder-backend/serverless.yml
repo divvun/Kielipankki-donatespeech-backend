@@ -1,30 +1,30 @@
-service: recorder-backend
+service: vake-backend
 
 provider:
   name: aws
-  runtime: python3.11
+  runtime: python3.8
   memorySize: 1024 # optional, in MB, default is 1024
   timeout: 20 # optional, in seconds, default is 6
   stage: ${opt:stage, 'dev'}
   region: eu-west-1
-  apiKeys:
-    - ${self:provider.stage}-recorder-enpoints-key
+  apiKeys: 
+    - ${opt:stage}-vake-enpoints-key
   usagePlan:
     throttle:
       burstLimit: 500
       rateLimit: 10000
   iamRoleStatements:
-    - Effect: "Allow"
+    - Effect: 'Allow'
       Action:
-        - "s3:*"
+        - 's3:*'
       Resource:
-        - ${self:custom.cfOutputs.contentBucketArn}
-        - ${self:custom.cfOutputs.contentBucketArn}/*
+        - ${cf:VakeBackendResources.ContentBucketArnOut}
+        - ${cf:VakeBackendResources.ContentBucketArnOut}/*
   environment:
-    CONTENT_BUCKET_NAME: ${self:custom.cfOutputs.contentBucketName}
-    YLE_CLIENT_ID: "placeholder-not-configured"
-    YLE_CLIENT_KEY: "placeholder-not-configured"
-    YLE_DECRYPT: "placeholder-not-configured"
+    CONTENT_BUCKET_NAME: ${cf:VakeBackendResources.ContentBucketNameOut}
+    YLE_CLIENT_ID: ${ssm:/yle/client/id}
+    YLE_CLIENT_KEY: ${ssm:/yle/client/key}
+    YLE_DECRYPT: ${ssm:/yle/decrypt} # ~true
 
 plugins:
   - serverless-python-requirements
@@ -38,35 +38,35 @@ functions:
       - http:
           path: v1/init-upload
           method: post
-          cors:
-            origin: "*"
-            headers:
-              - Content-Type
-              - X-Amz-Date
-              - Authorization
-              - X-Api-Key
-              - X-Amz-Security-Token
-              - X-Amz-User-Agent
-            allowCredentials: false
-            cacheControl: "max-age=600, s-maxage=600, proxy-revalidate"
-          private: true
+          cors: true
+            # origin: '*' 
+            # headers: 
+            #   - Content-Type
+            #   - X-Amz-Date
+            #   - Authorization
+            #   - X-Api-Key
+            #   - X-Amz-Security-Token
+            #   - X-Amz-User-Agent
+            # allowCredentials: false
+            # cacheControl: 'max-age=600, s-maxage=600, proxy-revalidate' 
+          private: false
     # provisionedConcurrency: 2
   deleteClientData:
     handler: handler.delete_stored_client_data
     events:
       - http:
           path: v1/upload/{id}
-          request:
-            parameters:
-              paths:
+          request: 
+            parameters: 
+              paths: 
                 id: true
               querystrings:
                 session_id: false
                 recording_id: false
           method: delete
           cors:
-            origin: "*"
-            headers:
+            origin: '*' 
+            headers: 
               - Content-Type
               - X-Amz-Date
               - Authorization
@@ -74,30 +74,30 @@ functions:
               - X-Amz-Security-Token
               - X-Amz-User-Agent
             allowCredentials: false
-            cacheControl: "max-age=600, s-maxage=600, proxy-revalidate"
+            cacheControl: 'max-age=600, s-maxage=600, proxy-revalidate' 
           private: true
   loadConfiguration:
     handler: configuration.load_configuration
     events:
       - http:
           path: v1/configuration/{id}
-          request:
-            parameters:
-              paths:
+          request: 
+            parameters: 
+              paths: 
                 id: true
           method: get
-          cors:
-            origin: "*"
-            headers:
-              - Content-Type
-              - X-Amz-Date
-              - Authorization
-              - X-Api-Key
-              - X-Amz-Security-Token
-              - X-Amz-User-Agent
-            allowCredentials: false
-            cacheControl: "max-age=600, s-maxage=600, proxy-revalidate"
-          private: true
+          cors: true
+            # origin: '*' 
+            # headers: 
+            #   - Content-Type
+            #   - X-Amz-Date
+            #   - Authorization
+            #   - X-Api-Key
+            #   - X-Amz-Security-Token
+            #   - X-Amz-User-Agent
+            # allowCredentials: false
+            # cacheControl: 'max-age=600, s-maxage=600, proxy-revalidate' 
+          private: false
           caching:
             enabled: ${self:custom.cacheEnabled.${opt:stage, self:provider.stage}}
             cacheKeyParameters:
@@ -108,18 +108,18 @@ functions:
       - http:
           path: v1/configuration
           method: get
-          cors:
-            origin: "*"
-            headers:
-              - Content-Type
-              - X-Amz-Date
-              - Authorization
-              - X-Api-Key
-              - X-Amz-Security-Token
-              - X-Amz-User-Agent
-            allowCredentials: false
-            cacheControl: "max-age=600, s-maxage=600, proxy-revalidate"
-          private: true
+          cors: true
+            # origin: '*' 
+            # headers: 
+            #   - Content-Type
+            #   - X-Amz-Date
+            #   - Authorization
+            #   - X-Api-Key
+            #   - X-Amz-Security-Token
+            #   - X-Amz-User-Agent
+            # allowCredentials: false
+            # cacheControl: 'max-age=600, s-maxage=600, proxy-revalidate' 
+          private: false
           caching:
             enabled: ${self:custom.cacheEnabled.${opt:stage, self:provider.stage}}
   loadTheme:
@@ -127,23 +127,24 @@ functions:
     events:
       - http:
           path: v1/theme/{id}
-          request:
-            parameters:
-              paths:
+          request: 
+            parameters: 
+              paths: 
                 id: true
           method: get
-          cors:
-            origin: "*"
-            headers:
-              - Content-Type
-              - X-Amz-Date
-              - Authorization
-              - X-Api-Key
-              - X-Amz-Security-Token
-              - X-Amz-User-Agent
-            allowCredentials: false
-            cacheControl: "max-age=600, s-maxage=600, proxy-revalidate"
-          private: true
+          cors: true
+            # origin: '*' 
+            # headers: 
+            #   - Content-Type
+            #   - X-Amz-Date
+            #   - Authorization
+            #   - X-Api-Key
+            #   - X-Amz-Security-Token
+            #   - X-Amz-User-Agent
+            #   - Access-Control-Allow-Origin
+            # allowCredentials: false
+            # cacheControl: 'max-age=600, s-maxage=600, proxy-revalidate' 
+          # private: true
           caching:
             enabled: ${self:custom.cacheEnabled.${opt:stage, self:provider.stage}}
             cacheKeyParameters:
@@ -154,54 +155,41 @@ functions:
       - http:
           path: v1/theme
           method: get
-          cors:
-            origin: "*"
-            headers:
-              - Content-Type
-              - X-Amz-Date
-              - Authorization
-              - X-Api-Key
-              - X-Amz-Security-Token
-              - X-Amz-User-Agent
-            allowCredentials: false
-            cacheControl: "max-age=600, s-maxage=600, proxy-revalidate"
-          private: true
+          cors: true
+            # origin: '*' 
+            # headers: 
+            #   - Content-Type
+            #   - X-Amz-Date
+            #   - Authorization
+            #   - X-Api-Key
+            #   - X-Amz-Security-Token
+            #   - X-Amz-User-Agent
+            # allowCredentials: false
+            # cacheControl: 'max-age=600, s-maxage=600, proxy-revalidate' 
+          private: false
           caching:
             enabled: ${self:custom.cacheEnabled.${opt:stage, self:provider.stage}}
   audioFileChecker:
     handler: checker.check_audio_file
     events:
       - s3:
-          bucket: ${self:custom.cfOutputs.contentBucketName}
+          bucket: ${cf:VakeBackendResources.ContentBucketNameOut}
           event: s3:ObjectCreated:*
           rules:
             - prefix: uploads/audio_and_metadata/
           existing: true
 
 custom:
-  cfOutputs:
-    contentBucketName: ${cf:RecorderBackendResources.ContentBucketNameOut, "recorder-content-${self:provider.stage}"}
-    contentBucketArn: ${cf:RecorderBackendResources.ContentBucketArnOut, "arn:aws:s3:::recorder-content-${self:provider.stage}"}
-    hostedZoneId: ${cf:RecorderBackendResources.HostedZoneIdOut, ""}
-    siteDomain: ${cf:RecorderBackendResources.SiteDomainOut, "example.com"}
-    endpointCertArn: ${cf:RecorderBackendResources.EndpointCertificateArnOut, ""}
   pythonRequirements:
-    dockerizePip: ${self:custom.dockerizePip.${opt:stage, self:provider.stage}}
+    dockerizePip: true
   customDomain:
-    enabled: ${self:custom.domainEnabled.${opt:stage, self:provider.stage}}
-    hostedZoneId: ${self:custom.cfOutputs.hostedZoneId}
-    domainName: endpoint.${self:custom.cfOutputs.siteDomain}
-    certificateArn: ${self:custom.cfOutputs.endpointCertArn}
-    basePath: ""
+    hostedZoneId: ${cf:VakeStaticSite.HostedZoneIdOut}
+    domainName: endpoint.${cf:VakeStaticSite.SiteDomainOut}
+    certificateArn: ${cf:VakeBackendResources.EndpointCertificateArnOut}
+    basePath: ''
     stage: ${self:provider.stage}
     createRoute53Record: true
     endpointType: edge
-  domainEnabled:
-    dev: false
-    prod: true
-  dockerizePip:
-    dev: false
-    prod: true
   apiGatewayCaching:
     enabled: true
     ttlInSeconds: 600

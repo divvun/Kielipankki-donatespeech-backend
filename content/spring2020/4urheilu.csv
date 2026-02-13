@@ -1,0 +1,98 @@
+moduuli,element,itemid,kind,itemType,state,title,body1,body2,url,startTime,endTime,isRecording,HUOM,kuva nähtävänä tai klipin Areena-otsikko
+"tämän sarakkeen sisältöä ei käytetä missään, se on vain apuna tekijälle","schedule = teema, item = moduuli, state = tila",moduulin tekninen tunniste,moduulin tyyppi,"moduulin sisältötyyppi (image, yle-video, video, text; tai choice)",toimintatila (vain Lahjoita-osioissa),"moduulin otsikko / 1-2 riviä, riville max. 17 merkkiä",Ns. leipätekstin 1. kappale,Ns. leipätekstin 2. kappale,"kuvan tai videon ID (kaikki videot yle-videoita) /  kuva on nähtävänä HUOM-sarakkeen oikealla puolella / HUOM: kenttään ei tekstiä, pelkät url-tiedot","Numero, montako sekuntia klipin alusta (ei  pakollinen)","Numero, montako sekuntia klipin alusta (ei pakollinen)",tallennetaanko ääntä vai ei / metatietoihin tyhjää,,
+teeman aloituskuva,schedule,8aaf82be-de16-4449-9fd2-677291a0e804,,,start,Tervetuloa sporttisiin hetkiin!,"Hienoa, että lahjoitat puhettasi.","Oppaasi urheiluhetkiin on toimittaja Mikko ""Peltsi"" Peltola.",39-6743405eba9bf535049,,,,"Tämä ei ole moduuli, vaan teeman aloitusnäyttö. Siksi sillä ei ole moduulin asetuksia kind ja itemType. Sen sijaan title, body1 ja body2 ovat, ja ne näytetään.",
+Katso ja kuuntele,item,4a2ad834-ca42-429b-988a-202e947a3e38,media,yle-video,,Oppaana Mikko Peltola,"Tervetuloa mukaan, urheilun ystävä! Nyt haetaan aitoa puhekieltä. Ota siis rennosti. 
+
+","Aloitetaan hienosta hetkestä. Näet kohta urheilijan kuvan. Kerro, mitä hänestä tulee mieleen. ",1-50526847,,,FALSE,katja muokkasi body 2:a 25.5.20,Lahjoita puhetta: Mikko Peltolan juonto 1
+Lahjoita 1/7,item,8fec866e-eb78-4404-a068-3dff257c57c8,media,image,,Alkuverryttely ,Paina Äänitä ja ala turista! Kuka tässä on ja mistä hänet tunnetaan? ,"Kun olet kertonut tarpeeksi, paina Lopeta äänitys.",39-6743345eba9bc416849,,,TRUE,Katja muokkasi bodyja 25.5.20,
+Lahjoita 1/7,state,,,,finish,Hyvin meni!,"Pieni muistutus ennen kuin jatketaan: Puhettasi pääsevät kuulemaan vain tutkijat ja tekoälyn kehittäjät. 
+
+",Tietosuojasta voit lukea lisää aloitussivulta. ,39-6743345eba9bc416849,,,,Katja muokkasi titleä 25.5.20,
+Katso ja kuuntele,item,fbabf085-a357-40ea-be73-5b9ca1c132ff,media,yle-video,,Haastattelijana,"Kiekkoleijonien kolmas MM-kulta oli sensaatio. Selostushommiin pääset vähän myöhemmin. 
+
+",Kohta saat olla hetken urheilutoimittajana! Joskus urheilijoista on vaikea saada irti järkeviä lausuntoja.,1-50526859,,,FALSE,Ei-tallentava video lähtee automaattisesti käyntiin. Sami varmistaa: Onko tässä alla Seuraava-nappi?,Lahjoita puhetta: Mikko Peltolan juonto 2
+,item,eacaeb14-c0c0-4c06-8aab-86a274a4952c,media,image,,Haastattelijana,"Katso ensin inspiraatioksi video, jossa yksi toimittaja tekee parhaansa.",,39-6771495ebe9144ba420,,,FALSE,Tässä lukee nyt nimenä Katso ja kuuntele. parempi olisi tyhjä nimikenttä.,
+Katso ja kuuntele,item,c84136fc-8fec-4750-b246-ef4771b5f554,media,yle-video,,Haastattelijana,Toimittaja Bubi Wallenius seurasi keihäänheittäjä Seppo Rätyä näin sitkeästi vuonna 1993.,,1-50547427,,,FALSE,"
+Katja vaihtoi URLin ja poisti startTimen ja endTimen 4.6.20
+",
+Katso ja kuuntele,item,20f8c81c-4a26-4084-ad4d-b083dc3eeb8e,media,yle-video,,Haastattelijana,"Kohta näet kolme kuvaa, joissa urheilija tai kuntoilija on antanut kaikkensa. Mitä haluaisit kysyä heiltä?","Voit kysyä mitä tahansa, siis muutakin kuin ""Miltä nyt tuntuu?"".",1-50526860,,,FALSE,"HUOM: sanamuoto ratkeaa ma 111.5. viimeistään: ""urheilija tai kuntoilija"" vai pelkkä ""kuntoilija""",Lahjoita puhetta: Mikko Peltolan juonto 3
+Lahjoita 2/7,item,82720f84-1c34-4017-a506-24aba8bca736,media,yle-video,,Haastattelijana,"Paina äänitä, niin kuva vaihtuu 15 sekunnin välein.",,1-50526894,,,TRUE,Katja vaihtoi Bodyt 9.6.20,
+,state,,media,image,finish,Kiitos!,"Ja eteenpäin.
+",,39-6820375ecf76b006c3a,,,,Katja lisäsi rivin 28.5.20 / body2-tekstin 1.6.20,
+Katso ja kuuntele,item,fa2eaf4c-6ef3-4ca1-9865-d8eb314f1ce9,media,yle-video,,Murretaustani,"Hienosti eläydytty! Mukavaa, jos oma taustasi tai murteesi kuului puheessa.
+
+",Tähän puhepankkiin on tärkeätä saada mukaan aivan kaikenlaista suomea. Auta siis tutkijoita ja kerro itsestäsi yksi taustatieto.,1-50526862,,,FALSE,"HUOM: juonnossa Peltsi puhuu taustatiedoista, vaikka tarkoitus oli tässä kysyä vasta yhtä. Puhe ja tekstitys eivät ole synkassa, mutta ei voi mitään :)",Lahjoita puhetta: Mikko Peltolan juonto 4
+Auta tutkijaa ,item,6ef34957-41e7-487e-aa0c-a40c93ed9251,prompt,choice,,Murretaustani,"Valitse valikosta maakunta tai alue, joka on eniten vaikuttanut sinun tapaasi puhua.",,39-6780835ec286469a1be,,,,Katja muokkasi body1:a 25.5.20,
+Auta tutkijaa ,item,f49a455d-e7fa-47bf-944b-c2fb60f8af6a,media,image,,Kiitos!,"Murteiden ja erilaisten puhetapojen säilyminen on tärkeää. Kysymme myöhemmin pari taustatietoa lisää.
+
+","Huomasithan, että näet jo lahjoittamasi ajan ylälaidasta?",39-6780835ec286469a1be,,,FALSE,Tässä on hämäävä nimi Katso ja Kuuntele (28.5.20) ,
+Katso ja kuuntele,item,b70089f0-3ee8-4602-b763-c5167d8220dd,media,yle-video,,Suosikkini,"Jokaisella meistä on suosikkiurheilijoita. Omani on aina iloinen Kerttu Niskanen. 
+
+",Kuka urheilija on tehnyt sinuun ihan erityisen vaikutuksen – ja miksi?,1-50526863,,,FALSE,,Lahjoita puhetta: Mikko Peltolan juonto 5
+Lahjoita 3/7,item,0d87b6f2-9136-4f5a-97ea-89b638bbabf9,media,image,,Suosikkini,"Onko suosikkisi Suomesta, maailman kisakentiltä vai naapurikylästä?
+
+",Milloin suhteenne alkoi?,39-6752815ebc0ecfde9a0,,,TRUE,Katja muokkasi bodyja 28.5.20,
+Lahjoita 3/7,state,,,,finish,Mainiota!,Sitten Kerttu Niskasen vauhdilla eteenpäin.,,39-6752705ebc07450429d,,,,,
+Lahjoita 4/7,item,4ca49066-0340-427c-ad48-06c772877e6e,media,yle-video,,Selostajana,"Nyt leikitään selostajaa. Näet lyhyen videon juoksija Lasse Virenin uskomattomasta suorituksesta. 
+","Ei haittaa, vaikket olisi koskaan ennen nähnyt sitä. Tähän on helppo eläytyä.",1-50526865,,,FALSE,Katja lyhensi Body 1:a 9.6.20,Lahjoita puhetta: Mikko Peltolan juonto 6
+Lahjoita 4/7,item,86364bea-a6ab-4fdc-ae27-a415c076fccf,media,yle-video,,Selostajana,"Viren on sinipaita numero 228. Antaa mennä! 
+
+",,1-50527019,,,TRUE,"Katja poisti Body2:n 9.6.20
+
+Oikeudet ok (Rikun meili 29.4.20). 
+
+Käytetään Yle urheilun klippiä karaokekarnevaaleista. Noin 85 sek.
+",
+Lahjoita 4/7,state,,,,finish,Voitto kotiin!,Sinussahan on ainesta selostuskoppiin! ,,39-6766265ebe448766b6f,,,,,
+Auta tutkijaa,item,7c9effed-065e-4bde-8967-06499a0f82af,media,yle-video,,Pieni tauko,"Lasketaan välillä vähän sykettä. 
+
+",Puhepankin tutkijat tarvitsevat vielä pari pientä taustatietoa. Niistä ei voi päätellä henkilöllisyyttäsi.,1-50526871,,,FALSE,,Lahjoita puhetta: Mikko Peltolan juonto 9
+Auta tutkijaa ,item,e3264046-a642-46de-a9e7-c55933ee3739,prompt,choice,,Ikäni,Valitse valikosta ikäryhmäsi.,,39-6780905ec2876c0f863,,,,,
+Auta tutkijaa ,item,8bbb8e5d-56a2-4082-9429-233ff2a5e53f,prompt,choice,,Sukupuoleni,,,39-6780915ec2876cc2128,,,,,
+Auta tutkijaa ,item,b3e2ef17-166b-4293-a640-bb26b4e9f62a,media,image,,Mukavaa ...,"... jos vastasit taustatietoihin. Tutkijat ja suomen kieli kiittävät!
+
+",Sitten eteenpäin.,39-6752475ebbfbe9919ff,,,FALSE,,
+Katso ja kuuntele,item,2476e903-ecef-4e7e-9f6f-4ea7a459506c,media,yle-video,,Pallo maaliin,"Jalkapallon EM-kisat pelataan vasta vuonna 2021. Nyt treenataan! 
+
+
+
+",Näet kohta kuvassa pelitilanteen. Miten pallon saa eri vaihtoehdoilla maaliin?,1-50526872,,,FALSE,,Lahjoita puhetta: Mikko Peltolan juonto 10
+Lahjoita 5/7 ,item,1316a875-371a-460b-9f1b-b81fc4711ff5,media,image,,Pallo maaliin,"Kuvittele ja selitä pelaajien liikkeet! Sinun pelaajasi ovat värillisiä, vastustaja mustalla.
+",,39-6752505ebbfd5317411,,,TRUE,Katja muokkasi bodyja 9.6.20,
+Lahjoita 5/7 ,state,,,,finish,Taitavaa!,Valmentamasi joukkue voitti pelin!,,39-6752515ebbfdf34f8b2,,,,,
+Auta tutkijaa,item,7974d8e7-3c26-4983-adcd-7d8f5b379ffb,media,image,,Vielä yksi taustakysymys,"Nyt voit vielä kerran auttaa tutkijoita!
+
+","Heille on tärkeää tietää, mikä on äidinkielesi. ",39-6780895ec2876bc6b15,,,FALSE,,
+Auta tutkijaa ,item,fa3ecb10-1128-4c8c-a838-600a0faadc2e,prompt,multi-choice,,Äidinkieleni,"Jos sinulla on lapsesta asti ollut kaksi äidinkieltä, voit merkitä kummankin.",,39-6780895ec2876bc6b15,,,,Katja muokkasi bodyja 25.5.20 ja 28.5.20,
+Auta tutkijaa ,item,4981b3c0-c693-4b93-be25-eaefa58f7528,media,image,,Kiitos! Tack! Spasibo! ,"Mahtavaa, että puhepankkiin kertyy suomea erilaisia taustoja omaavilta.",,39-6780895ec2876bc6b15,,,FALSE,Katja lyhensi titleä 9.6.20,
+Katso ja kuuntele,item,59a0687a-862c-4328-aaaa-5367587da6a6,media,yle-video,, Liikuntamuisto,"Yksi parhaista liikuntamuistoistani on se, kun voitin maastopyöräkisoissa sarjassani pronssia. 
+ 
+
+
+
+
+
+
+
+
+",Mistä liikunnasta tai urheilusta sinä nautit ja miksi? ,1-50526878,,,FALSE,Katja muokkasi body1-tekstiä 28.5.20,Lahjoita puhetta: Mikko Peltolan juonto 11
+Lahjoita 6/7 ,item,af88b3fd-1700-491e-902c-cf412e768ab1,media,image,,Liikuntamuisto,"Muistele ja hersytä vapaasti.
+
+
+",Oletko yksilö- vai joukkuetyyppiä? Kerro tuore kokemus tai palaa vuosien taakse!,39-6752555ebc00356bdc3,,,TRUE,Katja muokkasi titleä 26.5.20 ja 9.6.20,
+Lahjoita 6/7 ,state,,,,finish,Liikuntamuisto,Hyvin kerrottu!,Kiitos.,39-6756675ebd0595c06d1,,,,Katja muokkasi bodyja 26.5.20 ja 28.5.20,
+Katso ja kuuntele,item,8cb5f322-f49f-45be-b226-c5d0aa051eee,media,yle-video,,Arvaa laji,"Otetaan lopuksi kuva-arvoitus. Kuva liittyy yhteen Suomen urheilun tähtihetkistä.
+
+","Arvuuttele ääneen, mistä lajista on kyse.",1-50526880,,,FALSE,,Lahjoita puhetta: Mikko Peltolan juonto 12
+Lahjoita 7/7,item,652c6896-ea25-4df1-993e-bc0f46177125,media,yle-video,,Arvaa laji,"Kuva aukeaa 15 sekunnin välein. Jos arvaat lajin: Mikä vuosi on kyseessä ja keitä kuvassa on?
+
+",,1-50526895,,,TRUE,Katja muokkasi bodyja 9.6.20,video (Areenaan 14.5.)
+Lahjoita 7/7,state,,,,finish,Den glider in!,"Suomen ensimmäistä jääkiekon MM-voittoa juhlittiin Helsingissä toukokuussa 1995.
+
+",Ensimmäiseen MM-kultaan on hyvä lopetella. ,39-6752615ebc01cfd6a80,,,,Katja muokkasi bodyja 28.5.20,
+Katso ja kuuntele,item,444c603d-6fef-4c54-b439-2876e80d2fa1,media,yle-video,,Hieno homma!,"Urheilusta puhumalla autoit juuri suomen kieltä. 
+",Haasta vielä urheiluhullut ystäväsi lahjoittamaan puhetta! ,1-50526882,,,FALSE,Katja muokkasi Body1:a 9.6.20,Lahjoita puhetta: Mikko Peltolan juonto 13
+Lahjoita lisää,schedule,8aaf82be-de16-4449-9fd2-677291a0e804,,,finish,Kiitos vielä kerran!,Jos puhtia riittää: ,Valitse joku toinen aihe ja lahjoita lisää.,39-6779175ec2568a49092,,,FALSE,"Kiinteä viimeinen sivu (kaikissa teemoissa sama teksti) / Jere sanoo: tekstit tulevat teeman finish-tilasta, tai jos niitä ei ole, niin oletustekstit. Mukana Lahjoita lisää -nappi ja somejakonapit (web), tai mobiilissa Kutsu kaveri (josta aukeaa share sheet) sekä Lahjoita lisää -nappi.
+Katja: Eikö tähän ollut tarkoitus tulla myös se kokonaisaika (jos lahjoittanut yli 2 min.)??? Joka tulisi myös somejakotekstiin??",
+teeman aloitusnapin kuva,,,,,,,,,39-6822395ecfaad46f37d,,,,Katja vaihtoi kuvan urlia 9.6.20,pokaali
+somejakoteksti,,,,,,,"Lahjoitin puhettani! Lahjoita sinäkin, niin olemme yhdessä mukana suomenkielisen puheentunnistuksen ja tekoälyn kehittämisessä! ( sitten tästä pitäisi olla suora ohjaus lahjoituskoneeseen tyyliin lue lisää --> ja sitten linkki menisi suoraan lahjoituskoneeseen.)",,,,,,Halutaanko / tarvitaanko mukaan viittaus teemaan: Lahjoitin puhettani sukeltamalla kesätunnelmiin / uppoutumalla urheiluhetkiin / kertomalla korona-ajasta / juttelemalla eläinystävistämme / kertomalla lähelläni olevista asioista,

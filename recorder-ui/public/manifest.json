@@ -1,6 +1,6 @@
 {
-  "short_name": "Project name",
-  "name": "Project name",
+  "short_name": "Lahjoita puhetta",
+  "name": "Lahjoita puhetta",
   "icons": [
     {
       "src": "android-chrome-192x192.png",
@@ -21,7 +21,7 @@
   "related_applications": [
     {
       "platform": "play",
-      "id": "com.example.recorder"
+      "id": "fi.lahjoitapuhetta.recorder"
     }
   ]
 }

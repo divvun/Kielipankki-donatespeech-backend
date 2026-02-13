@@ -1,0 +1,32 @@
+{
+    "scheduleId": "c2794121-e32b-4cab-970f-4d6cbb4a8f8f",
+    "title": { "fi": "Tonnin seteli" },
+    "body1": { "fi": "Tuhansien meemien l\u00e4hde" },
+    "body2": { "fi": "" },
+    "items": [
+        {
+            "itemId": "7f1e1fef-b2e1-43d0-8e7a-3f2bb5fa6800",
+            "kind": "media",
+            "itemType": "text",
+            "typeId": "text/plain",
+            "url": null,
+            "title": { "fi": "L\u00e4mmittely" },
+            "body1": { "fi": "T\u00e4m\u00e4 on ajolistan ensimmäinen moduuli, jossa tallennus ei vielä ole päällä. Kun jatkat eteenpäin, tallennus alkaa." },
+            "body2": { "fi": "" },
+            "options": [],
+            "isRecording": false
+        },
+        {
+            "itemId": "46e61d25-b09f-4d7b-8cdb-01d6bb1977c5",
+            "kind": "media",
+            "itemType": "yle-video",
+            "typeId": "video/mp4",
+            "url": "1-3365502",
+            "title": { "fi": "Tonnin seteli" },
+            "body1": { "fi": "Pieni kahvi. Ja vaikka tollanen vohveli tosta." },
+            "body2": { "fi": "" },
+            "options": [],
+            "isRecording": true
+        }
+    ]
+}

@@ -1,0 +1,73 @@
+{
+    "scheduleId": "24be2aa4-2c71-4321-b19c-d41df0690179",
+    "title": "playlist.json",
+    "description": "Vähän vanhempi ajolista ajalta kun ei vielä ollut näinkään selkeää speksiä.",
+    "items": [
+        {
+            "itemId": "b9d41cc5-27e1-43e2-be78-fe4b76b1e42f",
+            "kind": "media",
+            "itemType": "text",
+            "typeId": "text/plain",
+            "url": null,
+            "title": "L\u00e4mmittely",
+            "description": "T\u00e4m\u00e4 on ajolistan ensimmäinen moduuli, jossa tallennus ei vielä ole päällä. Kun jatkat eteenpäin, tallennus alkaa.",
+            "options": [],
+            "isRecording": false
+        },
+        {
+            "itemId": "ce3c6012-25f0-4c69-a0ad-c5dc8e41b795",
+            "kind": "media",
+            "itemType": "audio",
+            "typeId": "audio/m4a",
+            "url": "arvi-euroviisut.m4a",
+            "title": "Arvi",
+            "description": "Arvi Lind esittelee",
+            "options": [],
+            "isRecording": false
+        },
+        {
+            "itemId": "f6267df5-ed1c-4ebf-870d-fcb823f66664",
+            "kind": "prompt",
+            "itemType": "choice",
+            "typeId": null,
+            "url": null,
+            "title": "Ikäni on:",
+            "description": "Tähän kuvaus siit\u00e4, miksi ik\u00e4\u00e4 kysyt\u00e4\u00e4n.",
+            "options": ["1-10", "11-20", "21-30", "31-40", "41-50", "51-60", "61-70", "71-80", "81-90", "91-100", "Yli 100"],
+            "isRecording": false
+        },
+        { 
+            "itemId": "f3c991c0-e2f2-4d4d-980d-0883230d84a1",
+            "kind": "media", 
+            "itemType": "video",
+            "typeId": "video/mp4",
+            "url": "lordi-euroviisut.mp4",
+            "title": "Lordi",
+            "description": "Videop\u00e4tk\u00e4 Lordin euroviisuvoitosta 2006",
+            "options": [],
+            "isRecording": true
+        },
+        {
+            "itemId": "718a6814-c97f-4e5e-88f1-e22039487cc8",
+            "kind": "prompt",
+            "itemType": "text",
+            "typeId": null,
+            "url": null,
+            "title": "Kotipaikkani on:",
+            "description": "Kirjoita tekstikentt\u00e4\u00e4n kotipaikkasi.",
+            "options": [],
+            "isRecording": true
+        },
+        { 
+            "itemId": "9f05e73a-6b31-4164-bda2-33b92ac15560",
+            "kind": "media", 
+            "itemType": "yle-video",
+            "typeId": null,
+            "url": "1-50000093",
+            "title": "Mauno Ahosen joulupuhe",
+            "description": "Mauno Ahonen pit\u00e4\u00e4 joulupuheen joulut\u00e4htien keskell\u00e4.",
+            "options": [],
+            "isRecording": true
+        }
+    ]
+}

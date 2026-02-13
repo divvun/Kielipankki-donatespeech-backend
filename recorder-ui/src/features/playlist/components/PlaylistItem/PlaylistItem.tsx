@@ -22,15 +22,18 @@ type PlaylistItemProps = {
   showPreviousButton: boolean;
   showNextButton: boolean;
   onNext: () => void;
-  onPrevious: () => void;
+    onPrevious: () => void;
+    lang: string;
 };
+
 
 const PlaylistItem: React.FunctionComponent<PlaylistItemProps> = ({
   element,
   showNextButton,
   showPreviousButton,
   onNext,
-  onPrevious,
+    onPrevious,
+    lang,
 }) => {
   const recorder = useAudioRecorderContext();
   const recorderStatus = recorder?.status || "NotInitialized";
@@ -41,9 +44,10 @@ const PlaylistItem: React.FunctionComponent<PlaylistItemProps> = ({
     if (!element.url) return null;
     return (
       <img
+        tabIndex={0}
         className={imageLoaded ? "playlist-item-image--loaded" : ""}
         src={element.url}
-        alt={element.title}
+        alt={element.metaTitle !== undefined && element.metaTitle !== "" ? element.metaTitle : element.title}
         onLoad={() => setImageLoaded(true)}
       />
     );
@@ -71,7 +75,7 @@ const PlaylistItem: React.FunctionComponent<PlaylistItemProps> = ({
         if (element.item?.kind === "prompt") {
           return renderImage();
         }
-        return <TextElement text={element.url} />;
+        return <TextElement text={element.url}/>;
       default:
         return null;
     }
@@ -85,47 +89,54 @@ const PlaylistItem: React.FunctionComponent<PlaylistItemProps> = ({
         <Row className="playlist-item-media align-items-center">
           {renderMediaElement()}
         </Row>
-        <Row className={`playlist-item-text align-items-start`}>
+          <Row className={`playlist-item-text align-items-start`}>
           <Col className="playlist-item-text--content h-100">
             <Row className="playlist-item-label justify-content-center">
               <Col className="playlist-arrow-button" xs={3} md={2}>
                 {showPreviousButton && (
-                  <ArrowButton direction="backward" onClick={onPrevious} />
+                    <ArrowButton direction="backward" onClick={onPrevious} label={lang === "fi" ? "Edellinen" : "Föregående"} />
                 )}
               </Col>
               <Col className="my-auto" xs={6} md={8}>
                 <ItemStatusLabel
                   displayedElement={element}
                   recordingItemProgress={recordingItemProgress}
-                />
+                  lang={lang}
+                  />
               </Col>
               <Col className="playlist-arrow-button" xs={3} md={2}>
                 {showNextButton && (
-                  <ArrowButton direction="forward" onClick={onNext} />
+                    <ArrowButton direction="forward" onClick={onNext} label={lang === "fi" ? "Hyppää seuraavaan tehtävään" : "Hoppa över uppgiften"}/>
                 )}
               </Col>
             </Row>
-            <Row className="playlist-item-content mb-1">
-              <Col>
-                {element.item?.kind === "prompt" ? (
-                  <PromptElement element={element} />
-                ) : (
-                  <ItemTitle title={element.title} />
-                )}
-              </Col>
-            </Row>
-            <Row>
-              <ItemDescription
-                isSmall={useSmallDescription}
-                description={element.body1}
-              />
-            </Row>
-            <Row>
-              <ItemDescription
-                isSmall={useSmallDescription}
-                description={element.body2}
-              />
-            </Row>
+	      {element.item?.kind === "prompt" ? (
+		  <>
+		   <Row className="playlist-item-content mb-1">
+		       <Col>
+		   	  <PromptElement element={element} lang={lang} />
+		       </Col>
+		   </Row></>
+		      ) : (<>
+		       <Row className="playlist-item-content mb-1">
+		       	  <Col>
+                       <ItemTitle title={element.title} />
+		       	  </Col>
+		       </Row>
+		       <Row>
+		       	  <ItemDescription
+		       	      isSmall={useSmallDescription}
+		       	      description={element.body1}
+		       	  />
+		       </Row>
+		       <Row>
+		       	  <ItemDescription
+		       	      isSmall={useSmallDescription}
+		       	      description={element.body2}
+		       	  />
+		       </Row></>
+		       )
+	      }
           </Col>
         </Row>
       </Col>

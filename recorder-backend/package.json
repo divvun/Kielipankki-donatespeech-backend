@@ -1,5 +1,5 @@
 {
-  "name": "recorder-backend",
+  "name": "vake-backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,10 +8,10 @@
   },
   "author": "",
   "license": "ISC",
+  "dependencies": {},
   "devDependencies": {
     "serverless-api-gateway-caching": "^1.4.1",
-    "serverless-domain-manager": "^9.1.0",
-    "serverless-offline": "^14.4.0",
-    "serverless-python-requirements": "^6.1.2"
+    "serverless-domain-manager": "^3.3.1",
+    "serverless-python-requirements": "^5.1.0"
   }
 }

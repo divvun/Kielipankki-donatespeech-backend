@@ -1,0 +1,40 @@
+{
+    "scheduleId": "82ebfe4e-3432-4635-85b8-dc1ff3a182ec",
+    "title": "Ajolista 2",
+    "description": "Ajolista 2:n tarkempi kuvaus",
+    "items": [
+        {
+            "itemId": "e6b7f929-0efa-43d6-85af-0d44bb36e194",
+            "kind": "media",
+            "itemType": "text",
+            "typeId": "text/plain",
+            "url": null,
+            "title": "L\u00e4mmittely",
+            "description": "T\u00e4m\u00e4 on ajolistan ensimmäinen moduuli, jossa tallennus ei vielä ole päällä. Kun jatkat eteenpäin, tallennus alkaa.",
+            "options": [],
+            "isRecording": false
+        },
+        {
+            "itemId": "557a99d8-6048-409c-9ae0-4dedc2fa7fcb",
+            "kind": "media",
+            "itemType": "text",
+            "typeId": "text/plain",
+            "url": null,
+            "title": "Tekstin 2.1 otsikko",
+            "description": "Tekstin 2.1 pidempi kuvaus",
+            "options": [],
+            "isRecording": false
+        },
+        {
+            "itemId": "ca2de9d4-75f5-467e-abd0-1ae480a95ee5",
+            "kind": "media",
+            "itemType": "image",
+            "typeId": "image/jpeg",
+            "url": "https://upload.wikimedia.org/wikipedia/fi/5/58/Testikuva-Areena-2016.png",
+            "title": "Kuvan 2.1 otsikko",
+            "description": "Kuvan 2.1 pidempi kuvaus",
+            "options": [],
+            "isRecording": false
+        }
+    ]
+}

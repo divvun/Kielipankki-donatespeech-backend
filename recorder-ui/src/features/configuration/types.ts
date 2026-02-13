@@ -4,6 +4,7 @@ export type ScheduleItemState = {
   title: LocalizibleText;
   body1: LocalizibleText;
   body2: LocalizibleText;
+  metaTitle: LocalizibleText;
   imageUrl: string;
 };
 
@@ -66,6 +67,7 @@ export type LocalizedScheduleItemState = {
   body1?: string;
   body2?: string;
   imageUrl?: string;
+  metaTitle?: string;
 };
 
 export type LocalizedScheduleItem = ScheduleItemBase & {

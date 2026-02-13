@@ -1,0 +1,48 @@
+moduuli,element,itemId,kind,itemType,state,title,body1,body2,url,startTime,endTime,isRecording,metaTitle,otherEntryLabel,HUOM,kuva nähtävänä tai videon Areena-nimi
+"tämän sarakkeen sisältöä ei käytetä missään, se on vain apuna tekijälle","schedule = teema, item = moduuli, state = tila",moduulin (tai teeman) tekninen tunniste,moduulin tyyppi,"moduulin tyyppi (image, yle-video, video, text)","äänittävän moduulin kustomoitava tila, tai teeman aloitus/lopetus","moduulin otsikko / 1-2 riviä, riville max. 17 merkkiä",Ns. leipätekstin 1. kappale,Ns. leipätekstin 2. kappale,"Kuvan tunniste (kuvamoduuleilla) tai lyhyt teksti (tekstimoduuleilla) / HUOM: ellei tule kumpaakaan, itemTypeksi image ja url-kohtaan null","Numero, montako sekuntia klipin alusta (ei pakollinen)","Numero, montako sekuntia klipin alusta (ei  pakollinen)",vain mediamoduuleilla,"Moduulin metaotsikon teksti (oletuksena moduulin tyypin perusteella Lahjoitus x/y, Katso tai kuuntele tai Auta tutkijaa). empty=tyhjä","super-choice-kysymysmoduulissa:  jos tämä on muuta kuin tyhjä, valintalistan oheen tulee tekstikenttä, jonka selitteenä on tämä teksti","Muutokset oranssilla / HUOM: Teeman nimi vaihtuu: Kerro korona-ajasta > Kirottu korona . Harmaa tausta = jätä tyhjäksi. Super-choicella otherEntryLabel korvaa body2:n, älä laita tuplana!",
+Teeman aloituskuva,schedule,f5c5fd20-34f9-4ff8-bdba-666bbf1740ce,,,start,Tervetuloa!,"Hienoa, että lahjoitat puhettasi.",Koronavirus laittoi maailman ja Suomen sekaisin. Nyt saat ruotia koronan vaikutuksia ja sen herättämiä tunteita.,39-7230555f6da2a94d877,,,,,,,
+Lahjoita 1/7,item,245bc03d-a5b4-4cab-8c42-05df42fdb499,media,image,,Harjoitellaan ensin,"Paina Äänitä-nappia ja kerro, miten kosket pintoihin julkisissa tiloissa: suojaatko kätesi vai et? ",Juttele rennosti puhekielellä. Tauot ja takeltelu ovat sallittuja!,39-6743335eba9bc4094b0,,,TRUE,,,Katja korjasi body1-tekstiä 6.10. klo 17 (1 kirjain),
+,state,,,,recording,Lahjoitus käynnissä,Miten sinä kosket pintoihin julkisissa tiloissa?,"Kun olet valmis, paina Lopeta äänitys.",39-7230565f6da2ade0310,,,,,,Katja korjasi body1:ä 8.10. klo 10,
+,state,,,,finish,"Kiitos, hyvin meni!",Kohta jatketaan.,Pikku juttu ensin: puhettasi pääsevät kuulemaan vain tutkijat ja tekoälyn kehittäjät. Tietosuojasta voit lukea lisää aloitussivulta.,39-7230535f6da2a7afdc0,,,,,,Katja korjasi body2-tekstiä 6.10. klo 17 (1 kirjain),
+Lahjoita 2/7,item,a3c758d7-6fc5-4f71-9fce-4c8684ebb8a0,media,image,,Mikä suututtaa?,"Koronavirus ei kadonnutkaan kesällä 2020, kuten moni odotti. ","Kerro, mikä sinua suututtaa tai ahdistaa koronatilanteessa juuri nyt eniten. ",39-7230545f6da2a8afc79,,,TRUE,,,,
+,state,,,,recording,Mikä suututtaa?,Anna palaa!,,39-7230675f6da4531c0e8,,,,,,,
+,state,,,,finish,Kiitos!,Höyryjä on hyvä päästellä.,Sitten jatketaan!,39-7230595f6da2af0b035,,,,,,,
+Lahjoita 3/7,item,8871f112-5c8f-4083-89f5-c42b4525d55b,media,image,,Tätä kaipasin,"Tiukimpien rajoitustoimien aikana moni asia oli kielletty. Mitä asiaa sinä kaipasit silloin eniten? 
+",Kerro yksi tai useampi. Voit miettiä rauhassa ennen äänitystä.,39-7230615f6da2af9356b,,,TRUE,,,,
+,state,,,,recording,Tätä kaipasin,,,39-6743295eba9bc0076a9,,,,,,,
+,state,,,,finish,Kiinnostavaa!,Seuraavaksi saat komentaa hiukan kurittomia kansalaisia.,,39-6743295eba9bc0076a9,,,,,,sama kuva kuin edellä,
+Lahjoita 4/7,item,ce542a65-912f-4cda-841d-0fb7ce59cf9b,media,yle-video,,Ohjeista kuritonta,Näet kohta videolla kolme tilannetta. Anna niissä näkyville käskyjä! ,"Video alkaa, kun painat Äänitä.",1-50639927,,,TRUE,,,,
+Lahjoita 4/7,state,,,,start,inherit,inherit,inherit,39-7230775f6da77154ad4,,,,,,,
+Lahjoita 4/7,state,,,,recording,Ohjeista kuritonta,Kuva vaihtuu muutaman sekunnin välein. ,"Voit jatkaa ohjeistamista, vaikka kuva ei enää vaihdu. Kun olet valmis, paina Lopeta äänitys.",,,,,,,Katja vaihtoi Body2:n yhden sanan 9.10. klo 9.30,Lahjoita puhetta: Ohjeista kuritonta 
+,state,,,,finish,Tiukkaa ohjeistusta! ,Tosielämässä olemme tietenkin kohteliaita ja kunnioittavia muita kohtaan. ,Sitten voit auttaa tutkijoita. Meidän kaikkien puheessa kuuluu oma tausta tai murre. ,39-6780835ec286469a1be,,,,,,,
+Auta tutkijaa,item,6ef34957-41e7-487e-aa0c-a40c93ed9251,prompt,choice,,Murretaustani,"Valitse yltä maakunta tai alue, joka on eniten vaikuttanut sinun tapaasi puhua.",,39-6780835ec286469a1be,,,,,,,
+,item,8391fc02-7dca-44c7-aaaf-33f154d65030,media,image,,Kiitos!,Murteiden ja erilaisten puhetapojen säilyminen on tärkeää.,"Huomasithan, että näet jo lahjoittamasi puheajan ylälaidasta?",39-6780835ec286469a1be,,,FALSE,empty,,(moduulinimi tyhjäksi) nyt Katso tai kuuntele,
+Lahjoita 5/7,item,1a139b75-8ca7-4283-b2e4-15ca53de0b26,media,yle-video,,Kysy maskista,"Vuonna 2020 maskeista tuli valtavirtaa. Paina Äänitä, niin näet erilaisia kasvosuojien käyttäjiä.","Mitä kysyisit heiltä, jos he tulisivat vastaan?",1-50639929,,,TRUE,,,,
+,state,,,,start,inherit,inherit,inherit,39-7230605f6da2af37794,,,,,,,
+,state,,,,recording,Kysy maskista,Mieti kysymyksiä rauhassa. Kuva vaihtuu 8 sekunnin välein.,,,,,,,,,Lahjoita puhetta: Kysy maskista
+,state,,,,finish,Osuvasti kyselit!,Jatketaan kohta. Sitä ennen voit pikaisesti auttaa tutkijoita.,Kysymme sinulta kolmea pientä taustatietoa. Niistä ei voi päätellä henkilöllisyyttäsi.,39-6743435eba9bf7406a6,,,,,,Katja vaihtoi 1 sanan titlestä 9.10. klo 9.30,
+Auta tutkijaa,item,e3264046-a642-46de-a9e7-c55933ee3739,prompt,choice,,Ikäni,Valitse valikosta ikäryhmäsi.,,39-6780905ec2876c0f863,,,,,,,
+Auta tutkijaa,item,8bbb8e5d-56a2-4082-9429-233ff2a5e53f,prompt,choice,,Sukupuoleni,,,39-6780915ec2876cc2128,,,,,,,
+Auta tutkijaa,item,fa3ecb10-1128-4c8c-a838-600a0faadc2e,prompt,multi-choice,,Äidinkieleni,"Jos sinulla on lapsesta asti ollut kaksi äidinkieltä, voit merkitä kummankin.",,39-6780895ec2876bc6b15,,,,,,,
+,item,9df0474e-0c1b-4ca5-9f86-747da03b3016,media,image,,Tutkijat kiittävät!,"Mukavaa, jos vastasit taustatietoihin. Tutkijat ja suomen kieli kiittävät.",Mennään taas eteenpäin.,39-6780835ec286469a1be,,,FALSE,empty,,(moduulinimi tyhjäksi) nyt Katso tai kuuntele,
+Lahjoita 6/7,item,1587885a7-1e6f-421e-8f2d-b4f93bbf8239,media,image,,Hyvät asiat,"Kukaan ei jää kaipaamaan covid-19-virusta tai talouskriisiä, mutta on tässä ajassa on ollut hyvääkin.
+",Näet kuvassa joitakin korona-ajan positiivisia asioita. Mitä ne tuovat mieleesi?,39-7230835f6da8afc38a9,,,TRUE,,,Katja korjasi body1-tekstiä 6.10. klo 17,
+,state,,,,recording,Hyvät asiat,Mitä nämä tuovat mieleesi? ,,39-7230835f6da8afc38a9,,,,,,sama kuva kuin edellä / Katja muokkasi body-tekstejä 6.10.20,
+,state,,,,finish,Kiitos!,Korona-aika irrottelee sinun kielenkantojasi mukavasti.,Vielä yksi aihe. Kohta saat filosofoida sielun täydeltä!,39-6743355eba9bc4349dd,,,,,,,
+Lahjoita 7/7,item,37311b27-086d-4cfa-91c8-6cc174af5560,media,image,,Mitä opimme?,Mitä ihmiskunta voi mielestäsi oppia tästä pandemiasta?,,39-6743315eba9bc338cee,,,TRUE,,,,
+,state,,,,start,inherit,inherit,inherit,39-6743455eba9bf8a75e9,,,,,,,
+,state,,,,recording,Mitä opimme?,Mitä ihmiskunta voi mielestäsi oppia tästä pandemiasta?,,,,,,,,,
+,state,,,,finish,Kiinnostavaa pohdintaa!,Pysythän vielä hetken mukana. Nyt sinulla on viimeinen tilaisuus auttaa tutkijoita.,Näitä taustatietoja ei voi yhdistää sinuun lahjoittajana. ,39-7230575f6da2ae2764a,,,,,,,
+Auta tutkijaa,item,626d3fb5-6b82-4d5d-bdde-1637e571ca28,prompt,super-choice,,Asuinpaikkani,Valikossa ovat Suomen kunnat. Löydät omasi nopeimmin kirjoittamalla nimen alkua.,,39-7179045f5b5eb1e365a,,,,,"Jos synnyit Suomen ulkopuolella, kirjoita alle maan nimi.",Body1 ja Body2-kentät tulevat pudotusvalikon ja avokentän väliin.,
+Auta tutkijaa,item,dad311ea-3e7f-4d16-b76b-0c94aaf9fc73,prompt,super-choice,,Synnyinpaikkani,Valikossa ovat Suomen nykyiset ja entiset kunnat. ,,39-7179005f5b5eb13f8fd,,,,,"Jos synnyit Suomen ulkopuolella, kirjoita alle maan nimi.",Body1 ja Body2-kentät tulevat pudotusvalikon ja avokentän väliin.,
+Auta tutkijaa,item,88acf16d-9180-47ef-a003-e1571048c701,prompt,text,,Ammattini,Kirjoita ammattisi.,"Esimerkiksi myyjä, maanviljelijä, opiskelija, eläkeläinen.",39-7179025f5b5eb17919b,,,,,,"Onnistuuko?: body1-kenttä ensin, sitten avokenttä, jonka alle body 2-teksti.",
+Auta tutkijaa,item,5103c614-1df4-4ffd-a670-30ef78e0a613,prompt,choice,,Koulutustaustani,Valitse valikosta.,,39-7179035f5b5eb1c6468,,,,,,"Valikkoon nämä 4:
+Peruskoulu (tai vastaava)
+Ammatillinen koulutus tai lukio
+Korkeakoulu
+Joku muu
+",
+,item,365c78ae-0ff3-4331-99df-9a8c18ba6e7f,prompt,text,,Osallistuitko yrityshaasteeseen?,Kirjoita yrityksesi tai yhteisösi #-alkuinen tunnus. ,,39-7179015f5b5eb15c4b7,,,,empty,,"Toive: Ei moduulinimeä Auta tutkijaa kuvan alle, jos mahdollista (koska tässä ei varsinaisesti auteta tutkijoita).",
+,schedule,f5c5fd20-34f9-4ff8-bdba-666bbf1740ce,,,finish,Kiitos vielä kerran!,"Annoit oman panoksesi siihen, että arki ja asiointi suomeksi puhumalla helpottuvat.",Haasta myös ystäväsi lahjoittamaan puhetta! Tai lahjoita itse lisää.,39-6743445eba9bf7507bd,,,,,,"Kiinteä viimeinen sivu. Mukana Lahjoita lisää -nappi ja somejakonapit (web), tai mobiilissa Kutsu kaveri (josta aukeaa share sheet) sekä Lahjoita lisää -nappi.
+",
+teemanvalinta-sivun pikkukuva,theme,b93513ac-3385-4b92-a238-8406f644916b,,,,,,,39-7257905f76f4106de5f,,,,,,,

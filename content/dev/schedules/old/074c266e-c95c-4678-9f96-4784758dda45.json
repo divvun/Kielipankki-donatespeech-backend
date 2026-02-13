@@ -1,0 +1,161 @@
+{
+  "scheduleId": "074c266e-c95c-4678-9f96-4784758dda45",
+  "title": { "fi": "Videotesti" },
+  "body1": {
+    "fi": "Videomoduulin erilaisia konfiguraatioita testausta varten."
+  },
+  "body2": { "fi": "" },
+  "start": {
+    "imageUrl": "kesa/sammakko.jpg"
+  },
+  "finish": {
+    "title": { "fi": "Kiitos testauksesta!" },
+    "body1": { "fi": "Tässä loppukuvassa pitäisi olla leppäkerttu." },
+    "imageUrl": "kesa/leppakerttu.jpg"
+  },
+  "items": [
+    {
+      "itemId": "94290084-77c5-4b55-a74b-ea8a15a5af33",
+      "kind": "media",
+      "itemType": "yle-video",
+      "typeId": "video/mp4",
+      "url": "1-50147870",
+      "title": { "fi": "Areena video" },
+      "body1": { "fi": "Yle areena video. Ei äänitystä" },
+      "body2": { "fi": "Video alkaa automaattisesti ja ääni kuuluu." },
+      "options": [],
+      "isRecording": false
+    },
+    {
+      "itemId": "236b4bf9-18ed-4bca-9e30-e19aaa20f26f",
+      "kind": "media",
+      "itemType": "video",
+      "typeId": "video/mp4",
+      "url": "https://archive.org/download/ace_200911_04/2c756fb3eba9c18072a026df6ca93dd3.mts-mp430-272.mp4",
+      "title": { "fi": "Web video" },
+      "body1": { "fi": "Web video. Ei äänitystä." },
+      "body2": { "fi": "Video alkaa automaattisesti ja ääni kuuluu." },
+      "options": [],
+      "isRecording": false
+    },
+    {
+      "itemId": "b6445af0-761f-44b3-a054-98007eff96e2",
+      "kind": "media",
+      "itemType": "yle-video",
+      "typeId": "video/mp4",
+      "url": "1-50147870",
+      "title": { "fi": "Rajattu alku" },
+      "body1": { "fi": "Yle areena video. Alku 30s. Ei äänitystä." },
+      "body2": { "fi": "Video alkaa automaattisesti ja ääni kuuluu." },
+      "options": [],
+      "isRecording": false,
+      "startTime": 30
+    },
+    {
+      "itemId": "0849d2fe-08c5-4bb0-a9fa-e89017ef06bb",
+      "kind": "media",
+      "itemType": "yle-video",
+      "typeId": "video/mp4",
+      "url": "1-50147870",
+      "title": { "fi": "Rajattu alku ja loppu" },
+      "body1": { "fi": "Yle areena vide. Alku 30s, loppu 35s. Ei äänitystä" },
+      "body2": { "fi": "Video alkaa automaattisesti ja ääni kuuluu." },
+      "options": [],
+      "isRecording": false,
+      "startTime": 30,
+      "endTime": 35
+    },
+    {
+      "itemId": "97e68531-5010-4a5e-b13c-9e953c93655b",
+      "kind": "media",
+      "itemType": "yle-video",
+      "typeId": "video/mp4",
+      "url": "1-3365502",
+      "title": { "fi": "Äänittävä video" },
+      "body1": { "fi": "Yle areena video. Start tai Finish ei määritetty" },
+      "body2": { "fi": "Videon alku näkyy. Video alkaa kun painat Äänitä." },
+      "options": [],
+      "isRecording": true
+    },
+    {
+      "itemId": "f3bcf8ba-54af-4e42-949a-ea4ffccedcf1",
+      "kind": "media",
+      "itemType": "yle-video",
+      "typeId": "video/mp4",
+      "url": "1-3365502",
+      "title": { "fi": "Äänitys päällä" },
+      "body1": { "fi": "Äänitys on nyt päällä." },
+      "body2": { "fi": "Video pitäisi näkyä ilman ääntä." },
+      "options": [],
+      "isRecording": true,
+      "startTime": 30,
+      "start": {
+        "title": { "fi": "Äänittävä video" },
+        "body1": {
+          "fi": "Yle areena video. Start ja Finish tekstit on määritetty"
+        },
+        "body2": {
+          "fi": "Videon alku 30s näkyy. Video alkaa kun painat Äänitä."
+        }
+      },
+      "finish": {
+        "title": { "fi": "Kiitos, hyvin meni!" },
+        "body1": { "fi": "Näin helppoa puheen lahjoittaminen on." },
+        "body2": { "fi": "Voit jatkaa painamalla Jatka." }
+      }
+    },
+    {
+      "itemId": "617ead04-ae51-45c5-9c87-a48629498d9f",
+      "kind": "media",
+      "itemType": "yle-video",
+      "typeId": "video/mp4",
+      "url": "1-3365502",
+      "title": { "fi": "Äänitys päällä" },
+      "body1": { "fi": "Äänitys on nyt päällä." },
+      "body2": { "fi": "Video pitäisi näkyä ilman ääntä." },
+      "options": [],
+      "isRecording": true,
+      "start": {
+        "title": { "fi": "Äänittävä video" },
+        "body1": {
+          "fi": "Yle areena video. Start ja Finish tekstit ja kuva on määritetty"
+        },
+        "body2": { "fi": "Leppäkerttu näkyy. Video alkaa kun painat Äänitä." },
+        "imageUrl": "kesa/leppakerttu.jpg"
+      },
+      "finish": {
+        "title": { "fi": "Kiitos, hyvin meni!" },
+        "body1": { "fi": "Näin helppoa puheen lahjoittaminen on." },
+        "body2": { "fi": "Joulupukki näkyy. Voit jatkaa painamalla Jatka." },
+        "imageUrl": "kesa/joulupukki.jpg"
+      }
+    },
+    {
+      "itemId": "7484c588-9b9e-4c24-97ff-e8af8e778c71",
+      "kind": "media",
+      "itemType": "yle-video",
+      "typeId": "video/mp4",
+      "url": "1-3365502",
+      "title": { "fi": "Äänitys päällä" },
+      "body1": { "fi": "Äänitys on nyt päällä." },
+      "body2": { "fi": "Video alkoi 20s kohdasta ja näkyy ilman ääntä." },
+      "options": [],
+      "isRecording": true,
+      "startTime": 20,
+      "start": {
+        "title": { "fi": "Äänittävä video" },
+        "body1": {
+          "fi": "Yle areena video. Start ja Finish tekstit ja kuva on määritetty"
+        },
+        "body2": { "fi": "Leppäkerttu näkyy. Video alkaa kun painat Äänitä." },
+        "imageUrl": "kesa/leppakerttu.jpg"
+      },
+      "finish": {
+        "title": { "fi": "Kiitos, hyvin meni!" },
+        "body1": { "fi": "Näin helppoa puheen lahjoittaminen on." },
+        "body2": { "fi": "Joulupukki näkyy. Voit jatkaa painamalla Jatka." },
+        "imageUrl": "kesa/joulupukki.jpg"
+      }
+    }
+  ]
+}

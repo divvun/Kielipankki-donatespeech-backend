@@ -1,7 +1,7 @@
 import localforage from "localforage";
 import { PlaylistState } from "../features/playlist/playlistSlice";
 import { UserState } from "../features/user/userSlice";
-const STATE_KEY = "hankkeennimi";
+const STATE_KEY = "lahjoitapuhetta";
 
 export type LocalStorageState = {
   playlist: PlaylistState;

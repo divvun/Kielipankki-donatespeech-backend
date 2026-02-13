@@ -1,12 +1,16 @@
 {
   "@aws-cdk/core:enableStackNameDuplicates": "true",
   "aws-cdk:enableDiffNoFail": "true",
-  "hosted-zone:account=<redacted>:domainName=example.com:region=eu-west-1": {
-    "Id": "/hostedzone/<redacted>",
-    "Name": "example.com."
+  "hosted-zone:account=640951703395:domainName=dev.lahjoitapuhettasi.fi:region=eu-west-1": {
+    "Id": "/hostedzone/Z09174051NNW8PEOEHZ93",
+    "Name": "dev.lahjoitapuhettasi.fi."
   },
-  "hosted-zone:account=<redacted>:domainName=dev.example.com:region=eu-west-1": {
-    "Id": "/hostedzone/<redacted>",
-    "Name": "dev.example.com."
+  "hosted-zone:account=880949248720:domainName=lahjoitapuhetta.fi:region=eu-west-1": {
+    "Id": "/hostedzone/Z07057061C06JWM4Q4Y8I",
+    "Name": "lahjoitapuhetta.fi."
+  },
+  "hosted-zone:account=640951703395:domainName=dev.lahjoitapuhetta.fi:region=eu-west-1": {
+    "Id": "/hostedzone/Z07378557GO9F5BJJCFZ",
+    "Name": "dev.lahjoitapuhetta.fi."
   }
 }

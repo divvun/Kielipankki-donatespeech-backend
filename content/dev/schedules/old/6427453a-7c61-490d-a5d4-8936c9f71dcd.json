@@ -1,0 +1,29 @@
+{
+    "scheduleId": "6427453a-7c61-490d-a5d4-8936c9f71dcd",
+    "title": "Ajolista 4 (vain teksti)",
+    "description": "Ajolista 4 (vain teksti), tässä sen tarkempi kuvaus",
+    "items": [
+        {
+            "itemId": "02194238-5173-4a5c-820e-e7e690f1585c",
+            "kind": "media",
+            "itemType": "text",
+            "typeId": "text/plain",
+            "url": null,
+            "title": "L\u00e4mmittely",
+            "description": "T\u00e4m\u00e4 on ajolistan ensimmäinen moduuli, jossa tallennus ei vielä ole päällä. Kun jatkat eteenpäin, tallennus alkaa.",
+            "options": [],
+            "isRecording": false
+        },
+        {
+            "itemId": "c82f4044-1d25-46b9-8e96-74975333fb87",
+            "kind": "media",
+            "itemType": "text",
+            "typeId": "text/plain",
+            "url": null,
+            "title": "Testitekstin otsikko",
+            "description": "Ajolistan 4 sisältämän testitekstin tarkempi kuvaus",
+            "options": [],
+            "isRecording": false
+            }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "scheduleId": "1789a789-7542-4c5b-8a2c-ac10739e36de",
+    "title": { "fi": "Syksy2020Testi" },
+    "body1": { "fi": "Testataan syksyn 2020 uusia sisältökenttiä" },
+    "body2": { "fi": "Tämä ei todellakaan ole lopullista sisältöä, ainoastaan testausta varten." },
+    "items": [
+        {
+            "itemId": "a24ef0ae-d445-4374-81d1-4cd1be236fdd",
+            "kind": "media",
+            "itemType": "text",
+            "typeId": "text/plain",
+            "url": null,
+            
+            "isRecording": false
+        },
+        {
+            "itemId": "642dc4bf-3c20-4b97-8fd3-0acfbfbf231a",
+            "kind": "prompt",
+            "itemType": "text",
+            "typeId": "text/plain",
+            "url": null,
+            "title": { "fi": "Asuinpaikkasi" },
+            "body1": { "fi": "Kirjoita asuinpaikkasi tekstikenttään." },
+            "body2": { "fi": "" },            
+            "options": [],
+            "isRecording": false
+        }
+    ]
+}

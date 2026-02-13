@@ -1,0 +1,74 @@
+{
+    "scheduleId": "0a3e6443-2b35-41bc-a81f-770dd07d60c1",
+    "title": { "fi": "Kyyl\u00e4" },
+    "body1": { "fi": "Kummelin Kyyl\u00e4-hahmo seikkailee" },
+    "body2": { "fi": "Tämä ei todellakaan ole lopullista sisältöä, ainoastaan testausta varten." },
+    "items": [
+        {
+            "itemId": "7506e06f-b6c2-4813-b9f4-dbcc5076a283",
+            "kind": "media",
+            "itemType": "text",
+            "typeId": "text/plain",
+            "url": "",
+            "title": { "fi": "L\u00e4mmittely" },
+            "body1": { "fi": "T\u00e4m\u00e4 on ajolistan ensimmäinen moduuli, jossa tallennus ei vielä ole päällä. Kun jatkat eteenpäin, tallennus alkaa." },
+            "body2": { "fi": "" },            
+            "options": [],
+            "isRecording": false
+        },
+        {
+            "itemId": "8028ea81-975d-4488-9a3b-9925dfaf972a",
+            "kind": "media",
+            "itemType": "yle-video",
+            "typeId": "video/mp4",
+            "url": "1-50147870",
+            "title": { "fi": "Kyyl\u00e4: Nurmikontallaus" },
+            "body1": { "fi": "Kyll\u00e4 taas niin tympii, ettei mist\u00e4\u00e4n mit\u00e4\u00e4n v\u00e4litet\u00e4 muista ihmisist\u00e4, elet\u00e4\u00e4n justiin niin ku vaan itte halutaan ja muitakin ihmisi\u00e4 on olemassa ja voitas v\u00e4h\u00e4n kattoo, ettei ihan olla niinku... " },
+            "body2": { "fi": "" },            
+            "options": [],
+            "isRecording": true
+        },
+        {
+            "itemId": "0f395d45-5107-419c-96aa-626b10a0aea2",
+            "kind": "prompt",
+            "itemType": "choice",
+            "typeId": "text/plain",
+            "url": null,
+            "title": { "fi": "Suosikki-Heikki" },
+            "body1": { "fi": "Kuka on suosikkisi Heikki Silvennoisen esitt\u00e4mist\u00e4 Kummeli-hahmoista?" },
+            "body2": { "fi": "" },            
+            "options": [
+                { "fi": "Matti N\u00e4s\u00e4" },
+                { "fi": "Jaakko Parantainen" },
+                { "fi": "Kouhia" },
+                { "fi": "Kalervo Jankko" },
+                { "fi": "Kyyl\u00e4" }
+            ],
+            "isRecording": false
+        },
+        {
+            "itemId": "1547d544-e0db-42c6-af69-f28112c1df90",
+            "kind": "media",
+            "itemType": "yle-video",
+            "typeId": "video/mp4",
+            "url": "1-50147895",
+            "title": { "fi": "Kyyl\u00e4: Sali ja kuoroharjoitukset" },
+            "body1": { "fi": "Kyyl\u00e4: kuntosali ja kuoroharjoitukset. (25.5.1997)" },
+            "body2": { "fi": "" },            
+            "options": [],
+            "isRecording": true
+        },
+        {
+            "itemId": "417f5903-372d-4087-81b4-f024dc558412",
+            "kind": "prompt",
+            "itemType": "text",
+            "typeId": "text/plain",
+            "url": null,
+            "title": { "fi": "Ensikosketuksesi Kummeliin" },
+            "body1": { "fi": "Min\u00e4 vuonna tutustuit ensi kertaa Kummeli-huumoriin?" },
+            "body2": { "fi": "" },            
+            "options": [],
+            "isRecording": false
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+{
+    "title": { "fi": "Kirottu korona" },
+    "body1": { "fi": "Korona-aika" },
+    "body2": { "fi": "" }, 
+    "image": "https://images.cdn.yle.fi/image/upload/w_300,h_168,f_auto,fl_lossy,q_auto:eco/39-7257905f76f4106de5f.jpg",
+    "scheduleIds": [
+        "f5c5fd20-34f9-4ff8-bdba-666bbf1740ce"
+    ]
+}

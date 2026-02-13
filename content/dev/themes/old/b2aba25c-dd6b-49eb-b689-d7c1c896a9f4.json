@@ -1,0 +1,9 @@
+{
+    "title": { "fi": "Metatietotesti*" },
+    "body1": { "fi": "Testataan eri tyyppisten metatietokysymysten toteutusta" }, 
+    "body2": { "fi": "" }, 
+    "image": "https://www.pirte.fi/wp-content/uploads/2020/03/covid-19-1080x675.jpg",
+    "scheduleIds": [
+        "231ab28d-a442-4a78-8efb-9220bf01e933"
+    ]
+}

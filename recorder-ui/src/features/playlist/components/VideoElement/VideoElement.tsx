@@ -94,7 +94,7 @@ const VideoElement: React.FC<VideoElementProps> = ({
   };
 
   const isPlaying = recorderStatus === "Recording" && !endTimeExceeded;
-  const isMuted = isRecordingItem;
+  const isMuted = false;
   const autoPlayClass = isAutoplay ? "video-element--autoplay" : "";
   // For triggering icon positioning on Safari
   const iconDisplayClass = isVideoReady ? "video-element-icon--display" : "";
@@ -123,7 +123,7 @@ const VideoElement: React.FC<VideoElementProps> = ({
         <div className={`video-element-icon ${iconDisplayClass}`}>
           <img
             className="video-element-icon-img"
-            alt="Start video"
+            alt="Käynnistä video"
             src={playIcon}
           />
         </div>

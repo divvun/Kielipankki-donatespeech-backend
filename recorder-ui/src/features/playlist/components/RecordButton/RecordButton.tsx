@@ -8,10 +8,11 @@ import recordIcon from "./aanitys-ikoni.svg";
 import "./RecordButton.css";
 
 type RecordButtonProps = {
-  itemState: ItemStatus;
+    itemState: ItemStatus;
+    lang: string;
 };
 
-const RecordButton: React.FC<RecordButtonProps> = ({ itemState }) => {
+const RecordButton: React.FC<RecordButtonProps> = ({ itemState, lang}) => {
   const recorder = useAudioRecorderContext();
   if (!recorder) return null;
 
@@ -29,12 +30,12 @@ const RecordButton: React.FC<RecordButtonProps> = ({ itemState }) => {
 
   const getText = () => {
     if (itemState === "finish") {
-      return "Recording complete";
+	return lang !== "sv" ? "Äänitys valmis": "Inspelning klar";
     }
     if (itemState === "recording") {
-      return "Stop recording";
+	return lang !== "sv" ? "Lopeta äänitys": "Avsluta inspelning";
     }
-    return "Record";
+      return lang !== "sv" ? "Äänitä": "Spela in";
   };
 
   const buttonDisabled = !recorder.isInitialized;
@@ -58,7 +59,7 @@ const RecordButton: React.FC<RecordButtonProps> = ({ itemState }) => {
           </Button>
           <div className="record-button-duration mx-auto">{recDuration}</div>
         </div>
-        {isRecording && <img src={recordIcon} alt="Recording" />}
+        {isRecording && <img src={recordIcon} alt="Äänitys" />}
       </div>
     </>
   );

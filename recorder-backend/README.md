@@ -1,13 +1,13 @@
-# Recorder backend lambda functions
+# Vake backend lambda functions
 
 ## REST APIs
 
 ### Initialize audio file upload and store related metadata call
 
-```json
+```
 POST v1/init-upload 
 {
-    "filename": "audio.m4a",
+    "filename": "audip.m4a",
     "metadata": {
         "key" : "value"
     }
@@ -22,7 +22,7 @@ POST v1/init-upload
 
 ### Delete all uploaded metadata and audio for client with the given id or specific session or recording if those parameters are provided
 
-```json
+```
 DELETE v1/upload/[clientID]?session_id=<>&recording_id=<>
 >>>
 
@@ -33,12 +33,12 @@ DELETE v1/upload/[clientID]?session_id=<>&recording_id=<>
 
 ### Load single playlist configuration from s3
 
-```json
+```
 GET v1/configuration/[ID]
 
 >>>
 
-#Whatever is stored in the configuration file in the s3 bucket configuration/[id].json
+#What ever is stored in the configuration file in the s3 bucket configuration/[id].json
 
     "items": [
         {
@@ -57,7 +57,7 @@ GET v1/configuration/[ID]
 
 ### Load all playlist configurations
 
-```json
+```
 GET v1/configuration
 
 >>>
@@ -86,7 +86,7 @@ GET v1/configuration
 
 ### Load single theme from s3
 
-```json
+```
 GET v1/theme/[ID]
 
 >>>>
@@ -105,7 +105,7 @@ GET v1/theme/[ID]
 
 ### Load all themes
 
-```json
+```
 GET v1/theme/
 
 >>>
@@ -136,7 +136,7 @@ GET v1/theme/
 %load_ext autoreload
 %autoreload 2
 import os  
-os.environ['CONTENT_BUCKET_NAME'] = 'recorder-test'
+os.environ['CONTENT_BUCKET_NAME'] = 'vake-test'
 os.environ['YLE_CLIENT_ID'] ="XXX"
 os.environ['YLE_CLIENT_KEY'] = "XXX"
 os.environ['YLE_DECRYPT'] = "XXX"
@@ -145,3 +145,17 @@ from handler import *
 init_upload({'body': '{"filename":"jee", "metadata": {"kukkuu": "jee"}}'}, {})
 
 ```
+
+### How to copy all the metadata to a local folder for analysis
+
+Use the AWS command-line tool. Be sure to save your credentials for the `vake-puhe-prod` role.
+
+    aws s3 cp s3://vake-puhe-content-prod/ ./ --recursive --exclude "*" --include "*.json" --profile vake-puhe-prod
+
+Then use `tools/minutes/analyze.py` to get statistics, like this:
+
+    cd tools/minutes
+    source venv/bin/activate
+    python3 analyze.py ~/Documents/Vake/metadata-20201116/uploads/audio_and_metadata/metadata >~/tmp/minutes-20201116.txt
+    deactivate
+

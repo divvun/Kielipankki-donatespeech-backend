@@ -1,0 +1,29 @@
+{
+    "scheduleId": "7dffcaf4-9203-458d-90d6-828169f7b50c",
+    "title": "Ajolista 3",
+    "description": "Ajolista 3 (vain monivalinta)",
+    "items": [
+        {
+            "itemId": "5a6520d3-2158-452f-9c07-c3299dc92192",
+            "kind": "media",
+            "itemType": "text",
+            "typeId": "text/plain",
+            "url": null,
+            "title": "L\u00e4mmittely",
+            "description": "T\u00e4m\u00e4 on ajolistan ensimmäinen moduuli, jossa tallennus ei vielä ole päällä. Kun jatkat eteenpäin, tallennus (ehkä) alkaa.",
+            "options": [],
+            "isRecording": false
+        },
+        {
+            "itemId": "98b7b854-fbe3-4b7d-8983-1a61718ff620",
+            "kind": "prompt",
+            "itemType": "choice",
+            "typeId": null,
+            "url": null,
+            "title": "Mink\u00e4 ik\u00e4inen olet?",
+            "description": "Tähän kuvaus siit\u00e4, miksi ik\u00e4\u00e4 kysyt\u00e4\u00e4n.",
+            "options": ["1-10", "11-20", "21-30", "31-40", "41-50", "51-60", "61-70", "71-80", "81-90", "91-100", "Yli 100"],
+            "isRecording": false
+        }
+    ]
+}

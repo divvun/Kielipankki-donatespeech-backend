@@ -1,0 +1,31 @@
+moduuli,element,itemId,kind,itemType,state,title,body1,body2,url,startTime,endTime,isRecording,metaTitle,otherEntryLabel,Mitä näytetään,mitä tallennetaan
+Tällä ei ole automaation kannalta mitään väliä,"schedule = teema, item = moduuli, state = tila",moduulin (tai teeman) tekninen tunniste,moduulin tyyppi,"moduulin tyyppi (image, yle-video, video, text)","äänittävän moduulin kustomoitava tila (start/recording/finish), tai teeman aloitus/lopetus (start/finish)","moduulin otsikko / 1-2 riviä, riville max. 17 merkkiä (alitiloissa ""inherit""=peritään moduulin päätasolta)","Ns. leipätekstin 1. kappale (alitiloissa ""inherit""=peritään moduulin päätasolta)","Ns. leipätekstin 2. kappale (alitiloissa ""inherit""=peritään moduulin päätasolta)","Kuvan tunniste (kuvamoduuleilla) tai lyhyt teksti (tekstimoduuleilla) / HUOM: ellei tule kumpaakaan, itemTypeksi image ja url-kohtaan null","Numero, montako sekuntia klipin alusta (ei  pakollinen)","Numero, montako sekuntia klipin alusta (ei  pakollinen)","Mediamoduuleilla: true jos äänittävä moduuli, false jos vain näytetään mediaa eikä äänitetä","Moduulin metaotsikon teksti (oletuksena moduulin tyypin perusteella Lahjoitus x/y, Katso tai kuuntele tai Auta tutkijaa). empty = tyhjennä","super-choice-kysymysmoduulissa:  jos tämä on muuta kuin tyhjä, valintalistan oheen tulee tekstikenttä, jonka selitteenä on tämä teksti",harmaa tausta = jätä tyhjäksi,
+Teeman aloituskuva,schedule,e6433174-6e3c-470c-8e63-b2ef2335e26a,media,image,start,Moikka!,Kiva että tulit lahjoittamaan puhetta.,Käytä ihan tavallista puhekieltä. Takeltelu ja pikku tauot eivät haittaa!,39-7362065f9b1b7feb739,,,,,,,
+Lahjoita 1/5,item,ae80215b-14fd-4f8b-b1ba-79e7a943f1bc,media,image,,Harjoitellaan ensin,Mitä someja käytät? ,"Kun olet valmis puhumaan, paina Äänitä.",39-7371615f9ffb47da648,,,TRUE,,,,ei mitään
+,state,,,,recording,Harjoitellaan ensin,"Kerro, missä someissa olet. ","Kun olet vastannut, paina Lopeta äänitys.",39-7371615f9ffb47da648,,,,,,,
+,state,,,,finish,Kiitos – sehän sujui,Puhettasi pääsevät kuulemaan vain tutkijat ja tekoälyn kehittäjät. Tietosuojasta voit lukea lisää aloitussivulta.,Siirrytään sitten arvovaltaiseen seuraan.,39-7376915fa157e00faa1,,,,,,,
+Katso tai kuuntele,item,6e9242e8-b759-4c98-888b-8f156f9f5d6b,media,yle-video,,Suuria uutisia,Katso video. Kuka tämä tunnettu henkilö on? Puhuuko hän totta?,Video kestää vajaan minuutin.,1-50673927,,,FALSE,,,,
+Lahjoita 2/5,item,5539a6c4-7783-4e31-a56f-a581a395cd31,media,image,,Suuria uutisia,Paina Äänitä ja kerro ajatuksiasi videosta.,,39-7335615f9280fa001de,,,TRUE,,,,
+,state,,,,finish,Et mene helposti lankaan!,Tekoälyllä toteutetulla deep fake -videolla Niinistönä esiintyi imitaattori Jarkko Tamminen.,Psst. Lahjoittamasi puheen määrän näet oikeassa ylänurkassa.,39-7373505fa03ee519b3c,,,,,,,
+,item,dfdd0ec3-514c-4dc3-b5e6-d9a2cf856a15,media,image,,Auta tutkijaa,Puheen lahjoittamisen varrella kysymme sinulta joitakin taustatietoja.,Vastauksista ei voi päätellä henkilöllisyyttäsi. ,39-6780905ec2876c0f863,,,FALSE,empty,,,
+Auta tutkijaa,item,e3264046-a642-46de-a9e7-c55933ee3739,prompt,choice,,Ikäni,,,39-6780905ec2876c0f863,,,FALSE,,,,data
+,item,583ab7c1-70ea-4990-9374-b117a75be655,media,image,,Kiitokset!,Tutkijat ja suomen kieli hyötyvät näiden tietojen kertomisesta.,Sitten pureskellaan kuvien maailmaa.,39-6780905ec2876c0f863,,,FALSE,empty,,,"Mukavaa, jos vastasit taustatietoihin. Tutkijat ja suomen kieli kiittävät.
+
+Sitten eteenpäin."
+Lahjoita 3/5,item,18aa5dac-d296-40b2-a30c-c463104a860f,media,yle-video,,Valehtelevat kuvat,"Kun painat Äänitä, näet peräkkäin neljä väärennettyä kuvaa. ","Kerro, mikä kuvissa on valetta.",1-50675687,,,TRUE,,,,ääni
+,state,,,,start,inherit,inherit,inherit,39-7378345fa179ea5bf98,,,,,,,
+,state,,,,recording,Valehtelevat kuvat,"Kerro, mistä huomaat tai päättelet väärennökset?",Video kestää 40 sekuntia.,,,,,,,,
+,state,,,,finish,Tarkkaa työtä,"Joskus kuvat on käsitelty niin taitavasti, että ammattilainenkin menee vipuun.",Jatketaan vielä hetki kuvien kanssa.,39-7378385fa17db59dbea,,,,,,,
+Lahjoita 4/5,item,779dbbfc-7459-4df4-8275-82075e97ccc7,media,yle-video,,"Mitä näkyy, mitä ei?",Jo pelkkä rajaus voi vaikuttaa kuvaan paljon.,"Paina Äänitä, niin näet kolme kuvaa. Mitä näet kuvassa ensin – entä sitten?",1-50673970,,,TRUE,,,,ääni
+,state,,,,start,inherit,inherit,inherit,39-7362145f9b2be0e8c1f,,,,,,,
+,state,,,,recording,"Mitä näkyy, mitä ei?","Kerro mitä näet kolmessa kuvassa, ensin rajattuna ja sitten alkuperäisessä koossa.",Voit myös pohtia rajausten keinoja.,,,,,,,,
+,state,,,,finish,Hyviä huomioita,Sitten kysymme taas muutaman taustatiedon tutkijoille. ,Kiitos jos vastaat!,39-7371915fa00381164bd,,,,,,,
+Auta tutkijaa,item,fa3ecb10-1128-4c8c-a838-600a0faadc2e,prompt,multi-choice,,Äidinkieleni,,,39-6780895ec2876bc6b15,,,FALSE,,,,data
+Auta tutkijaa,item,8bbb8e5d-56a2-4082-9429-233ff2a5e53f,prompt,choice,,Sukupuoleni,,,39-6780915ec2876cc2128,,,FALSE,,,,data
+Auta tutkijaa,item,626d3fb5-6b82-4d5d-bdde-1637e571ca28,prompt,super-choice,,Asuinpaikkani,,,39-7179045f5b5eb1e365a,,,FALSE,,"Jos asut Suomen ulkopuolella, kirjoita alle maan nimi.",,
+Lahjoita 5/5,item,3b73ee94-c7a4-4a36-8e1a-5ba3c9b9f6e0,media,image,,Usko tai älä!,Sait Ohoh!-lehden toimittajana tuoreen silminnäkijäkuvan Mikael Gabrielista. ,Pomosi odottaa siitä mehevää klikkiotsikkoa. Millaisia keksit?,39-7362275f9b389dced87,,,TRUE,,,,ääni
+,state,,,,recording,Usko tai älä!,Millaiset otsikot saisivat lukijat klikkaamaan juttua?,Päästä mielikuvituksesi lentoon ja liioittele!,39-7362275f9b389dced87,,,,,,,
+,state,,,,finish,"Ohoh, mitä otsikointia",Tosiasiassa Mikael Gabriel jakaa kuvassa ruokaa vähävaraisille jouluna 2017.,Ja nyt sinunkin hyvä työsi on saatettu päätökseen!,39-7362275f9b389dced87,,,,,,,
+Kutsu kaveri,schedule,,media,image,finish,Suuret kiitokset!,Lahjoituksesi avulla arki ja asiointi suomeksi puhumalla helpottuvat.        ,Vinkkaa puheen lahjoittamisesta myös kavereille (alle 18-vuotiaat lahjoittavat vanhempien luvalla)!,39-7362295f9b3b14e3633,,,FALSE,,,,ei mitään
+teemanvalinta-sivun pikkukuva,theme,,,,,,,,39-7376305fa149d38dd66,,,,,,,
+jakoteksti,,,,,,,,,,,,,,,,

@@ -8,12 +8,17 @@ import logging
 
 yle_cdn_url = 'https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/'
 
+empty_image_urls = {
+    'dev': 'https://dev.lahjoitapuhetta.fi/media/empty.png',
+    'prod': 'https://lahjoitapuhetta.fi/media/empty.png'
+}
+
 environment_name = 'dev'
 
-NATIVE_LANGUAGE_QUERY_ITEM_ID = 'fa3ecb10-1128-4c8c-a838-600a0faadc2e'
+native_language_query_item_id = 'fa3ecb10-1128-4c8c-a838-600a0faadc2e'
 
 metadata_queries = {
-    NATIVE_LANGUAGE_QUERY_ITEM_ID: {
+    native_language_query_item_id: {
         'options': [
             { "fi": "suomi" },
             { "fi": "ruotsi" },
@@ -1152,7 +1157,7 @@ def process_row(row, index):
         else:
             pending_items[item_id]['options'] = []
 
-        if item_type == 'multi-choice' and item_id == NATIVE_LANGUAGE_QUERY_ITEM_ID:
+        if item_type == 'multi-choice' and item_id == native_language_query_item_id:
             pending_items[item_id]['otherAnswer'] = { "fi": "Jokin muu kieli" }
             pending_items[item_id]['otherEntryLabel'] = { "fi": "Jos valitsit Muu kieli, kirjoita sen nimi:" }
 

@@ -1,0 +1,58 @@
+moduuli,element,itemId,kind,itemType,state,title,body1,body2,url,startTime,endTime,isRecording,metaTitle,otherEntryLabel,HUOM,kuva nähtävänä tai klipin Areena-otsikko
+"tämän sarakkeen sisältöä ei käytetä missään, se on vain apuna tekijälle","schedule = teema, item = moduuli, state = tila",moduulin tekninen tunniste,moduulin tyyppi,"moduulin sisältötyyppi (image, yle-video, video, text; tai choice)",toimintatila (vain Lahjoita-osioissa),"moduulin otsikko / 1-2 riviä, riville max. 17 merkkiä",Ns. leipätekstin 1. kappale,Ns. leipätekstin 2. kappale,"kuvan tai videon ID (kaikki videot yle-videoita) /  kuva on nähtävänä HUOM-sarakkeen oikealla puolella / HUOM: kenttään ei tekstiä, pelkät url-tiedot","Numero, montako sekuntia klipin alusta (ei  pakollinen)","Numero, montako sekuntia klipin alusta (ei pakollinen)",tallennetaanko ääntä vai ei / metatietoihin tyhjää,"Moduulin metaotsikon teksti (oletuksena moduulin tyypin perusteella Lahjoitus x/y, Katso tai kuuntele tai Auta tutkijaa). empty = tyhjennä","super-choice-kysymysmoduulissa:  jos tämä on muuta kuin tyhjä, valintalistan oheen tulee tekstikenttä, jonka selitteenä on tämä teksti",16.6.20 julkaisusta muutetut solut ovat oranssilla. Tekstimuutoksia ei ole värikoodattu tässä (koska niitä on niin paljon).,
+teeman aloituskuva,schedule,8aaf82be-de16-4449-9fd2-677291a0e804,,,start,Tervetuloa sporttisiin hetkiin!,"Hienoa, että lahjoitat puhettasi.","Nyt haetaan sun – tai siun – tavallista puhekieltä. Ota siis rennosti!
+
+",39-7226485f6c581db4a09,,,,,,"Tämä ei ole moduuli, vaan teeman aloitusnäyttö. Siksi sillä ei ole moduulin asetuksia kind ja itemType. Sen sijaan title, body1 ja body2 ovat, ja ne näytetään.",
+Lahjoita 1/7,item,4a2ad834-ca42-429b-988a-202e947a3e38,media,image,,Alkulämmittely,Verrytellään ensin. Kuvan Suomi-faneissa on kolme pientä eroa.,Paina Äänitä ja etsi eroja ääneen!,39-7226605f6c5b8c492d1,,,TRUE,empty,,Ei moduulinimeä,
+Lahjoita 1/7,state,,,,recording,Alkulämmittely,"Kun olet valmis, paina Lopeta äänitys.",,39-7226605f6c5b8c492d1,,,,,,,sama kuin edellä
+Lahjoita 1/7,state,,,,finish,Hyvin meni!,"Pieni muistutus ennen kuin jatketaan: Puhettasi pääsevät kuulemaan vain tutkijat ja tekoälyn kehittäjät. 
+
+",Tietosuojasta voit lukea lisää aloitussivulta. ,39-7226595f6c5b8c28946,,,,,,,
+Lahjoita 2/7,item,eacaeb14-c0c0-4c06-8aab-86a274a4952c,media,image,,Kysy suosikiltasi,Sitten eteenpäin! Olet voittanut tapaamisen suosikkiurheilijasi kanssa.,Nyt voit kysyä häneltä aivan kaikki mielessäsi olevat kysymykset.,39-7226315f6c53f1b2778,,,TRUE,,,,
+Lahjoita 2/7,state,,,,recording,Kysy suosikiltasi,Kysele rohkeasti – olipa idolisi joku näistä kolmesta tai joku muu!,(Vastaukset joudut kuvittelemaan itse.),,,,,,,,sama kuin edellä
+Lahjoita 2/7,state,,,,finish,Hienoa!,"Mukavaa, jos oma taustasi tai murteesi kuului puheessa.",Tähän puhepankkiin on tärkeätä saada mukaan aivan kaikenlaista suomea. Auta siis tutkijoita ja kerro itsestäsi yksi taustatieto.,39-7226905f6c659661647 ,,,,empty,,Ei moduulinimeä,
+Auta tutkijaa ,item,6ef34957-41e7-487e-aa0c-a40c93ed9251,prompt,choice,,Murretaustani,"Valitse valikosta maakunta tai alue, joka on eniten vaikuttanut sinun tapaasi puhua.",,39-6780835ec286469a1be,,,,,,,
+,item,f49a455d-e7fa-47bf-944b-c2fb60f8af6a,media,image,,Kiitos!,"Erilaisten puhetapojen säilyminen on tärkeää. 
+
+","Huomasithan, että näet jo lahjoittamasi ajan ylälaidasta? Sitten eteenpäin!",39-6780835ec286469a1be,,,FALSE,empty,,Ei moduulinimeä,
+Lahjoita 3/7,item,4ca49066-0340-427c-ad48-06c772877e6e,media,yle-video,,Selosta Virénin juoksu,Nyt pääset selostamaan klassikkoa. Näet lyhyen videon Lasse Virénin uskomattomasta suorituksesta.,"Paikka on Munchenin olympiastadion ja vuosi 1972. Video alkaa, kun painat Äänitä.",1-50527019,,,TRUE,,,Kuvan käyttöön saatu lupa Urheilumuseolta.,
+Lahjoita 3/7,state,,,,recording,Selosta Virénin juoksu,Virén on sinipaita numero 228. Antaa mennä!,"
+",,,,,,,,Lahjoita puhetta: Lasse Virénin juoksu 1972
+Lahjoita 3/7,state,,,,finish,Voitto kotiin!,Sinussahan on ainesta selostuskoppiin! ,Nyt voit taas auttaa tutkijoita kolmella pienellä tiedolla. ,39-6766265ebe448766b6f,,,,empty,,Ei moduulinimeä,
+Auta tutkijaa ,item,e3264046-a642-46de-a9e7-c55933ee3739,prompt,choice,,Ikäni,Valitse valikosta ikäryhmäsi.,,39-6780905ec2876c0f863,,,,,,,
+Auta tutkijaa ,item,8bbb8e5d-56a2-4082-9429-233ff2a5e53f,prompt,choice,,Sukupuoleni,,,39-6780915ec2876cc2128,,,,,,,
+Auta tutkijaa ,item,fa3ecb10-1128-4c8c-a838-600a0faadc2e,prompt,multi-choice,,Äidinkieleni,"Jos sinulla on lapsesta asti ollut kaksi äidinkieltä, voit merkitä kummankin.",,39-6780895ec2876bc6b15,,,,,,,
+,item,b3e2ef17-166b-4293-a640-bb26b4e9f62a,media,image,,Mahtavaa...,"... jos vastasit taustatietoihin. 
+
+",Kiitokseksi voit katsoa pienen herkullisen retropalan. Äänet päälle!,39-6752475ebbfbe9919ff ,,,FALSE,empty,,,
+Katso tai kuuntele,item,2476e903-ecef-4e7e-9f6f-4ea7a459506c,media,yle-video,,Hytky mukana,Tämä on Ylen Urheiluruudun kaikkien aikojen suosituin tunnusmusiikki.,Sitten eteenpäin.,1-50645626,,,FALSE,,,,Lahjoita puhetta: Urheiluruudun tunnusta vuodelta 1988
+Lahjoita 4/7 ,item,1316a875-371a-460b-9f1b-b81fc4711ff5,media,yle-video,,2000-luvun urheilija,Yleensä Suomessa valitaan Vuoden urheilija. Nyt venytetään aikarajaa vähän pidemmäksi.,"Päinä Äänitä, niin näet videolla suomalaisia urheilutähtiä. Kenet heistä pitäisi valita 2000-luvun urheilijaksi?",1-50639856,,,TRUE,,,,
+Lahjoita 4/7 ,state,,,,start,inherit,inherit,inherit,39-7227245f6c72ecaeb08,,,,,,,
+Lahjoita 4/7 ,state,,,,recording,2000-luvun urheilija,Ansaitseeko hän tittelin? Vai hän?,Kooste kestää minuutin. Voit jatkaa puhumista myös sen pysähdyttyä. ,,,,,,,,Lahjoita puhetta: 2000-luvun suomalaisia urheilijoita
+Lahjoita 4/7 ,state,,,,finish,Hyvin perusteltu!,Mennään sitten taas yhteen nostalgiseen hetkeen.,,39-7227265f6c751766a15,,,,empty,,Ei moduulinimeä,
+Katso tai kuuntele,item,59a0687a-862c-4328-aaaa-5367587da6a6,media,yle-video,,Seppo pakoilee,"Katso videolta, miten sitkeästi toimittaja Bubi Wallenius seurasi keihäänheittäjä Seppo Rätyä vuonna 1993.",Äänet päälle!,1-50547427 ,,,FALSE,,,HUOM: Äänillä,Lahjoita puhetta: Seppo Räty pakoilee toimittajaa
+Lahjoita 5/7,item,af88b3fd-1700-491e-902c-cf412e768ab1,media,yle-video,,Pysäytä Seppo,Seuraavaksi on sinun vuorosi: Yritä saada Seppo pysähtymään!,"Paina Äänitä, niin näet saman videon ilman ääniä.",1-50642661,,,TRUE,,,,
+Lahjoita 5/7,state,,,,start,inherit,inherit,inherit,39-7275125f7db1be69a43,,,,,,,
+Lahjoita 5/7,state,,,,recording,Pysäytä Seppo,"Houkuttele, lahjo tai komenna pakoilevaa urheilijaa!",Voit jatkaa myös videon pysähdyttyä.,,,,,,,HUOM: edellinen mykkänä,Lahjoita puhetta: Seppo Räty pakoilee toimittajaa (mykkä versio)
+Lahjoita 5/7,state,,,,finish,Taisit onnistua!,Pysy mukana – vielä pari lahjoitustehtävää jäljellä.,Tauot ja takeltelut ovat edelleen sallittuja! ,39-7227335f6c7802bc1cf,,,,empty,,Ei moduulinimeä,
+Lahjoita 6/7,item,8cb5f322-f49f-45be-b226-c5d0aa051eee,media,yle-video,,Ihme lajit,Suomen kesässä kisataan erikoisissa urheilulajeissa. Ulkomainen kaverisi ei ole koskaan kuullut tällaisista.,Näet videolla viisi lajia. Selitä ne kaverillesi.,1-50640655,,,TRUE,,,,
+Lahjoita 6/7,state,,,,start,inherit,inherit,inherit,39-7239215f71ea6ae289a,,,,,,,
+Lahjoita 6/7,state,,,,recording,Ihme lajit,"Selitä oikein rautalangasta vääntäen, mistä lajissa on kyse!",Laji vaihtuu 15 sekunnin välein.,,,,,,,,Lahjoita puhetta: Ihme lajit
+Lahjoita 6/7,state,,,,finish,"Perusteellista, hyvä!",Nyt selkisi kaverillekin.,Mennään sitten sinun omaan urheiluhetkeesi. ,39-6752515ebbfdf34f8b2,,,,empty,,Ei moduulinimeä,
+Lahjoita 7/7,item,61c1b4d4-2423-4f6c-a683-83a88bca7551,media,image,,Penkkiurheilumuisto,Mikä on sinun paras penkkiurheilumuistosi? Missä ja milloin se oli?,Muistele ja hersytä sielusi kyllyydestä.,39-7227945f6c8a3eea616,,,TRUE,,,,
+Lahjoita 7/7,state,,,,start,inherit,inherit,inherit,39-7227935f6c8a3ec649e,,,,,,,
+Lahjoita 7/7,state,,,,finish,Upeata!,Olet urheilusta puhumisen mestari!,"Jos haluat, voit vielä kertoa tutkijoille viimeiset pienet taustatiedot.",39-7228195f6c8cfde9307,,,,empty,,Ei moduulinimeä,
+Auta tutkijaa,item,626d3fb5-6b82-4d5d-bdde-1637e571ca28,prompt,super-choice,,Asuinpaikkani,Valikossa ovat Suomen kunnat. Löydät omasi nopeimmin kirjoittamalla nimen alkua.,,39-7179045f5b5eb1e365a,,,,,"Jos asut Suomen ulkopuolella, kirjoita alle maan nimi.",Body1 ja Body2-kentät tulevat pudotusvalikon ja avokentän väliin.,
+Auta tutkijaa,item,dad311ea-3e7f-4d16-b76b-0c94aaf9fc73,prompt,super-choice,,Synnyinpaikkani,Valikossa ovat Suomen nykyiset ja entiset kunnat. ,,39-7179005f5b5eb13f8fd,,,,,"Jos synnyit Suomen ulkopuolella, kirjoita alle maan nimi. ",Body1 ja Body2-kentät tulevat pudotusvalikon ja avokentän väliin.,
+Auta tutkijaa,item,88acf16d-9180-47ef-a003-e1571048c701,prompt,text,,Ammattini,Kirjoita ammattisi.,"Esimerkiksi myyjä, maanviljelijä, opiskelija, eläkeläinen.",39-7179025f5b5eb17919b,,,,,,"Onnistuuko?: body1-kenttä ensin, sitten avokenttä, jonka alle body 2-teksti.",
+Auta tutkijaa,item,5103c614-1df4-4ffd-a670-30ef78e0a613,prompt,choice,,Koulutustaustani,Valitse valikosta.,,39-7179035f5b5eb1c6468,,,,,,"Valikkoon nämä 4:
+Peruskoulu (tai vastaava)
+Ammatillinen koulutus tai lukio
+Korkeakoulu
+Joku muu
+",
+,item,365c78ae-0ff3-4331-99df-9a8c18ba6e7f,prompt,text,,Osallistutko yrityshaasteeseen?,Kirjoita yrityksesi tai yhteisösi #-alkuinen tunnus. ,,39-7179015f5b5eb15c4b7,,,,empty,,Ei moduulinimeä,
+,schedule,8aaf82be-de16-4449-9fd2-677291a0e804,,,finish,Kiitos vielä kerran!,"Urheilusta puhumalla autoit juuri suomen kieltä. Haasta myös urheiluhullut kaverisi mukaan! 
+",Mitä? Etkö antanut kaikkeasi vielä? Valitse joku toinen aihe ja lahjoita lisää.,39-6779175ec2568a49092,,,FALSE,,,,
+teeman aloitusnapin kuva,,,,,,,,,39-7258135f76f7567603a,,,,,,Kuvassa korkeushyppääjä. HUOM: tsekattava että rajaus menee oikein.,
+somejakoteksti,,,,,,,"Lahjoitin puhettani! Lahjoita sinäkin, niin olemme yhdessä mukana suomenkielisen puheentunnistuksen ja tekoälyn kehittämisessä! ( sitten tästä pitäisi olla suora ohjaus lahjoituskoneeseen tyyliin lue lisää --> ja sitten linkki menisi suoraan lahjoituskoneeseen.)",,,,,,,,Halutaanko / tarvitaanko mukaan viittaus teemaan: Lahjoitin puhettani sukeltamalla kesätunnelmiin / uppoutumalla urheiluhetkiin / kertomalla korona-ajasta / juttelemalla eläinystävistämme / kertomalla lähelläni olevista asioista,

@@ -1,0 +1,54 @@
+moduuli,element,itemId,kind,itemType,state,title,body1,body2,url,startTime,endTime,isRecording,Mitä näytetään,mitä tallennetaan
+,"schedule = teema, item = moduuli",moduulin tekninen tunniste,moduulin tyyppi,,,"moduulin otsikko / 1-2 riviä, riville max. 17 merkkiä","Numero, montako sekuntia klipin alusta (ei  pakollinen)", ,Ns. leipätekstin 1. kappale,Ns. leipätekstin 2. kappale,Kuvan tunniste (kuvamoduuleilla) tai lyhyt teksti (tekstimoduuleilla),"Numero, montako sekuntia klipin alusta (ei pakollinen)","Jere sanoo: Koettakaa saada ylimääräiset rivinvaihdot pois näistä teksteistä, mieluiten ei yhtään",
+Tällä ei ole automaation kannalta mitään väliä,"schedule = teema, item = moduuli, state = tila",moduulin (tai teeman) tekninen tunniste,moduulin tyyppi,"moduulin tyyppi (image, yle-video, video, text)","äänittävän moduulin kustomoitava tila (start/recording/finish), tai teeman aloitus/lopetus (start/finish)","moduulin otsikko / 1-2 riviä, riville max. 17 merkkiä (alitiloissa ""inherit""=peritään moduulin päätasolta)","Ns. leipätekstin 1. kappale (alitiloissa ""inherit""=peritään moduulin päätasolta)","Ns. leipätekstin 2. kappale (alitiloissa ""inherit""=peritään moduulin päätasolta)","Kuvan tunniste (kuvamoduuleilla) tai lyhyt teksti (tekstimoduuleilla) / HUOM: ellei tule kumpaakaan, itemTypeksi image ja url-kohtaan null","Numero, montako sekuntia klipin alusta (ei  pakollinen)","Numero, montako sekuntia klipin alusta (ei  pakollinen)","Mediamoduuleilla: true jos äänittävä moduuli, false jos vain näytetään mediaa eikä äänitetä",harmaa tausta = jätä tyhjäksi,
+Teeman aloituskuva,schedule,664bc028-a92f-435f-8e33-9ab4921476c1,media,image,start,Hei kesäkaveri!,Jutellaan rennosti suvesta. ,"Ja siis tota, takellella saa, se on osa luonnollista puhetta!",39-6755795ebcf74ef38f4,,,,,
+Lahjoita 1/11,item,a4b700d3-2001-4ba4-839d-da721d4e63ed,media,image,,Harjoitellaan ensin!,"Paina Äänitä-nappia ja laske sitten ääneen leppäkertussa näkyvät pilkut.
+
+",Muistuuko mieleesi myös leppäkerttuihin liittyvä laulu tai loru? Voit tapailla sen sanoja.,39-6755805ebcf75109330,,,TRUE,,ei mitään
+,state,,,,recording,Harjoitellaan ensin!,Laske ääneen leppäkertussa näkyvät pilkut. Muistuuko mieleesi myös leppäkerttuihin liittyvä laulu tai loru?,"Kun olet valmis, paina Lopeta äänitys.",39-6755805ebcf75109330,,,,,
+,state,,,,finish,Kiitos – näin helppoa se on!,Lahjoittamasi puheen määrän näet oikeassa ylänurkassa.,Puhettasi pääsevät kuulemaan vain tutkijat ja tekoälyn kehittäjät. Tietosuojasta voit lukea lisää aloitussivulta.,39-6755805ebcf75109330,,,,,
+Lahjoita 2/11,item,74838f03-9193-483c-b27c-66586b35c2d6,media,image,,Kekseliäät kesätapahtumat,"Kerro, mitä tässä kuvassa tapahtuu. Satutko tietämään, mistä kisasta on kyse?",Ideoi myös itse – millainen kesätapahtuma Suomesta vielä puuttuu? Irrottele vapaasti!,39-6755845ebcf75bab7ed,,,TRUE,,ääni
+,state,,,,recording,Kekseliäät kesätapahtumat,"Kerro, mitä tässä kuvassa tapahtuu. Satutko tietämään, mistä kisasta on kyse?",Ideoi myös itse – millainen kesätapahtuma Suomesta vielä puuttuu? Irrottele vapaasti!,39-6755845ebcf75bab7ed,,,,,
+,state,,,,finish,Kiitos luovasta aivoriihestä!,Sinun ansiostasi puhepankki on jo monta sanaa rikkaampi.,Kisakuva on eukonkannon MM-kisoista Sonkajärvellä.,39-6755845ebcf75bab7ed,,,,,
+Auta tutkijaa,item,92203548-2b6d-4b8f-874e-44881202ea44,media,image,,Murretaustani,Puheen lahjoittamisen lomassa kysymme sinulta joitakin taustatietoja. Ne auttavat kielentutkijoita.,Vastauksista ei voi päätellä henkilöllisyyttäsi. Ensin kysymme murretaustastasi.,39-6780835ec286469a1be,,,FALSE,,
+Auta tutkijaa,item,6ef34957-41e7-487e-aa0c-a40c93ed9251,prompt,choice,,Murretaustani,Tarvitsemme kaikenlaisia suomen kielen sävyjä. Mikä alue on vaikuttanut eniten sinun nykyiseen puhetapaasi?,,39-6780835ec286469a1be,,,FALSE,,data
+Auta tutkijaa,item,a75a38f3-228e-4c67-9ed3-6a25a0892a9c,media,image,,Kiitos!,"Mukavaa, jos annat muutamia taustatietoja. Tutkijat ja suomen kieli kiittävät.",Sitten eteenpäin!,39-6780835ec286469a1be,,,FALSE,,"Mukavaa, jos vastasit taustatietoihin. Tutkijat ja suomen kieli kiittävät.
+
+Sitten eteenpäin."
+Lahjoita 3/11,item,d94432f8-8b01-430a-9289-6a941e5e89e8,media,image,,Kerro sääennuste,Kaikissa meissä asuu pieni meteorologi!,Ryhdy Kertuksi ja esittele perjantain sää.,39-6755855ebcf75f0d269,,,TRUE,,ääni
+,state,,,,recording,Kerro sääennuste,Ryhdy Kertuksi ja esittele perjantain sää.,Saadaanko poutaa vai sadetta – ehkä jopa ukkosta? ,39-6755855ebcf75f0d269,,,,,
+,state,,,,finish,Pätevää ennustamista!,"Onnittelut ensiesiintymisestä, loistavasti meni. ",Seuraavaksi laitetaan varpaat santaan!,39-6755855ebcf75f0d269,,,,,
+Lahjoita 4/11,item,4ce0a50a-613c-4ada-b473-9400f833aa42,media,image,,Etsi eroavaisuudet,Kuvissa on 3 eroavaisuutta. Etsi ne ääneen ajatellen.,Anna pähkäilysi kuulua!,39-6762635ebd5743b295d,,,TRUE,,ääni
+,state,,,,recording,Etsi eroavaisuudet,Kuvissa on 3 eroavaisuutta. Etsi ne ääneen ajatellen.,Anna pähkäilysi kuulua!,39-6762635ebd5743b295d,,,,,
+,state,,,,finish,"Hyvää työtä, haukansilmä!",Kuvassa näet erot ympyröitynä.,,39-6762625ebd57438cb04,,,,,
+Auta tutkijaa,item,45d61ebe-93d0-4708-8d77-6dbacab8d746,media,image,,Äidinkieleni,"Suomen puhujia on moneksi, joten äidinkielesi on myös tärkeä tieto tutkijoille.",,39-6780895ec2876bc6b15,,,FALSE,,
+Auta tutkijaa,item,fa3ecb10-1128-4c8c-a838-600a0faadc2e,prompt,multi-choice,,Äidinkieleni,"Jos sinulla on lapsesta asti ollut kaksi äidinkieltä, voit merkitä kummankin.",,39-6780895ec2876bc6b15,,,FALSE,,data
+Lahjoita 5/11,item,dc954c13-8483-4c78-ba0c-d117269141e1,media,image,,Kerro kesätaitosi,Mikä sujuu sinulta kuin Strömsössä?,"Osaatko esimerkiksi tyhjentää ulkohuussin, tehdä kukkaseppeleen tai huoltaa polkupyörän?",39-6762875ebd6537ebd88,,,TRUE,,ääni
+,state,,,,recording,Kerro kesätaitosi,Mikä sujuu sinulta kuin Strömsössä?,Selosta taitosi kuin opastaisit ensikertalaista.,39-6762875ebd6537ebd88,,,,,
+,state,,,,finish,"Kiitos, erittäin etevää!",Homma on tukevasti hanskassa ja hanskakin tallessa.,,39-6762875ebd6537ebd88,,,,,
+Lahjoita 6/11,item,b7b2ddad-2b77-421e-a125-65339dbd3d23,media,image,,Mitä näkyy?,Oho! Puoli Seitsemän -toimittaja Minttu on havainnut niityllä jotain hämmästyttävää.,"Hyppää neiti kesäheinän saappaisiin ja kerro, mitä hän näkee ja mitä siitä ajattelee.",39-6755825ebcf753d6a27,,,TRUE,,ääni
+,state,,,,recording,Pohdi ääneen...,Mitä Minttu näkee niityllä?,"Kerro myös, mitä hän siitä ajattelee.",39-6755825ebcf753d6a27,,,,,
+,state,,,,finish,Kiitos hauskasta ajatusleikistä!,Seuraavaksi nopea taustatietokysymys.,,39-6755825ebcf753d6a27,,,,,
+Auta tutkijaa,item,57171e65-b617-4990-8721-b85d1a23a0e7,media,image,,Ikäni,Puhekielen tutkijoita kiinnostaa myös puhujan ikä.,,39-6780905ec2876c0f863,,,FALSE,,
+Auta tutkijaa,item,e3264046-a642-46de-a9e7-c55933ee3739,prompt,choice,,Ikäni,,,39-6780905ec2876c0f863,,,FALSE,,data
+Lahjoita 7/11,item,285eac4e-d937-40a8-afb2-0844ea6a2a81,media,image,,Toimi silminnäkijänä,Tämä parivaljakko vohki vyölaukkusi festareilla. Kuvaile heidän ulkonäkönsä tarkasti rikoksen selvittämiseksi. ,"Kerro myös, mitä olit pakannut festarilaukkuusi.",39-6767675ebe5a379e333,,,TRUE,,ääni
+,state,,,,recording,Toimi silminnäkijänä,Kuvaile vyölaukkuvarkaiden ulkonäkö yksityiskohtaisen tarkasti.,"Kerro myös, mitä olit pakannut festarilaukkuusi.",39-6767675ebe5a379e333,,,,,
+,state,,,,finish,"Tarkkaa työtä, kiitos!",Kuvauksesi ansiosta etsinnän pitäisi sujua hyvin.,Seuraavaksi puhutaan kesän herkkuhetkistä.,39-6767675ebe5a379e333,,,,,
+Lahjoita 8/11,item,13bac87d-c97f-4433-ae08-574ed478b51c,media,image,,Kokoa eväskori,Mitä sinun unelmiesi ulkokattaus sisältää?,Onko tarjolla sekä suolaista että makeaa? Haetko syötävät kaupan hyllyltä tai valmistatko jotain itse?,39-6755865ebcf7601fe5f,,,TRUE,,ääni
+,state,,,,recording,Kokoa eväskori,Mitä sinun unelmiesi ulkokattaus sisältää?,Onko tarjolla sekä suolaista että makeaa? Haetko syötävät kaupan hyllyltä tai valmistatko jotain itse?,39-6755865ebcf7601fe5f,,,,,
+,state,,,,finish,Kiitos herkullisesta vastauksesta!,Viltillä tavataan :P,Mutta ensin kutsuvat turistioppaan tehtävät.,39-6755865ebcf7601fe5f,,,,,
+Lahjoita 9/11,item,ad5abbcc-0864-4971-8273-2b2720371ede,media,image,,"Neuvo perille
+",Tapaat Oulussa matkailuohjelma Egenlandin juontajat Nicken ja Hannamarin.,"Neuvo heidät ensin kahville (1), sitten puistoon (2) ja lopulta Toripolliisin luokse (3).",39-6771255ebe898209dad,,,TRUE,,ääni
+,state,,,,recording,Miten reitti kulkee?,"Neuvo Nicke ja Hannamari kahville (1), sitten puistoon (2) ja lopulta Toripolliisin luokse (3).",Kerro kadut ja mihin päin missäkin kohtaa tulee kääntyä.,39-6771255ebe898209dad,,,,,
+,state,,,,finish,"Menipä hyvi, upia homma!",Nicke ja Hannamari voivat lähteä sukkuloimaan luottavaisin mielin.,Sitten viimeinen taustatietokysymys.,39-6771255ebe898209dad,,,,,
+Auta tutkijaa,item,8bbb8e5d-56a2-4082-9429-233ff2a5e53f,prompt,choice,,Sukupuoleni,,,39-6780915ec2876cc2128,,,FALSE,,data
+Lahjoita 10/11,item,d803657f-7e0e-43b4-9a0f-26e3b7c87165,media,yle-video,,Kuvaile kesänviettoa,"Saat ulkoavaruudesta vieraita, joilla on videokuvaa suomalaisesta kesänvietosta.","Selosta heille, mitä videon tilanteissa tapahtuu. Video alkaa, kun painat Äänitä.",1-50531498,,,TRUE,,ääni
+,state,,,,start,inherit,inherit,inherit,39-6771655ebe98cd8862a,,,,,
+,state,,,,recording,Kuvaile kesänviettoa,"Selosta ulkoavaruuden vieraille, mitä kesänviettovideossa tapahtuu.",Video kestää 2 minuuttia. Voit keskeyttää videon ja siirtyä eteenpäin painamalla Lopeta äänitys.,,,,,,
+,state,,,,finish,Erinomaista selostusta!,Näin saatiin Suomen suvi maailmankaikkeuden kartalle.,Lopuksi siirrymme vielä omaan kesäiseen paikkaan.,39-6771765ebe9b3d4d9cc,,,,,
+Lahjoita 11/11,item,b8caf667-d19d-432c-a82f-707b7e6fbc03,media,image,,Kerro rakkaasta kesäpaikasta,"Mikä on sinulle tärkeä kesäpaikka, nykyinen tai muistoissa oleva?","Rantasauna, huvipuisto, kaupungin vilkkain terassi... ",39-6766405ebe4b3677cef,,,TRUE,,ääni
+,state,,,,recording,Kerro rakkaasta kesäpaikasta,"Mikä on sinulle tärkeä kesäpaikka, nykyinen tai muistoissa oleva?",Miksi paikka on sinulle tärkeä? Pääsetkö sinne edelleen? ,39-6766405ebe4b3677cef,,,,,
+,state,,,,finish,"Kuulostaa hienolta, paljon kiitoksia!",On ollut antoisaa puhua kesästä kanssasi. ,Olet nyt saanut kesäsukelluksesi päätökseen.,39-6766405ebe4b3677cef,,,,,
+Kutsu kaveri,schedule,664bc028-a92f-435f-8e33-9ab4921476c1,media,image,finish,Siispä kiitos kaunis vielä kerran!,"Annoit oman panoksesi siihen, että arki ja asiointi suomeksi puhumalla helpottuvat.",Haasta myös ystäväsi lahjoittamaan puhetta! Tai lahjoita itse lisää.,39-6762015ebd469bb22fd,,,FALSE,,ei mitään
+teemanvalinta-sivun pikkukuva,theme,b5a0e3a2-4065-48d6-8761-ba60a5740b9d,,,,,,,39-6800675ecb81277cd53,,,,,
+jakoteksti,,,,,,,,,,,,,,

@@ -110,7 +110,7 @@ export const selectConfigurations = createSelector(
 export const selectLocalizedConfigurations = createSelector(
   [selectConfigurations],
   configurations => {
-    const language: Language = "fi";
+    const language: Language = "sv";
     if (!configurations) return null;
 
     const localizedSchedules = Object.keys(configurations).map(confKey => {

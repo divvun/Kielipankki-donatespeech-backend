@@ -1,0 +1,56 @@
+{
+    "scheduleId": "fcdd2413-1f4a-4a2e-9bc0-d6bececa2edd",
+    "title": { "fi": "Siilit eli testausajolista 6" },
+    "body1": { "fi": "Testausajolista 6:n tarkempi kuvaus" },
+    "body2": { "fi": "" },
+    "items": [        
+        {
+            "itemId": "55590fd8-e5a6-4281-9d32-649bca1d6991",
+            "kind": "media",
+            "itemType": "text",
+            "typeId": "text/plain",
+            "url": null,
+            "title": { "fi": "L\u00e4mmittely" },
+            "body1": { "fi": "T\u00e4m\u00e4 on ajolistan ensimmäinen moduuli, jossa tallennus ei vielä ole päällä. Kun jatkat eteenpäin, tallennus alkaa." },
+            "body2": { "fi": "" },
+            "options": [],
+            "isRecording": false
+        },
+        {
+            "itemId": "a228951f-a8b1-4721-a65f-56a89670a53f",
+            "kind": "media",
+            "itemType": "image",
+            "typeId": "image/jpeg",
+            "url": "https://images.cdn.yle.fi/image/upload/f_auto,fl_progressive/q_88/w_3200/w_3200,h_1800,c_crop,x_0,y_1205/w_1100,h_620,c_fit/v1584887179/39-6004845da5ca9b67996.jpg",
+            "title": { "fi": "Siilit" },
+            "body1": { "fi": "Siilit her\u00e4\u00e4v\u00e4t \u2013 saako auttaa?" },
+            "body2": { "fi": "" },
+            "options": [],
+            "isRecording": true
+        },
+        {
+            "itemId": "2f182b1b-1d42-4b0f-bc72-03bc811607a9",
+            "kind": "prompt",
+            "itemType": "text",
+            "typeId": "text/plain",
+            "url": null,
+            "title": { "fi": "Kotipaikkasi?" },
+            "body1": { "fi": "Mist\u00e4 p\u00e4in Suomea olet syntyisin?" },
+            "body2": { "fi": "" },
+            "options": [],
+            "isRecording": false
+        },
+        {
+            "itemId": "0b9ce2cb-4b33-43c4-9921-7c4f6854ba27",
+            "kind": "media",
+            "itemType": "image",
+            "typeId": "image/jpeg",
+            "url": "https://images.cdn.yle.fi/image/upload/f_auto,fl_progressive/q_88/w_3200/w_2605,h_1466,c_crop,x_275,y_70/w_1400,h_1400,c_fit/v1527166830/39-4880215b06b5d065c5c.jpg",
+            "title": { "fi": "Siilit kev\u00e4\u00e4ll\u00e4" },
+            "body1": { "fi": "Urokset l\u00e4htev\u00e4t liikkeelle naaraita aiemmin." },
+            "body2": { "fi": "" },
+            "options": [],
+            "isRecording": true
+        }
+    ]
+}

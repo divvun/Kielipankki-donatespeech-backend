@@ -25,6 +25,7 @@ export interface UserState {
   isAnalyticsEnabled: boolean | null;
   isTermsAndConditionAccepted: boolean;
   itemAnswers: { [key: string]: PlaylistAnswer };
+  langcode: string;  
 }
 
 export const createInitialState = (): UserState => ({
@@ -34,6 +35,7 @@ export const createInitialState = (): UserState => ({
   isAnalyticsEnabled: null,
   isTermsAndConditionAccepted: false,
   itemAnswers: {},
+  langcode: "fi",
 });
 
 export const slice = createSlice({
@@ -63,6 +65,12 @@ export const slice = createSlice({
     termsAndConditionAccepted: state => {
       state.isTermsAndConditionAccepted = true;
     },
+    setLangFi: state => {
+	state.langcode = "fi";
+    },
+    setLangSv: state => {
+	state.langcode = "sv";
+    },
     userStateReset: state => {
       return { ...createInitialState(), initialized: state.initialized };
     },
@@ -80,6 +88,8 @@ export const {
   analyticsEnabledChange,
   userStateReset,
   termsAndConditionAccepted,
+  setLangFi,
+  setLangSv,
 } = slice.actions;
 
 // Thunks
@@ -112,6 +122,11 @@ export const selectIsAnalyticsConsentPending = createSelector(
 export const selectIsTermsAndConditionAccepted = createSelector(
   [(state: RootState) => state.user.isTermsAndConditionAccepted],
   isTermsAndConditionAccepted => isTermsAndConditionAccepted
+);
+
+export const selectLangCode = createSelector(
+  [(state: RootState) => state.user.langcode],
+  langcode => langcode
 );
 
 export default slice.reducer;

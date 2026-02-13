@@ -6,16 +6,16 @@ type Conf = {
 };
 
 const dev: Conf = {
-  ENDPOINT: "https://endpoint.dev.example.com",
-  API_KEY: "<your-dev-api-key-here>",
-  WEBSITE_URL: "https://dev.example.com",
+  ENDPOINT: "https://endpoint.dev.lahjoitapuhetta.fi",
+  API_KEY: "oRSZF1qC9f4zhiwZUIl9jkVk5MIiqc05bzQW2TGd",
+  WEBSITE_URL: "https://dev.lahjoitapuhetta.fi/",
   SHOW_WIP_NOTE: true,
 };
 
 const prod: Conf = {
-  ENDPOINT: "https://endpoint.example.com",
-  API_KEY: "<your-prod-api-key-here>",
-  WEBSITE_URL: "https://example.com",
+  ENDPOINT: "https://endpoint.lahjoitapuhetta.fi",
+  API_KEY: "7ZxdHBykYd3c1iZHxV2yf65PTj1lwuFZ7BkfcY1P",
+  WEBSITE_URL: "https://lahjoitapuhetta.fi",
   SHOW_WIP_NOTE: false,
 };
 

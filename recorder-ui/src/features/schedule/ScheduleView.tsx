@@ -17,12 +17,38 @@ import TermsAndConditionsView from "./TermsAndConditionsView/TermsAndConditionsV
 import "./ScheduleView.css";
 
 type ScheduleViewProps = {
-  onRecorderResetRequested: () => void;
+    onRecorderResetRequested: () => void,
+    lang: string
 };
 
+interface Langstrings { [key: string]: string; }
+interface Langs { [key: string]: Langstrings; }
+
+const fi_strings: Langstrings = {
+    "donation-tally": "Olet lahjoittanut:",
+    "exit": "Poistu"
+}
+
+const en_strings: Langstrings = {
+    "donation-tally": "You have donated:",
+    "exit": "Exit"
+}
+
+const sv_strings: Langstrings = {
+    "donation-tally": "Du har donerat:",
+    "exit": "Avsluta"
+}
+
+const langs: Langs = {
+    "fi": fi_strings,
+    "en": en_strings,
+    "sv": sv_strings,
+}
+
 const ScheduleView: React.FC<ScheduleViewProps> = ({
-  onRecorderResetRequested,
+    onRecorderResetRequested, lang,
 }) => {
+    var s = langs[lang];
   const recorder = useAudioRecorderContext();
   const history = useHistory();
   const isTermsAndConditionAccepted = useSelector(
@@ -45,7 +71,8 @@ const ScheduleView: React.FC<ScheduleViewProps> = ({
         <Col className="mx-auto h-100">
           <Playlist
             onQuit={handleQuit}
-            onRecorderResetRequested={onRecorderResetRequested}
+          onRecorderResetRequested={onRecorderResetRequested}
+	  lang={lang}
           />
         </Col>
       );
@@ -54,14 +81,14 @@ const ScheduleView: React.FC<ScheduleViewProps> = ({
     if (!isTermsAndConditionAccepted) {
       return (
         <Col>
-          <TermsAndConditionsView />
+              <TermsAndConditionsView lang={lang}/>
         </Col>
       );
     }
 
     return (
       <Col>
-        <RecorderStatusView onQuit={handleQuit} />
+            <RecorderStatusView onQuit={handleQuit} lang={lang}/>
       </Col>
     );
   };
@@ -77,18 +104,18 @@ const ScheduleView: React.FC<ScheduleViewProps> = ({
               <Col>
                 <Row className="align-items-center">
                   <Col xs={4}>
-                    <button
+                    <button tabIndex={0}
                       className="schedule-view-header--quit float-left"
                       onClick={handleQuit}
-                      aria-label="Exit"
+      aria-label={s["exit"]}
                     >
                       <b>X</b>
-                      <span> Exit</span>
+          <span> {s["exit"]}</span>
                     </button>
                   </Col>
                   <Col>
                     <div className="float-right">
-                      <TotalRecordingDuration label="You have donated:" />
+          <TotalRecordingDuration label={s["donation-tally"]} />
                     </div>
                   </Col>
                 </Row>

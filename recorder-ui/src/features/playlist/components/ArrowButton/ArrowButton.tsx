@@ -6,14 +6,15 @@ import ArrowForward from "./webNavigateTriangleForward.svg";
 interface ArrowButtonProps {
   direction: "forward" | "backward";
   onClick: () => void;
+  label: string;  
 }
 
-const ArrowButton: React.FC<ArrowButtonProps> = ({ direction, onClick }) => {
+const ArrowButton: React.FC<ArrowButtonProps> = ({ direction, onClick, label }) => {
   const icon = direction === "forward" ? ArrowForward : ArrowBackward;
-  const ariaLabel = direction === "forward" ? "Next" : "Previous";
+    const ariaLabel = label;
   return (
-    <button onClick={onClick} className="arrow-button" aria-label={ariaLabel}>
-      <img src={icon} alt={ariaLabel} />
+    <button onClick={onClick} className="arrow-button" aria-label={ariaLabel} tabIndex={0}>
+	  <img src={icon} alt={ariaLabel} />
     </button>
   );
 };

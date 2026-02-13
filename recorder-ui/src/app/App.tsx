@@ -26,6 +26,9 @@ import {
   loadInitialUserState,
   selectIsAnalyticsEnabled,
   selectIsAnalyticsConsentPending,
+  selectLangCode,
+  setLangFi,
+  setLangSv
 } from "../features/user/userSlice";
 import ScheduleView from "../features/schedule/ScheduleView";
 import InfoPage from "../features/infoPage/InfoPage";
@@ -58,9 +61,30 @@ function App() {
 
   const renderWipNote = () => {
     return config.SHOW_WIP_NOTE ? (
-      <div className="wip-note py-2">Website under construction</div>
+	<div className="wip-note py-2">Development version</div>
     ) : null;
   };
+
+    var langcode = useSelector(selectLangCode);
+    document.documentElement.setAttribute('lang', langcode);
+    const urlParams = new URLSearchParams(window.location.search.replace('/', ''));
+    if (urlParams.get("lang") === "sv") {
+	dispatch(setLangSv());
+	langcode = "sv";
+	
+    } else if (urlParams.get("lang") === "fi") {
+	dispatch(setLangFi());
+	langcode = "fi";
+    }
+    switch (langcode) {
+	case "fi": document.title = "Lahjoita puhetta"; break;
+	case "sv": document.title = "Donera prat"; break;
+    }
+
+    const getLangCode = () => {
+	return langcode;//config.SHOW_WIP_NOTE ? "sv": "fi";
+    };
+
 
   return (
     <ErrorBoundary
@@ -77,35 +101,35 @@ function App() {
             <Switch>
               <Route path={routes.HOME} exact>
                 {renderWipNote()}
-                <LandingPage />
+          <LandingPage lang={getLangCode()} />
               </Route>
               <Route path={routes.PARTNERS}>
                 <Frame>
                   {renderWipNote()}
-                  <NavigationBar />
-                  <PartnersPage />
+          <NavigationBar lang={getLangCode()} />
+          <PartnersPage lang={getLangCode()} />
                 </Frame>
               </Route>
               <Route path={routes.PRIVACY}>
                 <Frame>
                   {renderWipNote()}
-                  <NavigationBar />
-                  <PrivacyPage />
+          <NavigationBar lang={getLangCode()} />
+          <PrivacyPage lang={getLangCode()} />
                 </Frame>
               </Route>
-              <Route path={routes.INFO}>
+          <Route path={routes.INFO}>
                 <Frame>
                   {renderWipNote()}
-                  <NavigationBar />
-                  <InfoPage />
+                  <NavigationBar lang={getLangCode()} />
+          <InfoPage lang={getLangCode()} />
                 </Frame>
               </Route>
               <Route path={`${routes.SCHEDULE}/:scheduleId`}>
-                <ScheduleView onRecorderResetRequested={forceStopRecorder} />
+          <ScheduleView onRecorderResetRequested={forceStopRecorder} lang={getLangCode()} />
               </Route>
               <Route render={() => <Redirect to={{ pathname: "/" }} />} />
             </Switch>
-            {isAnalyticsConsentPending && <CookieBanner />}
+          {isAnalyticsConsentPending && <CookieBanner lang={getLangCode()} />}
           </div>
         </AudioRecorderProvider>
       </Router>

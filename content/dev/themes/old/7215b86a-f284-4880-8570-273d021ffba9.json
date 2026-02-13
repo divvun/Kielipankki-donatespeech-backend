@@ -1,0 +1,11 @@
+{
+    "title": { "fi": "Teema 1" },
+    "body1": { "fi": "Teeman 1 pidempi kuvaus" },
+    "body2": { "fi": "" }, 
+    "image": "https://images.cdn.yle.fi/image/upload//w_1199,h_848,f_auto,fl_lossy,q_auto:eco/13-3-11264735.jpg",
+    "scheduleIds": [
+        "4d05fd07-1f2b-4077-a1c4-67839c4120e6",
+        "82ebfe4e-3432-4635-85b8-dc1ff3a182ec",
+        "6427453a-7c61-490d-a5d4-8936c9f71dcd"
+    ]
+}

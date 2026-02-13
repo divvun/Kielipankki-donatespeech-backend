@@ -14,7 +14,7 @@ const ItemDescription: React.FC<ItemDescriptionProps> = ({
   return (
     <>
       {description && (
-        <p className={`item-description ${smallClass}`}>{description}</p>
+        <p className={`item-description ${smallClass}`} tabIndex={2}>{description}</p>
       )}
     </>
   );

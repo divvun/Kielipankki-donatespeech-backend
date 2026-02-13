@@ -1,6 +1,6 @@
-node_modules/
-venv/
+node_modules
+venv
 /env
 __pycache__
 .vscode
-.DS_Store
+.DS_STORE

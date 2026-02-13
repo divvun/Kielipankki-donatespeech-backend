@@ -1,0 +1,791 @@
+{
+    "scheduleId": "664bc028-a92f-435f-8e33-9ab4921476c1",
+    "items": [
+        {
+            "itemId": "a4b700d3-2001-4ba4-839d-da721d4e63ed",
+            "kind": "media",
+            "itemType": "image",
+            "options": [],
+            "typeId": "image/jpeg",
+            "title": {
+                "fi": "Harjoitellaan ensin!"
+            },
+            "body1": {
+                "fi": "Paina \u00c4\u00e4nit\u00e4-nappia ja laske sitten \u00e4\u00e4neen lepp\u00e4kertussa n\u00e4kyv\u00e4t pilkut."
+            },
+            "body2": {
+                "fi": "Muistuuko mieleesi my\u00f6s lepp\u00e4kerttuihin liittyv\u00e4 laulu tai loru? Voit tapailla sen sanoja."
+            },
+            "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6755805ebcf75109330.jpg",
+            "isRecording": true,
+            "recording": {
+                "title": {
+                    "fi": "Harjoitellaan ensin!"
+                },
+                "body1": {
+                    "fi": "Laske \u00e4\u00e4neen lepp\u00e4kertussa n\u00e4kyv\u00e4t pilkut. Muistuuko mieleesi my\u00f6s lepp\u00e4kerttuihin liittyv\u00e4 laulu tai loru?"
+                },
+                "body2": {
+                    "fi": "Kun olet valmis, paina Lopeta \u00e4\u00e4nitys."
+                },
+                "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6755805ebcf75109330.jpg"
+            },
+            "finish": {
+                "title": {
+                    "fi": "Kiitos \u2013 n\u00e4in helppoa se on!"
+                },
+                "body1": {
+                    "fi": "Lahjoittamasi puheen m\u00e4\u00e4r\u00e4n n\u00e4et oikeassa yl\u00e4nurkassa."
+                },
+                "body2": {
+                    "fi": "Puhettasi p\u00e4\u00e4sev\u00e4t kuulemaan vain tutkijat ja teko\u00e4lyn kehitt\u00e4j\u00e4t. Tietosuojasta voit lukea lis\u00e4\u00e4 aloitussivulta."
+                },
+                "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6755805ebcf75109330.jpg"
+            }
+        },
+        {
+            "itemId": "74838f03-9193-483c-b27c-66586b35c2d6",
+            "kind": "media",
+            "itemType": "image",
+            "options": [],
+            "typeId": "image/jpeg",
+            "title": {
+                "fi": "Kekseli\u00e4\u00e4t kes\u00e4tapahtumat"
+            },
+            "body1": {
+                "fi": "Kerro, mit\u00e4 t\u00e4ss\u00e4 kuvassa tapahtuu. Satutko tiet\u00e4m\u00e4\u00e4n, mist\u00e4 kisasta on kyse?"
+            },
+            "body2": {
+                "fi": "Ideoi my\u00f6s itse \u2013 millainen kes\u00e4tapahtuma Suomesta viel\u00e4 puuttuu? Irrottele vapaasti!"
+            },
+            "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6755845ebcf75bab7ed.jpg",
+            "isRecording": true,
+            "recording": {
+                "title": {
+                    "fi": "Kekseli\u00e4\u00e4t kes\u00e4tapahtumat"
+                },
+                "body1": {
+                    "fi": "Kerro, mit\u00e4 t\u00e4ss\u00e4 kuvassa tapahtuu. Satutko tiet\u00e4m\u00e4\u00e4n, mist\u00e4 kisasta on kyse?"
+                },
+                "body2": {
+                    "fi": "Ideoi my\u00f6s itse \u2013 millainen kes\u00e4tapahtuma Suomesta viel\u00e4 puuttuu? Irrottele vapaasti!"
+                },
+                "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6755845ebcf75bab7ed.jpg"
+            },
+            "finish": {
+                "title": {
+                    "fi": "Kiitos luovasta aivoriihest\u00e4!"
+                },
+                "body1": {
+                    "fi": "Sinun ansiostasi puhepankki on jo monta sanaa rikkaampi."
+                },
+                "body2": {
+                    "fi": "Kisakuva on eukonkannon MM-kisoista Sonkaj\u00e4rvell\u00e4."
+                },
+                "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6755845ebcf75bab7ed.jpg"
+            }
+        },
+        {
+            "itemId": "92203548-2b6d-4b8f-874e-44881202ea44",
+            "kind": "media",
+            "itemType": "image",
+            "options": [],
+            "typeId": "image/jpeg",
+            "title": {
+                "fi": "Murretaustani"
+            },
+            "body1": {
+                "fi": "Puheen lahjoittamisen lomassa kysymme sinulta joitakin taustatietoja. Ne auttavat kielentutkijoita."
+            },
+            "body2": {
+                "fi": "Vastauksista ei voi p\u00e4\u00e4tell\u00e4 henkil\u00f6llisyytt\u00e4si. Ensin kysymme murretaustastasi."
+            },
+            "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6780835ec286469a1be.jpg",
+            "isRecording": false
+        },
+        {
+            "itemId": "6ef34957-41e7-487e-aa0c-a40c93ed9251",
+            "kind": "prompt",
+            "itemType": "choice",
+            "typeId": null,
+            "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6780835ec286469a1be.jpg",
+            "options": [
+                {
+                    "fi": "Uusimaa"
+                },
+                {
+                    "fi": "Varsinais-Suomi"
+                },
+                {
+                    "fi": "Satakunta"
+                },
+                {
+                    "fi": "H\u00e4me"
+                },
+                {
+                    "fi": "Pirkanmaa"
+                },
+                {
+                    "fi": "P\u00e4ij\u00e4t-H\u00e4me"
+                },
+                {
+                    "fi": "Kymenlaakso"
+                },
+                {
+                    "fi": "Etel\u00e4-Karjala"
+                },
+                {
+                    "fi": "Etel\u00e4-Savo"
+                },
+                {
+                    "fi": "Pohjois-Savo"
+                },
+                {
+                    "fi": "Pohjois-Karjala"
+                },
+                {
+                    "fi": "Keski-Suomi"
+                },
+                {
+                    "fi": "Etel\u00e4-Pohjanmaa"
+                },
+                {
+                    "fi": "Pohjanmaa"
+                },
+                {
+                    "fi": "Keski-Pohjanmaa"
+                },
+                {
+                    "fi": "Pohjois-Pohjanmaa"
+                },
+                {
+                    "fi": "Kainuu"
+                },
+                {
+                    "fi": "Lappi"
+                },
+                {
+                    "fi": "Ahvenanmaa"
+                },
+                {
+                    "fi": "Muu kuin Suomi"
+                }
+            ],
+            "title": {
+                "fi": "Murretaustani"
+            },
+            "body1": {
+                "fi": "Tarvitsemme kaikenlaisia suomen kielen s\u00e4vyj\u00e4. Mik\u00e4 alue on vaikuttanut eniten sinun nykyiseen puhetapaasi?"
+            },
+            "body2": {
+                "fi": ""
+            },
+            "isRecording": false
+        },
+        {
+            "itemId": "a75a38f3-228e-4c67-9ed3-6a25a0892a9c",
+            "kind": "media",
+            "itemType": "image",
+            "options": [],
+            "typeId": "image/jpeg",
+            "title": {
+                "fi": "Kiitos!"
+            },
+            "body1": {
+                "fi": "Mukavaa, jos annat muutamia taustatietoja. Tutkijat ja suomen kieli kiitt\u00e4v\u00e4t."
+            },
+            "body2": {
+                "fi": "Sitten eteenp\u00e4in!"
+            },
+            "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6780835ec286469a1be.jpg",
+            "isRecording": false
+        },
+        {
+            "itemId": "d94432f8-8b01-430a-9289-6a941e5e89e8",
+            "kind": "media",
+            "itemType": "image",
+            "options": [],
+            "typeId": "image/jpeg",
+            "title": {
+                "fi": "Kerro s\u00e4\u00e4ennuste"
+            },
+            "body1": {
+                "fi": "Kaikissa meiss\u00e4 asuu pieni meteorologi!"
+            },
+            "body2": {
+                "fi": "Ryhdy Kertuksi ja esittele perjantain s\u00e4\u00e4."
+            },
+            "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6755855ebcf75f0d269.jpg",
+            "isRecording": true,
+            "recording": {
+                "title": {
+                    "fi": "Kerro s\u00e4\u00e4ennuste"
+                },
+                "body1": {
+                    "fi": "Ryhdy Kertuksi ja esittele perjantain s\u00e4\u00e4."
+                },
+                "body2": {
+                    "fi": "Saadaanko poutaa vai sadetta \u2013 ehk\u00e4 jopa ukkosta?"
+                },
+                "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6755855ebcf75f0d269.jpg"
+            },
+            "finish": {
+                "title": {
+                    "fi": "P\u00e4tev\u00e4\u00e4 ennustamista!"
+                },
+                "body1": {
+                    "fi": "Onnittelut ensiesiintymisest\u00e4, loistavasti meni."
+                },
+                "body2": {
+                    "fi": "Seuraavaksi laitetaan varpaat santaan!"
+                },
+                "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6755855ebcf75f0d269.jpg"
+            }
+        },
+        {
+            "itemId": "4ce0a50a-613c-4ada-b473-9400f833aa42",
+            "kind": "media",
+            "itemType": "image",
+            "options": [],
+            "typeId": "image/jpeg",
+            "title": {
+                "fi": "Etsi eroavaisuudet"
+            },
+            "body1": {
+                "fi": "Kuvissa on 3 eroavaisuutta. Etsi ne \u00e4\u00e4neen ajatellen."
+            },
+            "body2": {
+                "fi": "Anna p\u00e4hk\u00e4ilysi kuulua!"
+            },
+            "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6762635ebd5743b295d.jpg",
+            "isRecording": true,
+            "recording": {
+                "title": {
+                    "fi": "Etsi eroavaisuudet"
+                },
+                "body1": {
+                    "fi": "Kuvissa on 3 eroavaisuutta. Etsi ne \u00e4\u00e4neen ajatellen."
+                },
+                "body2": {
+                    "fi": "Anna p\u00e4hk\u00e4ilysi kuulua!"
+                },
+                "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6762635ebd5743b295d.jpg"
+            },
+            "finish": {
+                "title": {
+                    "fi": "Hyv\u00e4\u00e4 ty\u00f6t\u00e4, haukansilm\u00e4!"
+                },
+                "body1": {
+                    "fi": "Kuvassa n\u00e4et erot ympyr\u00f6ityn\u00e4."
+                },
+                "body2": {
+                    "fi": ""
+                },
+                "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6762625ebd57438cb04.jpg"
+            }
+        },
+        {
+            "itemId": "45d61ebe-93d0-4708-8d77-6dbacab8d746",
+            "kind": "media",
+            "itemType": "image",
+            "options": [],
+            "typeId": "image/jpeg",
+            "title": {
+                "fi": "\u00c4idinkieleni"
+            },
+            "body1": {
+                "fi": "Suomen puhujia on moneksi, joten \u00e4idinkielesi on my\u00f6s t\u00e4rke\u00e4 tieto tutkijoille."
+            },
+            "body2": {
+                "fi": ""
+            },
+            "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6780895ec2876bc6b15.jpg",
+            "isRecording": false
+        },
+        {
+            "itemId": "fa3ecb10-1128-4c8c-a838-600a0faadc2e",
+            "kind": "prompt",
+            "itemType": "multi-choice",
+            "typeId": null,
+            "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6780895ec2876bc6b15.jpg",
+            "options": [
+                {
+                    "fi": "suomi"
+                },
+                {
+                    "fi": "ruotsi"
+                },
+                {
+                    "fi": "ven\u00e4j\u00e4"
+                },
+                {
+                    "fi": "viro (eesti)"
+                },
+                {
+                    "fi": "arabia"
+                },
+                {
+                    "fi": "somali"
+                },
+                {
+                    "fi": "englanti"
+                },
+                {
+                    "fi": "kurdi"
+                },
+                {
+                    "fi": "persia (farsi)"
+                },
+                {
+                    "fi": "muu kieli"
+                }
+            ],
+            "otherAnswer": {
+                "fi": "Jokin muu kieli"
+            },
+            "otherEntryLabel": {
+                "fi": "Jos valitsit Muu kieli, kirjoita sen nimi:"
+            },
+            "title": {
+                "fi": "\u00c4idinkieleni"
+            },
+            "body1": {
+                "fi": "Jos sinulla on lapsesta asti ollut kaksi \u00e4idinkielt\u00e4, voit merkit\u00e4 kummankin."
+            },
+            "body2": {
+                "fi": ""
+            },
+            "isRecording": false
+        },
+        {
+            "itemId": "dc954c13-8483-4c78-ba0c-d117269141e1",
+            "kind": "media",
+            "itemType": "image",
+            "options": [],
+            "typeId": "image/jpeg",
+            "title": {
+                "fi": "Kerro kes\u00e4taitosi"
+            },
+            "body1": {
+                "fi": "Mik\u00e4 sujuu sinulta kuin Str\u00f6ms\u00f6ss\u00e4?"
+            },
+            "body2": {
+                "fi": "Osaatko esimerkiksi tyhjent\u00e4\u00e4 ulkohuussin, tehd\u00e4 kukkaseppeleen tai huoltaa polkupy\u00f6r\u00e4n?"
+            },
+            "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6762875ebd6537ebd88.jpg",
+            "isRecording": true,
+            "recording": {
+                "title": {
+                    "fi": "Kerro kes\u00e4taitosi"
+                },
+                "body1": {
+                    "fi": "Mik\u00e4 sujuu sinulta kuin Str\u00f6ms\u00f6ss\u00e4?"
+                },
+                "body2": {
+                    "fi": "Selosta taitosi kuin opastaisit ensikertalaista."
+                },
+                "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6762875ebd6537ebd88.jpg"
+            },
+            "finish": {
+                "title": {
+                    "fi": "Kiitos, eritt\u00e4in etev\u00e4\u00e4!"
+                },
+                "body1": {
+                    "fi": "Homma on tukevasti hanskassa ja hanskakin tallessa."
+                },
+                "body2": {
+                    "fi": ""
+                },
+                "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6762875ebd6537ebd88.jpg"
+            }
+        },
+        {
+            "itemId": "b7b2ddad-2b77-421e-a125-65339dbd3d23",
+            "kind": "media",
+            "itemType": "image",
+            "options": [],
+            "typeId": "image/jpeg",
+            "title": {
+                "fi": "Mit\u00e4 n\u00e4kyy?"
+            },
+            "body1": {
+                "fi": "Oho! Puoli Seitsem\u00e4n -toimittaja Minttu on havainnut niityll\u00e4 jotain h\u00e4mm\u00e4stytt\u00e4v\u00e4\u00e4."
+            },
+            "body2": {
+                "fi": "Hypp\u00e4\u00e4 neiti kes\u00e4hein\u00e4n saappaisiin ja kerro, mit\u00e4 h\u00e4n n\u00e4kee ja mit\u00e4 siit\u00e4 ajattelee."
+            },
+            "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6755825ebcf753d6a27.jpg",
+            "isRecording": true,
+            "recording": {
+                "title": {
+                    "fi": "Pohdi \u00e4\u00e4neen..."
+                },
+                "body1": {
+                    "fi": "Mit\u00e4 Minttu n\u00e4kee niityll\u00e4?"
+                },
+                "body2": {
+                    "fi": "Kerro my\u00f6s, mit\u00e4 h\u00e4n siit\u00e4 ajattelee."
+                },
+                "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6755825ebcf753d6a27.jpg"
+            },
+            "finish": {
+                "title": {
+                    "fi": "Kiitos hauskasta ajatusleikist\u00e4!"
+                },
+                "body1": {
+                    "fi": "Seuraavaksi nopea taustatietokysymys."
+                },
+                "body2": {
+                    "fi": ""
+                },
+                "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6755825ebcf753d6a27.jpg"
+            }
+        },
+        {
+            "itemId": "57171e65-b617-4990-8721-b85d1a23a0e7",
+            "kind": "media",
+            "itemType": "image",
+            "options": [],
+            "typeId": "image/jpeg",
+            "title": {
+                "fi": "Ik\u00e4ni"
+            },
+            "body1": {
+                "fi": "Puhekielen tutkijoita kiinnostaa my\u00f6s puhujan ik\u00e4."
+            },
+            "body2": {
+                "fi": ""
+            },
+            "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6780905ec2876c0f863.jpg",
+            "isRecording": false
+        },
+        {
+            "itemId": "e3264046-a642-46de-a9e7-c55933ee3739",
+            "kind": "prompt",
+            "itemType": "choice",
+            "typeId": null,
+            "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6780905ec2876c0f863.jpg",
+            "options": [
+                {
+                    "fi": "1-10 vuotta"
+                },
+                {
+                    "fi": "11-20 vuotta"
+                },
+                {
+                    "fi": "21-30 vuotta"
+                },
+                {
+                    "fi": "31-40 vuotta"
+                },
+                {
+                    "fi": "41-50 vuotta"
+                },
+                {
+                    "fi": "51-60 vuotta"
+                },
+                {
+                    "fi": "61-70 vuotta"
+                },
+                {
+                    "fi": "71-80 vuotta"
+                },
+                {
+                    "fi": "81-90 vuotta"
+                },
+                {
+                    "fi": "91-100 vuotta"
+                },
+                {
+                    "fi": "101+ vuotta"
+                }
+            ],
+            "title": {
+                "fi": "Ik\u00e4ni"
+            },
+            "body1": {
+                "fi": ""
+            },
+            "body2": {
+                "fi": ""
+            },
+            "isRecording": false
+        },
+        {
+            "itemId": "285eac4e-d937-40a8-afb2-0844ea6a2a81",
+            "kind": "media",
+            "itemType": "image",
+            "options": [],
+            "typeId": "image/jpeg",
+            "title": {
+                "fi": "Toimi silminn\u00e4kij\u00e4n\u00e4"
+            },
+            "body1": {
+                "fi": "T\u00e4m\u00e4 parivaljakko vohki vy\u00f6laukkusi festareilla. Kuvaile heid\u00e4n ulkon\u00e4k\u00f6ns\u00e4 tarkasti rikoksen selvitt\u00e4miseksi."
+            },
+            "body2": {
+                "fi": "Kerro my\u00f6s, mit\u00e4 olit pakannut festarilaukkuusi."
+            },
+            "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6767675ebe5a379e333.jpg",
+            "isRecording": true,
+            "recording": {
+                "title": {
+                    "fi": "Toimi silminn\u00e4kij\u00e4n\u00e4"
+                },
+                "body1": {
+                    "fi": "Kuvaile vy\u00f6laukkuvarkaiden ulkon\u00e4k\u00f6 yksityiskohtaisen tarkasti."
+                },
+                "body2": {
+                    "fi": "Kerro my\u00f6s, mit\u00e4 olit pakannut festarilaukkuusi."
+                },
+                "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6767675ebe5a379e333.jpg"
+            },
+            "finish": {
+                "title": {
+                    "fi": "Tarkkaa ty\u00f6t\u00e4, kiitos!"
+                },
+                "body1": {
+                    "fi": "Kuvauksesi ansiosta etsinn\u00e4n pit\u00e4isi sujua hyvin."
+                },
+                "body2": {
+                    "fi": "Seuraavaksi puhutaan kes\u00e4n herkkuhetkist\u00e4."
+                },
+                "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6767675ebe5a379e333.jpg"
+            }
+        },
+        {
+            "itemId": "13bac87d-c97f-4433-ae08-574ed478b51c",
+            "kind": "media",
+            "itemType": "image",
+            "options": [],
+            "typeId": "image/jpeg",
+            "title": {
+                "fi": "Kokoa ev\u00e4skori"
+            },
+            "body1": {
+                "fi": "Mit\u00e4 sinun unelmiesi ulkokattaus sis\u00e4lt\u00e4\u00e4?"
+            },
+            "body2": {
+                "fi": "Onko tarjolla sek\u00e4 suolaista ett\u00e4 makeaa? Haetko sy\u00f6t\u00e4v\u00e4t kaupan hyllylt\u00e4 tai valmistatko jotain itse?"
+            },
+            "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6755865ebcf7601fe5f.jpg",
+            "isRecording": true,
+            "recording": {
+                "title": {
+                    "fi": "Kokoa ev\u00e4skori"
+                },
+                "body1": {
+                    "fi": "Mit\u00e4 sinun unelmiesi ulkokattaus sis\u00e4lt\u00e4\u00e4?"
+                },
+                "body2": {
+                    "fi": "Onko tarjolla sek\u00e4 suolaista ett\u00e4 makeaa? Haetko sy\u00f6t\u00e4v\u00e4t kaupan hyllylt\u00e4 tai valmistatko jotain itse?"
+                },
+                "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6755865ebcf7601fe5f.jpg"
+            },
+            "finish": {
+                "title": {
+                    "fi": "Kiitos herkullisesta vastauksesta!"
+                },
+                "body1": {
+                    "fi": "Viltill\u00e4 tavataan :P"
+                },
+                "body2": {
+                    "fi": "Mutta ensin kutsuvat turistioppaan teht\u00e4v\u00e4t."
+                },
+                "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6755865ebcf7601fe5f.jpg"
+            }
+        },
+        {
+            "itemId": "ad5abbcc-0864-4971-8273-2b2720371ede",
+            "kind": "media",
+            "itemType": "image",
+            "options": [],
+            "typeId": "image/jpeg",
+            "title": {
+                "fi": "Neuvo perille"
+            },
+            "body1": {
+                "fi": "Tapaat Oulussa matkailuohjelma Egenlandin juontajat Nicken ja Hannamarin."
+            },
+            "body2": {
+                "fi": "Neuvo heid\u00e4t ensin kahville (1), sitten puistoon (2) ja lopulta Toripolliisin luokse (3)."
+            },
+            "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6771255ebe898209dad.jpg",
+            "isRecording": true,
+            "recording": {
+                "title": {
+                    "fi": "Miten reitti kulkee?"
+                },
+                "body1": {
+                    "fi": "Neuvo Nicke ja Hannamari kahville (1), sitten puistoon (2) ja lopulta Toripolliisin luokse (3)."
+                },
+                "body2": {
+                    "fi": "Kerro kadut ja mihin p\u00e4in miss\u00e4kin kohtaa tulee k\u00e4\u00e4nty\u00e4."
+                },
+                "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6771255ebe898209dad.jpg"
+            },
+            "finish": {
+                "title": {
+                    "fi": "Menip\u00e4 hyvi, upia homma!"
+                },
+                "body1": {
+                    "fi": "Nicke ja Hannamari voivat l\u00e4hte\u00e4 sukkuloimaan luottavaisin mielin."
+                },
+                "body2": {
+                    "fi": "Sitten viimeinen taustatietokysymys."
+                },
+                "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6771255ebe898209dad.jpg"
+            }
+        },
+        {
+            "itemId": "8bbb8e5d-56a2-4082-9429-233ff2a5e53f",
+            "kind": "prompt",
+            "itemType": "choice",
+            "typeId": null,
+            "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6780915ec2876cc2128.jpg",
+            "options": [
+                {
+                    "fi": "Nainen"
+                },
+                {
+                    "fi": "Mies"
+                },
+                {
+                    "fi": "Muu"
+                },
+                {
+                    "fi": "En halua kertoa"
+                }
+            ],
+            "title": {
+                "fi": "Sukupuoleni"
+            },
+            "body1": {
+                "fi": ""
+            },
+            "body2": {
+                "fi": ""
+            },
+            "isRecording": false
+        },
+        {
+            "itemId": "d803657f-7e0e-43b4-9a0f-26e3b7c87165",
+            "kind": "media",
+            "itemType": "yle-video",
+            "options": [],
+            "typeId": "video/mp4",
+            "title": {
+                "fi": "Kuvaile kes\u00e4nviettoa"
+            },
+            "body1": {
+                "fi": "Saat ulkoavaruudesta vieraita, joilla on videokuvaa suomalaisesta kes\u00e4nvietosta."
+            },
+            "body2": {
+                "fi": "Selosta heille, mit\u00e4 videon tilanteissa tapahtuu. Video alkaa, kun painat \u00c4\u00e4nit\u00e4."
+            },
+            "url": "1-50531498",
+            "isRecording": true,
+            "start": {
+                "title": {
+                    "fi": "Kuvaile kes\u00e4nviettoa"
+                },
+                "body1": {
+                    "fi": "Saat ulkoavaruudesta vieraita, joilla on videokuvaa suomalaisesta kes\u00e4nvietosta."
+                },
+                "body2": {
+                    "fi": "Selosta heille, mit\u00e4 videon tilanteissa tapahtuu. Video alkaa, kun painat \u00c4\u00e4nit\u00e4."
+                },
+                "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6771655ebe98cd8862a.jpg"
+            },
+            "recording": {
+                "title": {
+                    "fi": "Kuvaile kes\u00e4nviettoa"
+                },
+                "body1": {
+                    "fi": "Selosta ulkoavaruuden vieraille, mit\u00e4 kes\u00e4nviettovideossa tapahtuu."
+                },
+                "body2": {
+                    "fi": "Video kest\u00e4\u00e4 2 minuuttia. Voit keskeytt\u00e4\u00e4 videon ja siirty\u00e4 eteenp\u00e4in painamalla Lopeta \u00e4\u00e4nitys."
+                }
+            },
+            "finish": {
+                "title": {
+                    "fi": "Erinomaista selostusta!"
+                },
+                "body1": {
+                    "fi": "N\u00e4in saatiin Suomen suvi maailmankaikkeuden kartalle."
+                },
+                "body2": {
+                    "fi": "Lopuksi siirrymme viel\u00e4 omaan kes\u00e4iseen paikkaan."
+                },
+                "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6771765ebe9b3d4d9cc.jpg"
+            }
+        },
+        {
+            "itemId": "b8caf667-d19d-432c-a82f-707b7e6fbc03",
+            "kind": "media",
+            "itemType": "image",
+            "options": [],
+            "typeId": "image/jpeg",
+            "title": {
+                "fi": "Kerro rakkaasta kes\u00e4paikasta"
+            },
+            "body1": {
+                "fi": "Mik\u00e4 on sinulle t\u00e4rke\u00e4 kes\u00e4paikka, nykyinen tai muistoissa oleva?"
+            },
+            "body2": {
+                "fi": "Rantasauna, huvipuisto, kaupungin vilkkain terassi..."
+            },
+            "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6766405ebe4b3677cef.jpg",
+            "isRecording": true,
+            "recording": {
+                "title": {
+                    "fi": "Kerro rakkaasta kes\u00e4paikasta"
+                },
+                "body1": {
+                    "fi": "Mik\u00e4 on sinulle t\u00e4rke\u00e4 kes\u00e4paikka, nykyinen tai muistoissa oleva?"
+                },
+                "body2": {
+                    "fi": "Miksi paikka on sinulle t\u00e4rke\u00e4? P\u00e4\u00e4setk\u00f6 sinne edelleen?"
+                },
+                "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6766405ebe4b3677cef.jpg"
+            },
+            "finish": {
+                "title": {
+                    "fi": "Kuulostaa hienolta, paljon kiitoksia!"
+                },
+                "body1": {
+                    "fi": "On ollut antoisaa puhua kes\u00e4st\u00e4 kanssasi."
+                },
+                "body2": {
+                    "fi": "Olet nyt saanut kes\u00e4sukelluksesi p\u00e4\u00e4t\u00f6kseen."
+                },
+                "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6766405ebe4b3677cef.jpg"
+            }
+        }
+    ],
+    "start": {
+        "title": {
+            "fi": "Hei kes\u00e4kaveri!"
+        },
+        "body1": {
+            "fi": "Jutellaan rennosti suvesta."
+        },
+        "body2": {
+            "fi": "Ja siis tota, takellella saa, se on osa luonnollista puhetta!"
+        },
+        "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6755795ebcf74ef38f4.jpg"
+    },
+    "finish": {
+        "title": {
+            "fi": "Siisp\u00e4 kiitos kaunis viel\u00e4 kerran!"
+        },
+        "body1": {
+            "fi": "Annoit oman panoksesi siihen, ett\u00e4 arki ja asiointi suomeksi puhumalla helpottuvat."
+        },
+        "body2": {
+            "fi": "Haasta my\u00f6s yst\u00e4v\u00e4si lahjoittamaan puhetta! Tai lahjoita itse lis\u00e4\u00e4."
+        },
+        "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6762015ebd469bb22fd.jpg"
+    }
+}

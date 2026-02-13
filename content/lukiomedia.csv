@@ -1,0 +1,29 @@
+moduuli,element,itemId,kind,itemType,state,title,body1,body2,url,startTime,endTime,isRecording,metaTitle,otherEntryLabel,Mitä näytetään,mitä tallennetaan,
+Tällä ei ole automaation kannalta mitään väliä,"schedule = teema, item = moduuli, state = tila",moduulin (tai teeman) tekninen tunniste,moduulin tyyppi,"moduulin tyyppi (image, yle-video, video, text)","äänittävän moduulin kustomoitava tila (start/recording/finish), tai teeman aloitus/lopetus (start/finish)","moduulin otsikko / 1-2 riviä, riville max. 17 merkkiä (alitiloissa ""inherit""=peritään moduulin päätasolta)","Ns. leipätekstin 1. kappale (alitiloissa ""inherit""=peritään moduulin päätasolta)","Ns. leipätekstin 2. kappale (alitiloissa ""inherit""=peritään moduulin päätasolta)","Kuvan tunniste (kuvamoduuleilla) tai lyhyt teksti (tekstimoduuleilla) / HUOM: ellei tule kumpaakaan, itemTypeksi image ja url-kohtaan null","Numero, montako sekuntia klipin alusta (ei  pakollinen)","Numero, montako sekuntia klipin alusta (ei  pakollinen)","Mediamoduuleilla: true jos äänittävä moduuli, false jos vain näytetään mediaa eikä äänitetä","Moduulin metaotsikon teksti (oletuksena moduulin tyypin perusteella Lahjoitus x/y, Katso tai kuuntele tai Auta tutkijaa). empty = tyhjennä","super-choice-kysymysmoduulissa:  jos tämä on muuta kuin tyhjä, valintalistan oheen tulee tekstikenttä, jonka selitteenä on tämä teksti",harmaa tausta = jätä tyhjäksi,,
+Teeman aloituskuva,schedule,92d22fe6-ae1d-448a-b17d-d8ac9f274f56,media,image,start,Moikka!,Kiva että tulit lahjoittamaan puhetta.,Käytä ihan tavallista puhekieltä. Takeltelu ja pikku tauot eivät haittaa!,39-7388645fa407c96f346,,,,,,,,
+Lahjoita 1/4,item,dced7ced-5889-47b8-8b7c-aef0296ffff7,media,yle-video,,Verrytellään ensin,"Näet kohta tutun meemipätkän. Kerro ääneen, millaiseen tilanteeseen se sopisi.","Video käynnistyy, kun painat Äänitä.",1-50676677,,,TRUE,,,,ei mitään,"arpanopat: 17-5943657a2f6c81bc62
+yo-lakki 39-6116595dcd0926b32c6
+läppärillä koronakeväänä (näitä on muitakin): 39-6668505ea012d506238"
+,state,,,,start,inherit,inherit,inherit,39-7383555fa29db6ed725,,,,,,,,
+,state,,,,recording,Verrytellään ensin,"Mihin tilanteeseen tämä meemi sopii? Voit jatkaa, vaikka video loppuu.","Kun olet valmis, paina Lopeta äänitys.",,,,,,,,,
+,state,,,,finish,Sehän meni hienosti,Puhettasi pääsevät kuulemaan vain tutkijat ja tekoälyn kehittäjät. Tietosuojasta voit lukea lisää aloitussivulta.,Sitten eteenpäin.,39-7386555fa3ca24ea292,,,,,,,,
+Lahjoita 2/4,item,2e60801f-d91b-44cf-b1b0-aba6cd7f635b,media,image,,Pientä tuunausta,Filttereillä kasvoja ja kehoa voi muokata helposti millaiseksi haluaa. Mitä ajattelet niistä?,"Tässä on yksi esimerkki. Kun painat Äänitä, näet toisen.",39-7388495fa3fffb24cc5,,,TRUE,,,,ei mitään,
+,state,,,,recording,Pientä tuunausta,Mitä mieltä olet ulkonäköä muokkaavista filttereistä?,"Näetkö niissä hyvää, huonoa vai molempia?",39-7388505fa4007ba60d9,,,,,,,,
+,state,,,,finish,Hienoa pohdintaa!,"Muuten, yläkulmasta näet paljonko olet jo lahjoittanut.",Seuraavaksi pari nopeaa kysymystä tutkijoiden avuksi.,39-7388545fa40195ae9b0,,,,,,,,
+,item,7e16656e-c88a-465a-b2f3-205b134f01ad,media,image,,Auta tutkijaa,Puheen lahjoittamisen ohessa kysymme sinulta joitakin taustatietoja.,Vastauksista ei voi päätellä henkilöllisyyttäsi.,39-6780905ec2876c0f863,,,FALSE,empty,,,,
+Auta tutkijaa,item,e3264046-a642-46de-a9e7-c55933ee3739,prompt,choice,,Ikäni,,,39-6780905ec2876c0f863,,,FALSE,,,,data,
+Auta tutkijaa,item,fa3ecb10-1128-4c8c-a838-600a0faadc2e,prompt,multi-choice,,Äidinkieleni,,,39-6780895ec2876bc6b15,,,FALSE,,,,data,
+,item,8b1e888a-1ebe-4656-acc4-1941222d87ee,media,image,,Kiitos jos vastasit!,Tutkijat ja suomen kieli hyötyvät näistä tiedoista.,Sitten eteenpäin!,39-6780895ec2876bc6b15,,,FALSE,empty,,,"Mukavaa, jos vastasit taustatietoihin. Tutkijat ja suomen kieli kiittävät.
+
+Sitten eteenpäin.",
+Lahjoita 3/4,item,57255385-6328-49e9-9ecc-7c6abe5e2332,media,image,,Some-suomi -tulkkaus,"Somella on oma kielioppi, jota vanhemmat eivät välttämättä tunne.",Paina Äänitä ja tulkkaa kuvassa näkyvät asiat mummollesi.,39-7388595fa402868c6ed,,,TRUE,,,,ääni,
+,state,,,,recording,Some-suomi -tulkkaus,"Selitä, mitä nämä lyhenteet ja emojit tarkoittavat – tai siis ne, jotka itse tunnet.",,39-7388595fa402868c6ed,,,,,,,,
+,state,,,,finish,Olipa hyvin käännetty!,Kiitokset valistustyöstä :),Seuraavaksi pari sanaa boteista.,39-7387545fa3e51210641,,,,,,,,
+Lahjoita 4/4,item,cae1adbe-e277-4517-b82a-6148f70edd9d,media,image,,Somen botit,"Somessa on profiileja, jotka esittävät ihmistä, mutta niiden takana on osin tai kokonaan tietokoneohjelma.",Millaisia botteja sinä olet kohdannut? Mistä tunnistat sellaisen?,39-7389195fa40d62029eb,,,TRUE,,,,ääni,
+,state,,,,recording,Somen botit,Kerro kokemuksiasi bottiprofiileista.,,39-7389195fa40d62029eb,,,,,,,,
+,state,,,,finish,Kiinnostavia huomioita!,Lopuksi kysymme vielä pari taustatietoa tutkijoille. Kiitos jos vastaat.,,39-7387465fa3e1c4e18f2,,,,,,,,
+Auta tutkijaa,item,8bbb8e5d-56a2-4082-9429-233ff2a5e53f,prompt,choice,,Sukupuoleni,,,39-6780915ec2876cc2128,,,FALSE,,,,data,
+Auta tutkijaa,item,626d3fb5-6b82-4d5d-bdde-1637e571ca28,prompt,super-choice,,Asuinpaikkani,Valikossa ovat Suomen kunnat. Löydät omasi nopeimmin kirjoittamalla nimen alkua.,,39-7179045f5b5eb1e365a,,,FALSE,,"Jos asut Suomen ulkopuolella, kirjoita alle maan nimi.",,,
+Kutsu kaveri,schedule,,media,image,finish,Kiitos kaunis!,Sinun avullasi arki ja asiointi suomeksi puhumalla helpottuvat.        ,"Jos haluat lahjoittaa lisää, voit valita aiheeksi vaikka urheilun, koronan tai eläinystävät.",39-7362295f9b3b14e3633,,,FALSE,,,,ei mitään,
+teemanvalinta-sivun pikkukuva,theme,,,,,,,,39-7388475fa3fc1d44897,,,,,,,,
+jakoteksti,,,,,,,,,,,,,,,,,

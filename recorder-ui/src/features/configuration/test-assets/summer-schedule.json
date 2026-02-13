@@ -1,103 +1,645 @@
 {
   "scheduleId": "664bc028-a92f-435f-8e33-9ab4921476c1",
-  "title": { "fi": "Kesäaikataulu" },
-  "body1": { "fi": "Tervetuloa lahjoittamaan puhetta." },
-  "body2": { "fi": "" },
+  "title": {
+    "fi": "Kesän vietto"
+  },
+  "body1": {
+    "fi": "Jutellaan rennosti suvesta. Takellella saa, se on osa luonnollista puhetta! Tietosi säilyvät anonyymeinä, eivätkä puhettasi kuule muut kuin suomenkielisen tekoälyn kehittäjät."
+  },
+  "body2": {
+    "fi": "Ethän kerro ihmisten koko nimiä tai muita yksityiskohtia, joista sinut tai toiset voisi helposti tunnistaa."
+  },
   "start": {
-    "title": { "fi": "Aloitus" },
-    "body1": { "fi": "Aloitetaan." },
-    "body2": { "fi": "" },
-    "imageUrl": ""
+    "title": {
+      "fi": "Hei kesäkaveri!"
+    },
+    "imageUrl": "kesa/laituri.jpg"
   },
   "finish": {
-    "title": { "fi": "Kiitos!" },
-    "body1": { "fi": "Lahjoitus valmis." },
-    "body2": { "fi": "" },
-    "imageUrl": ""
+    "title": {
+      "fi": "Kiitos, se oli siinä!"
+    },
+    "body1": {
+      "fi": "Haasta myös kaverisi mukaan lahjoittamaan puhetta"
+    },
+    "body2": {
+      "fi": ""
+    }
   },
   "items": [
     {
-      "itemId": "item-1",
+      "itemId": "a4b700d3-2001-4ba4-839d-da721d4e63ed",
       "kind": "media",
-      "itemType": "audio",
-      "options": [],
-      "typeId": "audio/mp3",
-      "title": { "fi": "Äänitystehtävä" },
-      "body1": { "fi": "Lue teksti ääneen." },
-      "body2": { "fi": "Paina äänitä aloittaaksesi." },
-      "url": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-      "isRecording": true,
-      "start": {
-        "title": { "fi": "Äänitystehtävä alkaa" },
-        "body1": { "fi": "Paina äänitä kun olet valmis." },
-        "body2": { "fi": "" },
-        "imageUrl": ""
+      "itemType": "local-image",
+      "typeId": "image/jpeg",
+      "url": "kesa/leppakerttu.jpg",
+      "title": {
+        "fi": "Harjoitellaan ensin!"
       },
+      "body1": {
+        "fi": "Testataan ensin että mikrofonisi on päällä."
+      },
+      "body2": {
+        "fi": "Paina Äänitä-nappia ja laske sitten ääneen leppäkertussa näkyvät pilkut."
+      },
+      "imageUrl": "kesa/leppakerttu.jpg",
+      "options": [],
+      "isRecording": true,
       "recording": {
-        "title": { "fi": "Äänitetään" },
-        "body1": { "fi": "Puhu nyt." },
-        "body2": { "fi": "" },
-        "imageUrl": ""
+        "title": {
+          "fi": "Lahjoitus käynnissä"
+        }
       },
       "finish": {
-        "title": { "fi": "Äänitys valmis" },
-        "body1": { "fi": "Hyvin tehty!" },
-        "body2": { "fi": "" },
-        "imageUrl": ""
+        "title": {
+          "fi": "Kiitos, hyvin meni!"
+        },
+        "body1": {
+          "fi": "Näin helppoa puheen lahjoittaminen on. Jatketaan eteenpäin."
+        },
+        "body2": {
+          "fi": ""
+        }
       }
     },
     {
-      "itemId": "item-2",
+      "itemId": "74838f03-9193-483c-b27c-66586b35c2d6",
       "kind": "media",
-      "itemType": "image",
+      "itemType": "local-image",
+      "typeId": "image/jpeg",
+      "url": "kesa/kumivene.jpg",
+      "title": {
+        "fi": "Mitä tapahtuu?"
+      },
+      "body1": {
+        "fi": "Kerro seuraavaksi, mitä näet kuvassa."
+      },
+      "body2": {
+        "fi": "Kun olet valmis, paina LOPETA ÄÄNITYS."
+      },
       "options": [],
-      "typeId": "image/png",
-      "title": { "fi": "Toinen moduuli: Kuva" },
-      "body1": { "fi": "Kuvaile näkemäsi." },
-      "body2": { "fi": "Voit kertoa vapaasti." },
-      "url": "https://homepages.cae.wisc.edu/~ece533/images/monarch.png",
-      "isRecording": false,
-      "start": {
-        "title": { "fi": "Toinen moduuli: Kuva" },
-        "body1": { "fi": "Kuvaile näkemäsi." },
-        "body2": { "fi": "Voit kertoa vapaasti." },
-        "imageUrl": ""
+      "isRecording": true,
+      "recording": {
+        "title": {
+          "fi": "Voit esimerkiksi kertoa..."
+        },
+        "body1": {
+          "fi": "Missä ollaan? Keitä kuvassa on ja mitä he tekevät? Entä mitä kuvan ottamisen jälkeen tapahtui?"
+        },
+        "body2": {
+          "fi": ""
+        }
+      },
+      "finish": {
+        "title": {
+          "fi": "Kiitos selostuksesta!"
+        },
+        "body1": {
+          "fi": "Puhepankki on taas monta sanaa rikkaampi!"
+        },
+        "body2": {
+          "fi": ""
+        }
       }
     },
     {
-      "itemId": "item-3",
+      "itemId": "e3264046-a642-46de-a9e7-c55933ee3739",
       "kind": "prompt",
       "itemType": "text",
+      "typeId": null,
+      "url": null,
+      "title": {
+        "fi": "Ikäni"
+      },
+      "body1": {
+        "fi": "Puhekielen tutkijoille on tärkeää tietää puhujan ikä."
+      },
+      "body2": {
+        "fi": "Ole hyvä ja valitse oikea ikäryhmä valikosta. Kiitos!"
+      },
+      "options": [
+        {
+          "fi": "1-10 vuotta"
+        },
+        {
+          "fi": "11-20 vuotta"
+        },
+        {
+          "fi": "21-30 vuotta"
+        },
+        {
+          "fi": "31-40 vuotta"
+        },
+        {
+          "fi": "41-50 vuotta"
+        },
+        {
+          "fi": "51-60 vuotta"
+        },
+        {
+          "fi": "61-70 vuotta"
+        },
+        {
+          "fi": "71-80 vuotta"
+        },
+        {
+          "fi": "81-90 vuotta"
+        },
+        {
+          "fi": "91-100 vuotta"
+        },
+        {
+          "fi": "101+ vuotta"
+        }
+      ],
+      "isRecording": false
+    },
+    {
+      "itemId": "4ce0a50a-613c-4ada-b473-9400f833aa42",
+      "kind": "media",
+      "itemType": "local-image",
+      "typeId": "image/jpeg",
+      "url": "kesa/ranta_etsi-erot.jpg",
+      "title": {
+        "fi": "Etsi eroavaisuudet"
+      },
+      "body1": {
+        "fi": "Ranta kutsuu! Kuvissa on 3 eroavaisuutta. Etsi ne ääneen ajatellen."
+      },
+      "body2": {
+        "fi": ""
+      },
       "options": [],
-      "typeId": "text/plain",
-      "title": { "fi": "Kuinka kauan olet asunut Suomessa?" },
-      "body1": { "fi": "Kirjoita vastauksesi." },
-      "body2": { "fi": "" },
-      "url": "",
-      "isRecording": false,
-      "start": {
-        "title": { "fi": "Kuinka kauan olet asunut Suomessa?" },
-        "body1": { "fi": "Kirjoita vastauksesi." },
-        "body2": { "fi": "" },
-        "imageUrl": ""
+      "isRecording": true,
+      "recording": {
+        "title": {
+          "fi": "Lahjoitus käynnissä"
+        },
+        "body1": {
+          "fi": "Annathan pähkäilysi kuulua!"
+        },
+        "body2": {
+          "fi": ""
+        }
+      },
+      "finish": {
+        "title": {
+          "fi": "Hyvää työtä, haukansilmä!"
+        },
+        "body1": {
+          "fi": ""
+        },
+        "body2": {
+          "fi": ""
+        },
+        "imageUrl": "kesa/ranta_etsi-erot.jpg"
       }
     },
     {
-      "itemId": "item-4",
+      "itemId": "8bbb8e5d-56a2-4082-9429-233ff2a5e53f",
+      "kind": "prompt",
+      "itemType": "choice",
+      "typeId": null,
+      "url": null,
+      "title": {
+        "fi": "Sukupuoleni"
+      },
+      "body1": {
+        "fi": "Hienoa! Seuraavaksi kysymme pientä nopeata faktaa: kerro sukupuolesi - jos haluat."
+      },
+      "body2": {
+        "fi": ""
+      },
+      "options": [
+        {
+          "fi": "Nainen"
+        },
+        {
+          "fi": "Mies"
+        },
+        {
+          "fi": "Muu"
+        },
+        {
+          "fi": "En halua kertoa"
+        }
+      ],
+      "isRecording": false
+    },
+    {
+      "itemId": "d94432f8-8b01-430a-9289-6a941e5e89e8",
       "kind": "media",
-      "itemType": "text",
+      "itemType": "local-image",
+      "typeId": "image/png",
+      "url": "kesa/saakartta.png",
+      "title": {
+        "fi": "Kerro sääennuste"
+      },
+      "body1": {
+        "fi": "Kaikissa meissä asuu pieni meteorologi! Ole Kerttu ja esittele päivän sää."
+      },
+      "body2": {
+        "fi": ""
+      },
       "options": [],
-      "typeId": "text/plain",
-      "title": { "fi": "Kiitos vastauksestasi" },
-      "body1": { "fi": "Jatketaan seuraavaan." },
-      "body2": { "fi": "" },
-      "url": "Kiitos!",
-      "isRecording": false,
-      "start": {
-        "title": { "fi": "Kiitos vastauksestasi" },
-        "body1": { "fi": "Jatketaan seuraavaan." },
-        "body2": { "fi": "" },
-        "imageUrl": ""
+      "isRecording": true,
+      "recording": {
+        "title": {
+          "fi": "Lahjoitus käynnissä"
+        },
+        "body1": {
+          "fi": "Millaisia lämpötiloja saadaan? Jyriseekö jossain?"
+        },
+        "body2": {
+          "fi": ""
+        }
+      },
+      "finish": {
+        "title": {
+          "fi": "Pätevää ennustamista!"
+        },
+        "body1": {
+          "fi": "Onnittelut ensiesiintymisestä, hyvin meni!"
+        },
+        "body2": {
+          "fi": ""
+        }
+      }
+    },
+    {
+      "itemId": "b7b2ddad-2b77-421e-a125-65339dbd3d23",
+      "kind": "media",
+      "itemType": "local-image",
+      "typeId": "image/jpeg",
+      "url": "kesa/joulupukki.jpg",
+      "title": {
+        "fi": "Kerro kuvasta"
+      },
+      "body1": {
+        "fi": "Kerro, mitä kuvassa tapahtuu. Mikä kuvassa on erikoista?"
+      },
+      "body2": {
+        "fi": ""
+      },
+      "options": [],
+      "isRecording": true,
+      "finish": {
+        "title": {
+          "fi": "Hyvin kerrottu, paljon kiitoksia!"
+        },
+        "body1": {
+          "fi": ""
+        },
+        "body2": {
+          "fi": ""
+        }
+      }
+    },
+    {
+      "itemId": "fa0b9c72-5ee6-460f-94ad-b30fa116f635",
+      "kind": "media",
+      "itemType": "local-image",
+      "typeId": "image/jpeg",
+      "url": "kesa/EI_YLEN_EI_VOI_KAYTTAA_LOPULLISESSA_ohje.jpg",
+      "title": {
+        "fi": "Selosta ohjeet"
+      },
+      "body1": {
+        "fi": "Apuasi tarvitaan! Neuvo kukkaseppeleen tai lintupöntön tekeminen."
+      },
+      "body2": {
+        "fi": "Selosta kuvitettu ohjeistus siten, kuin kertoisit sen ensikertalaiselle."
+      },
+      "options": [],
+      "isRecording": true,
+      "finish": {
+        "title": {
+          "fi": "Hyvin kerrottu, paljon kiitoksia!"
+        },
+        "body1": {
+          "fi": ""
+        },
+        "body2": {
+          "fi": ""
+        }
+      }
+    },
+    {
+      "itemId": "fa3ecb10-1128-4c8c-a838-600a0faadc2e",
+      "kind": "prompt",
+      "itemType": "choice",
+      "typeId": null,
+      "url": null,
+      "title": {
+        "fi": "Äidinkieli"
+      },
+      "body1": {
+        "fi": "Meitä suomen puhujia on moneksi, joten myös äidinkielesi on tärkeä tieto tutkijoille. Valitse oma tai omat äidinkielesi valikoista."
+      },
+      "body2": {
+        "fi": ""
+      },
+      "options": [
+        {
+          "fi": "suomi"
+        },
+        {
+          "fi": "ruotsi"
+        },
+        {
+          "fi": "saame (pohjoissaame)"
+        },
+        {
+          "fi": "saame (inarinsaame)"
+        },
+        {
+          "fi": "saame (koltansaame)"
+        },
+        {
+          "fi": "venäjä"
+        },
+        {
+          "fi": "viro (eesti)"
+        },
+        {
+          "fi": "arabia"
+        },
+        {
+          "fi": "somali"
+        },
+        {
+          "fi": "englanti"
+        },
+        {
+          "fi": "kurdi"
+        },
+        {
+          "fi": "persia (farsi)"
+        },
+        {
+          "fi": "kiina"
+        },
+        {
+          "fi": "muu kuin suomi"
+        }
+      ],
+      "isRecording": false
+    },
+    {
+      "itemId": "285eac4e-d937-40a8-afb2-0844ea6a2a81",
+      "kind": "media",
+      "itemType": "local-image",
+      "typeId": "image/jpeg",
+      "url": "kesa/pariskunta.jpg",
+      "title": {
+        "fi": "Yksityiskohtainen kuvailu"
+      },
+      "body1": {
+        "fi": "Näit tämän kaksikon murtautuvan naapurisi kesämökille."
+      },
+      "body2": {
+        "fi": "Kuvaile heidän ulkonäköään mahdollisimman tarkasti."
+      },
+      "options": [],
+      "isRecording": true
+    },
+    {
+      "itemId": "6ef34957-41e7-487e-aa0c-a40c93ed9251",
+      "kind": "prompt",
+      "itemType": "choice",
+      "typeId": null,
+      "url": null,
+      "title": {
+        "fi": "Murretaustani"
+      },
+      "body1": {
+        "fi": "Vielä yksi tieto! Tarvitsemme kaikenlaisia suomen kielen sävyjä - miltä alueelta koet oman puhetapasi tulevan?"
+      },
+      "body2": {
+        "fi": ""
+      },
+      "options": [
+        {
+          "fi": "Uusimaa"
+        },
+        {
+          "fi": "Varsinais-Suomi"
+        },
+        {
+          "fi": "Satakunta"
+        },
+        {
+          "fi": "Häme"
+        },
+        {
+          "fi": "Pirkanmaa"
+        },
+        {
+          "fi": "Päijät-Häme"
+        },
+        {
+          "fi": "Kymenlaakso"
+        },
+        {
+          "fi": "Etelä-Karjala"
+        },
+        {
+          "fi": "Etelä-Savo"
+        },
+        {
+          "fi": "Pohjois-Savo"
+        },
+        {
+          "fi": "Pohjois-Karjala"
+        },
+        {
+          "fi": "Keski-Suomi"
+        },
+        {
+          "fi": "Etelä-Pohjanmaa"
+        },
+        {
+          "fi": "Pohjanmaa"
+        },
+        {
+          "fi": "Keski-Pohjanmaa"
+        },
+        {
+          "fi": "Pohjois-Pohjanmaa"
+        },
+        {
+          "fi": "Kainuu"
+        },
+        {
+          "fi": "Lappi"
+        },
+        {
+          "fi": "Ahvenanmaa"
+        },
+        {
+          "fi": "Muualta kuin Suomesta"
+        }
+      ],
+      "isRecording": false
+    },
+    {
+      "itemId": "13bac87d-c97f-4433-ae08-574ed478b51c",
+      "kind": "media",
+      "itemType": "local-image",
+      "typeId": "image/jpeg",
+      "url": "kesa/ruoat.jpg",
+      "title": {
+        "fi": "Kerro kesäherkkusi"
+      },
+      "body1": {
+        "fi": "Suvi on herkuttelijan kulta-aikaa. Mikä on sinun suosikkisi?"
+      },
+      "body2": {
+        "fi": ""
+      },
+      "options": [],
+      "isRecording": true,
+      "recording": {
+        "title": {
+          "fi": "Kesäruoka"
+        },
+        "body1": {
+          "fi": "Mikä tekee siitä kesäpöydän kohokohdan? Miten nautittuna se on parhaimmillaan?"
+        },
+        "body2": {
+          "fi": ""
+        }
+      },
+      "finish": {
+        "title": {
+          "fi": "Kiitos ja om nom!"
+        },
+        "body1": {
+          "fi": ""
+        },
+        "body2": {
+          "fi": ""
+        }
+      }
+    },
+    {
+      "itemId": "ad5abbcc-0864-4971-8273-2b2720371ede",
+      "kind": "media",
+      "itemType": "local-image",
+      "typeId": "image/jpeg",
+      "url": "kesa/opasta.png",
+      "title": {
+        "fi": "Neuvo perille"
+      },
+      "body1": {
+        "fi": "Pääset yllättäen matkaoppaaksi."
+      },
+      "body2": {
+        "fi": "Miten ohjaat Egenland-matkailuohjelman Nicken ja Hannamarin (lähtöpisteenä punainen ruksi) Toripoliisin luokse?"
+      },
+      "options": [],
+      "isRecording": true,
+      "recording": {
+        "title": {
+          "fi": "Lahjoitus käynnissä"
+        },
+        "body1": {
+          "fi": "Kerro kadun nimet ja mihin suuntaan tulee kääntyä."
+        },
+        "body2": {
+          "fi": ""
+        }
+      },
+      "finish": {
+        "title": {
+          "fi": "Kiitos, uppeeta!"
+        },
+        "body1": {
+          "fi": "Nicke ja Hannamari tägäävät sinut varmasti matkakuviinsa."
+        },
+        "body2": {
+          "fi": ""
+        }
+      }
+    },
+    {
+      "itemId": "41e9bb31-89b2-45ab-94aa-c1d07b40b35f",
+      "kind": "media",
+      "itemType": "local-image",
+      "typeId": "image/jpeg",
+      "url": "kesa/teltta.jpg",
+      "title": {
+        "fi": "Anna ohje"
+      },
+      "body1": {
+        "fi": "Loppusuoralla ollaan ja silmät voi jo melkein ummistaa aurinkotuolissa, mutta ensin pitää saada naapurit lopettamaan sähläyksensä."
+      },
+      "body2": {
+        "fi": "Kerro omin sanoin, niin tarkasti kuin osaat, miten teltta pystytetään."
+      },
+      "options": [],
+      "isRecording": true,
+      "recording": {
+        "title": {
+          "fi": "Lahjoitus käynnissä"
+        },
+        "body1": {
+          "fi": "Ainakin naapureille on hyvä kertoa teltan toimintaperiaate :)"
+        },
+        "body2": {
+          "fi": ""
+        }
+      },
+      "finish": {
+        "title": {
+          "fi": "Kiitos, eiköhän homma ala sujua!"
+        },
+        "body1": {
+          "fi": ""
+        },
+        "body2": {
+          "fi": ""
+        }
+      }
+    },
+    {
+      "itemId": "f753b74c-ec45-49f7-b0b2-bd1697d66e47",
+      "kind": "media",
+      "itemType": "local-image",
+      "typeId": "image/jpeg",
+      "url": "kesa/sammakko.jpg",
+      "title": {
+        "fi": "Kerro kesämuisto"
+      },
+      "body1": {
+        "fi": "Tuleeko mieleesi jokin kesäinen tuokio, josta voisit kertoa meille?"
+      },
+      "body2": {
+        "fi": ""
+      },
+      "options": [],
+      "isRecording": true,
+      "recording": {
+        "title": {
+          "fi": "Lahjoitus käynnissä"
+        },
+        "body1": {
+          "fi": "Mitä silloin tapahtui? Keitä oli paikalla? Miksi se on jäänyt mieleen?"
+        },
+        "body2": {
+          "fi": ""
+        }
+      },
+      "finish": {
+        "title": {
+          "fi": "Hienoa muistelua, kiitos paljon!"
+        },
+        "body1": {
+          "fi": "Voit halutessasi tehdä tämän tehtävän uudestaan myöhemmin, mutta nyt voisimme kuitenkin jo jatkaa matkaa!"
+        },
+        "body2": {
+          "fi": ""
+        }
       }
     }
   ]

@@ -32,3 +32,21 @@
   padding-top: 0.1rem;
   padding-bottom: 0.1rem;
 }
+
+.navbar-langchoice-container {
+    padding-left: 0.7em;
+    float: right;
+}
+
+.navbar-langchoice {
+    cursor: pointer;
+}
+
+.navbar-langchoice-divider {
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+}
+
+.navbar-langchoice-selected {
+    font-weight: 700;
+}

@@ -1,48 +1,45 @@
 #!/usr/bin/env node
-import "source-map-support/register";
-import * as cdk from "aws-cdk-lib";
-import { RecorderCI } from "../lib/recorder-ci";
-import { RecorderBackendResources } from "../lib/recorder-backend-resources";
-import { RecorderWAF } from "../lib/recorder-waf";
+import 'source-map-support/register';
+import * as cdk from '@aws-cdk/core';
+import { VakeCI } from '../lib/vake-ci';
+import { VakeBackendResources } from '../lib/vake-backend-resources';
+import { VakeWAF } from '../lib/vake-waf';
+import { VakeStaticSite } from '../lib/vake-frontend-hosting';
 
 const app = new cdk.App();
 
-const env = process.env["ENV"] || "dev";
+const env = process.env['ENV'] || 'dev'
 
-let subdomain = "";
+let subdomain = ""
 
-if (env === "dev") subdomain = "dev";
+if(env === 'dev') subdomain = "dev"
 
-const domain = "example.com";
+const domain = "lahjoitapuhetta.fi"
 
-new RecorderCI(app, "RecorderBackendCI", {
-  env: {
-    region: "eu-west-1",
-  },
-});
+new VakeCI(app, 'VakeBackendCI', { env: { 
+    region: 'eu-west-1'
+}});
 
-const euRegion = {
-  env: {
-    region: "eu-west-1",
-    account: process.env["CDK_DEFAULT_ACCOUNT"],
-  },
-};
+const euRegion = { 
+                    env: { 
+                        region: 'eu-west-1',
+                        account: process.env['CDK_DEFAULT_ACCOUNT']
+                    }
+                 }
 
-const usRegion = {
-  env: {
-    region: "us-east-1",
-    account: process.env["CDK_DEFAULT_ACCOUNT"],
-  },
-};
+const usRegion = { env: { 
+                        region: 'us-east-1',
+                        account: process.env['CDK_DEFAULT_ACCOUNT']
+                  }}
 
-new RecorderBackendResources(
-  app,
-  "RecorderBackendResources",
-  {
-    domainName: domain,
-    siteSubDomain: subdomain,
-  },
-  euRegion,
-);
+new VakeBackendResources(app, 'VakeBackendResources', { 
+        domainName : domain, 
+        siteSubDomain : subdomain,
+    }, euRegion);
 
-new RecorderWAF(app, "RecorderWAF", usRegion);
+new VakeWAF(app, 'VakeWAF', usRegion);
+
+new VakeStaticSite(app, "VakeStaticSite", { 
+        domainName : domain, 
+        siteSubDomain : subdomain,
+    }, euRegion)

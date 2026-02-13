@@ -1,0 +1,51 @@
+{
+    "scheduleId": "09f0000c-c656-4e33-8caf-19ba765b1153",
+    "title": "Testausajolista 5",
+    "description": "Testausajolista 5:n tarkempi kuvaus",
+    "items": [
+        {
+            "itemId": "73822805-dc38-491d-bb61-6d7c6a5aa73c",
+            "kind": "media",
+            "itemType": "text",
+            "typeId": "text/plain",
+            "url": null,
+            "title": "L\u00e4mmittely",
+            "description": "T\u00e4m\u00e4 on ajolistan ensimmäinen moduuli, jossa tallennus ei vielä ole päällä. Kun jatkat eteenpäin, tallennus alkaa.",
+            "options": [],
+            "isRecording": false
+        },
+        {
+            "itemId": "19bceb58-da3e-4155-a391-14d010ef8f9f",
+            "kind": "media",
+            "itemType": "yle-video",
+            "typeId": null,
+            "url": "1-50484817",
+            "title": "Yle Uutiset klo 7.30",
+            "description": "Tarkempi kuvaus videosta tulee tähän.",
+            "options": [],
+            "isRecording": true
+        },
+        {
+            "itemId": "533c4c87-13c5-43be-a1fa-9017dcc6637f",
+            "kind": "prompt",
+            "itemType": "text",
+            "typeId": "text/plain",
+            "url": null,
+            "title": "Huolettaako korona?",
+            "description": "Huolestuttaako koronavirustilanne sinua?",
+            "options": [],
+            "isRecording": true
+        },
+        {
+            "itemId": "cb196bd3-b793-43e8-bb34-cecece443694",
+            "kind": "media",
+            "itemType": "yle-video",
+            "typeId": null,
+            "url": "1-50483050",
+            "title": "Urheilua: Kaisa M\u00e4k\u00e4r\u00e4inen",
+            "description": "T\u00e4m\u00e4n vanhan urheiluhetken Kaisa M\u00e4k\u00e4r\u00e4inen halusi nostaa esiin - kuvaa ampumahiihdon luonnetta",
+            "options": [],
+            "isRecording": true
+        }
+    ]
+}

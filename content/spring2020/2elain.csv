@@ -1,0 +1,115 @@
+moduuli,element,itemId,kind,itemType,state,title,body1,body2,url,startTime,endTime,isRecording,"HUOM! 
+
+
+",kuva nähtävänä tai videon nimi Areenassa
+"tämän sarakkeen sisältöä ei käytetä missään, se on vain apuna tekijälle","schedule = teema, item = moduuli, state = tila",moduulin (tai teeman) tekninen tunniste,moduulin tyyppi,"moduulin tyyppi (image, yle-video, video, text)","äänittävän moduulin kustomoitava tila, tai teeman aloitus/lopetus","moduulin otsikko / 1-2 riviä, riville max. 17 merkkiä",Ns. leipätekstin 1. kappale,Ns. leipätekstin 2. kappale,"Kuvan tunniste (kuvamoduuleilla) tai lyhyt teksti (tekstimoduuleilla) / HUOM: ellei tule kumpaakaan, itemTypeksi image ja url-kohtaan null","Numero, montako sekuntia klipin alusta (ei pakollinen)","Numero, montako sekuntia klipin alusta (ei  pakollinen)", ,"Jos videon copyright täytyy kertoa: Videomoduulille täytyy tehdä kuva, jossa lukee copyrightit. Viimeisen framen idealla. Kuva näytetään,  kun äänitys on lopetettu ja käyttäjälle kerrotaan kiitokset ja hän voi valita “Kokeile uudelleen” tai “Seuraava”. Eli videomoduulin 3. vaiheessa. 
+",
+Teeman aloituskuva,schedule,3a73d87a-8856-4ca0-9af2-da66c99a95f9,,,start,Tervetuloa!,"Hienoa, että haluat lahjoittaa puhettasi.","Mukanasi kulkee luontotoimittaja Minna Pyykkö. 
+
+","39-6757025ebd0893cd7e3
+
+",,,,,Minna Pyykkö
+Katso ja kuuntele,item,b960cbf1-4338-4f80-bb9b-c48ce282b800,media,yle-video,,Oppaana Minna Pyykkö,"Eläimet merkitsevät minulle paljon. Tänä aamuna seurasin, kun kottarainen vieraili talipalloilla. ","Harjoitellaan kohta: Kerro, mitä sinun eläinystäväsi syö aamuisin.",1-50525862,,,FALSE,,Lahjoita puhetta Minna1
+Lahjoita 1,item,3e9baccc-5691-4df3-a454-43fcdeefaf61,media,image,,Kerro aamiaisesta,"Voit kertoa lemmikistä tai muusta eläimestä. Paina Äänitä-nappia, kun olet valmis puhumaan.","Kun olet valmis, paina Lopeta äänitys.",39-6757015ebd0893b2733,,,TRUE,"Katja vaihtoi titleä 25.5.
+
+kuvassa orava",
+,state,,media,image,finish,Hyvin meni!,Sitten eteenpäin.,,39-6757015ebd0893b2733,,,,"Katja lisäsi rivin 27.5.20 / HUOM: Tyhjät bodyt 
+
+Katja lisäsi body 1tekstin 28.5.20
+",
+Katso ja kuuntele,item,4fb90326-ab49-4d34-ad05-70e07d6d3681,media,yle-video,,Auta eläintä,"Muista, että kaikki epäröinnit ovat aitoa puhekieltä eli vain plussaa. 
+",Nyt saat auttaa pulassa olevaa vuohta. Anna vuohelle ohjeita: mikä jalka pitäisi nostaa ja minne kääntyä?,1-50525863,,,FALSE,Katja muokkasi body1:ä 27.5.20,Lahjoita puhetta Minna2
+Lahjoita 2,item,a32c156d-aaa6-492d-bd9a-730cae6fc559,media,image,,Auta eläintä,"Neuvo vuohiparkaa juurta jaksain! 
+
+",Mikä jalka ensin?,39-6757055ebd0895a55a4,,,TRUE,Katja lisäsi body2-tekstin 26.5.20,
+Lahjoita 2,state,,media,image,finish,Kiitos!,"Sehän meni hienosti! 
+
+",,39-6783415ec39ce3c3b63,,,,Katja poisti body2:n 28.5.20,vuohi ilman narua
+Katso ja kuuntele,item,26fd8531-ffd7-451b-9971-caf7cb02432f,media,yle-video,,Seuraavaksi kuva-arvoitus,"Pieni juttu: Puhettasi pääsevät kuulemaan vain tutkijat ja tekoälyn kehittäjät. 
+
+
+",Sitten vesille ja ratkomaan kuva-arvoitusta. Kuva paljastuu vähän kerrallaan. ,1-50525865,,,FALSE,"Katja korjasi Body1:a 9.6.20 
+
+Katja muutti titleä 25.5.20 ja 28.5.20",Lahjoita puhetta Minna3
+Lahjoita 3,item,75a509cc-e481-4d47-87d4-23c3f0693234,media,yle-video,,Kuva-arvoitus,"Päina Äänitä ja arvaile, mitä kuvasta paljastuu.",Kuva aukeaa 15 sekunnin välein.,1-50526958,,,TRUE,"Katja muutti bodyja 9.6.20. 
+
+Katja muutti titleä ja body1-tekstiä ja lisäsi body2-tekstin 25.5.20
+
+Videolla 4 kuvaa peräkkäin 15 sekunnin välein. Aikaa kuvaava palkki mukana",
+Lahjoita 3,state,,,,finish,Mainiota!,"Olet päässyt kunnolla rupattelun vauhtiin. 
+
+",Lahjoittamasi puheaika näkyy ylhäällä oikealla ja hyvältä näyttää!,39-6756965ebd088d7d529,,,,Onhan kuva nyt oikeassa paikassa (kuvassa lokkeja taivaalla)?,lokkeja taivaalla
+Auta tutkijaa ,item,349828e1-f848-4459-aa96-e2aaebebbdc9,media,yle-video,,Murretaustani,"Äitini kotikylässä viännettiin savvoo niin, että digilaitteet olisivat menneet siitä solmuun.",Siksi on tärkeää saada talteen kaikenlaista puhetta. Auta tutkijoita ja kerro omasta taustasi vähän.,1-50525866,,,FALSE,,Lahjoita puhetta Minna4
+Auta tutkijaa ,item,6ef34957-41e7-487e-aa0c-a40c93ed9251,prompt,choice,,Murretaustani,"Valitse valikosta maakunta tai alue, joka on eniten vaikuttanut tapaasi puhua.",,39-6780835ec286469a1be,,,,Katja muokkasoi body1-tekstiä ja lisäsi body2:n 25-5-20. Katja poisti body2:n 1.6.20.,
+Auta tutkijaa ,item,7ef08efb-38ad-4ce2-87c5-d78bd1713538,media,image,,Kiitos jälleen!,Taustatiedoista sinua ei voi tunnistaa.,Sitten eteenpäin!,39-6757045ebd08952603c,,,FALSE,katja lisäsi body2:n,lintu syö siementä kädeltä
+Katso ja kuuntele,item,b9703a07-f9b1-440f-bc1b-4ba99becf841,media,yle-video,,Leiki selostajaa,"Luulitko, että kissat eivät osaa uida? Kohta näet mitä tapahtuu, kun kissa joutuu veteen. 
+
+",Tsemppaa kissaa omaan tyyliisi. Päästä sisäinen Antero Mertarantasi valloilleen!,1-50525868,,,FALSE,Katja muokkasi titleä 25.5.,Lahjoita puhetta Minna5
+Lahjoita 4,item,eae563dd-2116-4026-b4ef-c0c874bbda1e,media,yle-video,,Leiki selostajaa,"Video kestää minuutin.
+
+",,1-50547234,,,TRUE,Katja vaihtoi urlin ja poisti startTimen ja endTimen 4.6.20,
+Lahjoita 4,state,,,,finish,Huikea tsemppimeininki!,"Kerro seuraavaksi, miten oma tai ystävän lemmikki olisi selviytynyt vastaavasta uintimatkasta. 
+
+",,39-6758545ebd1998a7df6 ,,,,Katja muutti body1-tekstiä ja poisti body2-tekstin 25.5.20,
+Lahjoita 5,item,d29502f0-6358-4e98-acd9-7ac3393b7b42,media,image,,Lemmikkini ui,"Pohdi, puhu ja pulise vapaasti!",,39-6756985ebd08907392f,,,TRUE,Katja lisäsi body1-tekstin 25.5.20,
+,state,,media,image,finish,Hyvin kerrottu!,Paljon kiitoksia.,,39-6756985ebd08907392f,,,,"Katja korjasi titleä ja body1:a 9.6.20
+
+Katja lisäsi rivin 27.5.20 / HUOM: tyhjät bodyt",
+Auta tutkijaa,item,830f0257-4c31-4b4e-9dc5-9a1f7aa19424,media,yle-video,,Pysy mukana...,"... niin pääset pienelle nostalgiamatkalle.
+
+",Kerro sitä ennen pari taustatietoa tutkijoille. ,1-50525869,,,FALSE,Katja muokkasi titleä ja body1:ä 27.5.20,Lahjoita puhetta Minna6
+Auta tutkijaa,item,e3264046-a642-46de-a9e7-c55933ee3739,prompt,choice,,Ikäni,Valitse valikosta ikäryhmäsi.,,39-6780905ec2876c0f863,,,,Katja lisäsi body1:n 25.5.20,
+Auta tutkijaa,item,8bbb8e5d-56a2-4082-9429-233ff2a5e53f,prompt,choice,,Sukupuoleni,,,39-6780915ec2876cc2128,,,,,
+Auta tutkijaa,item,da7b10cf-ce15-4d44-8ffd-56d521652080,media,image,,Kiitos ...,... jos kerroit taustatietoja. ,,39-6757035ebd0894a50bc,,,FALSE,,lehmä ja sen kieli
+Katso ja kuuntele,item,bb4e193e-3c26-4b2c-a849-7958531b068a,media,yle-video,,Tunnista koirat,"
+Kohta näet kolme koiraa, jotka ainakin minulle ovat tuttuja. 
+
+","Muistele ääneen, mitä nämä veijareita ovat ja mitä muistoja niistä herää.",1-50525870,,,FALSE,,Lahjoita puhetta Minna7
+Lahjoita 6,item,4b5d4244-1ca6-471e-a3ec-3331f431e5b3,media,image,,Tunnista koirat,Mitä muistoja näistä herää?,"Jos et tunnista koiria, kerro vapaasti, mitä näet kuvassa.",39-6756995ebd08915b1cd,,,TRUE,Katja muutti body1-kenttää ja lisäsi tekstiä body2-kenttään,Ransu ja kaverit
+Lahjoita 6,state,,,,finish,Hyvin pyyhkii!,"Siinähän ovat Pikku Kakkosessa vuodesta 1978 asti seikkailleet Karvakuonot:
+","Riku, Eno-Elmeri sekä Ransu.",39-6756995ebd08915b1cd,,,FALSE,,Ransu ja kaverit
+,item,18d88f49-15ce-4d7b-97d6-f7ffc833dad7,media,image,,Arvaa eläin,Kohta pääset mukaan arvausleikkiin Ransun ja Elina-tytön matkaan. ,Katso ensin lyhyt video.,39-6786995ec4ca2d1636e,,,FALSE,,"Elina, Ransu ja tyhjä tv-ruutu"
+Katso ja kuuntele,item,7a49037b-c581-44b1-a925-e3f285da2047,media,yle-video,,Arvaa eläin,"Katso videolta, kuinka Ransu yrittää päästä vähällä.",,1-50548988,,,FALSE,"Katja vaihtoi urlia ja posti startTimen ja endTimen 4.6.20.
+
+Katja lisäsi body1-tekstin 25.5..
+
+HUOM! TÄMÄN KLIPIN KÄYTTÖOIKEUS ON VARMISTETTU - LUPA KÄYTTÄÄ ON SAATU MYÖS RANSUN OIKEUKSIEN VALVOJALTA",
+Katso ja kuuntele,item,46829f15-972e-496b-9dd0-fa70bc4895e8,media,yle-video,,Arvaa eläin,"Kissa se ei ole, mikä siis?
+
+
+","Arvaile ääneen, mikä eläin ruudusta paljastuu.",1-50525871,,,FALSE,,Lahjoita Minna8
+Lahjoita 7,item,f46d435f-5c62-448b-9492-ab11e6758d00,media,yle-video,,Arvaa eläin,Mikä eläin on kyseessä?,Paina Äänitä ja höpöttele Ransunkin puolesta.,1-50526959,,,TRUE,"Katja muokkasi body2:a 9.6.20
+
+Katja lisäsi body2-tekstin 28.5.20.
+
+Sama klippi jatkuu nyt ilman ääniä ja editoituna noin 1 minuutin klipiksi. 
+
+",
+Lahjoita 7,state,,media,image,finish,Taisi olla helppoa?,"Tattista taas!
+
+",Nyt voit auttaa tutkijoita vielä viimeisellä taustatiedolla. Kerro äidinkielesi. ,39-6760035ebd2d2639f5a,,,,,Elina ja Ransu ja lammas näkyy (ruutukaappaus)
+Auta tutkijaa,item,fa3ecb10-1128-4c8c-a838-600a0faadc2e,prompt,multi-choice,,Äidinkieleni,"Jos sinulla on lapsesta asti ollut kaksi äidinkieltä, voit merkitä kummankin.",,39-6780895ec2876bc6b15,,,FALSE,Katja muokkasi bodyja 25.5.20 ja taas 27.5.20 ja taas 28.5.20,
+Katso ja kuuntele,item,85518643-eefd-4c63-bb37-918577163fa1,media,yle-video,,Entisajan lemmikit,"Ennen meillä oli laajempi valikoima lemmikkieläimiä. 
+
+","Kerro seuraavaksi, mitä näet kuvissa. Mitä tunnelmia ja muistoja ne herättävät? ",1-50525872,,,FALSE,Katja lyhensi body1:a 9.6.20,Lahjoita Minna9
+Lahjoita 8,item,9c62e99e-556c-497d-b186-fe2655178d83,media,yle-video,,Entisajan lemmikit,"
+
+Video kestää reilun minuutin.",,1-50526960,,,TRUE,"Katja poisti body2:n 9.6.20
+
+Videon kesti 1 min. Kesto hyvä kertoa tekstissä, koska tässä ei ole aikapalkkia.",
+Lahjoita 8,state,,media,image,finish,Suomen kieli kiittää! ,,,39-6756935ebd088be3411,,,,"
+",videon loppukuva jossa creditit
+Katso ja kuuntele,item,a18ba427-cf88-491f-89ea-9ca693195c4d,media,yle-video,,Rakkain eläimeni,Minulle rakas eläin ollut lapsuuden koira. ,Mikä sinulle on ollut rakkain lemmikki tai eläin? Miltä se tuntui ja mitä se teki?,1-50525879,,,FALSE,,Lahjoita Minna10
+Lahjoita 9,item,46466e4d-2984-4cad-b217-50ee6dbf74a9,media,image,,Rakkain eläimeni,Puhu niin kauan kuin juttua riittää.,,"39-6756955ebd088c0b586
+
+",,,TRUE,,lapsi ja koira veden äärellä
+,state,,media,image,finish,Hyvin kerrottu!,,,"39-6756955ebd088c0b586
+
+",,,,Katja lisäsi rivin 27.5.20 / HUOM: tyhjät bodyt,
+Katso ja kuuntele,item,6323b55e-6a2c-4e10-bde6-8d5182a1c6ce,media,yle-video,,Kiitos tarinatuokiosta! ,Tämän avulla älylaitteet tulevat toivottavasti ymmärtämään meitä paremmin. ,Pidetään yhdessä eläimistä ja luonnosta huolta!,1-50525884,,,FALSE,,Lahjoita Minna11
+,schedule,,,,finish,Haasta ystäväsi mukaan!,Voit myös lahjoittaa lisää turisemalla jostain toisesta aiheesta.,,39-6783325ec397be8c29d,,,,"Katja muokkasi bodyja 9.6.20.
+
+Kiinteä viimeinen sivu (kaikissa teemoissa sama teksti) / Jere sanoo: tekstit tulevat teeman finish-tilasta, tai jos niitä ei ole, niin oletustekstit. Mukana Lahjoita lisää -nappi ja somejakonapit (web), tai mobiilissa Kutsu kaveri (josta aukeaa share sheet) sekä Lahjoita lisää -nappi.
+Katja: Eikö tähän ollut tarkoitus tulla myös se kokonaisaika (jos lahjoittanut yli 2 min.)??? Joka tulisi myös somejakotekstiin??",koiralla aurinkolasit
+teemanvalinta-sivun pikkukuva,theme,,,,,,,,39-6783335ec397f46f59b,,,,Katja vaihtoi kuvan urlin 25.5.20,
+Käsiksen ulkopuolelta: jakonapin teksti,,,,,,,"Lahjoitin puhettani! Lahjoita sinäkin, niin olemme yhdessä mukana suomenkielisen puheentunnistuksen ja tekoälyn kehittämisessä! ( sitten tästä pitäisi olla suora ohjaus lahjoituskoneeseen tyyliin lue lisää --> ja sitten linkki menisi suoraan lahjoituskoneeseen.)",,,,,,,

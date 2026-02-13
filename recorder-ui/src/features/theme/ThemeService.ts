@@ -5,6 +5,10 @@ export const getThemes = async () => {
   return httpGet<ThemeContainer[]>("v1/theme");
 };
 
+export const getLangThemes = async (lang: string) => {
+  return httpGet<ThemeContainer[]>(`v1/theme/${lang}`);
+};
+
 export const getTheme = async (id: string) => {
   return httpGet<Theme>(`v1/theme/${id}`);
 };

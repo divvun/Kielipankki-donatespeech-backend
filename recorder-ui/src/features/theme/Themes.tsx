@@ -3,9 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import ThemeCard from "./ThemeCard";
 import {
-  fetchThemes,
-  selectLocalizedThemes,
-  selectIsLoadingThemes,
+//    fetchThemes,
+    fetchLangThemes,
+//  selectLocalizedThemes,
+    selectIsLoadingThemes,
+    makeLocalizedThemeSelector
 } from "./themeSlice";
 import routes from "../../config/routes";
 import { onThemeSelected } from "../../utils/firebase";
@@ -13,15 +15,20 @@ import { onThemeSelected } from "../../utils/firebase";
 import "./Themes.css";
 import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner";
 
-const Themes: React.FC = () => {
-  const themes = useSelector(selectLocalizedThemes);
+type ThemesProps = { lang: string };
+
+const Themes: React.FC<ThemesProps> = ({lang,}) => {
+    // const themes = useSelector(selectLocalizedThemes);
+    const selectLangLocalizedThemes = makeLocalizedThemeSelector(lang);
+    const themes = useSelector(selectLangLocalizedThemes);
+    
   const isLoading = useSelector(selectIsLoadingThemes);
   const dispatch = useDispatch();
   const history = useHistory();
 
   useEffect(() => {
-    dispatch(fetchThemes());
-  }, [dispatch]);
+      dispatch(fetchLangThemes(lang));
+  }, [lang, dispatch]);
 
   const handleScheduleSelect = (event: {
     themeId: string;

@@ -7,37 +7,65 @@ type ItemStatusLabelProps = {
     itemNumber: number;
     totalCount: number;
   } | null;
-  displayedElement: DisplayedElement;
+    displayedElement: DisplayedElement;
+    lang: string;
 };
+
+interface Langstrings { [key: string]: string; }
+interface Langs { [key: string]: Langstrings; }
+
+const fi_strings: Langstrings = {
+    'help-research': "Auta tutkijaa",
+    'watch-or-listen': "Katso tai kuuntele"
+}
+
+const en_strings: Langstrings = {
+    'help-research': "Help the developers",
+    'watch-or-listen': "Watch or listen"
+}
+
+const sv_strings: Langstrings = {
+    'help-research': "Hjälp forskaren",
+    'watch-or-listen': "Titta eller lyssna"
+}
+
+const langs: Langs = {
+    "fi": fi_strings,
+    "en": en_strings,
+    "sv": sv_strings,
+}
 
 const NON_BRAKING_SPACE = "\u00A0";
 
 const ItemStatusLabel: React.FC<ItemStatusLabelProps> = ({
   recordingItemProgress,
-  displayedElement,
+    displayedElement,
+    lang,
 }) => {
   const getText = () => {
     const { item } = displayedElement;
-    if (!item) return null;
+      if (!item) return null;
+      var DONATE = lang !== "sv" ? "Lahjoita": "Donera";
 
     const isPrompt = item.kind === "prompt";
     if (isPrompt) {
       if (item.metaTitle !== null) {
         return item.metaTitle;
-      } else {
-        return "Help the researcher";
+      }
+      else {
+        return langs[lang]['help-research'];
       }
     }
 
     if (item.isRecording && recordingItemProgress)
-      return `Donate ${recordingItemProgress.itemNumber}/${recordingItemProgress.totalCount}`;
+      return `${DONATE} ${recordingItemProgress.itemNumber}/${recordingItemProgress.totalCount}`;
 
     const isMedia = item.itemType !== "text";
     if (item.metaTitle !== null) {
       return item.metaTitle;
     }
     if (isMedia) {
-      return "Watch or listen";
+      return langs[lang]['watch-or-listen'];
     }
 
     return null;

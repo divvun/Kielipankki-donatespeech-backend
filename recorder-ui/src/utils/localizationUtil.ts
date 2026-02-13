@@ -26,4 +26,5 @@ export const localizeItemState = (
     title: state ? localize(lang, state.title) : undefined,
     body1: state ? localize(lang, state.body1) : undefined,
     body2: state ? localize(lang, state.body2) : undefined,
+    metaTitle: state ? localize(lang, state.metaTitle) : undefined,
   } as LocalizedScheduleItemState);

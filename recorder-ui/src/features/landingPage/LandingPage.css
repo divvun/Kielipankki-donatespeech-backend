@@ -60,11 +60,11 @@
   margin-left: 16%;
 }
 .landing-page .landing-page-title {
-  color: rgb(0, 155, 255);
+  color: #ef513e;
   font-weight: 700;
 }
 .landing-page .landing-page-part.landing-page-part-1 {
-  background-color: rgb(240, 240, 240);
+  background-color: #fcf8f2;
   z-index: 5;
 }
 .landing-page .landing-page-part.landing-page-part-1 p {
@@ -86,7 +86,7 @@
 }
 
 .landing-page .landing-page-part-2 {
-  background-color: rgb(0, 155, 255);
+  background-color: #ef513e;
   color: white;
   margin: 0 -10px;
   z-index: 3;
@@ -103,7 +103,7 @@
 }
 
 .landing-page .landing-page-part-3 {
-  background-color: rgb(240, 240, 240);
+  background-color: #fcf8f2;
   color: black;
   z-index: 2;
   margin: 0 -5px;
@@ -121,11 +121,11 @@
 }
 
 .landing-page .landing-page-part-3 a:hover {
-  color: rgb(50, 50, 50);
+  color: rgb(56, 55, 55);
 }
 
 .landing-page .landing-page-part-4 {
-  background-color: rgb(150, 150, 150);
+  background-color: #184478;
   color: white;
   z-index: 1;
   margin: 0;

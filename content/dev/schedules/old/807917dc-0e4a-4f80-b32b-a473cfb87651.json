@@ -1,0 +1,62 @@
+{
+    "scheduleId": "807917dc-0e4a-4f80-b32b-a473cfb87651",
+    "title": { "fi": "Kesän vietto" },
+    "body1": { "fi": "Jutellaan rennosti suvesta. Takellella saa, se on osa luonnollista puhetta! Tietosi säilyvät anonyymeinä, eivätkä puhettasi kuule muut kuin suomenkielisen tekoälyn kehittäjät." },
+    "body2": { "fi": "Ethän kerro ihmisten koko nimiä tai muita yksityiskohtia, joista sinut tai toiset voisi helposti tunnistaa." },
+    "start": {
+      "title": { "fi": "Hei kesäkaveri!" },
+      "imageUrl": "https://images.cdn.yle.fi/image/upload/f_auto,fl_progressive/q_88/w_1920,h_1080,c_crop,x_0,y_0/w_500/v1586348179/39-6629575e8dbf664f004.jpg"
+    },
+    "finish": {
+      "title": { "fi": "Kiitos, se oli siinä!" },
+      "body1": { "fi": "Haasta myös kaverisi mukaan lahjoittamaan puhetta" },
+      "body2": { "fi": "" }
+    },
+    "items": [
+      {
+        "itemId": "a4b700d3-2001-4ba4-839d-da721d4e63ed",
+        "kind": "media",
+        "itemType": "local-image",
+        "typeId": "image/jpeg",
+        "url": "kesa/leppakerttu.jpg",
+        "title": { "fi": "Harjoitellaan ensin!" },
+        "body1": { "fi": "Testataan ensin että mikrofonisi on päällä." },
+        "body2": { "fi": "Paina Äänitä-nappia ja laske sitten ääneen leppäkertussa näkyvät pilkut." },
+        "imageUrl": "kesa/leppakerttu.jpg",
+        "options": [],
+        "isRecording": true,
+        "start":
+        {
+          "title": { "fi": "Lahjoitus käynnissä" }
+        },
+        "finish":
+        {
+          "title": { "fi": "Kiitos, hyvin meni!" },
+          "body1": { "fi": "Näin helppoa puheen lahjoittaminen on. Jatketaan eteenpäin." },
+          "body2": { "fi": "" }
+        }
+      },
+      {
+        "itemId": "74838f03-9193-483c-b27c-66586b35c2d6",
+        "kind": "media",
+        "itemType": "local-image",
+        "typeId": "image/jpeg",
+        "url": "kesa/kumivene.jpg",
+        "title": { "fi": "Mitä tapahtuu?" },
+        "body1": { "fi": "Kerro seuraavaksi, mitä näet kuvassa." },
+        "body2": { "fi": "Kun olet valmis, paina LOPETA ÄÄNITYS." },
+        "options": [],
+        "isRecording": true,
+        "recording": {
+          "title": { "fi": "Voit esimerkiksi kertoa..." },
+          "body1": { "fi": "Missä ollaan? Keitä kuvassa on ja mitä he tekevät? Entä mitä kuvan ottamisen jälkeen tapahtui?" },
+          "body2": { "fi": "" }
+        },
+        "finish": {
+          "title": { "fi": "Kiitos selostuksesta!" },
+          "body1": { "fi": "Puhepankki on taas monta sanaa rikkaampi!" },
+          "body2": { "fi": "" }
+        }
+      }
+    ]
+}

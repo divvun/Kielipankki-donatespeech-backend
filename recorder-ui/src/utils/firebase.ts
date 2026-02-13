@@ -17,30 +17,30 @@ type SelectContentEvent = {
 };
 
 const USE_PROD = (process.env.REACT_APP_STAGE === 'prod');
-const MEASUREMENT_ID = USE_PROD ? "<redacted>" : "<redacted>";
+const MEASUREMENT_ID = USE_PROD ? "YVNWP5HG39" : "673LYXTGZZ";
 const ITEM_FINALIZED_EVENT = "recording_completed";
 const SELECT_CONTENT_EVENT = "select_content";
 const SCHEDULE_COMPLETED_EVENT = "schedule_completed";
 const SCHEDULE_ITEM_COMPLETED_EVENT = "schedule_item_completed";
 
 const firebaseConfigProd = {
-  apiKey: "<your-firebase-api-key>",
-  authDomain: "<your-firebase-domain>",
-  databaseURL: "<your-firebase-database>",
-  projectId: "<your-firebase-project-id>",
-  storageBucket: "<your-firebase-storage>",
-  messagingSenderId: "<your-firebase-messaging-sender-id>",
-  appId: "<your-firebase-app-id>",
+  apiKey: "AIzaSyAAlrsa5pCNS_plChQ4rG14c8teL_QOj1s",
+  authDomain: "yle121161-lahjoita-puhetta.firebaseapp.com",
+  databaseURL: "https://yle121161-lahjoita-puhetta.firebaseio.com",
+  projectId: "yle121161-lahjoita-puhetta",
+  storageBucket: "yle121161-lahjoita-puhetta.appspot.com",
+  messagingSenderId: "908994790893",
+  appId: "1:908994790893:web:c13cae47ee8ea4a056d3e4",
 };
 
 const firebaseConfigDev = {
-  apiKey: "<your-firebase-api-key>",
-  authDomain: "<your-firebase-domain>",
-  databaseURL: "<your-firebase-database>",
-  projectId: "<your-firebase-project-id>",
-  storageBucket: "<your-firebase-storage>",
-  messagingSenderId: "<your-firebase-messaging-sender-id>",
-  appId: "<your-firebase-app-id>",
+  apiKey: "AIzaSyBfzHPlKe3OMjHxrCtGpQJxABu7W7ZvxYw",
+  authDomain: "lahjoita-puhetta.firebaseapp.com",
+  databaseURL: "https://lahjoita-puhetta.firebaseio.com",
+  projectId: "lahjoita-puhetta",
+  storageBucket: "lahjoita-puhetta.appspot.com",
+  messagingSenderId: "1048624584781",
+  appId: "1:1048624584781:web:0a4934f3d7fd223399e404",
 };
 
 const firebaseConfig = {
@@ -59,7 +59,7 @@ const sendEvent = (eventName: string, event: object) => {
 const deleteCookie = (name: string) => {
   document.cookie =
     name +
-    "=; Path=/; Domain=.example.com; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+    "=; Path=/; Domain=.lahjoitapuhetta.fi; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
 };
 
 const deleteCookies = () => {

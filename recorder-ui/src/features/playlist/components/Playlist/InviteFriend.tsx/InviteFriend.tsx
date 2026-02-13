@@ -12,18 +12,42 @@ import config from "../../../../../config/config";
 import "./InviteFriend.css";
 
 type InviteFriendProps = {
-  className?: string;
+    className?: string;
+    lang: string;
 };
 
-const InviteFriend: React.FC<InviteFriendProps> = ({ className }) => {
+interface Langstrings { [key: string]: string; }
+interface Langs { [key: string]: Langstrings; }
+
+const fi_strings: Langstrings = {
+}
+
+const en_strings: Langstrings = {
+}
+
+const sv_strings: Langstrings = {
+     
+}
+
+const langs: Langs = {
+    "fi": fi_strings,
+    "en": en_strings,
+    "sv": sv_strings,
+}
+
+const InviteFriend: React.FC<InviteFriendProps> = ({ className, lang }) => {
   const totalRecDurationSeconds = useSelector(selectTotalRecordingDuration);
-  const minutes = Math.floor(totalRecDurationSeconds / 60);
-  const startText =
-    minutes >= 2
-      ? `I donated my speech for ${minutes} minutes.`
-      : "I just donated my speech.";
-  const twitterQuote = `${startText} It helps us build AI and speech recognition that understand Finnish better. Donate too and help make everyday life more fluent!`;
-  const fbQuote = twitterQuote + ` ${config.WEBSITE_URL}`;
+    const minutes = Math.floor(totalRecDurationSeconds / 60);
+    const this_url = lang !== "sv" ? config.WEBSITE_URL : "https://doneraprat.fi";
+    const fi_startText = minutes >= 2
+	? `Lahjoitin puhettani ${minutes} minuuttia.`
+	: "Lahjoitin juuri puhettani.";
+
+    const startText = lang !== "sv" ? fi_startText : "Jag har donerat mitt prat!";
+    const twitterQuote = lang !== "sv" ?
+	`${startText} Sen avulla saamme tekoälyn ja puheentunnistuksen, joka ymmärtää paremmin suomea. Lahjoita sinäkin ja puhu meille sujuvampi arki! #lahjoitapuhetta` :
+	`${startText} Du kan också donera – tillsammans är vi med och utvecklar röststyrning på finlandssvenska! #doneraprat`;
+    const fbQuote = twitterQuote + ` ${this_url}`;
   return (
     <div className={`invite-friend ${className}`}>
       <FacebookShareButton
@@ -33,7 +57,7 @@ const InviteFriend: React.FC<InviteFriendProps> = ({ className }) => {
       >
         <FacebookIcon size={48}></FacebookIcon>
       </FacebookShareButton>
-      <TwitterShareButton title={twitterQuote} url={config.WEBSITE_URL}>
+      <TwitterShareButton title={twitterQuote} url={this_url}>
         <TwitterIcon size={48}></TwitterIcon>
       </TwitterShareButton>
     </div>

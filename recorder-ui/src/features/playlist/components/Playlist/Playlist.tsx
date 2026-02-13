@@ -47,12 +47,51 @@ import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 
 type PlaylistProps = {
   onRecorderResetRequested: () => void;
-  onQuit: () => void;
+    onQuit: () => void;
+    lang: string;
 };
+
+interface Langstrings { [key: string]: string; }
+interface Langs { [key: string]: Langstrings; }
+
+const fi_strings: Langstrings = {
+    "theme-fetch-failure": "Teeman haku epäonnistui",
+    "donate-more": "Lahjoita lisää",
+    "begin": "Aloita",
+    "continue": "Jatka",
+    "try-again": "Kokeile uudelleen",
+    "skip": "Ohita kysymys"
+}
+
+const en_strings: Langstrings = {
+    "theme-fetch-failure": "Failed to fetch theme",
+    "donate-more": "Donate more",
+    "begin": "Begin",
+    "continue": "Continue",
+    "try-again": "Try again",
+    "skip": "Skip"
+}
+
+const sv_strings: Langstrings = {
+    "theme-fetch-failure": "Vi lyckades inte finna temat",
+    "donate-more": "Donera mera",
+    "begin": "Börja",
+    "continue": "Fortsätt",
+    "try-again": "Prova på nytt",
+    "skip": "Hoppa över frågan"
+}
+
+const langs: Langs = {
+    "fi": fi_strings,
+    "en": en_strings,
+    "sv": sv_strings,
+}
+
 
 const Playlist: React.FC<PlaylistProps> = ({
   onQuit,
-  onRecorderResetRequested,
+    onRecorderResetRequested,
+    lang
 }) => {
   const recorder = useAudioRecorderContext();
   const item = useSelector(selectCurrentItem);
@@ -136,7 +175,7 @@ const Playlist: React.FC<PlaylistProps> = ({
   }
 
   if (configurationError) {
-    return <h3>Failed to load theme</h3>;
+      return <h3>{langs[lang]['theme-fetch-failure']}</h3>;
   }
 
   const handlePrevious = () => {
@@ -231,6 +270,7 @@ const Playlist: React.FC<PlaylistProps> = ({
         showPreviousButton={showPreviousButton}
         onNext={handleNextScheduleState}
         onPrevious={handlePrevious}
+	lang={lang}
       />
     ) : null;
   };
@@ -255,21 +295,22 @@ const Playlist: React.FC<PlaylistProps> = ({
         showPreviousButton={showPreviousButton}
         onNext={handleNext}
         onPrevious={handlePrevious}
+	lang={lang}
       />
     );
   };
 
   const renderFooterControl = () => {
     if (scheduleStatus === "start") {
-      return <PlaylistButton text="Start" onClick={handleNextScheduleState} />;
+	return <PlaylistButton text={langs[lang]["begin"]} onClick={handleNextScheduleState} />;
     }
     if (scheduleStatus === "finish") {
       return (
         <>
-          <InviteFriend className="mb-1" />
+              <InviteFriend className="mb-1" lang={lang} />
           <PlaylistButton
             buttonType="outline"
-            text="Donate more"
+          text={langs[lang]["donate-more"]}
             onClick={onQuit}
           />
         </>
@@ -280,19 +321,15 @@ const Playlist: React.FC<PlaylistProps> = ({
     if (isRecordingItem) {
       return itemState === "finish" ? (
         <>
+              <PlaylistButton className="mb-1" text={langs[lang]["continue"]} onClick={handleNext} />
           <PlaylistButton
-            className="mb-1"
-            text="Continue"
-            onClick={handleNext}
-          />
-          <PlaylistButton
-            text="Try again"
+          text={langs[lang]["try-again"]}
             buttonType="outline"
             onClick={handleRetake}
           />
         </>
       ) : (
-        <RecordButton itemState={itemState} />
+          <RecordButton itemState={itemState} lang={lang} />
       );
     }
 
@@ -300,7 +337,7 @@ const Playlist: React.FC<PlaylistProps> = ({
     if (isPromptItem) {
       return (
         <PlaylistButton
-          text={`${hasAnswer() ? "Continue" : "Skip question"}`}
+          text={`${hasAnswer() ? langs[lang]["continue"] : langs[lang]["skip"]}`}
           buttonType={hasAnswer() ? "normal" : "text"}
           onClick={handleNext}
         />
@@ -308,11 +345,7 @@ const Playlist: React.FC<PlaylistProps> = ({
     }
 
     return isLoadingConfiguration ? null : (
-      <PlaylistButton
-        text="Continue"
-        buttonType="normal"
-        onClick={handleNext}
-      />
+	<PlaylistButton text={langs[lang]["continue"]} buttonType="normal" onClick={handleNext} />
     );
   };
 

@@ -139,6 +139,7 @@ export const getDisplayedElement = (
     title: getField(item, itemState, i => i.title, defaultTitle),
     body1: getField(item, itemState, i => i.body1),
     body2: getField(item, itemState, i => i.body2),
+    metaTitle: getField(item, itemState, i => i.metaTitle),
     mediaType,
     url: url || null,
   };
@@ -154,6 +155,7 @@ const getMediaElement = (
   if (isString(state.title)) element.title = state.title || "";
   if (isString(state.body1)) element.body1 = state.body1 || "";
   if (isString(state.body2)) element.body2 = state.body2  || "";
+  if (isString(state.metaTitle)) element.metaTitle = state.metaTitle  || "";
   if (isString(state.imageUrl)) {
     element.mediaType = "image";
     element.url = getImageUrl(state.imageUrl);

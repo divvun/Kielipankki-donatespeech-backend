@@ -18,7 +18,7 @@
 .playlist-item img.playlist-item-image--loaded {
   border-style: solid;
   border-width: 6px;
-  border-color: rgb(0, 155, 255);
+  border-color: #ef513e;
 }
 
 .playlist-item .playlist-item-label {

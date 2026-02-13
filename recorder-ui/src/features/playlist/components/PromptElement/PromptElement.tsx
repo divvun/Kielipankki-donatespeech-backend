@@ -1,13 +1,29 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Select, { Styles } from "react-select";
+import Select from "react-select";
 import "./PromptElement.css";
 import { answerChange, selectCurrentItemAnswer } from "../../playlistSlice";
 import { PlaylistAnswer, DisplayedElement } from "../../types";
+import Row from "react-bootstrap/Row";
+import ItemDescription from "../ItemDescription/ItemDescription";
 
 type PromptElementProps = {
-  element: DisplayedElement;
+    element: DisplayedElement;
+    lang: string;
 };
+
+interface Langstrings { [key: string]: string; }
+interface Langs { [key: string]: Langstrings; }
+
+const fi_strings: Langstrings = { "choose": "Valitse"}
+const en_strings: Langstrings = { "choose": "Choose"}
+const sv_strings: Langstrings = { "choose": "Välj" }
+
+const langs: Langs = {
+    "fi": fi_strings,
+    "en": en_strings,
+    "sv": sv_strings,
+}
 
 type Option = { label: string; value: string };
 type SelectedOption = Option | Option[] | null;
@@ -25,7 +41,7 @@ const valueToSelectedOption = (v: string | string[] | undefined | null) => {
 };
 
 const PromptElement: React.FunctionComponent<PromptElementProps> = ({
-  element,
+    element, lang,
 }) => {
   const answer = useSelector(selectCurrentItemAnswer);
   const answerValue = answer ? answer.value : "";
@@ -89,42 +105,40 @@ const PromptElement: React.FunctionComponent<PromptElementProps> = ({
   };
 
   const renderSelect = () => {
-    const options = item.options
+      const options = item.options
       ? item.options.map(valueToOption).filter(o => o !== null)
-      : [];
-    const styles: Partial<Styles> = {
-      control: (provided, state) => {
-        return {
-          ...provided,
-          borderColor: "#123e6c",
-          borderWidth: "medium",
-          borderRadius: "20px",
-        };
-      },
-      indicatorSeparator: provided => ({
-        visibility: "hidden",
-      }),
-      multiValue: provided => ({
-        ...provided,
-        borderRadius: "10px",
-      }),
-    };
+	    : [];
+
+
     const showExtraInput =
       item.itemType !== "choice" && Boolean(item.otherEntryLabel);
     const extraInputId = `_${item.otherEntryLabel}`;
     return (
       <>
         <Select
-          styles={styles}
+            styles={{
+		control: (provided, state) => ({
+		    ...provided,
+		    borderColor: "#123e6c",
+		    borderWidth: "medium",
+		    borderRadius: "20px",
+		}),
+		indicatorSeparator: (provided, state) => ({
+		    visibility: "hidden",
+		}),
+		multiValue: (provided, state) => ({
+		    ...provided,
+		    borderRadius: "10px",
+		}),
+	    }}
           isMulti={item.itemType === "multi-choice"}
-          placeholder="Select"
+        placeholder={langs[lang]["choose"]}
           value={selectedOption}
           onChange={o => handleSelectChange(o as SelectedOption)}
           options={options}
           menuPosition="fixed"
           menuPlacement="bottom"
           isClearable={false}
-          autoFocus
           id={element.title}
           name={element.title}
           noOptionsMessage={() => ""}
@@ -174,6 +188,19 @@ const PromptElement: React.FunctionComponent<PromptElementProps> = ({
       <label className="prompt-title" htmlFor={element.title}>
         {element.title}
       </label>
+      		  <Row>
+		       <ItemDescription
+			  isSmall={true}
+			  description={element.body1}
+		      />
+		   </Row>
+		   <Row>
+		       <ItemDescription
+			  isSmall={true}
+			  description={element.body2}
+		      />
+		   </Row>
+
       {renderControl()}
     </div>
   );

@@ -1,0 +1,48 @@
+moduuli,element,itemId,kind,itemType,state,title,body1,body2,url,startTime,endTime,isRecording,HUOM,kuva / videon nimi Areenassa
+"tämän sarakkeen sisältöä ei käytetä missään, se on vain apuna tekijälle","schedule = teema, item = moduuli",moduulin tekninen tunniste,moduulin tyyppi,,toimintatila (vain Lahjoita-osioissa),"moduulin otsikko / 1-2 riviä, riville max. 17 merkkiä",Ns. leipätekstin 1. kappale,Ns. leipätekstin 2. kappale,"Kuvan tunniste (kuvamoduuleilla) tai lyhyt teksti (tekstimoduuleilla) / HUOM: ellei tule kumpaakaan, itemTypeksi image ja url-kohtaan null","Numero, montako sekuntia klipin alusta (ei pakollinen)","Numero, montako sekuntia klipin alusta (ei  pakollinen)", ,"Jere sanoo: Koettakaa saada ylimääräiset rivinvaihdot pois näistä teksteistä, mieluiten ei yhtään",
+Teeman aloituskuva,schedule,0598bf14-ab48-4ccb-a50c-0bd779f77933,,,start,Tervetuloa!,"Hienoa, että haluat lahjoittaa puhettasi.","Oppaanasi on ""Kaverin puolesta kyselen"" -podcastista tuttu Anna Karhunen.",39-6778495ec23ef6f022c,,,,,
+Katso ja kuuntele,item,a2431d57-b536-4d2b-bb68-f1e185ac8b6a,media,yle-video,,Oppaana Anna Karhunen,"Kiva nähdä sinut täällä! Nyt jutellaan siitä, mitä eri tavarat meidän ympärillämme merkitsevät. ","Aloitetaan jollain helpolla: Söin tänään aamiaiseksi kahvia ja kanamunan, niin kuin aina. Kerro sinä, mitä söit tänä aamuna. 
+
+",1-50525858,,,FALSE,Katja muokkasi body1-tekstiä 25.5.,Lahjoita puhetta Anna 1
+Lahjoita 1/6,item,4a4d2c26-68c9-414a-9c2f-53f1b6831d9b,media,image,,Kerro aamiaisestasi,"Kun haluat puhua, paina Äänitä-nappia. ","Kun olet valmis, paina Lopeta äänitys.",39-6760125ebd3034e0585,,,TRUE,Katja muokkasi bodyja 28.5.20 / body1:a 1.6.20,
+Lahjoita 1/6,state,,,,finish,"Kiitos, hyvin meni!",Jatketaan katsomalla ikkunasta ulos. ,,39-6772185ebead1067919,,,,Katja poisti body2-tekstin 25.5.,
+Katso ja kuuntele,item,d335de2d-364c-4742-bd6b-0e823952062a,media,yle-video,,Katson ikkunasta,"Aamukahvia juodessa katselen puuta, joka vaihtaa ulkomuotoaan pitkin vuotta. ",Nyt on sinun vuorosi. Älä pelkää takelteluja. Tässä kerätään nimenomaan aitoa puhekieltä.,1-50526439,,,FALSE,"Katja vaihtoi titleä ja muokkasi body-kenttiä 25.5.
+
+katja vaihtoi titleä 26.5.20",Lahjoita puhetta Anna 2
+Lahjoita 2/6,item,860a2e67-1480-4943-b8df-aef477f7895d,media,image,,Katson ikkunasta,"Kerro ja kuvaile, mitä lähimmästä ikkunastasi näkyy.",,39-6772225ebead112a8e2,,,TRUE,"Katja muokkasi body1-tekstiä 25.5.
+
+katja vaihtoi titleä 26.5.20",
+Lahjoita 2/6,state,,media,image,finish,Hyvä! ,Pikku juttu ennen kuin jatketaan:,Puhettasi pääsevät kuulemaan vain tutkijat ja tekoälyn kehittäjät. ,39-6772225ebead112a8e2,,,,Katja muokkasi body1 +2 kenttiä 25.5.,
+Katso ja kuuntele,item,b2430ab4-c2ce-4462-aacb-99c0ad0214f5,media,yle-video,,Murretaustani,"Suomen kielen puhepankkiin on tosi tärkeätä saada mukaan kaikenlaista suomea. Kerro, miltä alueelta murteesi tai puhetapasi tulee.","Muistutan vielä, että tietosuojastasi löydät lisää tietoa päävalikosta.",1-50526448,,,FALSE,,Lahjoita puhetta Anna 3
+Auta tutkijaa ,item,6ef34957-41e7-487e-aa0c-a40c93ed9251,prompt,choice,,Murretaustani,"Valitse valikosta maakunta tai alue, joka on eniten vaikuttanut sinun tapaasi puhua.",,39-6780835ec286469a1be,,,,Katja muokkasi bodyja 25.5.20. Katja poisti body2:n 28.5.20,
+Auta tutkijaa ,item,b5407e64-2b24-4286-b24f-f58f3e3bee2f,media,image,,"Kiitos, jos vastasit. ",Jatkossa älylaitteet ja palvelut ymmärtävät paremmin kaikenlaista suomea.,Sitten puhutaan esineistä.,39-6780835ec286469a1be,,,FALSE,,
+,item,b2168a04-3291-4d77-b7c7-dc7f85c6aa38,media,yle-video,,Tärkeä esine,Moniin esineisiin liittyy muistoja. Tämän taulun on tehnyt isäni nuorena.,"Nyt on sinun vuorosi. Kerro jostain sinulle tärkeästä tavarasta. Kuvaile, miksi se on sinulle tärkeä. ",1-50526449,,,FALSE,,Lahjoita puhetta Anna 4
+Lahjoita 3/6,item,0d592ff8-2c06-4d7b-9517-a876b0fc6d6c,media,image,,Tärkeä esineeni,"Mieti rauhassa, paina Äänitä ja ajattele ääneen. ",Puhu niin kauan kuin haluat!,39-6772195ebead108364f,,,TRUE,Katja muokkasi titleä 26.5.20,
+Lahjoita 3/6,state,,media,image,finish,Kiitos!,Katsellaan sitten lisää lähellä olevia asioita. ,,39-6772195ebead108364f,,,,,
+Katso ja kuuntele,item,aef3d0fe-1100-4505-93f3-43833f0f13e4,media,yle-video,,Turha tavara,"Minulla on kotona tavaraa, jota en käytä. Omistan satoja CD-levyjä, mutta en soitinta.",Mitä outoja tavaroita sinulla on?,1-50526453,,,FALSE,,Lahjoita puhetta Anna 5
+Lahjoita 4/6,item,3f9c88b6-f690-44ae-9af1-a9c18426a6ea,media,image,recording,Turhat tavarani,"Kerro myös, miksi et ole onnistunut luopumaan noista tavaroista?",,39-6772155ebead0c6c796,,,TRUE,"Tässä kohtaa äänitetään ja kuvassa on stillkuva.
+
+Katja muokkasi titleä 26.5.20",
+Lahjoita 4/6,state,,media,image,finish,Kiinnostavaa – kiitos!,,,39-6772155ebead0c6c796,,,,Katja lisäsi rivin 28.5.20,
+Katso ja kuuntele,item,d4b32c19-7347-4b0e-b0f4-61b645fa888d,media,yle-video,,Auta taas tutkijaa,"Nyt voit auttaa tutkijoita lisää kertomalla pari taustatietoa. 
+
+",Henkilöllisyyttäsi ei voi niistä tunnistaa.,1-50526455,,,FALSE,Katja muokkasi titleä ja body1:a 28.5.20,Lahjoita puhetta Anna 6
+Auta tutkijaa,item,e3264046-a642-46de-a9e7-c55933ee3739,prompt,choice,,Ikäni,Valitse valikosta ikäryhmäsi.,,39-6780905ec2876c0f863,,,,Katja lisäsi body 1:n 25.5.20,
+Auta tutkijaa ,item,8bbb8e5d-56a2-4082-9429-233ff2a5e53f,prompt,choice,,Sukupuoleni,,,39-6780915ec2876cc2128,,,,,
+Auta tutkijaa ,item,4f7165a0-74ef-4af4-a5b1-08bc1f8783ea,media,image,,Iso kiitos ...,... jos vastasit taustatietoihin!,,39-6780915ec2876cc2128,,,FALSE,,
+Katso ja kuuntele,item,f6fb8394-105c-47d3-b76c-05da19e378ad,media,yle-video,,Lempivaate,Vaatteisiin liittyy myös paljon muistoja. Nämä kengät vievät minut aina takaisin Berliiniin.,Mitä muistoja sinulla liittyy tärkeisiin vaatteisiin?,1-50526457,,,FALSE,,Lahjoita puhetta Anna 7
+Lahjoita 5/6,item,31862f24-2047-473e-8bf6-d36f377b245d,media,image,,Lempivaate,"Kertoile vapaasti: Mistä sait vaatteen? 
+",Kuinka tärkeä sen väri on?,39-6772175ebead0f6a3f7,,,TRUE,Katja muokkasi body1-kenttää 25.5.,
+Lahjoita 5/6,state,,media,image,finish,Hyvä! ,"Sitten on viimeinen tilaisuutesi auttaa tutkijaa.
+
+",,39-6772175ebead0f6a3f7,,,,,
+Auta tutkijaa ,item,fa3ecb10-1128-4c8c-a838-600a0faadc2e,prompt,multi-choice,,Äidinkieleni,"Jos sinulla on lapsesta asti ollut kaksi äidinkieltä, voit merkitä kummankin.",,39-6780895ec2876bc6b15,,,,Katja muokkasi body1ä ja lisäsi body2:n 25.5.20. katja muokkasi bodyja 28.5.20,
+Auta tutkijaa ,item,38fd137b-bbda-43cf-ad46-6999a56645c0,media,image,,Kiitos! Tack! Spasibo! ,"Ihanaa, että tänne kertyy puhetta suomea äidinkielenään puhuvilta – ja myös muilta.",,39-6780895ec2876bc6b15,,,FALSE,Katja lyhensi titleä 29.5.20,
+Katso ja kuuntele,item,f748be56-b9b1-4485-b423-8abe07c661a4,media,yle-video,,Kodikkuudesta,Kodikkuus syntyy monesta eri asiasta. Myös kodin esineistä.,Mistä sinun mielestäsi syntyy kodikkuus?,1-50526458,,,FALSE,Katja muokkasi titleä 25.5.,Lahjoita puhetta Anna 8
+Lahjoita 6/6,item,f589f9e2-3fef-45d5-8286-b701a1fb0bbd,media,image,,Mistä kodikkuus syntyy?,Puhu ja pulise niin kauan kuin haluat.,,39-6772205ebead109d66a,,,TRUE,Katja muokkasi titleä 25.5.,
+Lahjoita 4/6,state,,media,image,finish,Hyvin kerrottu!,,,39-6772205ebead109d66a,,,,Katja lisäsi rivin 28.5.20,
+Katso ja kuuntele,item,0937ca13-cc64-4965-8725-aca4a6eb18f9,media,yle-video,,"Kiitos, kun lahjoitit","Kiitos tosi paljon tästä juttutuokiosta! Tämä oli pieni, mutta tärkeä osa suomen kielen puhepankkia.",Ehkä tulevaisuudessa älylaitteetkin ymmärtävät meitä vähän paremmin. ,1-50526459,,,FALSE,Mahtuuko teksti?,Lahjoita puhetta Anna 9
+Kaverit mukaan,schedule,0598bf14-ab48-4ccb-a50c-0bd779f77933,,,finish,Hienoa – se oli siinä!,Haasta myös ystäväsi lahjoittamaan puhetta!,Tai lahjoita itse lisää juttelemalla jostain toisesta aiheesta.,39-6772215ebead1104450,,,FALSE,"Kiinteä viimeinen sivu (kaikissa teemoissa sama teksti) / Jere sanoo: tekstit tulevat teeman finish-tilasta, tai jos niitä ei ole, niin oletustekstit. Mukana Lahjoita lisää -nappi ja somejakonapit (web), tai mobiilissa Kutsu kaveri (josta aukeaa share sheet) sekä Lahjoita lisää -nappi.
+Katja: Eikö tähän ollut tarkoitus tulla myös se kokonaisaika (jos lahjoittanut yli 2 min.)??? Joka tulisi myös somejakotekstiin??",
+teemanvalinta-sivun pikkukuva,theme,,media,image,,,,,39-5020415b6add3b395f1,,,,,kuvassa kahvikuppi: Vaahto muodostaa sydämen
+jakonapin teksti,,,,"Lahjoitin puhettani! Lahjoita sinäkin, niin olemme yhdessä mukana suomenkielisen puheentunnistuksen ja tekoälyn kehittämisessä! ( sitten tästä pitäisi olla suora ohjaus lahjoituskoneeseen tyyliin lue lisää --> ja sitten linkki menisi suoraan lahjoituskoneeseen.) Tästä puuttuu nyt se lahjoitusaika.",,,,,,,,,,

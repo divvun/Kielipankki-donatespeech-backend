@@ -7,7 +7,7 @@
   font-size: 1.25rem;
   font-weight: 700;
   text-transform: uppercase;
-  background-color: rgb(0, 155, 255);
+  background-color: #ef513e;
   color: white;
   margin-bottom: 1rem;
   -webkit-box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.1);
@@ -17,20 +17,20 @@
   display: flex;
 }
 .theme-card:hover {
-  background-color: #66C2FF;
+  background-color: #e76758;
 }
 .theme-card:active {
-  background-color: #99D6FF;
+  background-color: #e93f2c;
 }
 
 .theme-card.theme-card--completed {
-  background-color: #969696;
+  background-color: #fdba16;
 }
 .theme-card.theme-card--completed:hover {
-  background-color: #bfbfbf;
+  background-color: #f7bf31;
 }
 .theme-card.theme-card--completed:active {
-  background-color: #e6e6e6;
+  background-color: #f0ae08;
 }
 
 .theme-card .theme-card-image {

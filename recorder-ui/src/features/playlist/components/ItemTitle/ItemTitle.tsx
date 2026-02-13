@@ -6,7 +6,7 @@ type ItemTitleProps = {
 };
 
 const ItemTitle: React.FC<ItemTitleProps> = ({ title }) => {
-  return <h2 className="item-title">{title}</h2>;
+  return <h2 className="item-title" tabIndex={1}>{title}</h2>;
 };
 
 export default ItemTitle;
