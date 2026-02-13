@@ -1,0 +1,12 @@
+# FastAPI and server
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+pydantic>=2.5.0
+
+# Azure Storage
+azure-storage-blob>=12.19.0
+
+# Existing dependencies
+requests>=2.31.0
+PyYAML>=6.0
+pycryptodome>=3.19.0
