@@ -23,7 +23,6 @@ provider:
     YLE_DECRYPT: "placeholder-not-configured"
 
 plugins:
-  - serverless-python-requirements
   - serverless-domain-manager
   - serverless-api-gateway-caching
 
@@ -173,6 +172,17 @@ functions:
           rules:
             - prefix: uploads/audio_and_metadata/
           existing: true
+
+package:
+  individually: false
+  exclude:
+    - node_modules/**
+    - .pytest_cache/**
+    - htmlcov/**
+    - tests/**
+    - '*.md'
+    - .git/**
+    - .gitignore
 
 custom:
   cfOutputs:
