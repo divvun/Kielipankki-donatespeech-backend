@@ -184,11 +184,15 @@ custom:
   pythonRequirements:
     dockerizePip: ${self:custom.dockerizePip.${opt:stage, self:provider.stage}}
     slim: true
-    strip: false
+    strip: true
     layer: true
     useStaticCache: true
     useDownloadCache: true
-    cacheLocation: '.python-packages'
+    cacheLocation: ".python-packages"
+    slimPatterns:
+      - '**/*.py[c|o]'
+      - '**/__pycache__*'
+      - '**/*.dist-info/tests/**'
   customDomain:
     enabled: ${self:custom.domainEnabled.${opt:stage, self:provider.stage}}
     hostedZoneId: ${self:custom.cfOutputs.hostedZoneId}
