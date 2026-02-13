@@ -5,6 +5,7 @@ pydantic>=2.5.0
 
 # Azure Storage
 azure-storage-blob>=12.19.0
+aiohttp>=3.9.0
 
 # Existing dependencies
 requests>=2.31.0

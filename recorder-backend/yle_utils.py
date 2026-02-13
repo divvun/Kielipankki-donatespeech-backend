@@ -4,10 +4,14 @@ import base64
 import logging
 import urllib.request
 from Crypto.Cipher import AES
-from common import *
 
-logger = logging.getLogger()
+logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
+
+
+class FileProcessingError(Exception):
+    """Custom exception for file processing errors."""
+    pass
 
 CLIENT_ID = os.environ.get("YLE_CLIENT_ID")
 CLIENT_KEY = os.environ.get("YLE_CLIENT_KEY")

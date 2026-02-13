@@ -145,3 +145,79 @@ from handler import *
 init_upload({'body': '{"filename":"jee", "metadata": {"kukkuu": "jee"}}'}, {})
 
 ```
+
+---
+
+## FastAPI Local Development with Azurite
+
+### Prerequisites
+
+- Python 3.11+
+- Podman Desktop (recommended - no sudo required) or Docker
+- Azure CLI (optional, for deployment)
+
+### Setup
+
+1. **Start Azurite (Azure Storage Emulator)**:
+   
+   Using Podman (recommended):
+   ```bash
+   podman-compose up -d
+   ```
+   
+   Or using Docker:
+   ```bash
+   docker-compose up -d
+   ```
+
+   This starts Azurite and initializes it with test configuration/theme files.
+
+2. **Install Python dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Run the FastAPI application**:
+   ```bash
+   uvicorn main:app --reload --port 8000
+   ```
+
+   The API will be available at `http://localhost:8000`
+   
+   Interactive API documentation at `http://localhost:8000/docs`
+
+4. **Test the endpoints**:
+   ```bash
+   # List all configurations
+   curl http://localhost:8000/v1/configuration
+   
+   # Get specific configuration
+   curl http://localhost:8000/v1/configuration/test-config-1
+   
+   # List all themes
+   curl http://localhost:8000/v1/theme
+   
+   # Initialize upload (requires valid request body)
+   curl -X POST http://localhost:8000/v1/init-upload \
+     -H "Content-Type: application/json" \
+     -d @test/sample-init-upload.json
+   ```
+
+### Environment Variables
+
+- `AZURE_STORAGE_CONNECTION_STRING`: Connection string for Azure Storage
+  - Default for local: `DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;`
+- `AZURE_STORAGE_CONTAINER`: Name of the blob container
+  - Default: `recorder-content-dev`
+
+### Stopping Services
+
+Using Podman:
+```bash
+podman-compose down
+```
+
+Or using Docker:
+```bash
+docker-compose down
+```
