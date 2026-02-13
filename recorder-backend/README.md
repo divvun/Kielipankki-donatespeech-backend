@@ -1,223 +1,291 @@
-# Recorder backend lambda functions
+# Recorder Backend - FastAPI Version
 
-## REST APIs
+**Note:** This is the modernized FastAPI version running on Azure. The original Lambda version is preserved in `handler.py`, `configuration.py`, and `theme.py`.
 
-### Initialize audio file upload and store related metadata call
+## Architecture
 
-```json
-POST v1/init-upload 
-{
-    "filename": "audio.m4a",
-    "metadata": {
-        "key" : "value"
-    }
-}
+- **Framework**: FastAPI (Python 3.11)
+- **Storage**: Azure Blob Storage
+- **Local Development**: Azurite (Azure Storage Emulator)
+- **Deployment**: Azure Container Apps or Azure App Service
 
->>>
-
-{
-    "presignedUrl" : "https://s3/presigned-upload.com"
-}
-```
-
-### Delete all uploaded metadata and audio for client with the given id or specific session or recording if those parameters are provided
-
-```json
-DELETE v1/upload/[clientID]?session_id=<>&recording_id=<>
->>>
-
-{
-    "delete" : "ok"
-}
-```
-
-### Load single playlist configuration from s3
-
-```json
-GET v1/configuration/[ID]
-
->>>
-
-#Whatever is stored in the configuration file in the s3 bucket configuration/[id].json
-
-    "items": [
-        {
-            "itemId": "ce3c6012-25f0-4c69-a0ad-c5dc8e41b795",
-            "kind": "media",
-            "itemType": "audio",
-            "typeId": "audio/m4a",
-            "url": "arvi-euroviisut.m4a",
-            "description": "Arvi Lind esittelee",
-            "options": []
-        },
-        ...
-    ]
-
-```
-
-### Load all playlist configurations
-
-```json
-GET v1/configuration
-
->>>
-
-# Returns all the configuration files in s3 with "configuration/" prefix. The data has the file id and content.
-    [
-        {"id": "27103f9e-2b03-48d0-b442-f38a6052cfe1",
-         "content": {
-            "items": [
-                {
-                    "itemId": "ce3c6012-25f0-4c69-a0ad-c5dc8e41b795",
-                    "kind": "media",
-                    "itemType": "audio",
-                    "typeId": "audio/m4a",
-                    "url": "arvi-euroviisut.m4a",
-                    "description": "Arvi Lind esittelee",
-                    "options": []
-                },
-                ...
-            ]
-        ...
-    ]
-
-
-```
-
-### Load single theme from s3
-
-```json
-GET v1/theme/[ID]
-
->>>>
-
-#What ever is stored in the theme file in the s3 bucket theme/[id].json
-{
-    "description": "Koronavirus 2020",
-    "image": "https://jdjalassljkdda/something.jpg",
-    "scheduleIds": [
-        "0b5cf885-5049-4e7a-83e0-05a63be53639",
-        "143a9f19-edda-40c5-9213-3c0615c7dcf0"
-    ]
-}
-
-```
-
-### Load all themes
-
-```json
-GET v1/theme/
-
->>>
-
-# Returns all the theme files in s3 with "theme/" prefix. The data has the file id and content.
-    [
-        {"id": "27103f9e-2b03-48d0-b442-f38a6052cfe1",
-         "content": {
-            "items": [
-                {
-                    "description": "Koronavirus 2020",
-                    "image": "https://jdjalassljkdda/something.jpg",
-                    "scheduleIds": [
-                        "0b5cf885-5049-4e7a-83e0-05a63be53639",
-                        "143a9f19-edda-40c5-9213-3c0615c7dcf0"
-                    ]
-                },
-                ...
-            ]
-        ...
-    ]
-
-```
-
-### To test locally setup AWS-credentials and use ipython
-
-```python
-%load_ext autoreload
-%autoreload 2
-import os  
-os.environ['CONTENT_BUCKET_NAME'] = 'recorder-test'
-os.environ['YLE_CLIENT_ID'] ="XXX"
-os.environ['YLE_CLIENT_KEY'] = "XXX"
-os.environ['YLE_DECRYPT'] = "XXX"
-
-from handler import *
-init_upload({'body': '{"filename":"jee", "metadata": {"kukkuu": "jee"}}'}, {})
-
-```
-
----
-
-## FastAPI Local Development with Azurite
+## Quick Start - Local Development
 
 ### Prerequisites
 
+- Docker and Docker Compose (or Podman)
 - Python 3.11+
-- Podman Desktop (recommended - no sudo required) or Docker
-- Azure CLI (optional, for deployment)
+- [uv](https://github.com/astral-sh/uv) (recommended for fast package management)
 
 ### Setup
 
-1. **Start Azurite (Azure Storage Emulator)**:
-   
-   Using Podman (recommended):
-   ```bash
-   podman-compose up -d
-   ```
-   
-   Or using Docker:
-   ```bash
-   docker-compose up -d
-   ```
+1. **Start local environment with Azurite:**
 
-   This starts Azurite and initializes it with test configuration/theme files.
-
-2. **Install Python dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Run the FastAPI application**:
-   ```bash
-   uvicorn main:app --reload --port 8000
-   ```
-
-   The API will be available at `http://localhost:8000`
-   
-   Interactive API documentation at `http://localhost:8000/docs`
-
-4. **Test the endpoints**:
-   ```bash
-   # List all configurations
-   curl http://localhost:8000/v1/configuration
-   
-   # Get specific configuration
-   curl http://localhost:8000/v1/configuration/test-config-1
-   
-   # List all themes
-   curl http://localhost:8000/v1/theme
-   
-   # Initialize upload (requires valid request body)
-   curl -X POST http://localhost:8000/v1/init-upload \
-     -H "Content-Type: application/json" \
-     -d @test/sample-init-upload.json
-   ```
-
-### Environment Variables
-
-- `AZURE_STORAGE_CONNECTION_STRING`: Connection string for Azure Storage
-  - Default for local: `DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;`
-- `AZURE_STORAGE_CONTAINER`: Name of the blob container
-  - Default: `recorder-content-dev`
-
-### Stopping Services
-
-Using Podman:
 ```bash
-podman-compose down
+./setup-local.sh
 ```
 
-Or using Docker:
+This will:
+- Start Azurite (Azure Storage emulator)
+- Start the FastAPI backend
+- Create the `recorder-content` container
+- Upload test theme and configuration files
+
+2. **Access the services:**
+
+- FastAPI Backend: http://localhost:8000
+- API Documentation: http://localhost:8000/docs (Swagger UI)
+- Azurite Blob Storage: http://localhost:10000
+
+3. **Stop services:**
+
 ```bash
 docker-compose down
 ```
+
+### Manual Setup (without Docker)
+
+1. **Install dependencies:**
+
+```bash
+# Using uv (recommended - much faster)
+uv pip install -r pyproject.toml
+
+# Or using pip
+pip install -r requirements-fastapi.txt
+```
+
+2. **Run Azurite separately** (using npm or Docker):
+
+```bash
+# Using npm
+npm install -g azurite
+azurite --silent --location ./azurite-data
+
+# Or using Docker
+docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite azurite-blob --blobHost 0.0.0.0
+```
+
+3. **Run the FastAPI app:**
+
+```bash
+uvicorn main:app --reload --port 8000
+```
+
+## REST API Endpoints
+
+### Initialize Audio File Upload
+
+Store metadata and get a SAS URL for direct blob upload.
+
+```http
+POST /v1/upload
+Content-Type: application/json
+
+{
+    "filename": "audio.m4a",
+    "metadata": {
+        "clientId": "550e8400-e29b-41d4-a716-446655440000",
+        "sessionId": "optional-session-uuid",
+        "contentType": "audio/m4a",
+        "timestamp": "2024-01-15T10:30:00Z",
+        "duration": 45.2,
+        "language": "fi"
+    }
+}
+```
+
+Response:
+```json
+{
+    "presignedUrl": "https://devstoreaccount1.blob.core.windows.net/recorder-content/uploads/audio_and_metadata/550e8400.../audio.m4a?sp=cw&..."
+}
+```
+
+### Delete Uploaded Data
+
+Delete by client ID, session ID, or recording ID.
+
+```http
+DELETE /v1/upload/{clientId}
+DELETE /v1/upload/{clientId}/{sessionId}
+DELETE /v1/upload/{clientId}/{sessionId}/{recordingId}
+```
+
+Response:
+```json
+{
+    "message": "Deleted all data for client {clientId}"
+}
+```
+
+### Load Configuration Files
+
+Get a single configuration or list all configurations.
+
+```http
+GET /v1/configuration/{scheduleId}
+GET /v1/configuration
+```
+
+### Load Theme Files
+
+Get a single theme or list all themes.
+
+```http
+GET /v1/theme/{themeId}
+GET /v1/theme
+```
+
+## Azure Deployment
+
+### Option 1: Azure Container Apps (Recommended)
+
+Azure Container Apps provides automatic scaling, built-in HTTPS, and easy deployment.
+
+1. **Create Azure Storage Account:**
+
+```bash
+az storage account create \
+  --name recorderstorage \
+  --resource-group recorder-rg \
+  --location northeurope \
+  --sku Standard_LRS
+
+az storage container create \
+  --name recorder-content \
+  --account-name recorderstorage
+```
+
+2. **Build and push container:**
+
+```bash
+# Build
+docker build -t recorder-backend:latest .
+
+# Tag and push to Azure Container Registry
+az acr login --name yourregistry
+docker tag recorder-backend:latest yourregistry.azurecr.io/recorder-backend:latest
+docker push yourregistry.azurecr.io/recorder-backend:latest
+```
+
+3. **Deploy to Container Apps:**
+
+```bash
+az containerapp create \
+  --name recorder-api \
+  --resource-group recorder-rg \
+  --environment recorder-env \
+  --image yourregistry.azurecr.io/recorder-backend:latest \
+  --target-port 8000 \
+  --ingress external \
+  --env-vars \
+    AZURE_STORAGE_CONNECTION_STRING="<connection-string>" \
+    AZURE_STORAGE_CONTAINER_NAME="recorder-content"
+```
+
+### Option 2: Azure App Service
+
+Simpler option for basic workloads.
+
+```bash
+az webapp create \
+  --name recorder-api \
+  --resource-group recorder-rg \
+  --plan recorder-plan \
+  --deployment-container-image-name yourregistry.azurecr.io/recorder-backend:latest
+
+az webapp config appsettings set \
+  --name recorder-api \
+  --resource-group recorder-rg \
+  --settings \
+    AZURE_STORAGE_CONNECTION_STRING="<connection-string>" \
+    AZURE_STORAGE_CONTAINER_NAME="recorder-content"
+```
+
+## Environment Variables
+
+- `AZURE_STORAGE_CONNECTION_STRING`: Azure Storage connection string (required in production)
+- `AZURE_STORAGE_CONTAINER_NAME`: Container name (default: `recorder-content`)
+
+For local development, these default to Azurite values.
+
+## Testing
+
+```bash
+# Run with Docker Compose
+docker-compose up
+
+# Test endpoints
+curl http://localhost:8000/
+curl http://localhost:8000/v1/theme
+curl http://localhost:8000/v1/configuration
+```
+
+## Migration from Lambda
+
+This FastAPI version maintains API compatibility with the Lambda version:
+
+- Same endpoint paths (`/v1/upload`, `/v1/configuration`, `/v1/theme`)
+- Same request/response format
+- Same validation logic
+- Mobile apps only need to update the base URL
+
+**Key differences:**
+- Uses Azure Blob Storage SAS URLs instead of S3 presigned URLs
+- Async operations for better performance
+- Direct HTTP server instead of API Gateway + Lambda
+- Simpler local development with Azurite
+
+## File Structure
+
+```
+recorder-backend/
+├── main.py                     # FastAPI application
+├── storage.py                  # Azure Blob Storage abstraction
+├── yle_utils.py               # YLE API integration (unchanged)
+├── pyproject.toml             # Python project config (uv-managed)
+├── requirements-fastapi.txt    # Legacy pip requirements (for backwards compat)
+├── .python-version            # Python version specification
+├── Dockerfile                  # Container image definition (uses uv)
+├── docker-compose.yml          # Local dev environment
+├── setup-local.sh             # Setup script for local dev
+├── init-storage.py            # Storage initialization helper
+└── custom_fleep/              # File type detection (unchanged)
+```
+
+## Legacy Files (Lambda Version)
+
+These files are preserved for reference but not used in the FastAPI version:
+
+- `handler.py` - Upload handlers
+- `configuration.py` - Configuration loaders
+- `theme.py` - Theme loaders
+- `common.py` - S3 utilities
+- `serverless.yml` - Serverless Framework config
+- `requirements.txt` - Lambda dependencies
+
+## Troubleshooting
+
+### Azurite connection issues
+
+If the API can't connect to Azurite, check:
+- Azurite is running: `docker ps | grep azurite`
+- Connection string is correct
+- Container name is `recorder-content`
+
+### SAS URL not working
+
+- Ensure the blob container has appropriate CORS settings
+- Check SAS token permissions and expiry time
+- Verify clock sync (important for token validation)
+
+### Import errors for Crypto module
+
+This should no longer occur in the FastAPI version, but if you encounter it:
+- Ensure `pycryptodome>=3.19.0` is installed
+- The Crypto module is only used by `yle_utils.py` for YLE API
+
+## License
+
+See LICENSE file in the repository root.
