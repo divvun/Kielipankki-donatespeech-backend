@@ -1,35 +1,33 @@
-# Recorder backend
+# Kielipankki Recorder
 
-This repository contains the code and configuration for Recorder backend and ui
-applications. The deployment URLs are (replace with your own, but maintain the
-pattern):
+This repository contains the code for the Kielipankki speech donation recorder backend and UI applications.
 
-| URL | Meaning |
-| ----- | --------- |
-| example.com | The main production site |
-| endpoint.example.com | APIs for the production environment |
-| dev.example.com | The development site |
-| endpoint.dev.example.com | The development APIs |
+## Project Structure
 
-Each directory contains its own README file with detailed information.
+### [recorder-backend](recorder-backend/README-FASTAPI.md)
 
-## [CDK](cdk/README.MD)
+FastAPI backend service with Azure Blob Storage. See [README-FASTAPI.md](recorder-backend/README-FASTAPI.md) for full documentation.
 
-This folder contains CDK files that build the AWS environment from scratch.
+**Stack:**
+- Python 3.11 with FastAPI
+- Azure Blob Storage
+- Docker/Podman support
+- Local development with Azurite
 
-## [recorder-backend](recorder-backend/README.MD)
+**Quick start:**
+```bash
+cd recorder-backend
+./setup-local.sh  # Start local environment
+open http://localhost:8000/docs  # API documentation
+```
 
-The serverless backend for the project implemented in Python.
+### [recorder-ui](recorder-ui/README.MD)
 
-## [recorder-ui](recorder-ui/README.MD)
+The web UI for the speech donation recorder.
 
-The web UI files for the project.
+### [tools](tools/)
 
-## Other files worth a mention
-
-| File | Purpose |
-| ------ | --------- |
-| [serverless_build_spec.yml](serverless_build_spec.yml) | contains the CI commands to build the necessary infrastructure and backend resources, including the UI static files. |
+Utility scripts for schedule generation and analysis.
 
 ## Metadata
 

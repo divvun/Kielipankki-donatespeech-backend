@@ -1,6 +1,40 @@
-node_modules/
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
 venv/
-/env
-__pycache__
-.vscode
+env/
+ENV/
+.venv/
+*.egg-info/
+.pytest_cache/
+htmlcov/
+.coverage
+.hypothesis/
+
+# uv
+.uv/
+uv.lock
+
+# Node
+node_modules/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
 .DS_Store
+
+# Local development
+*.log
+.env
+.env.local
+
+# Azure
+.azure/
+
