@@ -7,12 +7,8 @@ provider:
   timeout: 20 # optional, in seconds, default is 6
   stage: ${opt:stage, 'dev'}
   region: eu-west-1
-  apiKeys:
-    - ${self:provider.stage}-recorder-enpoints-key
-  usagePlan:
-    throttle:
-      burstLimit: 500
-      rateLimit: 10000
+  # Note: apiKeys and usagePlan are deprecated in Serverless v4+
+  # Consider using API Gateway authorizers or AWS API keys instead
   iamRoleStatements:
     - Effect: "Allow"
       Action:
@@ -187,6 +183,12 @@ custom:
     endpointCertArn: ${cf:RecorderBackendResources.EndpointCertificateArnOut, ""}
   pythonRequirements:
     dockerizePip: ${self:custom.dockerizePip.${opt:stage, self:provider.stage}}
+    slim: true
+    strip: false
+    layer: true
+    useStaticCache: true
+    useDownloadCache: true
+    cacheLocation: '.python-packages'
   customDomain:
     enabled: ${self:custom.domainEnabled.${opt:stage, self:provider.stage}}
     hostedZoneId: ${self:custom.cfOutputs.hostedZoneId}
