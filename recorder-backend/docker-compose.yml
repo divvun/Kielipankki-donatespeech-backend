@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  # Azure Storage emulator for local development
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite:latest
+    container_name: recorder-azurite
+    ports:
+      - "10000:10000"  # Blob service
+      - "10001:10001"  # Queue service
+      - "10002:10002"  # Table service
+    volumes:
+      - azurite-data:/data
+    command: "azurite --blobHost 0.0.0.0 --queueHost 0.0.0.0 --tableHost 0.0.0.0"
+
+  # FastAPI backend
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: recorder-api
+    ports:
+      - "8000:8000"
+    environment:
+      # Azurite connection string
+      AZURE_STORAGE_CONNECTION_STRING: "DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://azurite:10000/devstoreaccount1;"
+      AZURE_STORAGE_CONTAINER_NAME: "recorder-content"
+    depends_on:
+      - azurite
+    volumes:
+      # Mount source for hot-reload during development
+      - ./main.py:/app/main.py
+      - ./storage.py:/app/storage.py
+      - ./yle_utils.py:/app/yle_utils.py
+    command: "uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+
+volumes:
+  azurite-data:
