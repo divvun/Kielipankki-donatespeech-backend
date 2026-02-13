@@ -10,5 +10,5 @@ ls ../content/${VAKE_PUHE_ENV}/schedules/*.json
 
 for i in 0 1 2 3 4 5
 do
-    aws s3 cp --profile vake-puhe-${VAKE_PUHE_ENV} ../content/${VAKE_PUHE_ENV}/schedules/${SCHEDULE_IDS[i]}.json s3://vake-puhe-content-${VAKE_PUHE_ENV}/configuration/${SCHEDULE_IDS[i]}.json
+    aws s3 cp --profile recorder-puhe-${VAKE_PUHE_ENV} ../content/${VAKE_PUHE_ENV}/schedules/${SCHEDULE_IDS[i]}.json s3://recorder-puhe-content-${VAKE_PUHE_ENV}/configuration/${SCHEDULE_IDS[i]}.json
 done

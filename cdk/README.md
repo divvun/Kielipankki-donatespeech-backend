@@ -1,4 +1,4 @@
-# Vake CDK deployment
+# Recorder CDK deployment
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
@@ -39,7 +39,7 @@ When the needed parameters and secrets are set go to the cdk folder and run
 npm run build
 export ENV=prod
 export BRANCH=master
-cdk deploy VakeBackendCI --profile [AWS-PROFILE-FOR_TARGET_ACCOUNT]
+cdk deploy RecorderBackendCI --profile [AWS-PROFILE-FOR_TARGET_ACCOUNT]
 ```
 
 When the deployment is done WAF needs to be attached to the cloudfront distribution manually ATM. So do this now.
@@ -50,7 +50,7 @@ to production to point to the dev env hosted zone.
 ```bash
 export ENV=dev
 export BRANCH=dev
-cdk deploy VakeBackendCI --profile [AWS-PROFILE-FOR_TARGET_ACCOUNT]
+cdk deploy RecorderBackendCI --profile [AWS-PROFILE-FOR_TARGET_ACCOUNT]
 ```
 
 And voila you should be done!

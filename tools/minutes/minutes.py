@@ -2,7 +2,7 @@ import boto3
 import json
 import datetime
 
-session = boto3.Session(profile_name='vake-puhe-prod')
+session = boto3.Session(profile_name='recorder-puhe-prod')
 client = session.client('s3')
 
 # Adapted from https://alexwlchan.net/2019/07/listing-s3-keys/
@@ -67,7 +67,7 @@ def is_valid_recording(md):
 
 total_minutes = 0
 total_seconds = 0
-bucket_name = 'vake-puhe-content-prod'
+bucket_name = 'recorder-puhe-content-prod'
 metadata_prefix = 'uploads/audio_and_metadata/metadata'
 total_bytes = 0
 answer_count = 0

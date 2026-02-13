@@ -17,12 +17,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Features
 #### Audio Recording
-* useAudioRecorder custom hook [AudioRecorder.ts](https://github.com/solita/vake-backend/blob/dev/vake-ui/src/utils/AudioRecorder.ts)
+* useAudioRecorder custom hook [AudioRecorder.ts](https://github.com/solita/recorder-backend/blob/dev/recorder-ui/src/utils/AudioRecorder.ts)
   - Manages MediaRecorder Web API and/or polyfill
   - Currently polyfill used always in order to produce WAV audio format
-* AudioRecorderContext [AudioRecorderContext.ts](https://github.com/solita/vake-backend/blob/dev/vake-ui/src/utils/AudioRecorderContext.ts)
+* AudioRecorderContext [AudioRecorderContext.ts](https://github.com/solita/recorder-backend/blob/dev/recorder-ui/src/utils/AudioRecorderContext.ts)
   - React Context for providing the audio recorder hook API
-* useRecordingManager custom hook [useRecordingManager.ts](https://github.com/solita/vake-backend/blob/dev/vake-ui/src/utils/useRecordingManager.ts)
+* useRecordingManager custom hook [useRecordingManager.ts](https://github.com/solita/recorder-backend/blob/dev/recorder-ui/src/utils/useRecordingManager.ts)
   - Triggers recording audio file upload when there is recording available
   - Automatically stops recording max duration has been exceeded
  
@@ -31,7 +31,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  * Recorder status view is displayed e.g. when microphone access is prompt
   
  #### Playlist
- * Playlist slice [playlistSlice.ts](https://github.com/solita/vake-backend/blob/dev/vake-ui/src/features/playlist/playlistSlice.ts)
+ * Playlist slice [playlistSlice.ts](https://github.com/solita/recorder-backend/blob/dev/recorder-ui/src/features/playlist/playlistSlice.ts)
    - Previous, current, next item logic
    - Donated recording durations
    - Playlist state stored in local storage / IndexedDB
@@ -41,13 +41,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
    - Renders both schedule item and schedule state ("start", "finish") items
   
 #### User info
-* User slice [userSlice.ts](https://github.com/solita/vake-backend/blob/dev/vake-ui/src/features/user/userSlice.ts)
+* User slice [userSlice.ts](https://github.com/solita/recorder-backend/blob/dev/recorder-ui/src/features/user/userSlice.ts)
    - Manages: client ID, analytics enabled/disabled and metadata answer values
    - User state stored in local storage / IndexedDB
   
 #### Local storage / IndexedDB
 * [localForage](https://localforage.github.io/localForage/) is used for storing playlist and user slice states
-* [localStorageUtil.ts](https://github.com/solita/vake-backend/blob/dev/vake-ui/src/utils/localStorageUtil.ts)  
+* [localStorageUtil.ts](https://github.com/solita/recorder-backend/blob/dev/recorder-ui/src/utils/localStorageUtil.ts)  
 
 #### Unit tests
 * Only the main playlist functionality is currently unit tested (ScheduleView.test.tsx)

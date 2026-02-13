@@ -14,7 +14,7 @@ phases:
       - docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
   build:
     commands:
-      - cd vake-ui
+      - cd recorder-ui
       - npm install
       - REACT_APP_STAGE=$ENV npm run build
       - mv build dist
@@ -23,8 +23,8 @@ phases:
       - npm run build
       - echo Env variables Env $ENV branch $BRANCH
       - cdk bootstrap
-      - cdk deploy VakeBackendCI VakeBackendResources VakeWAF VakeStaticSite --require-approval=never
-      - cd ../vake-backend
+      - cdk deploy RecorderBackendCI RecorderBackendResources RecorderWAF RecorderStaticSite --require-approval=never
+      - cd ../recorder-backend
       - npm install
       - sls create_domain --stage $ENV
       - sls deploy --stage $ENV

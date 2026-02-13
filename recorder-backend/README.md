@@ -1,4 +1,4 @@
-# Vake backend lambda functions
+# Recorder backend lambda functions
 
 ## REST APIs
 
@@ -136,7 +136,7 @@ GET v1/theme/
 %load_ext autoreload
 %autoreload 2
 import os  
-os.environ['CONTENT_BUCKET_NAME'] = 'vake-test'
+os.environ['CONTENT_BUCKET_NAME'] = 'recorder-test'
 os.environ['YLE_CLIENT_ID'] ="XXX"
 os.environ['YLE_CLIENT_KEY'] = "XXX"
 os.environ['YLE_DECRYPT'] = "XXX"
@@ -148,14 +148,14 @@ init_upload({'body': '{"filename":"jee", "metadata": {"kukkuu": "jee"}}'}, {})
 
 ### How to copy all the metadata to a local folder for analysis
 
-Use the AWS command-line tool. Be sure to save your credentials for the `vake-puhe-prod` role.
+Use the AWS command-line tool. Be sure to save your credentials for the `recorder-puhe-prod` role.
 
-    aws s3 cp s3://vake-puhe-content-prod/ ./ --recursive --exclude "*" --include "*.json" --profile vake-puhe-prod
+    aws s3 cp s3://recorder-puhe-content-prod/ ./ --recursive --exclude "*" --include "*.json" --profile recorder-puhe-prod
 
 Then use `tools/minutes/analyze.py` to get statistics, like this:
 
     cd tools/minutes
     source venv/bin/activate
-    python3 analyze.py ~/Documents/Vake/metadata-20201116/uploads/audio_and_metadata/metadata >~/tmp/minutes-20201116.txt
+    python3 analyze.py ~/Documents/Recorder/metadata-20201116/uploads/audio_and_metadata/metadata >~/tmp/minutes-20201116.txt
     deactivate
 

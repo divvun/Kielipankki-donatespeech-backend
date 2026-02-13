@@ -1,15 +1,14 @@
 #!/usr/bin/env node
-import * as cloudfront from "aws-cdk-lib/aws-cloudfront";
-import * as route53 from "aws-cdk-lib/aws-route53";
-import * as s3 from "aws-cdk-lib/aws-s3";
-import * as s3deploy from "aws-cdk-lib/aws-s3-deployment";
-import * as acm from "aws-cdk-lib/aws-certificatemanager";
-import * as cdk from "aws-cdk-lib";
+import cloudfront = require("@aws-cdk/aws-cloudfront");
+import route53 = require("@aws-cdk/aws-route53");
+import s3 = require("@aws-cdk/aws-s3");
+import s3deploy = require("@aws-cdk/aws-s3-deployment");
+import acm = require("@aws-cdk/aws-certificatemanager");
+import cdk = require("@aws-cdk/core");
 
-import * as iam from "aws-cdk-lib/aws-iam";
-import * as targets from "aws-cdk-lib/aws-route53-targets";
-import { Construct } from "constructs";
-import { Duration } from "aws-cdk-lib";
+import * as iam from "@aws-cdk/aws-iam";
+import targets = require("@aws-cdk/aws-route53-targets/lib");
+import { Construct, Duration } from "@aws-cdk/core";
 import { DomainProps, getSiteDomain } from "./common";
 
 /**
@@ -67,7 +66,7 @@ export class RecorderStaticSite extends cdk.Stack {
     s3Policy.document.addStatements(oaiPolicyStatement);
 
     // TLS certificate
-    const certificate = new acm.DnsValidatedCertificate(
+    const certificateArn = new acm.DnsValidatedCertificate(
       this,
       "SiteCertificate",
       {
@@ -75,25 +74,21 @@ export class RecorderStaticSite extends cdk.Stack {
         hostedZone: zone,
         region: "us-east-1",
       },
-    );
+    ).certificateArn;
 
-    new cdk.CfnOutput(this, "CertificateArnOut", {
-      value: certificate.certificateArn,
-    });
+    new cdk.CfnOutput(this, "CertificateArnOut", { value: certificateArn });
 
     // CloudFront distribution that provides HTTPS
     const distribution = new cloudfront.CloudFrontWebDistribution(
       this,
       "SiteDistribution",
       {
-        viewerCertificate: cloudfront.ViewerCertificate.fromAcmCertificate(
-          certificate,
-          {
-            aliases: [siteDomain],
-            sslMethod: cloudfront.SSLMethod.SNI,
-            securityPolicy: cloudfront.SecurityPolicyProtocol.TLS_V1_2_2018,
-          },
-        ),
+        aliasConfiguration: {
+          acmCertRef: certificateArn,
+          names: [siteDomain],
+          sslMethod: cloudfront.SSLMethod.SNI,
+          securityPolicy: cloudfront.SecurityPolicyProtocol.TLS_V1_2_2018,
+        },
         originConfigs: [
           {
             s3OriginSource: {
@@ -147,7 +142,7 @@ export class RecorderStaticSite extends cdk.Stack {
     // Route53 alias record for the CloudFront distribution
     new route53.ARecord(this, "SiteAliasRecord", {
       recordName: siteDomain,
-      target: route53.RecordTarget.fromAlias(
+      target: route53.AddressRecordTarget.fromAlias(
         new targets.CloudFrontTarget(distribution),
       ),
       zone,

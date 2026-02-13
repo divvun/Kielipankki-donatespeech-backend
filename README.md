@@ -1,4 +1,4 @@
-# Vake lahjoitapuhetta backend
+# Recorder lahjoitapuhetta backend
 
 This repository contains the code and configuration for lahjoitapuhettasi backend and ui applications. The deployment URLS are
 
@@ -16,11 +16,11 @@ Each directory contains it's own readme file with detailed information.
 
 This folder contains cdk files that build the AWS environment from scratch.
 
-## [vake-backend](vake-backend/README.MD)
+## [recorder-backend](recorder-backend/README.MD)
 
 The serverless backend for the project implemented with python. 
 
-## [vake-ui](vake-ui/README.MD)
+## [recorder-ui](recorder-ui/README.MD)
 
 The web UI files for the project.
 
