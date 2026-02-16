@@ -42,30 +42,32 @@ def main():
 
         # Upload test playlist (schedule) file
         test_dir = Path(__file__).parent / "test"
-        playlist_file = test_dir / "playlist.json"
+        playlist_file = test_dir / "0b5cf885-5049-4e7a-83e0-05a63be53639.json"
 
         if playlist_file.exists():
             print("Uploading test playlist...")
             with open(playlist_file, "rb") as f:
                 blob_client = client.get_blob_client(
-                    container=CONTAINER_NAME, blob="schedule/test-playlist.json"
+                    container=CONTAINER_NAME,
+                    blob="schedule/0b5cf885-5049-4e7a-83e0-05a63be53639.json",
                 )
                 blob_client.upload_blob(f, overwrite=True)
-            print("✓ Uploaded schedule/test-playlist.json")
+            print("✓ Uploaded schedule/0b5cf885-5049-4e7a-83e0-05a63be53639.json")
         else:
             print(f"⚠ Warning: {playlist_file} not found, skipping")
 
         # Upload test theme file
-        theme_file = test_dir / "theme.json"
+        theme_file = test_dir / "8d147f2c-9a3b-4e5d-b2c1-45a8f7e3c6d9.json"
 
         if theme_file.exists():
             print("Uploading test theme...")
             with open(theme_file, "rb") as f:
                 blob_client = client.get_blob_client(
-                    container=CONTAINER_NAME, blob="theme/test-theme.json"
+                    container=CONTAINER_NAME,
+                    blob="theme/8d147f2c-9a3b-4e5d-b2c1-45a8f7e3c6d9.json",
                 )
                 blob_client.upload_blob(f, overwrite=True)
-            print("✓ Uploaded theme/test-theme.json")
+            print("✓ Uploaded theme/8d147f2c-9a3b-4e5d-b2c1-45a8f7e3c6d9.json")
         else:
             print(f"⚠ Warning: {theme_file} not found, skipping")
 

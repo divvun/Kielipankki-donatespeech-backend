@@ -4,9 +4,12 @@ This directory contains test JSON files for local development.
 
 ## Files
 
-- **playlist.json**: Sample schedule with various item types (audio, video, YLE
-  media, prompts)
-- **theme.json**: Sample theme definition
+- **0b5cf885-5049-4e7a-83e0-05a63be53639.json**: Sample schedule with various
+  item types (audio, video, prompts)
+- **8d147f2c-9a3b-4e5d-b2c1-45a8f7e3c6d9.json**: Sample theme definition
+
+**Note:** Files are named with UUIDs to match production naming conventions.
+The UUID becomes the resource ID when uploaded to blob storage.
 
 ## Format
 
@@ -56,8 +59,18 @@ simplified format:
 These files are automatically uploaded to the Azurite blob storage when running
 `setup-local.sh`:
 
-- `test/playlist.json` → `schedule/test-playlist.json`
-- `test/theme.json` → `theme/test-theme.json`
+- `test/0b5cf885-5049-4e7a-83e0-05a63be53639.json` →
+  `schedule/0b5cf885-5049-4e7a-83e0-05a63be53639.json` (Schedule ID:
+  `0b5cf885-5049-4e7a-83e0-05a63be53639`)
+- `test/8d147f2c-9a3b-4e5d-b2c1-45a8f7e3c6d9.json` →
+  `theme/8d147f2c-9a3b-4e5d-b2c1-45a8f7e3c6d9.json` (Theme ID:
+  `8d147f2c-9a3b-4e5d-b2c1-45a8f7e3c6d9`)
+
+Access via API:
+```bash
+curl http://localhost:8000/v1/schedule/0b5cf885-5049-4e7a-83e0-05a63be53639
+curl http://localhost:8000/v1/theme/8d147f2c-9a3b-4e5d-b2c1-45a8f7e3c6d9
+```
 
 ## Converting Additional Files
 
