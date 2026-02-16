@@ -9,7 +9,7 @@ import logging
 from io import BytesIO
 from uuid import UUID
 
-from fastapi import FastAPI, HTTPException, Path
+from fastapi import FastAPI, HTTPException, Path, Header
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 
@@ -29,6 +29,7 @@ from storage import (
     delete_by_prefix,
     load_blob_json,
     load_blob_binary,
+    load_blob_binary_range,
     list_blobs_with_prefix,
     StorageError,
 )
@@ -305,9 +306,15 @@ async def load_all_themes():
 
 
 @app.get("/v1/media/{filename}")
-async def serve_media(filename: str = Path(..., description="Media filename")):
+async def serve_media(
+    filename: str = Path(..., description="Media filename"),
+    range: str = Header(None, description="HTTP Range header"),
+):
     """
     Serve media files (audio/video) for playback in the client app.
+
+    Supports HTTP range requests for streaming and seeking.
+    Required for AVPlayer on iOS/macOS.
 
     Media files are stored in the `media/` prefix in blob storage.
     Supports audio (m4a, mp3, wav, etc.) and video (mp4, etc.) files.
@@ -318,31 +325,75 @@ async def serve_media(filename: str = Path(..., description="Media filename")):
 
     blob_name = f"media/{filename}"
 
+    # Determine content type based on file extension
+    extension = filename.split(".")[-1].lower()
+    content_type_map = {
+        "m4a": "audio/mp4",
+        "mp3": "audio/mpeg",
+        "wav": "audio/wav",
+        "flac": "audio/flac",
+        "opus": "audio/opus",
+        "amr": "audio/amr",
+        "caf": "audio/x-caf",
+        "mp4": "video/mp4",
+        "webm": "video/webm",
+        "mov": "video/quicktime",
+    }
+
+    content_type = content_type_map.get(extension, "application/octet-stream")
+
     try:
+        # Parse Range header if present (format: "bytes=start-end")
+        if range:
+            try:
+                # Format: "bytes=0-1023" or "bytes=1024-"
+                range_str = range.replace("bytes=", "")
+                if "-" in range_str:
+                    start_str, end_str = range_str.split("-", 1)
+                    start = int(start_str) if start_str else 0
+                    end = int(end_str) if end_str else None
+                else:
+                    start = int(range_str)
+                    end = None
+
+                # Load the range with total size
+                content, total_size = await load_blob_binary_range(
+                    blob_name,
+                    offset=start,
+                    length=(end - start + 1) if end else None,
+                )
+
+                # Calculate actual end for response header
+                actual_end = start + len(content) - 1
+
+                return StreamingResponse(
+                    BytesIO(content),
+                    status_code=206,  # Partial Content
+                    media_type=content_type,
+                    headers={
+                        "Content-Length": str(len(content)),
+                        "Content-Range": f"bytes {start}-{actual_end}/{total_size}",
+                        "Accept-Ranges": "bytes",
+                        "Content-Disposition": f"inline; filename={filename}",
+                    },
+                )
+            except (ValueError, AttributeError):
+                # Invalid range header, return full file
+                pass
+
+        # No range header or invalid range - return full file
         content = await load_blob_binary(blob_name)
-        
-        # Determine content type based on file extension
-        extension = filename.split(".")[-1].lower()
-        content_type_map = {
-            "m4a": "audio/mp4",
-            "mp3": "audio/mpeg",
-            "wav": "audio/wav",
-            "flac": "audio/flac",
-            "opus": "audio/opus",
-            "amr": "audio/amr",
-            "caf": "audio/x-caf",
-            "mp4": "video/mp4",
-            "webm": "video/webm",
-            "mov": "video/quicktime",
-        }
-        
-        content_type = content_type_map.get(extension, "application/octet-stream")
-        
+
         return StreamingResponse(
             BytesIO(content),
             media_type=content_type,
-            headers={"Content-Disposition": f"inline; filename={filename}"},
+            headers={
+                "Content-Length": str(len(content)),
+                "Accept-Ranges": "bytes",
+                "Content-Disposition": f"inline; filename={filename}",
+            },
         )
+
     except StorageError:
         raise HTTPException(status_code=404, detail="Media file not found")
     except Exception as e:
