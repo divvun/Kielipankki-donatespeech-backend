@@ -8,6 +8,7 @@ a .NET MAUI application.
 ### `RecorderApiService.cs`
 
 Example service wrapper showing how to:
+
 - Configure the API client with platform-specific base URLs
 - Call schedule and theme endpoints
 - Upload recordings with metadata

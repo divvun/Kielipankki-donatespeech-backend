@@ -6,10 +6,12 @@ FastAPI REST API that can run locally (with Azurite) or on Azure.
 """
 
 import logging
+from io import BytesIO
 from uuid import UUID
 
 from fastapi import FastAPI, HTTPException, Path
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import StreamingResponse
 
 from models import (
     Schedule,
@@ -26,6 +28,7 @@ from storage import (
     generate_upload_sas_url,
     delete_by_prefix,
     load_blob_json,
+    load_blob_binary,
     list_blobs_with_prefix,
     StorageError,
 )
@@ -299,6 +302,52 @@ async def load_all_themes():
     except StorageError as e:
         logger.error(f"Error loading all themes: {e}")
         raise HTTPException(status_code=500, detail="Error loading themes")
+
+
+@app.get("/v1/media/{filename}")
+async def serve_media(filename: str = Path(..., description="Media filename")):
+    """
+    Serve media files (audio/video) for playback in the client app.
+
+    Media files are stored in the `media/` prefix in blob storage.
+    Supports audio (m4a, mp3, wav, etc.) and video (mp4, etc.) files.
+    """
+    # Validate filename - prevent directory traversal
+    if "/" in filename or filename.startswith(".."):
+        raise HTTPException(status_code=400, detail="Invalid filename")
+
+    blob_name = f"media/{filename}"
+
+    try:
+        content = await load_blob_binary(blob_name)
+        
+        # Determine content type based on file extension
+        extension = filename.split(".")[-1].lower()
+        content_type_map = {
+            "m4a": "audio/mp4",
+            "mp3": "audio/mpeg",
+            "wav": "audio/wav",
+            "flac": "audio/flac",
+            "opus": "audio/opus",
+            "amr": "audio/amr",
+            "caf": "audio/x-caf",
+            "mp4": "video/mp4",
+            "webm": "video/webm",
+            "mov": "video/quicktime",
+        }
+        
+        content_type = content_type_map.get(extension, "application/octet-stream")
+        
+        return StreamingResponse(
+            BytesIO(content),
+            media_type=content_type,
+            headers={"Content-Disposition": f"inline; filename={filename}"},
+        )
+    except StorageError:
+        raise HTTPException(status_code=404, detail="Media file not found")
+    except Exception as e:
+        logger.error(f"Error serving media {filename}: {e}")
+        raise HTTPException(status_code=500, detail="Error serving media file")
 
 
 if __name__ == "__main__":

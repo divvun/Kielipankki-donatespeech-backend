@@ -218,6 +218,41 @@ async def load_blob_json(blob_name: str) -> dict:
         raise StorageError(f"Failed to load blob: {e}")
 
 
+async def load_blob_binary(blob_name: str) -> bytes:
+    """
+    Load binary blob content from storage.
+
+    Args:
+        blob_name: The blob path/name
+
+    Returns:
+        Binary content
+
+    Raises:
+        StorageError: If the blob doesn't exist or can't be loaded
+    """
+    try:
+        async with get_blob_service_client() as client:
+            blob_client = client.get_blob_client(
+                container=CONTAINER_NAME, blob=blob_name
+            )
+
+            download_stream = await blob_client.download_blob()
+            content = await download_stream.readall()
+
+            return content
+
+    except ResourceNotFoundError:
+        logger.error(f"Blob not found: {blob_name}")
+        raise StorageError(f"Blob not found: {blob_name}")
+    except AzureError as e:
+        logger.error(f"Azure Storage error loading blob: {e}")
+        raise StorageError(f"Failed to load blob: {e}")
+    except Exception as e:
+        logger.error(f"Unexpected error loading blob: {e}")
+        raise StorageError(f"Failed to load blob: {e}")
+
+
 async def list_blobs_with_prefix(prefix: str, max_results: int = 1000) -> List[str]:
     """
     List all blob names with a given prefix.
