@@ -1,14 +1,13 @@
 """Test discriminated union: PromptItem with itemType=text."""
 
-from models import TextPromptItem, ScheduleItem
+from models import TextInputItem, ScheduleItem
 
 
 def test_prompt_item_text_valid():
     """Test valid PromptItem with kind=prompt and itemType=text."""
-    item = TextPromptItem(
-        kind="prompt",
+    item = TextInputItem(
         itemId="text-prompt-001",
-        itemType="text",
+        itemType="text-input",
         typeId=None,
         url=None,
         description="Enter your response",
@@ -16,8 +15,7 @@ def test_prompt_item_text_valid():
         isRecording=True,
     )
     
-    assert item.kind == "prompt"
-    assert item.itemType == "text"
+    assert item.itemType == "text-input"
     assert item.typeId is None
     assert item.url is None
     assert item.options == []
@@ -29,7 +27,7 @@ def test_prompt_item_text_in_schedule():
     item_dict = {
         "kind": "prompt",
         "itemId": "text-prompt-002",
-        "itemType": "text",
+        "itemType": "text-input",
         "typeId": None,
         "url": None,
         "description": "What is your name?",
@@ -38,20 +36,18 @@ def test_prompt_item_text_in_schedule():
     }
     
     # Parse as ScheduleItem union
-    schedule_item: ScheduleItem = TextPromptItem(**item_dict)
+    schedule_item: ScheduleItem = TextInputItem(**item_dict)
     
-    assert isinstance(schedule_item, TextPromptItem)
-    assert schedule_item.kind == "prompt"
-    assert schedule_item.itemType == "text"
+    assert isinstance(schedule_item, TextInputItem)
+    assert schedule_item.itemType == "text-input"
     assert schedule_item.options == []
 
 
 def test_prompt_item_text_no_options():
     """Test PromptItem text with empty options array."""
-    item = TextPromptItem(
-        kind="prompt",
+    item = TextInputItem(
         itemId="text-prompt-no-opts",
-        itemType="text",
+        itemType="text-input",
         typeId=None,
         url=None,
         description="Free text input",
@@ -59,17 +55,16 @@ def test_prompt_item_text_no_options():
         isRecording=True,
     )
     
-    assert item.itemType == "text"
+    assert item.itemType == "text-input"
     assert item.options == []
     assert len(item.options) == 0
 
 
 def test_prompt_item_text_no_other_entry_label():
     """Test PromptItem text without otherEntryLabel (defaults to None)."""
-    item = TextPromptItem(
-        kind="prompt",
+    item = TextInputItem(
         itemId="text-prompt-basic",
-        itemType="text",
+        itemType="text-input",
         typeId=None,
         url=None,
         description="Simple text question",
@@ -77,7 +72,7 @@ def test_prompt_item_text_no_other_entry_label():
         isRecording=False,
     )
     
-    assert item.itemType == "text"
+    assert item.itemType == "text-input"
     assert item.otherEntryLabel is None
 
 
@@ -90,10 +85,9 @@ def test_prompt_item_text_with_long_description():
     - Suggestions for improvement
     """
     
-    item = TextPromptItem(
-        kind="prompt",
+    item = TextInputItem(
         itemId="text-prompt-long",
-        itemType="text",
+        itemType="text-input",
         typeId=None,
         url=None,
         description=long_desc,
@@ -101,5 +95,5 @@ def test_prompt_item_text_with_long_description():
         isRecording=True,
     )
     
-    assert item.itemType == "text"
+    assert item.itemType == "text-input"
     assert long_desc in item.description
