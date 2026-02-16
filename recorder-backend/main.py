@@ -147,9 +147,9 @@ async def init_upload(request: InitUploadRequest):
         raise HTTPException(status_code=500, detail="Error generating upload URL")
 
 
-@app.delete("/v1/upload/{client_id}")
+@app.delete("/v1/recordings/{client_id}")
 async def delete_by_client_id(client_id: str = Path(..., description="Client UUID")):
-    """Delete all uploads for a given client ID."""
+    """Delete all recordings for a given client ID."""
     if not validate_uuid_v4(client_id):
         raise HTTPException(status_code=400, detail="Invalid clientId")
 
@@ -162,12 +162,12 @@ async def delete_by_client_id(client_id: str = Path(..., description="Client UUI
         raise HTTPException(status_code=500, detail="Error deleting data")
 
 
-@app.delete("/v1/upload/{client_id}/{session_id}")
+@app.delete("/v1/recordings/{client_id}/{session_id}")
 async def delete_by_session_id(
     client_id: str = Path(..., description="Client UUID"),
     session_id: str = Path(..., description="Session UUID"),
 ):
-    """Delete all uploads for a given session."""
+    """Delete all recordings for a given session."""
     if not validate_uuid_v4(client_id) or not validate_uuid_v4(session_id):
         raise HTTPException(status_code=400, detail="Invalid clientId or sessionId")
 
@@ -180,7 +180,7 @@ async def delete_by_session_id(
         raise HTTPException(status_code=500, detail="Error deleting data")
 
 
-@app.delete("/v1/upload/{client_id}/{session_id}/{recording_id}")
+@app.delete("/v1/recordings/{client_id}/{session_id}/{recording_id}")
 async def delete_by_recording_id(
     client_id: str = Path(..., description="Client UUID"),
     session_id: str = Path(..., description="Session UUID"),
