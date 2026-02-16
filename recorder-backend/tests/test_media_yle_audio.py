@@ -8,15 +8,12 @@ def test_media_item_yle_audio_valid():
     item = YleAudioMediaItem(
         itemId="yle-audio-001",
         itemType="yle-audio",
-        typeId=None,
         url="1-50000093",  # YLE Areena program identifier
         description="YLE audio content",
-        options=[],
         isRecording=False,
     )
     
     assert item.itemType == "yle-audio"
-    assert item.typeId is None
     assert item.url == "1-50000093"  # YLE program ID format
     assert item.isRecording is False
 
@@ -50,10 +47,8 @@ def test_media_item_yle_audio_various_ids():
         item = YleAudioMediaItem(
             itemId=f"yle-{yle_id}",
             itemType="yle-audio",
-            typeId=None,
             url=yle_id,
             description=f"YLE content {yle_id}",
-            options=[],
             isRecording=False,
         )
         

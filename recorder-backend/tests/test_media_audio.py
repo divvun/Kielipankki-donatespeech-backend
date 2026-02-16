@@ -11,7 +11,6 @@ def test_media_item_audio_valid():
         typeId="audio/m4a",
         url="https://example.com/audio.m4a",
         description="Audio description",
-        options=[],
         isRecording=True,
     )
     
@@ -19,7 +18,6 @@ def test_media_item_audio_valid():
     assert item.typeId == "audio/m4a"
     assert item.url == "https://example.com/audio.m4a"
     assert item.isRecording is True
-    assert item.options == []
 
 
 def test_media_item_audio_in_schedule():
@@ -49,7 +47,6 @@ def test_media_item_audio_minimal():
         typeId="audio/m4a",
         url="audio.m4a",
         description="Minimal audio",
-        options=[],
         isRecording=False,
     )
     

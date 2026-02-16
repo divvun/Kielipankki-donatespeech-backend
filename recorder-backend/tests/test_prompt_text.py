@@ -8,17 +8,11 @@ def test_prompt_item_text_valid():
     item = TextInputItem(
         itemId="text-prompt-001",
         itemType="text-input",
-        typeId=None,
-        url=None,
         description="Enter your response",
-        options=[],
         isRecording=True,
     )
     
     assert item.itemType == "text-input"
-    assert item.typeId is None
-    assert item.url is None
-    assert item.options == []
     assert item.isRecording is True
 
 
@@ -40,7 +34,6 @@ def test_prompt_item_text_in_schedule():
     
     assert isinstance(schedule_item, TextInputItem)
     assert schedule_item.itemType == "text-input"
-    assert schedule_item.options == []
 
 
 def test_prompt_item_text_no_options():
@@ -48,16 +41,11 @@ def test_prompt_item_text_no_options():
     item = TextInputItem(
         itemId="text-prompt-no-opts",
         itemType="text-input",
-        typeId=None,
-        url=None,
         description="Free text input",
-        options=[],
         isRecording=True,
     )
     
     assert item.itemType == "text-input"
-    assert item.options == []
-    assert len(item.options) == 0
 
 
 def test_prompt_item_text_no_other_entry_label():
@@ -65,15 +53,11 @@ def test_prompt_item_text_no_other_entry_label():
     item = TextInputItem(
         itemId="text-prompt-basic",
         itemType="text-input",
-        typeId=None,
-        url=None,
         description="Simple text question",
-        options=[],
         isRecording=False,
     )
     
     assert item.itemType == "text-input"
-    assert item.otherEntryLabel is None
 
 
 def test_prompt_item_text_with_long_description():
@@ -88,10 +72,7 @@ def test_prompt_item_text_with_long_description():
     item = TextInputItem(
         itemId="text-prompt-long",
         itemType="text-input",
-        typeId=None,
-        url=None,
         description=long_desc,
-        options=[],
         isRecording=True,
     )
     

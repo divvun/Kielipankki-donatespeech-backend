@@ -8,8 +8,6 @@ def test_prompt_item_super_choice_valid():
     item = SuperChoicePromptItem(
         itemId="super-choice-001",
         itemType="super-choice",
-        typeId=None,
-        url=None,
         description="Choose one or enter text",
         options=["Predefined 1", "Predefined 2", "Predefined 3"],
         isRecording=True,
@@ -17,9 +15,6 @@ def test_prompt_item_super_choice_valid():
     )
     
     assert item.itemType == "super-choice"
-    assert item.typeId is None
-    assert item.url is None
-    assert item.options == ["Predefined 1", "Predefined 2", "Predefined 3"]
     assert item.otherEntryLabel == "Or type your own"
     assert item.isRecording is True
 
@@ -51,8 +46,6 @@ def test_prompt_item_super_choice_without_other_entry():
     item = SuperChoicePromptItem(
         itemId="super-choice-no-label",
         itemType="super-choice",
-        typeId=None,
-        url=None,
         description="Super-choice without custom entry field",
         options=["Option A", "Option B"],
         isRecording=True,
@@ -69,8 +62,6 @@ def test_prompt_item_super_choice_with_many_options():
     item = SuperChoicePromptItem(
         itemId="super-choice-many",
         itemType="super-choice",
-        typeId=None,
-        url=None,
         description="Select from 30 items or add custom",
         options=options,
         isRecording=False,

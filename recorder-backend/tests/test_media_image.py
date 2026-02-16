@@ -11,7 +11,6 @@ def test_media_item_image_valid():
         typeId="image/jpeg",
         url="https://example.com/photo.jpg",
         description="Photo displayed to user",
-        options=[],
         isRecording=False,
     )
     
@@ -61,7 +60,6 @@ def test_media_item_image_various_formats():
             typeId=mime_type,
             url=f"image.{mime_type.split('/')[1]}",
             description=f"Image in {mime_type} format",
-            options=[],
             isRecording=False,
         )
         

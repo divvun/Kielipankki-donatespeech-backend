@@ -21,7 +21,6 @@ class AudioMediaItem(BaseModel):
     url: str = Field(..., description="Direct URL to audio file")
     typeId: str = Field(..., description="MIME type (e.g., 'audio/m4a', 'audio/mpeg')")
     description: str
-    options: list[str] = Field(default_factory=list, description="Should be empty for media")
     isRecording: bool
 
 
@@ -33,7 +32,6 @@ class VideoMediaItem(BaseModel):
     url: str = Field(..., description="Direct URL to video file")
     typeId: str = Field(..., description="MIME type (e.g., 'video/mp4', 'video/webm')")
     description: str
-    options: list[str] = Field(default_factory=list, description="Should be empty for media")
     isRecording: bool
 
 
@@ -43,9 +41,7 @@ class YleAudioMediaItem(BaseModel):
     itemType: Literal["yle-audio"]
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="YLE program ID")
-    typeId: Optional[str] = Field(None, description="Not used for YLE content")
     description: str
-    options: list[str] = Field(default_factory=list, description="Should be empty for media")
     isRecording: bool
 
 
@@ -55,9 +51,7 @@ class YleVideoMediaItem(BaseModel):
     itemType: Literal["yle-video"]
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="YLE program ID")
-    typeId: Optional[str] = Field(None, description="Not used for YLE content")
     description: str
-    options: list[str] = Field(default_factory=list, description="Should be empty for media")
     isRecording: bool
 
 
@@ -69,7 +63,6 @@ class TextContentItem(BaseModel):
     url: str = Field(..., description="URL to text content")
     typeId: Optional[str] = Field(None, description="MIME type (e.g., 'text/plain', 'text/html')")
     description: str
-    options: list[str] = Field(default_factory=list, description="Should be empty for media")
     isRecording: bool
 
 
@@ -81,7 +74,6 @@ class ImageMediaItem(BaseModel):
     url: str = Field(..., description="Direct URL to image file")
     typeId: str = Field(..., description="MIME type (e.g., 'image/jpeg', 'image/png')")
     description: str
-    options: list[str] = Field(default_factory=list, description="Should be empty for media")
     isRecording: bool
 
 
@@ -90,12 +82,9 @@ class ChoicePromptItem(BaseModel):
 
     itemType: Literal["choice"]
     itemId: str = Field(..., description="UUID v4 of the item")
-    typeId: None = Field(None, description="Always null for prompts")
-    url: None = Field(None, description="Always null for prompts")
     description: str = Field(..., description="Question text shown to user")
     options: list[str] = Field(..., description="Answer options to choose from")
     isRecording: bool
-    otherEntryLabel: None = Field(None, description="Not used for choice prompts")
 
 
 class MultiChoicePromptItem(BaseModel):
@@ -103,8 +92,6 @@ class MultiChoicePromptItem(BaseModel):
 
     itemType: Literal["multi-choice"]
     itemId: str = Field(..., description="UUID v4 of the item")
-    typeId: None = Field(None, description="Always null for prompts")
-    url: None = Field(None, description="Always null for prompts")
     description: str = Field(..., description="Question text shown to user")
     options: list[str] = Field(..., description="Multiple answer options")
     isRecording: bool
@@ -119,8 +106,6 @@ class SuperChoicePromptItem(BaseModel):
 
     itemType: Literal["super-choice"]
     itemId: str = Field(..., description="UUID v4 of the item")
-    typeId: None = Field(None, description="Always null for prompts")
-    url: None = Field(None, description="Always null for prompts")
     description: str = Field(..., description="Question text shown to user")
     options: list[str] = Field(..., description="Super choice answer options")
     isRecording: bool
@@ -135,12 +120,8 @@ class TextInputItem(BaseModel):
 
     itemType: Literal["text-input"]
     itemId: str = Field(..., description="UUID v4 of the item")
-    typeId: None = Field(None, description="Always null for prompts")
-    url: None = Field(None, description="Always null for prompts")
     description: str = Field(..., description="Question text shown to user")
-    options: list[str] = Field(default_factory=list, description="Should be empty for text prompts")
     isRecording: bool
-    otherEntryLabel: None = Field(None, description="Not used for text prompts")
 
 
 # Discriminated union of all schedule item types (discriminated by itemType)
