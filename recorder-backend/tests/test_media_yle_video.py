@@ -1,15 +1,15 @@
 """Test discriminated union: MediaItem with itemType=yle-video."""
 
-from models import MediaItem, ScheduleItem
+from models import YleVideoMediaItem, ScheduleItem
 
 
 def test_media_item_yle_video_valid():
     """Test valid MediaItem with kind=media and itemType=yle-video."""
-    item = MediaItem(
+    item = YleVideoMediaItem(
         kind="media",
         itemId="yle-video-001",
         itemType="yle-video",
-        typeId="video/mp4",
+        typeId=None,
         url="1-50000093",  # YLE Areena program identifier
         description="YLE video content",
         options=[],
@@ -18,7 +18,7 @@ def test_media_item_yle_video_valid():
     
     assert item.kind == "media"
     assert item.itemType == "yle-video"
-    assert item.typeId == "video/mp4"
+    assert item.typeId is None
     assert item.url == "1-50000093"  # YLE program ID format
     assert item.isRecording is True
 
@@ -29,7 +29,7 @@ def test_media_item_yle_video_in_schedule():
         "kind": "media",
         "itemId": "yle-video-002",
         "itemType": "yle-video",
-        "typeId": "video/webm",
+        "typeId": None,
         "url": "1-50000094",
         "description": "Another YLE video",
         "options": [],
@@ -37,9 +37,9 @@ def test_media_item_yle_video_in_schedule():
     }
     
     # Parse as ScheduleItem union
-    schedule_item: ScheduleItem = MediaItem(**item_dict)
+    schedule_item: ScheduleItem = YleVideoMediaItem(**item_dict)
     
-    assert isinstance(schedule_item, MediaItem)
+    assert isinstance(schedule_item, YleVideoMediaItem)
     assert schedule_item.kind == "media"
     assert schedule_item.itemType == "yle-video"
     assert schedule_item.url == "1-50000094"  # YLE program ID preserved
@@ -50,11 +50,11 @@ def test_media_item_yle_video_various_ids():
     yle_ids = ["1-50000093", "1-60000001", "1-70000500", "2-999999"]
     
     for yle_id in yle_ids:
-        item = MediaItem(
+        item = YleVideoMediaItem(
             kind="media",
             itemId=f"yle-vid-{yle_id}",
             itemType="yle-video",
-            typeId="video/mp4",
+            typeId=None,
             url=yle_id,
             description=f"YLE video {yle_id}",
             options=[],

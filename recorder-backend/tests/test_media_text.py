@@ -1,11 +1,11 @@
 """Test discriminated union: MediaItem with itemType=text."""
 
-from models import MediaItem, ScheduleItem
+from models import TextMediaItem, ScheduleItem
 
 
 def test_media_item_text_valid():
     """Test valid MediaItem with kind=media and itemType=text."""
-    item = MediaItem(
+    item = TextMediaItem(
         kind="media",
         itemId="text-001",
         itemType="text",
@@ -37,9 +37,9 @@ def test_media_item_text_in_schedule():
     }
     
     # Parse as ScheduleItem union
-    schedule_item: ScheduleItem = MediaItem(**item_dict)
+    schedule_item: ScheduleItem = TextMediaItem(**item_dict)
     
-    assert isinstance(schedule_item, MediaItem)
+    assert isinstance(schedule_item, TextMediaItem)
     assert schedule_item.kind == "media"
     assert schedule_item.itemType == "text"
     assert schedule_item.typeId == "text/html"
@@ -55,7 +55,7 @@ def test_media_item_text_various_formats():
     ]
     
     for mime_type, description in formats:
-        item = MediaItem(
+        item = TextMediaItem(
             kind="media",
             itemId=f"text-{mime_type}",
             itemType="text",

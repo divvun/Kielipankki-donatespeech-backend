@@ -1,11 +1,11 @@
 """Test discriminated union: MediaItem with itemType=video."""
 
-from models import MediaItem, ScheduleItem
+from models import VideoMediaItem, ScheduleItem
 
 
 def test_media_item_video_valid():
     """Test valid MediaItem with kind=media and itemType=video."""
-    item = MediaItem(
+    item = VideoMediaItem(
         kind="media",
         itemId="f3c991c0-e2f2-4d4d-980d-0883230d84a1",
         itemType="video",
@@ -38,9 +38,9 @@ def test_media_item_video_in_schedule():
     }
     
     # Parse as ScheduleItem union
-    schedule_item: ScheduleItem = MediaItem(**item_dict)
+    schedule_item: ScheduleItem = VideoMediaItem(**item_dict)
     
-    assert isinstance(schedule_item, MediaItem)
+    assert isinstance(schedule_item, VideoMediaItem)
     assert schedule_item.kind == "media"
     assert schedule_item.itemType == "video"
     assert schedule_item.typeId == "video/webm"
@@ -51,7 +51,7 @@ def test_media_item_video_various_codecs():
     mime_types = ["video/mp4", "video/webm", "video/avi", "video/quicktime"]
     
     for mime_type in mime_types:
-        item = MediaItem(
+        item = VideoMediaItem(
             kind="media",
             itemId="f3c991c0-e2f2-4d4d-980d-0883230d84a1",
             itemType="video",
