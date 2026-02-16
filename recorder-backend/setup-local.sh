@@ -27,53 +27,10 @@ podman-compose up -d
 echo "Waiting for Azurite to start..."
 sleep 5
 
-# Create the container using Azure CLI or Python
-echo "Creating blob container 'recorder-content'..."
+# Initialize blob storage with test data
+echo "Initializing blob storage..."
 source .venv/bin/activate
-python3 - <<'EOF'
-from azure.storage.blob import BlobServiceClient
-import time
-
-# Wait a bit more to ensure Azurite is fully ready
-time.sleep(2)
-
-connection_string = (
-    "DefaultEndpointsProtocol=http;"
-    "AccountName=devstoreaccount1;"
-    "AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;"
-    "BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;"
-)
-
-try:
-    client = BlobServiceClient.from_connection_string(connection_string)
-    container_client = client.get_container_client("recorder-content")
-    
-    if not container_client.exists():
-        container_client.create_container()
-        print("✓ Container 'recorder-content' created")
-    else:
-        print("✓ Container 'recorder-content' already exists")
-    
-    # Upload test playlist (schedule) file
-    print("Uploading test playlist...")
-    with open("test/playlist.json", "rb") as f:
-        playlist_data = f.read()
-    blob_client = client.get_blob_client(container="recorder-content", blob="schedule/test-playlist.json")
-    blob_client.upload_blob(playlist_data, overwrite=True)
-    print("✓ Uploaded test playlist file")
-    
-    # Upload test theme file
-    print("Uploading test theme...")
-    with open("test/theme.json", "rb") as f:
-        theme_data = f.read()
-    blob_client = client.get_blob_client(container="recorder-content", blob="theme/test-theme.json")
-    blob_client.upload_blob(theme_data, overwrite=True)
-    print("✓ Uploaded test theme file")
-    
-except Exception as e:
-    print(f"Error: {e}")
-    exit(1)
-EOF
+python3 init-storage.py
 
 echo ""
 echo "✓ Local development environment is ready!"

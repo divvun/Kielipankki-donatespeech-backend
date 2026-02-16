@@ -1,72 +1,87 @@
 #!/usr/bin/env python3
-"""Initialize Azurite storage with test data."""
+"""
+Initialize Azurite blob storage with test data.
+
+This script:
+- Creates the recorder-content container
+- Uploads test files from the test/ directory
+"""
+
+import sys
+import time
+from pathlib import Path
 
 from azure.storage.blob import BlobServiceClient
-import json
-import time
 
-# Wait a bit for Azurite to be ready
-time.sleep(1)
-
-connection_string = (
+# Azurite connection string (standard development credentials)
+CONNECTION_STRING = (
     "DefaultEndpointsProtocol=http;"
     "AccountName=devstoreaccount1;"
     "AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;"
     "BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;"
 )
 
-try:
-    client = BlobServiceClient.from_connection_string(connection_string)
-    container_client = client.get_container_client("recorder-content")
+CONTAINER_NAME = "recorder-content"
 
-    # Create container
-    if not container_client.exists():
-        container_client.create_container()
-        print("✓ Created container 'recorder-content'")
-    else:
-        print("✓ Container 'recorder-content' already exists")
 
-    # Upload test theme
-    blob_client = client.get_blob_client(
-        container="recorder-content", blob="theme/test-theme.json"
-    )
-    test_theme = {
-        "id": "test-theme",
-        "name": "Test Theme",
-        "description": "A test theme for local development",
-        "primaryColor": "#007bff",
-    }
-    blob_client.upload_blob(json.dumps(test_theme, indent=2), overwrite=True)
-    print("✓ Uploaded theme/test-theme.json")
+def main():
+    """Initialize storage with test data."""
+    # Wait briefly for Azurite to be ready
+    time.sleep(2)
 
-    # Upload test schedule
-    blob_client = client.get_blob_client(
-        container="recorder-content", blob="schedule/test-schedule.json"
-    )
-    test_schedule = {
-        "id": "test-schedule",
-        "name": "Test Schedule",
-        "description": "Test playlist schedule",
-        "items": [
-            {
-                "itemId": "1",
-                "kind": "prompt",
-                "text": "Please read the following sentence",
-            }
-        ],
-    }
-    blob_client.upload_blob(json.dumps(test_schedule, indent=2), overwrite=True)
-    print("✓ Uploaded schedule/test-schedule.json")
+    try:
+        client = BlobServiceClient.from_connection_string(CONNECTION_STRING)
+        container_client = client.get_container_client(CONTAINER_NAME)
 
-    print("\n✨ Storage initialized successfully!")
-    print("\nYou can now test the API:")
-    print("  curl http://localhost:8000/v1/theme")
-    print("  curl http://localhost:8000/v1/schedule")
-    print("  open http://localhost:8000/docs")
+        # Create container
+        if not container_client.exists():
+            container_client.create_container()
+            print(f"✓ Created container '{CONTAINER_NAME}'")
+        else:
+            print(f"✓ Container '{CONTAINER_NAME}' already exists")
 
-except Exception as e:
-    print(f"❌ Error: {e}")
-    import traceback
+        # Upload test playlist (schedule) file
+        test_dir = Path(__file__).parent / "test"
+        playlist_file = test_dir / "playlist.json"
 
-    traceback.print_exc()
-    exit(1)
+        if playlist_file.exists():
+            print("Uploading test playlist...")
+            with open(playlist_file, "rb") as f:
+                blob_client = client.get_blob_client(
+                    container=CONTAINER_NAME, blob="schedule/test-playlist.json"
+                )
+                blob_client.upload_blob(f, overwrite=True)
+            print("✓ Uploaded schedule/test-playlist.json")
+        else:
+            print(f"⚠ Warning: {playlist_file} not found, skipping")
+
+        # Upload test theme file
+        theme_file = test_dir / "theme.json"
+
+        if theme_file.exists():
+            print("Uploading test theme...")
+            with open(theme_file, "rb") as f:
+                blob_client = client.get_blob_client(
+                    container=CONTAINER_NAME, blob="theme/test-theme.json"
+                )
+                blob_client.upload_blob(f, overwrite=True)
+            print("✓ Uploaded theme/test-theme.json")
+        else:
+            print(f"⚠ Warning: {theme_file} not found, skipping")
+
+        print("\n✨ Storage initialized successfully!")
+        print("\nYou can now test the API:")
+        print("  curl http://localhost:8000/v1/theme")
+        print("  curl http://localhost:8000/v1/schedule")
+        print("  open http://localhost:8000/docs")
+
+    except Exception as e:
+        print(f"❌ Error: {e}")
+        import traceback
+
+        traceback.print_exc()
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()

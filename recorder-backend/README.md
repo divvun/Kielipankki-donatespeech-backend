@@ -31,7 +31,7 @@ This will:
 - Start Azurite (Azure Storage emulator)
 - Start the FastAPI backend
 - Create the `recorder-content` container
-- Upload test theme and configuration files
+- Upload test theme and schedule files from `test/` directory
 
 #### Access the services
 
@@ -121,13 +121,13 @@ Response:
 }
 ```
 
-### Load Configuration Files
+### Load Schedule Files
 
-Get a single configuration or list all configurations.
+Get a single schedule or list all schedules.
 
 ```http
-GET /v1/configuration/{scheduleId}
-GET /v1/configuration
+GET /v1/schedule/{scheduleId}
+GET /v1/schedule
 ```
 
 ### Load Theme Files
@@ -223,17 +223,21 @@ podman-compose up
 # Test endpoints
 curl http://localhost:8000/
 curl http://localhost:8000/v1/theme
-curl http://localhost:8000/v1/configuration
+curl http://localhost:8000/v1/schedule
 ```
 
 ## Migration from Lambda
 
 This FastAPI version maintains API compatibility with the Lambda version:
 
-- Same endpoint paths (`/v1/upload`, `/v1/configuration`, `/v1/theme`)
-- Same request/response format
+- Same request/response format for upload endpoints
 - Same validation logic
-- Mobile apps only need to update the base URL
+- Same YLE API integration
+
+**Endpoint changes:**
+
+- `/v1/configuration` → `/v1/schedule` (semantic rename for clarity)
+- Mobile apps need to update the base URL and schedule endpoint path
 
 **Key differences:**
 
@@ -241,6 +245,7 @@ This FastAPI version maintains API compatibility with the Lambda version:
 - Async operations for better performance
 - Direct HTTP server instead of API Gateway + Lambda
 - Simpler local development with Azurite
+- `/v1/configuration` renamed to `/v1/schedule` for semantic clarity
 
 ## File Structure
 
@@ -254,8 +259,10 @@ recorder-backend/
 ├── .python-version            # Python version specification
 ├── Dockerfile                  # Container image definition (uses uv)
 ├── docker-compose.yml          # Local dev environment
-├── setup-local.sh             # Setup script for local dev
-├── init-storage.py            # Storage initialization helper
+├── setup-local.sh             # Setup script for local dev (orchestration)
+├── init-storage.py            # Storage initialization (uploads test data)
+├── convert_schedule.py        # Convert old format JSON to new format
+├── test/                      # Test data files (playlist.json, theme.json)
 └── custom_fleep/              # File type detection (unchanged)
 ```
 
