@@ -11,6 +11,7 @@ RUN uv pip install --system --no-cache -r pyproject.toml
 
 # Copy application code
 COPY main.py .
+COPY models.py .
 COPY storage.py .
 COPY yle_utils.py .
 COPY custom_fleep/ ./custom_fleep/
