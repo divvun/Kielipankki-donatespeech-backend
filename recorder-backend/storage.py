@@ -253,6 +253,56 @@ async def load_blob_binary(blob_name: str) -> bytes:
         raise StorageError(f"Failed to load blob: {e}")
 
 
+async def load_blob_binary_range(
+    blob_name: str, offset: int = 0, length: Optional[int] = None
+) -> tuple[bytes, int]:
+    """
+    Load a portion of a binary blob from storage.
+
+    Args:
+        blob_name: The blob path/name
+        offset: Starting byte offset (default: 0)
+        length: Number of bytes to read (default: all remaining bytes)
+
+    Returns:
+        Tuple of (content bytes, total blob size)
+
+    Raises:
+        StorageError: If the blob doesn't exist or can't be loaded
+    """
+    try:
+        async with get_blob_service_client() as client:
+            blob_client = client.get_blob_client(
+                container=CONTAINER_NAME, blob=blob_name
+            )
+
+            # Get blob properties to know total size
+            blob_properties = await blob_client.get_blob_properties()
+            total_size = blob_properties.size
+
+            # If no length specified, read to end
+            if length is None:
+                length = total_size - offset
+
+            # Download the specified range
+            download_stream = await blob_client.download_blob(
+                offset=offset, length=length
+            )
+            content = await download_stream.readall()
+
+            return content, total_size
+
+    except ResourceNotFoundError:
+        logger.error(f"Blob not found: {blob_name}")
+        raise StorageError(f"Blob not found: {blob_name}")
+    except AzureError as e:
+        logger.error(f"Azure Storage error loading blob: {e}")
+        raise StorageError(f"Failed to load blob: {e}")
+    except Exception as e:
+        logger.error(f"Unexpected error loading blob: {e}")
+        raise StorageError(f"Failed to load blob: {e}")
+
+
 async def list_blobs_with_prefix(prefix: str, max_results: int = 1000) -> List[str]:
     """
     List all blob names with a given prefix.
