@@ -108,9 +108,9 @@ Response:
 Delete by client ID, session ID, or recording ID.
 
 ```http
-DELETE /v1/upload/{clientId}
-DELETE /v1/upload/{clientId}/{sessionId}
-DELETE /v1/upload/{clientId}/{sessionId}/{recordingId}
+DELETE /v1/recordings/{clientId}
+DELETE /v1/recordings/{clientId}/{sessionId}
+DELETE /v1/recordings/{clientId}/{sessionId}/{recordingId}
 ```
 
 Response:
@@ -138,6 +138,199 @@ Get a single theme or list all themes.
 GET /v1/theme/{themeId}
 GET /v1/theme
 ```
+
+## MAUI App Integration
+
+### Connecting to Local Backend
+
+The MAUI app can communicate with the local FastAPI backend during development. Use platform-specific base URLs:
+
+| Platform | Base URL | Notes |
+|----------|----------|-------|
+| macOS (native) | `http://localhost:8000` | Direct access to Mac's localhost |
+| iOS Simulator | `http://localhost:8000` | Simulator shares Mac's network |
+| Android Emulator | `http://10.0.2.2:8000` | Special IP mapping to host's localhost |
+| Physical Devices | `http://<your-mac-ip>:8000` | Use Mac's LAN IP (e.g., 192.168.1.100) |
+
+**Example platform detection in MAUI:**
+
+```csharp
+public static string GetBaseUrl()
+{
+    #if ANDROID
+        return DeviceInfo.DeviceType == DeviceType.Virtual 
+            ? "http://10.0.2.2:8000"  // Emulator
+            : "http://192.168.1.100:8000";  // Physical device
+    #elif IOS
+        return "http://localhost:8000";
+    #elif MACCATALYST
+        return "http://localhost:8000";
+    #else
+        return "http://localhost:8000";
+    #endif
+}
+```
+
+### Generating C# API Client
+
+The backend provides an OpenAPI specification that can be used to generate a type-safe C# client for MAUI.
+
+#### Option 1: NSwag (Recommended)
+
+**In your MAUI project, create `nswag.json`:**
+
+```json
+{
+  "runtime": "Net80",
+  "defaultVariables": null,
+  "documentGenerator": {
+    "fromDocument": {
+      "url": "http://localhost:8000/openapi.json",
+      "output": null
+    }
+  },
+  "codeGenerators": {
+    "openApiToCSharpClient": {
+      "className": "RecorderApiClient",
+      "namespace": "KielipankkiRecorder.Api",
+      "generateClientInterfaces": true,
+      "generateExceptionClasses": true,
+      "exceptionClass": "RecorderApiException",
+      "wrapResponses": false,
+      "generateResponseClasses": false,
+      "useBaseUrl": true,
+      "httpClientType": "System.Net.Http.HttpClient",
+      "output": "Generated/RecorderApiClient.cs"
+    }
+  }
+}
+```
+
+**Generate the client:**
+
+```bash
+# Install NSwag CLI (one-time)
+dotnet tool install -g NSwag.ConsoleCore
+
+# Start the backend
+cd recorder-backend
+./setup-local.sh
+
+# Generate C# client (run from MAUI project root)
+nswag run nswag.json
+```
+
+**Add to MAUI project:**
+
+```xml
+<ItemGroup>
+  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+</ItemGroup>
+```
+
+#### Option 2: Kiota (Microsoft's Modern Tool)
+
+```bash
+# Install Kiota (one-time)
+dotnet tool install -g Microsoft.OpenApi.Kiota
+
+# Generate C# client
+kiota generate \
+  -l CSharp \
+  -c RecorderApiClient \
+  -n KielipankkiRecorder.Api \
+  -d http://localhost:8000/openapi.json \
+  -o ./Generated
+```
+
+**Add to MAUI project:**
+
+```xml
+<ItemGroup>
+  <PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.7.0" />
+  <PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" Version="1.3.0" />
+  <PackageReference Include="Microsoft.Kiota.Serialization.Json" Version="1.1.0" />
+</ItemGroup>
+```
+
+### Using the Generated Client
+
+```csharp
+// Configure the client
+var httpClient = new HttpClient
+{
+    BaseAddress = new Uri(GetBaseUrl())
+};
+var client = new RecorderApiClient(httpClient);
+
+// Load schedules
+var schedules = await client.Schedule.GetAsync();
+
+// Load specific theme
+var theme = await client.Theme["test-theme"].GetAsync();
+
+// Initialize upload
+var uploadRequest = new InitUploadRequest
+{
+    Filename = "recording.m4a",
+    Metadata = new UploadMetadata
+    {
+        ClientId = Guid.NewGuid().ToString(),
+        SessionId = sessionId,
+        ContentType = "audio/m4a",
+        Timestamp = DateTime.UtcNow.ToString("o"),
+        Duration = 45.2,
+        Language = "fi"
+    }
+};
+
+var response = await client.Upload.PostAsync(uploadRequest);
+var sasUrl = response.PresignedUrl;
+
+// Upload audio file directly to blob storage using SAS URL
+using var audioStream = File.OpenRead(audioFilePath);
+var uploadClient = new HttpClient();
+await uploadClient.PutAsync(sasUrl, new StreamContent(audioStream));
+```
+
+### OpenAPI Specification
+
+The OpenAPI specification is available at:
+- **Runtime**: `http://localhost:8000/openapi.json`
+- **Versioned**: `openapi.json` (checked into this repository)
+
+The versioned file can be used for offline client generation during CI/CD builds.
+
+### Testing Local Connection
+
+```bash
+# Terminal 1: Start backend
+cd recorder-backend
+./setup-local.sh
+
+# Terminal 2: Test from command line
+curl http://localhost:8000/v1/schedule
+curl http://localhost:8000/v1/theme
+
+# For Android emulator testing
+curl http://10.0.2.2:8000/v1/schedule
+```
+
+### Troubleshooting MAUI Connection
+
+**"Connection refused" on Android emulator:**
+- Use `http://10.0.2.2:8000` instead of `localhost`
+- Ensure backend is running: `podman ps | grep recorder-api`
+- Check backend logs: `podman logs recorder-api`
+
+**"Connection refused" on physical device:**
+- Ensure Mac and device are on same WiFi network
+- Use Mac's LAN IP address (find with `ifconfig en0 | grep inet`)
+- Ensure Mac's firewall allows incoming connections on port 8000
+
+**SSL/TLS errors:**
+- Local development uses HTTP (not HTTPS)
+- For iOS/Android, you may need to configure `NSAppTransportSecurity` (iOS) or `android:usesCleartextTraffic="true"` (Android) to allow HTTP in development
 
 ## Azure Deployment
 
