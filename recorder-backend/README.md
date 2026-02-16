@@ -1,7 +1,6 @@
 # Recorder Backend - FastAPI Version
 
-**Note:** This is the modernized FastAPI version running on Azure. The original
-Lambda version is preserved in `handler.py`, `configuration.py`, and `theme.py`.
+**Note:** This is the modernized FastAPI version running on Azure.
 
 ## Architecture
 
@@ -14,14 +13,14 @@ Lambda version is preserved in `handler.py`, `configuration.py`, and `theme.py`.
 
 ### Prerequisites
 
-- Docker and Docker Compose (or Podman)
+- Podman and Podman Compose (or Docker)
 - Python 3.11+
 - [uv](https://github.com/astral-sh/uv) (recommended for fast package
   management)
 
 ### Setup
 
-1. **Start local environment with Azurite:**
+#### Start local environment with Azurite
 
 ```bash
 ./setup-local.sh
@@ -34,42 +33,40 @@ This will:
 - Create the `recorder-content` container
 - Upload test theme and configuration files
 
-2. **Access the services:**
+#### Access the services
 
 - FastAPI Backend: <http://localhost:8000>
 - API Documentation: <http://localhost:8000/docs> (Swagger UI)
 - Azurite Blob Storage: <http://localhost:10000>
 
-3. **Stop services:**
+#### Stop services
 
 ```bash
-docker-compose down
+podman-compose down
 ```
 
 ### Manual Setup (without Docker)
 
-1. **Install dependencies:**
+#### Install dependencies
 
 ```bash
 # Using uv (recommended - much faster)
-uv pip install -r pyproject.toml
-
-# Or using pip
-pip install -r requirements-fastapi.txt
+uv sync
+source .venv/bin/activate  # On macOS/Linux
 ```
 
-2. **Run Azurite separately** (using npm or Docker):
+#### Run Azurite separately (using npm or Podman)
 
 ```bash
 # Using npm
 npm install -g azurite
 azurite --silent --location ./azurite-data
 
-# Or using Docker
-docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite azurite-blob --blobHost 0.0.0.0
+# Or using Podman
+podman run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite azurite-blob --blobHost 0.0.0.0
 ```
 
-3. **Run the FastAPI app:**
+#### Run the FastAPI app
 
 ```bash
 uvicorn main:app --reload --port 8000
@@ -149,7 +146,7 @@ GET /v1/theme
 Azure Container Apps provides automatic scaling, built-in HTTPS, and easy
 deployment.
 
-1. **Create Azure Storage Account:**
+#### Create Azure Storage Account
 
 ```bash
 az storage account create \
@@ -163,19 +160,19 @@ az storage container create \
   --account-name recorderstorage
 ```
 
-2. **Build and push container:**
+#### Build and push container
 
 ```bash
 # Build
-docker build -t recorder-backend:latest .
+podman build -t recorder-backend:latest .
 
 # Tag and push to Azure Container Registry
 az acr login --name yourregistry
-docker tag recorder-backend:latest yourregistry.azurecr.io/recorder-backend:latest
-docker push yourregistry.azurecr.io/recorder-backend:latest
+podman tag recorder-backend:latest yourregistry.azurecr.io/recorder-backend:latest
+podman push yourregistry.azurecr.io/recorder-backend:latest
 ```
 
-3. **Deploy to Container Apps:**
+#### Deploy to Container Apps
 
 ```bash
 az containerapp create \
@@ -220,8 +217,8 @@ For local development, these default to Azurite values.
 ## Testing
 
 ```bash
-# Run with Docker Compose
-docker-compose up
+# Run with Podman Compose
+podman-compose up
 
 # Test endpoints
 curl http://localhost:8000/
@@ -262,24 +259,13 @@ recorder-backend/
 └── custom_fleep/              # File type detection (unchanged)
 ```
 
-## Legacy Files (Lambda Version)
-
-These files are preserved for reference but not used in the FastAPI version:
-
-- `handler.py` - Upload handlers
-- `configuration.py` - Configuration loaders
-- `theme.py` - Theme loaders
-- `common.py` - S3 utilities
-- `serverless.yml` - Serverless Framework config
-- `requirements.txt` - Lambda dependencies
-
 ## Troubleshooting
 
 ### Azurite connection issues
 
 If the API can't connect to Azurite, check:
 
-- Azurite is running: `docker ps | grep azurite`
+- Azurite is running: `podman ps | grep azurite`
 - Connection string is correct
 - Container name is `recorder-content`
 
