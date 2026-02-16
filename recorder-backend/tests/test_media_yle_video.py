@@ -12,7 +12,7 @@ def test_media_item_yle_video_valid():
         description="YLE video content",
         isRecording=True,
     )
-    
+
     assert item.itemType == "yle-video"
     assert item.url == "1-50000093"  # YLE program ID format
     assert item.isRecording is True
@@ -30,10 +30,10 @@ def test_media_item_yle_video_in_schedule():
         "options": [],
         "isRecording": False,
     }
-    
+
     # Parse as ScheduleItem union
     schedule_item: ScheduleItem = YleVideoMediaItem(**item_dict)
-    
+
     assert isinstance(schedule_item, YleVideoMediaItem)
     assert schedule_item.itemType == "yle-video"
     assert schedule_item.url == "1-50000094"  # YLE program ID preserved
@@ -42,7 +42,7 @@ def test_media_item_yle_video_in_schedule():
 def test_media_item_yle_video_various_ids():
     """Test MediaItem yle-video with various YLE program IDs."""
     yle_ids = ["1-50000093", "1-60000001", "1-70000500", "2-999999"]
-    
+
     for yle_id in yle_ids:
         item = YleVideoMediaItem(
             itemId=f"yle-vid-{yle_id}",
@@ -51,6 +51,6 @@ def test_media_item_yle_video_various_ids():
             description=f"YLE video {yle_id}",
             isRecording=True,
         )
-        
+
         assert item.itemType == "yle-video"
         assert item.url == yle_id  # YLE ID stored directly for backend decryption

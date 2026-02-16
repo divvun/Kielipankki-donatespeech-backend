@@ -13,7 +13,7 @@ def test_media_item_image_valid():
         description="Photo displayed to user",
         isRecording=False,
     )
-    
+
     assert item.itemType == "image"
     assert item.typeId == "image/jpeg"
     assert item.url == "https://example.com/photo.jpg"
@@ -32,10 +32,10 @@ def test_media_item_image_in_schedule():
         "options": [],
         "isRecording": True,
     }
-    
+
     # Parse as ScheduleItem union
     schedule_item: ScheduleItem = ImageMediaItem(**item_dict)
-    
+
     assert isinstance(schedule_item, ImageMediaItem)
     assert schedule_item.itemType == "image"
     assert schedule_item.typeId == "image/png"
@@ -52,7 +52,7 @@ def test_media_item_image_various_formats():
         "image/bmp",
         "image/tiff",
     ]
-    
+
     for mime_type in formats:
         item = ImageMediaItem(
             itemId=f"image-{mime_type.split('/')[1]}",
@@ -62,6 +62,6 @@ def test_media_item_image_various_formats():
             description=f"Image in {mime_type} format",
             isRecording=False,
         )
-        
+
         assert item.itemType == "image"
         assert item.typeId == mime_type

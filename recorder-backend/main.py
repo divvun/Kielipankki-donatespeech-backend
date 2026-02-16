@@ -10,16 +10,13 @@ from uuid import UUID
 
 from fastapi import FastAPI, HTTPException, Path
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
 
 from models import (
     Configuration,
     Theme,
     ConfigurationListItem,
     ThemeListItem,
-    ScheduleItem,
     MediaItem,
-    PromptItem,
     InitUploadRequest,
     InitUploadResponse,
 )
@@ -122,7 +119,9 @@ async def init_upload(request: InitUploadRequest):
         storage_prefix += f"{metadata.sessionId}/"
 
     # Store metadata
-    metadata_blob_name = f"uploads/audio_and_metadata/metadata/{storage_prefix}{file_prefix}.json"
+    metadata_blob_name = (
+        f"uploads/audio_and_metadata/metadata/{storage_prefix}{file_prefix}.json"
+    )
 
     try:
         metadata_dict = metadata.model_dump(exclude_none=True)
@@ -187,9 +186,7 @@ async def delete_by_recording_id(
     recording_id: str = Path(..., description="Recording UUID"),
 ):
     """Delete a specific recording."""
-    if not all(
-        validate_uuid_v4(id) for id in [client_id, session_id, recording_id]
-    ):
+    if not all(validate_uuid_v4(id) for id in [client_id, session_id, recording_id]):
         raise HTTPException(
             status_code=400, detail="Invalid clientId, sessionId, or recordingId"
         )

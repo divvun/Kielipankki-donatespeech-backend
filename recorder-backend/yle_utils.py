@@ -11,7 +11,9 @@ logger.setLevel(logging.INFO)
 
 class FileProcessingError(Exception):
     """Custom exception for file processing errors."""
+
     pass
+
 
 CLIENT_ID = os.environ.get("YLE_CLIENT_ID")
 CLIENT_KEY = os.environ.get("YLE_CLIENT_KEY")

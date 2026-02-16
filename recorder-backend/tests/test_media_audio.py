@@ -13,7 +13,7 @@ def test_media_item_audio_valid():
         description="Audio description",
         isRecording=True,
     )
-    
+
     assert item.itemType == "audio"
     assert item.typeId == "audio/m4a"
     assert item.url == "https://example.com/audio.m4a"
@@ -31,10 +31,10 @@ def test_media_item_audio_in_schedule():
         "options": [],
         "isRecording": True,
     }
-    
+
     # Parse as ScheduleItem union
     schedule_item: ScheduleItem = AudioMediaItem(**item_dict)
-    
+
     assert isinstance(schedule_item, AudioMediaItem)
     assert schedule_item.itemType == "audio"
 
@@ -49,7 +49,7 @@ def test_media_item_audio_minimal():
         description="Minimal audio",
         isRecording=False,
     )
-    
+
     assert item.itemType == "audio"
     assert item.typeId == "audio/m4a"
     assert item.url == "audio.m4a"

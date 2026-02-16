@@ -12,7 +12,7 @@ def test_prompt_item_choice_valid():
         options=["Option 1", "Option 2", "Option 3"],
         isRecording=False,
     )
-    
+
     assert item.itemType == "choice"
     assert item.isRecording is False
 
@@ -29,10 +29,10 @@ def test_prompt_item_choice_in_schedule():
         "options": ["18-25", "26-40", "41-60", "60+"],
         "isRecording": True,
     }
-    
+
     # Parse as ScheduleItem union
     schedule_item: ScheduleItem = ChoicePromptItem(**item_dict)
-    
+
     assert isinstance(schedule_item, ChoicePromptItem)
     assert schedule_item.itemType == "choice"
     assert len(schedule_item.options) == 4
@@ -47,7 +47,7 @@ def test_prompt_item_choice_single_option():
         options=["Yes"],
         isRecording=False,
     )
-    
+
     assert item.itemType == "choice"
     assert len(item.options) == 1
     assert item.options[0] == "Yes"
@@ -56,7 +56,7 @@ def test_prompt_item_choice_single_option():
 def test_prompt_item_choice_many_options():
     """Test PromptItem choice with many options."""
     options = [f"Option {i}" for i in range(1, 101)]
-    
+
     item = ChoicePromptItem(
         itemId="choice-many",
         itemType="choice",
@@ -64,7 +64,7 @@ def test_prompt_item_choice_many_options():
         options=options,
         isRecording=True,
     )
-    
+
     assert item.itemType == "choice"
     assert len(item.options) == 100
     assert item.options[99] == "Option 100"

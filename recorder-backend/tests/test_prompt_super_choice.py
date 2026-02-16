@@ -13,7 +13,7 @@ def test_prompt_item_super_choice_valid():
         isRecording=True,
         otherEntryLabel="Or type your own",
     )
-    
+
     assert item.itemType == "super-choice"
     assert item.otherEntryLabel == "Or type your own"
     assert item.isRecording is True
@@ -32,10 +32,10 @@ def test_prompt_item_super_choice_in_schedule():
         "isRecording": False,
         "otherEntryLabel": "Type language",
     }
-    
+
     # Parse as ScheduleItem union
     schedule_item: ScheduleItem = SuperChoicePromptItem(**item_dict)
-    
+
     assert isinstance(schedule_item, SuperChoicePromptItem)
     assert schedule_item.itemType == "super-choice"
     assert schedule_item.otherEntryLabel == "Type language"
@@ -50,7 +50,7 @@ def test_prompt_item_super_choice_without_other_entry():
         options=["Option A", "Option B"],
         isRecording=True,
     )
-    
+
     assert item.itemType == "super-choice"
     assert item.otherEntryLabel is None
 
@@ -58,7 +58,7 @@ def test_prompt_item_super_choice_without_other_entry():
 def test_prompt_item_super_choice_with_many_options():
     """Test PromptItem super-choice with many predefined options."""
     options = [f"Item {i}" for i in range(1, 31)]
-    
+
     item = SuperChoicePromptItem(
         itemId="super-choice-many",
         itemType="super-choice",
@@ -67,7 +67,7 @@ def test_prompt_item_super_choice_with_many_options():
         isRecording=False,
         otherEntryLabel="Add custom item",
     )
-    
+
     assert item.itemType == "super-choice"
     assert len(item.options) == 30
     assert item.options[0] == "Item 1"
