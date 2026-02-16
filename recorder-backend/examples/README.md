@@ -1,6 +1,7 @@
 # MAUI Integration Examples
 
-This directory contains example files for integrating the recorder backend with a .NET MAUI application.
+This directory contains example files for integrating the recorder backend with
+a .NET MAUI application.
 
 ## Files
 
@@ -45,7 +46,8 @@ The example shows how to handle different platforms:
 
 - **macOS/iOS**: Use `http://localhost:8000`
 - **Android Emulator**: Use `http://10.0.2.2:8000`
-- **Android Physical**: Use your Mac's LAN IP (e.g., `http://192.168.1.100:8000`)
+- **Android Physical**: Use your Mac's LAN IP (e.g.,
+  `http://192.168.1.100:8000`)
 
 ## Next Steps
 
