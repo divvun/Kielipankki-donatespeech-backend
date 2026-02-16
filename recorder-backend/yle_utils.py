@@ -23,7 +23,7 @@ PROGRAM_INFO_URL = "https://external.api.yle.fi/v1/programs/items/{program_id}.j
 MEDIA_URL = "https://external.api.yle.fi/v1/media/playouts.json?program_id={program_id}&media_id={media_id}&protocol=HLS&app_id={client_id}&app_key={client_key}"
 
 
-def map_yle_content(yle_program_id: str | None) -> str | None:
+def map_yle_content(yle_program_id: str) -> str:
     """Maps YLE program ID to a decrypted media URL.
 
     Args:
@@ -35,19 +35,18 @@ def map_yle_content(yle_program_id: str | None) -> str | None:
     Raises:
         FileProcessingError: If there is an error during the mapping process.
     """
-    if yle_program_id is None:
-        return None
-
     try:
         media_url = get_media_url(yle_program_id)
+        
+        with urllib.request.urlopen(media_url, timeout=10) as media_res:
+            crypted_url = json.loads(media_res.read()).get("data")[0].get("url")
+            decrypted_url = decrypt_yle_url(crypted_url)
+        
         logger.info("Successfully decrypted YLE URL")
+        return decrypted_url
     except Exception as e:
         logger.error("Error decrypting yle URL: {}".format(e))
         raise FileProcessingError(e)
-
-    with urllib.request.urlopen(media_url, timeout=10) as media_res:
-        crypted_url = json.loads(media_res.read()).get("data")[0].get("url")
-        return decrypt_yle_url(crypted_url)
 
 
 def decrypt_yle_url(crypted_url: str) -> str:
