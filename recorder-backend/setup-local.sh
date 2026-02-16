@@ -29,6 +29,7 @@ sleep 5
 
 # Create the container using Azure CLI or Python
 echo "Creating blob container 'recorder-content'..."
+source .venv/bin/activate
 python3 - <<'EOF'
 from azure.storage.blob import BlobServiceClient
 import time
