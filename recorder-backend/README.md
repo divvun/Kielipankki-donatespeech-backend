@@ -143,7 +143,8 @@ GET /v1/theme
 
 ### Connecting to Local Backend
 
-The MAUI app can communicate with the local FastAPI backend during development. Use platform-specific base URLs:
+The MAUI app can communicate with the local FastAPI backend during development.
+Use platform-specific base URLs:
 
 | Platform | Base URL | Notes |
 |----------|----------|-------|
@@ -173,7 +174,8 @@ public static string GetBaseUrl()
 
 ### Generating C# API Client
 
-The backend provides an OpenAPI specification that can be used to generate a type-safe C# client for MAUI.
+The backend provides an OpenAPI specification that can be used to generate a
+type-safe C# client for MAUI.
 
 #### Option 1: NSwag (Recommended)
 
@@ -299,7 +301,8 @@ The OpenAPI specification is available at:
 - **Runtime**: `http://localhost:8000/openapi.json`
 - **Versioned**: `openapi.json` (checked into this repository)
 
-The versioned file can be used for offline client generation during CI/CD builds.
+The versioned file can be used for offline client generation during CI/CD
+builds.
 
 ### Testing Local Connection
 
@@ -330,7 +333,8 @@ curl http://10.0.2.2:8000/v1/schedule
 
 **SSL/TLS errors:**
 - Local development uses HTTP (not HTTPS)
-- For iOS/Android, you may need to configure `NSAppTransportSecurity` (iOS) or `android:usesCleartextTraffic="true"` (Android) to allow HTTP in development
+- For iOS/Android, you may need to configure `NSAppTransportSecurity` (iOS) or
+  `android:usesCleartextTraffic="true"` (Android) to allow HTTP in development
 
 ## Azure Deployment
 
