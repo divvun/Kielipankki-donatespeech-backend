@@ -1,0 +1,27 @@
+{
+  "runtime": "Net80",
+  "defaultVariables": null,
+  "documentGenerator": {
+    "fromDocument": {
+      "url": "http://localhost:8000/openapi.json",
+      "output": null
+    }
+  },
+  "codeGenerators": {
+    "openApiToCSharpClient": {
+      "className": "RecorderApiClient",
+      "namespace": "KielipankkiRecorder.Api",
+      "generateClientInterfaces": true,
+      "generateExceptionClasses": true,
+      "exceptionClass": "RecorderApiException",
+      "wrapResponses": false,
+      "generateResponseClasses": false,
+      "useBaseUrl": true,
+      "httpClientType": "System.Net.Http.HttpClient",
+      "generateDtoTypes": true,
+      "injectHttpClient": true,
+      "disposeHttpClient": false,
+      "output": "Generated/RecorderApiClient.cs"
+    }
+  }
+}
