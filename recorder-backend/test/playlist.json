@@ -1,0 +1,52 @@
+{
+  "items": [
+    {
+      "itemId": "ce3c6012-25f0-4c69-a0ad-c5dc8e41b795",
+      "description": "Arvi Lind esittelee",
+      "isRecording": false,
+      "itemType": "audio",
+      "url": "arvi-euroviisut.m4a",
+      "typeId": "audio/m4a"
+    },
+    {
+      "itemId": "f6267df5-ed1c-4ebf-870d-fcb823f66664",
+      "description": "Minkä ikäinen olet?",
+      "isRecording": false,
+      "itemType": "choice",
+      "options": [
+        "1-10",
+        "11-20",
+        "21-30",
+        "31-40",
+        "41-50",
+        "51-60",
+        "61-70",
+        "71-80",
+        "81-90",
+        "91-100",
+        "Yli 100"
+      ]
+    },
+    {
+      "itemId": "f3c991c0-e2f2-4d4d-980d-0883230d84a1",
+      "description": "Videopätkä Lordin euroviisuvoitosta 2006",
+      "isRecording": false,
+      "itemType": "video",
+      "url": "lordi-euroviisut.mp4",
+      "typeId": "video/mp4"
+    },
+    {
+      "itemId": "9f05e73a-6b31-4164-bda2-33b92ac15560",
+      "description": "Mauno Ahosen joulupuhe",
+      "isRecording": false,
+      "itemType": "yle-video",
+      "url": "1-50000093"
+    },
+    {
+      "itemId": "718a6814-c97f-4e5e-88f1-e22039487cc8",
+      "description": "Mikä on kotipaikkasi?",
+      "isRecording": false,
+      "itemType": "text-input"
+    }
+  ]
+}
