@@ -6,7 +6,7 @@ Uses discriminated unions to handle the polymorphic Item types.
 
 from typing import Literal, Optional, Union
 from uuid import UUID
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 # ============================================================================
@@ -61,13 +61,12 @@ ScheduleItem = Union[MediaItem, PromptItem]
 class Configuration(BaseModel):
     """Configuration/Schedule with items"""
 
+    model_config = ConfigDict(discriminator="kind")
+
     id: Optional[str] = None  # Will be set from filename
     scheduleId: Optional[str] = None
     description: str
     items: list[ScheduleItem]
-
-    class Config:
-        discriminator = "kind"
 
 
 # ============================================================================
