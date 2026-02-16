@@ -11,7 +11,6 @@ def test_media_item_video_valid():
         typeId="video/mp4",
         url="https://example.com/video.mp4",
         description="Video description",
-        options=[],
         isRecording=True,
     )
     
@@ -19,7 +18,6 @@ def test_media_item_video_valid():
     assert item.typeId == "video/mp4"
     assert item.url == "https://example.com/video.mp4"
     assert item.isRecording is True
-    assert item.options == []
 
 
 def test_media_item_video_in_schedule():
@@ -54,7 +52,6 @@ def test_media_item_video_various_codecs():
             typeId=mime_type,
             url="video.file",
             description=f"Video in {mime_type}",
-            options=[],
             isRecording=False,
         )
         

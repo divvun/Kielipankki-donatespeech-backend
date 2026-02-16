@@ -11,7 +11,6 @@ def test_media_item_text_valid():
         typeId="text/plain",
         url="https://example.com/text-content.txt",
         description="Text content displayed to user",
-        options=[],
         isRecording=False,
     )
     
@@ -58,7 +57,6 @@ def test_media_item_text_various_formats():
             typeId=mime_type,
             url=f"content-{mime_type}.file",
             description=description,
-            options=[],
             isRecording=False,
         )
         

@@ -8,17 +8,12 @@ def test_prompt_item_choice_valid():
     item = ChoicePromptItem(
         itemId="choice-001",
         itemType="choice",
-        typeId=None,
-        url=None,
         description="Choose one option",
         options=["Option 1", "Option 2", "Option 3"],
         isRecording=False,
     )
     
     assert item.itemType == "choice"
-    assert item.typeId is None
-    assert item.url is None
-    assert item.options == ["Option 1", "Option 2", "Option 3"]
     assert item.isRecording is False
 
 
@@ -48,8 +43,6 @@ def test_prompt_item_choice_single_option():
     item = ChoicePromptItem(
         itemId="choice-single",
         itemType="choice",
-        typeId=None,
-        url=None,
         description="Continue?",
         options=["Yes"],
         isRecording=False,
@@ -67,8 +60,6 @@ def test_prompt_item_choice_many_options():
     item = ChoicePromptItem(
         itemId="choice-many",
         itemType="choice",
-        typeId=None,
-        url=None,
         description="Choose from 100 options",
         options=options,
         isRecording=True,

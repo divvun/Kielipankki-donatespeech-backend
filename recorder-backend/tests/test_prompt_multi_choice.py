@@ -8,8 +8,6 @@ def test_prompt_item_multi_choice_valid():
     item = MultiChoicePromptItem(
         itemId="multi-choice-001",
         itemType="multi-choice",
-        typeId=None,
-        url=None,
         description="Select multiple options",
         options=["Option A", "Option B", "Option C"],
         isRecording=False,
@@ -17,9 +15,6 @@ def test_prompt_item_multi_choice_valid():
     )
     
     assert item.itemType == "multi-choice"
-    assert item.typeId is None
-    assert item.url is None
-    assert item.options == ["Option A", "Option B", "Option C"]
     assert item.otherEntryLabel == "Other"
     assert item.isRecording is False
 
@@ -51,8 +46,6 @@ def test_prompt_item_multi_choice_without_other_entry():
     item = MultiChoicePromptItem(
         itemId="multi-choice-no-other",
         itemType="multi-choice",
-        typeId=None,
-        url=None,
         description="Multi-choice without text entry",
         options=["Opt 1", "Opt 2"],
         isRecording=False,
@@ -69,8 +62,6 @@ def test_prompt_item_multi_choice_many_options():
     item = MultiChoicePromptItem(
         itemId="multi-choice-many",
         itemType="multi-choice",
-        typeId=None,
-        url=None,
         description="Select multiple categories",
         options=options,
         isRecording=True,
