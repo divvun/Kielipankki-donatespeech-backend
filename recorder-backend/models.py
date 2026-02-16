@@ -105,24 +105,78 @@ MediaItem = Annotated[
 ]
 
 
-class PromptItem(BaseModel):
-    """Prompt/question schedule item for user input"""
+class ChoicePromptItem(BaseModel):
+    """Single choice prompt item"""
 
     kind: Literal["prompt"]
+    itemType: Literal["choice"]
     itemId: str = Field(..., description="UUID v4 of the item")
-    itemType: Literal["choice", "multi-choice", "super-choice", "text"]
     typeId: None = Field(None, description="Always null for prompts")
     url: None = Field(None, description="Always null for prompts")
     description: str = Field(..., description="Question text shown to user")
-    options: list[str] = Field(
-        default_factory=list,
-        description="Answer options (required for choice/multi-choice/super-choice)",
-    )
+    options: list[str] = Field(..., description="Answer options to choose from")
+    isRecording: bool
+    otherEntryLabel: None = Field(None, description="Not used for choice prompts")
+
+
+class MultiChoicePromptItem(BaseModel):
+    """Multiple choice prompt item with optional text entry"""
+
+    kind: Literal["prompt"]
+    itemType: Literal["multi-choice"]
+    itemId: str = Field(..., description="UUID v4 of the item")
+    typeId: None = Field(None, description="Always null for prompts")
+    url: None = Field(None, description="Always null for prompts")
+    description: str = Field(..., description="Question text shown to user")
+    options: list[str] = Field(..., description="Multiple answer options")
     isRecording: bool
     otherEntryLabel: Optional[str] = Field(
         None,
-        description="Label for text entry field (required for multi-choice/super-choice)",
+        description="Label for text entry field allowing custom answers",
     )
+
+
+class SuperChoicePromptItem(BaseModel):
+    """Super choice prompt item with optional text entry"""
+
+    kind: Literal["prompt"]
+    itemType: Literal["super-choice"]
+    itemId: str = Field(..., description="UUID v4 of the item")
+    typeId: None = Field(None, description="Always null for prompts")
+    url: None = Field(None, description="Always null for prompts")
+    description: str = Field(..., description="Question text shown to user")
+    options: list[str] = Field(..., description="Super choice answer options")
+    isRecording: bool
+    otherEntryLabel: Optional[str] = Field(
+        None,
+        description="Label for text entry field allowing custom answers",
+    )
+
+
+class TextPromptItem(BaseModel):
+    """Text input prompt item"""
+
+    kind: Literal["prompt"]
+    itemType: Literal["text"]
+    itemId: str = Field(..., description="UUID v4 of the item")
+    typeId: None = Field(None, description="Always null for prompts")
+    url: None = Field(None, description="Always null for prompts")
+    description: str = Field(..., description="Question text shown to user")
+    options: list[str] = Field(default_factory=list, description="Should be empty for text prompts")
+    isRecording: bool
+    otherEntryLabel: None = Field(None, description="Not used for text prompts")
+
+
+# Union of all prompt item types (discriminated by itemType)
+PromptItem = Annotated[
+    Union[
+        ChoicePromptItem,
+        MultiChoicePromptItem,
+        SuperChoicePromptItem,
+        TextPromptItem,
+    ],
+    Field(discriminator="itemType"),
+]
 
 
 # Discriminated union of schedule items (discriminated by kind: media vs prompt)
