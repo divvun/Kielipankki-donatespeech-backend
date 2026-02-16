@@ -16,6 +16,8 @@ from models import (
     Theme,
     ScheduleListItem,
     ThemeListItem,
+    YleAudioMediaItem,
+    YleVideoMediaItem,
     InitUploadRequest,
     InitUploadResponse,
 )
@@ -63,9 +65,9 @@ def validate_uuid_v4(uuid_string: str) -> bool:
 def pre_process_schedule(schedule: Schedule) -> Schedule:
     """Pre-process schedule by mapping YLE content URLs."""
     for item in schedule.items:
-        # Check if it's a YLE item type and map the URL
-        if item.itemType in ("yle-video", "yle-audio"):
-            if item.url:
+        # Use pattern matching to handle YLE items
+        match item:
+            case YleAudioMediaItem() | YleVideoMediaItem():
                 item.url = map_yle_content(item.url)
     return schedule
 
