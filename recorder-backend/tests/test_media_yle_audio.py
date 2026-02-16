@@ -6,7 +6,6 @@ from models import YleAudioMediaItem, ScheduleItem
 def test_media_item_yle_audio_valid():
     """Test valid MediaItem with kind=media and itemType=yle-audio."""
     item = YleAudioMediaItem(
-        kind="media",
         itemId="yle-audio-001",
         itemType="yle-audio",
         typeId=None,
@@ -16,7 +15,6 @@ def test_media_item_yle_audio_valid():
         isRecording=False,
     )
     
-    assert item.kind == "media"
     assert item.itemType == "yle-audio"
     assert item.typeId is None
     assert item.url == "1-50000093"  # YLE program ID format
@@ -40,7 +38,6 @@ def test_media_item_yle_audio_in_schedule():
     schedule_item: ScheduleItem = YleAudioMediaItem(**item_dict)
     
     assert isinstance(schedule_item, YleAudioMediaItem)
-    assert schedule_item.kind == "media"
     assert schedule_item.itemType == "yle-audio"
     assert schedule_item.url == "1-50000094"  # YLE program ID preserved
 
@@ -51,7 +48,6 @@ def test_media_item_yle_audio_various_ids():
     
     for yle_id in yle_ids:
         item = YleAudioMediaItem(
-            kind="media",
             itemId=f"yle-{yle_id}",
             itemType="yle-audio",
             typeId=None,

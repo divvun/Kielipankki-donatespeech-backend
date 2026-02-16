@@ -6,7 +6,6 @@ from models import ImageMediaItem, ScheduleItem
 def test_media_item_image_valid():
     """Test valid MediaItem with kind=media and itemType=image."""
     item = ImageMediaItem(
-        kind="media",
         itemId="image-001",
         itemType="image",
         typeId="image/jpeg",
@@ -16,7 +15,6 @@ def test_media_item_image_valid():
         isRecording=False,
     )
     
-    assert item.kind == "media"
     assert item.itemType == "image"
     assert item.typeId == "image/jpeg"
     assert item.url == "https://example.com/photo.jpg"
@@ -40,7 +38,6 @@ def test_media_item_image_in_schedule():
     schedule_item: ScheduleItem = ImageMediaItem(**item_dict)
     
     assert isinstance(schedule_item, ImageMediaItem)
-    assert schedule_item.kind == "media"
     assert schedule_item.itemType == "image"
     assert schedule_item.typeId == "image/png"
 
@@ -59,7 +56,6 @@ def test_media_item_image_various_formats():
     
     for mime_type in formats:
         item = ImageMediaItem(
-            kind="media",
             itemId=f"image-{mime_type.split('/')[1]}",
             itemType="image",
             typeId=mime_type,

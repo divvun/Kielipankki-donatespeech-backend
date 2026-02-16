@@ -6,7 +6,6 @@ from models import YleVideoMediaItem, ScheduleItem
 def test_media_item_yle_video_valid():
     """Test valid MediaItem with kind=media and itemType=yle-video."""
     item = YleVideoMediaItem(
-        kind="media",
         itemId="yle-video-001",
         itemType="yle-video",
         typeId=None,
@@ -16,7 +15,6 @@ def test_media_item_yle_video_valid():
         isRecording=True,
     )
     
-    assert item.kind == "media"
     assert item.itemType == "yle-video"
     assert item.typeId is None
     assert item.url == "1-50000093"  # YLE program ID format
@@ -40,7 +38,6 @@ def test_media_item_yle_video_in_schedule():
     schedule_item: ScheduleItem = YleVideoMediaItem(**item_dict)
     
     assert isinstance(schedule_item, YleVideoMediaItem)
-    assert schedule_item.kind == "media"
     assert schedule_item.itemType == "yle-video"
     assert schedule_item.url == "1-50000094"  # YLE program ID preserved
 
@@ -51,7 +48,6 @@ def test_media_item_yle_video_various_ids():
     
     for yle_id in yle_ids:
         item = YleVideoMediaItem(
-            kind="media",
             itemId=f"yle-vid-{yle_id}",
             itemType="yle-video",
             typeId=None,

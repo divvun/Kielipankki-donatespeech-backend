@@ -6,7 +6,6 @@ from models import SuperChoicePromptItem, ScheduleItem
 def test_prompt_item_super_choice_valid():
     """Test valid PromptItem with kind=prompt and itemType=super-choice."""
     item = SuperChoicePromptItem(
-        kind="prompt",
         itemId="super-choice-001",
         itemType="super-choice",
         typeId=None,
@@ -17,7 +16,6 @@ def test_prompt_item_super_choice_valid():
         otherEntryLabel="Or type your own",
     )
     
-    assert item.kind == "prompt"
     assert item.itemType == "super-choice"
     assert item.typeId is None
     assert item.url is None
@@ -44,7 +42,6 @@ def test_prompt_item_super_choice_in_schedule():
     schedule_item: ScheduleItem = SuperChoicePromptItem(**item_dict)
     
     assert isinstance(schedule_item, SuperChoicePromptItem)
-    assert schedule_item.kind == "prompt"
     assert schedule_item.itemType == "super-choice"
     assert schedule_item.otherEntryLabel == "Type language"
 
@@ -52,7 +49,6 @@ def test_prompt_item_super_choice_in_schedule():
 def test_prompt_item_super_choice_without_other_entry():
     """Test PromptItem super-choice without otherEntryLabel (defaults to None)."""
     item = SuperChoicePromptItem(
-        kind="prompt",
         itemId="super-choice-no-label",
         itemType="super-choice",
         typeId=None,
@@ -71,7 +67,6 @@ def test_prompt_item_super_choice_with_many_options():
     options = [f"Item {i}" for i in range(1, 31)]
     
     item = SuperChoicePromptItem(
-        kind="prompt",
         itemId="super-choice-many",
         itemType="super-choice",
         typeId=None,

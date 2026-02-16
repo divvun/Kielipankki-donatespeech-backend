@@ -16,7 +16,6 @@ from pydantic import BaseModel, Field
 class AudioMediaItem(BaseModel):
     """Audio media item with direct URL"""
 
-    kind: Literal["media"]
     itemType: Literal["audio"]
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="Direct URL to audio file")
@@ -29,7 +28,6 @@ class AudioMediaItem(BaseModel):
 class VideoMediaItem(BaseModel):
     """Video media item with direct URL"""
 
-    kind: Literal["media"]
     itemType: Literal["video"]
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="Direct URL to video file")
@@ -42,7 +40,6 @@ class VideoMediaItem(BaseModel):
 class YleAudioMediaItem(BaseModel):
     """YLE audio program item"""
 
-    kind: Literal["media"]
     itemType: Literal["yle-audio"]
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="YLE program ID")
@@ -55,7 +52,6 @@ class YleAudioMediaItem(BaseModel):
 class YleVideoMediaItem(BaseModel):
     """YLE video program item"""
 
-    kind: Literal["media"]
     itemType: Literal["yle-video"]
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="YLE program ID")
@@ -65,11 +61,10 @@ class YleVideoMediaItem(BaseModel):
     isRecording: bool
 
 
-class TextMediaItem(BaseModel):
+class TextContentItem(BaseModel):
     """Text content item"""
 
-    kind: Literal["media"]
-    itemType: Literal["text"]
+    itemType: Literal["text-content"]
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="URL to text content")
     typeId: Optional[str] = Field(None, description="MIME type (e.g., 'text/plain', 'text/html')")
@@ -81,7 +76,6 @@ class TextMediaItem(BaseModel):
 class ImageMediaItem(BaseModel):
     """Image media item"""
 
-    kind: Literal["media"]
     itemType: Literal["image"]
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="Direct URL to image file")
@@ -91,24 +85,9 @@ class ImageMediaItem(BaseModel):
     isRecording: bool
 
 
-# Union of all media item types (discriminated by itemType)
-MediaItem = Annotated[
-    Union[
-        AudioMediaItem,
-        VideoMediaItem,
-        YleAudioMediaItem,
-        YleVideoMediaItem,
-        TextMediaItem,
-        ImageMediaItem,
-    ],
-    Field(discriminator="itemType"),
-]
-
-
 class ChoicePromptItem(BaseModel):
     """Single choice prompt item"""
 
-    kind: Literal["prompt"]
     itemType: Literal["choice"]
     itemId: str = Field(..., description="UUID v4 of the item")
     typeId: None = Field(None, description="Always null for prompts")
@@ -122,7 +101,6 @@ class ChoicePromptItem(BaseModel):
 class MultiChoicePromptItem(BaseModel):
     """Multiple choice prompt item with optional text entry"""
 
-    kind: Literal["prompt"]
     itemType: Literal["multi-choice"]
     itemId: str = Field(..., description="UUID v4 of the item")
     typeId: None = Field(None, description="Always null for prompts")
@@ -139,7 +117,6 @@ class MultiChoicePromptItem(BaseModel):
 class SuperChoicePromptItem(BaseModel):
     """Super choice prompt item with optional text entry"""
 
-    kind: Literal["prompt"]
     itemType: Literal["super-choice"]
     itemId: str = Field(..., description="UUID v4 of the item")
     typeId: None = Field(None, description="Always null for prompts")
@@ -153,11 +130,10 @@ class SuperChoicePromptItem(BaseModel):
     )
 
 
-class TextPromptItem(BaseModel):
+class TextInputItem(BaseModel):
     """Text input prompt item"""
 
-    kind: Literal["prompt"]
-    itemType: Literal["text"]
+    itemType: Literal["text-input"]
     itemId: str = Field(..., description="UUID v4 of the item")
     typeId: None = Field(None, description="Always null for prompts")
     url: None = Field(None, description="Always null for prompts")
@@ -167,22 +143,21 @@ class TextPromptItem(BaseModel):
     otherEntryLabel: None = Field(None, description="Not used for text prompts")
 
 
-# Union of all prompt item types (discriminated by itemType)
-PromptItem = Annotated[
+# Discriminated union of all schedule item types (discriminated by itemType)
+ScheduleItem = Annotated[
     Union[
+        AudioMediaItem,
+        VideoMediaItem,
+        YleAudioMediaItem,
+        YleVideoMediaItem,
+        TextContentItem,
+        ImageMediaItem,
         ChoicePromptItem,
         MultiChoicePromptItem,
         SuperChoicePromptItem,
-        TextPromptItem,
+        TextInputItem,
     ],
     Field(discriminator="itemType"),
-]
-
-
-# Discriminated union of schedule items (discriminated by kind: media vs prompt)
-ScheduleItem = Annotated[
-    Union[MediaItem, PromptItem],
-    Field(discriminator="kind"),
 ]
 
 
