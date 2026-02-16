@@ -1,15 +1,15 @@
 """Test discriminated union: MediaItem with itemType=yle-audio."""
 
-from models import MediaItem, ScheduleItem
+from models import YleAudioMediaItem, ScheduleItem
 
 
 def test_media_item_yle_audio_valid():
     """Test valid MediaItem with kind=media and itemType=yle-audio."""
-    item = MediaItem(
+    item = YleAudioMediaItem(
         kind="media",
         itemId="yle-audio-001",
         itemType="yle-audio",
-        typeId="audio/mp3",
+        typeId=None,
         url="1-50000093",  # YLE Areena program identifier
         description="YLE audio content",
         options=[],
@@ -18,7 +18,7 @@ def test_media_item_yle_audio_valid():
     
     assert item.kind == "media"
     assert item.itemType == "yle-audio"
-    assert item.typeId == "audio/mp3"
+    assert item.typeId is None
     assert item.url == "1-50000093"  # YLE program ID format
     assert item.isRecording is False
 
@@ -29,7 +29,7 @@ def test_media_item_yle_audio_in_schedule():
         "kind": "media",
         "itemId": "yle-audio-002",
         "itemType": "yle-audio",
-        "typeId": "audio/m4a",
+        "typeId": None,
         "url": "1-50000094",
         "description": "Another YLE audio",
         "options": [],
@@ -37,9 +37,9 @@ def test_media_item_yle_audio_in_schedule():
     }
     
     # Parse as ScheduleItem union
-    schedule_item: ScheduleItem = MediaItem(**item_dict)
+    schedule_item: ScheduleItem = YleAudioMediaItem(**item_dict)
     
-    assert isinstance(schedule_item, MediaItem)
+    assert isinstance(schedule_item, YleAudioMediaItem)
     assert schedule_item.kind == "media"
     assert schedule_item.itemType == "yle-audio"
     assert schedule_item.url == "1-50000094"  # YLE program ID preserved
@@ -50,11 +50,11 @@ def test_media_item_yle_audio_various_ids():
     yle_ids = ["1-50000093", "1-60000001", "1-70000500", "2-999999"]
     
     for yle_id in yle_ids:
-        item = MediaItem(
+        item = YleAudioMediaItem(
             kind="media",
             itemId=f"yle-{yle_id}",
             itemType="yle-audio",
-            typeId="audio/mp3",
+            typeId=None,
             url=yle_id,
             description=f"YLE content {yle_id}",
             options=[],

@@ -4,9 +4,8 @@ Pydantic models for Kielipankki Recorder schedules and configurations.
 Uses discriminated unions to handle the polymorphic Item types.
 """
 
-from typing import Literal, Optional, Union
-from uuid import UUID
-from pydantic import BaseModel, ConfigDict, Field
+from typing import Annotated, Literal, Optional, Union
+from pydantic import BaseModel, Field
 
 
 # ============================================================================
@@ -14,19 +13,96 @@ from pydantic import BaseModel, ConfigDict, Field
 # ============================================================================
 
 
-class MediaItem(BaseModel):
-    """Media schedule item (video, audio, images, etc.)"""
+class AudioMediaItem(BaseModel):
+    """Audio media item with direct URL"""
 
     kind: Literal["media"]
+    itemType: Literal["audio"]
     itemId: str = Field(..., description="UUID v4 of the item")
-    itemType: Literal["audio", "video", "yle-audio", "yle-video", "text", "image"]
-    typeId: Optional[str] = Field(
-        None, description="MIME type (e.g., 'audio/m4a', 'video/mp4', 'image/jpeg')"
-    )
-    url: str = Field(..., description="URL or YLE program ID")
+    url: str = Field(..., description="Direct URL to audio file")
+    typeId: str = Field(..., description="MIME type (e.g., 'audio/m4a', 'audio/mpeg')")
     description: str
     options: list[str] = Field(default_factory=list, description="Should be empty for media")
     isRecording: bool
+
+
+class VideoMediaItem(BaseModel):
+    """Video media item with direct URL"""
+
+    kind: Literal["media"]
+    itemType: Literal["video"]
+    itemId: str = Field(..., description="UUID v4 of the item")
+    url: str = Field(..., description="Direct URL to video file")
+    typeId: str = Field(..., description="MIME type (e.g., 'video/mp4', 'video/webm')")
+    description: str
+    options: list[str] = Field(default_factory=list, description="Should be empty for media")
+    isRecording: bool
+
+
+class YleAudioMediaItem(BaseModel):
+    """YLE audio program item"""
+
+    kind: Literal["media"]
+    itemType: Literal["yle-audio"]
+    itemId: str = Field(..., description="UUID v4 of the item")
+    url: str = Field(..., description="YLE program ID")
+    typeId: Optional[str] = Field(None, description="Not used for YLE content")
+    description: str
+    options: list[str] = Field(default_factory=list, description="Should be empty for media")
+    isRecording: bool
+
+
+class YleVideoMediaItem(BaseModel):
+    """YLE video program item"""
+
+    kind: Literal["media"]
+    itemType: Literal["yle-video"]
+    itemId: str = Field(..., description="UUID v4 of the item")
+    url: str = Field(..., description="YLE program ID")
+    typeId: Optional[str] = Field(None, description="Not used for YLE content")
+    description: str
+    options: list[str] = Field(default_factory=list, description="Should be empty for media")
+    isRecording: bool
+
+
+class TextMediaItem(BaseModel):
+    """Text content item"""
+
+    kind: Literal["media"]
+    itemType: Literal["text"]
+    itemId: str = Field(..., description="UUID v4 of the item")
+    url: str = Field(..., description="URL to text content")
+    typeId: Optional[str] = Field(None, description="MIME type (e.g., 'text/plain', 'text/html')")
+    description: str
+    options: list[str] = Field(default_factory=list, description="Should be empty for media")
+    isRecording: bool
+
+
+class ImageMediaItem(BaseModel):
+    """Image media item"""
+
+    kind: Literal["media"]
+    itemType: Literal["image"]
+    itemId: str = Field(..., description="UUID v4 of the item")
+    url: str = Field(..., description="Direct URL to image file")
+    typeId: str = Field(..., description="MIME type (e.g., 'image/jpeg', 'image/png')")
+    description: str
+    options: list[str] = Field(default_factory=list, description="Should be empty for media")
+    isRecording: bool
+
+
+# Union of all media item types (discriminated by itemType)
+MediaItem = Annotated[
+    Union[
+        AudioMediaItem,
+        VideoMediaItem,
+        YleAudioMediaItem,
+        YleVideoMediaItem,
+        TextMediaItem,
+        ImageMediaItem,
+    ],
+    Field(discriminator="itemType"),
+]
 
 
 class PromptItem(BaseModel):
@@ -49,8 +125,11 @@ class PromptItem(BaseModel):
     )
 
 
-# Discriminated union of schedule items
-ScheduleItem = Union[MediaItem, PromptItem]
+# Discriminated union of schedule items (discriminated by kind: media vs prompt)
+ScheduleItem = Annotated[
+    Union[MediaItem, PromptItem],
+    Field(discriminator="kind"),
+]
 
 
 # ============================================================================
@@ -60,8 +139,6 @@ ScheduleItem = Union[MediaItem, PromptItem]
 
 class Configuration(BaseModel):
     """Configuration/Schedule with items"""
-
-    model_config = ConfigDict(discriminator="kind")
 
     id: Optional[str] = None  # Will be set from filename
     scheduleId: Optional[str] = None
