@@ -1,11 +1,11 @@
 """Test discriminated union: PromptItem with itemType=super-choice."""
 
-from models import PromptItem, ScheduleItem
+from models import SuperChoicePromptItem, ScheduleItem
 
 
 def test_prompt_item_super_choice_valid():
     """Test valid PromptItem with kind=prompt and itemType=super-choice."""
-    item = PromptItem(
+    item = SuperChoicePromptItem(
         kind="prompt",
         itemId="super-choice-001",
         itemType="super-choice",
@@ -41,9 +41,9 @@ def test_prompt_item_super_choice_in_schedule():
     }
     
     # Parse as ScheduleItem union
-    schedule_item: ScheduleItem = PromptItem(**item_dict)
+    schedule_item: ScheduleItem = SuperChoicePromptItem(**item_dict)
     
-    assert isinstance(schedule_item, PromptItem)
+    assert isinstance(schedule_item, SuperChoicePromptItem)
     assert schedule_item.kind == "prompt"
     assert schedule_item.itemType == "super-choice"
     assert schedule_item.otherEntryLabel == "Type language"
@@ -51,7 +51,7 @@ def test_prompt_item_super_choice_in_schedule():
 
 def test_prompt_item_super_choice_without_other_entry():
     """Test PromptItem super-choice without otherEntryLabel (defaults to None)."""
-    item = PromptItem(
+    item = SuperChoicePromptItem(
         kind="prompt",
         itemId="super-choice-no-label",
         itemType="super-choice",
@@ -70,7 +70,7 @@ def test_prompt_item_super_choice_with_many_options():
     """Test PromptItem super-choice with many predefined options."""
     options = [f"Item {i}" for i in range(1, 31)]
     
-    item = PromptItem(
+    item = SuperChoicePromptItem(
         kind="prompt",
         itemId="super-choice-many",
         itemType="super-choice",

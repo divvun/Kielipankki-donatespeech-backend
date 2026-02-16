@@ -1,11 +1,11 @@
 """Test discriminated union: PromptItem with itemType=text."""
 
-from models import PromptItem, ScheduleItem
+from models import TextPromptItem, ScheduleItem
 
 
 def test_prompt_item_text_valid():
     """Test valid PromptItem with kind=prompt and itemType=text."""
-    item = PromptItem(
+    item = TextPromptItem(
         kind="prompt",
         itemId="text-prompt-001",
         itemType="text",
@@ -38,9 +38,9 @@ def test_prompt_item_text_in_schedule():
     }
     
     # Parse as ScheduleItem union
-    schedule_item: ScheduleItem = PromptItem(**item_dict)
+    schedule_item: ScheduleItem = TextPromptItem(**item_dict)
     
-    assert isinstance(schedule_item, PromptItem)
+    assert isinstance(schedule_item, TextPromptItem)
     assert schedule_item.kind == "prompt"
     assert schedule_item.itemType == "text"
     assert schedule_item.options == []
@@ -48,7 +48,7 @@ def test_prompt_item_text_in_schedule():
 
 def test_prompt_item_text_no_options():
     """Test PromptItem text with empty options array."""
-    item = PromptItem(
+    item = TextPromptItem(
         kind="prompt",
         itemId="text-prompt-no-opts",
         itemType="text",
@@ -66,7 +66,7 @@ def test_prompt_item_text_no_options():
 
 def test_prompt_item_text_no_other_entry_label():
     """Test PromptItem text without otherEntryLabel (defaults to None)."""
-    item = PromptItem(
+    item = TextPromptItem(
         kind="prompt",
         itemId="text-prompt-basic",
         itemType="text",
@@ -90,7 +90,7 @@ def test_prompt_item_text_with_long_description():
     - Suggestions for improvement
     """
     
-    item = PromptItem(
+    item = TextPromptItem(
         kind="prompt",
         itemId="text-prompt-long",
         itemType="text",

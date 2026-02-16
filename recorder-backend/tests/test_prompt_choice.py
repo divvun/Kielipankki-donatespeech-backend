@@ -1,11 +1,11 @@
 """Test discriminated union: PromptItem with itemType=choice."""
 
-from models import PromptItem, ScheduleItem
+from models import ChoicePromptItem, ScheduleItem
 
 
 def test_prompt_item_choice_valid():
     """Test valid PromptItem with kind=prompt and itemType=choice."""
-    item = PromptItem(
+    item = ChoicePromptItem(
         kind="prompt",
         itemId="choice-001",
         itemType="choice",
@@ -38,9 +38,9 @@ def test_prompt_item_choice_in_schedule():
     }
     
     # Parse as ScheduleItem union
-    schedule_item: ScheduleItem = PromptItem(**item_dict)
+    schedule_item: ScheduleItem = ChoicePromptItem(**item_dict)
     
-    assert isinstance(schedule_item, PromptItem)
+    assert isinstance(schedule_item, ChoicePromptItem)
     assert schedule_item.kind == "prompt"
     assert schedule_item.itemType == "choice"
     assert len(schedule_item.options) == 4
@@ -48,7 +48,7 @@ def test_prompt_item_choice_in_schedule():
 
 def test_prompt_item_choice_single_option():
     """Test PromptItem choice with single option."""
-    item = PromptItem(
+    item = ChoicePromptItem(
         kind="prompt",
         itemId="choice-single",
         itemType="choice",
@@ -68,7 +68,7 @@ def test_prompt_item_choice_many_options():
     """Test PromptItem choice with many options."""
     options = [f"Option {i}" for i in range(1, 101)]
     
-    item = PromptItem(
+    item = ChoicePromptItem(
         kind="prompt",
         itemId="choice-many",
         itemType="choice",
