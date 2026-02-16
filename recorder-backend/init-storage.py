@@ -39,14 +39,14 @@ try:
     blob_client.upload_blob(json.dumps(test_theme, indent=2), overwrite=True)
     print("✓ Uploaded theme/test-theme.json")
 
-    # Upload test configuration
+    # Upload test schedule
     blob_client = client.get_blob_client(
-        container="recorder-content", blob="configuration/test-config.json"
+        container="recorder-content", blob="schedule/test-schedule.json"
     )
-    test_config = {
-        "id": "test-config",
-        "name": "Test Configuration",
-        "description": "Test playlist configuration",
+    test_schedule = {
+        "id": "test-schedule",
+        "name": "Test Schedule",
+        "description": "Test playlist schedule",
         "items": [
             {
                 "itemId": "1",
@@ -55,13 +55,13 @@ try:
             }
         ],
     }
-    blob_client.upload_blob(json.dumps(test_config, indent=2), overwrite=True)
-    print("✓ Uploaded configuration/test-config.json")
+    blob_client.upload_blob(json.dumps(test_schedule, indent=2), overwrite=True)
+    print("✓ Uploaded schedule/test-schedule.json")
 
     print("\n✨ Storage initialized successfully!")
     print("\nYou can now test the API:")
     print("  curl http://localhost:8000/v1/theme")
-    print("  curl http://localhost:8000/v1/configuration")
+    print("  curl http://localhost:8000/v1/schedule")
     print("  open http://localhost:8000/docs")
 
 except Exception as e:

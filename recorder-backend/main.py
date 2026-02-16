@@ -12,9 +12,9 @@ from fastapi import FastAPI, HTTPException, Path
 from fastapi.middleware.cors import CORSMiddleware
 
 from models import (
-    Configuration,
+    Schedule,
     Theme,
-    ConfigurationListItem,
+    ScheduleListItem,
     ThemeListItem,
     MediaItem,
     InitUploadRequest,
@@ -61,14 +61,14 @@ def validate_uuid_v4(uuid_string: str) -> bool:
         return False
 
 
-def pre_process_configuration(config: Configuration) -> Configuration:
-    """Pre-process configuration by mapping YLE content URLs."""
-    for item in config.items:
+def pre_process_schedule(schedule: Schedule) -> Schedule:
+    """Pre-process schedule by mapping YLE content URLs."""
+    for item in schedule.items:
         if isinstance(item, MediaItem):
             if item.itemType in ("yle-video", "yle-audio"):
                 if item.url:
                     item.url = map_yle_content(item.url)
-    return config
+    return schedule
 
 
 # --- API Endpoints ---
@@ -200,56 +200,56 @@ async def delete_by_recording_id(
         raise HTTPException(status_code=500, detail="Error deleting recording")
 
 
-@app.get("/v1/configuration/{schedule_id}", response_model=Configuration)
-async def load_configuration(schedule_id: str = Path(..., description="Schedule ID")):
-    """Load a specific configuration/schedule file."""
-    blob_name = f"configuration/{schedule_id}.json"
+@app.get("/v1/schedule/{schedule_id}", response_model=Schedule)
+async def load_schedule(schedule_id: str = Path(..., description="Schedule ID")):
+    """Load a specific schedule file."""
+    blob_name = f"schedule/{schedule_id}.json"
 
     try:
-        conf_dict = await load_blob_json(blob_name)
-        # Parse and validate using the Configuration model
-        config = Configuration(**conf_dict)
-        config.id = schedule_id
+        schedule_dict = await load_blob_json(blob_name)
+        # Parse and validate using the Schedule model
+        schedule = Schedule(**schedule_dict)
+        schedule.id = schedule_id
         # Pre-process YLE URLs
-        config = pre_process_configuration(config)
-        return config
+        schedule = pre_process_schedule(schedule)
+        return schedule
     except StorageError as e:
-        logger.error(f"Error loading configuration {schedule_id}: {e}")
-        raise HTTPException(status_code=404, detail="Configuration not found")
+        logger.error(f"Error loading schedule {schedule_id}: {e}")
+        raise HTTPException(status_code=404, detail="Schedule not found")
 
 
-@app.get("/v1/configuration", response_model=list[ConfigurationListItem])
-async def load_all_configurations():
-    """Load all configuration files."""
+@app.get("/v1/schedule", response_model=list[ScheduleListItem])
+async def load_all_schedules():
+    """Load all schedule files."""
     try:
-        blob_list = await list_blobs_with_prefix("configuration/")
+        blob_list = await list_blobs_with_prefix("schedule/")
 
-        configurations = []
+        schedules = []
         for blob_name in blob_list:
             # Skip the directory marker
-            filename = blob_name.replace("configuration/", "")
+            filename = blob_name.replace("schedule/", "")
             if not filename:
                 continue
 
-            conf_dict = await load_blob_json(blob_name)
-            # Parse and validate using the Configuration model
-            config = Configuration(**conf_dict)
-            config_id = filename.replace(".json", "").strip()
-            config.id = config_id
+            schedule_dict = await load_blob_json(blob_name)
+            # Parse and validate using the Schedule model
+            schedule = Schedule(**schedule_dict)
+            schedule_id = filename.replace(".json", "").strip()
+            schedule.id = schedule_id
             # Pre-process YLE URLs
-            config = pre_process_configuration(config)
+            schedule = pre_process_schedule(schedule)
 
-            configurations.append(
-                ConfigurationListItem(
-                    id=config_id,
-                    content=config,
+            schedules.append(
+                ScheduleListItem(
+                    id=schedule_id,
+                    content=schedule,
                 )
             )
 
-        return configurations
+        return schedules
     except StorageError as e:
-        logger.error(f"Error loading all configurations: {e}")
-        raise HTTPException(status_code=500, detail="Error loading configurations")
+        logger.error(f"Error loading all schedules: {e}")
+        raise HTTPException(status_code=500, detail="Error loading schedules")
 
 
 @app.get("/v1/theme/{theme_id}", response_model=Theme)
