@@ -5,9 +5,9 @@ set -e
 
 echo "Setting up local development environment..."
 
-# Check if docker is running
-if ! docker info > /dev/null 2>&1; then
-    echo "Error: Docker is not running. Please start Docker and try again."
+# Check if podman is running
+if ! podman info > /dev/null 2>&1; then
+    echo "Error: Podman is not running. Please start Podman and try again."
     exit 1
 fi
 
@@ -21,7 +21,7 @@ fi
 
 # Start Azurite and API services
 echo "Starting Azurite and API services..."
-docker-compose up -d
+podman-compose up -d
 
 # Wait for Azurite to be ready
 echo "Waiting for Azurite to start..."
@@ -87,5 +87,5 @@ echo "  - Azurite Blob Storage: http://localhost:10000"
 echo "  - FastAPI Backend: http://localhost:8000"
 echo "  - API Docs: http://localhost:8000/docs"
 echo ""
-echo "To stop services: docker-compose down"
-echo "To view logs: docker-compose logs -f"
+echo "To stop services: podman-compose down"
+echo "To view logs: podman-compose logs -f"
