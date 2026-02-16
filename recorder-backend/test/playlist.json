@@ -1,4 +1,5 @@
 {
+  "description": "Test playlist with various media types",
   "items": [
     {
       "itemId": "ce3c6012-25f0-4c69-a0ad-c5dc8e41b795",
@@ -34,13 +35,6 @@
       "itemType": "video",
       "url": "lordi-euroviisut.mp4",
       "typeId": "video/mp4"
-    },
-    {
-      "itemId": "9f05e73a-6b31-4164-bda2-33b92ac15560",
-      "description": "Mauno Ahosen joulupuhe",
-      "isRecording": false,
-      "itemType": "yle-video",
-      "url": "1-50000093"
     },
     {
       "itemId": "718a6814-c97f-4e5e-88f1-e22039487cc8",
