@@ -5,16 +5,24 @@ This replaces the AWS Lambda + API Gateway architecture with a simpler
 FastAPI REST API that can run locally (with Azurite) or on Azure.
 """
 
-import json
 import logging
-from typing import Optional
 from uuid import UUID
 
 from fastapi import FastAPI, HTTPException, Path
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel, Field
 
+from models import (
+    Configuration,
+    Theme,
+    ConfigurationListItem,
+    ThemeListItem,
+    ScheduleItem,
+    MediaItem,
+    PromptItem,
+    InitUploadRequest,
+    InitUploadResponse,
+)
 from storage import (
     store_metadata,
     generate_upload_sas_url,
@@ -44,36 +52,6 @@ app.add_middleware(
 )
 
 
-# --- Request/Response Models ---
-
-
-class UploadMetadata(BaseModel):
-    """Metadata associated with an upload."""
-
-    clientId: str = Field(..., description="UUID v4 client identifier")
-    sessionId: Optional[str] = Field(None, description="UUID v4 session identifier")
-    contentType: Optional[str] = Field(None, description="MIME type of the audio file")
-    # Additional fields that mobile apps send
-    recordingId: Optional[str] = None
-    timestamp: Optional[str] = None
-    duration: Optional[float] = None
-    language: Optional[str] = None
-    # Any other metadata fields are accepted
-
-
-class InitUploadRequest(BaseModel):
-    """Request body for initializing an upload."""
-
-    filename: str = Field(..., description="Name of the audio file to upload")
-    metadata: UploadMetadata
-
-
-class InitUploadResponse(BaseModel):
-    """Response containing the SAS URL for direct upload."""
-
-    presignedUrl: str  # Keep name consistent with Lambda version
-
-
 # --- Utility Functions ---
 
 
@@ -86,14 +64,14 @@ def validate_uuid_v4(uuid_string: str) -> bool:
         return False
 
 
-def pre_process_configuration_file(content: dict) -> None:
+def pre_process_configuration(config: Configuration) -> Configuration:
     """Pre-process configuration by mapping YLE content URLs."""
-    for item in content.get("items", []):
-        item_type = item.get("itemType")
-        if item_type in ("yle-video", "yle-audio"):
-            url = item.get("url")
-            if url:
-                item["url"] = map_yle_content(url)
+    for item in config.items:
+        if isinstance(item, MediaItem):
+            if item.itemType in ("yle-video", "yle-audio"):
+                if item.url:
+                    item.url = map_yle_content(item.url)
+    return config
 
 
 # --- API Endpoints ---
@@ -149,7 +127,7 @@ async def init_upload(request: InitUploadRequest):
     try:
         metadata_dict = metadata.model_dump(exclude_none=True)
         await store_metadata(metadata_blob_name, metadata_dict)
-        logger.info(f"Stored metadata: {metadata_dict}")
+        logger.info(f"Stored metadata for client {metadata.clientId}")
     except StorageError as e:
         logger.error(f"Error storing metadata: {e}")
         raise HTTPException(status_code=500, detail="Error storing metadata")
@@ -225,21 +203,25 @@ async def delete_by_recording_id(
         raise HTTPException(status_code=500, detail="Error deleting recording")
 
 
-@app.get("/v1/configuration/{schedule_id}")
+@app.get("/v1/configuration/{schedule_id}", response_model=Configuration)
 async def load_configuration(schedule_id: str = Path(..., description="Schedule ID")):
     """Load a specific configuration/schedule file."""
     blob_name = f"configuration/{schedule_id}.json"
 
     try:
         conf_dict = await load_blob_json(blob_name)
-        pre_process_configuration_file(conf_dict)
-        return JSONResponse(content=conf_dict)
+        # Parse and validate using the Configuration model
+        config = Configuration(**conf_dict)
+        config.id = schedule_id
+        # Pre-process YLE URLs
+        config = pre_process_configuration(config)
+        return config
     except StorageError as e:
         logger.error(f"Error loading configuration {schedule_id}: {e}")
         raise HTTPException(status_code=404, detail="Configuration not found")
 
 
-@app.get("/v1/configuration")
+@app.get("/v1/configuration", response_model=list[ConfigurationListItem])
 async def load_all_configurations():
     """Load all configuration files."""
     try:
@@ -253,35 +235,43 @@ async def load_all_configurations():
                 continue
 
             conf_dict = await load_blob_json(blob_name)
-            pre_process_configuration_file(conf_dict)
+            # Parse and validate using the Configuration model
+            config = Configuration(**conf_dict)
+            config_id = filename.replace(".json", "").strip()
+            config.id = config_id
+            # Pre-process YLE URLs
+            config = pre_process_configuration(config)
 
             configurations.append(
-                {
-                    "id": filename.replace(".json", "").strip(),
-                    "content": conf_dict,
-                }
+                ConfigurationListItem(
+                    id=config_id,
+                    content=config,
+                )
             )
 
-        return JSONResponse(content=configurations)
+        return configurations
     except StorageError as e:
         logger.error(f"Error loading all configurations: {e}")
         raise HTTPException(status_code=500, detail="Error loading configurations")
 
 
-@app.get("/v1/theme/{theme_id}")
+@app.get("/v1/theme/{theme_id}", response_model=Theme)
 async def load_theme(theme_id: str = Path(..., description="Theme ID")):
     """Load a specific theme file."""
     blob_name = f"theme/{theme_id}.json"
 
     try:
         theme_dict = await load_blob_json(blob_name)
-        return JSONResponse(content=theme_dict)
+        # Parse and validate using the Theme model
+        theme = Theme(**theme_dict)
+        theme.id = theme_id
+        return theme
     except StorageError as e:
         logger.error(f"Error loading theme {theme_id}: {e}")
         raise HTTPException(status_code=404, detail="Theme not found")
 
 
-@app.get("/v1/theme")
+@app.get("/v1/theme", response_model=list[ThemeListItem])
 async def load_all_themes():
     """Load all theme files."""
     try:
@@ -295,15 +285,19 @@ async def load_all_themes():
                 continue
 
             theme_dict = await load_blob_json(blob_name)
+            # Parse and validate using the Theme model
+            theme = Theme(**theme_dict)
+            theme_id = filename.replace(".json", "").strip()
+            theme.id = theme_id
 
             themes.append(
-                {
-                    "id": filename.replace(".json", "").strip(),
-                    "content": theme_dict,
-                }
+                ThemeListItem(
+                    id=theme_id,
+                    content=theme,
+                )
             )
 
-        return JSONResponse(content=themes)
+        return themes
     except StorageError as e:
         logger.error(f"Error loading all themes: {e}")
         raise HTTPException(status_code=500, detail="Error loading themes")
