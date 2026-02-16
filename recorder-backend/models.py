@@ -61,7 +61,9 @@ class TextContentItem(BaseModel):
     itemType: Literal["text-content"]
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="URL to text content")
-    typeId: Optional[str] = Field(None, description="MIME type (e.g., 'text/plain', 'text/html')")
+    typeId: Optional[str] = Field(
+        None, description="MIME type (e.g., 'text/plain', 'text/html')"
+    )
     description: str
     isRecording: bool
 

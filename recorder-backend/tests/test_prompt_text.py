@@ -11,7 +11,7 @@ def test_prompt_item_text_valid():
         description="Enter your response",
         isRecording=True,
     )
-    
+
     assert item.itemType == "text-input"
     assert item.isRecording is True
 
@@ -28,10 +28,10 @@ def test_prompt_item_text_in_schedule():
         "options": [],
         "isRecording": False,
     }
-    
+
     # Parse as ScheduleItem union
     schedule_item: ScheduleItem = TextInputItem(**item_dict)
-    
+
     assert isinstance(schedule_item, TextInputItem)
     assert schedule_item.itemType == "text-input"
 
@@ -44,7 +44,7 @@ def test_prompt_item_text_no_options():
         description="Free text input",
         isRecording=True,
     )
-    
+
     assert item.itemType == "text-input"
 
 
@@ -56,7 +56,7 @@ def test_prompt_item_text_no_other_entry_label():
         description="Simple text question",
         isRecording=False,
     )
-    
+
     assert item.itemType == "text-input"
 
 
@@ -68,13 +68,13 @@ def test_prompt_item_text_with_long_description():
     - What you disliked
     - Suggestions for improvement
     """
-    
+
     item = TextInputItem(
         itemId="text-prompt-long",
         itemType="text-input",
         description=long_desc,
         isRecording=True,
     )
-    
+
     assert item.itemType == "text-input"
     assert long_desc in item.description

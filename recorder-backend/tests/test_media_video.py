@@ -13,7 +13,7 @@ def test_media_item_video_valid():
         description="Video description",
         isRecording=True,
     )
-    
+
     assert item.itemType == "video"
     assert item.typeId == "video/mp4"
     assert item.url == "https://example.com/video.mp4"
@@ -32,10 +32,10 @@ def test_media_item_video_in_schedule():
         "options": [],
         "isRecording": False,
     }
-    
+
     # Parse as ScheduleItem union
     schedule_item: ScheduleItem = VideoMediaItem(**item_dict)
-    
+
     assert isinstance(schedule_item, VideoMediaItem)
     assert schedule_item.itemType == "video"
     assert schedule_item.typeId == "video/webm"
@@ -44,7 +44,7 @@ def test_media_item_video_in_schedule():
 def test_media_item_video_various_codecs():
     """Test MediaItem video with various MIME types."""
     mime_types = ["video/mp4", "video/webm", "video/avi", "video/quicktime"]
-    
+
     for mime_type in mime_types:
         item = VideoMediaItem(
             itemId="f3c991c0-e2f2-4d4d-980d-0883230d84a1",
@@ -54,6 +54,6 @@ def test_media_item_video_various_codecs():
             description=f"Video in {mime_type}",
             isRecording=False,
         )
-        
+
         assert item.itemType == "video"
         assert item.typeId == mime_type

@@ -13,7 +13,7 @@ def test_media_item_text_valid():
         description="Text content displayed to user",
         isRecording=False,
     )
-    
+
     assert item.itemType == "text-content"
     assert item.typeId == "text/plain"
     assert item.url == "https://example.com/text-content.txt"
@@ -32,10 +32,10 @@ def test_media_item_text_in_schedule():
         "options": [],
         "isRecording": True,
     }
-    
+
     # Parse as ScheduleItem union
     schedule_item: ScheduleItem = TextContentItem(**item_dict)
-    
+
     assert isinstance(schedule_item, TextContentItem)
     assert schedule_item.itemType == "text-content"
     assert schedule_item.typeId == "text/html"
@@ -49,7 +49,7 @@ def test_media_item_text_various_formats():
         ("text/markdown", "Markdown formatted"),
         ("application/json", "JSON structure"),
     ]
-    
+
     for mime_type, description in formats:
         item = TextContentItem(
             itemId=f"text-{mime_type}",
@@ -59,7 +59,7 @@ def test_media_item_text_various_formats():
             description=description,
             isRecording=False,
         )
-        
+
         assert item.itemType == "text-content"
         assert item.typeId == mime_type
         assert item.description == description
