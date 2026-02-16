@@ -1,5 +1,5 @@
 """
-Pydantic models for Kielipankki Recorder schedules and configurations.
+Pydantic models for Kielipankki Recorder schedules and themes.
 
 Uses discriminated unions to handle the polymorphic Item types.
 """
@@ -145,12 +145,12 @@ ScheduleItem = Annotated[
 
 
 # ============================================================================
-# Configuration (Schedule)
+# Schedule
 # ============================================================================
 
 
-class Configuration(BaseModel):
-    """Configuration/Schedule with items"""
+class Schedule(BaseModel):
+    """Schedule (playlist) containing items to present to user"""
 
     id: Optional[str] = None  # Will be set from filename
     scheduleId: Optional[str] = None
@@ -208,11 +208,11 @@ class InitUploadResponse(BaseModel):
 # ============================================================================
 
 
-class ConfigurationListItem(BaseModel):
-    """Single configuration in list response"""
+class ScheduleListItem(BaseModel):
+    """Single schedule in list response"""
 
     id: str
-    content: Configuration
+    content: Schedule
 
 
 class ThemeListItem(BaseModel):
