@@ -54,26 +54,21 @@ try:
     else:
         print("✓ Container 'recorder-content' already exists")
     
-    # Upload test theme file
-    blob_client = client.get_blob_client(container="recorder-content", blob="theme/test-theme.json")
-    test_theme = {
-        "id": "test-theme",
-        "name": "Test Theme",
-        "description": "A test theme for local development"
-    }
-    import json
-    blob_client.upload_blob(json.dumps(test_theme), overwrite=True)
-    print("✓ Uploaded test theme file")
+    # Upload test playlist (schedule) file
+    print("Uploading test playlist...")
+    with open("test/playlist.json", "rb") as f:
+        playlist_data = f.read()
+    blob_client = client.get_blob_client(container="recorder-content", blob="schedule/test-playlist.json")
+    blob_client.upload_blob(playlist_data, overwrite=True)
+    print("✓ Uploaded test playlist file")
     
-    # Upload test configuration file
-    blob_client = client.get_blob_client(container="recorder-content", blob="configuration/test-config.json")
-    test_config = {
-        "id": "test-config",
-        "name": "Test Configuration",
-        "items": []
-    }
-    blob_client.upload_blob(json.dumps(test_config), overwrite=True)
-    print("✓ Uploaded test configuration file")
+    # Upload test theme file
+    print("Uploading test theme...")
+    with open("test/theme.json", "rb") as f:
+        theme_data = f.read()
+    blob_client = client.get_blob_client(container="recorder-content", blob="theme/test-theme.json")
+    blob_client.upload_blob(theme_data, overwrite=True)
+    print("✓ Uploaded test theme file")
     
 except Exception as e:
     print(f"Error: {e}")
