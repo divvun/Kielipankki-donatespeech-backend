@@ -71,6 +71,26 @@ def main():
         else:
             print(f"⚠ Warning: {theme_file} not found, skipping")
 
+        # Upload media files referenced by the schedule
+        print("Uploading media files...")
+        media_files = [
+            "arvi-euroviisut.m4a",
+            "lordi-euroviisut.mp4",
+        ]
+
+        for media_file in media_files:
+            file_path = test_dir / media_file
+            if file_path.exists():
+                with open(file_path, "rb") as f:
+                    blob_client = client.get_blob_client(
+                        container=CONTAINER_NAME,
+                        blob=f"media/{media_file}",
+                    )
+                    blob_client.upload_blob(f, overwrite=True)
+                print(f"✓ Uploaded media/{media_file}")
+            else:
+                print(f"⚠ Warning: {file_path} not found, skipping")
+
         print("\n✨ Storage initialized successfully!")
         print("\nYou can now test the API:")
         print("  curl http://localhost:8000/v1/theme")
