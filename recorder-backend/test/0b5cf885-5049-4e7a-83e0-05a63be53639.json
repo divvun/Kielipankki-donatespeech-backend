@@ -4,7 +4,7 @@
     {
       "itemId": "ce3c6012-25f0-4c69-a0ad-c5dc8e41b795",
       "description": "Arvi Lind esittelee",
-      "isRecording": false,
+      "isRecording": true,
       "itemType": "audio",
       "url": "/v1/media/arvi-euroviisut.m4a",
       "typeId": "audio/m4a"
@@ -31,7 +31,7 @@
     {
       "itemId": "f3c991c0-e2f2-4d4d-980d-0883230d84a1",
       "description": "Videopätkä Lordin euroviisuvoitosta 2006",
-      "isRecording": false,
+      "isRecording": true,
       "itemType": "video",
       "url": "/v1/media/lordi-euroviisut.mp4",
       "typeId": "video/mp4"
