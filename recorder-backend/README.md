@@ -2,12 +2,95 @@
 
 **Note:** This is the modernized FastAPI version running on Azure.
 
+![Deploy Dev](https://github.com/divvun/Kielipankki-donatespeech-backend/actions/workflows/deploy-dev.yml/badge.svg)
+![Tests](https://github.com/divvun/Kielipankki-donatespeech-backend/actions/workflows/test.yml/badge.svg)
+
 ## Architecture
 
 - **Framework**: FastAPI (Python 3.11)
 - **Storage**: Azure Blob Storage
 - **Local Development**: Azurite (Azure Storage Emulator)
 - **Deployment**: Azure Container Apps or Azure App Service
+
+## Deployment
+
+### Continuous Deployment
+
+The backend automatically deploys to environments based on branch activity:
+
+- **Development Environment**: Auto-deploys on every push to `main` branch
+- **Production Environment**: *(Planned)* Will deploy from tagged releases
+  (e.g., `v1.0.0`)
+
+### Current Setup (Dev Only)
+
+Push to `main` branch triggers automatic deployment:
+1. Tests run automatically
+2. Docker image builds from [Dockerfile](Dockerfile)
+3. Image pushes to Azure Container Registry with tags:
+   - `dev-<commit-sha>` (specific version)
+   - `dev-latest` (rolling latest)
+4. Azure Container App updates with new image
+5. Deployment completes with zero downtime
+
+**View Deployment Status:**
+- GitHub Actions: [Deployment Workflows](../../actions)
+- Development URL: Provided by Container App ingress
+
+### GitHub Secrets Required
+
+Configure these in repository Settings → Secrets and variables → Actions:
+
+| Secret | Description | Example |
+|--------|-------------|---------|
+| `AZURE_CLIENT_ID` | Service principal client ID | `12345678-1234-1234-1234-123456789abc` |
+| `AZURE_TENANT_ID` | Azure AD tenant ID | `87654321-4321-4321-4321-cba987654321` |
+| `AZURE_SUBSCRIPTION_ID` | Target subscription ID | `abcdef12-3456-7890-abcd-ef1234567890` |
+| `DEV_ACR_NAME` | Container registry name | `acrkielipankkirec` |
+| `DEV_RESOURCE_GROUP` | Resource group name | `rg-kielipankki-recorder-dev` |
+| `DEV_CONTAINER_APP` | Container app name | `ca-recorder-backend-dev` |
+
+### Azure Resources Required
+
+**Development Environment:**
+- Resource Group: `rg-kielipankki-recorder-dev`
+- Storage Account: With container `recorder-content`
+- Container Registry: For Docker images
+- Key Vault: For YLE API credentials
+- Container Apps Environment: Runtime environment
+- Container App: The application instance
+
+**Setup Steps:**
+1. Create Azure resources (see deployment guide)
+2. Configure service principal with federated credential for `main` branch
+3. Add GitHub secrets listed above
+4. Push to `main` to trigger first deployment
+
+### Manual Deployment
+
+To deploy manually:
+```bash
+# Build image
+docker build -t <acr-name>.azurecr.io/recorder-backend:dev-manual .
+
+# Login and push
+az acr login --name <acr-name>
+docker push <acr-name>.azurecr.io/recorder-backend:dev-manual
+
+# Update Container App
+az containerapp update \
+  --name ca-recorder-backend-dev \
+  --resource-group rg-kielipankki-recorder-dev \
+  --image <acr-name>.azurecr.io/recorder-backend:dev-manual
+```
+
+### Future: Production Deployment
+
+When production is ready:
+1. Create production Azure resources (mirroring dev setup)
+2. Add production federated credential for tag pattern `v*`
+3. Configure production GitHub secrets
+4. Create tag to deploy: `git tag v1.0.0 && git push origin v1.0.0`
 
 ## Quick Start - Local Development
 

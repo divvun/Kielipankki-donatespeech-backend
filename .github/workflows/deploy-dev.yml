@@ -1,0 +1,137 @@
+name: Deploy to Dev Environment
+
+on:
+    push:
+        branches:
+            - main
+        paths:
+            - "recorder-backend/**"
+            - ".github/workflows/deploy-dev.yml"
+
+    # Allow manual trigger
+    workflow_dispatch:
+
+permissions:
+    id-token: write # Required for OIDC authentication
+    contents: read
+
+env:
+    WORKING_DIRECTORY: recorder-backend
+
+jobs:
+    test:
+        name: Run Tests
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: ${{ env.WORKING_DIRECTORY }}
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Set up Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "3.11"
+                  cache: "pip"
+
+            - name: Install uv
+              run: pip install uv
+
+            - name: Install dependencies
+              run: uv pip install --system -r pyproject.toml
+
+            - name: Run tests
+              run: pytest tests/ -v
+
+    deploy:
+        name: Deploy to Dev Container App
+        runs-on: ubuntu-latest
+        needs: test
+        environment:
+            name: development
+            url: ${{ steps.deploy.outputs.url }}
+
+        defaults:
+            run:
+                working-directory: ${{ env.WORKING_DIRECTORY }}
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Get short SHA
+              id: vars
+              run: echo "short_sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+            - name: Azure Login via OIDC
+              uses: azure/login@v2
+              with:
+                  client-id: ${{ secrets.AZURE_CLIENT_ID }}
+                  tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+                  subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+            - name: Login to Azure Container Registry
+              run: |
+                  az acr login --name ${{ secrets.DEV_ACR_NAME }}
+
+            - name: Build and push Docker image
+              env:
+                  ACR_NAME: ${{ secrets.DEV_ACR_NAME }}
+                  SHORT_SHA: ${{ steps.vars.outputs.short_sha }}
+              run: |
+                  IMAGE_NAME="${ACR_NAME}.azurecr.io/recorder-backend"
+
+                  docker build -t ${IMAGE_NAME}:dev-${SHORT_SHA} \
+                               -t ${IMAGE_NAME}:dev-latest \
+                               .
+
+                  docker push ${IMAGE_NAME}:dev-${SHORT_SHA}
+                  docker push ${IMAGE_NAME}:dev-latest
+
+                  echo "Pushed images:"
+                  echo "  - ${IMAGE_NAME}:dev-${SHORT_SHA}"
+                  echo "  - ${IMAGE_NAME}:dev-latest"
+
+            - name: Deploy to Container App
+              id: deploy
+              env:
+                  ACR_NAME: ${{ secrets.DEV_ACR_NAME }}
+                  SHORT_SHA: ${{ steps.vars.outputs.short_sha }}
+                  RESOURCE_GROUP: ${{ secrets.DEV_RESOURCE_GROUP }}
+                  CONTAINER_APP: ${{ secrets.DEV_CONTAINER_APP }}
+              run: |
+                  IMAGE_NAME="${ACR_NAME}.azurecr.io/recorder-backend:dev-${SHORT_SHA}"
+
+                  az containerapp update \
+                    --name ${CONTAINER_APP} \
+                    --resource-group ${RESOURCE_GROUP} \
+                    --image ${IMAGE_NAME} \
+                    --revision-suffix ${SHORT_SHA}
+
+                  # Get the app URL
+                  APP_URL=$(az containerapp show \
+                    --name ${CONTAINER_APP} \
+                    --resource-group ${RESOURCE_GROUP} \
+                    --query properties.configuration.ingress.fqdn \
+                    --output tsv)
+
+                  echo "url=https://${APP_URL}" >> $GITHUB_OUTPUT
+                  echo "Deployed to: https://${APP_URL}"
+
+            - name: Deployment Summary
+              env:
+                  APP_URL: ${{ steps.deploy.outputs.url }}
+                  SHORT_SHA: ${{ steps.vars.outputs.short_sha }}
+              run: |
+                  echo "## Deployment Successful! :rocket:" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "**Environment:** Development" >> $GITHUB_STEP_SUMMARY
+                  echo "**Commit:** \`${SHORT_SHA}\`" >> $GITHUB_STEP_SUMMARY
+                  echo "**Image:** \`${{ secrets.DEV_ACR_NAME }}.azurecr.io/recorder-backend:dev-${SHORT_SHA}\`" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "### :link: Links" >> $GITHUB_STEP_SUMMARY
+                  echo "- **App URL:** ${APP_URL}" >> $GITHUB_STEP_SUMMARY
+                  echo "- **API Docs:** ${APP_URL}/docs" >> $GITHUB_STEP_SUMMARY
+                  echo "- **Health Check:** ${APP_URL}/" >> $GITHUB_STEP_SUMMARY
