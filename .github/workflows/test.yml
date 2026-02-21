@@ -49,15 +49,15 @@ jobs:
               run: pip install uv
 
             - name: Install dependencies
-              run: uv pip install --system -r pyproject.toml
+              run: uv sync
 
             - name: Run linter (ruff)
-              run: ruff check . --output-format=github
+              run: uv run ruff check . --output-format=github
               continue-on-error: true
 
             - name: Run tests with pytest
               run: |
-                  pytest tests/ \
+                  uv run pytest tests/ \
                     -v \
                     --tb=short \
                     --color=yes
