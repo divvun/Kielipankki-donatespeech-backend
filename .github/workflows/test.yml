@@ -1,0 +1,71 @@
+name: Run Tests
+
+on:
+    pull_request:
+        branches:
+            - main
+        paths:
+            - "recorder-backend/**"
+            - ".github/workflows/test.yml"
+
+    # Also run on main branch to catch issues early
+    push:
+        branches:
+            - main
+        paths:
+            - "recorder-backend/**"
+            - ".github/workflows/test.yml"
+
+    # Allow manual trigger
+    workflow_dispatch:
+
+env:
+    WORKING_DIRECTORY: recorder-backend
+
+jobs:
+    test:
+        name: Test Python ${{ matrix.python-version }}
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                python-version: ["3.11"]
+
+        defaults:
+            run:
+                working-directory: ${{ env.WORKING_DIRECTORY }}
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Set up Python ${{ matrix.python-version }}
+              uses: actions/setup-python@v5
+              with:
+                  python-version: ${{ matrix.python-version }}
+                  cache: "pip"
+
+            - name: Install uv
+              run: pip install uv
+
+            - name: Install dependencies
+              run: uv pip install --system -r pyproject.toml
+
+            - name: Run linter (ruff)
+              run: ruff check . --output-format=github
+              continue-on-error: true
+
+            - name: Run tests with pytest
+              run: |
+                  pytest tests/ \
+                    -v \
+                    --tb=short \
+                    --color=yes
+
+            - name: Test Summary
+              if: always()
+              run: |
+                  echo "## Test Results :test_tube:" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "**Python Version:** ${{ matrix.python-version }}" >> $GITHUB_STEP_SUMMARY
+                  echo "**Status:** ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
