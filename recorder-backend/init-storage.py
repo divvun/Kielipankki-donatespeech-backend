@@ -1,33 +1,50 @@
 #!/usr/bin/env python3
 """
-Initialize Azurite blob storage with test data.
+Initialize blob storage with test data.
 
 This script:
 - Creates the recorder-content container
 - Uploads test files from the test/ directory
+
+Works with both:
+- Azure Blob Storage (via AZURE_STORAGE_CONNECTION_STRING env var)
+- Local Azurite (default if env var not set)
 """
 
+import os
 import sys
 import time
 from pathlib import Path
 
 from azure.storage.blob import BlobServiceClient
 
-# Azurite connection string (standard development credentials)
-CONNECTION_STRING = (
+# Azurite connection string (standard development credentials) - used as fallback
+AZURITE_CONNECTION_STRING = (
     "DefaultEndpointsProtocol=http;"
     "AccountName=devstoreaccount1;"
     "AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;"
     "BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;"
 )
 
-CONTAINER_NAME = "recorder-content"
+# Use Azure Storage if env var is set, otherwise use local Azurite
+CONNECTION_STRING = os.environ.get("AZURE_STORAGE_CONNECTION_STRING", AZURITE_CONNECTION_STRING)
+CONTAINER_NAME = os.environ.get("AZURE_STORAGE_CONTAINER_NAME", "recorder-content")
+
+# Determine if we're using Azure or Azurite
+IS_AZURE = "AZURE_STORAGE_CONNECTION_STRING" in os.environ
 
 
 def main():
     """Initialize storage with test data."""
-    # Wait briefly for Azurite to be ready
-    time.sleep(2)
+    # Show which storage we're using
+    if IS_AZURE:
+        print(f"🔵 Using Azure Blob Storage")
+        print(f"   Container: {CONTAINER_NAME}\n")
+    else:
+        print(f"🟡 Using local Azurite storage")
+        print(f"   Container: {CONTAINER_NAME}\n")
+        # Wait briefly for Azurite to be ready
+        time.sleep(2)
 
     try:
         client = BlobServiceClient.from_connection_string(CONNECTION_STRING)
@@ -92,10 +109,15 @@ def main():
                 print(f"⚠ Warning: {file_path} not found, skipping")
 
         print("\n✨ Storage initialized successfully!")
-        print("\nYou can now test the API:")
-        print("  curl http://localhost:8000/v1/theme")
-        print("  curl http://localhost:8000/v1/schedule")
-        print("  open http://localhost:8000/docs")
+        
+        if IS_AZURE:
+            print("\n🔵 Azure Blob Storage is now populated with test data.")
+            print("   Your Container App should now return data from /v1/theme and /v1/schedule endpoints.")
+        else:
+            print("\nYou can now test the API:")
+            print("  curl http://localhost:8000/v1/theme")
+            print("  curl http://localhost:8000/v1/schedule")
+            print("  open http://localhost:8000/docs")
 
     except Exception as e:
         print(f"❌ Error: {e}")
