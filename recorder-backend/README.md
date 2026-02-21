@@ -12,6 +12,7 @@
 - **Local Development**: Azurite (Azure Storage Emulator)
 - **Deployment**: Azure Container Apps or Azure App Service
 
+
 ## Deployment
 
 ### Continuous Deployment
