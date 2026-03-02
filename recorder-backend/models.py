@@ -164,11 +164,13 @@ class Schedule(BaseModel):
 
 
 class Theme(BaseModel):
-    """Theme containing multiple schedule IDs"""
+    """Theme containing multiple schedule IDs with localized content"""
 
     id: Optional[str] = None  # Will be set from filename
-    description: str
-    image: Optional[str] = None
+    title: dict[str, str] = Field(..., description="Localized title (e.g., {'fi': '...', 'nb': '...'})")
+    body1: dict[str, str] = Field(..., description="Localized body text 1")
+    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    image: Optional[str] = Field(None, description="URL to theme image")
     scheduleIds: list[str] = Field(default_factory=list)
 
 
