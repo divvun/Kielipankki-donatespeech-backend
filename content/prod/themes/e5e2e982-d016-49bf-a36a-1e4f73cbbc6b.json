@@ -1,7 +1,16 @@
 {
-    "title": { "fi": "K-18" },
-    "body1": { "fi": "K-18" },
-    "body2": { "fi": "" }, 
+    "title": {
+        "fi": "K-18",
+        "nb": "K-18"
+    },
+    "body1": {
+        "fi": "K-18",
+        "nb": "K-18"
+    },
+    "body2": {
+        "fi": "",
+        "nb": ""
+    },
     "image": "https://images.cdn.yle.fi/image/upload/w_300,h_168,f_auto,fl_lossy,q_auto:eco/39-7257735f76f184ea966.jpg",
     "scheduleIds": [
         "6975c4b9-b40e-42e7-9572-05eeab25452b"

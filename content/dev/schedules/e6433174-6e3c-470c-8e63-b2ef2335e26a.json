@@ -8,37 +8,46 @@
             "options": [],
             "typeId": "image/jpeg",
             "title": {
-                "fi": "Harjoitellaan ensin"
+                "fi": "Harjoitellaan ensin",
+                "nb": "Harjoitellaan ensin"
             },
             "body1": {
-                "fi": "Mit\u00e4 someja k\u00e4yt\u00e4t?"
+                "fi": "Mitä someja käytät?",
+                "nb": "Hvilke sosiale medier bruker du?"
             },
             "body2": {
-                "fi": "Kun olet valmis puhumaan, paina \u00c4\u00e4nit\u00e4."
+                "fi": "Kun olet valmis puhumaan, paina Äänitä.",
+                "nb": "Når du er klar til å snakke, trykk på Ta opp."
             },
             "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-7371615f9ffb47da648.jpg",
             "isRecording": true,
             "recording": {
                 "title": {
-                    "fi": "Harjoitellaan ensin"
+                    "fi": "Harjoitellaan ensin",
+                    "nb": "Harjoitellaan ensin"
                 },
                 "body1": {
-                    "fi": "Kerro, miss\u00e4 someissa olet."
+                    "fi": "Kerro, missä someissa olet.",
+                    "nb": "Fortell hvilke sosiale medier du er på."
                 },
                 "body2": {
-                    "fi": "Kun olet vastannut, paina Lopeta \u00e4\u00e4nitys."
+                    "fi": "Kun olet vastannut, paina Lopeta äänitys.",
+                    "nb": "Når du har svart, trykk på Stopp opptak."
                 },
                 "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-7371615f9ffb47da648.jpg"
             },
             "finish": {
                 "title": {
-                    "fi": "Kiitos \u2013 seh\u00e4n sujui"
+                    "fi": "Kiitos – sehän sujui",
+                    "nb": "Takk – det gikk jo bra"
                 },
                 "body1": {
-                    "fi": "Puhettasi p\u00e4\u00e4sev\u00e4t kuulemaan vain tutkijat ja teko\u00e4lyn kehitt\u00e4j\u00e4t. Tietosuojasta voit lukea lis\u00e4\u00e4 aloitussivulta."
+                    "fi": "Puhettasi pääsevät kuulemaan vain tutkijat ja tekoälyn kehittäjät. Tietosuojasta voit lukea lisää aloitussivulta.",
+                    "nb": "Bare forskere og AI-utviklere får høre talen din. Du kan lese mer om personvern fra startsiden."
                 },
                 "body2": {
-                    "fi": "Siirryt\u00e4\u00e4n sitten arvovaltaiseen seuraan."
+                    "fi": "Siirrytään sitten arvovaltaiseen seuraan.",
+                    "nb": "Siirrytään sitten arvovaltaiseen seuraan."
                 },
                 "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-7376915fa157e00faa1.jpg"
             }
@@ -50,13 +59,16 @@
             "options": [],
             "typeId": "video/mp4",
             "title": {
-                "fi": "Suuria uutisia"
+                "fi": "Suuria uutisia",
+                "nb": "Suuria uutisia"
             },
             "body1": {
-                "fi": "Katso video. Kuka t\u00e4m\u00e4 tunnettu henkil\u00f6 on? Puhuuko h\u00e4n totta?"
+                "fi": "Katso video. Kuka tämä tunnettu henkilö on? Puhuuko hän totta?",
+                "nb": "Se videoen. Hvem er denne kjente personen? Snakker han sant?"
             },
             "body2": {
-                "fi": "Video kest\u00e4\u00e4 vajaan minuutin."
+                "fi": "Video kestää vajaan minuutin.",
+                "nb": "Video kestää vajaan minuutin."
             },
             "url": "1-50673927",
             "isRecording": false
@@ -68,25 +80,31 @@
             "options": [],
             "typeId": "image/jpeg",
             "title": {
-                "fi": "Suuria uutisia"
+                "fi": "Suuria uutisia",
+                "nb": "Suuria uutisia"
             },
             "body1": {
-                "fi": "Paina \u00c4\u00e4nit\u00e4 ja kerro ajatuksiasi videosta."
+                "fi": "Paina Äänitä ja kerro ajatuksiasi videosta.",
+                "nb": "Trykk Ta opp og fortell tankene dine om videoen."
             },
             "body2": {
-                "fi": ""
+                "fi": "",
+                "nb": ""
             },
             "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-7335615f9280fa001de.jpg",
             "isRecording": true,
             "finish": {
                 "title": {
-                    "fi": "Et mene helposti lankaan!"
+                    "fi": "Et mene helposti lankaan!",
+                    "nb": "Et mene helposti lankaan!"
                 },
                 "body1": {
-                    "fi": "Teko\u00e4lyll\u00e4 toteutetulla deep fake -videolla Niinist\u00f6n\u00e4 esiintyi imitaattori Jarkko Tamminen."
+                    "fi": "Tekoälyllä toteutetulla deep fake -videolla Niinistönä esiintyi imitaattori Jarkko Tamminen.",
+                    "nb": "Tekoälyllä toteutetulla deep fake -videolla Niinistönä esiintyi imitaattori Jarkko Tamminen."
                 },
                 "body2": {
-                    "fi": "Psst. Lahjoittamasi puheen m\u00e4\u00e4r\u00e4n n\u00e4et oikeassa yl\u00e4nurkassa."
+                    "fi": "Psst. Lahjoittamasi puheen määrän näet oikeassa ylänurkassa.",
+                    "nb": "Psst. Mengden tale du har donert ser du i øvre høyre hjørne."
                 },
                 "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-7373505fa03ee519b3c.jpg"
             }
@@ -98,18 +116,22 @@
             "options": [],
             "typeId": "image/jpeg",
             "title": {
-                "fi": "Auta tutkijaa"
+                "fi": "Auta tutkijaa",
+                "nb": "Auta tutkijaa"
             },
             "body1": {
-                "fi": "Puheen lahjoittamisen varrella kysymme sinulta joitakin taustatietoja."
+                "fi": "Puheen lahjoittamisen varrella kysymme sinulta joitakin taustatietoja.",
+                "nb": "Underveis i taledonasjonen spør vi deg om noen bakgrunnsfakta."
             },
             "body2": {
-                "fi": "Vastauksista ei voi p\u00e4\u00e4tell\u00e4 henkil\u00f6llisyytt\u00e4si."
+                "fi": "Vastauksista ei voi päätellä henkilöllisyyttäsi.",
+                "nb": "Vastauksista ei voi päätellä henkilöllisyyttäsi."
             },
             "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6780905ec2876c0f863.jpg",
             "isRecording": false,
             "metaTitle": {
-                "fi": ""
+                "fi": "",
+                "nb": ""
             }
         },
         {
@@ -120,47 +142,61 @@
             "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6780905ec2876c0f863.jpg",
             "options": [
                 {
-                    "fi": "1-10 vuotta"
+                    "fi": "1-10 vuotta",
+                    "nb": "1-10 vuotta"
                 },
                 {
-                    "fi": "11-20 vuotta"
+                    "fi": "11-20 vuotta",
+                    "nb": "11-20 vuotta"
                 },
                 {
-                    "fi": "21-30 vuotta"
+                    "fi": "21-30 vuotta",
+                    "nb": "21-30 vuotta"
                 },
                 {
-                    "fi": "31-40 vuotta"
+                    "fi": "31-40 vuotta",
+                    "nb": "31-40 vuotta"
                 },
                 {
-                    "fi": "41-50 vuotta"
+                    "fi": "41-50 vuotta",
+                    "nb": "41-50 vuotta"
                 },
                 {
-                    "fi": "51-60 vuotta"
+                    "fi": "51-60 vuotta",
+                    "nb": "51-60 vuotta"
                 },
                 {
-                    "fi": "61-70 vuotta"
+                    "fi": "61-70 vuotta",
+                    "nb": "61-70 vuotta"
                 },
                 {
-                    "fi": "71-80 vuotta"
+                    "fi": "71-80 vuotta",
+                    "nb": "71-80 vuotta"
                 },
                 {
-                    "fi": "81-90 vuotta"
+                    "fi": "81-90 vuotta",
+                    "nb": "81-90 vuotta"
                 },
                 {
-                    "fi": "91-100 vuotta"
+                    "fi": "91-100 vuotta",
+                    "nb": "91-100 vuotta"
                 },
                 {
-                    "fi": "101+ vuotta"
+                    "fi": "101+ vuotta",
+                    "nb": "101+ vuotta"
                 }
             ],
             "title": {
-                "fi": "Ik\u00e4ni"
+                "fi": "Ikäni",
+                "nb": "Ikäni"
             },
             "body1": {
-                "fi": ""
+                "fi": "",
+                "nb": ""
             },
             "body2": {
-                "fi": ""
+                "fi": "",
+                "nb": ""
             },
             "isRecording": false
         },
@@ -171,18 +207,22 @@
             "options": [],
             "typeId": "image/jpeg",
             "title": {
-                "fi": "Kiitokset!"
+                "fi": "Kiitokset!",
+                "nb": "Takk skal dere ha!"
             },
             "body1": {
-                "fi": "Tutkijat ja suomen kieli hy\u00f6tyv\u00e4t n\u00e4iden tietojen kertomisesta."
+                "fi": "Tutkijat ja suomen kieli hyötyvät näiden tietojen kertomisesta.",
+                "nb": "Tutkijat ja suomen kieli hyötyvät näiden tietojen kertomisesta."
             },
             "body2": {
-                "fi": "Sitten pureskellaan kuvien maailmaa."
+                "fi": "Sitten pureskellaan kuvien maailmaa.",
+                "nb": "Sitten pureskellaan kuvien maailmaa."
             },
             "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6780905ec2876c0f863.jpg",
             "isRecording": false,
             "metaTitle": {
-                "fi": ""
+                "fi": "",
+                "nb": ""
             }
         },
         {
@@ -192,48 +232,60 @@
             "options": [],
             "typeId": "video/mp4",
             "title": {
-                "fi": "Valehtelevat kuvat"
+                "fi": "Valehtelevat kuvat",
+                "nb": "Valehtelevat kuvat"
             },
             "body1": {
-                "fi": "Kun painat \u00c4\u00e4nit\u00e4, n\u00e4et per\u00e4kk\u00e4in nelj\u00e4 v\u00e4\u00e4rennetty\u00e4 kuvaa."
+                "fi": "Kun painat Äänitä, näet peräkkäin neljä väärennettyä kuvaa.",
+                "nb": "Når du trykker Ta opp, vil du se fire forfalskede bilder etter hverandre."
             },
             "body2": {
-                "fi": "Kerro, mik\u00e4 kuvissa on valetta."
+                "fi": "Kerro, mikä kuvissa on valetta.",
+                "nb": "Fortell hva som er løgn i bildene."
             },
             "url": "1-50675687",
             "isRecording": true,
             "start": {
                 "title": {
-                    "fi": "Valehtelevat kuvat"
+                    "fi": "Valehtelevat kuvat",
+                    "nb": "Valehtelevat kuvat"
                 },
                 "body1": {
-                    "fi": "Kun painat \u00c4\u00e4nit\u00e4, n\u00e4et per\u00e4kk\u00e4in nelj\u00e4 v\u00e4\u00e4rennetty\u00e4 kuvaa."
+                    "fi": "Kun painat Äänitä, näet peräkkäin neljä väärennettyä kuvaa.",
+                    "nb": "Når du trykker Ta opp, vil du se fire forfalskede bilder etter hverandre."
                 },
                 "body2": {
-                    "fi": "Kerro, mik\u00e4 kuvissa on valetta."
+                    "fi": "Kerro, mikä kuvissa on valetta.",
+                    "nb": "Fortell hva som er løgn i bildene."
                 },
                 "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-7378345fa179ea5bf98.jpg"
             },
             "recording": {
                 "title": {
-                    "fi": "Valehtelevat kuvat"
+                    "fi": "Valehtelevat kuvat",
+                    "nb": "Valehtelevat kuvat"
                 },
                 "body1": {
-                    "fi": "Kerro, mist\u00e4 huomaat tai p\u00e4\u00e4ttelet v\u00e4\u00e4renn\u00f6kset?"
+                    "fi": "Kerro, mistä huomaat tai päättelet väärennökset?",
+                    "nb": "Fortell hvordan du legger merke til eller slutter deg til forfalskningene?"
                 },
                 "body2": {
-                    "fi": "Video kest\u00e4\u00e4 40 sekuntia."
+                    "fi": "Video kestää 40 sekuntia.",
+                    "nb": "Video kestää 40 sekuntia."
                 }
             },
             "finish": {
                 "title": {
-                    "fi": "Tarkkaa ty\u00f6t\u00e4"
+                    "fi": "Tarkkaa työtä",
+                    "nb": "Tarkkaa työtä"
                 },
                 "body1": {
-                    "fi": "Joskus kuvat on k\u00e4sitelty niin taitavasti, ett\u00e4 ammattilainenkin menee vipuun."
+                    "fi": "Joskus kuvat on käsitelty niin taitavasti, että ammattilainenkin menee vipuun.",
+                    "nb": "Joskus kuvat on käsitelty niin taitavasti, että ammattilainenkin menee vipuun."
                 },
                 "body2": {
-                    "fi": "Jatketaan viel\u00e4 hetki kuvien kanssa."
+                    "fi": "Jatketaan vielä hetki kuvien kanssa.",
+                    "nb": "Jatketaan vielä hetki kuvien kanssa."
                 },
                 "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-7378385fa17db59dbea.jpg"
             }
@@ -245,48 +297,60 @@
             "options": [],
             "typeId": "video/mp4",
             "title": {
-                "fi": "Mit\u00e4 n\u00e4kyy, mit\u00e4 ei?"
+                "fi": "Mitä näkyy, mitä ei?",
+                "nb": "Hva ser man, hva ikke?"
             },
             "body1": {
-                "fi": "Jo pelkk\u00e4 rajaus voi vaikuttaa kuvaan paljon."
+                "fi": "Jo pelkkä rajaus voi vaikuttaa kuvaan paljon.",
+                "nb": "Jo pelkkä rajaus voi vaikuttaa kuvaan paljon."
             },
             "body2": {
-                "fi": "Paina \u00c4\u00e4nit\u00e4, niin n\u00e4et kolme kuvaa. Mit\u00e4 n\u00e4et kuvassa ensin \u2013 ent\u00e4 sitten?"
+                "fi": "Paina Äänitä, niin näet kolme kuvaa. Mitä näet kuvassa ensin – entä sitten?",
+                "nb": "Trykk Ta opp, så ser du tre bilder. Hva ser du i bildet først – og så?"
             },
             "url": "1-50673970",
             "isRecording": true,
             "start": {
                 "title": {
-                    "fi": "Mit\u00e4 n\u00e4kyy, mit\u00e4 ei?"
+                    "fi": "Mitä näkyy, mitä ei?",
+                    "nb": "Hva ser man, hva ikke?"
                 },
                 "body1": {
-                    "fi": "Jo pelkk\u00e4 rajaus voi vaikuttaa kuvaan paljon."
+                    "fi": "Jo pelkkä rajaus voi vaikuttaa kuvaan paljon.",
+                    "nb": "Jo pelkkä rajaus voi vaikuttaa kuvaan paljon."
                 },
                 "body2": {
-                    "fi": "Paina \u00c4\u00e4nit\u00e4, niin n\u00e4et kolme kuvaa. Mit\u00e4 n\u00e4et kuvassa ensin \u2013 ent\u00e4 sitten?"
+                    "fi": "Paina Äänitä, niin näet kolme kuvaa. Mitä näet kuvassa ensin – entä sitten?",
+                    "nb": "Trykk Ta opp, så ser du tre bilder. Hva ser du i bildet først – og så?"
                 },
                 "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-7362145f9b2be0e8c1f.jpg"
             },
             "recording": {
                 "title": {
-                    "fi": "Mit\u00e4 n\u00e4kyy, mit\u00e4 ei?"
+                    "fi": "Mitä näkyy, mitä ei?",
+                    "nb": "Hva ser man, hva ikke?"
                 },
                 "body1": {
-                    "fi": "Kerro mit\u00e4 n\u00e4et kolmessa kuvassa, ensin rajattuna ja sitten alkuper\u00e4isess\u00e4 koossa."
+                    "fi": "Kerro mitä näet kolmessa kuvassa, ensin rajattuna ja sitten alkuperäisessä koossa.",
+                    "nb": "Fortell hva du ser i tre bilder, først beskåret og så i original størrelse."
                 },
                 "body2": {
-                    "fi": "Voit my\u00f6s pohtia rajausten keinoja."
+                    "fi": "Voit myös pohtia rajausten keinoja.",
+                    "nb": "Voit myös pohtia rajausten keinoja."
                 }
             },
             "finish": {
                 "title": {
-                    "fi": "Hyvi\u00e4 huomioita"
+                    "fi": "Hyviä huomioita",
+                    "nb": "Hyviä huomioita"
                 },
                 "body1": {
-                    "fi": "Sitten kysymme taas muutaman taustatiedon tutkijoille."
+                    "fi": "Sitten kysymme taas muutaman taustatiedon tutkijoille.",
+                    "nb": "Sitten kysymme taas muutaman taustatiedon tutkijoille."
                 },
                 "body2": {
-                    "fi": "Kiitos jos vastaat!"
+                    "fi": "Kiitos jos vastaat!",
+                    "nb": "Takk hvis du svarer!"
                 },
                 "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-7371915fa00381164bd.jpg"
             }
@@ -299,50 +363,65 @@
             "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6780895ec2876bc6b15.jpg",
             "options": [
                 {
-                    "fi": "suomi"
+                    "fi": "suomi",
+                    "nb": "suomi"
                 },
                 {
-                    "fi": "ruotsi"
+                    "fi": "ruotsi",
+                    "nb": "ruotsi"
                 },
                 {
-                    "fi": "ven\u00e4j\u00e4"
+                    "fi": "venäjä",
+                    "nb": "venäjä"
                 },
                 {
-                    "fi": "viro (eesti)"
+                    "fi": "viro (eesti)",
+                    "nb": "viro (eesti)"
                 },
                 {
-                    "fi": "arabia"
+                    "fi": "arabia",
+                    "nb": "arabia"
                 },
                 {
-                    "fi": "somali"
+                    "fi": "somali",
+                    "nb": "somali"
                 },
                 {
-                    "fi": "englanti"
+                    "fi": "englanti",
+                    "nb": "englanti"
                 },
                 {
-                    "fi": "kurdi"
+                    "fi": "kurdi",
+                    "nb": "kurdi"
                 },
                 {
-                    "fi": "persia (farsi)"
+                    "fi": "persia (farsi)",
+                    "nb": "persia (farsi)"
                 },
                 {
-                    "fi": "muu kieli"
+                    "fi": "muu kieli",
+                    "nb": "muu kieli"
                 }
             ],
             "otherAnswer": {
-                "fi": "Jokin muu kieli"
+                "fi": "Jokin muu kieli",
+                "nb": "Jokin muu kieli"
             },
             "otherEntryLabel": {
-                "fi": "Jos valitsit Muu kieli, kirjoita sen nimi:"
+                "fi": "Jos valitsit Muu kieli, kirjoita sen nimi:",
+                "nb": "Jos valitsit Muu kieli, kirjoita sen nimi:"
             },
             "title": {
-                "fi": "\u00c4idinkieleni"
+                "fi": "Äidinkieleni",
+                "nb": "Äidinkieleni"
             },
             "body1": {
-                "fi": ""
+                "fi": "",
+                "nb": ""
             },
             "body2": {
-                "fi": ""
+                "fi": "",
+                "nb": ""
             },
             "isRecording": false
         },
@@ -354,26 +433,33 @@
             "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-6780915ec2876cc2128.jpg",
             "options": [
                 {
-                    "fi": "Nainen"
+                    "fi": "Nainen",
+                    "nb": "Kvinne"
                 },
                 {
-                    "fi": "Mies"
+                    "fi": "Mies",
+                    "nb": "Mann"
                 },
                 {
-                    "fi": "Muu"
+                    "fi": "Muu",
+                    "nb": "Annet"
                 },
                 {
-                    "fi": "En halua kertoa"
+                    "fi": "En halua kertoa",
+                    "nb": "En halua kertoa"
                 }
             ],
             "title": {
-                "fi": "Sukupuoleni"
+                "fi": "Sukupuoleni",
+                "nb": "Sukupuoleni"
             },
             "body1": {
-                "fi": ""
+                "fi": "",
+                "nb": ""
             },
             "body2": {
-                "fi": ""
+                "fi": "",
+                "nb": ""
             },
             "isRecording": false
         },
@@ -385,978 +471,1302 @@
             "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-7179045f5b5eb1e365a.jpg",
             "options": [
                 {
-                    "fi": "Akaa"
+                    "fi": "Akaa",
+                    "nb": "Akaa"
                 },
                 {
-                    "fi": "Alaj\u00e4rvi"
+                    "fi": "Alajärvi",
+                    "nb": "Alajärvi"
                 },
                 {
-                    "fi": "Alavieska"
+                    "fi": "Alavieska",
+                    "nb": "Alavieska"
                 },
                 {
-                    "fi": "Alavus"
+                    "fi": "Alavus",
+                    "nb": "Alavus"
                 },
                 {
-                    "fi": "Asikkala"
+                    "fi": "Asikkala",
+                    "nb": "Asikkala"
                 },
                 {
-                    "fi": "Askola"
+                    "fi": "Askola",
+                    "nb": "Askola"
                 },
                 {
-                    "fi": "Aura"
+                    "fi": "Aura",
+                    "nb": "Aura"
                 },
                 {
-                    "fi": "Br\u00e4nd\u00f6"
+                    "fi": "Brändö",
+                    "nb": "Brändö"
                 },
                 {
-                    "fi": "Ecker\u00f6"
+                    "fi": "Eckerö",
+                    "nb": "Eckerö"
                 },
                 {
-                    "fi": "Enonkoski"
+                    "fi": "Enonkoski",
+                    "nb": "Enonkoski"
                 },
                 {
-                    "fi": "Enonteki\u00f6"
+                    "fi": "Enontekiö",
+                    "nb": "Enontekiö"
                 },
                 {
-                    "fi": "Espoo"
+                    "fi": "Espoo",
+                    "nb": "Espoo"
                 },
                 {
-                    "fi": "Eura"
+                    "fi": "Eura",
+                    "nb": "Eura"
                 },
                 {
-                    "fi": "Eurajoki"
+                    "fi": "Eurajoki",
+                    "nb": "Eurajoki"
                 },
                 {
-                    "fi": "Evij\u00e4rvi"
+                    "fi": "Evijärvi",
+                    "nb": "Evijärvi"
                 },
                 {
-                    "fi": "Finstr\u00f6m"
+                    "fi": "Finström",
+                    "nb": "Finström"
                 },
                 {
-                    "fi": "Forssa"
+                    "fi": "Forssa",
+                    "nb": "Forssa"
                 },
                 {
-                    "fi": "F\u00f6gl\u00f6"
+                    "fi": "Föglö",
+                    "nb": "Föglö"
                 },
                 {
-                    "fi": "Geta"
+                    "fi": "Geta",
+                    "nb": "Geta"
                 },
                 {
-                    "fi": "Haapaj\u00e4rvi"
+                    "fi": "Haapajärvi",
+                    "nb": "Haapajärvi"
                 },
                 {
-                    "fi": "Haapavesi"
+                    "fi": "Haapavesi",
+                    "nb": "Haapavesi"
                 },
                 {
-                    "fi": "Hailuoto"
+                    "fi": "Hailuoto",
+                    "nb": "Hailuoto"
                 },
                 {
-                    "fi": "Halsua"
+                    "fi": "Halsua",
+                    "nb": "Halsua"
                 },
                 {
-                    "fi": "Hamina"
+                    "fi": "Hamina",
+                    "nb": "Hamina"
                 },
                 {
-                    "fi": "Hammarland"
+                    "fi": "Hammarland",
+                    "nb": "Hammarland"
                 },
                 {
-                    "fi": "Hankasalmi"
+                    "fi": "Hankasalmi",
+                    "nb": "Hankasalmi"
                 },
                 {
-                    "fi": "Hanko"
+                    "fi": "Hanko",
+                    "nb": "Hanko"
                 },
                 {
-                    "fi": "Harjavalta"
+                    "fi": "Harjavalta",
+                    "nb": "Harjavalta"
                 },
                 {
-                    "fi": "Hartola"
+                    "fi": "Hartola",
+                    "nb": "Hartola"
                 },
                 {
-                    "fi": "Hattula"
+                    "fi": "Hattula",
+                    "nb": "Hattula"
                 },
                 {
-                    "fi": "Hausj\u00e4rvi"
+                    "fi": "Hausjärvi",
+                    "nb": "Hausjärvi"
                 },
                 {
-                    "fi": "Heinola"
+                    "fi": "Heinola",
+                    "nb": "Heinola"
                 },
                 {
-                    "fi": "Hein\u00e4vesi"
+                    "fi": "Heinävesi",
+                    "nb": "Heinävesi"
                 },
                 {
-                    "fi": "Helsinki"
+                    "fi": "Helsinki",
+                    "nb": "Helsinki"
                 },
                 {
-                    "fi": "Hirvensalmi"
+                    "fi": "Hirvensalmi",
+                    "nb": "Hirvensalmi"
                 },
                 {
-                    "fi": "Hollola"
+                    "fi": "Hollola",
+                    "nb": "Hollola"
                 },
                 {
-                    "fi": "Honkajoki"
+                    "fi": "Honkajoki",
+                    "nb": "Honkajoki"
                 },
                 {
-                    "fi": "Huittinen"
+                    "fi": "Huittinen",
+                    "nb": "Huittinen"
                 },
                 {
-                    "fi": "Humppila"
+                    "fi": "Humppila",
+                    "nb": "Humppila"
                 },
                 {
-                    "fi": "Hyrynsalmi"
+                    "fi": "Hyrynsalmi",
+                    "nb": "Hyrynsalmi"
                 },
                 {
-                    "fi": "Hyvink\u00e4\u00e4"
+                    "fi": "Hyvinkää",
+                    "nb": "Hyvinkää"
                 },
                 {
-                    "fi": "H\u00e4meenkoski"
+                    "fi": "Hämeenkoski",
+                    "nb": "Hämeenkoski"
                 },
                 {
-                    "fi": "H\u00e4meenkyr\u00f6"
+                    "fi": "Hämeenkyrö",
+                    "nb": "Hämeenkyrö"
                 },
                 {
-                    "fi": "H\u00e4meenlinna"
+                    "fi": "Hämeenlinna",
+                    "nb": "Hämeenlinna"
                 },
                 {
-                    "fi": "Ii"
+                    "fi": "Ii",
+                    "nb": "Ii"
                 },
                 {
-                    "fi": "Iisalmi"
+                    "fi": "Iisalmi",
+                    "nb": "Iisalmi"
                 },
                 {
-                    "fi": "Iitti"
+                    "fi": "Iitti",
+                    "nb": "Iitti"
                 },
                 {
-                    "fi": "Ikaalinen"
+                    "fi": "Ikaalinen",
+                    "nb": "Ikaalinen"
                 },
                 {
-                    "fi": "Ilmajoki"
+                    "fi": "Ilmajoki",
+                    "nb": "Ilmajoki"
                 },
                 {
-                    "fi": "Ilomantsi"
+                    "fi": "Ilomantsi",
+                    "nb": "Ilomantsi"
                 },
                 {
-                    "fi": "Imatra"
+                    "fi": "Imatra",
+                    "nb": "Imatra"
                 },
                 {
-                    "fi": "Inari"
+                    "fi": "Inari",
+                    "nb": "Inari"
                 },
                 {
-                    "fi": "Inkoo"
+                    "fi": "Inkoo",
+                    "nb": "Inkoo"
                 },
                 {
-                    "fi": "Isojoki"
+                    "fi": "Isojoki",
+                    "nb": "Isojoki"
                 },
                 {
-                    "fi": "Isokyr\u00f6"
+                    "fi": "Isokyrö",
+                    "nb": "Isokyrö"
                 },
                 {
-                    "fi": "Jalasj\u00e4rvi"
+                    "fi": "Jalasjärvi",
+                    "nb": "Jalasjärvi"
                 },
                 {
-                    "fi": "Janakkala"
+                    "fi": "Janakkala",
+                    "nb": "Janakkala"
                 },
                 {
-                    "fi": "Joensuu"
+                    "fi": "Joensuu",
+                    "nb": "Joensuu"
                 },
                 {
-                    "fi": "Jokioinen"
+                    "fi": "Jokioinen",
+                    "nb": "Jokioinen"
                 },
                 {
-                    "fi": "Jomala"
+                    "fi": "Jomala",
+                    "nb": "Jomala"
                 },
                 {
-                    "fi": "Joroinen"
+                    "fi": "Joroinen",
+                    "nb": "Joroinen"
                 },
                 {
-                    "fi": "Joutsa"
+                    "fi": "Joutsa",
+                    "nb": "Joutsa"
                 },
                 {
-                    "fi": "Juankoski"
+                    "fi": "Juankoski",
+                    "nb": "Juankoski"
                 },
                 {
-                    "fi": "Juuka"
+                    "fi": "Juuka",
+                    "nb": "Juuka"
                 },
                 {
-                    "fi": "Juupajoki"
+                    "fi": "Juupajoki",
+                    "nb": "Juupajoki"
                 },
                 {
-                    "fi": "Juva"
+                    "fi": "Juva",
+                    "nb": "Juva"
                 },
                 {
-                    "fi": "Jyv\u00e4skyl\u00e4"
+                    "fi": "Jyväskylä",
+                    "nb": "Jyväskylä"
                 },
                 {
-                    "fi": "J\u00e4mij\u00e4rvi"
+                    "fi": "Jämijärvi",
+                    "nb": "Jämijärvi"
                 },
                 {
-                    "fi": "J\u00e4ms\u00e4"
+                    "fi": "Jämsä",
+                    "nb": "Jämsä"
                 },
                 {
-                    "fi": "J\u00e4rvenp\u00e4\u00e4"
+                    "fi": "Järvenpää",
+                    "nb": "Järvenpää"
                 },
                 {
-                    "fi": "Kaarina"
+                    "fi": "Kaarina",
+                    "nb": "Kaarina"
                 },
                 {
-                    "fi": "Kaavi"
+                    "fi": "Kaavi",
+                    "nb": "Kaavi"
                 },
                 {
-                    "fi": "Kajaani"
+                    "fi": "Kajaani",
+                    "nb": "Kajaani"
                 },
                 {
-                    "fi": "Kalajoki"
+                    "fi": "Kalajoki",
+                    "nb": "Kalajoki"
                 },
                 {
-                    "fi": "Kangasala"
+                    "fi": "Kangasala",
+                    "nb": "Kangasala"
                 },
                 {
-                    "fi": "Kangasniemi"
+                    "fi": "Kangasniemi",
+                    "nb": "Kangasniemi"
                 },
                 {
-                    "fi": "Kankaanp\u00e4\u00e4"
+                    "fi": "Kankaanpää",
+                    "nb": "Kankaanpää"
                 },
                 {
-                    "fi": "Kannonkoski"
+                    "fi": "Kannonkoski",
+                    "nb": "Kannonkoski"
                 },
                 {
-                    "fi": "Kannus"
+                    "fi": "Kannus",
+                    "nb": "Kannus"
                 },
                 {
-                    "fi": "Karijoki"
+                    "fi": "Karijoki",
+                    "nb": "Karijoki"
                 },
                 {
-                    "fi": "Karkkila"
+                    "fi": "Karkkila",
+                    "nb": "Karkkila"
                 },
                 {
-                    "fi": "Karstula"
+                    "fi": "Karstula",
+                    "nb": "Karstula"
                 },
                 {
-                    "fi": "Karvia"
+                    "fi": "Karvia",
+                    "nb": "Karvia"
                 },
                 {
-                    "fi": "Kaskinen"
+                    "fi": "Kaskinen",
+                    "nb": "Kaskinen"
                 },
                 {
-                    "fi": "Kauhajoki"
+                    "fi": "Kauhajoki",
+                    "nb": "Kauhajoki"
                 },
                 {
-                    "fi": "Kauhava"
+                    "fi": "Kauhava",
+                    "nb": "Kauhava"
                 },
                 {
-                    "fi": "Kauniainen"
+                    "fi": "Kauniainen",
+                    "nb": "Kauniainen"
                 },
                 {
-                    "fi": "Kaustinen"
+                    "fi": "Kaustinen",
+                    "nb": "Kaustinen"
                 },
                 {
-                    "fi": "Keitele"
+                    "fi": "Keitele",
+                    "nb": "Keitele"
                 },
                 {
-                    "fi": "Kemi"
+                    "fi": "Kemi",
+                    "nb": "Kemi"
                 },
                 {
-                    "fi": "Kemij\u00e4rvi"
+                    "fi": "Kemijärvi",
+                    "nb": "Kemijärvi"
                 },
                 {
-                    "fi": "Keminmaa"
+                    "fi": "Keminmaa",
+                    "nb": "Keminmaa"
                 },
                 {
-                    "fi": "Kemi\u00f6nsaari"
+                    "fi": "Kemiönsaari",
+                    "nb": "Kemiönsaari"
                 },
                 {
-                    "fi": "Kempele"
+                    "fi": "Kempele",
+                    "nb": "Kempele"
                 },
                 {
-                    "fi": "Kerava"
+                    "fi": "Kerava",
+                    "nb": "Kerava"
                 },
                 {
-                    "fi": "Keuruu"
+                    "fi": "Keuruu",
+                    "nb": "Keuruu"
                 },
                 {
-                    "fi": "Kihni\u00f6"
+                    "fi": "Kihniö",
+                    "nb": "Kihniö"
                 },
                 {
-                    "fi": "Kinnula"
+                    "fi": "Kinnula",
+                    "nb": "Kinnula"
                 },
                 {
-                    "fi": "Kirkkonummi"
+                    "fi": "Kirkkonummi",
+                    "nb": "Kirkkonummi"
                 },
                 {
-                    "fi": "Kitee"
+                    "fi": "Kitee",
+                    "nb": "Kitee"
                 },
                 {
-                    "fi": "Kittil\u00e4"
+                    "fi": "Kittilä",
+                    "nb": "Kittilä"
                 },
                 {
-                    "fi": "Kiuruvesi"
+                    "fi": "Kiuruvesi",
+                    "nb": "Kiuruvesi"
                 },
                 {
-                    "fi": "Kivij\u00e4rvi"
+                    "fi": "Kivijärvi",
+                    "nb": "Kivijärvi"
                 },
                 {
-                    "fi": "Kokem\u00e4ki"
+                    "fi": "Kokemäki",
+                    "nb": "Kokemäki"
                 },
                 {
-                    "fi": "Kokkola"
+                    "fi": "Kokkola",
+                    "nb": "Kokkola"
                 },
                 {
-                    "fi": "Kolari"
+                    "fi": "Kolari",
+                    "nb": "Kolari"
                 },
                 {
-                    "fi": "Konnevesi"
+                    "fi": "Konnevesi",
+                    "nb": "Konnevesi"
                 },
                 {
-                    "fi": "Kontiolahti"
+                    "fi": "Kontiolahti",
+                    "nb": "Kontiolahti"
                 },
                 {
-                    "fi": "Korsn\u00e4s"
+                    "fi": "Korsnäs",
+                    "nb": "Korsnäs"
                 },
                 {
-                    "fi": "Koski Tl"
+                    "fi": "Koski Tl",
+                    "nb": "Koski Tl"
                 },
                 {
-                    "fi": "Kotka"
+                    "fi": "Kotka",
+                    "nb": "Kotka"
                 },
                 {
-                    "fi": "Kouvola"
+                    "fi": "Kouvola",
+                    "nb": "Kouvola"
                 },
                 {
-                    "fi": "Kristiinankaupunki"
+                    "fi": "Kristiinankaupunki",
+                    "nb": "Kristiinankaupunki"
                 },
                 {
-                    "fi": "Kruunupyy"
+                    "fi": "Kruunupyy",
+                    "nb": "Kruunupyy"
                 },
                 {
-                    "fi": "Kuhmo"
+                    "fi": "Kuhmo",
+                    "nb": "Kuhmo"
                 },
                 {
-                    "fi": "Kuhmoinen"
+                    "fi": "Kuhmoinen",
+                    "nb": "Kuhmoinen"
                 },
                 {
-                    "fi": "Kumlinge"
+                    "fi": "Kumlinge",
+                    "nb": "Kumlinge"
                 },
                 {
-                    "fi": "Kuopio"
+                    "fi": "Kuopio",
+                    "nb": "Kuopio"
                 },
                 {
-                    "fi": "Kuortane"
+                    "fi": "Kuortane",
+                    "nb": "Kuortane"
                 },
                 {
-                    "fi": "Kurikka"
+                    "fi": "Kurikka",
+                    "nb": "Kurikka"
                 },
                 {
-                    "fi": "Kustavi"
+                    "fi": "Kustavi",
+                    "nb": "Kustavi"
                 },
                 {
-                    "fi": "Kuusamo"
+                    "fi": "Kuusamo",
+                    "nb": "Kuusamo"
                 },
                 {
-                    "fi": "Kyyj\u00e4rvi"
+                    "fi": "Kyyjärvi",
+                    "nb": "Kyyjärvi"
                 },
                 {
-                    "fi": "K\u00e4rk\u00f6l\u00e4"
+                    "fi": "Kärkölä",
+                    "nb": "Kärkölä"
                 },
                 {
-                    "fi": "K\u00e4rs\u00e4m\u00e4ki"
+                    "fi": "Kärsämäki",
+                    "nb": "Kärsämäki"
                 },
                 {
-                    "fi": "K\u00f6kar"
+                    "fi": "Kökar",
+                    "nb": "Kökar"
                 },
                 {
-                    "fi": "K\u00f6yli\u00f6"
+                    "fi": "Köyliö",
+                    "nb": "Köyliö"
                 },
                 {
-                    "fi": "Lahti"
+                    "fi": "Lahti",
+                    "nb": "Lahti"
                 },
                 {
-                    "fi": "Laihia"
+                    "fi": "Laihia",
+                    "nb": "Laihia"
                 },
                 {
-                    "fi": "Laitila"
+                    "fi": "Laitila",
+                    "nb": "Laitila"
                 },
                 {
-                    "fi": "Lapinj\u00e4rvi"
+                    "fi": "Lapinjärvi",
+                    "nb": "Lapinjärvi"
                 },
                 {
-                    "fi": "Lapinlahti"
+                    "fi": "Lapinlahti",
+                    "nb": "Lapinlahti"
                 },
                 {
-                    "fi": "Lappaj\u00e4rvi"
+                    "fi": "Lappajärvi",
+                    "nb": "Lappajärvi"
                 },
                 {
-                    "fi": "Lappeenranta"
+                    "fi": "Lappeenranta",
+                    "nb": "Lappeenranta"
                 },
                 {
-                    "fi": "Lapua"
+                    "fi": "Lapua",
+                    "nb": "Lapua"
                 },
                 {
-                    "fi": "Laukaa"
+                    "fi": "Laukaa",
+                    "nb": "Laukaa"
                 },
                 {
-                    "fi": "Lavia"
+                    "fi": "Lavia",
+                    "nb": "Lavia"
                 },
                 {
-                    "fi": "Lemi"
+                    "fi": "Lemi",
+                    "nb": "Lemi"
                 },
                 {
-                    "fi": "Lemland"
+                    "fi": "Lemland",
+                    "nb": "Lemland"
                 },
                 {
-                    "fi": "Lemp\u00e4\u00e4l\u00e4"
+                    "fi": "Lempäälä",
+                    "nb": "Lempäälä"
                 },
                 {
-                    "fi": "Lepp\u00e4virta"
+                    "fi": "Leppävirta",
+                    "nb": "Leppävirta"
                 },
                 {
-                    "fi": "Lestij\u00e4rvi"
+                    "fi": "Lestijärvi",
+                    "nb": "Lestijärvi"
                 },
                 {
-                    "fi": "Lieksa"
+                    "fi": "Lieksa",
+                    "nb": "Lieksa"
                 },
                 {
-                    "fi": "Lieto"
+                    "fi": "Lieto",
+                    "nb": "Lieto"
                 },
                 {
-                    "fi": "Liminka"
+                    "fi": "Liminka",
+                    "nb": "Liminka"
                 },
                 {
-                    "fi": "Liperi"
+                    "fi": "Liperi",
+                    "nb": "Liperi"
                 },
                 {
-                    "fi": "Lohja"
+                    "fi": "Lohja",
+                    "nb": "Lohja"
                 },
                 {
-                    "fi": "Loimaa"
+                    "fi": "Loimaa",
+                    "nb": "Loimaa"
                 },
                 {
-                    "fi": "Loppi"
+                    "fi": "Loppi",
+                    "nb": "Loppi"
                 },
                 {
-                    "fi": "Loviisa"
+                    "fi": "Loviisa",
+                    "nb": "Loviisa"
                 },
                 {
-                    "fi": "Luhanka"
+                    "fi": "Luhanka",
+                    "nb": "Luhanka"
                 },
                 {
-                    "fi": "Lumijoki"
+                    "fi": "Lumijoki",
+                    "nb": "Lumijoki"
                 },
                 {
-                    "fi": "Lumparland"
+                    "fi": "Lumparland",
+                    "nb": "Lumparland"
                 },
                 {
-                    "fi": "Luoto"
+                    "fi": "Luoto",
+                    "nb": "Luoto"
                 },
                 {
-                    "fi": "Luum\u00e4ki"
+                    "fi": "Luumäki",
+                    "nb": "Luumäki"
                 },
                 {
-                    "fi": "Luvia"
+                    "fi": "Luvia",
+                    "nb": "Luvia"
                 },
                 {
-                    "fi": "Maalahti"
+                    "fi": "Maalahti",
+                    "nb": "Maalahti"
                 },
                 {
-                    "fi": "Maaninka"
+                    "fi": "Maaninka",
+                    "nb": "Maaninka"
                 },
                 {
-                    "fi": "Maarianhamina"
+                    "fi": "Maarianhamina",
+                    "nb": "Maarianhamina"
                 },
                 {
-                    "fi": "Marttila"
+                    "fi": "Marttila",
+                    "nb": "Marttila"
                 },
                 {
-                    "fi": "Masku"
+                    "fi": "Masku",
+                    "nb": "Masku"
                 },
                 {
-                    "fi": "Merij\u00e4rvi"
+                    "fi": "Merijärvi",
+                    "nb": "Merijärvi"
                 },
                 {
-                    "fi": "Merikarvia"
+                    "fi": "Merikarvia",
+                    "nb": "Merikarvia"
                 },
                 {
-                    "fi": "Miehikk\u00e4l\u00e4"
+                    "fi": "Miehikkälä",
+                    "nb": "Miehikkälä"
                 },
                 {
-                    "fi": "Mikkeli"
+                    "fi": "Mikkeli",
+                    "nb": "Mikkeli"
                 },
                 {
-                    "fi": "Muhos"
+                    "fi": "Muhos",
+                    "nb": "Muhos"
                 },
                 {
-                    "fi": "Multia"
+                    "fi": "Multia",
+                    "nb": "Multia"
                 },
                 {
-                    "fi": "Muonio"
+                    "fi": "Muonio",
+                    "nb": "Muonio"
                 },
                 {
-                    "fi": "Mustasaari"
+                    "fi": "Mustasaari",
+                    "nb": "Mustasaari"
                 },
                 {
-                    "fi": "Muurame"
+                    "fi": "Muurame",
+                    "nb": "Muurame"
                 },
                 {
-                    "fi": "Myn\u00e4m\u00e4ki"
+                    "fi": "Mynämäki",
+                    "nb": "Mynämäki"
                 },
                 {
-                    "fi": "Myrskyl\u00e4"
+                    "fi": "Myrskylä",
+                    "nb": "Myrskylä"
                 },
                 {
-                    "fi": "M\u00e4nts\u00e4l\u00e4"
+                    "fi": "Mäntsälä",
+                    "nb": "Mäntsälä"
                 },
                 {
-                    "fi": "M\u00e4ntt\u00e4-Vilppula"
+                    "fi": "Mänttä-Vilppula",
+                    "nb": "Mänttä-Vilppula"
                 },
                 {
-                    "fi": "M\u00e4ntyharju"
+                    "fi": "Mäntyharju",
+                    "nb": "Mäntyharju"
                 },
                 {
-                    "fi": "Naantali"
+                    "fi": "Naantali",
+                    "nb": "Naantali"
                 },
                 {
-                    "fi": "Nakkila"
+                    "fi": "Nakkila",
+                    "nb": "Nakkila"
                 },
                 {
-                    "fi": "Nastola"
+                    "fi": "Nastola",
+                    "nb": "Nastola"
                 },
                 {
-                    "fi": "Nivala"
+                    "fi": "Nivala",
+                    "nb": "Nivala"
                 },
                 {
-                    "fi": "Nokia"
+                    "fi": "Nokia",
+                    "nb": "Nokia"
                 },
                 {
-                    "fi": "Nousiainen"
+                    "fi": "Nousiainen",
+                    "nb": "Nousiainen"
                 },
                 {
-                    "fi": "Nurmes"
+                    "fi": "Nurmes",
+                    "nb": "Nurmes"
                 },
                 {
-                    "fi": "Nurmij\u00e4rvi"
+                    "fi": "Nurmijärvi",
+                    "nb": "Nurmijärvi"
                 },
                 {
-                    "fi": "N\u00e4rpi\u00f6"
+                    "fi": "Närpiö",
+                    "nb": "Närpiö"
                 },
                 {
-                    "fi": "Orimattila"
+                    "fi": "Orimattila",
+                    "nb": "Orimattila"
                 },
                 {
-                    "fi": "Orip\u00e4\u00e4"
+                    "fi": "Oripää",
+                    "nb": "Oripää"
                 },
                 {
-                    "fi": "Orivesi"
+                    "fi": "Orivesi",
+                    "nb": "Orivesi"
                 },
                 {
-                    "fi": "Oulainen"
+                    "fi": "Oulainen",
+                    "nb": "Oulainen"
                 },
                 {
-                    "fi": "Oulu"
+                    "fi": "Oulu",
+                    "nb": "Oulu"
                 },
                 {
-                    "fi": "Outokumpu"
+                    "fi": "Outokumpu",
+                    "nb": "Outokumpu"
                 },
                 {
-                    "fi": "Padasjoki"
+                    "fi": "Padasjoki",
+                    "nb": "Padasjoki"
                 },
                 {
-                    "fi": "Paimio"
+                    "fi": "Paimio",
+                    "nb": "Paimio"
                 },
                 {
-                    "fi": "Paltamo"
+                    "fi": "Paltamo",
+                    "nb": "Paltamo"
                 },
                 {
-                    "fi": "Parainen"
+                    "fi": "Parainen",
+                    "nb": "Parainen"
                 },
                 {
-                    "fi": "Parikkala"
+                    "fi": "Parikkala",
+                    "nb": "Parikkala"
                 },
                 {
-                    "fi": "Parkano"
+                    "fi": "Parkano",
+                    "nb": "Parkano"
                 },
                 {
-                    "fi": "Peders\u00f6ren kunta"
+                    "fi": "Pedersören kunta",
+                    "nb": "Pedersören kunta"
                 },
                 {
-                    "fi": "Pelkosenniemi"
+                    "fi": "Pelkosenniemi",
+                    "nb": "Pelkosenniemi"
                 },
                 {
-                    "fi": "Pello"
+                    "fi": "Pello",
+                    "nb": "Pello"
                 },
                 {
-                    "fi": "Perho"
+                    "fi": "Perho",
+                    "nb": "Perho"
                 },
                 {
-                    "fi": "Pertunmaa"
+                    "fi": "Pertunmaa",
+                    "nb": "Pertunmaa"
                 },
                 {
-                    "fi": "Pet\u00e4j\u00e4vesi"
+                    "fi": "Petäjävesi",
+                    "nb": "Petäjävesi"
                 },
                 {
-                    "fi": "Pieks\u00e4m\u00e4ki"
+                    "fi": "Pieksämäki",
+                    "nb": "Pieksämäki"
                 },
                 {
-                    "fi": "Pielavesi"
+                    "fi": "Pielavesi",
+                    "nb": "Pielavesi"
                 },
                 {
-                    "fi": "Pietarsaari"
+                    "fi": "Pietarsaari",
+                    "nb": "Pietarsaari"
                 },
                 {
-                    "fi": "Pihtipudas"
+                    "fi": "Pihtipudas",
+                    "nb": "Pihtipudas"
                 },
                 {
-                    "fi": "Pirkkala"
+                    "fi": "Pirkkala",
+                    "nb": "Pirkkala"
                 },
                 {
-                    "fi": "Polvij\u00e4rvi"
+                    "fi": "Polvijärvi",
+                    "nb": "Polvijärvi"
                 },
                 {
-                    "fi": "Pomarkku"
+                    "fi": "Pomarkku",
+                    "nb": "Pomarkku"
                 },
                 {
-                    "fi": "Pori"
+                    "fi": "Pori",
+                    "nb": "Pori"
                 },
                 {
-                    "fi": "Pornainen"
+                    "fi": "Pornainen",
+                    "nb": "Pornainen"
                 },
                 {
-                    "fi": "Porvoo"
+                    "fi": "Porvoo",
+                    "nb": "Porvoo"
                 },
                 {
-                    "fi": "Posio"
+                    "fi": "Posio",
+                    "nb": "Posio"
                 },
                 {
-                    "fi": "Pudasj\u00e4rvi"
+                    "fi": "Pudasjärvi",
+                    "nb": "Pudasjärvi"
                 },
                 {
-                    "fi": "Pukkila"
+                    "fi": "Pukkila",
+                    "nb": "Pukkila"
                 },
                 {
-                    "fi": "Punkalaidun"
+                    "fi": "Punkalaidun",
+                    "nb": "Punkalaidun"
                 },
                 {
-                    "fi": "Puolanka"
+                    "fi": "Puolanka",
+                    "nb": "Puolanka"
                 },
                 {
-                    "fi": "Puumala"
+                    "fi": "Puumala",
+                    "nb": "Puumala"
                 },
                 {
-                    "fi": "Pyht\u00e4\u00e4"
+                    "fi": "Pyhtää",
+                    "nb": "Pyhtää"
                 },
                 {
-                    "fi": "Pyh\u00e4joki"
+                    "fi": "Pyhäjoki",
+                    "nb": "Pyhäjoki"
                 },
                 {
-                    "fi": "Pyh\u00e4j\u00e4rvi"
+                    "fi": "Pyhäjärvi",
+                    "nb": "Pyhäjärvi"
                 },
                 {
-                    "fi": "Pyh\u00e4nt\u00e4"
+                    "fi": "Pyhäntä",
+                    "nb": "Pyhäntä"
                 },
                 {
-                    "fi": "Pyh\u00e4ranta"
+                    "fi": "Pyhäranta",
+                    "nb": "Pyhäranta"
                 },
                 {
-                    "fi": "P\u00e4lk\u00e4ne"
+                    "fi": "Pälkäne",
+                    "nb": "Pälkäne"
                 },
                 {
-                    "fi": "P\u00f6yty\u00e4"
+                    "fi": "Pöytyä",
+                    "nb": "Pöytyä"
                 },
                 {
-                    "fi": "Raahe"
+                    "fi": "Raahe",
+                    "nb": "Raahe"
                 },
                 {
-                    "fi": "Raasepori"
+                    "fi": "Raasepori",
+                    "nb": "Raasepori"
                 },
                 {
-                    "fi": "Raisio"
+                    "fi": "Raisio",
+                    "nb": "Raisio"
                 },
                 {
-                    "fi": "Rantasalmi"
+                    "fi": "Rantasalmi",
+                    "nb": "Rantasalmi"
                 },
                 {
-                    "fi": "Ranua"
+                    "fi": "Ranua",
+                    "nb": "Ranua"
                 },
                 {
-                    "fi": "Rauma"
+                    "fi": "Rauma",
+                    "nb": "Rauma"
                 },
                 {
-                    "fi": "Rautalampi"
+                    "fi": "Rautalampi",
+                    "nb": "Rautalampi"
                 },
                 {
-                    "fi": "Rautavaara"
+                    "fi": "Rautavaara",
+                    "nb": "Rautavaara"
                 },
                 {
-                    "fi": "Rautj\u00e4rvi"
+                    "fi": "Rautjärvi",
+                    "nb": "Rautjärvi"
                 },
                 {
-                    "fi": "Reisj\u00e4rvi"
+                    "fi": "Reisjärvi",
+                    "nb": "Reisjärvi"
                 },
                 {
-                    "fi": "Riihim\u00e4ki"
+                    "fi": "Riihimäki",
+                    "nb": "Riihimäki"
                 },
                 {
-                    "fi": "Ristij\u00e4rvi"
+                    "fi": "Ristijärvi",
+                    "nb": "Ristijärvi"
                 },
                 {
-                    "fi": "Rovaniemi"
+                    "fi": "Rovaniemi",
+                    "nb": "Rovaniemi"
                 },
                 {
-                    "fi": "Ruokolahti"
+                    "fi": "Ruokolahti",
+                    "nb": "Ruokolahti"
                 },
                 {
-                    "fi": "Ruovesi"
+                    "fi": "Ruovesi",
+                    "nb": "Ruovesi"
                 },
                 {
-                    "fi": "Rusko"
+                    "fi": "Rusko",
+                    "nb": "Rusko"
                 },
                 {
-                    "fi": "R\u00e4\u00e4kkyl\u00e4"
+                    "fi": "Rääkkylä",
+                    "nb": "Rääkkylä"
                 },
                 {
-                    "fi": "Saarij\u00e4rvi"
+                    "fi": "Saarijärvi",
+                    "nb": "Saarijärvi"
                 },
                 {
-                    "fi": "Salla"
+                    "fi": "Salla",
+                    "nb": "Salla"
                 },
                 {
-                    "fi": "Salo"
+                    "fi": "Salo",
+                    "nb": "Salo"
                 },
                 {
-                    "fi": "Saltvik"
+                    "fi": "Saltvik",
+                    "nb": "Saltvik"
                 },
                 {
-                    "fi": "Sastamala"
+                    "fi": "Sastamala",
+                    "nb": "Sastamala"
                 },
                 {
-                    "fi": "Sauvo"
+                    "fi": "Sauvo",
+                    "nb": "Sauvo"
                 },
                 {
-                    "fi": "Savitaipale"
+                    "fi": "Savitaipale",
+                    "nb": "Savitaipale"
                 },
                 {
-                    "fi": "Savonlinna"
+                    "fi": "Savonlinna",
+                    "nb": "Savonlinna"
                 },
                 {
-                    "fi": "Savukoski"
+                    "fi": "Savukoski",
+                    "nb": "Savukoski"
                 },
                 {
-                    "fi": "Sein\u00e4joki"
+                    "fi": "Seinäjoki",
+                    "nb": "Seinäjoki"
                 },
                 {
-                    "fi": "Sievi"
+                    "fi": "Sievi",
+                    "nb": "Sievi"
                 },
                 {
-                    "fi": "Siikainen"
+                    "fi": "Siikainen",
+                    "nb": "Siikainen"
                 },
                 {
-                    "fi": "Siikajoki"
+                    "fi": "Siikajoki",
+                    "nb": "Siikajoki"
                 },
                 {
-                    "fi": "Siikalatva"
+                    "fi": "Siikalatva",
+                    "nb": "Siikalatva"
                 },
                 {
-                    "fi": "Siilinj\u00e4rvi"
+                    "fi": "Siilinjärvi",
+                    "nb": "Siilinjärvi"
                 },
                 {
-                    "fi": "Simo"
+                    "fi": "Simo",
+                    "nb": "Simo"
                 },
                 {
-                    "fi": "Sipoo"
+                    "fi": "Sipoo",
+                    "nb": "Sipoo"
                 },
                 {
-                    "fi": "Siuntio"
+                    "fi": "Siuntio",
+                    "nb": "Siuntio"
                 },
                 {
-                    "fi": "Sodankyl\u00e4"
+                    "fi": "Sodankylä",
+                    "nb": "Sodankylä"
                 },
                 {
-                    "fi": "Soini"
+                    "fi": "Soini",
+                    "nb": "Soini"
                 },
                 {
-                    "fi": "Somero"
+                    "fi": "Somero",
+                    "nb": "Somero"
                 },
                 {
-                    "fi": "Sonkaj\u00e4rvi"
+                    "fi": "Sonkajärvi",
+                    "nb": "Sonkajärvi"
                 },
                 {
-                    "fi": "Sotkamo"
+                    "fi": "Sotkamo",
+                    "nb": "Sotkamo"
                 },
                 {
-                    "fi": "Sottunga"
+                    "fi": "Sottunga",
+                    "nb": "Sottunga"
                 },
                 {
-                    "fi": "Sulkava"
+                    "fi": "Sulkava",
+                    "nb": "Sulkava"
                 },
                 {
-                    "fi": "Sund"
+                    "fi": "Sund",
+                    "nb": "Sund"
                 },
                 {
-                    "fi": "Suomussalmi"
+                    "fi": "Suomussalmi",
+                    "nb": "Suomussalmi"
                 },
                 {
-                    "fi": "Suonenjoki"
+                    "fi": "Suonenjoki",
+                    "nb": "Suonenjoki"
                 },
                 {
-                    "fi": "Sysm\u00e4"
+                    "fi": "Sysmä",
+                    "nb": "Sysmä"
                 },
                 {
-                    "fi": "S\u00e4kyl\u00e4"
+                    "fi": "Säkylä",
+                    "nb": "Säkylä"
                 },
                 {
-                    "fi": "Taipalsaari"
+                    "fi": "Taipalsaari",
+                    "nb": "Taipalsaari"
                 },
                 {
-                    "fi": "Taivalkoski"
+                    "fi": "Taivalkoski",
+                    "nb": "Taivalkoski"
                 },
                 {
-                    "fi": "Taivassalo"
+                    "fi": "Taivassalo",
+                    "nb": "Taivassalo"
                 },
                 {
-                    "fi": "Tammela"
+                    "fi": "Tammela",
+                    "nb": "Tammela"
                 },
                 {
-                    "fi": "Tampere"
+                    "fi": "Tampere",
+                    "nb": "Tampere"
                 },
                 {
-                    "fi": "Tarvasjoki"
+                    "fi": "Tarvasjoki",
+                    "nb": "Tarvasjoki"
                 },
                 {
-                    "fi": "Tervo"
+                    "fi": "Tervo",
+                    "nb": "Tervo"
                 },
                 {
-                    "fi": "Tervola"
+                    "fi": "Tervola",
+                    "nb": "Tervola"
                 },
                 {
-                    "fi": "Teuva"
+                    "fi": "Teuva",
+                    "nb": "Teuva"
                 },
                 {
-                    "fi": "Tohmaj\u00e4rvi"
+                    "fi": "Tohmajärvi",
+                    "nb": "Tohmajärvi"
                 },
                 {
-                    "fi": "Toholampi"
+                    "fi": "Toholampi",
+                    "nb": "Toholampi"
                 },
                 {
-                    "fi": "Toivakka"
+                    "fi": "Toivakka",
+                    "nb": "Toivakka"
                 },
                 {
-                    "fi": "Tornio"
+                    "fi": "Tornio",
+                    "nb": "Tornio"
                 },
                 {
-                    "fi": "Turku"
+                    "fi": "Turku",
+                    "nb": "Turku"
                 },
                 {
-                    "fi": "Tuusniemi"
+                    "fi": "Tuusniemi",
+                    "nb": "Tuusniemi"
                 },
                 {
-                    "fi": "Tuusula"
+                    "fi": "Tuusula",
+                    "nb": "Tuusula"
                 },
                 {
-                    "fi": "Tyrn\u00e4v\u00e4"
+                    "fi": "Tyrnävä",
+                    "nb": "Tyrnävä"
                 },
                 {
-                    "fi": "Ulvila"
+                    "fi": "Ulvila",
+                    "nb": "Ulvila"
                 },
                 {
-                    "fi": "Urjala"
+                    "fi": "Urjala",
+                    "nb": "Urjala"
                 },
                 {
-                    "fi": "Utaj\u00e4rvi"
+                    "fi": "Utajärvi",
+                    "nb": "Utajärvi"
                 },
                 {
-                    "fi": "Utsjoki"
+                    "fi": "Utsjoki",
+                    "nb": "Utsjoki"
                 },
                 {
-                    "fi": "Uurainen"
+                    "fi": "Uurainen",
+                    "nb": "Uurainen"
                 },
                 {
-                    "fi": "Uusikaarlepyy"
+                    "fi": "Uusikaarlepyy",
+                    "nb": "Uusikaarlepyy"
                 },
                 {
-                    "fi": "Uusikaupunki"
+                    "fi": "Uusikaupunki",
+                    "nb": "Uusikaupunki"
                 },
                 {
-                    "fi": "Vaala"
+                    "fi": "Vaala",
+                    "nb": "Vaala"
                 },
                 {
-                    "fi": "Vaasa"
+                    "fi": "Vaasa",
+                    "nb": "Vaasa"
                 },
                 {
-                    "fi": "Valkeakoski"
+                    "fi": "Valkeakoski",
+                    "nb": "Valkeakoski"
                 },
                 {
-                    "fi": "Valtimo"
+                    "fi": "Valtimo",
+                    "nb": "Valtimo"
                 },
                 {
-                    "fi": "Vantaa"
+                    "fi": "Vantaa",
+                    "nb": "Vantaa"
                 },
                 {
-                    "fi": "Varkaus"
+                    "fi": "Varkaus",
+                    "nb": "Varkaus"
                 },
                 {
-                    "fi": "Vehmaa"
+                    "fi": "Vehmaa",
+                    "nb": "Vehmaa"
                 },
                 {
-                    "fi": "Vesanto"
+                    "fi": "Vesanto",
+                    "nb": "Vesanto"
                 },
                 {
-                    "fi": "Vesilahti"
+                    "fi": "Vesilahti",
+                    "nb": "Vesilahti"
                 },
                 {
-                    "fi": "Veteli"
+                    "fi": "Veteli",
+                    "nb": "Veteli"
                 },
                 {
-                    "fi": "Vierem\u00e4"
+                    "fi": "Vieremä",
+                    "nb": "Vieremä"
                 },
                 {
-                    "fi": "Vihti"
+                    "fi": "Vihti",
+                    "nb": "Vihti"
                 },
                 {
-                    "fi": "Viitasaari"
+                    "fi": "Viitasaari",
+                    "nb": "Viitasaari"
                 },
                 {
-                    "fi": "Vimpeli"
+                    "fi": "Vimpeli",
+                    "nb": "Vimpeli"
                 },
                 {
-                    "fi": "Virolahti"
+                    "fi": "Virolahti",
+                    "nb": "Virolahti"
                 },
                 {
-                    "fi": "Virrat"
+                    "fi": "Virrat",
+                    "nb": "Virrat"
                 },
                 {
-                    "fi": "V\u00e5rd\u00f6"
+                    "fi": "Vårdö",
+                    "nb": "Vårdö"
                 },
                 {
-                    "fi": "V\u00f6yri"
+                    "fi": "Vöyri",
+                    "nb": "Vöyri"
                 },
                 {
-                    "fi": "Ylitornio"
+                    "fi": "Ylitornio",
+                    "nb": "Ylitornio"
                 },
                 {
-                    "fi": "Ylivieska"
+                    "fi": "Ylivieska",
+                    "nb": "Ylivieska"
                 },
                 {
-                    "fi": "Yl\u00f6j\u00e4rvi"
+                    "fi": "Ylöjärvi",
+                    "nb": "Ylöjärvi"
                 },
                 {
-                    "fi": "Yp\u00e4j\u00e4"
+                    "fi": "Ypäjä",
+                    "nb": "Ypäjä"
                 },
                 {
-                    "fi": "\u00c4ht\u00e4ri"
+                    "fi": "Ähtäri",
+                    "nb": "Ähtäri"
                 },
                 {
-                    "fi": "\u00c4\u00e4nekoski"
+                    "fi": "Äänekoski",
+                    "nb": "Äänekoski"
                 }
             ],
             "title": {
-                "fi": "Asuinpaikkani"
+                "fi": "Asuinpaikkani",
+                "nb": "Asuinpaikkani"
             },
             "body1": {
-                "fi": ""
+                "fi": "",
+                "nb": ""
             },
             "body2": {
-                "fi": ""
+                "fi": "",
+                "nb": ""
             },
             "isRecording": false,
             "otherEntryLabel": {
-                "fi": "Jos asut Suomen ulkopuolella, kirjoita alle maan nimi."
+                "fi": "Jos asut Suomen ulkopuolella, kirjoita alle maan nimi.",
+                "nb": "Jos asut Suomen ulkopuolella, kirjoita alle maan nimi."
             }
         },
         {
@@ -1366,37 +1776,46 @@
             "options": [],
             "typeId": "image/jpeg",
             "title": {
-                "fi": "Usko tai \u00e4l\u00e4!"
+                "fi": "Usko tai älä!",
+                "nb": "Usko tai älä!"
             },
             "body1": {
-                "fi": "Sait Ohoh!-lehden toimittajana tuoreen silminn\u00e4kij\u00e4kuvan Mikael Gabrielista."
+                "fi": "Sait Ohoh!-lehden toimittajana tuoreen silminnäkijäkuvan Mikael Gabrielista.",
+                "nb": "Sait Ohoh!-lehden toimittajana tuoreen silminnäkijäkuvan Mikael Gabrielista."
             },
             "body2": {
-                "fi": "Pomosi odottaa siit\u00e4 mehev\u00e4\u00e4 klikkiotsikkoa. Millaisia keksit?"
+                "fi": "Pomosi odottaa siitä mehevää klikkiotsikkoa. Millaisia keksit?",
+                "nb": "Sjefen din venter på en saftig klikkbait-overskrift. Hva finner du på?"
             },
             "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-7362275f9b389dced87.jpg",
             "isRecording": true,
             "recording": {
                 "title": {
-                    "fi": "Usko tai \u00e4l\u00e4!"
+                    "fi": "Usko tai älä!",
+                    "nb": "Usko tai älä!"
                 },
                 "body1": {
-                    "fi": "Millaiset otsikot saisivat lukijat klikkaamaan juttua?"
+                    "fi": "Millaiset otsikot saisivat lukijat klikkaamaan juttua?",
+                    "nb": "Hvilke overskrifter ville få leserne til å klikke på artikkelen?"
                 },
                 "body2": {
-                    "fi": "P\u00e4\u00e4st\u00e4 mielikuvituksesi lentoon ja liioittele!"
+                    "fi": "Päästä mielikuvituksesi lentoon ja liioittele!",
+                    "nb": "Slipp fantasien løs og overdriv!"
                 },
                 "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-7362275f9b389dced87.jpg"
             },
             "finish": {
                 "title": {
-                    "fi": "Ohoh, mit\u00e4 otsikointia"
+                    "fi": "Ohoh, mitä otsikointia",
+                    "nb": "Oi oi, for en overskrift"
                 },
                 "body1": {
-                    "fi": "Tosiasiassa Mikael Gabriel jakaa kuvassa ruokaa v\u00e4h\u00e4varaisille jouluna 2017."
+                    "fi": "Tosiasiassa Mikael Gabriel jakaa kuvassa ruokaa vähävaraisille jouluna 2017.",
+                    "nb": "Tosiasiassa Mikael Gabriel jakaa kuvassa ruokaa vähävaraisille jouluna 2017."
                 },
                 "body2": {
-                    "fi": "Ja nyt sinunkin hyv\u00e4 ty\u00f6si on saatettu p\u00e4\u00e4t\u00f6kseen!"
+                    "fi": "Ja nyt sinunkin hyvä työsi on saatettu päätökseen!",
+                    "nb": "Ja nyt sinunkin hyvä työsi on saatettu päätökseen!"
                 },
                 "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-7362275f9b389dced87.jpg"
             }
@@ -1404,25 +1823,31 @@
     ],
     "start": {
         "title": {
-            "fi": "Moikka!"
+            "fi": "Moikka!",
+            "nb": "Hei!"
         },
         "body1": {
-            "fi": "Kiva ett\u00e4 tulit lahjoittamaan puhetta."
+            "fi": "Kiva että tulit lahjoittamaan puhetta.",
+            "nb": "Hyggelig at du kom for å donere tale."
         },
         "body2": {
-            "fi": "K\u00e4yt\u00e4 ihan tavallista puhekielt\u00e4. Takeltelu ja pikku tauot eiv\u00e4t haittaa!"
+            "fi": "Käytä ihan tavallista puhekieltä. Takeltelu ja pikku tauot eivät haittaa!",
+            "nb": "Bruk helt vanlig talespråk. Stamming og små pauser gjør ingenting!"
         },
         "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-7362065f9b1b7feb739.jpg"
     },
     "finish": {
         "title": {
-            "fi": "Suuret kiitokset!"
+            "fi": "Suuret kiitokset!",
+            "nb": "Suuret kiitokset!"
         },
         "body1": {
-            "fi": "Lahjoituksesi avulla arki ja asiointi suomeksi puhumalla helpottuvat."
+            "fi": "Lahjoituksesi avulla arki ja asiointi suomeksi puhumalla helpottuvat.",
+            "nb": "Med din donasjon blir hverdagen og gjøremål ved å snakke finsk lettere."
         },
         "body2": {
-            "fi": "Vinkkaa puheen lahjoittamisesta my\u00f6s kavereille (alle 18-vuotiaat lahjoittavat vanhempien luvalla)!"
+            "fi": "Vinkkaa puheen lahjoittamisesta myös kavereille (alle 18-vuotiaat lahjoittavat vanhempien luvalla)!",
+            "nb": "Vinkkaa puheen lahjoittamisesta myös kavereille (alle 18-vuotiaat lahjoittavat vanhempien luvalla)!"
         },
         "imageUrl": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-7362295f9b3b14e3633.jpg"
     }
