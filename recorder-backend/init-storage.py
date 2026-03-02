@@ -27,21 +27,21 @@ AZURITE_CONNECTION_STRING = (
 )
 
 # Use Azure Storage if env var is set, otherwise use local Azurite
-CONNECTION_STRING = os.environ.get("AZURE_STORAGE_CONNECTION_STRING", AZURITE_CONNECTION_STRING)
-CONTAINER_NAME = os.environ.get("AZURE_STORAGE_CONTAINER_NAME", "recorder-content")
+CONNECTION_STRING = os.environ.get("AZURE_STORAGE_CONNECTION_STRING") or AZURITE_CONNECTION_STRING
+CONTAINER_NAME = os.environ.get("AZURE_STORAGE_CONTAINER_NAME") or "recorder-content"
 
 # Determine if we're using Azure or Azurite
-IS_AZURE = "AZURE_STORAGE_CONNECTION_STRING" in os.environ
+IS_AZURE = bool(os.environ.get("AZURE_STORAGE_CONNECTION_STRING"))
 
 
 def main():
     """Initialize storage with test data."""
     # Show which storage we're using
     if IS_AZURE:
-        print(f"🔵 Using Azure Blob Storage")
+        print("🔵 Using Azure Blob Storage")
         print(f"   Container: {CONTAINER_NAME}\n")
     else:
-        print(f"🟡 Using local Azurite storage")
+        print("🟡 Using local Azurite storage")
         print(f"   Container: {CONTAINER_NAME}\n")
         # Wait briefly for Azurite to be ready
         time.sleep(2)
