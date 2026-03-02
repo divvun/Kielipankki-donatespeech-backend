@@ -12,7 +12,6 @@
 - **Local Development**: Azurite (Azure Storage Emulator)
 - **Deployment**: Azure Container Apps or Azure App Service
 
-
 ## Deployment
 
 ### Continuous Deployment
@@ -26,6 +25,7 @@ The backend automatically deploys to environments based on branch activity:
 ### Current Setup (Dev Only)
 
 Push to `main` branch triggers automatic deployment:
+
 1. Tests run automatically
 2. Docker image builds from [Dockerfile](Dockerfile)
 3. Image pushes to Azure Container Registry with tags:
@@ -35,6 +35,7 @@ Push to `main` branch triggers automatic deployment:
 5. Deployment completes with zero downtime
 
 **View Deployment Status:**
+
 - GitHub Actions: [Deployment Workflows](../../actions)
 - Development URL: Provided by Container App ingress
 
@@ -88,6 +89,7 @@ az containerapp update \
 ### Future: Production Deployment
 
 When production is ready:
+
 1. Create production Azure resources (mirroring dev setup)
 2. Add production federated credential for tag pattern `v*`
 3. Configure production GitHub secrets
