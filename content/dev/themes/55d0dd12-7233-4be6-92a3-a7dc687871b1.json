@@ -1,7 +1,16 @@
 {
-    "title": { "fi": "Mediataidot 8-9 lk." },
-    "body1": { "fi": "Mediataidot 8-9 lk." },
-    "body2": { "fi": "" }, 
+    "title": {
+        "fi": "Mediataidot 8-9 lk.",
+        "nb": "Medieferdigheter 8.-9. trinn"
+    },
+    "body1": {
+        "fi": "Mediataidot 8-9 lk.",
+        "nb": "Medieferdigheter 8.-9. trinn"
+    },
+    "body2": {
+        "fi": "",
+        "nb": ""
+    },
     "image": "https://images.cdn.yle.fi/image/upload/w_300,h_168,f_auto,fl_lossy,q_auto:eco/39-7376305fa149d38dd66.jpg",
     "scheduleIds": [
         "e6433174-6e3c-470c-8e63-b2ef2335e26a"
