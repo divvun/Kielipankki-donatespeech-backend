@@ -254,7 +254,7 @@ The MAUI app can communicate with the local FastAPI backend during development.
 Use platform-specific base URLs:
 
 | Platform | Base URL | Notes |
-|----------|----------|-------|
+| ---------- | ---------- | ------- |
 | macOS (native) | `http://localhost:8000` | Direct access to Mac's localhost |
 | iOS Simulator | `http://localhost:8000` | Simulator shares Mac's network |
 | Android Emulator | `http://10.0.2.2:8000` | Special IP mapping to host's localhost |
@@ -405,11 +405,31 @@ await uploadClient.PutAsync(sasUrl, new StreamContent(audioStream));
 ### OpenAPI Specification
 
 The OpenAPI specification is available at:
+
 - **Runtime**: `http://localhost:8000/openapi.json`
 - **Versioned**: `openapi.json` (checked into this repository)
 
 The versioned file can be used for offline client generation during CI/CD
 builds.
+
+#### Generating/Updating openapi.json
+
+To create or update the versioned `openapi.json` file:
+
+```bash
+# Start the backend
+./setup-local.sh
+
+# In another terminal, download the OpenAPI spec
+curl http://localhost:8000/openapi.json > openapi.json
+
+# Or with proper formatting
+curl http://localhost:8000/openapi.json | uv run python -m json.tool > openapi.json
+```
+
+This should be done whenever the API changes (new endpoints, modified
+request/response models, etc.) to keep the versioned specification in sync with
+the implementation.
 
 ### Testing Local Connection
 
@@ -429,16 +449,19 @@ curl http://10.0.2.2:8000/v1/schedule
 ### Troubleshooting MAUI Connection
 
 **"Connection refused" on Android emulator:**
+
 - Use `http://10.0.2.2:8000` instead of `localhost`
 - Ensure backend is running: `podman ps | grep recorder-api`
 - Check backend logs: `podman logs recorder-api`
 
 **"Connection refused" on physical device:**
+
 - Ensure Mac and device are on same WiFi network
 - Use Mac's LAN IP address (find with `ifconfig en0 | grep inet`)
 - Ensure Mac's firewall allows incoming connections on port 8000
 
 **SSL/TLS errors:**
+
 - Local development uses HTTP (not HTTPS)
 - For iOS/Android, you may need to configure `NSAppTransportSecurity` (iOS) or
   `android:usesCleartextTraffic="true"` (Android) to allow HTTP in development
