@@ -4,8 +4,8 @@ Pydantic models for Kielipankki Recorder schedules and themes.
 Uses discriminated unions to handle the polymorphic Item types.
 """
 
-from typing import Literal, Optional, Union
-from pydantic import BaseModel, Field
+from typing import Any, Literal, Optional, Union
+from pydantic import BaseModel, Field, model_validator
 
 
 # ============================================================================
@@ -35,15 +35,26 @@ class AudioMediaItem(BaseModel):
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="Direct URL to audio file")
     typeId: Optional[str] = Field(None, description="MIME type (e.g., 'audio/m4a', 'audio/mpeg')")
-    title: dict[str, str] = Field(..., description="Localized title")
-    body1: dict[str, str] = Field(..., description="Localized body text 1")
-    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    default: MediaState = Field(..., description="Default/initial state")
     options: list = Field(default_factory=list, description="Empty list for media items")
     isRecording: bool
     start: Optional[MediaState] = Field(None, description="State before recording starts")
     recording: Optional[MediaState] = Field(None, description="State during recording")
     finish: Optional[MediaState] = Field(None, description="State after recording finishes")
     metaTitle: Optional[dict[str, str]] = Field(None, description="Optional meta title")
+
+    @model_validator(mode='before')
+    @classmethod
+    def build_default_state(cls, data: Any) -> Any:
+        if isinstance(data, dict) and 'title' in data and 'default' not in data:
+            # Convert flat structure to nested MediaState
+            data['default'] = {
+                'title': data.pop('title'),
+                'body1': data.pop('body1'),
+                'body2': data.pop('body2'),
+                'imageUrl': None
+            }
+        return data
 
 
 class VideoMediaItem(BaseModel):
@@ -54,15 +65,26 @@ class VideoMediaItem(BaseModel):
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="Direct URL to video file")
     typeId: Optional[str] = Field(None, description="MIME type (e.g., 'video/mp4', 'video/webm')")
-    title: dict[str, str] = Field(..., description="Localized title")
-    body1: dict[str, str] = Field(..., description="Localized body text 1")
-    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    default: MediaState = Field(..., description="Default/initial state")
     options: list = Field(default_factory=list, description="Empty list for media items")
     isRecording: bool
     start: Optional[MediaState] = Field(None, description="State before recording starts")
     recording: Optional[MediaState] = Field(None, description="State during recording")
     finish: Optional[MediaState] = Field(None, description="State after recording finishes")
     metaTitle: Optional[dict[str, str]] = Field(None, description="Optional meta title")
+
+    @model_validator(mode='before')
+    @classmethod
+    def build_default_state(cls, data: Any) -> Any:
+        if isinstance(data, dict) and 'title' in data and 'default' not in data:
+            # Convert flat structure to nested MediaState
+            data['default'] = {
+                'title': data.pop('title'),
+                'body1': data.pop('body1'),
+                'body2': data.pop('body2'),
+                'imageUrl': None
+            }
+        return data
 
 
 class YleAudioMediaItem(BaseModel):
@@ -73,15 +95,25 @@ class YleAudioMediaItem(BaseModel):
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="YLE program ID")
     typeId: Optional[str] = Field(None, description="MIME type")
-    title: dict[str, str] = Field(..., description="Localized title")
-    body1: dict[str, str] = Field(..., description="Localized body text 1")
-    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    default: MediaState = Field(..., description="Default/initial state")
     options: list = Field(default_factory=list, description="Empty list for media items")
     isRecording: bool
     start: Optional[MediaState] = Field(None, description="State before recording starts")
     recording: Optional[MediaState] = Field(None, description="State during recording")
     finish: Optional[MediaState] = Field(None, description="State after recording finishes")
     metaTitle: Optional[dict[str, str]] = Field(None, description="Optional meta title")
+
+    @model_validator(mode='before')
+    @classmethod
+    def build_default_state(cls, data: Any) -> Any:
+        if isinstance(data, dict) and 'title' in data and 'default' not in data:
+            data['default'] = {
+                'title': data.pop('title'),
+                'body1': data.pop('body1'),
+                'body2': data.pop('body2'),
+                'imageUrl': None
+            }
+        return data
 
 
 class YleVideoMediaItem(BaseModel):
@@ -92,15 +124,25 @@ class YleVideoMediaItem(BaseModel):
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="YLE program ID")
     typeId: Optional[str] = Field(None, description="MIME type")
-    title: dict[str, str] = Field(..., description="Localized title")
-    body1: dict[str, str] = Field(..., description="Localized body text 1")
-    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    default: MediaState = Field(..., description="Default/initial state")
     options: list = Field(default_factory=list, description="Empty list for media items")
     isRecording: bool
     start: Optional[MediaState] = Field(None, description="State before recording starts")
     recording: Optional[MediaState] = Field(None, description="State during recording")
     finish: Optional[MediaState] = Field(None, description="State after recording finishes")
     metaTitle: Optional[dict[str, str]] = Field(None, description="Optional meta title")
+
+    @model_validator(mode='before')
+    @classmethod
+    def build_default_state(cls, data: Any) -> Any:
+        if isinstance(data, dict) and 'title' in data and 'default' not in data:
+            data['default'] = {
+                'title': data.pop('title'),
+                'body1': data.pop('body1'),
+                'body2': data.pop('body2'),
+                'imageUrl': None
+            }
+        return data
 
 
 class TextContentItem(BaseModel):
@@ -111,15 +153,25 @@ class TextContentItem(BaseModel):
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="URL to text content")
     typeId: Optional[str] = Field(None, description="MIME type (e.g., 'text/plain', 'text/html')")
-    title: dict[str, str] = Field(..., description="Localized title")
-    body1: dict[str, str] = Field(..., description="Localized body text 1")
-    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    default: MediaState = Field(..., description="Default/initial state")
     options: list = Field(default_factory=list, description="Empty list for media items")
     isRecording: bool
     start: Optional[MediaState] = Field(None, description="State before recording starts")
     recording: Optional[MediaState] = Field(None, description="State during recording")
     finish: Optional[MediaState] = Field(None, description="State after recording finishes")
     metaTitle: Optional[dict[str, str]] = Field(None, description="Optional meta title")
+
+    @model_validator(mode='before')
+    @classmethod
+    def build_default_state(cls, data: Any) -> Any:
+        if isinstance(data, dict) and 'title' in data and 'default' not in data:
+            data['default'] = {
+                'title': data.pop('title'),
+                'body1': data.pop('body1'),
+                'body2': data.pop('body2'),
+                'imageUrl': None
+            }
+        return data
 
 
 class ImageMediaItem(BaseModel):
@@ -130,15 +182,25 @@ class ImageMediaItem(BaseModel):
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="Direct URL to image file")
     typeId: Optional[str] = Field(None, description="MIME type (e.g., 'image/jpeg', 'image/png')")
-    title: dict[str, str] = Field(..., description="Localized title")
-    body1: dict[str, str] = Field(..., description="Localized body text 1")
-    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    default: MediaState = Field(..., description="Default/initial state")
     options: list = Field(default_factory=list, description="Empty list for media items")
     isRecording: bool
     start: Optional[MediaState] = Field(None, description="State before recording starts")
     recording: Optional[MediaState] = Field(None, description="State during recording")
     finish: Optional[MediaState] = Field(None, description="State after recording finishes")
     metaTitle: Optional[dict[str, str]] = Field(None, description="Optional meta title")
+
+    @model_validator(mode='before')
+    @classmethod
+    def build_default_state(cls, data: Any) -> Any:
+        if isinstance(data, dict) and 'title' in data and 'default' not in data:
+            data['default'] = {
+                'title': data.pop('title'),
+                'body1': data.pop('body1'),
+                'body2': data.pop('body2'),
+                'imageUrl': None
+            }
+        return data
 
 
 class TextMediaItem(BaseModel):
@@ -149,15 +211,25 @@ class TextMediaItem(BaseModel):
     itemId: str = Field(..., description="UUID v4 of the item")
     url: Optional[str] = Field(None, description="Optional URL")
     typeId: Optional[str] = Field(None, description="MIME type")
-    title: dict[str, str] = Field(..., description="Localized title")
-    body1: dict[str, str] = Field(..., description="Localized body text 1")
-    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    default: MediaState = Field(..., description="Default/initial state")
     options: list = Field(default_factory=list, description="Empty list for media items")
     isRecording: bool
     metaTitle: Optional[dict[str, str]] = Field(None, description="Optional meta title")
     start: Optional[MediaState] = Field(None, description="State before recording starts")
     recording: Optional[MediaState] = Field(None, description="State during recording")
     finish: Optional[MediaState] = Field(None, description="State after recording finishes")
+
+    @model_validator(mode='before')
+    @classmethod
+    def build_default_state(cls, data: Any) -> Any:
+        if isinstance(data, dict) and 'title' in data and 'default' not in data:
+            data['default'] = {
+                'title': data.pop('title'),
+                'body1': data.pop('body1'),
+                'body2': data.pop('body2'),
+                'imageUrl': None
+            }
+        return data
 
 
 class ChoicePromptItem(BaseModel):
@@ -168,11 +240,21 @@ class ChoicePromptItem(BaseModel):
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="Image URL for the prompt")
     typeId: Optional[str] = Field(None, description="MIME type")
-    title: dict[str, str] = Field(..., description="Localized question text")
-    body1: dict[str, str] = Field(..., description="Localized body text 1")
-    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    default: MediaState = Field(..., description="Default/initial state")
     options: list[dict[str, str]] = Field(..., description="Localized answer options")
     isRecording: bool
+
+    @model_validator(mode='before')
+    @classmethod
+    def build_default_state(cls, data: Any) -> Any:
+        if isinstance(data, dict) and 'title' in data and 'default' not in data:
+            data['default'] = {
+                'title': data.pop('title'),
+                'body1': data.pop('body1'),
+                'body2': data.pop('body2'),
+                'imageUrl': data.get('url')  # Use url as imageUrl for prompts
+            }
+        return data
 
 
 class MultiChoicePromptItem(BaseModel):
@@ -183,9 +265,7 @@ class MultiChoicePromptItem(BaseModel):
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="Image URL for the prompt")
     typeId: Optional[str] = Field(None, description="MIME type")
-    title: dict[str, str] = Field(..., description="Localized question text")
-    body1: dict[str, str] = Field(..., description="Localized body text 1")
-    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    default: MediaState = Field(..., description="Default/initial state")
     options: list[dict[str, str]] = Field(..., description="Localized answer options")
     isRecording: bool
     otherAnswer: Optional[dict[str, str]] = Field(
@@ -194,6 +274,18 @@ class MultiChoicePromptItem(BaseModel):
     otherEntryLabel: Optional[dict[str, str]] = Field(
         None, description="Localized label for text entry field allowing custom answers"
     )
+
+    @model_validator(mode='before')
+    @classmethod
+    def build_default_state(cls, data: Any) -> Any:
+        if isinstance(data, dict) and 'title' in data and 'default' not in data:
+            data['default'] = {
+                'title': data.pop('title'),
+                'body1': data.pop('body1'),
+                'body2': data.pop('body2'),
+                'imageUrl': data.get('url')
+            }
+        return data
 
 
 class SuperChoicePromptItem(BaseModel):
@@ -204,14 +296,24 @@ class SuperChoicePromptItem(BaseModel):
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="Image URL for the prompt")
     typeId: Optional[str] = Field(None, description="MIME type")
-    title: dict[str, str] = Field(..., description="Localized question text")
-    body1: dict[str, str] = Field(..., description="Localized body text 1")
-    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    default: MediaState = Field(..., description="Default/initial state")
     options: list[dict[str, str]] = Field(..., description="Localized answer options")
     isRecording: bool
     otherEntryLabel: Optional[dict[str, str]] = Field(
         None, description="Localized label for text entry field allowing custom answers"
     )
+
+    @model_validator(mode='before')
+    @classmethod
+    def build_default_state(cls, data: Any) -> Any:
+        if isinstance(data, dict) and 'title' in data and 'default' not in data:
+            data['default'] = {
+                'title': data.pop('title'),
+                'body1': data.pop('body1'),
+                'body2': data.pop('body2'),
+                'imageUrl': data.get('url')
+            }
+        return data
 
 
 class TextInputItem(BaseModel):
@@ -222,18 +324,32 @@ class TextInputItem(BaseModel):
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="Image URL for the prompt")
     typeId: Optional[str] = Field(None, description="MIME type")
-    title: dict[str, str] = Field(..., description="Localized question text")
-    body1: dict[str, str] = Field(..., description="Localized body text 1")
-    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    default: MediaState = Field(..., description="Default/initial state")
     options: list = Field(default_factory=list, description="Empty list for text input")
     isRecording: bool
     metaTitle: Optional[dict[str, str]] = Field(None, description="Optional meta title")
 
+    @model_validator(mode='before')
+    @classmethod
+    def build_default_state(cls, data: Any) -> Any:
+        if isinstance(data, dict) and 'title' in data and 'default' not in data:
+            data['default'] = {
+                'title': data.pop('title'),
+                'body1': data.pop('body1'),
+                'body2': data.pop('body2'),
+                'imageUrl': data.get('url')
+            }
+        return data
+
 
 # Discriminated union of all schedule item types
-# Note: We cannot use a simple discriminator because both TextMediaItem and TextInputItem
-# have itemType="text" but different kind values. Pydantic will try them in order.
+# Note: We order prompts before media items so TextInputItem (prompt/text) is tried
+# before TextMediaItem (media/text). Pydantic will check kind+itemType combination.
 ScheduleItem = Union[
+    ChoicePromptItem,
+    MultiChoicePromptItem,
+    SuperChoicePromptItem,
+    TextInputItem,
     AudioMediaItem,
     VideoMediaItem,
     YleAudioMediaItem,
@@ -241,10 +357,6 @@ ScheduleItem = Union[
     TextContentItem,
     ImageMediaItem,
     TextMediaItem,
-    ChoicePromptItem,
-    MultiChoicePromptItem,
-    SuperChoicePromptItem,
-    TextInputItem,
 ]
 
 
