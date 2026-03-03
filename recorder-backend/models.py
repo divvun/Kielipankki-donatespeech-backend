@@ -4,8 +4,22 @@ Pydantic models for Kielipankki Recorder schedules and themes.
 Uses discriminated unions to handle the polymorphic Item types.
 """
 
-from typing import Annotated, Literal, Optional, Union
+from typing import Literal, Optional, Union
 from pydantic import BaseModel, Field
+
+
+# ============================================================================
+# Nested structures for media items
+# ============================================================================
+
+
+class MediaState(BaseModel):
+    """State information displayed during media playback/recording"""
+
+    title: dict[str, str] = Field(..., description="Localized title")
+    body1: dict[str, str] = Field(..., description="Localized body text 1")
+    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    imageUrl: Optional[str] = Field(None, description="Optional image URL for this state")
 
 
 # ============================================================================
@@ -16,131 +30,221 @@ from pydantic import BaseModel, Field
 class AudioMediaItem(BaseModel):
     """Audio media item with direct URL"""
 
+    kind: Literal["media"]
     itemType: Literal["audio"]
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="Direct URL to audio file")
-    typeId: str = Field(..., description="MIME type (e.g., 'audio/m4a', 'audio/mpeg')")
-    description: str
+    typeId: Optional[str] = Field(None, description="MIME type (e.g., 'audio/m4a', 'audio/mpeg')")
+    title: dict[str, str] = Field(..., description="Localized title")
+    body1: dict[str, str] = Field(..., description="Localized body text 1")
+    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    options: list = Field(default_factory=list, description="Empty list for media items")
     isRecording: bool
+    start: Optional[MediaState] = Field(None, description="State before recording starts")
+    recording: Optional[MediaState] = Field(None, description="State during recording")
+    finish: Optional[MediaState] = Field(None, description="State after recording finishes")
+    metaTitle: Optional[dict[str, str]] = Field(None, description="Optional meta title")
 
 
 class VideoMediaItem(BaseModel):
     """Video media item with direct URL"""
 
+    kind: Literal["media"]
     itemType: Literal["video"]
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="Direct URL to video file")
-    typeId: str = Field(..., description="MIME type (e.g., 'video/mp4', 'video/webm')")
-    description: str
+    typeId: Optional[str] = Field(None, description="MIME type (e.g., 'video/mp4', 'video/webm')")
+    title: dict[str, str] = Field(..., description="Localized title")
+    body1: dict[str, str] = Field(..., description="Localized body text 1")
+    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    options: list = Field(default_factory=list, description="Empty list for media items")
     isRecording: bool
+    start: Optional[MediaState] = Field(None, description="State before recording starts")
+    recording: Optional[MediaState] = Field(None, description="State during recording")
+    finish: Optional[MediaState] = Field(None, description="State after recording finishes")
+    metaTitle: Optional[dict[str, str]] = Field(None, description="Optional meta title")
 
 
 class YleAudioMediaItem(BaseModel):
     """YLE audio program item"""
 
+    kind: Literal["media"]
     itemType: Literal["yle-audio"]
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="YLE program ID")
-    description: str
+    typeId: Optional[str] = Field(None, description="MIME type")
+    title: dict[str, str] = Field(..., description="Localized title")
+    body1: dict[str, str] = Field(..., description="Localized body text 1")
+    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    options: list = Field(default_factory=list, description="Empty list for media items")
     isRecording: bool
+    start: Optional[MediaState] = Field(None, description="State before recording starts")
+    recording: Optional[MediaState] = Field(None, description="State during recording")
+    finish: Optional[MediaState] = Field(None, description="State after recording finishes")
+    metaTitle: Optional[dict[str, str]] = Field(None, description="Optional meta title")
 
 
 class YleVideoMediaItem(BaseModel):
     """YLE video program item"""
 
+    kind: Literal["media"]
     itemType: Literal["yle-video"]
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="YLE program ID")
-    description: str
+    typeId: Optional[str] = Field(None, description="MIME type")
+    title: dict[str, str] = Field(..., description="Localized title")
+    body1: dict[str, str] = Field(..., description="Localized body text 1")
+    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    options: list = Field(default_factory=list, description="Empty list for media items")
     isRecording: bool
+    start: Optional[MediaState] = Field(None, description="State before recording starts")
+    recording: Optional[MediaState] = Field(None, description="State during recording")
+    finish: Optional[MediaState] = Field(None, description="State after recording finishes")
+    metaTitle: Optional[dict[str, str]] = Field(None, description="Optional meta title")
 
 
 class TextContentItem(BaseModel):
     """Text content item"""
 
+    kind: Literal["media"]
     itemType: Literal["text-content"]
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="URL to text content")
-    typeId: Optional[str] = Field(
-        None, description="MIME type (e.g., 'text/plain', 'text/html')"
-    )
-    description: str
+    typeId: Optional[str] = Field(None, description="MIME type (e.g., 'text/plain', 'text/html')")
+    title: dict[str, str] = Field(..., description="Localized title")
+    body1: dict[str, str] = Field(..., description="Localized body text 1")
+    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    options: list = Field(default_factory=list, description="Empty list for media items")
     isRecording: bool
+    start: Optional[MediaState] = Field(None, description="State before recording starts")
+    recording: Optional[MediaState] = Field(None, description="State during recording")
+    finish: Optional[MediaState] = Field(None, description="State after recording finishes")
+    metaTitle: Optional[dict[str, str]] = Field(None, description="Optional meta title")
 
 
 class ImageMediaItem(BaseModel):
     """Image media item"""
 
+    kind: Literal["media"]
     itemType: Literal["image"]
     itemId: str = Field(..., description="UUID v4 of the item")
     url: str = Field(..., description="Direct URL to image file")
-    typeId: str = Field(..., description="MIME type (e.g., 'image/jpeg', 'image/png')")
-    description: str
+    typeId: Optional[str] = Field(None, description="MIME type (e.g., 'image/jpeg', 'image/png')")
+    title: dict[str, str] = Field(..., description="Localized title")
+    body1: dict[str, str] = Field(..., description="Localized body text 1")
+    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    options: list = Field(default_factory=list, description="Empty list for media items")
     isRecording: bool
+    start: Optional[MediaState] = Field(None, description="State before recording starts")
+    recording: Optional[MediaState] = Field(None, description="State during recording")
+    finish: Optional[MediaState] = Field(None, description="State after recording finishes")
+    metaTitle: Optional[dict[str, str]] = Field(None, description="Optional meta title")
+
+
+class TextMediaItem(BaseModel):
+    """Text media item for displaying text content"""
+
+    kind: Literal["media"]
+    itemType: Literal["text"]
+    itemId: str = Field(..., description="UUID v4 of the item")
+    url: Optional[str] = Field(None, description="Optional URL")
+    typeId: Optional[str] = Field(None, description="MIME type")
+    title: dict[str, str] = Field(..., description="Localized title")
+    body1: dict[str, str] = Field(..., description="Localized body text 1")
+    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    options: list = Field(default_factory=list, description="Empty list for media items")
+    isRecording: bool
+    metaTitle: Optional[dict[str, str]] = Field(None, description="Optional meta title")
+    start: Optional[MediaState] = Field(None, description="State before recording starts")
+    recording: Optional[MediaState] = Field(None, description="State during recording")
+    finish: Optional[MediaState] = Field(None, description="State after recording finishes")
 
 
 class ChoicePromptItem(BaseModel):
     """Single choice prompt item"""
 
+    kind: Literal["prompt"]
     itemType: Literal["choice"]
     itemId: str = Field(..., description="UUID v4 of the item")
-    description: str = Field(..., description="Question text shown to user")
-    options: list[str] = Field(..., description="Answer options to choose from")
+    url: str = Field(..., description="Image URL for the prompt")
+    typeId: Optional[str] = Field(None, description="MIME type")
+    title: dict[str, str] = Field(..., description="Localized question text")
+    body1: dict[str, str] = Field(..., description="Localized body text 1")
+    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    options: list[dict[str, str]] = Field(..., description="Localized answer options")
     isRecording: bool
 
 
 class MultiChoicePromptItem(BaseModel):
     """Multiple choice prompt item with optional text entry"""
 
+    kind: Literal["prompt"]
     itemType: Literal["multi-choice"]
     itemId: str = Field(..., description="UUID v4 of the item")
-    description: str = Field(..., description="Question text shown to user")
-    options: list[str] = Field(..., description="Multiple answer options")
+    url: str = Field(..., description="Image URL for the prompt")
+    typeId: Optional[str] = Field(None, description="MIME type")
+    title: dict[str, str] = Field(..., description="Localized question text")
+    body1: dict[str, str] = Field(..., description="Localized body text 1")
+    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    options: list[dict[str, str]] = Field(..., description="Localized answer options")
     isRecording: bool
-    otherEntryLabel: Optional[str] = Field(
-        None,
-        description="Label for text entry field allowing custom answers",
+    otherAnswer: Optional[dict[str, str]] = Field(
+        None, description="Localized label for 'other' option"
+    )
+    otherEntryLabel: Optional[dict[str, str]] = Field(
+        None, description="Localized label for text entry field allowing custom answers"
     )
 
 
 class SuperChoicePromptItem(BaseModel):
     """Super choice prompt item with optional text entry"""
 
+    kind: Literal["prompt"]
     itemType: Literal["super-choice"]
     itemId: str = Field(..., description="UUID v4 of the item")
-    description: str = Field(..., description="Question text shown to user")
-    options: list[str] = Field(..., description="Super choice answer options")
+    url: str = Field(..., description="Image URL for the prompt")
+    typeId: Optional[str] = Field(None, description="MIME type")
+    title: dict[str, str] = Field(..., description="Localized question text")
+    body1: dict[str, str] = Field(..., description="Localized body text 1")
+    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    options: list[dict[str, str]] = Field(..., description="Localized answer options")
     isRecording: bool
-    otherEntryLabel: Optional[str] = Field(
-        None,
-        description="Label for text entry field allowing custom answers",
+    otherEntryLabel: Optional[dict[str, str]] = Field(
+        None, description="Localized label for text entry field allowing custom answers"
     )
 
 
 class TextInputItem(BaseModel):
     """Text input prompt item"""
 
-    itemType: Literal["text-input"]
+    kind: Literal["prompt"]
+    itemType: Literal["text"]
     itemId: str = Field(..., description="UUID v4 of the item")
-    description: str = Field(..., description="Question text shown to user")
+    url: str = Field(..., description="Image URL for the prompt")
+    typeId: Optional[str] = Field(None, description="MIME type")
+    title: dict[str, str] = Field(..., description="Localized question text")
+    body1: dict[str, str] = Field(..., description="Localized body text 1")
+    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    options: list = Field(default_factory=list, description="Empty list for text input")
     isRecording: bool
+    metaTitle: Optional[dict[str, str]] = Field(None, description="Optional meta title")
 
 
-# Discriminated union of all schedule item types (discriminated by itemType)
-ScheduleItem = Annotated[
-    Union[
-        AudioMediaItem,
-        VideoMediaItem,
-        YleAudioMediaItem,
-        YleVideoMediaItem,
-        TextContentItem,
-        ImageMediaItem,
-        ChoicePromptItem,
-        MultiChoicePromptItem,
-        SuperChoicePromptItem,
-        TextInputItem,
-    ],
-    Field(discriminator="itemType"),
+# Discriminated union of all schedule item types
+# Note: We cannot use a simple discriminator because both TextMediaItem and TextInputItem
+# have itemType="text" but different kind values. Pydantic will try them in order.
+ScheduleItem = Union[
+    AudioMediaItem,
+    VideoMediaItem,
+    YleAudioMediaItem,
+    YleVideoMediaItem,
+    TextContentItem,
+    ImageMediaItem,
+    TextMediaItem,
+    ChoicePromptItem,
+    MultiChoicePromptItem,
+    SuperChoicePromptItem,
+    TextInputItem,
 ]
 
 
@@ -149,12 +253,25 @@ ScheduleItem = Annotated[
 # ============================================================================
 
 
+class ScheduleState(BaseModel):
+    """State information for schedule start/finish screens"""
+
+    title: dict[str, str] = Field(..., description="Localized title")
+    body1: dict[str, str] = Field(..., description="Localized body text 1")
+    body2: Optional[dict[str, str]] = Field(None, description="Localized body text 2")
+    imageUrl: Optional[str] = Field(None, description="Optional image URL")
+
+
 class Schedule(BaseModel):
     """Schedule (playlist) containing items to present to user"""
 
     id: Optional[str] = None  # Will be set from filename
     scheduleId: Optional[str] = None
-    description: str
+    title: Optional[dict[str, str]] = Field(None, description="Localized title")
+    body1: Optional[dict[str, str]] = Field(None, description="Localized body text 1")
+    body2: Optional[dict[str, str]] = Field(None, description="Localized body text 2")
+    start: Optional[ScheduleState] = Field(None, description="State shown at schedule start")
+    finish: Optional[ScheduleState] = Field(None, description="State shown at schedule finish")
     items: list[ScheduleItem]
 
 
