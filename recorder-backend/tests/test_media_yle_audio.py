@@ -6,10 +6,11 @@ from models import YleAudioMediaItem, ScheduleItem
 def test_media_item_yle_audio_valid():
     """Test valid MediaItem with kind=media and itemType=yle-audio."""
     item = YleAudioMediaItem(
+        kind="media",
         itemId="yle-audio-001",
         itemType="yle-audio",
         url="1-50000093",  # YLE Areena program identifier
-        description="YLE audio content",
+        default={"title": {"fi": "YLE audio", "nb": "YLE lyd"}, "body1": {"fi": "YLE sisältö", "nb": "YLE innhold"}, "body2": {"fi": "", "nb": ""}},
         isRecording=False,
     )
 
@@ -26,7 +27,9 @@ def test_media_item_yle_audio_in_schedule():
         "itemType": "yle-audio",
         "typeId": None,
         "url": "1-50000094",
-        "description": "Another YLE audio",
+        "title": {"fi": "YLE ohjelma", "nb": "YLE program"},
+        "body1": {"fi": "Toinen audio", "nb": "YLE lyd"},
+        "body2": {"fi": "", "nb": ""},
         "options": [],
         "isRecording": True,
     }
@@ -45,10 +48,11 @@ def test_media_item_yle_audio_various_ids():
 
     for yle_id in yle_ids:
         item = YleAudioMediaItem(
+            kind="media",
             itemId=f"yle-{yle_id}",
             itemType="yle-audio",
             url=yle_id,
-            description=f"YLE content {yle_id}",
+            default={"title": {"fi": "YLE audio", "nb": "YLE lyd"}, "body1": {"fi": f"YLE sisältö {yle_id}", "nb": f"YLE innhold {yle_id}"}, "body2": {"fi": "", "nb": ""}},
             isRecording=False,
         )
 

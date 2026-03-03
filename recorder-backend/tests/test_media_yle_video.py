@@ -6,10 +6,11 @@ from models import YleVideoMediaItem, ScheduleItem
 def test_media_item_yle_video_valid():
     """Test valid MediaItem with kind=media and itemType=yle-video."""
     item = YleVideoMediaItem(
+        kind="media",
         itemId="yle-video-001",
         itemType="yle-video",
         url="1-50000093",  # YLE Areena program identifier
-        description="YLE video content",
+        default={"title": {"fi": "YLE video", "nb": "YLE video"}, "body1": {"fi": "YLE videodata", "nb": "YLE videodata"}, "body2": {"fi": "", "nb": ""}},
         isRecording=True,
     )
 
@@ -26,7 +27,9 @@ def test_media_item_yle_video_in_schedule():
         "itemType": "yle-video",
         "typeId": None,
         "url": "1-50000094",
-        "description": "Another YLE video",
+        "title": {"fi": "YLE video", "nb": "YLE video"},
+        "body1": {"fi": "Toinen YLE video", "nb": "YLE video to"},
+        "body2": {"fi": "", "nb": ""},
         "options": [],
         "isRecording": False,
     }
@@ -45,10 +48,11 @@ def test_media_item_yle_video_various_ids():
 
     for yle_id in yle_ids:
         item = YleVideoMediaItem(
+            kind="media",
             itemId=f"yle-vid-{yle_id}",
             itemType="yle-video",
             url=yle_id,
-            description=f"YLE video {yle_id}",
+            default={"title": {"fi": "YLE video", "nb": "YLE video"}, "body1": {"fi": f"YLE video {yle_id}", "nb": f"YLE video {yle_id}"}, "body2": {"fi": "", "nb": ""}},
             isRecording=True,
         )
 

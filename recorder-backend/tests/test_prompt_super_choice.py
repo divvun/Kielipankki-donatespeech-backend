@@ -6,9 +6,10 @@ from models import SuperChoicePromptItem, ScheduleItem
 def test_prompt_item_super_choice_valid():
     """Test valid PromptItem with kind=prompt and itemType=super-choice."""
     item = SuperChoicePromptItem(
+        kind="prompt",
         itemId="super-choice-001",
         itemType="super-choice",
-        description="Choose one or enter text",
+        default={"title": {"fi": "Supervalinta", "nb": "Supervalg"}, "body1": {"fi": "Valitse tai kirjoita", "nb": "Velg eller skriv"}, "body2": {"fi": "", "nb": ""}},
         options=["Predefined 1", "Predefined 2", "Predefined 3"],
         isRecording=True,
         otherEntryLabel="Or type your own",
@@ -27,7 +28,9 @@ def test_prompt_item_super_choice_in_schedule():
         "itemType": "super-choice",
         "typeId": None,
         "url": None,
-        "description": "Select from list or add custom value",
+        "title": {"fi": "Kieli", "nb": "Språk"},
+        "body1": {"fi": "Valitse listasta tai lisää", "nb": "Velg fra liste eller legg til"},
+        "body2": {"fi": "", "nb": ""},
         "options": ["English", "Finnish", "Swedish"],
         "isRecording": False,
         "otherEntryLabel": "Type language",
@@ -44,9 +47,10 @@ def test_prompt_item_super_choice_in_schedule():
 def test_prompt_item_super_choice_without_other_entry():
     """Test PromptItem super-choice without otherEntryLabel (defaults to None)."""
     item = SuperChoicePromptItem(
+        kind="prompt",
         itemId="super-choice-no-label",
         itemType="super-choice",
-        description="Super-choice without custom entry field",
+        default={"title": {"fi": "Valinta", "nb": "Valg"}, "body1": {"fi": "Ei mukautettua kenttää", "nb": "Ingen tilpasset felt"}, "body2": {"fi": "", "nb": ""}},
         options=["Option A", "Option B"],
         isRecording=True,
     )
@@ -60,9 +64,10 @@ def test_prompt_item_super_choice_with_many_options():
     options = [f"Item {i}" for i in range(1, 31)]
 
     item = SuperChoicePromptItem(
+        kind="prompt",
         itemId="super-choice-many",
         itemType="super-choice",
-        description="Select from 30 items or add custom",
+        default={"title": {"fi": "Kohde", "nb": "Gjenstand"}, "body1": {"fi": "Valitse 30 kohteesta tai lisää", "nb": "Velg fra 30 elementer eller legg til"}, "body2": {"fi": "", "nb": ""}},
         options=options,
         isRecording=False,
         otherEntryLabel="Add custom item",

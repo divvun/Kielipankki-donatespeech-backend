@@ -6,11 +6,12 @@ from models import AudioMediaItem, ScheduleItem
 def test_media_item_audio_valid():
     """Test valid MediaItem with kind=media and itemType=audio."""
     item = AudioMediaItem(
+        kind="media",
         itemId="ce3c6012-25f0-4c69-a0ad-c5dc8e41b795",
         itemType="audio",
         typeId="audio/m4a",
         url="https://example.com/audio.m4a",
-        description="Audio description",
+        default={"title": {"fi": "Ääni", "nb": "Lyd"}, "body1": {"fi": "Äänikuvaus", "nb": "Lydbeskrivelse"}, "body2": {"fi": "", "nb": ""}},
         isRecording=True,
     )
 
@@ -23,11 +24,14 @@ def test_media_item_audio_valid():
 def test_media_item_audio_in_schedule():
     """Test MediaItem audio as ScheduleItem discriminated union."""
     item_dict = {
+        "kind": "media",
         "itemId": "ce3c6012-25f0-4c69-a0ad-c5dc8e41b795",
         "itemType": "audio",
         "typeId": "audio/m4a",
         "url": "https://example.com/audio.m4a",
-        "description": "Audio description",
+        "title": {"fi": "Ääni", "nb": "Lyd"},
+        "body1": {"fi": "Kuvaus", "nb": "Beskrivelse"},
+        "body2": {"fi": "", "nb": ""},
         "options": [],
         "isRecording": True,
     }
@@ -42,11 +46,12 @@ def test_media_item_audio_in_schedule():
 def test_media_item_audio_minimal():
     """Test MediaItem audio with minimal required fields."""
     item = AudioMediaItem(
+        kind="media",
         itemId="ce3c6012-25f0-4c69-a0ad-c5dc8e41b795",
         itemType="audio",
         typeId="audio/m4a",
         url="audio.m4a",
-        description="Minimal audio",
+        default={"title": {"fi": "Ääni", "nb": "Lyd"}, "body1": {"fi": "Minimaalinen", "nb": "Minimal"}, "body2": {"fi": "", "nb": ""}},
         isRecording=False,
     )
 

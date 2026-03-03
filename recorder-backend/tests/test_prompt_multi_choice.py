@@ -6,9 +6,10 @@ from models import MultiChoicePromptItem, ScheduleItem
 def test_prompt_item_multi_choice_valid():
     """Test valid PromptItem with kind=prompt and itemType=multi-choice."""
     item = MultiChoicePromptItem(
+        kind="prompt",
         itemId="multi-choice-001",
         itemType="multi-choice",
-        description="Select multiple options",
+        default={"title": {"fi": "Monivalinta", "nb": "Flervalg"}, "body1": {"fi": "Valitse useita", "nb": "Velg flere"}, "body2": {"fi": "", "nb": ""}},
         options=["Option A", "Option B", "Option C"],
         isRecording=False,
         otherEntryLabel="Other",
@@ -27,7 +28,9 @@ def test_prompt_item_multi_choice_in_schedule():
         "itemType": "multi-choice",
         "typeId": None,
         "url": None,
-        "description": "Select all that apply",
+        "title": {"fi": "Mediat", "nb": "Medier"},
+        "body1": {"fi": "Valitse kaikki sopivat", "nb": "Velg alle som passer"},
+        "body2": {"fi": "", "nb": ""},
         "options": ["TV", "Radio", "Podcast", "Streaming"],
         "isRecording": True,
         "otherEntryLabel": "Other source",
@@ -44,9 +47,10 @@ def test_prompt_item_multi_choice_in_schedule():
 def test_prompt_item_multi_choice_without_other_entry():
     """Test PromptItem multi-choice without otherEntryLabel (defaults to None)."""
     item = MultiChoicePromptItem(
+        kind="prompt",
         itemId="multi-choice-no-other",
         itemType="multi-choice",
-        description="Multi-choice without text entry",
+        default={"title": {"fi": "Monivalinta", "nb": "Flervalg"}, "body1": {"fi": "Ei tekstisyöttöä", "nb": "Ingen tekstinngang"}, "body2": {"fi": "", "nb": ""}},
         options=["Opt 1", "Opt 2"],
         isRecording=False,
     )
@@ -60,9 +64,10 @@ def test_prompt_item_multi_choice_many_options():
     options = [f"Category {i}" for i in range(1, 21)]
 
     item = MultiChoicePromptItem(
+        kind="prompt",
         itemId="multi-choice-many",
         itemType="multi-choice",
-        description="Select multiple categories",
+        default={"title": {"fi": "Kategoriat", "nb": "Kategorier"}, "body1": {"fi": "Valitse kategorioita", "nb": "Velg kategorier"}, "body2": {"fi": "", "nb": ""}},
         options=options,
         isRecording=True,
         otherEntryLabel="Specify other",
