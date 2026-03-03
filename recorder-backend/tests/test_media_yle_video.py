@@ -10,7 +10,11 @@ def test_media_item_yle_video_valid():
         itemId="yle-video-001",
         itemType="yle-video",
         url="1-50000093",  # YLE Areena program identifier
-        default={"title": {"fi": "YLE video", "nb": "YLE video"}, "body1": {"fi": "YLE videodata", "nb": "YLE videodata"}, "body2": {"fi": "", "nb": ""}},
+        default={
+            "title": {"fi": "YLE video", "nb": "YLE video"},
+            "body1": {"fi": "YLE videodata", "nb": "YLE videodata"},
+            "body2": {"fi": "", "nb": ""},
+        },
         isRecording=True,
     )
 
@@ -52,7 +56,11 @@ def test_media_item_yle_video_various_ids():
             itemId=f"yle-vid-{yle_id}",
             itemType="yle-video",
             url=yle_id,
-            default={"title": {"fi": "YLE video", "nb": "YLE video"}, "body1": {"fi": f"YLE video {yle_id}", "nb": f"YLE video {yle_id}"}, "body2": {"fi": "", "nb": ""}},
+            default={
+                "title": {"fi": "YLE video", "nb": "YLE video"},
+                "body1": {"fi": f"YLE video {yle_id}", "nb": f"YLE video {yle_id}"},
+                "body2": {"fi": "", "nb": ""},
+            },
             isRecording=True,
         )
 

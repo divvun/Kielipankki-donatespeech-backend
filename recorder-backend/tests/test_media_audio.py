@@ -11,7 +11,11 @@ def test_media_item_audio_valid():
         itemType="audio",
         typeId="audio/m4a",
         url="https://example.com/audio.m4a",
-        default={"title": {"fi": "Ääni", "nb": "Lyd"}, "body1": {"fi": "Äänikuvaus", "nb": "Lydbeskrivelse"}, "body2": {"fi": "", "nb": ""}},
+        default={
+            "title": {"fi": "Ääni", "nb": "Lyd"},
+            "body1": {"fi": "Äänikuvaus", "nb": "Lydbeskrivelse"},
+            "body2": {"fi": "", "nb": ""},
+        },
         isRecording=True,
     )
 
@@ -51,7 +55,11 @@ def test_media_item_audio_minimal():
         itemType="audio",
         typeId="audio/m4a",
         url="audio.m4a",
-        default={"title": {"fi": "Ääni", "nb": "Lyd"}, "body1": {"fi": "Minimaalinen", "nb": "Minimal"}, "body2": {"fi": "", "nb": ""}},
+        default={
+            "title": {"fi": "Ääni", "nb": "Lyd"},
+            "body1": {"fi": "Minimaalinen", "nb": "Minimal"},
+            "body2": {"fi": "", "nb": ""},
+        },
         isRecording=False,
     )
 
