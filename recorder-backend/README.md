@@ -104,6 +104,27 @@ When production is ready:
 - [uv](https://github.com/astral-sh/uv) (recommended for fast package
   management)
 
+### Development Tools
+
+This project uses **uv** as the package manager for Python dependencies:
+
+- **Package Manager**: `uv` (fast, modern Python package manager)
+- **Python Binary**: `.venv/bin/python` (virtual environment created by uv)
+- **Install Dependencies**: `uv sync`
+- **Run Scripts**: `uv run python <script.py>` or activate venv first
+
+To activate the virtual environment:
+```bash
+source .venv/bin/activate  # macOS/Linux
+.venv\Scripts\activate     # Windows
+```
+
+Once activated, use Python directly:
+```bash
+python test_models.py
+pytest
+```
+
 ### Setup
 
 #### Start local environment with Azurite
