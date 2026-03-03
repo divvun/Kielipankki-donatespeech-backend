@@ -6,9 +6,10 @@ from models import ChoicePromptItem, ScheduleItem
 def test_prompt_item_choice_valid():
     """Test valid PromptItem with kind=prompt and itemType=choice."""
     item = ChoicePromptItem(
+        kind="prompt",
         itemId="choice-001",
         itemType="choice",
-        description="Choose one option",
+        default={"title": {"fi": "Valitse", "nb": "Velg"}, "body1": {"fi": "Valitse yksi vaihtoehto", "nb": "Velg ett alternativ"}, "body2": {"fi": "", "nb": ""}},
         options=["Option 1", "Option 2", "Option 3"],
         isRecording=False,
     )
@@ -25,7 +26,9 @@ def test_prompt_item_choice_in_schedule():
         "itemType": "choice",
         "typeId": None,
         "url": None,
-        "description": "Select your age group",
+        "title": {"fi": "Ikäryhmä", "nb": "Aldersgruppe"},
+        "body1": {"fi": "Valitse ikäryhmäsi", "nb": "Velg din aldersgruppe"},
+        "body2": {"fi": "", "nb": ""},
         "options": ["18-25", "26-40", "41-60", "60+"],
         "isRecording": True,
     }
@@ -41,9 +44,10 @@ def test_prompt_item_choice_in_schedule():
 def test_prompt_item_choice_single_option():
     """Test PromptItem choice with single option."""
     item = ChoicePromptItem(
+        kind="prompt",
         itemId="choice-single",
         itemType="choice",
-        description="Continue?",
+        default={"title": {"fi": "Jatka", "nb": "Fortsett"}, "body1": {"fi": "Haluatko jatkaa?", "nb": "Vil du fortsette?"}, "body2": {"fi": "", "nb": ""}},
         options=["Yes"],
         isRecording=False,
     )
@@ -58,9 +62,10 @@ def test_prompt_item_choice_many_options():
     options = [f"Option {i}" for i in range(1, 101)]
 
     item = ChoicePromptItem(
+        kind="prompt",
         itemId="choice-many",
         itemType="choice",
-        description="Choose from 100 options",
+        default={"title": {"fi": "Valinta", "nb": "Valg"}, "body1": {"fi": "Valitse 100 vaihtoehdosta", "nb": "Velg fra 100 alternativer"}, "body2": {"fi": "", "nb": ""}},
         options=options,
         isRecording=True,
     )
