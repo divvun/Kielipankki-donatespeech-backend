@@ -9,7 +9,11 @@ def test_prompt_item_text_valid():
         kind="prompt",
         itemId="text-prompt-001",
         itemType="text",
-        default={"title": {"fi": "Tekstisyöte", "nb": "Tekstinngang"}, "body1": {"fi": "Syötä vastauksesi", "nb": "Skriv inn svaret ditt"}, "body2": {"fi": "", "nb": ""}},
+        default={
+            "title": {"fi": "Tekstisyöte", "nb": "Tekstinngang"},
+            "body1": {"fi": "Syötä vastauksesi", "nb": "Skriv inn svaret ditt"},
+            "body2": {"fi": "", "nb": ""},
+        },
         isRecording=True,
     )
 
@@ -45,7 +49,11 @@ def test_prompt_item_text_no_options():
         kind="prompt",
         itemId="text-prompt-no-opts",
         itemType="text",
-        default={"title": {"fi": "Vapaa teksti", "nb": "Fri tekst"}, "body1": {"fi": "Vapaa tekstisyöte", "nb": "Fri tekstinngang"}, "body2": {"fi": "", "nb": ""}},
+        default={
+            "title": {"fi": "Vapaa teksti", "nb": "Fri tekst"},
+            "body1": {"fi": "Vapaa tekstisyöte", "nb": "Fri tekstinngang"},
+            "body2": {"fi": "", "nb": ""},
+        },
         isRecording=True,
     )
 
@@ -58,7 +66,14 @@ def test_prompt_item_text_no_other_entry_label():
         kind="prompt",
         itemId="text-prompt-basic",
         itemType="text",
-        default={"title": {"fi": "Kysymys", "nb": "Spørsmål"}, "body1": {"fi": "Yksinkertainen tekstikysymys", "nb": "Enkelt tekstspørsmål"}, "body2": {"fi": "", "nb": ""}},
+        default={
+            "title": {"fi": "Kysymys", "nb": "Spørsmål"},
+            "body1": {
+                "fi": "Yksinkertainen tekstikysymys",
+                "nb": "Enkelt tekstspørsmål",
+            },
+            "body2": {"fi": "", "nb": ""},
+        },
         isRecording=False,
     )
 
@@ -84,7 +99,11 @@ def test_prompt_item_text_with_long_description():
         kind="prompt",
         itemId="text-prompt-long",
         itemType="text",
-        default={"title": {"fi": "Kokemus", "nb": "Opplevelse"}, "body1": {"fi": long_desc_fi, "nb": long_desc_nb}, "body2": {"fi": "", "nb": ""}},
+        default={
+            "title": {"fi": "Kokemus", "nb": "Opplevelse"},
+            "body1": {"fi": long_desc_fi, "nb": long_desc_nb},
+            "body2": {"fi": "", "nb": ""},
+        },
         isRecording=True,
     )
 

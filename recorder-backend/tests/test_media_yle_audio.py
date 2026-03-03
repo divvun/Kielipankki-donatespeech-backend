@@ -10,7 +10,11 @@ def test_media_item_yle_audio_valid():
         itemId="yle-audio-001",
         itemType="yle-audio",
         url="1-50000093",  # YLE Areena program identifier
-        default={"title": {"fi": "YLE audio", "nb": "YLE lyd"}, "body1": {"fi": "YLE sisältö", "nb": "YLE innhold"}, "body2": {"fi": "", "nb": ""}},
+        default={
+            "title": {"fi": "YLE audio", "nb": "YLE lyd"},
+            "body1": {"fi": "YLE sisältö", "nb": "YLE innhold"},
+            "body2": {"fi": "", "nb": ""},
+        },
         isRecording=False,
     )
 
@@ -52,7 +56,11 @@ def test_media_item_yle_audio_various_ids():
             itemId=f"yle-{yle_id}",
             itemType="yle-audio",
             url=yle_id,
-            default={"title": {"fi": "YLE audio", "nb": "YLE lyd"}, "body1": {"fi": f"YLE sisältö {yle_id}", "nb": f"YLE innhold {yle_id}"}, "body2": {"fi": "", "nb": ""}},
+            default={
+                "title": {"fi": "YLE audio", "nb": "YLE lyd"},
+                "body1": {"fi": f"YLE sisältö {yle_id}", "nb": f"YLE innhold {yle_id}"},
+                "body2": {"fi": "", "nb": ""},
+            },
             isRecording=False,
         )
 

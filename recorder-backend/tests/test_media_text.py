@@ -11,7 +11,11 @@ def test_media_item_text_valid():
         itemType="text-content",
         typeId="text/plain",
         url="https://example.com/text-content.txt",
-        default={"title": {"fi": "Teksti", "nb": "Tekst"}, "body1": {"fi": "Tekstisisältö", "nb": "Tekstinnhold"}, "body2": {"fi": "", "nb": ""}},
+        default={
+            "title": {"fi": "Teksti", "nb": "Tekst"},
+            "body1": {"fi": "Tekstisisältö", "nb": "Tekstinnhold"},
+            "body2": {"fi": "", "nb": ""},
+        },
         isRecording=False,
     )
 
@@ -60,7 +64,11 @@ def test_media_item_text_various_formats():
             itemType="text-content",
             typeId=mime_type,
             url=f"content-{mime_type}.file",
-            default={"title": {"fi": "Teksti", "nb": "Tekst"}, "body1": {"fi": description, "nb": description}, "body2": {"fi": "", "nb": ""}},
+            default={
+                "title": {"fi": "Teksti", "nb": "Tekst"},
+                "body1": {"fi": description, "nb": description},
+                "body2": {"fi": "", "nb": ""},
+            },
             isRecording=False,
         )
 

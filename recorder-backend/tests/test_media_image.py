@@ -1,6 +1,6 @@
 """Test discriminated union: MediaItem with itemType=image."""
 
-from models import ImageMediaItem, ScheduleItem
+from models import ImageMediaItem, ScheduleItem, MediaState
 
 
 def test_media_item_image_valid():
@@ -11,7 +11,11 @@ def test_media_item_image_valid():
         itemType="image",
         typeId="image/jpeg",
         url="https://example.com/photo.jpg",
-        default={"title": {"fi": "Kuva", "nb": "Bilde"}, "body1": {"fi": "Kuvaus", "nb": "Beskrivelse"}, "body2": {"fi": "", "nb": ""}},
+        default=MediaState(
+            title={"fi": "Kuva", "nb": "Bilde"},
+            body1={"fi": "Kuvaus", "nb": "Beskrivelse"},
+            body2={"fi": "", "nb": ""},
+        ),
         isRecording=False,
     )
 
@@ -22,7 +26,7 @@ def test_media_item_image_valid():
     assert item.default.title["fi"] == "Kuva"
 
 
-def test_media_item_image_in_schedule():
+def test_media_item_image_in_schedule() -> None:
     """Test MediaItem image as ScheduleItem discriminated union."""
     item_dict = {
         "kind": "media",
@@ -30,15 +34,17 @@ def test_media_item_image_in_schedule():
         "itemType": "image",
         "typeId": "image/png",
         "url": "https://example.com/screenshot.png",
-        "title": {"fi": "Ruutukaappaus", "nb": "Skjermbilde"},
-        "body1": {"fi": "PNG kuva", "nb": "PNG bilde"},
-        "body2": {"fi": "", "nb": ""},
+        "default": {
+            "title": {"fi": "Ruutukaappaus", "nb": "Skjermbilde"},
+            "body1": {"fi": "PNG kuva", "nb": "PNG bilde"},
+            "body2": {"fi": "", "nb": ""},
+        },
         "options": [],
         "isRecording": True,
     }
 
     # Parse as ScheduleItem union
-    schedule_item: ScheduleItem = ImageMediaItem(**item_dict)
+    schedule_item: ScheduleItem = ImageMediaItem(**item_dict)  # ty:ignore[invalid-argument-type]
 
     assert isinstance(schedule_item, ImageMediaItem)
     assert schedule_item.itemType == "image"
@@ -60,12 +66,19 @@ def test_media_item_image_various_formats():
 
     for mime_type in formats:
         item = ImageMediaItem(
-            kind=\"media\",
-            itemId=f\"image-{mime_type.split('/')[1]}\",
-            itemType=\"image\",
+            kind="media",
+            itemId=f"image-{mime_type.split('/')[1]}",
+            itemType="image",
             typeId=mime_type,
-            url=f\"image.{mime_type.split('/')[1]}\",
-            default={\"title\": {\"fi\": \"Kuva\", \"nb\": \"Bilde\"}, \"body1\": {\"fi\": f\"Kuva {mime_type} muodossa\", \"nb\": f\"Bilde i {mime_type} format\"}, \"body2\": {\"fi\": \"\", \"nb\": \"\"}},
+            url=f"image.{mime_type.split('/')[1]}",
+            default=MediaState(
+                title={"fi": "Kuva", "nb": "Bilde"},
+                body1={
+                    "fi": f"Kuva {mime_type} muodossa",
+                    "nb": f"Bilde i {mime_type} format",
+                },
+                body2={"fi": "", "nb": ""},
+            ),
             isRecording=False,
         )
 

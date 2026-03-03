@@ -9,7 +9,11 @@ def test_prompt_item_choice_valid():
         kind="prompt",
         itemId="choice-001",
         itemType="choice",
-        default={"title": {"fi": "Valitse", "nb": "Velg"}, "body1": {"fi": "Valitse yksi vaihtoehto", "nb": "Velg ett alternativ"}, "body2": {"fi": "", "nb": ""}},
+        default={
+            "title": {"fi": "Valitse", "nb": "Velg"},
+            "body1": {"fi": "Valitse yksi vaihtoehto", "nb": "Velg ett alternativ"},
+            "body2": {"fi": "", "nb": ""},
+        },
         options=["Option 1", "Option 2", "Option 3"],
         isRecording=False,
     )
@@ -47,7 +51,11 @@ def test_prompt_item_choice_single_option():
         kind="prompt",
         itemId="choice-single",
         itemType="choice",
-        default={"title": {"fi": "Jatka", "nb": "Fortsett"}, "body1": {"fi": "Haluatko jatkaa?", "nb": "Vil du fortsette?"}, "body2": {"fi": "", "nb": ""}},
+        default={
+            "title": {"fi": "Jatka", "nb": "Fortsett"},
+            "body1": {"fi": "Haluatko jatkaa?", "nb": "Vil du fortsette?"},
+            "body2": {"fi": "", "nb": ""},
+        },
         options=["Yes"],
         isRecording=False,
     )
@@ -65,7 +73,14 @@ def test_prompt_item_choice_many_options():
         kind="prompt",
         itemId="choice-many",
         itemType="choice",
-        default={"title": {"fi": "Valinta", "nb": "Valg"}, "body1": {"fi": "Valitse 100 vaihtoehdosta", "nb": "Velg fra 100 alternativer"}, "body2": {"fi": "", "nb": ""}},
+        default={
+            "title": {"fi": "Valinta", "nb": "Valg"},
+            "body1": {
+                "fi": "Valitse 100 vaihtoehdosta",
+                "nb": "Velg fra 100 alternativer",
+            },
+            "body2": {"fi": "", "nb": ""},
+        },
         options=options,
         isRecording=True,
     )

@@ -11,7 +11,11 @@ def test_media_item_video_valid():
         itemType="video",
         typeId="video/mp4",
         url="https://example.com/video.mp4",
-        default={"title": {"fi": "Video", "nb": "Video"}, "body1": {"fi": "Videokuvaus", "nb": "Videobeskrivelse"}, "body2": {"fi": "", "nb": ""}},
+        default={
+            "title": {"fi": "Video", "nb": "Video"},
+            "body1": {"fi": "Videokuvaus", "nb": "Videobeskrivelse"},
+            "body2": {"fi": "", "nb": ""},
+        },
         isRecording=True,
     )
 
@@ -55,7 +59,11 @@ def test_media_item_video_various_codecs():
             itemType="video",
             typeId=mime_type,
             url="video.file",
-            default={"title": {"fi": "Video", "nb": "Video"}, "body1": {"fi": f"Video {mime_type}", "nb": f"Video {mime_type}"}, "body2": {"fi": "", "nb": ""}},
+            default={
+                "title": {"fi": "Video", "nb": "Video"},
+                "body1": {"fi": f"Video {mime_type}", "nb": f"Video {mime_type}"},
+                "body2": {"fi": "", "nb": ""},
+            },
             isRecording=False,
         )
 

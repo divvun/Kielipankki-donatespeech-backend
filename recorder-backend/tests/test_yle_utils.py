@@ -21,23 +21,23 @@ class TestDecryptYleUrl:
         """Test successful decryption of YLE URL."""
         # This is a simplified test - in reality, you'd need a properly encrypted URL
         # For this test, we'll mock the entire AES decryption process
-        
+
         # Create a mock encrypted URL (base64 encoded IV + message)
         iv = b"1234567890123456"  # 16 bytes
         encrypted_msg = b"encrypted_content_here_padded_to_16_multiple!!!"
-        
+
         # Combine IV and encrypted message, then base64 encode
         combined = iv + encrypted_msg
         crypted_url = base64.b64encode(combined).decode()
-        
+
         with patch("yle_utils.AES") as mock_aes:
             # Mock the AES cipher
             mock_cipher = MagicMock()
             mock_cipher.decrypt.return_value = b"https://yle.example.com/media.m3u8    "
             mock_aes.new.return_value = mock_cipher
-            
+
             result = decrypt_yle_url(crypted_url)
-            
+
             assert result == "https://yle.example.com/media.m3u8"
             mock_aes.new.assert_called_once()
 
@@ -65,15 +65,15 @@ class TestGetMediaUrl:
                 ]
             }
         }
-        
+
         mock_response = MagicMock()
         mock_response.read.return_value = json.dumps(program_response).encode()
         mock_response.__enter__.return_value = mock_response
         mock_response.__exit__.return_value = None
         mock_urlopen.return_value = mock_response
-        
+
         result = get_media_url("1-50000093")
-        
+
         # Verify it returns the correct media URL format
         assert "program_id=1-50000093" in result
         assert "media_id=test-media-id-123" in result
@@ -97,13 +97,13 @@ class TestGetMediaUrl:
                 ]
             }
         }
-        
+
         mock_response = MagicMock()
         mock_response.read.return_value = json.dumps(program_response).encode()
         mock_response.__enter__.return_value = mock_response
         mock_response.__exit__.return_value = None
         mock_urlopen.return_value = mock_response
-        
+
         # Should raise StopIteration when no current publication found
         with pytest.raises(StopIteration):
             get_media_url("1-50000093")
@@ -121,23 +121,21 @@ class TestMapYleContent:
         """Test successful mapping of YLE program ID to decrypted URL."""
         # Mock get_media_url to return a URL
         mock_get_media_url.return_value = "https://api.yle.fi/media/playouts.json?..."
-        
+
         # Mock the media playouts API response
-        media_response = {
-            "data": [{"url": "base64_encrypted_url_here"}]
-        }
-        
+        media_response = {"data": [{"url": "base64_encrypted_url_here"}]}
+
         mock_response = MagicMock()
         mock_response.read.return_value = json.dumps(media_response).encode()
         mock_response.__enter__.return_value = mock_response
         mock_response.__exit__.return_value = None
         mock_urlopen.return_value = mock_response
-        
+
         # Mock decryption
         mock_decrypt.return_value = "https://yle-vod.akamaized.net/media.m3u8"
-        
+
         result = map_yle_content("1-50000093")
-        
+
         assert result == "https://yle-vod.akamaized.net/media.m3u8"
         mock_get_media_url.assert_called_once_with("1-50000093")
         mock_decrypt.assert_called_once_with("base64_encrypted_url_here")
@@ -147,7 +145,7 @@ class TestMapYleContent:
         """Test error handling when YLE API fails."""
         # Mock get_media_url to raise an exception
         mock_get_media_url.side_effect = Exception("API Error")
-        
+
         with pytest.raises(FileProcessingError):
             map_yle_content("1-50000093")
 
@@ -159,11 +157,12 @@ class TestMapYleContent:
     ):
         """Test handling of network timeouts."""
         mock_get_media_url.return_value = "https://api.yle.fi/media/playouts.json"
-        
+
         # Simulate a timeout
         import urllib.error
+
         mock_urlopen.side_effect = urllib.error.URLError("Timeout")
-        
+
         with pytest.raises(FileProcessingError):
             map_yle_content("1-50000093")
 
@@ -175,14 +174,14 @@ class TestMapYleContent:
     ):
         """Test handling of invalid API response."""
         mock_get_media_url.return_value = "https://api.yle.fi/media/playouts.json"
-        
+
         # Mock invalid JSON response
         mock_response = MagicMock()
         mock_response.read.return_value = b"invalid json"
         mock_response.__enter__.return_value = mock_response
         mock_response.__exit__.return_value = None
         mock_urlopen.return_value = mock_response
-        
+
         with pytest.raises(FileProcessingError):
             map_yle_content("1-50000093")
 
@@ -198,7 +197,7 @@ class TestYleIntegration:
     def test_full_yle_flow(self, mock_aes, mock_urlopen):
         """Test complete flow from program ID to decrypted URL."""
         # Setup mocks for the entire flow
-        
+
         # 1. Mock program info API response
         program_response = {
             "data": {
@@ -210,18 +209,16 @@ class TestYleIntegration:
                 ]
             }
         }
-        
+
         # 2. Mock media playouts API response
-        media_response = {
-            "data": [{"url": base64.b64encode(b"0" * 32).decode()}]
-        }
-        
+        media_response = {"data": [{"url": base64.b64encode(b"0" * 32).decode()}]}
+
         # Setup urlopen to return different responses for different calls
         responses = [
             json.dumps(program_response).encode(),
             json.dumps(media_response).encode(),
         ]
-        
+
         mock_response_objs = []
         for response_data in responses:
             mock_resp = MagicMock()
@@ -229,16 +226,16 @@ class TestYleIntegration:
             mock_resp.__enter__.return_value = mock_resp
             mock_resp.__exit__.return_value = None
             mock_response_objs.append(mock_resp)
-        
+
         mock_urlopen.side_effect = mock_response_objs
-        
+
         # 3. Mock AES decryption
         mock_cipher = MagicMock()
         mock_cipher.decrypt.return_value = b"https://decrypted.url/media.m3u8      "
         mock_aes.new.return_value = mock_cipher
-        
+
         # Execute the full flow
         result = map_yle_content("1-50000093")
-        
+
         assert result == "https://decrypted.url/media.m3u8"
         assert mock_urlopen.call_count == 2  # Called twice: program info + media URL

@@ -71,7 +71,6 @@ def valid_upload_request_with_session(valid_client_id, valid_session_id):
 class TestInitUpload:
     """Tests for POST /v1/upload endpoint."""
 
-    
     @patch("main.generate_upload_sas_url")
     @patch("main.store_metadata")
     async def test_init_upload_success(
@@ -79,7 +78,9 @@ class TestInitUpload:
     ):
         """Test successful upload initialization."""
         mock_store_metadata.return_value = None
-        mock_generate_sas.return_value = "https://storage.blob.core.windows.net/test?sas=token"
+        mock_generate_sas.return_value = (
+            "https://storage.blob.core.windows.net/test?sas=token"
+        )
 
         transport = ASGITransport(app=app)
         async with AsyncClient(transport=transport, base_url="http://test") as client:
@@ -91,7 +92,6 @@ class TestInitUpload:
         mock_store_metadata.assert_called_once()
         mock_generate_sas.assert_called_once()
 
-    
     @patch("main.generate_upload_sas_url")
     @patch("main.store_metadata")
     async def test_init_upload_with_session_id(
@@ -102,7 +102,9 @@ class TestInitUpload:
     ):
         """Test upload initialization with session ID."""
         mock_store_metadata.return_value = None
-        mock_generate_sas.return_value = "https://storage.blob.core.windows.net/test?sas=token"
+        mock_generate_sas.return_value = (
+            "https://storage.blob.core.windows.net/test?sas=token"
+        )
 
         transport = ASGITransport(app=app)
         async with AsyncClient(transport=transport, base_url="http://test") as client:
@@ -114,9 +116,11 @@ class TestInitUpload:
         # Verify session ID is included in the metadata blob path
         call_args = mock_store_metadata.call_args[0]
         metadata_blob_name = call_args[0]
-        assert valid_upload_request_with_session["metadata"]["sessionId"] in metadata_blob_name
+        assert (
+            valid_upload_request_with_session["metadata"]["sessionId"]
+            in metadata_blob_name
+        )
 
-    
     async def test_init_upload_invalid_filename_empty(self, valid_client_id):
         """Test upload with empty filename."""
         request = {
@@ -131,7 +135,6 @@ class TestInitUpload:
         assert response.status_code == 400
         assert "Invalid filename" in response.json()["detail"]
 
-    
     async def test_init_upload_invalid_filename_no_extension(self, valid_client_id):
         """Test upload with filename without extension."""
         request = {
@@ -146,7 +149,6 @@ class TestInitUpload:
         assert response.status_code == 400
         assert "Invalid filename" in response.json()["detail"]
 
-    
     async def test_init_upload_invalid_filename_with_slash(self, valid_client_id):
         """Test upload with filename containing slash."""
         request = {
@@ -161,7 +163,6 @@ class TestInitUpload:
         assert response.status_code == 400
         assert "Invalid filename" in response.json()["detail"]
 
-    
     async def test_init_upload_invalid_file_extension(self, valid_client_id):
         """Test upload with disallowed file extension."""
         request = {
@@ -176,7 +177,6 @@ class TestInitUpload:
         assert response.status_code == 400
         assert "not allowed" in response.json()["detail"]
 
-    
     async def test_init_upload_allowed_extensions(self, valid_client_id):
         """Test all allowed file extensions."""
         allowed_extensions = ["m4a", "flac", "amr", "wav", "opus", "caf"]
@@ -184,18 +184,27 @@ class TestInitUpload:
         for ext in allowed_extensions:
             request = {
                 "filename": f"test.{ext}",
-                "metadata": {"clientId": valid_client_id, "contentType": f"audio/{ext}"},
+                "metadata": {
+                    "clientId": valid_client_id,
+                    "contentType": f"audio/{ext}",
+                },
             }
 
-            with patch("main.store_metadata"), patch("main.generate_upload_sas_url") as mock_sas:
-                mock_sas.return_value = "https://storage.blob.core.windows.net/test?sas=token"
+            with (
+                patch("main.store_metadata"),
+                patch("main.generate_upload_sas_url") as mock_sas,
+            ):
+                mock_sas.return_value = (
+                    "https://storage.blob.core.windows.net/test?sas=token"
+                )
                 transport = ASGITransport(app=app)
-                async with AsyncClient(transport=transport, base_url="http://test") as client:
+                async with AsyncClient(
+                    transport=transport, base_url="http://test"
+                ) as client:
                     response = await client.post("/v1/upload", json=request)
 
                 assert response.status_code == 200, f"Extension {ext} should be allowed"
 
-    
     async def test_init_upload_invalid_client_id(self):
         """Test upload with invalid client ID."""
         request = {
@@ -210,7 +219,6 @@ class TestInitUpload:
         assert response.status_code == 400
         assert "clientId" in response.json()["detail"]
 
-    
     async def test_init_upload_invalid_session_id(self, valid_client_id):
         """Test upload with invalid session ID."""
         request = {
@@ -229,7 +237,6 @@ class TestInitUpload:
         assert response.status_code == 400
         assert "sessionId" in response.json()["detail"]
 
-    
     @patch("main.store_metadata")
     async def test_init_upload_storage_error_metadata(
         self, mock_store_metadata, valid_upload_request
@@ -244,7 +251,6 @@ class TestInitUpload:
         assert response.status_code == 500
         assert "Error storing metadata" in response.json()["detail"]
 
-    
     @patch("main.generate_upload_sas_url")
     @patch("main.store_metadata")
     async def test_init_upload_storage_error_sas(
@@ -268,11 +274,8 @@ class TestInitUpload:
 class TestDeleteRecordings:
     """Tests for DELETE /v1/recordings endpoints."""
 
-    
     @patch("main.delete_by_prefix")
-    async def test_delete_by_client_id_success(
-        self, mock_delete, valid_client_id
-    ):
+    async def test_delete_by_client_id_success(self, mock_delete, valid_client_id):
         """Test successful deletion by client ID."""
         mock_delete.return_value = None
 
@@ -286,7 +289,6 @@ class TestDeleteRecordings:
         call_args = mock_delete.call_args[0][0]
         assert valid_client_id in call_args
 
-    
     async def test_delete_by_client_id_invalid_uuid(self):
         """Test deletion with invalid client ID."""
         transport = ASGITransport(app=app)
@@ -296,7 +298,6 @@ class TestDeleteRecordings:
         assert response.status_code == 400
         assert "Invalid clientId" in response.json()["detail"]
 
-    
     @patch("main.delete_by_prefix")
     async def test_delete_by_client_id_storage_error(
         self, mock_delete, valid_client_id
@@ -311,7 +312,6 @@ class TestDeleteRecordings:
         assert response.status_code == 500
         assert "Error deleting data" in response.json()["detail"]
 
-    
     @patch("main.delete_by_prefix")
     async def test_delete_by_session_id_success(
         self, mock_delete, valid_client_id, valid_session_id
@@ -331,7 +331,6 @@ class TestDeleteRecordings:
         assert valid_client_id in call_args
         assert valid_session_id in call_args
 
-    
     async def test_delete_by_session_id_invalid_client_id(self, valid_session_id):
         """Test deletion with invalid client ID."""
         transport = ASGITransport(app=app)
@@ -343,7 +342,6 @@ class TestDeleteRecordings:
         assert response.status_code == 400
         assert "Invalid clientId or sessionId" in response.json()["detail"]
 
-    
     async def test_delete_by_session_id_invalid_session_id(self, valid_client_id):
         """Test deletion with invalid session ID."""
         transport = ASGITransport(app=app)
@@ -355,7 +353,6 @@ class TestDeleteRecordings:
         assert response.status_code == 400
         assert "Invalid clientId or sessionId" in response.json()["detail"]
 
-    
     @patch("main.delete_by_prefix")
     async def test_delete_by_session_id_storage_error(
         self, mock_delete, valid_client_id, valid_session_id
@@ -372,7 +369,6 @@ class TestDeleteRecordings:
         assert response.status_code == 500
         assert "Error deleting data" in response.json()["detail"]
 
-    
     @patch("main.delete_by_prefix")
     async def test_delete_by_recording_id_success(
         self, mock_delete, valid_client_id, valid_session_id, valid_recording_id
@@ -393,7 +389,6 @@ class TestDeleteRecordings:
         assert valid_session_id in call_args
         assert valid_recording_id in call_args
 
-    
     async def test_delete_by_recording_id_invalid_client_id(
         self, valid_session_id, valid_recording_id
     ):
@@ -407,7 +402,6 @@ class TestDeleteRecordings:
         assert response.status_code == 400
         assert "Invalid" in response.json()["detail"]
 
-    
     async def test_delete_by_recording_id_invalid_session_id(
         self, valid_client_id, valid_recording_id
     ):
@@ -421,7 +415,6 @@ class TestDeleteRecordings:
         assert response.status_code == 400
         assert "Invalid" in response.json()["detail"]
 
-    
     async def test_delete_by_recording_id_invalid_recording_id(
         self, valid_client_id, valid_session_id
     ):
@@ -435,7 +428,6 @@ class TestDeleteRecordings:
         assert response.status_code == 400
         assert "Invalid" in response.json()["detail"]
 
-    
     @patch("main.delete_by_prefix")
     async def test_delete_by_recording_id_storage_error(
         self, mock_delete, valid_client_id, valid_session_id, valid_recording_id

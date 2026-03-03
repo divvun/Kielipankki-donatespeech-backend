@@ -9,7 +9,11 @@ def test_prompt_item_super_choice_valid():
         kind="prompt",
         itemId="super-choice-001",
         itemType="super-choice",
-        default={"title": {"fi": "Supervalinta", "nb": "Supervalg"}, "body1": {"fi": "Valitse tai kirjoita", "nb": "Velg eller skriv"}, "body2": {"fi": "", "nb": ""}},
+        default={
+            "title": {"fi": "Supervalinta", "nb": "Supervalg"},
+            "body1": {"fi": "Valitse tai kirjoita", "nb": "Velg eller skriv"},
+            "body2": {"fi": "", "nb": ""},
+        },
         options=["Predefined 1", "Predefined 2", "Predefined 3"],
         isRecording=True,
         otherEntryLabel="Or type your own",
@@ -29,7 +33,10 @@ def test_prompt_item_super_choice_in_schedule():
         "typeId": None,
         "url": None,
         "title": {"fi": "Kieli", "nb": "Språk"},
-        "body1": {"fi": "Valitse listasta tai lisää", "nb": "Velg fra liste eller legg til"},
+        "body1": {
+            "fi": "Valitse listasta tai lisää",
+            "nb": "Velg fra liste eller legg til",
+        },
         "body2": {"fi": "", "nb": ""},
         "options": ["English", "Finnish", "Swedish"],
         "isRecording": False,
@@ -50,7 +57,11 @@ def test_prompt_item_super_choice_without_other_entry():
         kind="prompt",
         itemId="super-choice-no-label",
         itemType="super-choice",
-        default={"title": {"fi": "Valinta", "nb": "Valg"}, "body1": {"fi": "Ei mukautettua kenttää", "nb": "Ingen tilpasset felt"}, "body2": {"fi": "", "nb": ""}},
+        default={
+            "title": {"fi": "Valinta", "nb": "Valg"},
+            "body1": {"fi": "Ei mukautettua kenttää", "nb": "Ingen tilpasset felt"},
+            "body2": {"fi": "", "nb": ""},
+        },
         options=["Option A", "Option B"],
         isRecording=True,
     )
@@ -67,7 +78,14 @@ def test_prompt_item_super_choice_with_many_options():
         kind="prompt",
         itemId="super-choice-many",
         itemType="super-choice",
-        default={"title": {"fi": "Kohde", "nb": "Gjenstand"}, "body1": {"fi": "Valitse 30 kohteesta tai lisää", "nb": "Velg fra 30 elementer eller legg til"}, "body2": {"fi": "", "nb": ""}},
+        default={
+            "title": {"fi": "Kohde", "nb": "Gjenstand"},
+            "body1": {
+                "fi": "Valitse 30 kohteesta tai lisää",
+                "nb": "Velg fra 30 elementer eller legg til",
+            },
+            "body2": {"fi": "", "nb": ""},
+        },
         options=options,
         isRecording=False,
         otherEntryLabel="Add custom item",
