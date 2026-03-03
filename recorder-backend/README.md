@@ -307,6 +307,45 @@ curl http://localhost:8000/v1/schedule
 curl http://localhost:8000/v1/theme
 ```
 
+### Cleaning Up Storage
+
+The `cleanup-storage.py` script helps you remove old content from blob storage (both local Azurite and Azure remote).
+
+**For local Azurite:**
+
+```bash
+.venv/bin/python cleanup-storage.py
+```
+
+**For Azure remote storage:**
+
+```bash
+export AZURE_STORAGE_CONNECTION_STRING="your-connection-string"
+.venv/bin/python cleanup-storage.py
+```
+
+**Interactive menu options:**
+1. List all blobs - See what's currently stored
+2. Delete all blobs - Remove everything (with confirmation)
+3. Delete test data - Remove only schedule/*, theme/*, media/* (what init-storage.py uploaded)
+4. Delete uploads - Remove user-uploaded recordings (uploads/*)
+5. Delete specific prefix - Target a specific path
+
+**Common workflow:**
+
+```bash
+# 1. List current content
+.venv/bin/python cleanup-storage.py
+# Choose option 1
+
+# 2. Remove test data to start fresh
+.venv/bin/python cleanup-storage.py
+# Choose option 3
+
+# 3. Re-initialize with fresh test data
+.venv/bin/python init-storage.py
+```
+
 ## Azure Deployment
 
 ### Option 1: Azure Container Apps (Recommended)
@@ -429,6 +468,7 @@ recorder-backend/
 ├── docker-compose.yml          # Local dev environment
 ├── setup-local.sh             # Setup script for local dev (orchestration)
 ├── init-storage.py            # Storage initialization (uploads test data)
+├── cleanup-storage.py         # Storage cleanup (removes old content)
 ├── convert_schedule.py        # Convert old format JSON to new format
 ├── test/                      # Test data files (playlist.json, theme.json)
 └── custom_fleep/              # File type detection (unchanged)
