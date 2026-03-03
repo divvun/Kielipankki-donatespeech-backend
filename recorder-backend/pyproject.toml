@@ -1,3 +1,9 @@
+# This project uses uv for package management
+# Install: https://github.com/astral-sh/uv
+# Setup: uv sync
+# Python binary: .venv/bin/python
+# Activate venv: source .venv/bin/activate
+
 [project]
 name = "kielipankki-recorder-backend"
 version = "2.0.0"
