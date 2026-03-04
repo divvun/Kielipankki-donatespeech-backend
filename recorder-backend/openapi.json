@@ -401,6 +401,11 @@
         "schemas": {
             "AudioMediaItem": {
                 "properties": {
+                    "kind": {
+                        "type": "string",
+                        "const": "media",
+                        "title": "Kind"
+                    },
                     "itemType": {
                         "type": "string",
                         "const": "audio",
@@ -417,26 +422,87 @@
                         "description": "Direct URL to audio file"
                     },
                     "typeId": {
-                        "type": "string",
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
                         "title": "Typeid",
                         "description": "MIME type (e.g., 'audio/m4a', 'audio/mpeg')"
                     },
-                    "description": {
-                        "type": "string",
-                        "title": "Description"
+                    "default": {
+                        "$ref": "#/components/schemas/MediaState",
+                        "description": "Default/initial state"
+                    },
+                    "options": {
+                        "items": {},
+                        "type": "array",
+                        "title": "Options",
+                        "description": "Empty list for media items"
                     },
                     "isRecording": {
                         "type": "boolean",
                         "title": "Isrecording"
+                    },
+                    "start": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/MediaState"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "State before recording starts"
+                    },
+                    "recording": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/MediaState"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "State during recording"
+                    },
+                    "finish": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/MediaState"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "State after recording finishes"
+                    },
+                    "metaTitle": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": {
+                                    "type": "string"
+                                },
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Metatitle",
+                        "description": "Optional meta title"
                     }
                 },
                 "type": "object",
                 "required": [
+                    "kind",
                     "itemType",
                     "itemId",
                     "url",
-                    "typeId",
-                    "description",
+                    "default",
                     "isRecording"
                 ],
                 "title": "AudioMediaItem",
@@ -444,6 +510,11 @@
             },
             "ChoicePromptItem": {
                 "properties": {
+                    "kind": {
+                        "type": "string",
+                        "const": "prompt",
+                        "title": "Kind"
+                    },
                     "itemType": {
                         "type": "string",
                         "const": "choice",
@@ -454,18 +525,37 @@
                         "title": "Itemid",
                         "description": "UUID v4 of the item"
                     },
-                    "description": {
+                    "url": {
                         "type": "string",
-                        "title": "Description",
-                        "description": "Question text shown to user"
+                        "title": "Url",
+                        "description": "Image URL for the prompt"
+                    },
+                    "typeId": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Typeid",
+                        "description": "MIME type"
+                    },
+                    "default": {
+                        "$ref": "#/components/schemas/MediaState",
+                        "description": "Default/initial state"
                     },
                     "options": {
                         "items": {
-                            "type": "string"
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "type": "object"
                         },
                         "type": "array",
                         "title": "Options",
-                        "description": "Answer options to choose from"
+                        "description": "Localized answer options"
                     },
                     "isRecording": {
                         "type": "boolean",
@@ -474,14 +564,82 @@
                 },
                 "type": "object",
                 "required": [
+                    "kind",
                     "itemType",
                     "itemId",
-                    "description",
+                    "url",
+                    "default",
                     "options",
                     "isRecording"
                 ],
                 "title": "ChoicePromptItem",
                 "description": "Single choice prompt item"
+            },
+            "FakeYleAudioMediaItem": {
+                "properties": {
+                    "kind": {
+                        "type": "string",
+                        "const": "media",
+                        "title": "Kind"
+                    },
+                    "itemType": {
+                        "type": "string",
+                        "const": "fake-yle-audio",
+                        "title": "Itemtype"
+                    },
+                    "itemId": {
+                        "type": "string",
+                        "title": "Itemid",
+                        "description": "UUID v4 of the item"
+                    },
+                    "url": {
+                        "type": "string",
+                        "title": "Url",
+                        "description": "YLE program ID (not decrypted)"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "kind",
+                    "itemType",
+                    "itemId",
+                    "url"
+                ],
+                "title": "FakeYleAudioMediaItem",
+                "description": "Fake YLE audio item returned when YLE credentials are not configured"
+            },
+            "FakeYleVideoMediaItem": {
+                "properties": {
+                    "kind": {
+                        "type": "string",
+                        "const": "media",
+                        "title": "Kind"
+                    },
+                    "itemType": {
+                        "type": "string",
+                        "const": "fake-yle-video",
+                        "title": "Itemtype"
+                    },
+                    "itemId": {
+                        "type": "string",
+                        "title": "Itemid",
+                        "description": "UUID v4 of the item"
+                    },
+                    "url": {
+                        "type": "string",
+                        "title": "Url",
+                        "description": "YLE program ID (not decrypted)"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "kind",
+                    "itemType",
+                    "itemId",
+                    "url"
+                ],
+                "title": "FakeYleVideoMediaItem",
+                "description": "Fake YLE video item returned when YLE credentials are not configured"
             },
             "HTTPValidationError": {
                 "properties": {
@@ -498,6 +656,11 @@
             },
             "ImageMediaItem": {
                 "properties": {
+                    "kind": {
+                        "type": "string",
+                        "const": "media",
+                        "title": "Kind"
+                    },
                     "itemType": {
                         "type": "string",
                         "const": "image",
@@ -514,26 +677,87 @@
                         "description": "Direct URL to image file"
                     },
                     "typeId": {
-                        "type": "string",
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
                         "title": "Typeid",
                         "description": "MIME type (e.g., 'image/jpeg', 'image/png')"
                     },
-                    "description": {
-                        "type": "string",
-                        "title": "Description"
+                    "default": {
+                        "$ref": "#/components/schemas/MediaState",
+                        "description": "Default/initial state"
+                    },
+                    "options": {
+                        "items": {},
+                        "type": "array",
+                        "title": "Options",
+                        "description": "Empty list for media items"
                     },
                     "isRecording": {
                         "type": "boolean",
                         "title": "Isrecording"
+                    },
+                    "start": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/MediaState"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "State before recording starts"
+                    },
+                    "recording": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/MediaState"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "State during recording"
+                    },
+                    "finish": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/MediaState"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "State after recording finishes"
+                    },
+                    "metaTitle": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": {
+                                    "type": "string"
+                                },
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Metatitle",
+                        "description": "Optional meta title"
                     }
                 },
                 "type": "object",
                 "required": [
+                    "kind",
                     "itemType",
                     "itemId",
                     "url",
-                    "typeId",
-                    "description",
+                    "default",
                     "isRecording"
                 ],
                 "title": "ImageMediaItem",
@@ -572,8 +796,61 @@
                 "title": "InitUploadResponse",
                 "description": "Response containing the SAS URL for direct upload"
             },
+            "MediaState": {
+                "properties": {
+                    "title": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "type": "object",
+                        "title": "Title",
+                        "description": "Localized title"
+                    },
+                    "body1": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "type": "object",
+                        "title": "Body1",
+                        "description": "Localized body text 1"
+                    },
+                    "body2": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "type": "object",
+                        "title": "Body2",
+                        "description": "Localized body text 2"
+                    },
+                    "imageUrl": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Imageurl",
+                        "description": "Optional image URL for this state"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "title",
+                    "body1",
+                    "body2"
+                ],
+                "title": "MediaState",
+                "description": "State information displayed during media playback/recording"
+            },
             "MultiChoicePromptItem": {
                 "properties": {
+                    "kind": {
+                        "type": "string",
+                        "const": "prompt",
+                        "title": "Kind"
+                    },
                     "itemType": {
                         "type": "string",
                         "const": "multi-choice",
@@ -584,24 +861,12 @@
                         "title": "Itemid",
                         "description": "UUID v4 of the item"
                     },
-                    "description": {
+                    "url": {
                         "type": "string",
-                        "title": "Description",
-                        "description": "Question text shown to user"
+                        "title": "Url",
+                        "description": "Image URL for the prompt"
                     },
-                    "options": {
-                        "items": {
-                            "type": "string"
-                        },
-                        "type": "array",
-                        "title": "Options",
-                        "description": "Multiple answer options"
-                    },
-                    "isRecording": {
-                        "type": "boolean",
-                        "title": "Isrecording"
-                    },
-                    "otherEntryLabel": {
+                    "typeId": {
                         "anyOf": [
                             {
                                 "type": "string"
@@ -610,15 +875,66 @@
                                 "type": "null"
                             }
                         ],
+                        "title": "Typeid",
+                        "description": "MIME type"
+                    },
+                    "default": {
+                        "$ref": "#/components/schemas/MediaState",
+                        "description": "Default/initial state"
+                    },
+                    "options": {
+                        "items": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "type": "object"
+                        },
+                        "type": "array",
+                        "title": "Options",
+                        "description": "Localized answer options"
+                    },
+                    "isRecording": {
+                        "type": "boolean",
+                        "title": "Isrecording"
+                    },
+                    "otherAnswer": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": {
+                                    "type": "string"
+                                },
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Otheranswer",
+                        "description": "Localized label for 'other' option"
+                    },
+                    "otherEntryLabel": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": {
+                                    "type": "string"
+                                },
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
                         "title": "Otherentrylabel",
-                        "description": "Label for text entry field allowing custom answers"
+                        "description": "Localized label for text entry field allowing custom answers"
                     }
                 },
                 "type": "object",
                 "required": [
+                    "kind",
                     "itemType",
                     "itemId",
-                    "description",
+                    "url",
+                    "default",
                     "options",
                     "isRecording"
                 ],
@@ -649,13 +965,88 @@
                         ],
                         "title": "Scheduleid"
                     },
-                    "description": {
-                        "type": "string",
-                        "title": "Description"
+                    "title": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": {
+                                    "type": "string"
+                                },
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Title",
+                        "description": "Localized title"
+                    },
+                    "body1": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": {
+                                    "type": "string"
+                                },
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Body1",
+                        "description": "Localized body text 1"
+                    },
+                    "body2": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": {
+                                    "type": "string"
+                                },
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Body2",
+                        "description": "Localized body text 2"
+                    },
+                    "start": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/ScheduleState"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "State shown at schedule start"
+                    },
+                    "finish": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/ScheduleState"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "State shown at schedule finish"
                     },
                     "items": {
                         "items": {
-                            "oneOf": [
+                            "anyOf": [
+                                {
+                                    "$ref": "#/components/schemas/ChoicePromptItem"
+                                },
+                                {
+                                    "$ref": "#/components/schemas/MultiChoicePromptItem"
+                                },
+                                {
+                                    "$ref": "#/components/schemas/SuperChoicePromptItem"
+                                },
+                                {
+                                    "$ref": "#/components/schemas/TextInputItem"
+                                },
                                 {
                                     "$ref": "#/components/schemas/AudioMediaItem"
                                 },
@@ -669,39 +1060,21 @@
                                     "$ref": "#/components/schemas/YleVideoMediaItem"
                                 },
                                 {
+                                    "$ref": "#/components/schemas/FakeYleAudioMediaItem"
+                                },
+                                {
+                                    "$ref": "#/components/schemas/FakeYleVideoMediaItem"
+                                },
+                                {
                                     "$ref": "#/components/schemas/TextContentItem"
                                 },
                                 {
                                     "$ref": "#/components/schemas/ImageMediaItem"
                                 },
                                 {
-                                    "$ref": "#/components/schemas/ChoicePromptItem"
-                                },
-                                {
-                                    "$ref": "#/components/schemas/MultiChoicePromptItem"
-                                },
-                                {
-                                    "$ref": "#/components/schemas/SuperChoicePromptItem"
-                                },
-                                {
-                                    "$ref": "#/components/schemas/TextInputItem"
+                                    "$ref": "#/components/schemas/TextMediaItem"
                                 }
-                            ],
-                            "discriminator": {
-                                "propertyName": "itemType",
-                                "mapping": {
-                                    "audio": "#/components/schemas/AudioMediaItem",
-                                    "choice": "#/components/schemas/ChoicePromptItem",
-                                    "image": "#/components/schemas/ImageMediaItem",
-                                    "multi-choice": "#/components/schemas/MultiChoicePromptItem",
-                                    "super-choice": "#/components/schemas/SuperChoicePromptItem",
-                                    "text-content": "#/components/schemas/TextContentItem",
-                                    "text-input": "#/components/schemas/TextInputItem",
-                                    "video": "#/components/schemas/VideoMediaItem",
-                                    "yle-audio": "#/components/schemas/YleAudioMediaItem",
-                                    "yle-video": "#/components/schemas/YleVideoMediaItem"
-                                }
-                            }
+                            ]
                         },
                         "type": "array",
                         "title": "Items"
@@ -709,7 +1082,6 @@
                 },
                 "type": "object",
                 "required": [
-                    "description",
                     "items"
                 ],
                 "title": "Schedule",
@@ -733,8 +1105,67 @@
                 "title": "ScheduleListItem",
                 "description": "Single schedule in list response"
             },
+            "ScheduleState": {
+                "properties": {
+                    "title": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "type": "object",
+                        "title": "Title",
+                        "description": "Localized title"
+                    },
+                    "body1": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "type": "object",
+                        "title": "Body1",
+                        "description": "Localized body text 1"
+                    },
+                    "body2": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": {
+                                    "type": "string"
+                                },
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Body2",
+                        "description": "Localized body text 2"
+                    },
+                    "imageUrl": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Imageurl",
+                        "description": "Optional image URL"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "title",
+                    "body1"
+                ],
+                "title": "ScheduleState",
+                "description": "State information for schedule start/finish screens"
+            },
             "SuperChoicePromptItem": {
                 "properties": {
+                    "kind": {
+                        "type": "string",
+                        "const": "prompt",
+                        "title": "Kind"
+                    },
                     "itemType": {
                         "type": "string",
                         "const": "super-choice",
@@ -745,24 +1176,12 @@
                         "title": "Itemid",
                         "description": "UUID v4 of the item"
                     },
-                    "description": {
+                    "url": {
                         "type": "string",
-                        "title": "Description",
-                        "description": "Question text shown to user"
+                        "title": "Url",
+                        "description": "Image URL for the prompt"
                     },
-                    "options": {
-                        "items": {
-                            "type": "string"
-                        },
-                        "type": "array",
-                        "title": "Options",
-                        "description": "Super choice answer options"
-                    },
-                    "isRecording": {
-                        "type": "boolean",
-                        "title": "Isrecording"
-                    },
-                    "otherEntryLabel": {
+                    "typeId": {
                         "anyOf": [
                             {
                                 "type": "string"
@@ -771,15 +1190,51 @@
                                 "type": "null"
                             }
                         ],
+                        "title": "Typeid",
+                        "description": "MIME type"
+                    },
+                    "default": {
+                        "$ref": "#/components/schemas/MediaState",
+                        "description": "Default/initial state"
+                    },
+                    "options": {
+                        "items": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "type": "object"
+                        },
+                        "type": "array",
+                        "title": "Options",
+                        "description": "Localized answer options"
+                    },
+                    "isRecording": {
+                        "type": "boolean",
+                        "title": "Isrecording"
+                    },
+                    "otherEntryLabel": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": {
+                                    "type": "string"
+                                },
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
                         "title": "Otherentrylabel",
-                        "description": "Label for text entry field allowing custom answers"
+                        "description": "Localized label for text entry field allowing custom answers"
                     }
                 },
                 "type": "object",
                 "required": [
+                    "kind",
                     "itemType",
                     "itemId",
-                    "description",
+                    "url",
+                    "default",
                     "options",
                     "isRecording"
                 ],
@@ -788,6 +1243,11 @@
             },
             "TextContentItem": {
                 "properties": {
+                    "kind": {
+                        "type": "string",
+                        "const": "media",
+                        "title": "Kind"
+                    },
                     "itemType": {
                         "type": "string",
                         "const": "text-content",
@@ -815,21 +1275,76 @@
                         "title": "Typeid",
                         "description": "MIME type (e.g., 'text/plain', 'text/html')"
                     },
-                    "description": {
-                        "type": "string",
-                        "title": "Description"
+                    "default": {
+                        "$ref": "#/components/schemas/MediaState",
+                        "description": "Default/initial state"
+                    },
+                    "options": {
+                        "items": {},
+                        "type": "array",
+                        "title": "Options",
+                        "description": "Empty list for media items"
                     },
                     "isRecording": {
                         "type": "boolean",
                         "title": "Isrecording"
+                    },
+                    "start": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/MediaState"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "State before recording starts"
+                    },
+                    "recording": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/MediaState"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "State during recording"
+                    },
+                    "finish": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/MediaState"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "State after recording finishes"
+                    },
+                    "metaTitle": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": {
+                                    "type": "string"
+                                },
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Metatitle",
+                        "description": "Optional meta title"
                     }
                 },
                 "type": "object",
                 "required": [
+                    "kind",
                     "itemType",
                     "itemId",
                     "url",
-                    "description",
+                    "default",
                     "isRecording"
                 ],
                 "title": "TextContentItem",
@@ -837,9 +1352,14 @@
             },
             "TextInputItem": {
                 "properties": {
+                    "kind": {
+                        "type": "string",
+                        "const": "prompt",
+                        "title": "Kind"
+                    },
                     "itemType": {
                         "type": "string",
-                        "const": "text-input",
+                        "const": "text",
                         "title": "Itemtype"
                     },
                     "itemId": {
@@ -847,25 +1367,179 @@
                         "title": "Itemid",
                         "description": "UUID v4 of the item"
                     },
-                    "description": {
+                    "url": {
                         "type": "string",
-                        "title": "Description",
-                        "description": "Question text shown to user"
+                        "title": "Url",
+                        "description": "Image URL for the prompt"
+                    },
+                    "typeId": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Typeid",
+                        "description": "MIME type"
+                    },
+                    "default": {
+                        "$ref": "#/components/schemas/MediaState",
+                        "description": "Default/initial state"
+                    },
+                    "options": {
+                        "items": {},
+                        "type": "array",
+                        "title": "Options",
+                        "description": "Empty list for text input"
                     },
                     "isRecording": {
                         "type": "boolean",
                         "title": "Isrecording"
+                    },
+                    "metaTitle": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": {
+                                    "type": "string"
+                                },
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Metatitle",
+                        "description": "Optional meta title"
                     }
                 },
                 "type": "object",
                 "required": [
+                    "kind",
                     "itemType",
                     "itemId",
-                    "description",
+                    "url",
+                    "default",
                     "isRecording"
                 ],
                 "title": "TextInputItem",
                 "description": "Text input prompt item"
+            },
+            "TextMediaItem": {
+                "properties": {
+                    "kind": {
+                        "type": "string",
+                        "const": "media",
+                        "title": "Kind"
+                    },
+                    "itemType": {
+                        "type": "string",
+                        "const": "text",
+                        "title": "Itemtype"
+                    },
+                    "itemId": {
+                        "type": "string",
+                        "title": "Itemid",
+                        "description": "UUID v4 of the item"
+                    },
+                    "url": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Url",
+                        "description": "Optional URL"
+                    },
+                    "typeId": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Typeid",
+                        "description": "MIME type"
+                    },
+                    "default": {
+                        "$ref": "#/components/schemas/MediaState",
+                        "description": "Default/initial state"
+                    },
+                    "options": {
+                        "items": {},
+                        "type": "array",
+                        "title": "Options",
+                        "description": "Empty list for media items"
+                    },
+                    "isRecording": {
+                        "type": "boolean",
+                        "title": "Isrecording"
+                    },
+                    "metaTitle": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": {
+                                    "type": "string"
+                                },
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Metatitle",
+                        "description": "Optional meta title"
+                    },
+                    "start": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/MediaState"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "State before recording starts"
+                    },
+                    "recording": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/MediaState"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "State during recording"
+                    },
+                    "finish": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/MediaState"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "State after recording finishes"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "kind",
+                    "itemType",
+                    "itemId",
+                    "default",
+                    "isRecording"
+                ],
+                "title": "TextMediaItem",
+                "description": "Text media item for displaying text content"
             },
             "Theme": {
                 "properties": {
@@ -880,9 +1554,29 @@
                         ],
                         "title": "Id"
                     },
-                    "description": {
-                        "type": "string",
-                        "title": "Description"
+                    "title": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "type": "object",
+                        "title": "Title",
+                        "description": "Localized title (e.g., {'fi': '...', 'nb': '...'})"
+                    },
+                    "body1": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "type": "object",
+                        "title": "Body1",
+                        "description": "Localized body text 1"
+                    },
+                    "body2": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "type": "object",
+                        "title": "Body2",
+                        "description": "Localized body text 2"
                     },
                     "image": {
                         "anyOf": [
@@ -893,7 +1587,8 @@
                                 "type": "null"
                             }
                         ],
-                        "title": "Image"
+                        "title": "Image",
+                        "description": "URL to theme image"
                     },
                     "scheduleIds": {
                         "items": {
@@ -905,10 +1600,12 @@
                 },
                 "type": "object",
                 "required": [
-                    "description"
+                    "title",
+                    "body1",
+                    "body2"
                 ],
                 "title": "Theme",
-                "description": "Theme containing multiple schedule IDs"
+                "description": "Theme containing multiple schedule IDs with localized content"
             },
             "ThemeListItem": {
                 "properties": {
@@ -1054,6 +1751,11 @@
             },
             "VideoMediaItem": {
                 "properties": {
+                    "kind": {
+                        "type": "string",
+                        "const": "media",
+                        "title": "Kind"
+                    },
                     "itemType": {
                         "type": "string",
                         "const": "video",
@@ -1070,26 +1772,87 @@
                         "description": "Direct URL to video file"
                     },
                     "typeId": {
-                        "type": "string",
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
                         "title": "Typeid",
                         "description": "MIME type (e.g., 'video/mp4', 'video/webm')"
                     },
-                    "description": {
-                        "type": "string",
-                        "title": "Description"
+                    "default": {
+                        "$ref": "#/components/schemas/MediaState",
+                        "description": "Default/initial state"
+                    },
+                    "options": {
+                        "items": {},
+                        "type": "array",
+                        "title": "Options",
+                        "description": "Empty list for media items"
                     },
                     "isRecording": {
                         "type": "boolean",
                         "title": "Isrecording"
+                    },
+                    "start": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/MediaState"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "State before recording starts"
+                    },
+                    "recording": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/MediaState"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "State during recording"
+                    },
+                    "finish": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/MediaState"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "State after recording finishes"
+                    },
+                    "metaTitle": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": {
+                                    "type": "string"
+                                },
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Metatitle",
+                        "description": "Optional meta title"
                     }
                 },
                 "type": "object",
                 "required": [
+                    "kind",
                     "itemType",
                     "itemId",
                     "url",
-                    "typeId",
-                    "description",
+                    "default",
                     "isRecording"
                 ],
                 "title": "VideoMediaItem",
@@ -1097,6 +1860,11 @@
             },
             "YleAudioMediaItem": {
                 "properties": {
+                    "kind": {
+                        "type": "string",
+                        "const": "media",
+                        "title": "Kind"
+                    },
                     "itemType": {
                         "type": "string",
                         "const": "yle-audio",
@@ -1112,21 +1880,88 @@
                         "title": "Url",
                         "description": "YLE program ID"
                     },
-                    "description": {
-                        "type": "string",
-                        "title": "Description"
+                    "typeId": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Typeid",
+                        "description": "MIME type"
+                    },
+                    "default": {
+                        "$ref": "#/components/schemas/MediaState",
+                        "description": "Default/initial state"
+                    },
+                    "options": {
+                        "items": {},
+                        "type": "array",
+                        "title": "Options",
+                        "description": "Empty list for media items"
                     },
                     "isRecording": {
                         "type": "boolean",
                         "title": "Isrecording"
+                    },
+                    "start": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/MediaState"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "State before recording starts"
+                    },
+                    "recording": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/MediaState"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "State during recording"
+                    },
+                    "finish": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/MediaState"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "State after recording finishes"
+                    },
+                    "metaTitle": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": {
+                                    "type": "string"
+                                },
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Metatitle",
+                        "description": "Optional meta title"
                     }
                 },
                 "type": "object",
                 "required": [
+                    "kind",
                     "itemType",
                     "itemId",
                     "url",
-                    "description",
+                    "default",
                     "isRecording"
                 ],
                 "title": "YleAudioMediaItem",
@@ -1134,6 +1969,11 @@
             },
             "YleVideoMediaItem": {
                 "properties": {
+                    "kind": {
+                        "type": "string",
+                        "const": "media",
+                        "title": "Kind"
+                    },
                     "itemType": {
                         "type": "string",
                         "const": "yle-video",
@@ -1149,21 +1989,88 @@
                         "title": "Url",
                         "description": "YLE program ID"
                     },
-                    "description": {
-                        "type": "string",
-                        "title": "Description"
+                    "typeId": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Typeid",
+                        "description": "MIME type"
+                    },
+                    "default": {
+                        "$ref": "#/components/schemas/MediaState",
+                        "description": "Default/initial state"
+                    },
+                    "options": {
+                        "items": {},
+                        "type": "array",
+                        "title": "Options",
+                        "description": "Empty list for media items"
                     },
                     "isRecording": {
                         "type": "boolean",
                         "title": "Isrecording"
+                    },
+                    "start": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/MediaState"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "State before recording starts"
+                    },
+                    "recording": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/MediaState"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "State during recording"
+                    },
+                    "finish": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/MediaState"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "State after recording finishes"
+                    },
+                    "metaTitle": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": {
+                                    "type": "string"
+                                },
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Metatitle",
+                        "description": "Optional meta title"
                     }
                 },
                 "type": "object",
                 "required": [
+                    "kind",
                     "itemType",
                     "itemId",
                     "url",
-                    "description",
+                    "default",
                     "isRecording"
                 ],
                 "title": "YleVideoMediaItem",
