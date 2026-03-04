@@ -250,7 +250,8 @@ GET /v1/theme
 
 ### Tauri App
 
-The frontend is built with Tauri, providing a native desktop application experience.
+The frontend is built with Tauri, providing a native desktop application
+experience.
 
 #### Connecting to Local Backend
 
@@ -309,7 +310,8 @@ curl http://localhost:8000/v1/theme
 
 ### Cleaning Up Storage
 
-The `cleanup-storage.py` script helps you remove old content from blob storage (both local Azurite and Azure remote).
+The `cleanup-storage.py` script helps you remove old content from blob storage
+(both local Azurite and Azure remote).
 
 **For local Azurite:**
 
@@ -327,7 +329,8 @@ export AZURE_STORAGE_CONNECTION_STRING="your-connection-string"
 **Interactive menu options:**
 1. List all blobs - See what's currently stored
 2. Delete all blobs - Remove everything (with confirmation)
-3. Delete test data - Remove only schedule/*, theme/*, media/* (what init-storage.py uploaded)
+3. Delete test data - Remove only schedule/*, theme/*, media/* (what
+   init-storage.py uploaded)
 4. Delete uploads - Remove user-uploaded recordings (uploads/*)
 5. Delete specific prefix - Target a specific path
 

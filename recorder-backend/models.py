@@ -145,6 +145,24 @@ class YleVideoMediaItem(BaseModel):
         return data
 
 
+class FakeYleAudioMediaItem(BaseModel):
+    """Fake YLE audio item returned when YLE credentials are not configured"""
+
+    kind: Literal["media"]
+    itemType: Literal["fake-yle-audio"]
+    itemId: str = Field(..., description="UUID v4 of the item")
+    url: str = Field(..., description="YLE program ID (not decrypted)")
+
+
+class FakeYleVideoMediaItem(BaseModel):
+    """Fake YLE video item returned when YLE credentials are not configured"""
+
+    kind: Literal["media"]
+    itemType: Literal["fake-yle-video"]
+    itemId: str = Field(..., description="UUID v4 of the item")
+    url: str = Field(..., description="YLE program ID (not decrypted)")
+
+
 class TextContentItem(BaseModel):
     """Text content item"""
 
@@ -354,6 +372,8 @@ ScheduleItem = Union[
     VideoMediaItem,
     YleAudioMediaItem,
     YleVideoMediaItem,
+    FakeYleAudioMediaItem,
+    FakeYleVideoMediaItem,
     TextContentItem,
     ImageMediaItem,
     TextMediaItem,

@@ -31,10 +31,20 @@ def map_yle_content(yle_program_id: str) -> str:
 
     Returns:
         The decrypted media URL corresponding to the YLE program ID.
+        If YLE credentials are not configured, returns the program ID as-is
+        (a "fake-yle-thingy" for the client to handle).
 
     Raises:
         FileProcessingError: If there is an error during the mapping process.
     """
+    # If YLE credentials are not configured, return the program ID as-is
+    # This allows the client to handle the "fake-yle-thingy"
+    if not all([CLIENT_ID, CLIENT_KEY, YLE_DECRYPT]):
+        logger.warning(
+            "YLE credentials not configured - returning fake YLE URL (program ID as-is)"
+        )
+        return yle_program_id
+    
     try:
         media_url = get_media_url(yle_program_id)
         
