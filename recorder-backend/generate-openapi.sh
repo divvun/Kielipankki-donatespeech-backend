@@ -13,11 +13,6 @@ if ! curl -s http://localhost:8000/ > /dev/null 2>&1; then
 fi
 
 # Fetch OpenAPI spec
-curl -s http://localhost:8000/openapi.json > openapi.json
+curl http://localhost:8000/openapi.json | uv run python -m json.tool > openapi.json
 
 echo "✓ Generated openapi.json ($(wc -c < openapi.json | tr -d ' ') bytes)"
-echo ""
-echo "Use this file to generate MAUI client:"
-echo "  nswag run nswag.example.json"
-echo "  # or"
-echo "  kiota generate -l CSharp -d openapi.json -o Generated"
