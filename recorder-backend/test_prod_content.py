@@ -5,8 +5,8 @@ import json
 import os
 from models import Schedule, Theme
 
-def test_prod_schedules():
-    """Test production schedule files."""
+def _validate_prod_schedules() -> tuple[int, int]:
+    """Validate production schedule files and return (success_count, failed_count)."""
     print("=== Testing Production Schedules ===")
     schedule_dir = "content/prod/schedules"
     schedule_files = os.listdir(schedule_dir)
@@ -30,10 +30,17 @@ def test_prod_schedules():
             failed += 1
     
     print(f"\nSchedules: {success} passed, {failed} failed\n")
-    return failed == 0
+    return success, failed
 
-def test_prod_themes():
-    """Test production theme files."""
+
+def test_prod_schedules():
+    """Test production schedule files."""
+    _, failed = _validate_prod_schedules()
+    assert failed == 0, f"{failed} production schedule files failed to parse"
+
+
+def _validate_prod_themes() -> tuple[int, int]:
+    """Validate production theme files and return (success_count, failed_count)."""
     print("=== Testing Production Themes ===")
     theme_dir = "content/prod/themes"
     theme_files = os.listdir(theme_dir)
@@ -57,11 +64,19 @@ def test_prod_themes():
             failed += 1
     
     print(f"\nThemes: {success} passed, {failed} failed\n")
-    return failed == 0
+    return success, failed
+
+
+def test_prod_themes():
+    """Test production theme files."""
+    _, failed = _validate_prod_themes()
+    assert failed == 0, f"{failed} production theme files failed to parse"
 
 if __name__ == "__main__":
-    schedules_ok = test_prod_schedules()
-    themes_ok = test_prod_themes()
+    _, schedule_failed = _validate_prod_schedules()
+    _, theme_failed = _validate_prod_themes()
+    schedules_ok = schedule_failed == 0
+    themes_ok = theme_failed == 0
     
     if schedules_ok and themes_ok:
         print("✅ All production content files parse successfully!")
