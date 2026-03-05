@@ -73,8 +73,8 @@ def pre_process_schedule(schedule: Schedule) -> Schedule:
     """Pre-process schedule by mapping YLE content URLs or converting to fake YLE items.
     
     If YLE credentials are not configured, YLE items are converted to fake YLE items
-    that only contain the url field (program ID). The client is programmed to handle
-    these fake items appropriately.
+    that preserve all original item fields while switching itemType to the fake variant.
+    The client is programmed to handle these fake items appropriately.
     """
     # Check if YLE credentials are configured
     yle_configured = all([
@@ -84,6 +84,18 @@ def pre_process_schedule(schedule: Schedule) -> Schedule:
     ])
     
     processed_items = []
+
+    def to_fake_yle_audio_item(item: YleAudioMediaItem) -> FakeYleAudioMediaItem:
+        """Convert YLE audio item to fake variant while preserving shared fields."""
+        item_data = item.model_dump()
+        item_data["itemType"] = "fake-yle-audio"
+        return FakeYleAudioMediaItem(**item_data)
+
+    def to_fake_yle_video_item(item: YleVideoMediaItem) -> FakeYleVideoMediaItem:
+        """Convert YLE video item to fake variant while preserving shared fields."""
+        item_data = item.model_dump()
+        item_data["itemType"] = "fake-yle-video"
+        return FakeYleVideoMediaItem(**item_data)
     
     for item in schedule.items:
         # Handle YLE items based on credentials
@@ -95,20 +107,10 @@ def pre_process_schedule(schedule: Schedule) -> Schedule:
                 except Exception as e:
                     logger.warning(f"Failed to map YLE audio content for {item.url}: {e}")
                     # Convert to fake YLE item on error
-                    processed_items.append(FakeYleAudioMediaItem(
-                        kind="media",
-                        itemType="fake-yle-audio",
-                        itemId=item.itemId,
-                        url=item.url
-                    ))
+                    processed_items.append(to_fake_yle_audio_item(item))
             else:
                 # No credentials - convert to fake YLE item
-                processed_items.append(FakeYleAudioMediaItem(
-                    kind="media",
-                    itemType="fake-yle-audio",
-                    itemId=item.itemId,
-                    url=item.url
-                ))
+                processed_items.append(to_fake_yle_audio_item(item))
         elif isinstance(item, YleVideoMediaItem):
             if yle_configured:
                 try:
@@ -117,20 +119,10 @@ def pre_process_schedule(schedule: Schedule) -> Schedule:
                 except Exception as e:
                     logger.warning(f"Failed to map YLE video content for {item.url}: {e}")
                     # Convert to fake YLE item on error
-                    processed_items.append(FakeYleVideoMediaItem(
-                        kind="media",
-                        itemType="fake-yle-video",
-                        itemId=item.itemId,
-                        url=item.url
-                    ))
+                    processed_items.append(to_fake_yle_video_item(item))
             else:
                 # No credentials - convert to fake YLE item
-                processed_items.append(FakeYleVideoMediaItem(
-                    kind="media",
-                    itemType="fake-yle-video",
-                    itemId=item.itemId,
-                    url=item.url
-                ))
+                processed_items.append(to_fake_yle_video_item(item))
         else:
             # Not a YLE item - keep as is
             processed_items.append(item)

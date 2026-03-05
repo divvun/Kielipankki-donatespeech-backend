@@ -112,6 +112,9 @@ class TestGetMediaUrl:
 class TestMapYleContent:
     """Test main YLE content mapping function."""
 
+    @patch("yle_utils.CLIENT_ID", "test_client_id")
+    @patch("yle_utils.CLIENT_KEY", "test_client_key")
+    @patch("yle_utils.YLE_DECRYPT", b"0123456789abcdef")
     @patch("yle_utils.decrypt_yle_url")
     @patch("yle_utils.get_media_url")
     @patch("yle_utils.urllib.request.urlopen")
@@ -140,6 +143,9 @@ class TestMapYleContent:
         mock_get_media_url.assert_called_once_with("1-50000093")
         mock_decrypt.assert_called_once_with("base64_encrypted_url_here")
 
+    @patch("yle_utils.CLIENT_ID", "test_client_id")
+    @patch("yle_utils.CLIENT_KEY", "test_client_key")
+    @patch("yle_utils.YLE_DECRYPT", b"0123456789abcdef")
     @patch("yle_utils.get_media_url")
     def test_map_yle_content_error_handling(self, mock_get_media_url):
         """Test error handling when YLE API fails."""
@@ -149,6 +155,9 @@ class TestMapYleContent:
         with pytest.raises(FileProcessingError):
             map_yle_content("1-50000093")
 
+    @patch("yle_utils.CLIENT_ID", "test_client_id")
+    @patch("yle_utils.CLIENT_KEY", "test_client_key")
+    @patch("yle_utils.YLE_DECRYPT", b"0123456789abcdef")
     @patch("yle_utils.decrypt_yle_url")
     @patch("yle_utils.get_media_url")
     @patch("yle_utils.urllib.request.urlopen")
@@ -166,6 +175,9 @@ class TestMapYleContent:
         with pytest.raises(FileProcessingError):
             map_yle_content("1-50000093")
 
+    @patch("yle_utils.CLIENT_ID", "test_client_id")
+    @patch("yle_utils.CLIENT_KEY", "test_client_key")
+    @patch("yle_utils.YLE_DECRYPT", b"0123456789abcdef")
     @patch("yle_utils.decrypt_yle_url")
     @patch("yle_utils.get_media_url")
     @patch("yle_utils.urllib.request.urlopen")
@@ -184,6 +196,14 @@ class TestMapYleContent:
 
         with pytest.raises(FileProcessingError):
             map_yle_content("1-50000093")
+
+    @patch("yle_utils.CLIENT_ID", None)
+    @patch("yle_utils.CLIENT_KEY", None)
+    @patch("yle_utils.YLE_DECRYPT", None)
+    def test_map_yle_content_without_credentials_returns_program_id(self):
+        """Test fallback mode when YLE credentials are not configured."""
+        program_id = "1-50000093"
+        assert map_yle_content(program_id) == program_id
 
 
 class TestYleIntegration:

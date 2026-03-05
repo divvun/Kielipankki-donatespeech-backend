@@ -9,18 +9,26 @@ def test_prompt_item_super_choice_valid():
         kind="prompt",
         itemId="super-choice-001",
         itemType="super-choice",
+        url="https://example.org/super-choice-001.png",
         default={
             "title": {"fi": "Supervalinta", "nb": "Supervalg"},
             "body1": {"fi": "Valitse tai kirjoita", "nb": "Velg eller skriv"},
             "body2": {"fi": "", "nb": ""},
         },
-        options=["Predefined 1", "Predefined 2", "Predefined 3"],
+        options=[
+            {"fi": "Predefined 1", "nb": "Predefined 1"},
+            {"fi": "Predefined 2", "nb": "Predefined 2"},
+            {"fi": "Predefined 3", "nb": "Predefined 3"},
+        ],
         isRecording=True,
-        otherEntryLabel="Or type your own",
+        otherEntryLabel={"fi": "Or type your own", "nb": "Or type your own"},
     )
 
     assert item.itemType == "super-choice"
-    assert item.otherEntryLabel == "Or type your own"
+    assert item.otherEntryLabel == {
+        "fi": "Or type your own",
+        "nb": "Or type your own",
+    }
     assert item.isRecording is True
 
 
@@ -31,16 +39,20 @@ def test_prompt_item_super_choice_in_schedule():
         "itemId": "super-choice-002",
         "itemType": "super-choice",
         "typeId": None,
-        "url": None,
+        "url": "https://example.org/super-choice-002.png",
         "title": {"fi": "Kieli", "nb": "Språk"},
         "body1": {
             "fi": "Valitse listasta tai lisää",
             "nb": "Velg fra liste eller legg til",
         },
         "body2": {"fi": "", "nb": ""},
-        "options": ["English", "Finnish", "Swedish"],
+        "options": [
+            {"fi": "English", "nb": "English"},
+            {"fi": "Finnish", "nb": "Finnish"},
+            {"fi": "Swedish", "nb": "Swedish"},
+        ],
         "isRecording": False,
-        "otherEntryLabel": "Type language",
+        "otherEntryLabel": {"fi": "Type language", "nb": "Type language"},
     }
 
     # Parse as ScheduleItem union
@@ -48,7 +60,10 @@ def test_prompt_item_super_choice_in_schedule():
 
     assert isinstance(schedule_item, SuperChoicePromptItem)
     assert schedule_item.itemType == "super-choice"
-    assert schedule_item.otherEntryLabel == "Type language"
+    assert schedule_item.otherEntryLabel == {
+        "fi": "Type language",
+        "nb": "Type language",
+    }
 
 
 def test_prompt_item_super_choice_without_other_entry():
@@ -57,12 +72,13 @@ def test_prompt_item_super_choice_without_other_entry():
         kind="prompt",
         itemId="super-choice-no-label",
         itemType="super-choice",
+        url="https://example.org/super-choice-no-label.png",
         default={
             "title": {"fi": "Valinta", "nb": "Valg"},
             "body1": {"fi": "Ei mukautettua kenttää", "nb": "Ingen tilpasset felt"},
             "body2": {"fi": "", "nb": ""},
         },
-        options=["Option A", "Option B"],
+        options=[{"fi": "Option A", "nb": "Option A"}, {"fi": "Option B", "nb": "Option B"}],
         isRecording=True,
     )
 
@@ -72,12 +88,13 @@ def test_prompt_item_super_choice_without_other_entry():
 
 def test_prompt_item_super_choice_with_many_options():
     """Test PromptItem super-choice with many predefined options."""
-    options = [f"Item {i}" for i in range(1, 31)]
+    options = [{"fi": f"Item {i}", "nb": f"Item {i}"} for i in range(1, 31)]
 
     item = SuperChoicePromptItem(
         kind="prompt",
         itemId="super-choice-many",
         itemType="super-choice",
+        url="https://example.org/super-choice-many.png",
         default={
             "title": {"fi": "Kohde", "nb": "Gjenstand"},
             "body1": {
@@ -88,11 +105,11 @@ def test_prompt_item_super_choice_with_many_options():
         },
         options=options,
         isRecording=False,
-        otherEntryLabel="Add custom item",
+        otherEntryLabel={"fi": "Add custom item", "nb": "Add custom item"},
     )
 
     assert item.itemType == "super-choice"
     assert len(item.options) == 30
-    assert item.options[0] == "Item 1"
-    assert item.options[29] == "Item 30"
-    assert item.otherEntryLabel == "Add custom item"
+    assert item.options[0]["fi"] == "Item 1"
+    assert item.options[29]["fi"] == "Item 30"
+    assert item.otherEntryLabel == {"fi": "Add custom item", "nb": "Add custom item"}

@@ -9,12 +9,17 @@ def test_prompt_item_choice_valid():
         kind="prompt",
         itemId="choice-001",
         itemType="choice",
+        url="https://example.org/choice-001.png",
         default={
             "title": {"fi": "Valitse", "nb": "Velg"},
             "body1": {"fi": "Valitse yksi vaihtoehto", "nb": "Velg ett alternativ"},
             "body2": {"fi": "", "nb": ""},
         },
-        options=["Option 1", "Option 2", "Option 3"],
+        options=[
+            {"fi": "Option 1", "nb": "Option 1"},
+            {"fi": "Option 2", "nb": "Option 2"},
+            {"fi": "Option 3", "nb": "Option 3"},
+        ],
         isRecording=False,
     )
 
@@ -29,11 +34,16 @@ def test_prompt_item_choice_in_schedule():
         "itemId": "choice-002",
         "itemType": "choice",
         "typeId": None,
-        "url": None,
+        "url": "https://example.org/choice-002.png",
         "title": {"fi": "Ikäryhmä", "nb": "Aldersgruppe"},
         "body1": {"fi": "Valitse ikäryhmäsi", "nb": "Velg din aldersgruppe"},
         "body2": {"fi": "", "nb": ""},
-        "options": ["18-25", "26-40", "41-60", "60+"],
+        "options": [
+            {"fi": "18-25", "nb": "18-25"},
+            {"fi": "26-40", "nb": "26-40"},
+            {"fi": "41-60", "nb": "41-60"},
+            {"fi": "60+", "nb": "60+"},
+        ],
         "isRecording": True,
     }
 
@@ -51,28 +61,30 @@ def test_prompt_item_choice_single_option():
         kind="prompt",
         itemId="choice-single",
         itemType="choice",
+        url="https://example.org/choice-single.png",
         default={
             "title": {"fi": "Jatka", "nb": "Fortsett"},
             "body1": {"fi": "Haluatko jatkaa?", "nb": "Vil du fortsette?"},
             "body2": {"fi": "", "nb": ""},
         },
-        options=["Yes"],
+        options=[{"fi": "Yes", "nb": "Yes"}],
         isRecording=False,
     )
 
     assert item.itemType == "choice"
     assert len(item.options) == 1
-    assert item.options[0] == "Yes"
+    assert item.options[0]["fi"] == "Yes"
 
 
 def test_prompt_item_choice_many_options():
     """Test PromptItem choice with many options."""
-    options = [f"Option {i}" for i in range(1, 101)]
+    options = [{"fi": f"Option {i}", "nb": f"Option {i}"} for i in range(1, 101)]
 
     item = ChoicePromptItem(
         kind="prompt",
         itemId="choice-many",
         itemType="choice",
+        url="https://example.org/choice-many.png",
         default={
             "title": {"fi": "Valinta", "nb": "Valg"},
             "body1": {
@@ -87,4 +99,4 @@ def test_prompt_item_choice_many_options():
 
     assert item.itemType == "choice"
     assert len(item.options) == 100
-    assert item.options[99] == "Option 100"
+    assert item.options[99]["fi"] == "Option 100"
