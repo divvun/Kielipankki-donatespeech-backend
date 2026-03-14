@@ -9,12 +9,6 @@ def test_prompt_item_multi_choice_valid():
         kind="prompt",
         itemId="multi-choice-001",
         itemType="multi-choice",
-        url="https://example.org/multi-choice-001.png",
-        default={
-            "title": {"fi": "Monivalinta", "nb": "Flervalg"},
-            "body1": {"fi": "Valitse useita", "nb": "Velg flere"},
-            "body2": {"fi": "", "nb": ""},
-        },
         options=[
             {"fi": "Option A", "nb": "Option A"},
             {"fi": "Option B", "nb": "Option B"},
@@ -36,10 +30,6 @@ def test_prompt_item_multi_choice_in_schedule():
         "itemId": "multi-choice-002",
         "itemType": "multi-choice",
         "typeId": None,
-        "url": "https://example.org/multi-choice-002.png",
-        "title": {"fi": "Mediat", "nb": "Medier"},
-        "body1": {"fi": "Valitse kaikki sopivat", "nb": "Velg alle som passer"},
-        "body2": {"fi": "", "nb": ""},
         "options": [
             {"fi": "TV", "nb": "TV"},
             {"fi": "Radio", "nb": "Radio"},
@@ -67,12 +57,6 @@ def test_prompt_item_multi_choice_without_other_entry():
         kind="prompt",
         itemId="multi-choice-no-other",
         itemType="multi-choice",
-        url="https://example.org/multi-choice-no-other.png",
-        default={
-            "title": {"fi": "Monivalinta", "nb": "Flervalg"},
-            "body1": {"fi": "Ei tekstisyöttöä", "nb": "Ingen tekstinngang"},
-            "body2": {"fi": "", "nb": ""},
-        },
         options=[{"fi": "Opt 1", "nb": "Opt 1"}, {"fi": "Opt 2", "nb": "Opt 2"}],
         isRecording=False,
     )
@@ -89,12 +73,6 @@ def test_prompt_item_multi_choice_many_options():
         kind="prompt",
         itemId="multi-choice-many",
         itemType="multi-choice",
-        url="https://example.org/multi-choice-many.png",
-        default={
-            "title": {"fi": "Kategoriat", "nb": "Kategorier"},
-            "body1": {"fi": "Valitse kategorioita", "nb": "Velg kategorier"},
-            "body2": {"fi": "", "nb": ""},
-        },
         options=options,
         isRecording=True,
         otherEntryLabel={"fi": "Specify other", "nb": "Specify other"},

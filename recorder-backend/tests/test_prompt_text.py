@@ -9,12 +9,6 @@ def test_prompt_item_text_valid():
         kind="prompt",
         itemId="text-prompt-001",
         itemType="text",
-        url="https://example.org/text-prompt-001.png",
-        default={
-            "title": {"fi": "Tekstisyöte", "nb": "Tekstinngang"},
-            "body1": {"fi": "Syötä vastauksesi", "nb": "Skriv inn svaret ditt"},
-            "body2": {"fi": "", "nb": ""},
-        },
         isRecording=True,
     )
 
@@ -29,10 +23,6 @@ def test_prompt_item_text_in_schedule():
         "itemId": "text-prompt-002",
         "itemType": "text",
         "typeId": None,
-        "url": "https://example.org/text-prompt-002.png",
-        "title": {"fi": "Nimi", "nb": "Navn"},
-        "body1": {"fi": "Mikä on nimesi?", "nb": "Hva heter du?"},
-        "body2": {"fi": "", "nb": ""},
         "options": [],
         "isRecording": False,
     }
@@ -50,12 +40,6 @@ def test_prompt_item_text_no_options():
         kind="prompt",
         itemId="text-prompt-no-opts",
         itemType="text",
-        url="https://example.org/text-prompt-no-opts.png",
-        default={
-            "title": {"fi": "Vapaa teksti", "nb": "Fri tekst"},
-            "body1": {"fi": "Vapaa tekstisyöte", "nb": "Fri tekstinngang"},
-            "body2": {"fi": "", "nb": ""},
-        },
         isRecording=True,
     )
 
@@ -68,15 +52,6 @@ def test_prompt_item_text_no_other_entry_label():
         kind="prompt",
         itemId="text-prompt-basic",
         itemType="text",
-        url="https://example.org/text-prompt-basic.png",
-        default={
-            "title": {"fi": "Kysymys", "nb": "Spørsmål"},
-            "body1": {
-                "fi": "Yksinkertainen tekstikysymys",
-                "nb": "Enkelt tekstspørsmål",
-            },
-            "body2": {"fi": "", "nb": ""},
-        },
         isRecording=False,
     )
 
@@ -102,14 +77,7 @@ def test_prompt_item_text_with_long_description():
         kind="prompt",
         itemId="text-prompt-long",
         itemType="text",
-        url="https://example.org/text-prompt-long.png",
-        default={
-            "title": {"fi": "Kokemus", "nb": "Opplevelse"},
-            "body1": {"fi": long_desc_fi, "nb": long_desc_nb},
-            "body2": {"fi": "", "nb": ""},
-        },
         isRecording=True,
     )
 
     assert item.itemType == "text"
-    assert long_desc_fi in item.default.body1["fi"]

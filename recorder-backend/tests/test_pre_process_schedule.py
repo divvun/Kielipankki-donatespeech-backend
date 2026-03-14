@@ -12,12 +12,12 @@ from models import (
 )
 
 
-def _state(label: str) -> dict:
+def _state(label: str, url: str = None) -> dict:
     return {
         "title": {"fi": f"{label} fi", "nb": f"{label} nb"},
         "body1": {"fi": f"{label} body1 fi", "nb": f"{label} body1 nb"},
         "body2": {"fi": f"{label} body2 fi", "nb": f"{label} body2 nb"},
-        "imageUrl": f"https://example.org/{label}.jpg",
+        "url": url if url is not None else f"https://example.org/{label}.jpg",
     }
 
 
@@ -32,15 +32,12 @@ def test_pre_process_schedule_no_credentials_converts_yle_audio_with_all_fields(
         kind="media",
         itemType="yle-audio",
         itemId="yle-audio-001",
-        url="1-50000093",
         typeId="audio/m4a",
-        default=_state("default"),
         options=[],
         isRecording=True,
         start=_state("start"),
-        recording=_state("recording"),
+        recording=_state("recording", url="1-50000093"),
         finish=_state("finish"),
-        metaTitle={"fi": "Meta fi", "nb": "Meta nb"},
     )
 
     schedule = Schedule(items=[original])
@@ -65,15 +62,12 @@ def test_pre_process_schedule_no_credentials_converts_yle_video_with_all_fields(
         kind="media",
         itemType="yle-video",
         itemId="yle-video-001",
-        url="1-50000094",
         typeId="video/mp4",
-        default=_state("default-video"),
         options=[],
         isRecording=False,
-        start=_state("start-video"),
+        start=_state("start-video", url="1-50000094"),
         recording=_state("recording-video"),
         finish=_state("finish-video"),
-        metaTitle={"fi": "Meta video fi", "nb": "Meta video nb"},
     )
 
     schedule = Schedule(items=[original])
@@ -96,15 +90,12 @@ def test_pre_process_schedule_map_error_falls_back_to_fake_with_full_data(monkey
         kind="media",
         itemType="yle-audio",
         itemId="yle-audio-err",
-        url="1-50000100",
         typeId="audio/mpeg",
-        default=_state("default-error"),
         options=[],
         isRecording=True,
         start=_state("start-error"),
-        recording=_state("recording-error"),
+        recording=_state("recording-error", url="1-50000100"),
         finish=_state("finish-error"),
-        metaTitle={"fi": "Meta err fi", "nb": "Meta err nb"},
     )
 
     with patch("main.map_yle_content", side_effect=RuntimeError("mapping failed")):
@@ -127,11 +118,10 @@ def test_pre_process_schedule_configured_keeps_real_item_and_maps_url(monkeypatc
         kind="media",
         itemType="yle-video",
         itemId="yle-video-map",
-        url="1-50000101",
         typeId="video/mp4",
-        default=_state("default-map"),
         options=[],
         isRecording=False,
+        start=_state("start-map", url="1-50000101"),
     )
 
     with patch("main.map_yle_content", return_value="https://example.org/stream.m3u8"):
@@ -139,4 +129,4 @@ def test_pre_process_schedule_configured_keeps_real_item_and_maps_url(monkeypatc
 
     processed_item = processed.items[0]
     assert isinstance(processed_item, YleVideoMediaItem)
-    assert processed_item.url == "https://example.org/stream.m3u8"
+    assert processed_item.start.url == "https://example.org/stream.m3u8"
