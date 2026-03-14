@@ -184,6 +184,18 @@ uvicorn main:app --reload --port 8000
 The repository now includes an Excel-to-JSON converter for content makers who
 prefer working in spreadsheets.
 
+Generate a starter workbook template with the correct sheets and headers:
+
+```bash
+python generate_excel_template.py
+```
+
+To overwrite an existing template file:
+
+```bash
+python generate_excel_template.py content-authoring-template.xlsx --force
+```
+
 Converter script:
 
 ```bash
@@ -193,7 +205,8 @@ python convert_excel_to_json.py path/to/workbook.xlsx --output-env dev
 This generates runtime JSON files in:
 
 - `content/dev/schedules/<scheduleId>.json`
-- `content/dev/themes/<themeId>.json` (if the workbook includes a valid Theme row)
+- `content/dev/themes/<themeId>.json` (if the workbook includes a valid Theme
+  row)
 
 You can also write a conversion report:
 
