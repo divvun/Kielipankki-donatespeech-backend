@@ -7,9 +7,9 @@ Expected workbook structure:
     - `scheduleId` (required)
     - Optional start/finish columns:
         - `start_title_fi`, `start_title_nb`, `start_body1_fi`, `start_body1_nb`,
-            `start_body2_fi`, `start_body2_nb`, `start_imageUrl`
+            `start_body2_fi`, `start_body2_nb`, `start_url` (or legacy `start_imageUrl`)
         - `finish_title_fi`, `finish_title_nb`, `finish_body1_fi`, `finish_body1_nb`,
-            `finish_body2_fi`, `finish_body2_nb`, `finish_imageUrl`
+            `finish_body2_fi`, `finish_body2_nb`, `finish_url` (or legacy `finish_imageUrl`)
 
 - `Items` sheet (required): one row per schedule item.
 
@@ -28,6 +28,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import mimetypes
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any
@@ -85,14 +86,7 @@ REQUIRED_ITEM_COLUMNS = (
     "itemId",
     "kind",
     "itemType",
-    "url",
     "isRecording",
-    "default_title_fi",
-    "default_title_nb",
-    "default_body1_fi",
-    "default_body1_nb",
-    "default_body2_fi",
-    "default_body2_nb",
 )
 
 
@@ -196,6 +190,28 @@ def _format_validation_error(exc: ValidationError) -> str:
     return "; ".join(details[:3])
 
 
+def _infer_type_id_from_url(url: str | None) -> str | None:
+    if not url:
+        return None
+    guessed_type, _ = mimetypes.guess_type(url)
+    return guessed_type
+
+
+def _prune_none_preserving_typeid(value: Any) -> Any:
+    if isinstance(value, dict):
+        pruned: dict[str, Any] = {}
+        for key, item in value.items():
+            if item is None and key != "typeId":
+                continue
+            pruned[key] = _prune_none_preserving_typeid(item)
+        return pruned
+
+    if isinstance(value, list):
+        return [_prune_none_preserving_typeid(item) for item in value]
+
+    return value
+
+
 def _read_sheet_rows(
     workbook: Any,
     sheet_name: str,
@@ -288,6 +304,8 @@ def _media_state_from_row(
     prefix: str,
     required: bool,
 ) -> dict[str, Any] | None:
+    url_key = f"{prefix}_url"
+    legacy_url_key = f"{prefix}_imageUrl"
     keys = (
         f"{prefix}_title_fi",
         f"{prefix}_title_nb",
@@ -295,17 +313,23 @@ def _media_state_from_row(
         f"{prefix}_body1_nb",
         f"{prefix}_body2_fi",
         f"{prefix}_body2_nb",
-        f"{prefix}_imageUrl",
+        url_key,
+        legacy_url_key,
     )
     state_present = _row_has_data(row, keys)
     if not required and not state_present:
         return None
 
+    state_url = _normalize_text(row.get(url_key))
+    if state_url is None:
+        # Backward compatibility for workbooks created before the url column rename.
+        state_url = _normalize_text(row.get(legacy_url_key))
+
     return {
         "title": _localized_required(row, f"{prefix}_title"),
         "body1": _localized_required(row, f"{prefix}_body1"),
         "body2": _localized_required(row, f"{prefix}_body2"),
-        "imageUrl": _normalize_text(row.get(f"{prefix}_imageUrl")),
+        "url": state_url,
     }
 
 
@@ -382,7 +406,6 @@ def _build_item_from_row(
     kind = _normalize_text(row.get("kind"))
     item_type = _normalize_text(row.get("itemType"))
     item_id = _normalize_text(row.get("itemId"))
-    url = _normalize_text(row.get("url"))
 
     if kind is None:
         raise RowValidationError("kind is required")
@@ -390,8 +413,6 @@ def _build_item_from_row(
         raise RowValidationError("itemType is required")
     if item_id is None:
         raise RowValidationError("itemId is required")
-    if url is None:
-        raise RowValidationError("url is required")
 
     kind = kind.lower()
     item_type = item_type.lower()
@@ -422,9 +443,7 @@ def _build_item_from_row(
         "kind": kind,
         "itemType": item_type,
         "itemId": item_id,
-        "url": url,
         "isRecording": is_recording,
-        "default": _media_state_from_row(row, "default", required=True),
     }
 
     type_id = _normalize_text(row.get("typeId"))
@@ -438,11 +457,28 @@ def _build_item_from_row(
             if state is not None:
                 item_data[prefix] = state
 
-        meta_title = _localized_optional(row, "metaTitle")
-        if meta_title is not None:
-            item_data["metaTitle"] = meta_title
+        # Backward compatibility for workbooks that used only default_* columns.
+        if "start" not in item_data:
+            default_state = _media_state_from_row(row, "default", required=False)
+            if default_state is not None:
+                item_data["start"] = default_state
+                warnings.append(
+                    f"Items row {row_number}: default_* columns are deprecated; mapped to start_*"
+                )
 
     if kind == "prompt":
+        start_state = _media_state_from_row(row, "start", required=False)
+        if start_state is None:
+            # Backward compatibility for workbooks that used only default_* columns.
+            default_state = _media_state_from_row(row, "default", required=False)
+            if default_state is not None:
+                start_state = default_state
+                warnings.append(
+                    f"Items row {row_number}: default_* columns are deprecated; mapped to start_*"
+                )
+        if start_state is not None:
+            item_data["start"] = start_state
+
         if item_type in PROMPT_TYPES_WITH_OPTIONS:
             options = options_by_item.get(item_id, [])
             if not options:
@@ -452,11 +488,6 @@ def _build_item_from_row(
             item_data["options"] = options
         else:
             item_data["options"] = []
-
-        if item_type == "text":
-            meta_title = _localized_optional(row, "metaTitle")
-            if meta_title is not None:
-                item_data["metaTitle"] = meta_title
 
         if item_type == "multi-choice":
             other_answer = _localized_optional(row, "otherAnswer")
@@ -473,15 +504,33 @@ def _build_item_from_row(
     except ValidationError as exc:
         raise RowValidationError(_format_validation_error(exc)) from exc
 
+    output_item: dict[str, Any] = parsed.model_dump(exclude_none=True)
+
+    # Preserve explicit null typeId in output to match existing content shape.
+    if type_id is not None:
+        output_item["typeId"] = type_id
+    else:
+        start_state = output_item.get("start")
+        inferred_start_type_id: str | None = None
+        if item_type == "image" and isinstance(start_state, dict):
+            inferred_start_type_id = _infer_type_id_from_url(start_state.get("url"))
+            if inferred_start_type_id:
+                start_state["typeId"] = inferred_start_type_id
+
+        # Most items in prod content explicitly keep typeId as null.
+        # For image items that carry type in start.typeId, omit top-level typeId.
+        if inferred_start_type_id is None:
+            output_item["typeId"] = None
+
     order = _resolve_item_order(row, row_number)
-    return order, parsed.model_dump(exclude_none=True)
+    return order, output_item
 
 
 def _build_schedule(
     workbook: Any,
     items: list[dict[str, Any]],
     warnings: list[str],
-) -> tuple[str, Schedule]:
+) -> tuple[str, Schedule, dict[str, Any]]:
     schedule_rows = _read_sheet_rows(
         workbook=workbook,
         sheet_name="ScheduleMeta",
@@ -520,7 +569,7 @@ def _build_schedule(
             f"{_format_validation_error(exc)}"
         ) from exc
 
-    return schedule_id, schedule_model
+    return schedule_id, schedule_model, schedule_data
 
 
 def _build_theme(
@@ -650,7 +699,7 @@ def convert_workbook(
         raise WorkbookStructureError("No valid Items rows could be converted")
 
     sorted_items = [item for _, item in sorted(parsed_items, key=lambda pair: pair[0])]
-    schedule_id, schedule_model = _build_schedule(
+    schedule_id, schedule_model, schedule_data = _build_schedule(
         workbook=workbook,
         items=sorted_items,
         warnings=warnings,
@@ -671,9 +720,10 @@ def convert_workbook(
     schedule_dir = content_root / output_env / "schedules"
     schedule_dir.mkdir(parents=True, exist_ok=True)
     schedule_path = schedule_dir / f"{schedule_id}.json"
+    schedule_payload = _prune_none_preserving_typeid(schedule_data)
 
     with open(schedule_path, "w", encoding="utf-8") as schedule_file:
-        json.dump(schedule_model.model_dump(exclude_none=True), schedule_file, indent=2, ensure_ascii=False)
+        json.dump(schedule_payload, schedule_file, indent=2, ensure_ascii=False)
         schedule_file.write("\n")
 
     theme_path: Path | None = None

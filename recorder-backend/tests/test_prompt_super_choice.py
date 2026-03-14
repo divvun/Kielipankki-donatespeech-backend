@@ -9,12 +9,6 @@ def test_prompt_item_super_choice_valid():
         kind="prompt",
         itemId="super-choice-001",
         itemType="super-choice",
-        url="https://example.org/super-choice-001.png",
-        default={
-            "title": {"fi": "Supervalinta", "nb": "Supervalg"},
-            "body1": {"fi": "Valitse tai kirjoita", "nb": "Velg eller skriv"},
-            "body2": {"fi": "", "nb": ""},
-        },
         options=[
             {"fi": "Predefined 1", "nb": "Predefined 1"},
             {"fi": "Predefined 2", "nb": "Predefined 2"},
@@ -39,13 +33,6 @@ def test_prompt_item_super_choice_in_schedule():
         "itemId": "super-choice-002",
         "itemType": "super-choice",
         "typeId": None,
-        "url": "https://example.org/super-choice-002.png",
-        "title": {"fi": "Kieli", "nb": "Språk"},
-        "body1": {
-            "fi": "Valitse listasta tai lisää",
-            "nb": "Velg fra liste eller legg til",
-        },
-        "body2": {"fi": "", "nb": ""},
         "options": [
             {"fi": "English", "nb": "English"},
             {"fi": "Finnish", "nb": "Finnish"},
@@ -72,12 +59,6 @@ def test_prompt_item_super_choice_without_other_entry():
         kind="prompt",
         itemId="super-choice-no-label",
         itemType="super-choice",
-        url="https://example.org/super-choice-no-label.png",
-        default={
-            "title": {"fi": "Valinta", "nb": "Valg"},
-            "body1": {"fi": "Ei mukautettua kenttää", "nb": "Ingen tilpasset felt"},
-            "body2": {"fi": "", "nb": ""},
-        },
         options=[{"fi": "Option A", "nb": "Option A"}, {"fi": "Option B", "nb": "Option B"}],
         isRecording=True,
     )
@@ -94,15 +75,6 @@ def test_prompt_item_super_choice_with_many_options():
         kind="prompt",
         itemId="super-choice-many",
         itemType="super-choice",
-        url="https://example.org/super-choice-many.png",
-        default={
-            "title": {"fi": "Kohde", "nb": "Gjenstand"},
-            "body1": {
-                "fi": "Valitse 30 kohteesta tai lisää",
-                "nb": "Velg fra 30 elementer eller legg til",
-            },
-            "body2": {"fi": "", "nb": ""},
-        },
         options=options,
         isRecording=False,
         otherEntryLabel={"fi": "Add custom item", "nb": "Add custom item"},

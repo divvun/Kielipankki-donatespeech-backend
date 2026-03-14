@@ -1,6 +1,6 @@
 """Test discriminated union: MediaItem with itemType=yle-video."""
 
-from models import YleVideoMediaItem, ScheduleItem
+from models import YleVideoMediaItem, ScheduleItem, MediaState
 
 
 def test_media_item_yle_video_valid():
@@ -9,17 +9,17 @@ def test_media_item_yle_video_valid():
         kind="media",
         itemId="yle-video-001",
         itemType="yle-video",
-        url="1-50000093",  # YLE Areena program identifier
-        default={
-            "title": {"fi": "YLE video", "nb": "YLE video"},
-            "body1": {"fi": "YLE videodata", "nb": "YLE videodata"},
-            "body2": {"fi": "", "nb": ""},
-        },
+        start=MediaState(
+            title={"fi": "Otsikko"},
+            body1={"fi": "Teksti"},
+            body2={"fi": ""},
+            url="1-50000093",
+        ),
         isRecording=True,
     )
 
     assert item.itemType == "yle-video"
-    assert item.url == "1-50000093"  # YLE program ID format
+    assert item.start.url == "1-50000093"
     assert item.isRecording is True
 
 
@@ -30,12 +30,14 @@ def test_media_item_yle_video_in_schedule():
         "itemId": "yle-video-002",
         "itemType": "yle-video",
         "typeId": None,
-        "url": "1-50000094",
-        "title": {"fi": "YLE video", "nb": "YLE video"},
-        "body1": {"fi": "Toinen YLE video", "nb": "YLE video to"},
-        "body2": {"fi": "", "nb": ""},
         "options": [],
         "isRecording": False,
+        "start": {
+            "title": {"fi": "Otsikko"},
+            "body1": {"fi": "Teksti"},
+            "body2": {"fi": ""},
+            "url": "1-50000094",
+        },
     }
 
     # Parse as ScheduleItem union
@@ -43,7 +45,7 @@ def test_media_item_yle_video_in_schedule():
 
     assert isinstance(schedule_item, YleVideoMediaItem)
     assert schedule_item.itemType == "yle-video"
-    assert schedule_item.url == "1-50000094"  # YLE program ID preserved
+    assert schedule_item.start.url == "1-50000094"
 
 
 def test_media_item_yle_video_various_ids():
@@ -55,14 +57,14 @@ def test_media_item_yle_video_various_ids():
             kind="media",
             itemId=f"yle-vid-{yle_id}",
             itemType="yle-video",
-            url=yle_id,
-            default={
-                "title": {"fi": "YLE video", "nb": "YLE video"},
-                "body1": {"fi": f"YLE video {yle_id}", "nb": f"YLE video {yle_id}"},
-                "body2": {"fi": "", "nb": ""},
-            },
+            start=MediaState(
+                title={"fi": "Otsikko"},
+                body1={"fi": "Teksti"},
+                body2={"fi": ""},
+                url=yle_id,
+            ),
             isRecording=True,
         )
 
         assert item.itemType == "yle-video"
-        assert item.url == yle_id  # YLE ID stored directly for backend decryption
+        assert item.start.url == yle_id

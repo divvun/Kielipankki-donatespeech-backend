@@ -9,12 +9,6 @@ def test_prompt_item_choice_valid():
         kind="prompt",
         itemId="choice-001",
         itemType="choice",
-        url="https://example.org/choice-001.png",
-        default={
-            "title": {"fi": "Valitse", "nb": "Velg"},
-            "body1": {"fi": "Valitse yksi vaihtoehto", "nb": "Velg ett alternativ"},
-            "body2": {"fi": "", "nb": ""},
-        },
         options=[
             {"fi": "Option 1", "nb": "Option 1"},
             {"fi": "Option 2", "nb": "Option 2"},
@@ -34,10 +28,6 @@ def test_prompt_item_choice_in_schedule():
         "itemId": "choice-002",
         "itemType": "choice",
         "typeId": None,
-        "url": "https://example.org/choice-002.png",
-        "title": {"fi": "Ikäryhmä", "nb": "Aldersgruppe"},
-        "body1": {"fi": "Valitse ikäryhmäsi", "nb": "Velg din aldersgruppe"},
-        "body2": {"fi": "", "nb": ""},
         "options": [
             {"fi": "18-25", "nb": "18-25"},
             {"fi": "26-40", "nb": "26-40"},
@@ -61,12 +51,6 @@ def test_prompt_item_choice_single_option():
         kind="prompt",
         itemId="choice-single",
         itemType="choice",
-        url="https://example.org/choice-single.png",
-        default={
-            "title": {"fi": "Jatka", "nb": "Fortsett"},
-            "body1": {"fi": "Haluatko jatkaa?", "nb": "Vil du fortsette?"},
-            "body2": {"fi": "", "nb": ""},
-        },
         options=[{"fi": "Yes", "nb": "Yes"}],
         isRecording=False,
     )
@@ -84,15 +68,6 @@ def test_prompt_item_choice_many_options():
         kind="prompt",
         itemId="choice-many",
         itemType="choice",
-        url="https://example.org/choice-many.png",
-        default={
-            "title": {"fi": "Valinta", "nb": "Valg"},
-            "body1": {
-                "fi": "Valitse 100 vaihtoehdosta",
-                "nb": "Velg fra 100 alternativer",
-            },
-            "body2": {"fi": "", "nb": ""},
-        },
         options=options,
         isRecording=True,
     )

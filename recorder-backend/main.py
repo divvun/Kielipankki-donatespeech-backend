@@ -96,16 +96,23 @@ def pre_process_schedule(schedule: Schedule) -> Schedule:
         item_data = item.model_dump()
         item_data["itemType"] = "fake-yle-video"
         return FakeYleVideoMediaItem(**item_data)
+
+    def map_yle_urls_in_states(item):
+        """Map YLE program IDs in state urls to streaming URLs."""
+        for state_attr in ("start", "recording", "finish"):
+            state = getattr(item, state_attr, None)
+            if state and state.url and not state.url.startswith("http"):
+                state.url = map_yle_content(state.url)
     
     for item in schedule.items:
         # Handle YLE items based on credentials
         if isinstance(item, YleAudioMediaItem):
             if yle_configured:
                 try:
-                    item.url = map_yle_content(item.url)
+                    map_yle_urls_in_states(item)
                     processed_items.append(item)
                 except Exception as e:
-                    logger.warning(f"Failed to map YLE audio content for {item.url}: {e}")
+                    logger.warning(f"Failed to map YLE audio content for {item.itemId}: {e}")
                     # Convert to fake YLE item on error
                     processed_items.append(to_fake_yle_audio_item(item))
             else:
@@ -114,10 +121,10 @@ def pre_process_schedule(schedule: Schedule) -> Schedule:
         elif isinstance(item, YleVideoMediaItem):
             if yle_configured:
                 try:
-                    item.url = map_yle_content(item.url)
+                    map_yle_urls_in_states(item)
                     processed_items.append(item)
                 except Exception as e:
-                    logger.warning(f"Failed to map YLE video content for {item.url}: {e}")
+                    logger.warning(f"Failed to map YLE video content for {item.itemId}: {e}")
                     # Convert to fake YLE item on error
                     processed_items.append(to_fake_yle_video_item(item))
             else:
