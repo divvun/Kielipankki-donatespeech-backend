@@ -179,6 +179,77 @@ podman run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite azurite-blob -
 uvicorn main:app --reload --port 8000
 ```
 
+## Excel Content Authoring
+
+The repository now includes an Excel-to-JSON converter for content makers who
+prefer working in spreadsheets.
+
+Converter script:
+
+```bash
+python convert_excel_to_json.py path/to/workbook.xlsx --output-env dev
+```
+
+This generates runtime JSON files in:
+
+- `content/dev/schedules/<scheduleId>.json`
+- `content/dev/themes/<themeId>.json` (if the workbook includes a valid Theme row)
+
+You can also write a conversion report:
+
+```bash
+python convert_excel_to_json.py path/to/workbook.xlsx \
+  --output-env dev \
+  --report reports/conversion-report.json
+```
+
+### Workbook Sheets
+
+Required:
+
+- `ScheduleMeta`
+- `Items`
+
+Optional:
+
+- `ItemOptions`
+- `Theme`
+- `ThemeSchedules`
+
+### Required `Items` Columns
+
+The `Items` sheet must include at least these columns:
+
+- `itemId`
+- `kind`
+- `itemType`
+- `url`
+- `isRecording`
+- `default_title_fi`
+- `default_title_nb`
+- `default_body1_fi`
+- `default_body1_nb`
+- `default_body2_fi`
+- `default_body2_nb`
+
+Prompt items with `itemType` `choice`, `multi-choice`, and `super-choice`
+require option rows in `ItemOptions`:
+
+- `itemId`
+- `optionIndex`
+- `option_fi`
+- `option_nb`
+
+### Validation Behavior
+
+- Default mode is **best effort**:
+  - Invalid rows are skipped and reported.
+  - Valid rows are still generated.
+- Use `--strict` to fail conversion if any row is skipped.
+
+After conversion, generated JSON is validated with existing Pydantic models
+(`Schedule` and `Theme`) before being written.
+
 ## REST API Endpoints
 
 ### Initialize Audio File Upload
