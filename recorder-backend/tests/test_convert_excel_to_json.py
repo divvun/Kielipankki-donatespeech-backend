@@ -4,10 +4,12 @@ import json
 from pathlib import Path
 
 import pytest
-from openpyxl import Workbook  # type: ignore[import-untyped]
 
 from convert_excel_to_json import WorkbookStructureError, convert_workbook
 from models import Schedule, Theme
+
+
+Workbook = pytest.importorskip("openpyxl").Workbook
 
 
 def _create_workbook(path: Path, include_invalid_item: bool = False, include_items: bool = True) -> None:
@@ -17,12 +19,6 @@ def _create_workbook(path: Path, include_invalid_item: bool = False, include_ite
     schedule_meta.title = "ScheduleMeta"
     schedule_headers = [
         "scheduleId",
-        "title_fi",
-        "title_nb",
-        "body1_fi",
-        "body1_nb",
-        "body2_fi",
-        "body2_nb",
         "start_title_fi",
         "start_title_nb",
         "start_body1_fi",
@@ -42,12 +38,6 @@ def _create_workbook(path: Path, include_invalid_item: bool = False, include_ite
     schedule_meta.append(
         [
             "schedule-001",
-            "Aikataulu",
-            "Plan",
-            "Aikataulun kuvaus",
-            "Plan description",
-            "",
-            "",
             "Aloitetaan",
             "Start",
             "Kuvaus",
