@@ -439,9 +439,6 @@ class Schedule(BaseModel):
 
     id: Optional[str] = None  # Will be set from filename
     scheduleId: Optional[str] = None
-    title: Optional[dict[str, str]] = Field(None, description="Localized title")
-    body1: Optional[dict[str, str]] = Field(None, description="Localized body text 1")
-    body2: Optional[dict[str, str]] = Field(None, description="Localized body text 2")
     start: Optional[ScheduleState] = Field(None, description="State shown at schedule start")
     finish: Optional[ScheduleState] = Field(None, description="State shown at schedule finish")
     items: list[ScheduleItem]
