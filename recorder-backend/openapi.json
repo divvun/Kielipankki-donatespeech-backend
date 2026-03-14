@@ -1117,51 +1117,6 @@
                         ],
                         "title": "Scheduleid"
                     },
-                    "title": {
-                        "anyOf": [
-                            {
-                                "additionalProperties": {
-                                    "type": "string"
-                                },
-                                "type": "object"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "title": "Title",
-                        "description": "Localized title"
-                    },
-                    "body1": {
-                        "anyOf": [
-                            {
-                                "additionalProperties": {
-                                    "type": "string"
-                                },
-                                "type": "object"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "title": "Body1",
-                        "description": "Localized body text 1"
-                    },
-                    "body2": {
-                        "anyOf": [
-                            {
-                                "additionalProperties": {
-                                    "type": "string"
-                                },
-                                "type": "object"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "title": "Body2",
-                        "description": "Localized body text 2"
-                    },
                     "start": {
                         "anyOf": [
                             {
