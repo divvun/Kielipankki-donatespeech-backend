@@ -223,6 +223,12 @@ Required:
 - `ScheduleMeta`
 - `Items`
 
+`ScheduleMeta` contains only:
+
+- `scheduleId`
+- optional `start_*` columns
+- optional `finish_*` columns
+
 Optional:
 
 - `ItemOptions`

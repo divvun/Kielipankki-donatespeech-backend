@@ -24,12 +24,6 @@ SHEET_THEME_SCHEDULES = "ThemeSchedules"
 
 SCHEDULE_META_HEADERS = [
     "scheduleId",
-    "title_fi",
-    "title_nb",
-    "body1_fi",
-    "body1_nb",
-    "body2_fi",
-    "body2_nb",
     "start_title_fi",
     "start_title_nb",
     "start_body1_fi",
@@ -193,31 +187,7 @@ def create_template_workbook(output_path: Path, overwrite: bool = False) -> Path
     schedule_meta = workbook.active
     schedule_meta.title = SHEET_SCHEDULE_META
     _prepare_sheet(schedule_meta, SCHEDULE_META_HEADERS)
-    schedule_meta.append(
-        [
-            "replace-schedule-id",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-        ]
-    )
+    schedule_meta.append(["replace-schedule-id"] + [""] * (len(SCHEDULE_META_HEADERS) - 1))
 
     items = workbook.create_sheet(SHEET_ITEMS)
     _prepare_sheet(items, ITEM_HEADERS)

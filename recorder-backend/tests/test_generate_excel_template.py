@@ -3,7 +3,6 @@
 from pathlib import Path
 
 import pytest
-from openpyxl import load_workbook  # type: ignore[import-untyped]
 
 from generate_excel_template import (
     ITEM_HEADERS,
@@ -18,6 +17,9 @@ from generate_excel_template import (
     THEME_SCHEDULE_HEADERS,
     create_template_workbook,
 )
+
+
+load_workbook = pytest.importorskip("openpyxl").load_workbook
 
 
 def _row_values(sheet, row_index: int, count: int) -> list[str | None]:

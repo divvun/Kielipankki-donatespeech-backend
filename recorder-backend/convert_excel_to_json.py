@@ -4,13 +4,12 @@
 Expected workbook structure:
 
 - `ScheduleMeta` sheet (required):
-  - `scheduleId` (required)
-  - Optional localized columns: `title_fi`, `title_nb`, `body1_fi`, `body1_nb`, `body2_fi`, `body2_nb`
-  - Optional start/finish columns:
-    - `start_title_fi`, `start_title_nb`, `start_body1_fi`, `start_body1_nb`,
-      `start_body2_fi`, `start_body2_nb`, `start_imageUrl`
-    - `finish_title_fi`, `finish_title_nb`, `finish_body1_fi`, `finish_body1_nb`,
-      `finish_body2_fi`, `finish_body2_nb`, `finish_imageUrl`
+    - `scheduleId` (required)
+    - Optional start/finish columns:
+        - `start_title_fi`, `start_title_nb`, `start_body1_fi`, `start_body1_nb`,
+            `start_body2_fi`, `start_body2_nb`, `start_imageUrl`
+        - `finish_title_fi`, `finish_title_nb`, `finish_body1_fi`, `finish_body1_nb`,
+            `finish_body2_fi`, `finish_body2_nb`, `finish_imageUrl`
 
 - `Items` sheet (required): one row per schedule item.
 
@@ -507,11 +506,6 @@ def _build_schedule(
         "scheduleId": schedule_id,
         "items": items,
     }
-
-    for field in ("title", "body1", "body2"):
-        localized = _localized_optional(row, field)
-        if localized is not None:
-            schedule_data[field] = localized
 
     for prefix in ("start", "finish"):
         state = _media_state_from_row(row, prefix, required=False)
