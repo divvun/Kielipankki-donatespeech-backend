@@ -9,7 +9,7 @@ import json
 import logging
 import os
 from datetime import datetime, timedelta
-from typing import List, Optional
+from typing import Dict, List, Optional
 
 from azure.storage.blob.aio import BlobServiceClient
 from azure.storage.blob import (
@@ -46,6 +46,72 @@ if not STORAGE_CONNECTION_STRING:
 def get_blob_service_client() -> BlobServiceClient:
     """Create and return a BlobServiceClient."""
     return BlobServiceClient.from_connection_string(STORAGE_CONNECTION_STRING)
+
+
+# --- Language-Aware Blob Helpers ---
+
+
+def normalize_language_tag(language: str) -> str:
+    """Normalize language tags to a predictable storage representation."""
+    return language.strip().replace("_", "-").lower()
+
+
+def build_schedule_blob_name(schedule_id: str, language: str) -> str:
+    """Build a schedule blob path for one schedule ID and language."""
+    return f"schedule/{schedule_id}/{normalize_language_tag(language)}.json"
+
+
+def build_theme_blob_name(theme_id: str, language: str) -> str:
+    """Build a theme blob path for one theme ID and language."""
+    return f"theme/{theme_id}/{normalize_language_tag(language)}.json"
+
+
+def parse_localized_blob_name(blob_name: str, prefix: str) -> tuple[str, str] | None:
+    """Parse blobs of form '<prefix><id>/<language>.json' into (id, language)."""
+    if not blob_name.startswith(prefix):
+        return None
+
+    suffix = blob_name[len(prefix) :]
+    if "/" not in suffix or not suffix.endswith(".json"):
+        return None
+
+    item_id, language_filename = suffix.split("/", 1)
+    if not item_id or "/" in language_filename:
+        return None
+
+    language = language_filename[: -len(".json")]
+    if not language:
+        return None
+
+    return item_id, normalize_language_tag(language)
+
+
+def collect_available_languages(blob_names: List[str], prefix: str) -> Dict[str, List[str]]:
+    """Collect available languages per logical ID from localized blob names."""
+    languages_by_id: Dict[str, set[str]] = {}
+
+    for blob_name in blob_names:
+        parsed = parse_localized_blob_name(blob_name, prefix)
+        if parsed is None:
+            continue
+
+        item_id, language = parsed
+        if item_id not in languages_by_id:
+            languages_by_id[item_id] = set()
+        languages_by_id[item_id].add(language)
+
+    return {
+        item_id: sorted(languages)
+        for item_id, languages in sorted(languages_by_id.items())
+    }
+
+
+async def list_available_languages_by_id(
+    prefix: str, max_results: int = 1000
+) -> Dict[str, List[str]]:
+    """List IDs under a prefix and the languages available for each ID."""
+    blob_names = await list_blobs_with_prefix(prefix, max_results=max_results)
+    return collect_available_languages(blob_names, prefix)
 
 
 # --- Storage Operations ---
