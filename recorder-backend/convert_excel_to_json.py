@@ -104,6 +104,8 @@ class ConversionResult:
     schedule_path: str
     theme_id: str | None
     theme_path: str | None
+    schedule_language_paths: list[str] = field(default_factory=list)
+    theme_language_paths: list[str] = field(default_factory=list)
     skipped_rows: list[SkippedRow] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
 
@@ -112,11 +114,32 @@ class ConversionResult:
             "workbook": self.workbook,
             "schedule_id": self.schedule_id,
             "schedule_path": self.schedule_path,
+            "schedule_language_paths": self.schedule_language_paths,
             "theme_id": self.theme_id,
             "theme_path": self.theme_path,
+            "theme_language_paths": self.theme_language_paths,
             "skipped_rows": [asdict(item) for item in self.skipped_rows],
             "warnings": self.warnings,
         }
+
+
+def _infer_language_keys(payload: dict[str, Any]) -> list[str]:
+    """Collect the union of all language keys found in any dict[str,str] value."""
+    keys: set[str] = set()
+
+    def _walk(obj: Any) -> None:
+        if isinstance(obj, dict):
+            if obj and all(isinstance(v, str) for v in obj.values()):
+                keys.update(obj.keys())
+            else:
+                for v in obj.values():
+                    _walk(v)
+        elif isinstance(obj, list):
+            for item in obj:
+                _walk(item)
+
+    _walk(payload)
+    return sorted(keys)
 
 
 def _normalize_text(value: Any) -> str | None:
@@ -717,30 +740,44 @@ def convert_workbook(
             f"Strict mode enabled and {len(skipped_rows)} row(s) were skipped"
         )
 
-    schedule_dir = content_root / output_env / "schedules"
-    schedule_dir.mkdir(parents=True, exist_ok=True)
-    schedule_path = schedule_dir / f"{schedule_id}.json"
     schedule_payload = _prune_none_preserving_typeid(schedule_data)
+    schedule_languages = _infer_language_keys(schedule_payload)
 
-    with open(schedule_path, "w", encoding="utf-8") as schedule_file:
-        json.dump(schedule_payload, schedule_file, indent=2, ensure_ascii=False)
-        schedule_file.write("\n")
+    schedule_dir = content_root / output_env / "schedules" / schedule_id
+    schedule_dir.mkdir(parents=True, exist_ok=True)
+    schedule_language_paths: list[str] = []
+    for lang in schedule_languages:
+        schedule_path = schedule_dir / f"{lang}.json"
+        with open(schedule_path, "w", encoding="utf-8") as schedule_file:
+            json.dump(schedule_payload, schedule_file, indent=2, ensure_ascii=False)
+            schedule_file.write("\n")
+        schedule_language_paths.append(str(schedule_path))
+
+    schedule_path = Path(schedule_language_paths[0]) if schedule_language_paths else schedule_dir
 
     theme_path: Path | None = None
+    theme_language_paths: list[str] = []
     if theme_id is not None and theme_model is not None:
-        theme_dir = content_root / output_env / "themes"
+        theme_payload = theme_model.model_dump(exclude_none=True)
+        theme_languages = _infer_language_keys(theme_payload)
+        theme_dir = content_root / output_env / "themes" / theme_id
         theme_dir.mkdir(parents=True, exist_ok=True)
-        theme_path = theme_dir / f"{theme_id}.json"
-        with open(theme_path, "w", encoding="utf-8") as theme_file:
-            json.dump(theme_model.model_dump(exclude_none=True), theme_file, indent=2, ensure_ascii=False)
-            theme_file.write("\n")
+        for lang in theme_languages:
+            lang_path = theme_dir / f"{lang}.json"
+            with open(lang_path, "w", encoding="utf-8") as theme_file:
+                json.dump(theme_payload, theme_file, indent=2, ensure_ascii=False)
+                theme_file.write("\n")
+            theme_language_paths.append(str(lang_path))
+        theme_path = Path(theme_language_paths[0]) if theme_language_paths else theme_dir
 
     return ConversionResult(
         workbook=str(workbook_path),
         schedule_id=schedule_id,
         schedule_path=str(schedule_path),
+        schedule_language_paths=schedule_language_paths,
         theme_id=theme_id,
         theme_path=str(theme_path) if theme_path else None,
+        theme_language_paths=theme_language_paths,
         skipped_rows=skipped_rows,
         warnings=warnings,
     )
