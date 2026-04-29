@@ -204,9 +204,13 @@ python convert_excel_to_json.py path/to/workbook.xlsx --output-env dev
 
 This generates runtime JSON files in:
 
-- `content/dev/schedules/<scheduleId>.json`
-- `content/dev/themes/<themeId>.json` (if the workbook includes a valid Theme
-  row)
+- `content/dev/schedules/<scheduleId>/<lang>.json` — one file per language
+- `content/dev/themes/<themeId>/<lang>.json` — one file per language (if the
+  workbook includes a valid Theme row)
+
+Languages are inferred automatically from the localized columns in the
+workbook (e.g. `fi`, `nb`). The full multilingual payload is written to each
+file.
 
 You can also write a conversion report:
 
@@ -320,20 +324,56 @@ Response:
 
 ### Load Schedule Files
 
-Get a single schedule or list all schedules.
+List all schedules with their available languages:
 
 ```http
-GET /v1/schedule/{scheduleId}
 GET /v1/schedule
+```
+
+Response:
+
+```json
+[
+  { "id": "abc-123", "availableLanguages": ["fi", "nb"] }
+]
+```
+
+Fetch a schedule in a specific language (`lang` is required):
+
+```http
+GET /v1/schedule/{scheduleId}?lang=fi
+```
+
+Discover which languages are available for a specific schedule:
+
+```http
+GET /v1/schedule/{scheduleId}/languages
+```
+
+Response:
+
+```json
+{ "id": "abc-123", "availableLanguages": ["fi", "nb"] }
 ```
 
 ### Load Theme Files
 
-Get a single theme or list all themes.
+List all themes with their available languages:
 
 ```http
-GET /v1/theme/{themeId}
 GET /v1/theme
+```
+
+Fetch a theme in a specific language (`lang` is required):
+
+```http
+GET /v1/theme/{themeId}?lang=fi
+```
+
+Discover which languages are available for a specific theme:
+
+```http
+GET /v1/theme/{themeId}/languages
 ```
 
 ## Frontend Integration
@@ -350,12 +390,16 @@ During development, the Tauri app connects to `http://localhost:8000`.
 ```typescript
 // Example API configuration
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+const lang = 'fi'; // or 'nb'
 
-// Fetch schedules
+// List schedules (returns availability — id + availableLanguages per schedule)
 const schedules = await fetch(`${API_BASE_URL}/v1/schedule`).then(r => r.json());
 
-// Fetch theme
-const theme = await fetch(`${API_BASE_URL}/v1/theme/${themeId}`).then(r => r.json());
+// Fetch a schedule in a specific language
+const schedule = await fetch(`${API_BASE_URL}/v1/schedule/${scheduleId}?lang=${lang}`).then(r => r.json());
+
+// Fetch a theme in a specific language
+const theme = await fetch(`${API_BASE_URL}/v1/theme/${themeId}?lang=${lang}`).then(r => r.json());
 ```
 
 ### OpenAPI Specification
@@ -395,7 +439,43 @@ cd recorder-backend
 
 # Terminal 2: Test from command line
 curl http://localhost:8000/v1/schedule
+curl 'http://localhost:8000/v1/schedule/<scheduleId>?lang=fi'
 curl http://localhost:8000/v1/theme
+curl 'http://localhost:8000/v1/theme/<themeId>?lang=fi'
+```
+
+### Cleaning Up Storage
+
+The `cleanup-storage.py` script helps you remove old content from blob storage
+(both local Azurite and Azure remote).
+
+### Migrating to Per-Language Blob Layout
+
+If you have existing flat blobs (`schedule/{id}.json` / `theme/{id}.json`)
+they need to be copied to the new per-language layout before the API can serve
+them. Use `migrate-storage.py`:
+
+```bash
+# Dry run — show what would happen
+.venv/bin/python migrate-storage.py --lang fi --lang nb
+
+# Apply the migration
+.venv/bin/python migrate-storage.py --lang fi --lang nb --apply
+
+# Restrict to schedules only
+.venv/bin/python migrate-storage.py --lang fi --lang nb --apply --prefix schedule/
+```
+
+The script copies each flat blob to `{prefix}{id}/{lang}.json` for every
+`--lang` you specify. It skips any target that already exists and never
+deletes the original flat blobs (so the old layout coexists safely until
+you're ready to remove it).
+
+**For Azure remote storage, set the connection string first:**
+
+```bash
+export AZURE_STORAGE_CONNECTION_STRING="your-connection-string"
+.venv/bin/python migrate-storage.py --lang fi --lang nb --apply
 ```
 
 ### Cleaning Up Storage
