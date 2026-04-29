@@ -10,7 +10,7 @@ import os
 from io import BytesIO
 from uuid import UUID
 
-from fastapi import FastAPI, HTTPException, Path, Header
+from fastapi import FastAPI, HTTPException, Path, Header, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 
@@ -34,6 +34,8 @@ from storage import (
     load_blob_binary,
     load_blob_binary_range,
     list_blobs_with_prefix,
+    build_schedule_blob_name,
+    build_theme_blob_name,
     StorageError,
 )
 from yle_utils import map_yle_content
@@ -268,9 +270,12 @@ async def delete_by_recording_id(
 
 
 @app.get("/v1/schedule/{schedule_id}", response_model=Schedule)
-async def load_schedule(schedule_id: str = Path(..., description="Schedule ID")):
-    """Load a specific schedule file."""
-    blob_name = f"schedule/{schedule_id}.json"
+async def load_schedule(
+    schedule_id: str = Path(..., description="Schedule ID"),
+    lang: str = Query(..., description="Language code, for example 'fi' or 'nb'"),
+):
+    """Load a specific schedule file for one language."""
+    blob_name = build_schedule_blob_name(schedule_id, lang)
 
     try:
         schedule_dict = await load_blob_json(blob_name)
@@ -320,9 +325,12 @@ async def load_all_schedules():
 
 
 @app.get("/v1/theme/{theme_id}", response_model=Theme)
-async def load_theme(theme_id: str = Path(..., description="Theme ID")):
-    """Load a specific theme file."""
-    blob_name = f"theme/{theme_id}.json"
+async def load_theme(
+    theme_id: str = Path(..., description="Theme ID"),
+    lang: str = Query(..., description="Language code, for example 'fi' or 'nb'"),
+):
+    """Load a specific theme file for one language."""
+    blob_name = build_theme_blob_name(theme_id, lang)
 
     try:
         theme_dict = await load_blob_json(blob_name)
