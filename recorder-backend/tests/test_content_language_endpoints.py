@@ -44,6 +44,9 @@ def _theme_payload() -> dict:
     }
 
 
+# ── single-item lang required ─────────────────────────────────────────────────
+
+
 async def test_schedule_requires_lang_query_param():
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as client:
@@ -104,5 +107,90 @@ async def test_theme_missing_language_returns_404(mock_load_blob_json):
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as client:
         response = await client.get("/v1/theme/theme-404", params={"lang": "fi"})
+
+    assert response.status_code == 404
+
+
+# ── list endpoints ────────────────────────────────────────────────────────────
+
+
+@patch("main.list_available_languages_by_id", new_callable=AsyncMock)
+async def test_list_schedules_returns_availability(mock_list):
+    mock_list.return_value = {"sched-a": ["fi", "nb"], "sched-b": ["sma"]}
+
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        response = await client.get("/v1/schedule")
+
+    assert response.status_code == 200
+    data = response.json()
+    assert {"id": "sched-a", "availableLanguages": ["fi", "nb"]} in data
+    assert {"id": "sched-b", "availableLanguages": ["sma"]} in data
+    mock_list.assert_awaited_once_with("schedule/")
+
+
+@patch("main.list_available_languages_by_id", new_callable=AsyncMock)
+async def test_list_themes_returns_availability(mock_list):
+    mock_list.return_value = {"theme-x": ["fi"]}
+
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        response = await client.get("/v1/theme")
+
+    assert response.status_code == 200
+    assert response.json() == [{"id": "theme-x", "availableLanguages": ["fi"]}]
+
+
+# ── per-ID discovery endpoints ────────────────────────────────────────────────
+
+
+@patch("main.list_blobs_with_prefix", new_callable=AsyncMock)
+async def test_schedule_languages_returns_sorted_list(mock_list_blobs):
+    mock_list_blobs.return_value = [
+        "schedule/sched-1/nb.json",
+        "schedule/sched-1/fi.json",
+    ]
+
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        response = await client.get("/v1/schedule/sched-1/languages")
+
+    assert response.status_code == 200
+    assert response.json() == {"id": "sched-1", "availableLanguages": ["fi", "nb"]}
+
+
+@patch("main.list_blobs_with_prefix", new_callable=AsyncMock)
+async def test_schedule_languages_returns_404_when_empty(mock_list_blobs):
+    mock_list_blobs.return_value = []
+
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        response = await client.get("/v1/schedule/missing-id/languages")
+
+    assert response.status_code == 404
+
+
+@patch("main.list_blobs_with_prefix", new_callable=AsyncMock)
+async def test_theme_languages_returns_sorted_list(mock_list_blobs):
+    mock_list_blobs.return_value = [
+        "theme/theme-1/sma.json",
+        "theme/theme-1/fi.json",
+    ]
+
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        response = await client.get("/v1/theme/theme-1/languages")
+
+    assert response.status_code == 200
+    assert response.json() == {"id": "theme-1", "availableLanguages": ["fi", "sma"]}
+
+
+@patch("main.list_blobs_with_prefix", new_callable=AsyncMock)
+async def test_theme_languages_returns_404_when_empty(mock_list_blobs):
+    mock_list_blobs.return_value = []
+
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        response = await client.get("/v1/theme/missing-id/languages")
 
     assert response.status_code == 404

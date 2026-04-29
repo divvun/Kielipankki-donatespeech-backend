@@ -19,6 +19,8 @@ from models import (
     Theme,
     ScheduleListItem,
     ThemeListItem,
+    ScheduleAvailability,
+    ThemeAvailability,
     YleAudioMediaItem,
     YleVideoMediaItem,
     FakeYleAudioMediaItem,
@@ -36,6 +38,8 @@ from storage import (
     list_blobs_with_prefix,
     build_schedule_blob_name,
     build_theme_blob_name,
+    list_available_languages_by_id,
+    normalize_language_tag,
     StorageError,
 )
 from yle_utils import map_yle_content
@@ -290,38 +294,37 @@ async def load_schedule(
         raise HTTPException(status_code=404, detail="Schedule not found")
 
 
-@app.get("/v1/schedule", response_model=list[ScheduleListItem])
-async def load_all_schedules():
-    """Load all schedule files."""
+@app.get("/v1/schedule", response_model=list[ScheduleAvailability])
+async def list_schedules():
+    """List all schedules with their available languages."""
     try:
-        blob_list = await list_blobs_with_prefix("schedule/")
-
-        schedules = []
-        for blob_name in blob_list:
-            # Skip the directory marker
-            filename = blob_name.replace("schedule/", "")
-            if not filename:
-                continue
-
-            schedule_dict = await load_blob_json(blob_name)
-            # Parse and validate using the Schedule model
-            schedule = Schedule(**schedule_dict)
-            schedule_id = filename.replace(".json", "").strip()
-            schedule.id = schedule_id
-            # Pre-process YLE URLs
-            schedule = pre_process_schedule(schedule)
-
-            schedules.append(
-                ScheduleListItem(
-                    id=schedule_id,
-                    content=schedule,
-                )
-            )
-
-        return schedules
+        langs_by_id = await list_available_languages_by_id("schedule/")
+        return [
+            ScheduleAvailability(id=schedule_id, availableLanguages=langs)
+            for schedule_id, langs in langs_by_id.items()
+        ]
     except StorageError as e:
-        logger.error(f"Error loading all schedules: {e}")
-        raise HTTPException(status_code=500, detail="Error loading schedules")
+        logger.error(f"Error listing schedules: {e}")
+        raise HTTPException(status_code=500, detail="Error listing schedules")
+
+
+@app.get("/v1/schedule/{schedule_id}/languages", response_model=ScheduleAvailability)
+async def schedule_languages(schedule_id: str = Path(..., description="Schedule ID")):
+    """Return which languages are available for one schedule."""
+    try:
+        blob_list = await list_blobs_with_prefix(f"schedule/{schedule_id}/")
+        prefix = f"schedule/{schedule_id}/"
+        languages = sorted({
+            normalize_language_tag(b[len(prefix):][: -len(".json")])
+            for b in blob_list
+            if b.startswith(prefix) and b.endswith(".json") and "/" not in b[len(prefix):]
+        })
+        if not languages:
+            raise HTTPException(status_code=404, detail="Schedule not found")
+        return ScheduleAvailability(id=schedule_id, availableLanguages=languages)
+    except StorageError as e:
+        logger.error(f"Error listing languages for schedule {schedule_id}: {e}")
+        raise HTTPException(status_code=500, detail="Error listing schedule languages")
 
 
 @app.get("/v1/theme/{theme_id}", response_model=Theme)
@@ -343,36 +346,37 @@ async def load_theme(
         raise HTTPException(status_code=404, detail="Theme not found")
 
 
-@app.get("/v1/theme", response_model=list[ThemeListItem])
-async def load_all_themes():
-    """Load all theme files."""
+@app.get("/v1/theme", response_model=list[ThemeAvailability])
+async def list_themes():
+    """List all themes with their available languages."""
     try:
-        blob_list = await list_blobs_with_prefix("theme/")
-
-        themes = []
-        for blob_name in blob_list:
-            # Skip the directory marker
-            filename = blob_name.replace("theme/", "")
-            if not filename:
-                continue
-
-            theme_dict = await load_blob_json(blob_name)
-            # Parse and validate using the Theme model
-            theme = Theme(**theme_dict)
-            theme_id = filename.replace(".json", "").strip()
-            theme.id = theme_id
-
-            themes.append(
-                ThemeListItem(
-                    id=theme_id,
-                    content=theme,
-                )
-            )
-
-        return themes
+        langs_by_id = await list_available_languages_by_id("theme/")
+        return [
+            ThemeAvailability(id=theme_id, availableLanguages=langs)
+            for theme_id, langs in langs_by_id.items()
+        ]
     except StorageError as e:
-        logger.error(f"Error loading all themes: {e}")
-        raise HTTPException(status_code=500, detail="Error loading themes")
+        logger.error(f"Error listing themes: {e}")
+        raise HTTPException(status_code=500, detail="Error listing themes")
+
+
+@app.get("/v1/theme/{theme_id}/languages", response_model=ThemeAvailability)
+async def theme_languages(theme_id: str = Path(..., description="Theme ID")):
+    """Return which languages are available for one theme."""
+    try:
+        blob_list = await list_blobs_with_prefix(f"theme/{theme_id}/")
+        prefix = f"theme/{theme_id}/"
+        languages = sorted({
+            normalize_language_tag(b[len(prefix):][: -len(".json")])
+            for b in blob_list
+            if b.startswith(prefix) and b.endswith(".json") and "/" not in b[len(prefix):]
+        })
+        if not languages:
+            raise HTTPException(status_code=404, detail="Theme not found")
+        return ThemeAvailability(id=theme_id, availableLanguages=languages)
+    except StorageError as e:
+        logger.error(f"Error listing languages for theme {theme_id}: {e}")
+        raise HTTPException(status_code=500, detail="Error listing theme languages")
 
 
 @app.get("/v1/media/{filename}")
