@@ -70,39 +70,43 @@ def main():
             print(f"❌ Error: Content directory not found: {content_dir}")
             sys.exit(1)
 
-        # Upload schedules
+        # Upload schedules (supports both flat id.json and per-language id/lang.json layouts)
         schedules_dir = content_dir / "schedules"
         if schedules_dir.exists():
-            schedule_files = list(schedules_dir.glob("*.json"))
+            schedule_files = list(schedules_dir.rglob("*.json"))
             if schedule_files:
                 print(f"\nUploading {len(schedule_files)} schedule files...")
                 for schedule_file in schedule_files:
+                    relative = schedule_file.relative_to(schedules_dir)
+                    blob_name = f"schedule/{relative.as_posix()}"
                     with open(schedule_file, "rb") as f:
                         blob_client = client.get_blob_client(
                             container=CONTAINER_NAME,
-                            blob=f"schedule/{schedule_file.name}",
+                            blob=blob_name,
                         )
                         blob_client.upload_blob(f, overwrite=True)
-                    print(f"✓ Uploaded schedule/{schedule_file.name}")
+                    print(f"✓ Uploaded {blob_name}")
             else:
                 print("⚠ Warning: No schedule files found")
         else:
             print(f"⚠ Warning: Schedules directory not found: {schedules_dir}")
 
-        # Upload themes
+        # Upload themes (supports both flat id.json and per-language id/lang.json layouts)
         themes_dir = content_dir / "themes"
         if themes_dir.exists():
-            theme_files = list(themes_dir.glob("*.json"))
+            theme_files = list(themes_dir.rglob("*.json"))
             if theme_files:
                 print(f"\nUploading {len(theme_files)} theme files...")
                 for theme_file in theme_files:
+                    relative = theme_file.relative_to(themes_dir)
+                    blob_name = f"theme/{relative.as_posix()}"
                     with open(theme_file, "rb") as f:
                         blob_client = client.get_blob_client(
                             container=CONTAINER_NAME,
-                            blob=f"theme/{theme_file.name}",
+                            blob=blob_name,
                         )
                         blob_client.upload_blob(f, overwrite=True)
-                    print(f"✓ Uploaded theme/{theme_file.name}")
+                    print(f"✓ Uploaded {blob_name}")
             else:
                 print("⚠ Warning: No theme files found")
         else:
