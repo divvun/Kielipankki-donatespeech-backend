@@ -58,7 +58,11 @@ def get(obj: bytes) -> Info:
     if not isinstance(obj, bytes):
         raise TypeError("object type must be bytes")
 
-    info = {"type": dict(), "extension": dict(), "mime": dict()}
+    info_scores: dict[str, dict[str, int]] = {
+        "type": dict(),
+        "extension": dict(),
+        "mime": dict(),
+    }
 
     stream = " ".join(["{:02X}".format(byte) for byte in obj])
 
@@ -68,12 +72,12 @@ def get(obj: bytes) -> Info:
             comp_sig = stream[offset : len(signature) + offset]
             if signature == comp_sig:
                 for key in ["type", "extension", "mime"]:
-                    info[key][element[key]] = len(signature)
+                    info_scores[key][element[key]] = len(signature)
 
-    for key in ["type", "extension", "mime"]:
-        info[key] = [
-            element for element in sorted(info[key], key=info[key].get, reverse=True)
-        ]
+    info: dict[str, list[str]] = {
+        key: sorted(values, key=lambda item: values[item], reverse=True)
+        for key, values in info_scores.items()
+    }
 
     return Info(info["type"], info["extension"], info["mime"])
 

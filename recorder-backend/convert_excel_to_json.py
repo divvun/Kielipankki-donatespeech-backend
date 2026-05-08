@@ -97,7 +97,9 @@ def _parse_localized_block(
     label_row = rows[label_row_idx]
     if _normalize_label(label_row[0] if label_row else "") != label:
         # Also allow indented labels.
-        first_idx = next((i for i, cell in enumerate(label_row) if _normalize_label(cell)), -1)
+        first_idx = next(
+            (i for i, cell in enumerate(label_row) if _normalize_label(cell)), -1
+        )
         if first_idx == -1 or _normalize_label(label_row[first_idx]) != label:
             return {}, label_row_idx + 1
         label_col = first_idx
@@ -126,7 +128,9 @@ def _parse_localized_block(
     return localized, value_idx + 1
 
 
-def _parse_state(rows: list[list[Any]], state_label_row_idx: int) -> tuple[ParsedState, int]:
+def _parse_state(
+    rows: list[list[Any]], state_label_row_idx: int
+) -> tuple[ParsedState, int]:
     idx = state_label_row_idx + 1
     url = ""
     title: dict[str, str] = {}
@@ -135,20 +139,31 @@ def _parse_state(rows: list[list[Any]], state_label_row_idx: int) -> tuple[Parse
 
     while idx < len(rows):
         row = rows[idx]
-        first_idx = next((i for i, cell in enumerate(row) if _normalize_label(cell)), -1)
+        first_idx = next(
+            (i for i, cell in enumerate(row) if _normalize_label(cell)), -1
+        )
         if first_idx == -1:
             idx += 1
             continue
 
         label = _normalize_label(row[first_idx])
 
-        if first_idx == 0 and label in {"start", "finish", "items", "scheduleId", "themeId", "url"}:
+        if first_idx == 0 and label in {
+            "start",
+            "finish",
+            "items",
+            "scheduleId",
+            "themeId",
+            "url",
+        }:
             break
         if first_idx == 1 and label in {"itemId", "start", "recording", "finish"}:
             break
 
         if label == "url":
-            url = _normalize_label(row[first_idx + 1] if first_idx + 1 < len(row) else "")
+            url = _normalize_label(
+                row[first_idx + 1] if first_idx + 1 < len(row) else ""
+            )
             idx += 1
             continue
         if label == "title":
@@ -166,7 +181,9 @@ def _parse_state(rows: list[list[Any]], state_label_row_idx: int) -> tuple[Parse
     return ParsedState(url=url, title=title, body1=body1, body2=body2), idx
 
 
-def _parse_item(rows: list[list[Any]], item_id_row_idx: int) -> tuple[dict[str, Any], int]:
+def _parse_item(
+    rows: list[list[Any]], item_id_row_idx: int
+) -> tuple[dict[str, Any], int]:
     row = rows[item_id_row_idx]
     item_id = _find_cell_value_in_row(row, "itemId")
     item: dict[str, Any] = {
@@ -179,7 +196,9 @@ def _parse_item(rows: list[list[Any]], item_id_row_idx: int) -> tuple[dict[str, 
     idx = item_id_row_idx + 1
     while idx < len(rows):
         cur = rows[idx]
-        first_idx = next((i for i, cell in enumerate(cur) if _normalize_label(cell)), -1)
+        first_idx = next(
+            (i for i, cell in enumerate(cur) if _normalize_label(cell)), -1
+        )
         if first_idx == -1:
             idx += 1
             continue
@@ -189,11 +208,21 @@ def _parse_item(rows: list[list[Any]], item_id_row_idx: int) -> tuple[dict[str, 
         # Next item or top-level section.
         if first_idx == 1 and label == "itemId":
             break
-        if first_idx == 0 and label in {"themeId", "scheduleId", "start", "finish", "items", "url", "title"}:
+        if first_idx == 0 and label in {
+            "themeId",
+            "scheduleId",
+            "start",
+            "finish",
+            "items",
+            "url",
+            "title",
+        }:
             break
 
         if first_idx == 1 and label in {"kind", "itemType", "typeId"}:
-            value = _normalize_label(cur[first_idx + 1] if first_idx + 1 < len(cur) else "")
+            value = _normalize_label(
+                cur[first_idx + 1] if first_idx + 1 < len(cur) else ""
+            )
             if label == "typeId":
                 item["typeId"] = value or None
             else:
@@ -228,25 +257,49 @@ def _parse_sheet(ws: Any) -> tuple[str, str, dict[str, str], dict[str, Any]]:
     theme_url = _find_cell_value_in_row(rows[url_row], "url") if url_row >= 0 else ""
 
     title_row = _find_row_by_label(rows, "title", start_idx=theme_id_row)
-    theme_title, _ = _parse_localized_block(rows, title_row, "title") if title_row >= 0 else ({}, 0)
+    theme_title, _ = (
+        _parse_localized_block(rows, title_row, "title") if title_row >= 0 else ({}, 0)
+    )
 
     schedule_id_row = _find_row_by_label(rows, "scheduleId", start_idx=theme_id_row)
-    schedule_id = _find_cell_value_in_row(rows[schedule_id_row], "scheduleId") if schedule_id_row >= 0 else ""
+    schedule_id = (
+        _find_cell_value_in_row(rows[schedule_id_row], "scheduleId")
+        if schedule_id_row >= 0
+        else ""
+    )
 
-    start_row = _find_row_by_label(rows, "start", start_idx=schedule_id_row if schedule_id_row >= 0 else theme_id_row)
-    finish_row = _find_row_by_label(rows, "finish", start_idx=start_row + 1 if start_row >= 0 else theme_id_row)
+    start_row = _find_row_by_label(
+        rows,
+        "start",
+        start_idx=schedule_id_row if schedule_id_row >= 0 else theme_id_row,
+    )
+    finish_row = _find_row_by_label(
+        rows, "finish", start_idx=start_row + 1 if start_row >= 0 else theme_id_row
+    )
 
-    start_state, _ = _parse_state(rows, start_row) if start_row >= 0 else (ParsedState("", {}, {}, {}), 0)
-    finish_state, _ = _parse_state(rows, finish_row) if finish_row >= 0 else (ParsedState("", {}, {}, {}), 0)
+    start_state, _ = (
+        _parse_state(rows, start_row)
+        if start_row >= 0
+        else (ParsedState("", {}, {}, {}), 0)
+    )
+    finish_state, _ = (
+        _parse_state(rows, finish_row)
+        if finish_row >= 0
+        else (ParsedState("", {}, {}, {}), 0)
+    )
 
-    items_row = _find_row_by_label(rows, "items", start_idx=finish_row if finish_row >= 0 else theme_id_row)
+    items_row = _find_row_by_label(
+        rows, "items", start_idx=finish_row if finish_row >= 0 else theme_id_row
+    )
     items: list[dict[str, Any]] = []
 
     if items_row >= 0:
         idx = items_row + 1
         while idx < len(rows):
             row = rows[idx]
-            first_idx = next((i for i, cell in enumerate(row) if _normalize_label(cell)), -1)
+            first_idx = next(
+                (i for i, cell in enumerate(row) if _normalize_label(cell)), -1
+            )
             if first_idx == -1:
                 idx += 1
                 continue
@@ -273,7 +326,9 @@ def _localized_value(values: dict[str, str], language: str) -> str:
     return (values.get(language, "") or "").strip()
 
 
-def _build_state_for_language(state: ParsedState, language: str) -> dict[str, str]:
+def _build_state_for_language(
+    state: ParsedState, language: str
+) -> dict[str, str | None]:
     return {
         "title": _localized_value(state.title, language),
         "body1": _localized_value(state.body1, language),
@@ -320,13 +375,17 @@ def _build_theme_payload(
             "scheduleId": schedule_data.get("scheduleId") or None,
             "start": _build_state_for_language(start_state, source_language),
             "finish": _build_state_for_language(finish_state, source_language),
-            "items": [_convert_item_for_language(item, source_language) for item in items],
+            "items": [
+                _convert_item_for_language(item, source_language) for item in items
+            ],
         },
     }
     return payload
 
 
-def convert_workbook(input_xlsx: Path, output_root: Path, overwrite: bool = False) -> list[Path]:
+def convert_workbook(
+    input_xlsx: Path, output_root: Path, overwrite: bool = False
+) -> list[Path]:
     wb = load_workbook(input_xlsx, data_only=True)
     written: list[Path] = []
 

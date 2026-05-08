@@ -1,5 +1,9 @@
 """Test discriminated union: PromptItem with itemType=text."""
 
+from typing import Any
+
+from pydantic import TypeAdapter
+
 from app.models import TextInputItem, ScheduleItem
 
 
@@ -16,19 +20,22 @@ def test_prompt_item_text_valid():
     assert item.isRecording is True
 
 
-def test_prompt_item_text_in_schedule():
+def test_prompt_item_text_in_schedule() -> None:
     """Test PromptItem text as ScheduleItem discriminated union."""
-    item_dict = {
+    item_dict: dict[str, Any] = {
         "kind": "prompt",
         "itemId": "text-prompt-002",
         "itemType": "text",
         "typeId": None,
         "options": [],
         "isRecording": False,
+        "start": None,
+        "recording": None,
+        "finish": None,
     }
 
     # Parse as ScheduleItem union
-    schedule_item: ScheduleItem = TextInputItem(**item_dict)
+    schedule_item: ScheduleItem = TypeAdapter(ScheduleItem).validate_python(item_dict)
 
     assert isinstance(schedule_item, TextInputItem)
     assert schedule_item.itemType == "text"

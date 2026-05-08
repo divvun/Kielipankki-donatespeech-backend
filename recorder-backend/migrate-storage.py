@@ -32,7 +32,6 @@ import os
 import sys
 
 from azure.storage.blob import BlobServiceClient
-from azure.core.exceptions import AzureError
 
 AZURITE_CONNECTION_STRING = (
     "DefaultEndpointsProtocol=http;"
@@ -41,7 +40,9 @@ AZURITE_CONNECTION_STRING = (
     "BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;"
 )
 
-CONNECTION_STRING = os.environ.get("AZURE_STORAGE_CONNECTION_STRING") or AZURITE_CONNECTION_STRING
+CONNECTION_STRING = (
+    os.environ.get("AZURE_STORAGE_CONNECTION_STRING") or AZURITE_CONNECTION_STRING
+)
 CONTAINER_NAME = os.environ.get("AZURE_STORAGE_CONTAINER_NAME") or "recorder-content"
 
 
@@ -49,7 +50,7 @@ def _is_flat_blob(blob_name: str, prefix: str) -> bool:
     """Return True for flat blobs like 'schedule/{id}.json' (no sub-directory)."""
     if not blob_name.startswith(prefix):
         return False
-    suffix = blob_name[len(prefix):]
+    suffix = blob_name[len(prefix) :]
     # Flat: no slash, ends with .json
     return suffix.endswith(".json") and "/" not in suffix
 
@@ -81,7 +82,7 @@ def _migrate_prefix(
 
     for blob_name in sorted(flat_blobs):
         # e.g. 'schedule/abc-123.json' → id = 'abc-123'
-        suffix = blob_name[len(prefix):]
+        suffix = blob_name[len(prefix) :]
         item_id = suffix[: -len(".json")]
 
         # Download content once
@@ -107,7 +108,9 @@ def _migrate_prefix(
 
         for target in to_write:
             if apply:
-                tgt_client = client.get_blob_client(container=CONTAINER_NAME, blob=target)
+                tgt_client = client.get_blob_client(
+                    container=CONTAINER_NAME, blob=target
+                )
                 tgt_client.upload_blob(content, overwrite=False, content_settings=None)
             print(f"  {'COPY' if apply else '[dry] would copy'} {blob_name} → {target}")
 
@@ -117,13 +120,27 @@ def _migrate_prefix(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--lang", action="append", required=True, metavar="LANG",
-                        help="Language tag to assign (e.g. fi, nb). Repeat for multiple.")
-    parser.add_argument("--apply", action="store_true",
-                        help="Actually perform the migration (default: dry run).")
-    parser.add_argument("--prefix", choices=["schedule/", "theme/"], default=None,
-                        help="Restrict migration to one prefix (default: both).")
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    parser.add_argument(
+        "--lang",
+        action="append",
+        required=True,
+        metavar="LANG",
+        help="Language tag to assign (e.g. fi, nb). Repeat for multiple.",
+    )
+    parser.add_argument(
+        "--apply",
+        action="store_true",
+        help="Actually perform the migration (default: dry run).",
+    )
+    parser.add_argument(
+        "--prefix",
+        choices=["schedule/", "theme/"],
+        default=None,
+        help="Restrict migration to one prefix (default: both).",
+    )
     args = parser.parse_args()
 
     languages = [lang.strip().lower().replace("_", "-") for lang in args.lang]

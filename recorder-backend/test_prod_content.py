@@ -3,7 +3,7 @@
 
 import json
 import os
-from models import Schedule, Theme
+from app.models import Schedule, Theme
 
 def _validate_prod_schedules() -> tuple[int, int]:
     """Validate production schedule files and return (success_count, failed_count)."""

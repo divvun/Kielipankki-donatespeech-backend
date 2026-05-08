@@ -1,5 +1,7 @@
 """Test discriminated union: MediaItem with itemType=text."""
 
+from pydantic import TypeAdapter
+
 from app.models import TextContentItem, ScheduleItem
 
 
@@ -18,19 +20,23 @@ def test_media_item_text_valid():
     assert item.isRecording is False
 
 
-def test_media_item_text_in_schedule():
+def test_media_item_text_in_schedule()-> None:
     """Test MediaItem text as ScheduleItem discriminated union."""
-    item_dict = {
-        "kind": "media",
-        "itemId": "text-002",
-        "itemType": "text-content",
-        "typeId": "text/html",
-        "options": [],
-        "isRecording": True,
-    }
+    item = TextContentItem(
+        kind="media",
+        itemId="text-002",
+        itemType="text-content",
+        typeId="text/html",
+        isRecording=True,
+        start=None,
+        recording=None,
+        finish=None,
+    )
 
     # Parse as ScheduleItem union
-    schedule_item: ScheduleItem = TextContentItem(**item_dict)
+    schedule_item: ScheduleItem = TypeAdapter(ScheduleItem).validate_python(
+        item.model_dump()
+    )
 
     assert isinstance(schedule_item, TextContentItem)
     assert schedule_item.itemType == "text-content"

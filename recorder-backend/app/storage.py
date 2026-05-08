@@ -8,7 +8,7 @@ replacing the boto3 S3 client used in the Lambda version.
 import json
 import logging
 import os
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
 
 from azure.storage.blob.aio import BlobServiceClient
@@ -197,7 +197,7 @@ async def generate_upload_sas_url(
                 blob_name=blob_name,
                 account_key=account_key,
                 permission=BlobSasPermissions(write=True, create=True),
-                expiry=datetime.utcnow() + timedelta(minutes=expiry_minutes),
+                expiry=datetime.now(timezone.utc) + timedelta(minutes=expiry_minutes),
             )
 
             # Construct the full URL
@@ -312,6 +312,9 @@ async def load_blob_binary(blob_name: str) -> bytes:
             download_stream = await blob_client.download_blob()
             content = await download_stream.readall()
 
+            if isinstance(content, str):
+                content = content.encode("utf-8")
+
             return content
 
     except ResourceNotFoundError:
@@ -361,6 +364,9 @@ async def load_blob_binary_range(
                 offset=offset, length=length
             )
             content = await download_stream.readall()
+
+            if isinstance(content, str):
+                content = content.encode("utf-8")
 
             return content, total_size
 

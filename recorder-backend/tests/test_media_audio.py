@@ -1,5 +1,9 @@
 """Test discriminated union: MediaItem with itemType=audio."""
 
+from typing import Any
+
+from pydantic import TypeAdapter
+
 from app.models import AudioMediaItem, ScheduleItem
 
 
@@ -18,9 +22,9 @@ def test_media_item_audio_valid():
     assert item.isRecording is True
 
 
-def test_media_item_audio_in_schedule():
+def test_media_item_audio_in_schedule() -> None:
     """Test MediaItem audio as ScheduleItem discriminated union."""
-    item_dict = {
+    item_dict: dict[str, Any] = {
         "kind": "media",
         "itemId": "ce3c6012-25f0-4c69-a0ad-c5dc8e41b795",
         "itemType": "audio",
@@ -30,7 +34,7 @@ def test_media_item_audio_in_schedule():
     }
 
     # Parse as ScheduleItem union
-    schedule_item: ScheduleItem = AudioMediaItem(**item_dict)
+    schedule_item: ScheduleItem = TypeAdapter(ScheduleItem).validate_python(item_dict)
 
     assert isinstance(schedule_item, AudioMediaItem)
     assert schedule_item.itemType == "audio"
