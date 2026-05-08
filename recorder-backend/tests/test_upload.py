@@ -13,7 +13,7 @@ from unittest.mock import patch
 from httpx import AsyncClient, ASGITransport
 
 from app.main import app
-from storage import StorageError
+from app.storage import StorageError
 
 # Configure anyio for pytest
 pytestmark = pytest.mark.anyio

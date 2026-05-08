@@ -5,7 +5,7 @@ import base64
 from unittest.mock import patch, MagicMock
 import pytest
 
-from yle_utils import (
+from app.yle_utils import (
     map_yle_content,
     decrypt_yle_url,
     get_media_url,
@@ -16,7 +16,7 @@ from yle_utils import (
 class TestDecryptYleUrl:
     """Test YLE URL decryption function."""
 
-    @patch("yle_utils.YLE_DECRYPT", b"0123456789abcdef")  # 16-byte key for AES
+    @patch("app.yle_utils.YLE_DECRYPT", b"0123456789abcdef")  # 16-byte key for AES
     def test_decrypt_yle_url_success(self):
         """Test successful decryption of YLE URL."""
         # This is a simplified test - in reality, you'd need a properly encrypted URL
@@ -30,7 +30,7 @@ class TestDecryptYleUrl:
         combined = iv + encrypted_msg
         crypted_url = base64.b64encode(combined).decode()
 
-        with patch("yle_utils.AES") as mock_aes:
+        with patch("app.yle_utils.AES") as mock_aes:
             # Mock the AES cipher
             mock_cipher = MagicMock()
             mock_cipher.decrypt.return_value = b"https://yle.example.com/media.m3u8    "
@@ -45,9 +45,9 @@ class TestDecryptYleUrl:
 class TestGetMediaUrl:
     """Test YLE media URL retrieval."""
 
-    @patch("yle_utils.CLIENT_ID", "test_client_id")
-    @patch("yle_utils.CLIENT_KEY", "test_client_key")
-    @patch("yle_utils.urllib.request.urlopen")
+    @patch("app.yle_utils.CLIENT_ID", "test_client_id")
+    @patch("app.yle_utils.CLIENT_KEY", "test_client_key")
+    @patch("app.yle_utils.urllib.request.urlopen")
     def test_get_media_url_success(self, mock_urlopen):
         """Test successful retrieval of media URL."""
         # Mock the response from YLE program info API
@@ -81,9 +81,9 @@ class TestGetMediaUrl:
         assert "app_key=test_client_key" in result
         assert "protocol=HLS" in result
 
-    @patch("yle_utils.CLIENT_ID", "test_client_id")
-    @patch("yle_utils.CLIENT_KEY", "test_client_key")
-    @patch("yle_utils.urllib.request.urlopen")
+    @patch("app.yle_utils.CLIENT_ID", "test_client_id")
+    @patch("app.yle_utils.CLIENT_KEY", "test_client_key")
+    @patch("app.yle_utils.urllib.request.urlopen")
     def test_get_media_url_no_current_publication(self, mock_urlopen):
         """Test handling when no current publication event exists."""
         # Mock response with no "currently" status
@@ -112,12 +112,12 @@ class TestGetMediaUrl:
 class TestMapYleContent:
     """Test main YLE content mapping function."""
 
-    @patch("yle_utils.CLIENT_ID", "test_client_id")
-    @patch("yle_utils.CLIENT_KEY", "test_client_key")
-    @patch("yle_utils.YLE_DECRYPT", b"0123456789abcdef")
-    @patch("yle_utils.decrypt_yle_url")
-    @patch("yle_utils.get_media_url")
-    @patch("yle_utils.urllib.request.urlopen")
+    @patch("app.yle_utils.CLIENT_ID", "test_client_id")
+    @patch("app.yle_utils.CLIENT_KEY", "test_client_key")
+    @patch("app.yle_utils.YLE_DECRYPT", b"0123456789abcdef")
+    @patch("app.yle_utils.decrypt_yle_url")
+    @patch("app.yle_utils.get_media_url")
+    @patch("app.yle_utils.urllib.request.urlopen")
     def test_map_yle_content_success(
         self, mock_urlopen, mock_get_media_url, mock_decrypt
     ):
@@ -143,10 +143,10 @@ class TestMapYleContent:
         mock_get_media_url.assert_called_once_with("1-50000093")
         mock_decrypt.assert_called_once_with("base64_encrypted_url_here")
 
-    @patch("yle_utils.CLIENT_ID", "test_client_id")
-    @patch("yle_utils.CLIENT_KEY", "test_client_key")
-    @patch("yle_utils.YLE_DECRYPT", b"0123456789abcdef")
-    @patch("yle_utils.get_media_url")
+    @patch("app.yle_utils.CLIENT_ID", "test_client_id")
+    @patch("app.yle_utils.CLIENT_KEY", "test_client_key")
+    @patch("app.yle_utils.YLE_DECRYPT", b"0123456789abcdef")
+    @patch("app.yle_utils.get_media_url")
     def test_map_yle_content_error_handling(self, mock_get_media_url):
         """Test error handling when YLE API fails."""
         # Mock get_media_url to raise an exception
@@ -155,12 +155,12 @@ class TestMapYleContent:
         with pytest.raises(FileProcessingError):
             map_yle_content("1-50000093")
 
-    @patch("yle_utils.CLIENT_ID", "test_client_id")
-    @patch("yle_utils.CLIENT_KEY", "test_client_key")
-    @patch("yle_utils.YLE_DECRYPT", b"0123456789abcdef")
-    @patch("yle_utils.decrypt_yle_url")
-    @patch("yle_utils.get_media_url")
-    @patch("yle_utils.urllib.request.urlopen")
+    @patch("app.yle_utils.CLIENT_ID", "test_client_id")
+    @patch("app.yle_utils.CLIENT_KEY", "test_client_key")
+    @patch("app.yle_utils.YLE_DECRYPT", b"0123456789abcdef")
+    @patch("app.yle_utils.decrypt_yle_url")
+    @patch("app.yle_utils.get_media_url")
+    @patch("app.yle_utils.urllib.request.urlopen")
     def test_map_yle_content_network_timeout(
         self, mock_urlopen, mock_get_media_url, mock_decrypt
     ):
@@ -175,12 +175,12 @@ class TestMapYleContent:
         with pytest.raises(FileProcessingError):
             map_yle_content("1-50000093")
 
-    @patch("yle_utils.CLIENT_ID", "test_client_id")
-    @patch("yle_utils.CLIENT_KEY", "test_client_key")
-    @patch("yle_utils.YLE_DECRYPT", b"0123456789abcdef")
-    @patch("yle_utils.decrypt_yle_url")
-    @patch("yle_utils.get_media_url")
-    @patch("yle_utils.urllib.request.urlopen")
+    @patch("app.yle_utils.CLIENT_ID", "test_client_id")
+    @patch("app.yle_utils.CLIENT_KEY", "test_client_key")
+    @patch("app.yle_utils.YLE_DECRYPT", b"0123456789abcdef")
+    @patch("app.yle_utils.decrypt_yle_url")
+    @patch("app.yle_utils.get_media_url")
+    @patch("app.yle_utils.urllib.request.urlopen")
     def test_map_yle_content_invalid_response(
         self, mock_urlopen, mock_get_media_url, mock_decrypt
     ):
@@ -197,9 +197,9 @@ class TestMapYleContent:
         with pytest.raises(FileProcessingError):
             map_yle_content("1-50000093")
 
-    @patch("yle_utils.CLIENT_ID", None)
-    @patch("yle_utils.CLIENT_KEY", None)
-    @patch("yle_utils.YLE_DECRYPT", None)
+    @patch("app.yle_utils.CLIENT_ID", None)
+    @patch("app.yle_utils.CLIENT_KEY", None)
+    @patch("app.yle_utils.YLE_DECRYPT", None)
     def test_map_yle_content_without_credentials_returns_program_id(self):
         """Test fallback mode when YLE credentials are not configured."""
         program_id = "1-50000093"
@@ -209,11 +209,11 @@ class TestMapYleContent:
 class TestYleIntegration:
     """Integration tests for YLE utilities (require mocking full flow)."""
 
-    @patch("yle_utils.CLIENT_ID", "test_id")
-    @patch("yle_utils.CLIENT_KEY", "test_key")
-    @patch("yle_utils.YLE_DECRYPT", b"0123456789abcdef")
-    @patch("yle_utils.urllib.request.urlopen")
-    @patch("yle_utils.AES")
+    @patch("app.yle_utils.CLIENT_ID", "test_id")
+    @patch("app.yle_utils.CLIENT_KEY", "test_key")
+    @patch("app.yle_utils.YLE_DECRYPT", b"0123456789abcdef")
+    @patch("app.yle_utils.urllib.request.urlopen")
+    @patch("app.yle_utils.AES")
     def test_full_yle_flow(self, mock_aes, mock_urlopen):
         """Test complete flow from program ID to decrypted URL."""
         # Setup mocks for the entire flow

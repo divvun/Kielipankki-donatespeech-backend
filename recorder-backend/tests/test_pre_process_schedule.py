@@ -3,7 +3,7 @@
 from unittest.mock import patch
 
 from app.main import pre_process_schedule
-from models import (
+from app.models import (
     Schedule,
     YleAudioMediaItem,
     YleVideoMediaItem, MediaState,

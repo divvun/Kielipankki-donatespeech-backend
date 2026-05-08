@@ -1,5 +1,5 @@
 """Endpoint tests for language-aware schedule/theme loading."""
-from models import MediaState
+from app.models import MediaState
 
 from unittest.mock import AsyncMock, patch
 
@@ -7,7 +7,7 @@ import pytest
 from httpx import ASGITransport, AsyncClient
 
 from app.main import app
-from storage import StorageError
+from app.storage import StorageError
 
 pytestmark = pytest.mark.anyio
 

@@ -2,7 +2,7 @@
 
 import pytest
 
-import storage
+import app.storage as storage
 
 
 def test_normalize_language_tag():

@@ -1,6 +1,6 @@
 """Test discriminated union: MediaItem with itemType=image."""
 
-from app.models import ImageMediaItem, ScheduleItem
+from app.models import ImageMediaItem
 
 
 def test_media_item_image_valid():
@@ -20,17 +20,17 @@ def test_media_item_image_valid():
 
 def test_media_item_image_in_schedule() -> None:
     """Test MediaItem image as ScheduleItem discriminated union."""
-    item_dict = {
-        "kind": "media",
-        "itemId": "image-002",
-        "itemType": "image",
-        "typeId": "image/png",
-        "options": [],
-        "isRecording": True,
-    }
+    schedule_item= ImageMediaItem(
+        kind="media",
+        itemId="image-002",
+        itemType="image",
+        typeId="image/png",
+        isRecording=True,
+        start=None,
+        recording=None,
+        finish=None,
 
-    # Parse as ScheduleItem union
-    schedule_item: ScheduleItem = ImageMediaItem(**item_dict)  # ty:ignore[invalid-argument-type]
+    )
 
     assert isinstance(schedule_item, ImageMediaItem)
     assert schedule_item.itemType == "image"
