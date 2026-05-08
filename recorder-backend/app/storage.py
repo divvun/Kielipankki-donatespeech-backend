@@ -30,17 +30,23 @@ class StorageError(Exception):
 
 # --- Configuration ---
 
-STORAGE_CONNECTION_STRING = os.environ.get("AZURE_STORAGE_CONNECTION_STRING")
-CONTAINER_NAME = os.environ.get("AZURE_STORAGE_CONTAINER_NAME", "recorder-content")
+def _resolve_storage_connection_string() -> str:
+    """Resolve a non-empty Azure Storage connection string."""
+    value = os.environ.get("AZURE_STORAGE_CONNECTION_STRING")
+    if value and value.strip():
+        return value
 
-# For local development with Azurite
-if not STORAGE_CONNECTION_STRING:
-    STORAGE_CONNECTION_STRING = (
+    # For local development with Azurite
+    return (
         "DefaultEndpointsProtocol=http;"
         "AccountName=devstoreaccount1;"
         "AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;"
         "BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;"
     )
+
+
+STORAGE_CONNECTION_STRING: str = _resolve_storage_connection_string()
+CONTAINER_NAME = os.environ.get("AZURE_STORAGE_CONTAINER_NAME", "recorder-content")
 
 
 def get_blob_service_client() -> BlobServiceClient:
