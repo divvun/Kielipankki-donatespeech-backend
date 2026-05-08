@@ -2,7 +2,7 @@
 
 from unittest.mock import patch
 
-from main import pre_process_schedule
+from app.main import pre_process_schedule
 from models import (
     Schedule,
     YleAudioMediaItem,
@@ -117,7 +117,7 @@ def test_pre_process_schedule_configured_keeps_real_item_and_maps_url(monkeypatc
         start=_state("start-map", url="1-50000101"),
     )
 
-    with patch("main.map_yle_content", return_value="https://example.org/stream.m3u8"):
+    with patch("app.main.map_yle_content", return_value="https://example.org/stream.m3u8"):
         processed = pre_process_schedule(Schedule(items=[original]))
 
     processed_item = processed.items[0]

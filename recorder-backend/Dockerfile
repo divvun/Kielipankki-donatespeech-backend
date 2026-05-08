@@ -10,14 +10,11 @@ COPY pyproject.toml .
 RUN uv pip install --system --no-cache -r pyproject.toml
 
 # Copy application code
-COPY main.py .
-COPY models.py .
-COPY storage.py .
-COPY yle_utils.py .
+COPY app/ ./app/
 COPY custom_fleep/ ./custom_fleep/
 
 # Expose port
 EXPOSE 8000
 
 # Run the application
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

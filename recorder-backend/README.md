@@ -176,7 +176,7 @@ podman run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite azurite-blob -
 #### Run the FastAPI app
 
 ```bash
-uvicorn main:app --reload --port 8000
+uvicorn app.main:app --reload --port 8000
 ```
 
 ## Excel Content Authoring
@@ -631,9 +631,13 @@ This FastAPI version maintains API compatibility with the Lambda version:
 
 ```text
 recorder-backend/
-├── main.py                     # FastAPI application
-├── storage.py                  # Azure Blob Storage abstraction
-├── yle_utils.py               # YLE API integration (unchanged)
+├── app/                        # Application package (entrypoint: app.main)
+│   ├── main.py                 # FastAPI application factory and router wiring
+│   ├── models.py               # Pydantic models
+│   ├── storage.py              # Azure Blob Storage abstraction
+│   ├── yle_utils.py            # YLE API integration
+│   ├── schedule_processing.py  # YLE schedule preprocessing helpers
+│   └── routers/                # Route groups
 ├── pyproject.toml             # Python project config (uv-managed)
 ├── requirements-fastapi.txt    # Legacy pip requirements (for backwards compat)
 ├── .python-version            # Python version specification

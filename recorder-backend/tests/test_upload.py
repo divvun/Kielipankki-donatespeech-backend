@@ -12,7 +12,7 @@ import pytest
 from unittest.mock import patch
 from httpx import AsyncClient, ASGITransport
 
-from main import app
+from app.main import app
 from storage import StorageError
 
 # Configure anyio for pytest
