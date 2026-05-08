@@ -208,9 +208,8 @@ This generates runtime JSON files in:
 - `content/dev/themes/<themeId>/<lang>.json` — one file per language (if the
   workbook includes a valid Theme row)
 
-Languages are inferred automatically from the localized columns in the
-workbook (e.g. `fi`, `nb`). The full multilingual payload is written to each
-file.
+Languages are inferred automatically from the localized columns in the workbook
+(e.g. `fi`, `nb`). The full multilingual payload is written to each file.
 
 You can also write a conversion report:
 
@@ -451,9 +450,9 @@ The `cleanup-storage.py` script helps you remove old content from blob storage
 
 ### Migrating to Per-Language Blob Layout
 
-If you have existing flat blobs (`schedule/{id}.json` / `theme/{id}.json`)
-they need to be copied to the new per-language layout before the API can serve
-them. Use `migrate-storage.py`:
+If you have existing flat blobs (`schedule/{id}.json` / `theme/{id}.json`) they
+need to be copied to the new per-language layout before the API can serve them.
+Use `migrate-storage.py`:
 
 ```bash
 # Dry run — show what would happen
@@ -467,9 +466,9 @@ them. Use `migrate-storage.py`:
 ```
 
 The script copies each flat blob to `{prefix}{id}/{lang}.json` for every
-`--lang` you specify. It skips any target that already exists and never
-deletes the original flat blobs (so the old layout coexists safely until
-you're ready to remove it).
+`--lang` you specify. It skips any target that already exists and never deletes
+the original flat blobs (so the old layout coexists safely until you're ready to
+remove it).
 
 **For Azure remote storage, set the connection string first:**
 
