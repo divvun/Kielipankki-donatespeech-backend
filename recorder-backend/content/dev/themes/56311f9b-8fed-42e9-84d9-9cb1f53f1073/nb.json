@@ -1,8 +1,10 @@
 {
-  "title": "Eläinystävät",
-  "body1": "Eläinystävät",
-  "body2": "",
-  "url": "https://images.cdn.yle.fi/image/upload/w_300,h_168,f_auto,fl_lossy,q_auto:eco/39-7149315f509f388f486.jpg",
+  "mediaState": {
+    "title": "Eläinystävät",
+    "body1": "Eläinystävät",
+    "body2": "",
+    "url": "https://images.cdn.yle.fi/image/upload/w_300,h_168,f_auto,fl_lossy,q_auto:eco/39-7149315f509f388f486.jpg"
+  },
   "schedule": {
     "scheduleId": "3a73d87a-8856-4ca0-9af2-da66c99a95f9",
     "items": [

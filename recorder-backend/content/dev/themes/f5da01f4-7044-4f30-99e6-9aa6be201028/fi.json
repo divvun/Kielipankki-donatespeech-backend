@@ -1,8 +1,10 @@
 {
-  "title": "Lähelläni juuri nyt",
-  "body1": "Oppaana Anna Karhunen",
-  "body2": "",
-  "url": "https://images.cdn.yle.fi/image/upload/w_300,h_168,f_auto,fl_lossy,q_auto:eco/39-7258085f76f5c430133.jpg",
+  "mediaState": {
+    "title": "Lähelläni juuri nyt",
+    "body1": "Oppaana Anna Karhunen",
+    "body2": "",
+    "url": "https://images.cdn.yle.fi/image/upload/w_300,h_168,f_auto,fl_lossy,q_auto:eco/39-7258085f76f5c430133.jpg"
+  },
   "schedule": {
     "scheduleId": "0598bf14-ab48-4ccb-a50c-0bd779f77933",
     "items": [

@@ -1,8 +1,10 @@
 {
-  "title": "Urheiluhetket",
-  "body1": "Urheilu",
-  "body2": "",
-  "url": "https://images.cdn.yle.fi/image/upload/w_300,h_168,f_auto,fl_lossy,q_auto:eco/39-7258135f76f7567603a.jpg",
+  "mediaState": {
+    "title": "Urheiluhetket",
+    "body1": "Urheilu",
+    "body2": "",
+    "url": "https://images.cdn.yle.fi/image/upload/w_300,h_168,f_auto,fl_lossy,q_auto:eco/39-7258135f76f7567603a.jpg"
+  },
   "schedule": {
     "scheduleId": "8aaf82be-de16-4449-9fd2-677291a0e804",
     "items": [
