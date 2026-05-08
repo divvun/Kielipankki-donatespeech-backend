@@ -17,16 +17,12 @@ from fastapi.responses import StreamingResponse
 from models import (
     Schedule,
     Theme,
-    ScheduleListItem,
-    ThemeListItem,
     ScheduleAvailability,
     ThemeAvailability,
     YleAudioMediaItem,
     YleVideoMediaItem,
-    FakeYleAudioMediaItem,
-    FakeYleVideoMediaItem,
     InitUploadRequest,
-    InitUploadResponse,
+    InitUploadResponse, ScheduleItem,
 )
 from storage import (
     store_metadata,
@@ -89,19 +85,7 @@ def pre_process_schedule(schedule: Schedule) -> Schedule:
         os.environ.get("YLE_DECRYPT")
     ])
     
-    processed_items = []
-
-    def to_fake_yle_audio_item(item: YleAudioMediaItem) -> FakeYleAudioMediaItem:
-        """Convert YLE audio item to fake variant while preserving shared fields."""
-        item_data = item.model_dump()
-        item_data["itemType"] = "fake-yle-audio"
-        return FakeYleAudioMediaItem(**item_data)
-
-    def to_fake_yle_video_item(item: YleVideoMediaItem) -> FakeYleVideoMediaItem:
-        """Convert YLE video item to fake variant while preserving shared fields."""
-        item_data = item.model_dump()
-        item_data["itemType"] = "fake-yle-video"
-        return FakeYleVideoMediaItem(**item_data)
+    processed_items: list[ScheduleItem] = []
 
     def map_yle_urls_in_states(item):
         """Map YLE program IDs in state urls to streaming URLs."""
@@ -113,29 +97,12 @@ def pre_process_schedule(schedule: Schedule) -> Schedule:
     for item in schedule.items:
         # Handle YLE items based on credentials
         if isinstance(item, YleAudioMediaItem):
-            if yle_configured:
-                try:
-                    map_yle_urls_in_states(item)
-                    processed_items.append(item)
-                except Exception as e:
-                    logger.warning(f"Failed to map YLE audio content for {item.itemId}: {e}")
-                    # Convert to fake YLE item on error
-                    processed_items.append(to_fake_yle_audio_item(item))
-            else:
-                # No credentials - convert to fake YLE item
-                processed_items.append(to_fake_yle_audio_item(item))
+            map_yle_urls_in_states(item)
+            processed_items.append(item)
         elif isinstance(item, YleVideoMediaItem):
-            if yle_configured:
-                try:
-                    map_yle_urls_in_states(item)
-                    processed_items.append(item)
-                except Exception as e:
-                    logger.warning(f"Failed to map YLE video content for {item.itemId}: {e}")
-                    # Convert to fake YLE item on error
-                    processed_items.append(to_fake_yle_video_item(item))
-            else:
-                # No credentials - convert to fake YLE item
-                processed_items.append(to_fake_yle_video_item(item))
+            map_yle_urls_in_states(item)
+            processed_items.append(item)
+            processed_items.append(item)
         else:
             # Not a YLE item - keep as is
             processed_items.append(item)
@@ -338,6 +305,7 @@ async def load_theme(
     try:
         theme_dict = await load_blob_json(blob_name)
         # Parse and validate using the Theme model
+        print(theme_dict)
         theme = Theme(**theme_dict)
         theme.id = theme_id
         return theme

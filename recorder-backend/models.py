@@ -242,7 +242,7 @@ class Theme(BaseModel):
 
     id: Optional[str] = None  # Will be set from filename
     mediaState: MediaState
-    schedule: Schedule
+    schedule: Optional[Schedule]
 
 
 # ============================================================================
