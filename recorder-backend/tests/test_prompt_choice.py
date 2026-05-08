@@ -1,6 +1,6 @@
 """Test discriminated union: PromptItem with itemType=choice."""
 
-from models import ChoicePromptItem
+from app.models import ChoicePromptItem
 
 
 def test_prompt_item_choice_valid():

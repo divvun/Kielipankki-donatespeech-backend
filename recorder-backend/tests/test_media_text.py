@@ -1,6 +1,6 @@
 """Test discriminated union: MediaItem with itemType=text."""
 
-from models import TextContentItem, ScheduleItem
+from app.models import TextContentItem, ScheduleItem
 
 
 def test_media_item_text_valid():

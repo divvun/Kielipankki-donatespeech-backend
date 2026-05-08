@@ -1,6 +1,6 @@
 """Test discriminated union: MediaItem with itemType=image."""
 
-from models import ImageMediaItem, ScheduleItem
+from app.models import ImageMediaItem, ScheduleItem
 
 
 def test_media_item_image_valid():

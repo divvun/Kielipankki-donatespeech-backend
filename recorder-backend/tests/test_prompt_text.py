@@ -1,6 +1,6 @@
 """Test discriminated union: PromptItem with itemType=text."""
 
-from models import TextInputItem, ScheduleItem
+from app.models import TextInputItem, ScheduleItem
 
 
 def test_prompt_item_text_valid():

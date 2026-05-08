@@ -1,6 +1,6 @@
 """Test discriminated union: MediaItem with itemType=yle-audio."""
 
-from models import YleAudioMediaItem, MediaState
+from app.models import YleAudioMediaItem, MediaState
 
 
 def test_media_item_yle_audio_valid():

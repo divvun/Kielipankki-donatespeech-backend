@@ -1,6 +1,6 @@
 """Test discriminated union: MediaItem with itemType=audio."""
 
-from models import AudioMediaItem, ScheduleItem
+from app.models import AudioMediaItem, ScheduleItem
 
 
 def test_media_item_audio_valid():
