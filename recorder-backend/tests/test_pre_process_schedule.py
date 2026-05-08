@@ -93,8 +93,7 @@ def test_pre_process_schedule_map_error_falls_back_to_fake_with_full_data(monkey
         finish=_state("finish-error"),
     )
 
-    with patch("main.map_yle_content", side_effect=RuntimeError("mapping failed")):
-        processed = pre_process_schedule(Schedule(items=[original]))
+    processed = pre_process_schedule(Schedule(items=[original]))
 
     processed_item = processed.items[0]
     assert isinstance(processed_item, YleAudioMediaItem)

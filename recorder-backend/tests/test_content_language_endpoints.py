@@ -1,4 +1,5 @@
 """Endpoint tests for language-aware schedule/theme loading."""
+from models import MediaState
 
 from unittest.mock import AsyncMock, patch
 
@@ -11,12 +12,13 @@ from storage import StorageError
 pytestmark = pytest.mark.anyio
 
 
-def _state(label: str) -> dict:
-    return {
-        "title": {"fi": f"{label} fi", "nb": f"{label} nb"},
-        "body1": {"fi": f"{label} body1 fi", "nb": f"{label} body1 nb"},
-        "body2": {"fi": f"{label} body2 fi", "nb": f"{label} body2 nb"},
-    }
+def _state(label: str) -> MediaState:
+    return MediaState(
+        title=f"{label} fi",
+        body1=f"{label} body1 fi",
+        body2=f"{label} body2 fi",
+        url=f"https://example.org/{label}.jpg",
+    )
 
 
 def _schedule_payload() -> dict:
@@ -37,10 +39,12 @@ def _schedule_payload() -> dict:
 
 def _theme_payload() -> dict:
     return {
-        "title": {"fi": "Teema", "nb": "Tema"},
-        "body1": {"fi": "body1 fi", "nb": "body1 nb"},
-        "body2": {"fi": "body2 fi", "nb": "body2 nb"},
-        "scheduleIds": ["s-1"],
+        "mediaState":{
+        "title": "Teema",
+        "body1": "body1 fi",
+        "body2": "body2 fi",
+        "url": "https://example.org/theme.jpg",},
+        "schedule": {"items": []},
     }
 
 
