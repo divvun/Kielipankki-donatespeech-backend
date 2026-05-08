@@ -4,7 +4,7 @@ Pydantic models for Kielipankki Recorder schedules and themes.
 Uses discriminated unions to handle the polymorphic Item types.
 """
 
-from typing import Literal, Optional, Union
+from typing import Literal, Union, Optional
 from pydantic import BaseModel, Field
 
 
@@ -16,9 +16,9 @@ from pydantic import BaseModel, Field
 class MediaState(BaseModel):
     """State information displayed during media playback/recording"""
 
-    title: dict[str, str] = Field(..., description="Localized title")
-    body1: dict[str, str] = Field(..., description="Localized body text 1")
-    body2: dict[str, str] = Field(..., description="Localized body text 2")
+    title: str = Field(..., description="Localized title")
+    body1: str = Field(..., description="Localized body text 1")
+    body2: str = Field(..., description="Localized body text 2")
     url: Optional[str] = Field(None, description="Optional URL for this state")
 
 
@@ -33,13 +33,15 @@ class AudioMediaItem(BaseModel):
     kind: Literal["media"]
     itemType: Literal["audio"]
     itemId: str = Field(..., description="UUID v4 of the item")
-    typeId: Optional[str] = Field(None, description="MIME type (e.g., 'audio/m4a', 'audio/mpeg')")
-    options: list = Field(default_factory=list, description="Empty list for media items")
+    typeId: Optional[str] = Field(
+        None, description="MIME type (e.g., 'audio/m4a', 'audio/mpeg')"
+    )
     isRecording: bool
     start: Optional[MediaState] = Field(None, description="State before recording starts")
     recording: Optional[MediaState] = Field(None, description="State during recording")
-    finish: Optional[MediaState] = Field(None, description="State after recording finishes")
-    
+    finish: Optional[MediaState] = Field(
+        None, description="State after recording finishes"
+    )
 
 
 class VideoMediaItem(BaseModel):
@@ -48,13 +50,15 @@ class VideoMediaItem(BaseModel):
     kind: Literal["media"]
     itemType: Literal["video"]
     itemId: str = Field(..., description="UUID v4 of the item")
-    typeId: Optional[str] = Field(None, description="MIME type (e.g., 'video/mp4', 'video/webm')")
-    options: list = Field(default_factory=list, description="Empty list for media items")
+    typeId: Optional[str] = Field(
+        None, description="MIME type (e.g., 'video/mp4', 'video/webm')"
+    )
     isRecording: bool
     start: Optional[MediaState] = Field(None, description="State before recording starts")
     recording: Optional[MediaState] = Field(None, description="State during recording")
-    finish: Optional[MediaState] = Field(None, description="State after recording finishes")
-    
+    finish: Optional[MediaState] = Field(
+        None, description="State after recording finishes"
+    )
 
 
 class YleAudioMediaItem(BaseModel):
@@ -64,12 +68,12 @@ class YleAudioMediaItem(BaseModel):
     itemType: Literal["yle-audio"]
     itemId: str = Field(..., description="UUID v4 of the item")
     typeId: Optional[str] = Field(None, description="MIME type")
-    options: list = Field(default_factory=list, description="Empty list for media items")
     isRecording: bool
     start: Optional[MediaState] = Field(None, description="State before recording starts")
     recording: Optional[MediaState] = Field(None, description="State during recording")
-    finish: Optional[MediaState] = Field(None, description="State after recording finishes")
-    
+    finish: Optional[MediaState] = Field(
+        None, description="State after recording finishes"
+    )
 
 
 class YleVideoMediaItem(BaseModel):
@@ -79,45 +83,12 @@ class YleVideoMediaItem(BaseModel):
     itemType: Literal["yle-video"]
     itemId: str = Field(..., description="UUID v4 of the item")
     typeId: Optional[str] = Field(None, description="MIME type")
-    options: list = Field(default_factory=list, description="Empty list for media items")
     isRecording: bool
     start: Optional[MediaState] = Field(None, description="State before recording starts")
     recording: Optional[MediaState] = Field(None, description="State during recording")
-    finish: Optional[MediaState] = Field(None, description="State after recording finishes")
-    
-
-
-
-class FakeYleAudioMediaItem(BaseModel):
-    """Fake YLE audio item returned when YLE credentials are not configured"""
-
-    kind: Literal["media"]
-    itemType: Literal["fake-yle-audio"]
-    itemId: str = Field(..., description="UUID v4 of the item")
-    typeId: Optional[str] = Field(None, description="MIME type")
-    options: list = Field(default_factory=list, description="Empty list for media items")
-    isRecording: bool
-    start: Optional[MediaState] = Field(None, description="State before recording starts")
-    recording: Optional[MediaState] = Field(None, description="State during recording")
-    finish: Optional[MediaState] = Field(None, description="State after recording finishes")
-    
-
-
-
-class FakeYleVideoMediaItem(BaseModel):
-    """Fake YLE video item returned when YLE credentials are not configured"""
-
-    kind: Literal["media"]
-    itemType: Literal["fake-yle-video"]
-    itemId: str = Field(..., description="UUID v4 of the item")
-    typeId: Optional[str] = Field(None, description="MIME type")
-    options: list = Field(default_factory=list, description="Empty list for media items")
-    isRecording: bool
-    start: Optional[MediaState] = Field(None, description="State before recording starts")
-    recording: Optional[MediaState] = Field(None, description="State during recording")
-    finish: Optional[MediaState] = Field(None, description="State after recording finishes")
-    
-
+    finish: Optional[MediaState] = Field(
+        None, description="State after recording finishes"
+    )
 
 
 class TextContentItem(BaseModel):
@@ -126,14 +97,15 @@ class TextContentItem(BaseModel):
     kind: Literal["media"]
     itemType: Literal["text-content"]
     itemId: str = Field(..., description="UUID v4 of the item")
-    typeId: Optional[str] = Field(None, description="MIME type (e.g., 'text/plain', 'text/html')")
-    options: list = Field(default_factory=list, description="Empty list for media items")
+    typeId: Optional[str] = Field(
+        None, description="MIME type (e.g., 'text/plain', 'text/html')"
+    )
     isRecording: bool
     start: Optional[MediaState] = Field(None, description="State before recording starts")
     recording: Optional[MediaState] = Field(None, description="State during recording")
-    finish: Optional[MediaState] = Field(None, description="State after recording finishes")
-    
-
+    finish: Optional[MediaState] = Field(
+        None, description="State after recording finishes"
+    )
 
 
 class ImageMediaItem(BaseModel):
@@ -142,14 +114,15 @@ class ImageMediaItem(BaseModel):
     kind: Literal["media"]
     itemType: Literal["image"]
     itemId: str = Field(..., description="UUID v4 of the item")
-    typeId: Optional[str] = Field(None, description="MIME type (e.g., 'image/jpeg', 'image/png')")
-    options: list = Field(default_factory=list, description="Empty list for media items")
+    typeId: Optional[str] = Field(
+        None, description="MIME type (e.g., 'image/jpeg', 'image/png')"
+    )
     isRecording: bool
     start: Optional[MediaState] = Field(None, description="State before recording starts")
     recording: Optional[MediaState] = Field(None, description="State during recording")
-    finish: Optional[MediaState] = Field(None, description="State after recording finishes")
-    
-
+    finish: Optional[MediaState] = Field(
+        None, description="State after recording finishes"
+    )
 
 
 class TextMediaItem(BaseModel):
@@ -159,12 +132,12 @@ class TextMediaItem(BaseModel):
     itemType: Literal["text"]
     itemId: str = Field(..., description="UUID v4 of the item")
     typeId: Optional[str] = Field(None, description="MIME type")
-    options: list = Field(default_factory=list, description="Empty list for media items")
     isRecording: bool
     start: Optional[MediaState] = Field(None, description="State before recording starts")
     recording: Optional[MediaState] = Field(None, description="State during recording")
-    finish: Optional[MediaState] = Field(None, description="State after recording finishes")
-
+    finish: Optional[MediaState] = Field(
+        None, description="State after recording finishes"
+    )
 
 
 class ChoicePromptItem(BaseModel):
@@ -174,10 +147,9 @@ class ChoicePromptItem(BaseModel):
     itemType: Literal["choice"]
     itemId: str = Field(..., description="UUID v4 of the item")
     typeId: Optional[str] = Field(None, description="MIME type")
-    options: list[dict[str, str]] = Field(..., description="Localized answer options")
+    options: list[str] = Field(..., description="Localized answer options")
     isRecording: bool
     start: Optional[MediaState] = Field(None, description="State before prompt is shown")
-
 
 
 class MultiChoicePromptItem(BaseModel):
@@ -187,16 +159,15 @@ class MultiChoicePromptItem(BaseModel):
     itemType: Literal["multi-choice"]
     itemId: str = Field(..., description="UUID v4 of the item")
     typeId: Optional[str] = Field(None, description="MIME type")
-    options: list[dict[str, str]] = Field(..., description="Localized answer options")
+    options: list[str] = Field(..., description="Localized answer options")
     isRecording: bool
     start: Optional[MediaState] = Field(None, description="State before prompt is shown")
-    otherAnswer: Optional[dict[str, str]] = Field(
+    otherAnswer: Optional[str] = Field(
         None, description="Localized label for 'other' option"
     )
-    otherEntryLabel: Optional[dict[str, str]] = Field(
+    otherEntryLabel: Optional[str] = Field(
         None, description="Localized label for text entry field allowing custom answers"
     )
-
 
 
 class SuperChoicePromptItem(BaseModel):
@@ -206,13 +177,12 @@ class SuperChoicePromptItem(BaseModel):
     itemType: Literal["super-choice"]
     itemId: str = Field(..., description="UUID v4 of the item")
     typeId: Optional[str] = Field(None, description="MIME type")
-    options: list[dict[str, str]] = Field(..., description="Localized answer options")
+    options: list[str] = Field(..., description="Localized answer options")
     isRecording: bool
     start: Optional[MediaState] = Field(None, description="State before prompt is shown")
-    otherEntryLabel: Optional[dict[str, str]] = Field(
+    otherEntryLabel: Optional[str] = Field(
         None, description="Localized label for text entry field allowing custom answers"
     )
-
 
 
 class TextInputItem(BaseModel):
@@ -225,8 +195,6 @@ class TextInputItem(BaseModel):
     options: list = Field(default_factory=list, description="Empty list for text input")
     isRecording: bool
     start: Optional[MediaState] = Field(None, description="State before prompt is shown")
-    
-
 
 
 # Discriminated union of all schedule item types
@@ -241,8 +209,6 @@ ScheduleItem = Union[
     VideoMediaItem,
     YleAudioMediaItem,
     YleVideoMediaItem,
-    FakeYleAudioMediaItem,
-    FakeYleVideoMediaItem,
     TextContentItem,
     ImageMediaItem,
     TextMediaItem,
@@ -254,22 +220,15 @@ ScheduleItem = Union[
 # ============================================================================
 
 
-class ScheduleState(BaseModel):
-    """State information for schedule start/finish screens"""
-
-    title: dict[str, str] = Field(..., description="Localized title")
-    body1: dict[str, str] = Field(..., description="Localized body text 1")
-    body2: Optional[dict[str, str]] = Field(None, description="Localized body text 2")
-    url: Optional[str] = Field(None, description="Optional URL")
-
-
 class Schedule(BaseModel):
     """Schedule (playlist) containing items to present to user"""
 
     id: Optional[str] = None  # Will be set from filename
     scheduleId: Optional[str] = None
-    start: Optional[ScheduleState] = Field(None, description="State shown at schedule start")
-    finish: Optional[ScheduleState] = Field(None, description="State shown at schedule finish")
+    start: Optional[MediaState] = Field(None, description="State shown at schedule start")
+    finish: Optional[MediaState] = Field(
+        None, description="State shown at schedule finish"
+    )
     items: list[ScheduleItem]
 
 
@@ -282,11 +241,8 @@ class Theme(BaseModel):
     """Theme containing multiple schedule IDs with localized content"""
 
     id: Optional[str] = None  # Will be set from filename
-    title: dict[str, str] = Field(..., description="Localized title (e.g., {'fi': '...', 'nb': '...'})")
-    body1: dict[str, str] = Field(..., description="Localized body text 1")
-    body2: dict[str, str] = Field(..., description="Localized body text 2")
-    image: Optional[str] = Field(None, description="URL to theme image")
-    scheduleIds: list[str] = Field(default_factory=list)
+    mediaState: MediaState
+    schedule: Schedule
 
 
 # ============================================================================
@@ -302,7 +258,7 @@ class UploadMetadata(BaseModel):
     recordingId: Optional[str] = Field(None, description="UUID v4 recording identifier")
     contentType: Optional[str] = Field(None, description="MIME type of the audio file")
     timestamp: Optional[str] = None
-    duration: Optional[float] = None
+    duration: float|None = None
     language: Optional[str] = None
     # Other metadata fields accepted as-is
 

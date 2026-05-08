@@ -21,7 +21,8 @@ YLE_DECRYPT = os.environ.get("YLE_DECRYPT")
 
 PROGRAM_INFO_URL = "https://external.api.yle.fi/v1/programs/items/{program_id}.json?app_id={client_id}&app_key={client_key}"
 MEDIA_URL = "https://external.api.yle.fi/v1/media/playouts.json?program_id={program_id}&media_id={media_id}&protocol=HLS&app_id={client_id}&app_key={client_key}"
-
+# Old: https://external.api.yle.fi/v1/
+# New: https://programs.api.yle.fi/v3/
 
 def map_yle_content(yle_program_id: str) -> str:
     """Maps YLE program ID to a decrypted media URL.
