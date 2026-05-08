@@ -1,41 +1,15 @@
 """
-FastAPI backend for the Kielipankki speech donation recorder.
-
-This replaces the AWS Lambda + API Gateway architecture with a simpler
-FastAPI REST API that can run locally (with Azurite) or on Azure.
+FastAPI application factory for the Kielipankki speech donation recorder.
 """
 
 import logging
-from io import BytesIO
-from uuid import UUID
 
-from fastapi import FastAPI, HTTPException, Path, Header, Query
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse
 
-from app.models import (
-    Schedule,
-    Theme,
-    ScheduleAvailability,
-    ThemeAvailability,
-    InitUploadRequest,
-    InitUploadResponse,
-)
+from app.models import Schedule
+from app.routers import content, media, upload
 from app.schedule_processing import pre_process_schedule as _pre_process_schedule
-from app.storage import (
-    store_metadata,
-    generate_upload_sas_url,
-    delete_by_prefix,
-    load_blob_json,
-    load_blob_binary,
-    load_blob_binary_range,
-    list_blobs_with_prefix,
-    build_schedule_blob_name,
-    build_theme_blob_name,
-    list_available_languages_by_id,
-    normalize_language_tag,
-    StorageError,
-)
 from app.yle_utils import map_yle_content
 
 logger = logging.getLogger(__name__)
@@ -47,7 +21,6 @@ app = FastAPI(
     version="2.0.0",
 )
 
-# CORS middleware - allows all origins for development
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -56,25 +29,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-# --- Utility Functions ---
-
-
-def validate_uuid_v4(uuid_string: str) -> bool:
-    """Validate that a string is a valid UUID v4."""
-    try:
-        UUID(uuid_string, version=4)
-        return True
-    except (ValueError, AttributeError):
-        return False
-
-
-def pre_process_schedule(schedule: Schedule) -> Schedule:
-    """Compatibility wrapper that keeps `main.map_yle_content` patchable in tests."""
-    return _pre_process_schedule(schedule, mapper=map_yle_content)
-
-
-# --- API Endpoints ---
+app.include_router(upload.router)
+app.include_router(content.router)
+app.include_router(media.router)
 
 
 @app.get("/")
@@ -83,326 +40,9 @@ async def root():
     return {"status": "ok", "service": "kielipankki-recorder-backend"}
 
 
-@app.post("/v1/upload", response_model=InitUploadResponse)
-async def init_upload(request: InitUploadRequest):
-    """
-    Initialize an upload by storing metadata and generating a SAS URL.
-
-    This endpoint:
-    1. Validates the filename and metadata
-    2. Stores metadata as JSON in Azure Blob Storage
-    3. Returns a SAS URL for the client to upload the audio file directly
-    """
-    filename = request.filename
-    metadata = request.metadata
-
-    # Validate filename
-    if not filename or "." not in filename or "/" in filename:
-        raise HTTPException(status_code=400, detail="Invalid filename")
-
-    file_prefix, file_suffix = filename.rsplit(".", 1)
-    allowed_extensions = {"m4a", "flac", "amr", "wav", "opus", "caf"}
-
-    if file_suffix.lower() not in allowed_extensions:
-        raise HTTPException(
-            status_code=400, detail=f"File extension .{file_suffix} not allowed"
-        )
-
-    # Validate clientId
-    if not validate_uuid_v4(metadata.clientId):
-        raise HTTPException(status_code=400, detail="clientId is missing or invalid")
-
-    # Build storage path
-    storage_prefix = f"{metadata.clientId}/"
-
-    # Validate sessionId if present
-    if metadata.sessionId:
-        if not validate_uuid_v4(metadata.sessionId):
-            raise HTTPException(status_code=400, detail="sessionId is invalid")
-        storage_prefix += f"{metadata.sessionId}/"
-
-    # Store metadata
-    metadata_blob_name = (
-        f"uploads/audio_and_metadata/metadata/{storage_prefix}{file_prefix}.json"
-    )
-
-    try:
-        metadata_dict = metadata.model_dump(exclude_none=True)
-        await store_metadata(metadata_blob_name, metadata_dict)
-        logger.info(f"Stored metadata for client {metadata.clientId}")
-    except StorageError as e:
-        logger.error(f"Error storing metadata: {e}")
-        raise HTTPException(status_code=500, detail="Error storing metadata")
-
-    # Generate SAS URL for upload (6 minutes = 360 seconds)
-    audio_blob_name = f"uploads/audio_and_metadata/{storage_prefix}{filename}"
-
-    try:
-        sas_url = await generate_upload_sas_url(
-            blob_name=audio_blob_name,
-            content_type=metadata.contentType,
-            expiry_minutes=6,
-        )
-        return InitUploadResponse(presignedUrl=sas_url)
-    except StorageError as e:
-        logger.error(f"Error generating SAS URL: {e}")
-        raise HTTPException(status_code=500, detail="Error generating upload URL")
-
-
-@app.delete("/v1/recordings/{client_id}")
-async def delete_by_client_id(client_id: str = Path(..., description="Client UUID")):
-    """Delete all recordings for a given client ID."""
-    if not validate_uuid_v4(client_id):
-        raise HTTPException(status_code=400, detail="Invalid clientId")
-
-    prefix = f"uploads/audio_and_metadata/{client_id}/"
-    try:
-        await delete_by_prefix(prefix)
-        return {"message": f"Deleted all data for client {client_id}"}
-    except StorageError as e:
-        logger.error(f"Error deleting by client ID: {e}")
-        raise HTTPException(status_code=500, detail="Error deleting data")
-
-
-@app.delete("/v1/recordings/{client_id}/{session_id}")
-async def delete_by_session_id(
-    client_id: str = Path(..., description="Client UUID"),
-    session_id: str = Path(..., description="Session UUID"),
-):
-    """Delete all recordings for a given session."""
-    if not validate_uuid_v4(client_id) or not validate_uuid_v4(session_id):
-        raise HTTPException(status_code=400, detail="Invalid clientId or sessionId")
-
-    prefix = f"uploads/audio_and_metadata/{client_id}/{session_id}/"
-    try:
-        await delete_by_prefix(prefix)
-        return {"message": f"Deleted all data for session {session_id}"}
-    except StorageError as e:
-        logger.error(f"Error deleting by session ID: {e}")
-        raise HTTPException(status_code=500, detail="Error deleting data")
-
-
-@app.delete("/v1/recordings/{client_id}/{session_id}/{recording_id}")
-async def delete_by_recording_id(
-    client_id: str = Path(..., description="Client UUID"),
-    session_id: str = Path(..., description="Session UUID"),
-    recording_id: str = Path(..., description="Recording UUID"),
-):
-    """Delete a specific recording."""
-    if not all(validate_uuid_v4(id) for id in [client_id, session_id, recording_id]):
-        raise HTTPException(
-            status_code=400, detail="Invalid clientId, sessionId, or recordingId"
-        )
-
-    prefix = f"uploads/audio_and_metadata/{client_id}/{session_id}/{recording_id}"
-    try:
-        await delete_by_prefix(prefix)
-        return {"message": f"Deleted recording {recording_id}"}
-    except StorageError as e:
-        logger.error(f"Error deleting recording: {e}")
-        raise HTTPException(status_code=500, detail="Error deleting recording")
-
-
-@app.get("/v1/schedule/{schedule_id}", response_model=Schedule)
-async def load_schedule(
-    schedule_id: str = Path(..., description="Schedule ID"),
-    lang: str = Query(..., description="Language code, for example 'fi' or 'nb'"),
-):
-    """Load a specific schedule file for one language."""
-    blob_name = build_schedule_blob_name(schedule_id, lang)
-
-    try:
-        schedule_dict = await load_blob_json(blob_name)
-        # Parse and validate using the Schedule model
-        schedule = Schedule(**schedule_dict)
-        schedule.id = schedule_id
-        # Pre-process YLE URLs
-        schedule = pre_process_schedule(schedule)
-        return schedule
-    except StorageError as e:
-        logger.error(f"Error loading schedule {schedule_id}: {e}")
-        raise HTTPException(status_code=404, detail="Schedule not found")
-
-
-@app.get("/v1/schedule", response_model=list[ScheduleAvailability])
-async def list_schedules():
-    """List all schedules with their available languages."""
-    try:
-        langs_by_id = await list_available_languages_by_id("schedule/")
-        return [
-            ScheduleAvailability(id=schedule_id, availableLanguages=langs)
-            for schedule_id, langs in langs_by_id.items()
-        ]
-    except StorageError as e:
-        logger.error(f"Error listing schedules: {e}")
-        raise HTTPException(status_code=500, detail="Error listing schedules")
-
-
-@app.get("/v1/schedule/{schedule_id}/languages", response_model=ScheduleAvailability)
-async def schedule_languages(schedule_id: str = Path(..., description="Schedule ID")):
-    """Return which languages are available for one schedule."""
-    try:
-        blob_list = await list_blobs_with_prefix(f"schedule/{schedule_id}/")
-        prefix = f"schedule/{schedule_id}/"
-        languages = sorted({
-            normalize_language_tag(b[len(prefix):][: -len(".json")])
-            for b in blob_list
-            if b.startswith(prefix) and b.endswith(".json") and "/" not in b[len(prefix):]
-        })
-        if not languages:
-            raise HTTPException(status_code=404, detail="Schedule not found")
-        return ScheduleAvailability(id=schedule_id, availableLanguages=languages)
-    except StorageError as e:
-        logger.error(f"Error listing languages for schedule {schedule_id}: {e}")
-        raise HTTPException(status_code=500, detail="Error listing schedule languages")
-
-
-@app.get("/v1/theme/{theme_id}", response_model=Theme)
-async def load_theme(
-    theme_id: str = Path(..., description="Theme ID"),
-    lang: str = Query(..., description="Language code, for example 'fi' or 'nb'"),
-):
-    """Load a specific theme file for one language."""
-    blob_name = build_theme_blob_name(theme_id, lang)
-
-    try:
-        theme_dict = await load_blob_json(blob_name)
-        # Parse and validate using the Theme model
-        theme = Theme(**theme_dict)
-        theme.id = theme_id
-        return theme
-    except StorageError as e:
-        logger.error(f"Error loading theme {theme_id}: {e}")
-        raise HTTPException(status_code=404, detail="Theme not found")
-
-
-@app.get("/v1/theme", response_model=list[ThemeAvailability])
-async def list_themes():
-    """List all themes with their available languages."""
-    try:
-        langs_by_id = await list_available_languages_by_id("theme/")
-        return [
-            ThemeAvailability(id=theme_id, availableLanguages=langs)
-            for theme_id, langs in langs_by_id.items()
-        ]
-    except StorageError as e:
-        logger.error(f"Error listing themes: {e}")
-        raise HTTPException(status_code=500, detail="Error listing themes")
-
-
-@app.get("/v1/theme/{theme_id}/languages", response_model=ThemeAvailability)
-async def theme_languages(theme_id: str = Path(..., description="Theme ID")):
-    """Return which languages are available for one theme."""
-    try:
-        blob_list = await list_blobs_with_prefix(f"theme/{theme_id}/")
-        prefix = f"theme/{theme_id}/"
-        languages = sorted({
-            normalize_language_tag(b[len(prefix):][: -len(".json")])
-            for b in blob_list
-            if b.startswith(prefix) and b.endswith(".json") and "/" not in b[len(prefix):]
-        })
-        if not languages:
-            raise HTTPException(status_code=404, detail="Theme not found")
-        return ThemeAvailability(id=theme_id, availableLanguages=languages)
-    except StorageError as e:
-        logger.error(f"Error listing languages for theme {theme_id}: {e}")
-        raise HTTPException(status_code=500, detail="Error listing theme languages")
-
-
-@app.get("/v1/media/{filename}")
-async def serve_media(
-    filename: str = Path(..., description="Media filename"),
-    range: str = Header(None, description="HTTP Range header"),
-):
-    """
-    Serve media files (audio/video) for playback in the client app.
-
-    Supports HTTP range requests for streaming and seeking.
-    Required for AVPlayer on iOS/macOS.
-
-    Media files are stored in the `media/` prefix in blob storage.
-    Supports audio (m4a, mp3, wav, etc.) and video (mp4, etc.) files.
-    """
-    # Validate filename - prevent directory traversal
-    if "/" in filename or filename.startswith(".."):
-        raise HTTPException(status_code=400, detail="Invalid filename")
-
-    blob_name = f"media/{filename}"
-
-    # Determine content type based on file extension
-    extension = filename.split(".")[-1].lower()
-    content_type_map = {
-        "m4a": "audio/mp4",
-        "mp3": "audio/mpeg",
-        "wav": "audio/wav",
-        "flac": "audio/flac",
-        "opus": "audio/opus",
-        "amr": "audio/amr",
-        "caf": "audio/x-caf",
-        "mp4": "video/mp4",
-        "webm": "video/webm",
-        "mov": "video/quicktime",
-    }
-
-    content_type = content_type_map.get(extension, "application/octet-stream")
-
-    try:
-        # Parse Range header if present (format: "bytes=start-end")
-        if range:
-            try:
-                # Format: "bytes=0-1023" or "bytes=1024-"
-                range_str = range.replace("bytes=", "")
-                if "-" in range_str:
-                    start_str, end_str = range_str.split("-", 1)
-                    start = int(start_str) if start_str else 0
-                    end = int(end_str) if end_str else None
-                else:
-                    start = int(range_str)
-                    end = None
-
-                # Load the range with total size
-                content, total_size = await load_blob_binary_range(
-                    blob_name,
-                    offset=start,
-                    length=(end - start + 1) if end else None,
-                )
-
-                # Calculate actual end for response header
-                actual_end = start + len(content) - 1
-
-                return StreamingResponse(
-                    BytesIO(content),
-                    status_code=206,  # Partial Content
-                    media_type=content_type,
-                    headers={
-                        "Content-Length": str(len(content)),
-                        "Content-Range": f"bytes {start}-{actual_end}/{total_size}",
-                        "Accept-Ranges": "bytes",
-                        "Content-Disposition": f"inline; filename={filename}",
-                    },
-                )
-            except (ValueError, AttributeError):
-                # Invalid range header, return full file
-                pass
-
-        # No range header or invalid range - return full file
-        content = await load_blob_binary(blob_name)
-
-        return StreamingResponse(
-            BytesIO(content),
-            media_type=content_type,
-            headers={
-                "Content-Length": str(len(content)),
-                "Accept-Ranges": "bytes",
-                "Content-Disposition": f"inline; filename={filename}",
-            },
-        )
-
-    except StorageError:
-        raise HTTPException(status_code=404, detail="Media file not found")
-    except Exception as e:
-        logger.error(f"Error serving media {filename}: {e}")
-        raise HTTPException(status_code=500, detail="Error serving media file")
+def pre_process_schedule(schedule: Schedule) -> Schedule:
+    """Compatibility wrapper — keeps `main.map_yle_content` patchable in tests."""
+    return _pre_process_schedule(schedule, mapper=map_yle_content)
 
 
 if __name__ == "__main__":

@@ -71,8 +71,8 @@ def valid_upload_request_with_session(valid_client_id, valid_session_id):
 class TestInitUpload:
     """Tests for POST /v1/upload endpoint."""
 
-    @patch("main.generate_upload_sas_url")
-    @patch("main.store_metadata")
+    @patch("app.routers.upload.generate_upload_sas_url")
+    @patch("app.routers.upload.store_metadata")
     async def test_init_upload_success(
         self, mock_store_metadata, mock_generate_sas, valid_upload_request
     ):
@@ -92,8 +92,8 @@ class TestInitUpload:
         mock_store_metadata.assert_called_once()
         mock_generate_sas.assert_called_once()
 
-    @patch("main.generate_upload_sas_url")
-    @patch("main.store_metadata")
+    @patch("app.routers.upload.generate_upload_sas_url")
+    @patch("app.routers.upload.store_metadata")
     async def test_init_upload_with_session_id(
         self,
         mock_store_metadata,
@@ -191,8 +191,8 @@ class TestInitUpload:
             }
 
             with (
-                patch("main.store_metadata"),
-                patch("main.generate_upload_sas_url") as mock_sas,
+                patch("app.routers.upload.store_metadata"),
+                patch("app.routers.upload.generate_upload_sas_url") as mock_sas,
             ):
                 mock_sas.return_value = (
                     "https://storage.blob.core.windows.net/test?sas=token"
@@ -237,7 +237,7 @@ class TestInitUpload:
         assert response.status_code == 400
         assert "sessionId" in response.json()["detail"]
 
-    @patch("main.store_metadata")
+    @patch("app.routers.upload.store_metadata")
     async def test_init_upload_storage_error_metadata(
         self, mock_store_metadata, valid_upload_request
     ):
@@ -251,8 +251,8 @@ class TestInitUpload:
         assert response.status_code == 500
         assert "Error storing metadata" in response.json()["detail"]
 
-    @patch("main.generate_upload_sas_url")
-    @patch("main.store_metadata")
+    @patch("app.routers.upload.generate_upload_sas_url")
+    @patch("app.routers.upload.store_metadata")
     async def test_init_upload_storage_error_sas(
         self, mock_store_metadata, mock_generate_sas, valid_upload_request
     ):
@@ -274,7 +274,7 @@ class TestInitUpload:
 class TestDeleteRecordings:
     """Tests for DELETE /v1/recordings endpoints."""
 
-    @patch("main.delete_by_prefix")
+    @patch("app.routers.upload.delete_by_prefix")
     async def test_delete_by_client_id_success(self, mock_delete, valid_client_id):
         """Test successful deletion by client ID."""
         mock_delete.return_value = None
@@ -298,7 +298,7 @@ class TestDeleteRecordings:
         assert response.status_code == 400
         assert "Invalid clientId" in response.json()["detail"]
 
-    @patch("main.delete_by_prefix")
+    @patch("app.routers.upload.delete_by_prefix")
     async def test_delete_by_client_id_storage_error(
         self, mock_delete, valid_client_id
     ):
@@ -312,7 +312,7 @@ class TestDeleteRecordings:
         assert response.status_code == 500
         assert "Error deleting data" in response.json()["detail"]
 
-    @patch("main.delete_by_prefix")
+    @patch("app.routers.upload.delete_by_prefix")
     async def test_delete_by_session_id_success(
         self, mock_delete, valid_client_id, valid_session_id
     ):
@@ -353,7 +353,7 @@ class TestDeleteRecordings:
         assert response.status_code == 400
         assert "Invalid clientId or sessionId" in response.json()["detail"]
 
-    @patch("main.delete_by_prefix")
+    @patch("app.routers.upload.delete_by_prefix")
     async def test_delete_by_session_id_storage_error(
         self, mock_delete, valid_client_id, valid_session_id
     ):
@@ -369,7 +369,7 @@ class TestDeleteRecordings:
         assert response.status_code == 500
         assert "Error deleting data" in response.json()["detail"]
 
-    @patch("main.delete_by_prefix")
+    @patch("app.routers.upload.delete_by_prefix")
     async def test_delete_by_recording_id_success(
         self, mock_delete, valid_client_id, valid_session_id, valid_recording_id
     ):
@@ -428,7 +428,7 @@ class TestDeleteRecordings:
         assert response.status_code == 400
         assert "Invalid" in response.json()["detail"]
 
-    @patch("main.delete_by_prefix")
+    @patch("app.routers.upload.delete_by_prefix")
     async def test_delete_by_recording_id_storage_error(
         self, mock_delete, valid_client_id, valid_session_id, valid_recording_id
     ):

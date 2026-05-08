@@ -67,7 +67,7 @@ async def test_theme_requires_lang_query_param():
     assert response.status_code == 422
 
 
-@patch("main.load_blob_json", new_callable=AsyncMock)
+@patch("app.routers.content.load_blob_json", new_callable=AsyncMock)
 async def test_schedule_loads_language_specific_blob(mock_load_blob_json):
     mock_load_blob_json.return_value = _schedule_payload()
 
@@ -80,7 +80,7 @@ async def test_schedule_loads_language_specific_blob(mock_load_blob_json):
     mock_load_blob_json.assert_awaited_once_with("schedule/sched-1/nb-no.json")
 
 
-@patch("main.load_blob_json", new_callable=AsyncMock)
+@patch("app.routers.content.load_blob_json", new_callable=AsyncMock)
 async def test_theme_loads_language_specific_blob(mock_load_blob_json):
     mock_load_blob_json.return_value = _theme_payload()
 
@@ -93,7 +93,7 @@ async def test_theme_loads_language_specific_blob(mock_load_blob_json):
     mock_load_blob_json.assert_awaited_once_with("theme/theme-1/fi.json")
 
 
-@patch("main.load_blob_json", new_callable=AsyncMock)
+@patch("app.routers.content.load_blob_json", new_callable=AsyncMock)
 async def test_schedule_missing_language_returns_404(mock_load_blob_json):
     mock_load_blob_json.side_effect = StorageError("not found")
 
@@ -104,7 +104,7 @@ async def test_schedule_missing_language_returns_404(mock_load_blob_json):
     assert response.status_code == 404
 
 
-@patch("main.load_blob_json", new_callable=AsyncMock)
+@patch("app.routers.content.load_blob_json", new_callable=AsyncMock)
 async def test_theme_missing_language_returns_404(mock_load_blob_json):
     mock_load_blob_json.side_effect = StorageError("not found")
 
@@ -118,7 +118,7 @@ async def test_theme_missing_language_returns_404(mock_load_blob_json):
 # ── list endpoints ────────────────────────────────────────────────────────────
 
 
-@patch("main.list_available_languages_by_id", new_callable=AsyncMock)
+@patch("app.routers.content.list_available_languages_by_id", new_callable=AsyncMock)
 async def test_list_schedules_returns_availability(mock_list):
     mock_list.return_value = {"sched-a": ["fi", "nb"], "sched-b": ["sma"]}
 
@@ -133,7 +133,7 @@ async def test_list_schedules_returns_availability(mock_list):
     mock_list.assert_awaited_once_with("schedule/")
 
 
-@patch("main.list_available_languages_by_id", new_callable=AsyncMock)
+@patch("app.routers.content.list_available_languages_by_id", new_callable=AsyncMock)
 async def test_list_themes_returns_availability(mock_list):
     mock_list.return_value = {"theme-x": ["fi"]}
 
@@ -148,7 +148,7 @@ async def test_list_themes_returns_availability(mock_list):
 # ── per-ID discovery endpoints ────────────────────────────────────────────────
 
 
-@patch("main.list_blobs_with_prefix", new_callable=AsyncMock)
+@patch("app.routers.content.list_blobs_with_prefix", new_callable=AsyncMock)
 async def test_schedule_languages_returns_sorted_list(mock_list_blobs):
     mock_list_blobs.return_value = [
         "schedule/sched-1/nb.json",
@@ -163,7 +163,7 @@ async def test_schedule_languages_returns_sorted_list(mock_list_blobs):
     assert response.json() == {"id": "sched-1", "availableLanguages": ["fi", "nb"]}
 
 
-@patch("main.list_blobs_with_prefix", new_callable=AsyncMock)
+@patch("app.routers.content.list_blobs_with_prefix", new_callable=AsyncMock)
 async def test_schedule_languages_returns_404_when_empty(mock_list_blobs):
     mock_list_blobs.return_value = []
 
@@ -174,7 +174,7 @@ async def test_schedule_languages_returns_404_when_empty(mock_list_blobs):
     assert response.status_code == 404
 
 
-@patch("main.list_blobs_with_prefix", new_callable=AsyncMock)
+@patch("app.routers.content.list_blobs_with_prefix", new_callable=AsyncMock)
 async def test_theme_languages_returns_sorted_list(mock_list_blobs):
     mock_list_blobs.return_value = [
         "theme/theme-1/sma.json",
@@ -189,7 +189,7 @@ async def test_theme_languages_returns_sorted_list(mock_list_blobs):
     assert response.json() == {"id": "theme-1", "availableLanguages": ["fi", "sma"]}
 
 
-@patch("main.list_blobs_with_prefix", new_callable=AsyncMock)
+@patch("app.routers.content.list_blobs_with_prefix", new_callable=AsyncMock)
 async def test_theme_languages_returns_404_when_empty(mock_list_blobs):
     mock_list_blobs.return_value = []
 
