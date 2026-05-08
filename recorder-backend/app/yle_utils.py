@@ -24,6 +24,22 @@ MEDIA_URL = "https://external.api.yle.fi/v1/media/playouts.json?program_id={prog
 # Old: https://external.api.yle.fi/v1/
 # New: https://programs.api.yle.fi/v3/
 
+
+def _get_yle_decrypt_key() -> bytes:
+    """Return YLE decryption key as validated bytes."""
+    if not YLE_DECRYPT:
+        raise FileProcessingError("YLE_DECRYPT is not configured")
+
+    if isinstance(YLE_DECRYPT, bytes):
+        key = YLE_DECRYPT
+    else:
+        key = YLE_DECRYPT.encode("utf-8")
+
+    if len(key) not in (16, 24, 32):
+        raise FileProcessingError("YLE_DECRYPT must be 16, 24, or 32 bytes")
+
+    return key
+
 def map_yle_content(yle_program_id: str) -> str:
     """Maps YLE program ID to a decrypted media URL.
 
@@ -72,7 +88,7 @@ def decrypt_yle_url(crypted_url: str) -> str:
     base64_decoded_url = base64.b64decode(crypted_url)
     iv = base64_decoded_url[:16]
     msg = base64_decoded_url[16:]
-    cipher = AES.new(YLE_DECRYPT, AES.MODE_CBC, iv)
+    cipher = AES.new(_get_yle_decrypt_key(), AES.MODE_CBC, iv)
     decrypted = cipher.decrypt(msg)
     return decrypted.decode("utf-8").strip()
 
