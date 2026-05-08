@@ -2,7 +2,7 @@
   "title": "Mediataidot lukio",
   "body1": "Mediataidot lukio",
   "body2": "",
-  "image": "https://images.cdn.yle.fi/image/upload/w_300,h_168,f_auto,fl_lossy,q_auto:eco/39-7388475fa3fc1d44897.jpg",
+  "url": "https://images.cdn.yle.fi/image/upload/w_300,h_168,f_auto,fl_lossy,q_auto:eco/39-7388475fa3fc1d44897.jpg",
   "schedule": {
     "scheduleId": "92d22fe6-ae1d-448a-b17d-d8ac9f274f56",
     "items": [
@@ -10,7 +10,6 @@
         "itemId": "dced7ced-5889-47b8-8b7c-aef0296ffff7",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "isRecording": true,
         "start": {
@@ -36,7 +35,6 @@
         "itemId": "2e60801f-d91b-44cf-b1b0-aba6cd7f635b",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Pientä tuunausta",
@@ -62,7 +60,6 @@
         "itemId": "7e16656e-c88a-465a-b2f3-205b134f01ad",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Auta tutkijaa",
@@ -129,7 +126,6 @@
         "itemId": "8b1e888a-1ebe-4656-acc4-1941222d87ee",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Kiitos jos vastasit!",
@@ -143,7 +139,6 @@
         "itemId": "57255385-6328-49e9-9ecc-7c6abe5e2332",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Some-suomi -tulkkaus",
@@ -169,7 +164,6 @@
         "itemId": "cae1adbe-e277-4517-b82a-6148f70edd9d",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Somen botit",

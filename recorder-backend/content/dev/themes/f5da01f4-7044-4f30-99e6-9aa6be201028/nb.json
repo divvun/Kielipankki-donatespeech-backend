@@ -2,7 +2,7 @@
   "title": "Nær meg akkurat nå",
   "body1": "Guide Anna Karhunen",
   "body2": "",
-  "image": "https://images.cdn.yle.fi/image/upload/w_300,h_168,f_auto,fl_lossy,q_auto:eco/39-7258085f76f5c430133.jpg",
+  "url": "https://images.cdn.yle.fi/image/upload/w_300,h_168,f_auto,fl_lossy,q_auto:eco/39-7258085f76f5c430133.jpg",
   "schedule": {
     "scheduleId": "0598bf14-ab48-4ccb-a50c-0bd779f77933",
     "items": [
@@ -10,7 +10,6 @@
         "itemId": "a2431d57-b536-4d2b-bb68-f1e185ac8b6a",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Guide Anna Karhunen",
@@ -24,7 +23,6 @@
         "itemId": "4a4d2c26-68c9-414a-9c2f-53f1b6831d9b",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Fortell om frokosten din",
@@ -44,7 +42,6 @@
         "itemId": "d335de2d-364c-4742-bd6b-0e823952062a",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Jeg ser ut av vinduet",
@@ -58,7 +55,6 @@
         "itemId": "860a2e67-1480-4943-b8df-aef477f7895d",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Jeg ser ut av vinduet",
@@ -83,7 +79,6 @@
         "itemId": "b2430ab4-c2ce-4462-aacb-99c0ad0214f5",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Min dialektbakgrunn",
@@ -132,7 +127,6 @@
         "itemId": "b5407e64-2b24-4286-b24f-f58f3e3bee2f",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Takk hvis du svarte.",
@@ -146,7 +140,6 @@
         "itemId": "b2168a04-3291-4d77-b7c7-dc7f85c6aa38",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Tärkeä esine",
@@ -160,7 +153,6 @@
         "itemId": "0d592ff8-2c06-4d7b-9517-a876b0fc6d6c",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Tärkeä esineeni",
@@ -180,7 +172,6 @@
         "itemId": "aef3d0fe-1100-4505-93f3-43833f0f13e4",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Turha tavara",
@@ -194,7 +185,6 @@
         "itemId": "3f9c88b6-f690-44ae-9af1-a9c18426a6ea",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Turhat tavarani",
@@ -214,7 +204,6 @@
         "itemId": "d4b32c19-7347-4b0e-b0f4-61b645fa888d",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Auta taas tutkijaa",
@@ -268,7 +257,6 @@
         "itemId": "4f7165a0-74ef-4af4-a5b1-08bc1f8783ea",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Iso kiitos ...",
@@ -282,7 +270,6 @@
         "itemId": "f6fb8394-105c-47d3-b76c-05da19e378ad",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Favorittplagg",
@@ -296,7 +283,6 @@
         "itemId": "31862f24-2047-473e-8bf6-d36f377b245d",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Favorittplagg",
@@ -343,7 +329,6 @@
         "itemId": "38fd137b-bbda-43cf-ad46-6999a56645c0",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Takk! Tack! Spasibo!",
@@ -357,7 +342,6 @@
         "itemId": "f748be56-b9b1-4485-b423-8abe07c661a4",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Kodikkuudesta",
@@ -371,7 +355,6 @@
         "itemId": "f589f9e2-3fef-45d5-8286-b701a1fb0bbd",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Hvor kommer koselig hjemmefølelse fra?",
@@ -1364,7 +1347,6 @@
         "kind": "prompt",
         "itemType": "text",
         "typeId": null,
-        "options": [],
         "start": {
           "url": "https://images.cdn.yle.fi/image/upload/w_1198,h_674,f_auto,fl_lossy,q_auto:eco/39-7179025f5b5eb17919b.jpg",
           "title": "Ammattini",
@@ -1397,7 +1379,6 @@
         "kind": "prompt",
         "itemType": "text",
         "typeId": null,
-        "options": [],
         "start": {
           "title": "Deltar du i bedriftsutfordringen?",
           "body1": "Skriv din bedrifts eller organisasjons ID som starter med #.",
@@ -1410,7 +1391,6 @@
         "itemId": "0937ca13-cc64-4965-8725-aca4a6eb18f9",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Takk for at du donerte",

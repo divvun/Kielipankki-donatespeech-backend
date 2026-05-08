@@ -2,7 +2,7 @@
   "title": "Natur, vær og jeg",
   "body1": "Jutellaan rennosti vuodenkulusta",
   "body2": "",
-  "image": "https://images.cdn.yle.fi/image/upload/w_300,h_168,f_auto,fl_lossy,q_auto:eco/39-7267615f7c24090a5a3.jpg",
+  "url": "https://images.cdn.yle.fi/image/upload/w_300,h_168,f_auto,fl_lossy,q_auto:eco/39-7267615f7c24090a5a3.jpg",
   "scheduleIds": {
     "scheduleId": "cbb91217-b323-46d7-b3af-16c41206c60d",
     "items": [
@@ -10,7 +10,6 @@
         "itemId": "aa00938c-8938-4fb5-a748-960d57b8b78c",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "La oss øve først!",
@@ -36,7 +35,6 @@
         "itemId": "040cef2f-336b-4281-9bda-9eaa549f5bad",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Fortell værmelding",
@@ -62,7 +60,6 @@
         "itemId": "700cc004-5441-440d-80f3-fba5d514f425",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "start": {
           "typeId": "image/jpeg",
           "title": "Min dialektbakgrunn",
@@ -111,7 +108,6 @@
         "itemId": "9047fc06-da65-46fa-b6e4-edb5946a19e6",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Takk!",
@@ -125,7 +121,6 @@
         "itemId": "37dc920a-d369-47cf-95df-64a6ab6a4326",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "isRecording": true,
         "start": {
@@ -151,7 +146,6 @@
         "itemId": "d64c4f78-9f43-4ec9-867a-147480cc5932",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Klesbyttingens koreografi",
@@ -244,7 +238,6 @@
         "itemId": "4b568b66-21a7-4f6d-9fc6-867586a8a186",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "isRecording": true,
         "start": {
@@ -270,7 +263,6 @@
         "itemId": "777fc21f-691c-4355-8218-6bd3c47eb3b8",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Har det vært nok vær?",
@@ -296,7 +288,6 @@
         "itemId": "b7211934-49ce-466f-96cc-2f23c94662a5",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "isRecording": true,
         "start": {
@@ -322,7 +313,6 @@
         "itemId": "641148e9-7dd9-4ded-ac50-1830863893e3",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Samlende og jaktende",
@@ -1321,7 +1311,6 @@
         "kind": "prompt",
         "itemType": "text",
         "typeId": null,
-        "options": [],
         "start": {
           "title": "Ammattini",
           "body1": "Skriv yrket ditt.",
@@ -1354,7 +1343,6 @@
         "kind": "prompt",
         "itemType": "text",
         "typeId": null,
-        "options": [],
         "start": {
           "title": "Deltok du i bedriftsutfordringen?",
           "body1": "Skriv din bedrifts eller organisasjons ID som starter med #.",

@@ -2,7 +2,7 @@
   "title": "K-18",
   "body1": "K-18",
   "body2": "",
-  "image": "https://images.cdn.yle.fi/image/upload/w_300,h_168,f_auto,fl_lossy,q_auto:eco/39-7257735f76f184ea966.jpg",
+  "url": "https://images.cdn.yle.fi/image/upload/w_300,h_168,f_auto,fl_lossy,q_auto:eco/39-7257735f76f184ea966.jpg",
   "schedule": {
     "scheduleId": "6975c4b9-b40e-42e7-9572-05eeab25452b",
     "items": [
@@ -10,7 +10,6 @@
         "itemId": "431e2328-d1a9-4668-adf1-55d3e7838a0f",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Ensin esileikki",
@@ -24,7 +23,6 @@
         "itemId": "d1e54243-2f0b-4118-9bd6-78c45ad805b2",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Etsi erot",
@@ -44,7 +42,6 @@
         "itemId": "b08f2813-7645-4fd1-bb09-af5c68886479",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Terveisiä perseestä!",
@@ -58,7 +55,6 @@
         "itemId": "bd0abbdb-3ea0-4399-8b8a-b15a56e0853c",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Terveisiä perseestä!",
@@ -78,7 +74,6 @@
         "itemId": "2c18f5a0-7b57-43d2-bde3-9625d7c317a9",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "start": {
           "typeId": "image/jpeg",
           "title": "Min dialektbakgrunn",
@@ -127,7 +122,6 @@
         "itemId": "40fcf904-6511-4494-b008-123be076bc2a",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Takk for svaret ditt!",
@@ -141,7 +135,6 @@
         "itemId": "5300d820-cc9e-46f2-b83d-81baae3bea83",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Sanaselityspeli",
@@ -155,7 +148,6 @@
         "itemId": "8bc537a4-9c21-4bc9-a37d-1bdc0eaa3179",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Sanaselityspeli",
@@ -180,7 +172,6 @@
         "itemId": "8dc3bf16-cd78-4b73-bcc7-49c53e853dc3",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Vedetään henkeä",
@@ -261,7 +252,6 @@
         "itemId": "14ef331b-5f30-425f-a210-3d07de5af1f0",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Takk, kjære!",
@@ -275,7 +265,6 @@
         "itemId": "f3ab1997-b4c4-4b7b-8d46-1036feb0f8c2",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Tunnustusten huone",
@@ -289,7 +278,6 @@
         "itemId": "a4161c66-c337-48a5-af26-516163d94e41",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Tunnustusten huone",
@@ -309,7 +297,6 @@
         "itemId": "2bbc85ec-140d-49d9-ad77-a4f1e71d0e83",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Seksiä ja saksia!",
@@ -323,7 +310,6 @@
         "itemId": "acc7451f-cf0d-43b1-81f0-74962f7d1325",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Seksiä ja saksia!",
@@ -348,7 +334,6 @@
         "itemId": "b710827a-5019-4df2-a42f-9dfef26ef793",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Veilede på syndens sti",
@@ -362,7 +347,6 @@
         "itemId": "13323c7c-2a15-41f3-9ae6-c43962cd7b31",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Veilede på syndens sti",
@@ -382,7 +366,6 @@
         "itemId": "bf1c3673-83c7-4a96-98be-6686cc8c5a6c",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Hienoa!",
@@ -1369,7 +1352,6 @@
         "kind": "prompt",
         "itemType": "text",
         "typeId": null,
-        "options": [],
         "start": {
           "title": "Ammattini",
           "body1": "Skriv yrket ditt.",
@@ -1402,7 +1384,6 @@
         "kind": "prompt",
         "itemType": "text",
         "typeId": null,
-        "options": [],
         "start": {
           "title": "Deltok du i bedriftsutfordringen?",
           "body1": "Skriv din bedrifts eller organisasjons ID som starter med #.",
@@ -1415,7 +1396,6 @@
         "itemId": "48d31c1b-0157-4248-a636-ec9668c57ef6",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Takk!",

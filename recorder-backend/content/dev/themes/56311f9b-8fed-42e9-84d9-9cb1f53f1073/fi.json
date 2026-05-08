@@ -2,7 +2,7 @@
   "title": "Eläinystävät",
   "body1": "Eläinystävät",
   "body2": "",
-  "image": "https://images.cdn.yle.fi/image/upload/w_300,h_168,f_auto,fl_lossy,q_auto:eco/39-7149315f509f388f486.jpg",
+  "url": "https://images.cdn.yle.fi/image/upload/w_300,h_168,f_auto,fl_lossy,q_auto:eco/39-7149315f509f388f486.jpg",
   "schedule": {
     "scheduleId": "3a73d87a-8856-4ca0-9af2-da66c99a95f9",
     "items": [
@@ -10,7 +10,6 @@
         "itemId": "b960cbf1-4338-4f80-bb9b-c48ce282b800",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Oppaana Minna Pyykkö",
@@ -24,7 +23,6 @@
         "itemId": "3e9baccc-5691-4df3-a454-43fcdeefaf61",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "isRecording": true,
         "start": {
@@ -46,7 +44,6 @@
         "itemId": "4fb90326-ab49-4d34-ad05-70e07d6d3681",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Auta eläintä",
@@ -60,7 +57,6 @@
         "itemId": "a32c156d-aaa6-492d-bd9a-730cae6fc559",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "isRecording": true,
         "start": {
@@ -80,7 +76,6 @@
         "itemId": "26fd8531-ffd7-451b-9971-caf7cb02432f",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Seuraavaksi kuva-arvoitus",
@@ -94,7 +89,6 @@
         "itemId": "75a509cc-e481-4d47-87d4-23c3f0693234",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "isRecording": true,
         "start": {
@@ -114,7 +108,6 @@
         "itemId": "349828e1-f848-4459-aa96-e2aaebebbdc9",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Murretaustani",
@@ -163,7 +156,6 @@
         "itemId": "7ef08efb-38ad-4ce2-87c5-d78bd1713538",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Kiitos jälleen!",
@@ -177,7 +169,6 @@
         "itemId": "b9703a07-f9b1-440f-bc1b-4ba99becf841",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Leiki selostajaa",
@@ -191,7 +182,6 @@
         "itemId": "eae563dd-2116-4026-b4ef-c0c874bbda1e",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "isRecording": true,
         "start": {
@@ -211,7 +201,6 @@
         "itemId": "d29502f0-6358-4e98-acd9-7ac3393b7b42",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Lemmikkini ui",
@@ -231,7 +220,6 @@
         "itemId": "830f0257-4c31-4b4e-9dc5-9a1f7aa19424",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Pysy mukana...",
@@ -285,7 +273,6 @@
         "itemId": "da7b10cf-ce15-4d44-8ffd-56d521652080",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Kiitos ...",
@@ -299,7 +286,6 @@
         "itemId": "bb4e193e-3c26-4b2c-a849-7958531b068a",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Tunnista koirat",
@@ -313,7 +299,6 @@
         "itemId": "4b5d4244-1ca6-471e-a3ec-3331f431e5b3",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "start": {
           "title": "Tunnista koirat",
@@ -360,7 +345,6 @@
         "itemId": "85518643-eefd-4c63-bb37-918577163fa1",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Entisajan lemmikit",
@@ -374,7 +358,6 @@
         "itemId": "9c62e99e-556c-497d-b186-fe2655178d83",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "isRecording": true,
         "start": {
@@ -394,7 +377,6 @@
         "itemId": "a18ba427-cf88-491f-89ea-9ca693195c4d",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Rakkain eläimeni",
@@ -408,7 +390,6 @@
         "itemId": "46466e4d-2984-4cad-b217-50ee6dbf74a9",
         "kind": "media",
         "itemType": "image",
-        "options": [],
         "typeId": "image/jpeg",
         "isRecording": true,
         "start": {
@@ -1402,7 +1383,6 @@
         "itemType": "text",
         "typeId": null,
         "isRecording": false,
-        "options": [],
         "start": {
           "title": "Ammattini",
           "body1": "Kirjoita ammattisi.",
@@ -1435,7 +1415,6 @@
         "itemType": "text",
         "typeId": null,
         "isRecording": false,
-        "options": [],
         "start": {
           "title": "Osallistutko yrityshaasteeseen?",
           "body1": "Kirjoita yrityksesi tai yhteisösi #-alkuinen tunnus.",
@@ -1447,7 +1426,6 @@
         "itemId": "6323b55e-6a2c-4e10-bde6-8d5182a1c6ce",
         "kind": "media",
         "itemType": "yle-video",
-        "options": [],
         "typeId": "video/mp4",
         "start": {
           "title": "Kiitos tarinatuokiosta!",
