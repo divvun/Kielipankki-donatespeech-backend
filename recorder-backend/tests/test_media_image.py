@@ -20,7 +20,7 @@ def test_media_item_image_valid():
 
 def test_media_item_image_in_schedule() -> None:
     """Test MediaItem image as ScheduleItem discriminated union."""
-    schedule_item= ImageMediaItem(
+    schedule_item = ImageMediaItem(
         kind="media",
         itemId="image-002",
         itemType="image",
@@ -29,7 +29,6 @@ def test_media_item_image_in_schedule() -> None:
         start=None,
         recording=None,
         finish=None,
-
     )
 
     assert isinstance(schedule_item, ImageMediaItem)

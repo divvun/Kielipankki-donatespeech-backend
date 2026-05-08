@@ -40,6 +40,7 @@ def _get_yle_decrypt_key() -> bytes:
 
     return key
 
+
 def map_yle_content(yle_program_id: str) -> str:
     """Maps YLE program ID to a decrypted media URL.
 
@@ -61,14 +62,14 @@ def map_yle_content(yle_program_id: str) -> str:
             "YLE credentials not configured - returning fake YLE URL (program ID as-is)"
         )
         return yle_program_id
-    
+
     try:
         media_url = get_media_url(yle_program_id)
-        
+
         with urllib.request.urlopen(media_url, timeout=10) as media_res:
             crypted_url = json.loads(media_res.read()).get("data")[0].get("url")
             decrypted_url = decrypt_yle_url(crypted_url)
-        
+
         logger.info("Successfully decrypted YLE URL")
         return decrypted_url
     except Exception as e:

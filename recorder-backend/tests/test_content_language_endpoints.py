@@ -1,4 +1,5 @@
 """Endpoint tests for language-aware schedule/theme loading."""
+
 from app.models import MediaState
 
 from unittest.mock import AsyncMock, patch
@@ -39,11 +40,12 @@ def _schedule_payload() -> dict:
 
 def _theme_payload() -> dict:
     return {
-        "mediaState":{
-        "title": "Teema",
-        "body1": "body1 fi",
-        "body2": "body2 fi",
-        "url": "https://example.org/theme.jpg",},
+        "mediaState": {
+            "title": "Teema",
+            "body1": "body1 fi",
+            "body2": "body2 fi",
+            "url": "https://example.org/theme.jpg",
+        },
         "schedule": {"items": []},
     }
 

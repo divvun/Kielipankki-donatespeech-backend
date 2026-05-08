@@ -28,7 +28,9 @@ AZURITE_CONNECTION_STRING = (
 )
 
 # Use Azure Storage if env var is set, otherwise use local Azurite
-CONNECTION_STRING = os.environ.get("AZURE_STORAGE_CONNECTION_STRING") or AZURITE_CONNECTION_STRING
+CONNECTION_STRING = (
+    os.environ.get("AZURE_STORAGE_CONNECTION_STRING") or AZURITE_CONNECTION_STRING
+)
 CONTAINER_NAME = os.environ.get("AZURE_STORAGE_CONTAINER_NAME") or "recorder-content"
 
 # Determine if we're using Azure or Azurite
@@ -65,7 +67,7 @@ def main():
 
         # Get content directory
         content_dir = Path(__file__).parent / "content" / CONTENT_ENV
-        
+
         if not content_dir.exists():
             print(f"❌ Error: Content directory not found: {content_dir}")
             sys.exit(1)
@@ -113,10 +115,12 @@ def main():
             print(f"⚠ Warning: Themes directory not found: {themes_dir}")
 
         print("\n✨ Storage initialized successfully!")
-        
+
         if IS_AZURE:
             print("\n🔵 Azure Blob Storage is now populated with production data.")
-            print("   Your Container App should now return data from /v1/theme and /v1/schedule endpoints.")
+            print(
+                "   Your Container App should now return data from /v1/theme and /v1/schedule endpoints."
+            )
         else:
             print("\n🟡 Local Azurite storage is now populated with development data.")
             print("\nYou can now test the API:")

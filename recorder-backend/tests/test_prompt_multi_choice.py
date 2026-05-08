@@ -40,7 +40,6 @@ def test_prompt_item_multi_choice_in_schedule():
         otherEntryLabel="Other source",
     )
 
-
     assert isinstance(schedule_item, MultiChoicePromptItem)
     assert schedule_item.itemType == "multi-choice"
     assert schedule_item.otherEntryLabel == "Other source"

@@ -58,11 +58,15 @@ async def schedule_languages(schedule_id: str = Path(..., description="Schedule 
     try:
         blob_list = await list_blobs_with_prefix(f"schedule/{schedule_id}/")
         prefix = f"schedule/{schedule_id}/"
-        languages = sorted({
-            normalize_language_tag(b[len(prefix):][: -len(".json")])
-            for b in blob_list
-            if b.startswith(prefix) and b.endswith(".json") and "/" not in b[len(prefix):]
-        })
+        languages = sorted(
+            {
+                normalize_language_tag(b[len(prefix) :][: -len(".json")])
+                for b in blob_list
+                if b.startswith(prefix)
+                and b.endswith(".json")
+                and "/" not in b[len(prefix) :]
+            }
+        )
         if not languages:
             raise HTTPException(status_code=404, detail="Schedule not found")
         return ScheduleAvailability(id=schedule_id, availableLanguages=languages)
@@ -108,11 +112,15 @@ async def theme_languages(theme_id: str = Path(..., description="Theme ID")):
     try:
         blob_list = await list_blobs_with_prefix(f"theme/{theme_id}/")
         prefix = f"theme/{theme_id}/"
-        languages = sorted({
-            normalize_language_tag(b[len(prefix):][: -len(".json")])
-            for b in blob_list
-            if b.startswith(prefix) and b.endswith(".json") and "/" not in b[len(prefix):]
-        })
+        languages = sorted(
+            {
+                normalize_language_tag(b[len(prefix) :][: -len(".json")])
+                for b in blob_list
+                if b.startswith(prefix)
+                and b.endswith(".json")
+                and "/" not in b[len(prefix) :]
+            }
+        )
         if not languages:
             raise HTTPException(status_code=404, detail="Theme not found")
         return ThemeAvailability(id=theme_id, availableLanguages=languages)

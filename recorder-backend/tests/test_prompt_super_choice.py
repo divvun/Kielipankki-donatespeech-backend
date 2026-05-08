@@ -50,8 +50,7 @@ def test_prompt_item_super_choice_without_other_entry():
         kind="prompt",
         itemId="super-choice-no-label",
         itemType="super-choice",
-        options=["Option A", 
-        "Option B"],
+        options=["Option A", "Option B"],
         isRecording=True,
     )
 

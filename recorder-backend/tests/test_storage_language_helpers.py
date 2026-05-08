@@ -11,8 +11,7 @@ def test_normalize_language_tag():
 
 def test_build_schedule_blob_name():
     assert (
-        storage.build_schedule_blob_name("abc-123", "FI")
-        == "schedule/abc-123/fi.json"
+        storage.build_schedule_blob_name("abc-123", "FI") == "schedule/abc-123/fi.json"
     )
 
 
@@ -59,7 +58,9 @@ async def test_list_available_languages_by_id(monkeypatch):
 
     monkeypatch.setattr(storage, "list_blobs_with_prefix", fake_list_blobs_with_prefix)
 
-    assert await storage.list_available_languages_by_id("schedule/", max_results=55) == {
+    assert await storage.list_available_languages_by_id(
+        "schedule/", max_results=55
+    ) == {
         "a": ["fi", "nb"],
         "b": ["sma"],
     }

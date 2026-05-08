@@ -30,6 +30,7 @@ class StorageError(Exception):
 
 # --- Configuration ---
 
+
 def _resolve_storage_connection_string() -> str:
     """Resolve a non-empty Azure Storage connection string."""
     value = os.environ.get("AZURE_STORAGE_CONNECTION_STRING")
@@ -92,7 +93,9 @@ def parse_localized_blob_name(blob_name: str, prefix: str) -> tuple[str, str] | 
     return item_id, normalize_language_tag(language)
 
 
-def collect_available_languages(blob_names: List[str], prefix: str) -> Dict[str, List[str]]:
+def collect_available_languages(
+    blob_names: List[str], prefix: str
+) -> Dict[str, List[str]]:
     """Collect available languages per logical ID from localized blob names."""
     languages_by_id: Dict[str, set[str]] = {}
 

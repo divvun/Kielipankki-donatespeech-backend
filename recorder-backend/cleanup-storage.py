@@ -24,7 +24,9 @@ AZURITE_CONNECTION_STRING = (
 )
 
 # Use Azure Storage if env var is set, otherwise use local Azurite
-CONNECTION_STRING = os.environ.get("AZURE_STORAGE_CONNECTION_STRING") or AZURITE_CONNECTION_STRING
+CONNECTION_STRING = (
+    os.environ.get("AZURE_STORAGE_CONNECTION_STRING") or AZURITE_CONNECTION_STRING
+)
 CONTAINER_NAME = os.environ.get("AZURE_STORAGE_CONTAINER_NAME") or "recorder-content"
 
 # Determine if we're using Azure or Azurite
@@ -37,7 +39,7 @@ def list_blobs(container_client):
     if not blobs:
         print("Container is empty")
         return []
-    
+
     print(f"\nFound {len(blobs)} blobs:")
     for blob in blobs:
         size_kb = blob.size / 1024
@@ -48,18 +50,18 @@ def list_blobs(container_client):
 def delete_all_blobs(container_client):
     """Delete all blobs in the container."""
     blobs = list(container_client.list_blobs())
-    
+
     if not blobs:
         print("✓ Container is already empty")
         return
-    
+
     print(f"\n⚠️  About to delete {len(blobs)} blobs")
     response = input("Continue? (yes/no): ")
-    
-    if response.lower() not in ['yes', 'y']:
+
+    if response.lower() not in ["yes", "y"]:
         print("Cancelled")
         return
-    
+
     deleted = 0
     for blob in blobs:
         try:
@@ -68,28 +70,28 @@ def delete_all_blobs(container_client):
             deleted += 1
         except Exception as e:
             print(f"✗ Failed to delete {blob.name}: {e}")
-    
+
     print(f"\n✨ Deleted {deleted}/{len(blobs)} blobs")
 
 
 def delete_prefix(container_client, prefix):
     """Delete all blobs with a specific prefix."""
     blobs = list(container_client.list_blobs(name_starts_with=prefix))
-    
+
     if not blobs:
         print(f"✓ No blobs found with prefix '{prefix}'")
         return
-    
+
     print(f"\n⚠️  About to delete {len(blobs)} blobs with prefix '{prefix}':")
     for blob in blobs:
         print(f"  - {blob.name}")
-    
+
     response = input("Continue? (yes/no): ")
-    
-    if response.lower() not in ['yes', 'y']:
+
+    if response.lower() not in ["yes", "y"]:
         print("Cancelled")
         return
-    
+
     deleted = 0
     for blob in blobs:
         try:
@@ -98,7 +100,7 @@ def delete_prefix(container_client, prefix):
             deleted += 1
         except Exception as e:
             print(f"✗ Failed to delete {blob.name}: {e}")
-    
+
     print(f"\n✨ Deleted {deleted}/{len(blobs)} blobs")
 
 
@@ -128,9 +130,9 @@ def main():
         print("  4. Delete uploads (uploads/*)")
         print("  5. Delete specific prefix")
         print("  0. Exit")
-        
+
         choice = input("\nEnter choice: ")
-        
+
         if choice == "1":
             list_blobs(container_client)
         elif choice == "2":
@@ -153,6 +155,7 @@ def main():
     except Exception as e:
         print(f"❌ Error: {e}")
         import traceback
+
         traceback.print_exc()
         sys.exit(1)
 

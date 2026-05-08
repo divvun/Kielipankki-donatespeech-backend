@@ -37,7 +37,6 @@ def test_prompt_item_choice_in_schedule():
         isRecording=True,
     )
 
-
     assert isinstance(schedule_item, ChoicePromptItem)
     assert schedule_item.itemType == "choice"
     assert len(schedule_item.options) == 4

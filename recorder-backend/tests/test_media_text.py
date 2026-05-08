@@ -20,7 +20,7 @@ def test_media_item_text_valid():
     assert item.isRecording is False
 
 
-def test_media_item_text_in_schedule()-> None:
+def test_media_item_text_in_schedule() -> None:
     """Test MediaItem text as ScheduleItem discriminated union."""
     item = TextContentItem(
         kind="media",

@@ -5,19 +5,20 @@ import json
 import os
 from app.models import Schedule, Theme
 
+
 def _validate_prod_schedules() -> tuple[int, int]:
     """Validate production schedule files and return (success_count, failed_count)."""
     print("=== Testing Production Schedules ===")
     schedule_dir = "content/prod/schedules"
     schedule_files = os.listdir(schedule_dir)
-    
+
     success = 0
     failed = 0
-    
+
     for schedule_file in schedule_files:
-        if not schedule_file.endswith('.json'):
+        if not schedule_file.endswith(".json"):
             continue
-            
+
         filepath = os.path.join(schedule_dir, schedule_file)
         try:
             with open(filepath) as f:
@@ -28,7 +29,7 @@ def _validate_prod_schedules() -> tuple[int, int]:
         except Exception as e:
             print(f"✗ {schedule_file}: {type(e).__name__}: {str(e)[:80]}")
             failed += 1
-    
+
     print(f"\nSchedules: {success} passed, {failed} failed\n")
     return success, failed
 
@@ -44,14 +45,14 @@ def _validate_prod_themes() -> tuple[int, int]:
     print("=== Testing Production Themes ===")
     theme_dir = "content/prod/themes"
     theme_files = os.listdir(theme_dir)
-    
+
     success = 0
     failed = 0
-    
+
     for theme_file in theme_files:
-        if not theme_file.endswith('.json'):
+        if not theme_file.endswith(".json"):
             continue
-            
+
         filepath = os.path.join(theme_dir, theme_file)
         try:
             with open(filepath) as f:
@@ -62,7 +63,7 @@ def _validate_prod_themes() -> tuple[int, int]:
         except Exception as e:
             print(f"✗ {theme_file}: {type(e).__name__}: {str(e)[:80]}")
             failed += 1
-    
+
     print(f"\nThemes: {success} passed, {failed} failed\n")
     return success, failed
 
@@ -72,12 +73,13 @@ def test_prod_themes():
     _, failed = _validate_prod_themes()
     assert failed == 0, f"{failed} production theme files failed to parse"
 
+
 if __name__ == "__main__":
     _, schedule_failed = _validate_prod_schedules()
     _, theme_failed = _validate_prod_themes()
     schedules_ok = schedule_failed == 0
     themes_ok = theme_failed == 0
-    
+
     if schedules_ok and themes_ok:
         print("✅ All production content files parse successfully!")
         exit(0)

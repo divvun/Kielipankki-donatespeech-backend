@@ -37,7 +37,9 @@ class AudioMediaItem(BaseModel):
         None, description="MIME type (e.g., 'audio/m4a', 'audio/mpeg')"
     )
     isRecording: bool
-    start: Optional[MediaState] = Field(None, description="State before recording starts")
+    start: Optional[MediaState] = Field(
+        None, description="State before recording starts"
+    )
     recording: Optional[MediaState] = Field(None, description="State during recording")
     finish: Optional[MediaState] = Field(
         None, description="State after recording finishes"
@@ -54,7 +56,9 @@ class VideoMediaItem(BaseModel):
         None, description="MIME type (e.g., 'video/mp4', 'video/webm')"
     )
     isRecording: bool
-    start: Optional[MediaState] = Field(None, description="State before recording starts")
+    start: Optional[MediaState] = Field(
+        None, description="State before recording starts"
+    )
     recording: Optional[MediaState] = Field(None, description="State during recording")
     finish: Optional[MediaState] = Field(
         None, description="State after recording finishes"
@@ -69,7 +73,9 @@ class YleAudioMediaItem(BaseModel):
     itemId: str = Field(..., description="UUID v4 of the item")
     typeId: Optional[str] = Field(None, description="MIME type")
     isRecording: bool
-    start: Optional[MediaState] = Field(None, description="State before recording starts")
+    start: Optional[MediaState] = Field(
+        None, description="State before recording starts"
+    )
     recording: Optional[MediaState] = Field(None, description="State during recording")
     finish: Optional[MediaState] = Field(
         None, description="State after recording finishes"
@@ -84,7 +90,9 @@ class YleVideoMediaItem(BaseModel):
     itemId: str = Field(..., description="UUID v4 of the item")
     typeId: Optional[str] = Field(None, description="MIME type")
     isRecording: bool
-    start: Optional[MediaState] = Field(None, description="State before recording starts")
+    start: Optional[MediaState] = Field(
+        None, description="State before recording starts"
+    )
     recording: Optional[MediaState] = Field(None, description="State during recording")
     finish: Optional[MediaState] = Field(
         None, description="State after recording finishes"
@@ -101,7 +109,9 @@ class TextContentItem(BaseModel):
         None, description="MIME type (e.g., 'text/plain', 'text/html')"
     )
     isRecording: bool
-    start: Optional[MediaState] = Field(None, description="State before recording starts")
+    start: Optional[MediaState] = Field(
+        None, description="State before recording starts"
+    )
     recording: Optional[MediaState] = Field(None, description="State during recording")
     finish: Optional[MediaState] = Field(
         None, description="State after recording finishes"
@@ -118,7 +128,9 @@ class ImageMediaItem(BaseModel):
         None, description="MIME type (e.g., 'image/jpeg', 'image/png')"
     )
     isRecording: bool
-    start: Optional[MediaState] = Field(None, description="State before recording starts")
+    start: Optional[MediaState] = Field(
+        None, description="State before recording starts"
+    )
     recording: Optional[MediaState] = Field(None, description="State during recording")
     finish: Optional[MediaState] = Field(
         None, description="State after recording finishes"
@@ -133,7 +145,9 @@ class TextMediaItem(BaseModel):
     itemId: str = Field(..., description="UUID v4 of the item")
     typeId: Optional[str] = Field(None, description="MIME type")
     isRecording: bool
-    start: Optional[MediaState] = Field(None, description="State before recording starts")
+    start: Optional[MediaState] = Field(
+        None, description="State before recording starts"
+    )
     recording: Optional[MediaState] = Field(None, description="State during recording")
     finish: Optional[MediaState] = Field(
         None, description="State after recording finishes"
@@ -149,7 +163,9 @@ class ChoicePromptItem(BaseModel):
     typeId: Optional[str] = Field(None, description="MIME type")
     options: list[str] = Field(..., description="Localized answer options")
     isRecording: bool
-    start: Optional[MediaState] = Field(None, description="State before prompt is shown")
+    start: Optional[MediaState] = Field(
+        None, description="State before prompt is shown"
+    )
 
 
 class MultiChoicePromptItem(BaseModel):
@@ -161,7 +177,9 @@ class MultiChoicePromptItem(BaseModel):
     typeId: Optional[str] = Field(None, description="MIME type")
     options: list[str] = Field(..., description="Localized answer options")
     isRecording: bool
-    start: Optional[MediaState] = Field(None, description="State before prompt is shown")
+    start: Optional[MediaState] = Field(
+        None, description="State before prompt is shown"
+    )
     otherAnswer: Optional[str] = Field(
         None, description="Localized label for 'other' option"
     )
@@ -179,7 +197,9 @@ class SuperChoicePromptItem(BaseModel):
     typeId: Optional[str] = Field(None, description="MIME type")
     options: list[str] = Field(..., description="Localized answer options")
     isRecording: bool
-    start: Optional[MediaState] = Field(None, description="State before prompt is shown")
+    start: Optional[MediaState] = Field(
+        None, description="State before prompt is shown"
+    )
     otherEntryLabel: Optional[str] = Field(
         None, description="Localized label for text entry field allowing custom answers"
     )
@@ -194,7 +214,9 @@ class TextInputItem(BaseModel):
     typeId: Optional[str] = Field(None, description="MIME type")
     options: list = Field(default_factory=list, description="Empty list for text input")
     isRecording: bool
-    start: Optional[MediaState] = Field(None, description="State before prompt is shown")
+    start: Optional[MediaState] = Field(
+        None, description="State before prompt is shown"
+    )
 
 
 # Discriminated union of all schedule item types
@@ -225,7 +247,9 @@ class Schedule(BaseModel):
 
     id: Optional[str] = None  # Will be set from filename
     scheduleId: Optional[str] = None
-    start: Optional[MediaState] = Field(None, description="State shown at schedule start")
+    start: Optional[MediaState] = Field(
+        None, description="State shown at schedule start"
+    )
     finish: Optional[MediaState] = Field(
         None, description="State shown at schedule finish"
     )
@@ -258,7 +282,7 @@ class UploadMetadata(BaseModel):
     recordingId: Optional[str] = Field(None, description="UUID v4 recording identifier")
     contentType: Optional[str] = Field(None, description="MIME type of the audio file")
     timestamp: Optional[str] = None
-    duration: float|None = None
+    duration: float | None = None
     language: Optional[str] = None
     # Other metadata fields accepted as-is
 
