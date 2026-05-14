@@ -55,6 +55,16 @@ def get_blob_service_client() -> BlobServiceClient:
     return BlobServiceClient.from_connection_string(STORAGE_CONNECTION_STRING)
 
 
+def _is_container_not_found(error: Exception) -> bool:
+    """Return True when Azure reports a missing container."""
+    status_code = getattr(error, "status_code", None)
+    if status_code == 404:
+        return True
+
+    response = getattr(error, "response", None)
+    return getattr(response, "status_code", None) == 404
+
+
 # --- Language-Aware Blob Helpers ---
 
 
@@ -415,6 +425,14 @@ async def list_blobs_with_prefix(prefix: str, max_results: int = 1000) -> List[s
             return blob_names
 
     except AzureError as e:
+        if _is_container_not_found(e):
+            logger.warning(
+                "Container '%s' not found while listing '%s'; returning empty list.",
+                CONTAINER_NAME,
+                prefix,
+            )
+            return []
+
         logger.error(f"Azure Storage error listing blobs: {e}")
         raise StorageError(f"Failed to list blobs: {e}")
     except Exception as e:

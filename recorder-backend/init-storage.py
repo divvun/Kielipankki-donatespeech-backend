@@ -15,6 +15,7 @@ Works with both:
 import os
 import sys
 import time
+import json
 from pathlib import Path
 
 from azure.storage.blob import BlobServiceClient
@@ -74,6 +75,7 @@ def main():
 
         # Upload schedules (supports both flat id.json and per-language id/lang.json layouts)
         schedules_dir = content_dir / "schedules"
+        uploaded_schedule_keys: set[str] = set()
         if schedules_dir.exists():
             schedule_files = list(schedules_dir.rglob("*.json"))
             if schedule_files:
@@ -87,6 +89,7 @@ def main():
                             blob=blob_name,
                         )
                         blob_client.upload_blob(f, overwrite=True)
+                    uploaded_schedule_keys.add(blob_name)
                     print(f"✓ Uploaded {blob_name}")
             else:
                 print("⚠ Warning: No schedule files found")
@@ -109,6 +112,53 @@ def main():
                         )
                         blob_client.upload_blob(f, overwrite=True)
                     print(f"✓ Uploaded {blob_name}")
+
+                # Derive schedule blobs from theme payloads for local content packs
+                # where schedule JSON files are embedded under each theme file.
+                generated_schedules = 0
+                for theme_file in theme_files:
+                    relative = theme_file.relative_to(themes_dir)
+                    parts = relative.as_posix().split("/")
+                    if len(parts) != 2:
+                        continue
+
+                    language_filename = parts[1]
+                    if not language_filename.endswith(".json"):
+                        continue
+
+                    language = language_filename[: -len(".json")]
+
+                    with open(theme_file, "r", encoding="utf-8") as f:
+                        theme_payload = json.load(f)
+
+                    schedule_payload = theme_payload.get("schedule")
+                    if not isinstance(schedule_payload, dict):
+                        continue
+
+                    schedule_id = schedule_payload.get("scheduleId")
+                    if not schedule_id:
+                        continue
+
+                    schedule_blob_name = f"schedule/{schedule_id}/{language}.json"
+                    if schedule_blob_name in uploaded_schedule_keys:
+                        continue
+
+                    schedule_blob_client = client.get_blob_client(
+                        container=CONTAINER_NAME,
+                        blob=schedule_blob_name,
+                    )
+                    schedule_blob_client.upload_blob(
+                        json.dumps(schedule_payload, ensure_ascii=False),
+                        overwrite=True,
+                    )
+                    uploaded_schedule_keys.add(schedule_blob_name)
+                    generated_schedules += 1
+                    print(f"✓ Generated {schedule_blob_name} from {relative.as_posix()}")
+
+                if generated_schedules > 0:
+                    print(
+                        f"✓ Generated {generated_schedules} schedule blobs from theme files"
+                    )
             else:
                 print("⚠ Warning: No theme files found")
         else:
