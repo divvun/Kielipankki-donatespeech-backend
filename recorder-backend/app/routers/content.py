@@ -3,6 +3,7 @@
 import logging
 
 from fastapi import APIRouter, HTTPException, Path, Query
+from pydantic import ValidationError
 
 from app.models import Schedule, Theme, ScheduleAvailability, ThemeAvailability
 from app.schedule_processing import pre_process_schedule
@@ -33,6 +34,9 @@ async def load_schedule(
         schedule = Schedule(**schedule_dict)
         schedule.id = schedule_id
         return pre_process_schedule(schedule)
+    except ValidationError as e:
+        logger.error(f"Invalid schedule payload for {schedule_id}/{lang}: {e}")
+        raise HTTPException(status_code=422, detail="Invalid schedule payload")
     except StorageError as e:
         logger.error(f"Error loading schedule {schedule_id}: {e}")
         raise HTTPException(status_code=404, detail="Schedule not found")
@@ -87,6 +91,9 @@ async def load_theme(
         theme = Theme(**theme_dict)
         theme.id = theme_id
         return theme
+    except ValidationError as e:
+        logger.error(f"Invalid theme payload for {theme_id}/{lang}: {e}")
+        raise HTTPException(status_code=422, detail="Invalid theme payload")
     except StorageError as e:
         logger.error(f"Error loading theme {theme_id}: {e}")
         raise HTTPException(status_code=404, detail="Theme not found")
