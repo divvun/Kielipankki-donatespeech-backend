@@ -114,12 +114,14 @@ This project uses **uv** as the package manager for Python dependencies:
 - **Run Scripts**: `uv run python <script.py>` or activate venv first
 
 To activate the virtual environment:
+
 ```bash
 source .venv/bin/activate  # macOS/Linux
 .venv\Scripts\activate     # Windows
 ```
 
 Once activated, use Python directly:
+
 ```bash
 python test_models.py
 pytest
