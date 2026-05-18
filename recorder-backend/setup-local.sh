@@ -21,7 +21,7 @@ fi
 
 # Start Azurite and API services
 echo "Starting Azurite and API services..."
-podman-compose up -d
+podman-compose up -d --build
 
 # Wait for Azurite to be ready
 echo "Waiting for Azurite to start..."
@@ -31,6 +31,20 @@ sleep 5
 echo "Initializing blob storage..."
 source .venv/bin/activate
 python3 init-storage.py
+
+# Wait for the API to be ready before reporting success
+echo "Waiting for FastAPI backend to start..."
+max_attempts=30
+attempt=1
+until curl -fsS http://localhost:8000/openapi.json > /dev/null 2>&1; do
+    if [ "$attempt" -ge "$max_attempts" ]; then
+        echo "Error: Backend did not become ready at http://localhost:8000"
+        echo "Check logs with: podman-compose logs -f api"
+        exit 1
+    fi
+    sleep 1
+    attempt=$((attempt + 1))
+done
 
 echo ""
 echo "✓ Local development environment is ready!"
