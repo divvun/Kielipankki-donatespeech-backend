@@ -19,8 +19,8 @@ CLIENT_ID = os.environ.get("YLE_CLIENT_ID")
 CLIENT_KEY = os.environ.get("YLE_CLIENT_KEY")
 YLE_DECRYPT = os.environ.get("YLE_DECRYPT")
 
-PROGRAM_INFO_URL = "https://external.api.yle.fi/v1/programs/items/{program_id}.json?app_id={client_id}&app_key={client_key}"
-MEDIA_URL = "https://external.api.yle.fi/v1/media/playouts.json?program_id={program_id}&media_id={media_id}&protocol=HLS&app_id={client_id}&app_key={client_key}"
+PROGRAM_INFO_URL = "https://programs.api.yle.fi/v3/schema/v1/programs/items/{program_id}.json?app_id={client_id}&app_key={client_key}"
+MEDIA_URL = "https://media.api.yle.fi/v6/{media_id}/playouts.json?program_id={program_id}&protocol=HLS&app_id={client_id}&app_key={client_key}"
 # Old: https://external.api.yle.fi/v1/
 # New: https://programs.api.yle.fi/v3/
 
