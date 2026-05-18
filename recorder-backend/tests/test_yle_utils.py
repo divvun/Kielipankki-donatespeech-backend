@@ -54,8 +54,8 @@ class TestGetMediaUrl:
     @patch("app.yle_utils.CLIENT_KEY", "test_client_key")
     @patch("app.yle_utils.urllib.request.urlopen")
     def test_get_media_url_no_current_publication(self, mock_urlopen):
-        """Test handling when no current publication event exists."""
-        # Mock response with no "currently" status
+        """Test first publication event is used even when not currently."""
+        # Mock response with no "currently" status; first event should still be used
         program_response = {
             "data": {
                 "publicationEvent": [
@@ -73,8 +73,25 @@ class TestGetMediaUrl:
         mock_response.__exit__.return_value = None
         mock_urlopen.return_value = mock_response
 
-        # Should raise StopIteration when no current publication found
-        with pytest.raises(StopIteration):
+        result = get_media_url("1-50000093")
+
+        assert "program_id=1-50000093" in result
+        assert "/v6/future-media-id/playouts.json" in result
+
+    @patch("app.yle_utils.CLIENT_ID", "test_client_id")
+    @patch("app.yle_utils.CLIENT_KEY", "test_client_key")
+    @patch("app.yle_utils.urllib.request.urlopen")
+    def test_get_media_url_empty_publication_events(self, mock_urlopen):
+        """Test handling when publication events are empty."""
+        program_response = {"data": {"publicationEvent": []}}
+
+        mock_response = MagicMock()
+        mock_response.read.return_value = json.dumps(program_response).encode()
+        mock_response.__enter__.return_value = mock_response
+        mock_response.__exit__.return_value = None
+        mock_urlopen.return_value = mock_response
+
+        with pytest.raises(FileProcessingError, match="no publication events"):
             get_media_url("1-50000093")
 
 

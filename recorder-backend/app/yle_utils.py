@@ -72,16 +72,17 @@ def get_media_url(yle_program_id: str) -> str:
 
     with urllib.request.urlopen(processed_program_info_url, timeout=10) as res:
         program_res = json.loads(res.read())
-        pub_events = program_res.get("data").get("publicationEvent")
-        pub_event = next(
-            (
-                event
-                for event in pub_events
-                if event.get("temporalStatus") == "currently"
-            )
-        )
+        pub_events = program_res.get("data", {}).get("publicationEvent") or []
 
-        media_id = pub_event.get("media").get("id")
+        if not pub_events:
+            raise FileProcessingError("Media URL not found: no publication events")
+
+        pub_event = pub_events[0]
+        media_id = (pub_event.get("media") or {}).get("id")
+
+        if not media_id:
+            raise FileProcessingError("Media URL not found: media id missing")
+
         return MEDIA_URL.format(
             program_id=yle_program_id,
             media_id=media_id,
