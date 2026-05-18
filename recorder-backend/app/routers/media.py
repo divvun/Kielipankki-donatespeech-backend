@@ -1,12 +1,15 @@
 """Media file serving endpoint."""
 
+import json
 import logging
+import urllib.request
 from io import BytesIO
 
 from fastapi import APIRouter, Header, HTTPException, Path
 from fastapi.responses import StreamingResponse
 
 from app.storage import load_blob_binary, load_blob_binary_range, StorageError
+from app.yle_utils import get_media_url, FileProcessingError
 
 logger = logging.getLogger(__name__)
 
@@ -26,6 +29,32 @@ _CONTENT_TYPES: dict[str, str] = {
 }
 
 
+def _get_yle_media_info(yle_program_id: str) -> dict:
+    """Fetch YLE media information for a given program ID."""
+    try:
+        media_url = get_media_url(yle_program_id)
+        with urllib.request.urlopen(media_url, timeout=10) as res:
+            return json.loads(res.read())
+    except FileProcessingError as e:
+        logger.error(f"Error getting YLE media URL: {e}")
+        raise HTTPException(status_code=400, detail=f"Error fetching YLE media: {e}")
+    except Exception as e:
+        logger.error(f"Error fetching YLE media info: {e}")
+        raise HTTPException(status_code=500, detail="Error fetching YLE media information")
+
+
+@router.get("/v1/yle-media/{yle_program_id}")
+async def get_yle_media(
+    yle_program_id: str = Path(..., description="YLE program ID (e.g., 1-50525858)"),
+):
+    """
+    Fetch media information from YLE API for a YLE program.
+
+    This endpoint is used for YleAudioMediaItem and YleVideoMediaItem types.
+    """
+    return _get_yle_media_info(yle_program_id)
+
+
 @router.get("/v1/media/{filename}")
 async def serve_media(
     filename: str = Path(..., description="Media filename"),
@@ -36,6 +65,8 @@ async def serve_media(
 
     Supports HTTP range requests for streaming and seeking.
     Required for AVPlayer on iOS/macOS.
+
+    For YLE media, use the /v1/yle-media/{yle_program_id} endpoint instead.
     """
     if "/" in filename or filename.startswith(".."):
         raise HTTPException(status_code=400, detail="Invalid filename")
