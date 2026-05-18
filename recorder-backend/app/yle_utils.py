@@ -3,6 +3,8 @@ import json
 import logging
 import urllib.request
 
+from app.settings import get_settings
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
@@ -13,13 +15,12 @@ class FileProcessingError(Exception):
     pass
 
 
-CLIENT_ID = os.environ.get("YLE_CLIENT_ID")
-CLIENT_KEY = os.environ.get("YLE_CLIENT_KEY")
+# Keep these patchable in tests; when unset, values are resolved lazily per call.
+CLIENT_ID = None
+CLIENT_KEY = None
 
 PROGRAM_INFO_URL = "https://programs.api.yle.fi/v3/schema/v1/programs/items/{program_id}.json?app_id={client_id}&app_key={client_key}"
 MEDIA_URL = "https://media.api.yle.fi/v6/{media_id}/playouts.json?program_id={program_id}&protocol=HLS&app_id={client_id}&app_key={client_key}"
-# Old: https://external.api.yle.fi/v1/
-# New: https://programs.api.yle.fi/v3/
 
 
 def map_yle_content(yle_program_id: str) -> str:
@@ -36,9 +37,11 @@ def map_yle_content(yle_program_id: str) -> str:
     Raises:
         FileProcessingError: If there is an error during the mapping process.
     """
+    client_id, client_key = _get_client_credentials()
+
     # If YLE credentials are not configured, return the program ID as-is
     # This allows the client to handle the "fake-yle-thingy"
-    if not all([CLIENT_ID, CLIENT_KEY]):
+    if not all([client_id, client_key]):
         logger.warning(
             "YLE credentials not configured - returning fake YLE URL (program ID as-is)"
         )
@@ -66,8 +69,10 @@ def get_media_url(yle_program_id: str) -> str:
     Returns:
         The media URL corresponding to the given YLE program ID.
     """
+    client_id, client_key = _get_client_credentials()
+
     processed_program_info_url = PROGRAM_INFO_URL.format(
-        program_id=yle_program_id, client_id=CLIENT_ID, client_key=CLIENT_KEY
+        program_id=yle_program_id, client_id=client_id, client_key=client_key
     )
 
     with urllib.request.urlopen(processed_program_info_url, timeout=10) as res:
@@ -86,6 +91,15 @@ def get_media_url(yle_program_id: str) -> str:
         return MEDIA_URL.format(
             program_id=yle_program_id,
             media_id=media_id,
-            client_id=CLIENT_ID,
-            client_key=CLIENT_KEY,
+            client_id=client_id,
+            client_key=client_key,
         )
+
+
+def _get_client_credentials() -> tuple[str | None, str | None]:
+    settings = get_settings()
+    client_id = CLIENT_ID or settings.yle_client_id or os.environ.get("YLE_CLIENT_ID")
+    client_key = (
+        CLIENT_KEY or settings.yle_client_key or os.environ.get("YLE_CLIENT_KEY")
+    )
+    return client_id, client_key

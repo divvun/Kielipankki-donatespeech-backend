@@ -12,6 +12,34 @@
 - **Local Development**: Azurite (Azure Storage Emulator)
 - **Deployment**: Azure Container Apps or Azure App Service
 
+## Environment Variables
+
+This project uses FastAPI/Pydantic settings from app/settings.py.
+The same variable names are used in local development and Azure.
+
+Required variables for YLE integration:
+
+- YLE_CLIENT_ID
+- YLE_CLIENT_KEY
+
+### Local Development
+
+Create a .env file in the project root with:
+
+YLE_CLIENT_ID=your-client-id
+YLE_CLIENT_KEY=your-client-key
+
+When running locally, settings are loaded from .env automatically.
+
+### Azure (Container Apps / App Service)
+
+Set the same variables as application environment variables:
+
+- YLE_CLIENT_ID
+- YLE_CLIENT_KEY
+
+Do not deploy .env to Azure. Azure should provide these values through App Settings / Environment Variables.
+
 ## Deployment
 
 ### Continuous Deployment
