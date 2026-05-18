@@ -1,9 +1,7 @@
 import os
 import json
-import base64
 import logging
 import urllib.request
-from Crypto.Cipher import AES
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -17,7 +15,6 @@ class FileProcessingError(Exception):
 
 CLIENT_ID = os.environ.get("YLE_CLIENT_ID")
 CLIENT_KEY = os.environ.get("YLE_CLIENT_KEY")
-YLE_DECRYPT = os.environ.get("YLE_DECRYPT")
 
 PROGRAM_INFO_URL = "https://programs.api.yle.fi/v3/schema/v1/programs/items/{program_id}.json?app_id={client_id}&app_key={client_key}"
 MEDIA_URL = "https://media.api.yle.fi/v6/{media_id}/playouts.json?program_id={program_id}&protocol=HLS&app_id={client_id}&app_key={client_key}"
@@ -25,30 +22,14 @@ MEDIA_URL = "https://media.api.yle.fi/v6/{media_id}/playouts.json?program_id={pr
 # New: https://programs.api.yle.fi/v3/
 
 
-def _get_yle_decrypt_key() -> bytes:
-    """Return YLE decryption key as validated bytes."""
-    if not YLE_DECRYPT:
-        raise FileProcessingError("YLE_DECRYPT is not configured")
-
-    if isinstance(YLE_DECRYPT, bytes):
-        key = YLE_DECRYPT
-    else:
-        key = YLE_DECRYPT.encode("utf-8")
-
-    if len(key) not in (16, 24, 32):
-        raise FileProcessingError("YLE_DECRYPT must be 16, 24, or 32 bytes")
-
-    return key
-
-
 def map_yle_content(yle_program_id: str) -> str:
-    """Maps YLE program ID to a decrypted media URL.
+    """Maps YLE program ID to a media URL.
 
     Args:
         yle_program_id: The YLE program ID to be mapped.
 
     Returns:
-        The decrypted media URL corresponding to the YLE program ID.
+        The media URL corresponding to the YLE program ID.
         If YLE credentials are not configured, returns the program ID as-is
         (a "fake-yle-thingy" for the client to handle).
 
@@ -57,7 +38,7 @@ def map_yle_content(yle_program_id: str) -> str:
     """
     # If YLE credentials are not configured, return the program ID as-is
     # This allows the client to handle the "fake-yle-thingy"
-    if not all([CLIENT_ID, CLIENT_KEY, YLE_DECRYPT]):
+    if not all([CLIENT_ID, CLIENT_KEY]):
         logger.warning(
             "YLE credentials not configured - returning fake YLE URL (program ID as-is)"
         )
@@ -67,31 +48,13 @@ def map_yle_content(yle_program_id: str) -> str:
         media_url = get_media_url(yle_program_id)
 
         with urllib.request.urlopen(media_url, timeout=10) as media_res:
-            crypted_url = json.loads(media_res.read()).get("data")[0].get("url")
-            decrypted_url = decrypt_yle_url(crypted_url)
+            media_item_url = json.loads(media_res.read()).get("data")[0].get("url")
 
-        logger.info("Successfully decrypted YLE URL")
-        return decrypted_url
+        logger.info("Successfully resolved YLE media URL")
+        return media_item_url
     except Exception as e:
-        logger.error("Error decrypting yle URL: {}".format(e))
+        logger.error("Error resolving yle URL: {}".format(e))
         raise FileProcessingError(e)
-
-
-def decrypt_yle_url(crypted_url: str) -> str:
-    """Decrypts the given encrypted YLE URL using AES decryption.
-
-    Args:
-        crypted_url: The encrypted YLE URL to be decrypted.
-
-    Returns:
-        The decrypted YLE URL as a string.
-    """
-    base64_decoded_url = base64.b64decode(crypted_url)
-    iv = base64_decoded_url[:16]
-    msg = base64_decoded_url[16:]
-    cipher = AES.new(_get_yle_decrypt_key(), AES.MODE_CBC, iv)
-    decrypted = cipher.decrypt(msg)
-    return decrypted.decode("utf-8").strip()
 
 
 def get_media_url(yle_program_id: str) -> str:
