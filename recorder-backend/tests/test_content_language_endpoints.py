@@ -96,6 +96,20 @@ async def test_theme_loads_language_specific_blob(mock_load_blob_json):
 
 
 @patch("app.routers.content.load_blob_json", new_callable=AsyncMock)
+async def test_theme_maps_local_media_url_to_media_route(mock_load_blob_json):
+    payload = _theme_payload()
+    payload["mediaState"]["url"] = "local image.jpg"
+    mock_load_blob_json.return_value = payload
+
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        response = await client.get("/v1/theme/theme-2", params={"lang": "fi"})
+
+    assert response.status_code == 200
+    assert response.json()["mediaState"]["url"] == "/v1/media/local%20image.jpg"
+
+
+@patch("app.routers.content.load_blob_json", new_callable=AsyncMock)
 async def test_schedule_missing_language_returns_404(mock_load_blob_json):
     mock_load_blob_json.side_effect = StorageError("not found")
 

@@ -7,6 +7,7 @@ from app.models import (
     Schedule,
     YleAudioMediaItem,
     YleVideoMediaItem,
+    ImageMediaItem,
     MediaState,
 )
 
@@ -129,3 +130,35 @@ def test_pre_process_schedule_configured_keeps_real_item_and_maps_url(monkeypatc
         processed_item.start is not None
         and processed_item.start.url == "https://example.org/stream.m3u8"
     )
+
+
+def test_pre_process_schedule_maps_local_media_urls_for_non_yle_items():
+    schedule = Schedule(
+        start=_state("schedule-start", url="cover image.jpg"),
+        finish=_state("schedule-finish", url="done.png"),
+        items=[
+            ImageMediaItem(
+                kind="media",
+                itemType="image",
+                itemId="image-001",
+                typeId="image/jpeg",
+                isRecording=False,
+                start=_state("image-start", url="photo one.jpg"),
+                recording=_state("image-recording", url="photo-two.jpg"),
+                finish=_state("image-finish", url="photo-three.jpg"),
+            )
+        ],
+    )
+
+    processed = pre_process_schedule(schedule)
+
+    assert processed.start is not None
+    assert processed.start.url == "/v1/media/cover%20image.jpg"
+    assert processed.finish is not None
+    assert processed.finish.url == "/v1/media/done.png"
+
+    item = processed.items[0]
+    assert isinstance(item, ImageMediaItem)
+    assert item.start is not None and item.start.url == "/v1/media/photo%20one.jpg"
+    assert item.recording is not None and item.recording.url == "/v1/media/photo-two.jpg"
+    assert item.finish is not None and item.finish.url == "/v1/media/photo-three.jpg"

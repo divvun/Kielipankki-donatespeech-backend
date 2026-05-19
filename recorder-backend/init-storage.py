@@ -164,6 +164,27 @@ def main():
         else:
             print(f"⚠ Warning: Themes directory not found: {themes_dir}")
 
+        # Upload media assets used by schedule/theme payloads.
+        media_dir = content_dir / "media"
+        if media_dir.exists():
+            media_files = [f for f in media_dir.rglob("*") if f.is_file()]
+            if media_files:
+                print(f"\nUploading {len(media_files)} media files...")
+                for media_file in media_files:
+                    relative = media_file.relative_to(media_dir)
+                    blob_name = f"media/{relative.as_posix()}"
+                    with open(media_file, "rb") as f:
+                        blob_client = client.get_blob_client(
+                            container=CONTAINER_NAME,
+                            blob=blob_name,
+                        )
+                        blob_client.upload_blob(f, overwrite=True)
+                    print(f"✓ Uploaded {blob_name}")
+            else:
+                print("⚠ Warning: No media files found")
+        else:
+            print(f"⚠ Warning: Media directory not found: {media_dir}")
+
         print("\n✨ Storage initialized successfully!")
 
         if IS_AZURE:

@@ -6,7 +6,7 @@ from fastapi import APIRouter, HTTPException, Path, Query
 from pydantic import ValidationError
 
 from app.models import Schedule, Theme, ScheduleAvailability, ThemeAvailability
-from app.schedule_processing import pre_process_schedule
+from app.schedule_processing import pre_process_schedule, map_local_media_url
 from app.storage import (
     load_blob_json,
     list_blobs_with_prefix,
@@ -90,6 +90,9 @@ async def load_theme(
         theme_dict = await load_blob_json(blob_name)
         theme = Theme(**theme_dict)
         theme.id = theme_id
+        theme.mediaState.url = map_local_media_url(theme.mediaState.url)
+        if theme.schedule is not None:
+            theme.schedule = pre_process_schedule(theme.schedule)
         return theme
     except ValidationError as e:
         logger.error(f"Invalid theme payload for {theme_id}/{lang}: {e}")
