@@ -16,8 +16,9 @@ class FileProcessingError(Exception):
 
 
 # Keep these patchable in tests; when unset, values are resolved lazily per call.
-CLIENT_ID = None
-CLIENT_KEY = None
+_UNSET = object()
+CLIENT_ID = _UNSET
+CLIENT_KEY = _UNSET
 
 PROGRAM_INFO_URL = "https://programs.api.yle.fi/v3/schema/v1/programs/items/{program_id}.json?app_id={client_id}&app_key={client_key}"
 MEDIA_URL = "https://media.api.yle.fi/v6/{media_id}/playouts.json?program_id={program_id}&protocol=HLS&app_id={client_id}&app_key={client_key}"
@@ -71,6 +72,9 @@ def get_media_url(yle_program_id: str) -> str:
     """
     client_id, client_key = _get_client_credentials()
 
+    if not all([client_id, client_key]):
+        raise FileProcessingError("YLE credentials not configured")
+
     processed_program_info_url = PROGRAM_INFO_URL.format(
         program_id=yle_program_id, client_id=client_id, client_key=client_key
     )
@@ -82,7 +86,14 @@ def get_media_url(yle_program_id: str) -> str:
         if not pub_events:
             raise FileProcessingError("Media URL not found: no publication events")
 
-        pub_event = pub_events[0]
+        pub_event = next(
+            (
+                event
+                for event in pub_events
+                if event.get("temporalStatus") == "currently"
+            ),
+            pub_events[0],
+        )
         media_id = (pub_event.get("media") or {}).get("id")
 
         if not media_id:
@@ -98,8 +109,14 @@ def get_media_url(yle_program_id: str) -> str:
 
 def _get_client_credentials() -> tuple[str | None, str | None]:
     settings = get_settings()
-    client_id = CLIENT_ID or settings.yle_client_id or os.environ.get("YLE_CLIENT_ID")
+    client_id = (
+        CLIENT_ID
+        if CLIENT_ID is not _UNSET
+        else settings.yle_client_id or os.environ.get("YLE_CLIENT_ID")
+    )
     client_key = (
-        CLIENT_KEY or settings.yle_client_key or os.environ.get("YLE_CLIENT_KEY")
+        CLIENT_KEY
+        if CLIENT_KEY is not _UNSET
+        else settings.yle_client_key or os.environ.get("YLE_CLIENT_KEY")
     )
     return client_id, client_key
