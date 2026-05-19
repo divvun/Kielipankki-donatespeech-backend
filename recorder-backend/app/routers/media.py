@@ -8,36 +8,13 @@ from io import BytesIO
 from fastapi import APIRouter, Header, HTTPException, Path
 from fastapi.responses import StreamingResponse
 
+from app.media_types import get_content_type_for_filename
 from app.storage import load_blob_binary, load_blob_binary_range, StorageError
 from app.yle_utils import get_media_url, FileProcessingError
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
-
-_CONTENT_TYPES: dict[str, str] = {
-    "m4a": "audio/mp4",
-    "mp3": "audio/mpeg",
-    "wav": "audio/wav",
-    "flac": "audio/flac",
-    "opus": "audio/opus",
-    "amr": "audio/amr",
-    "caf": "audio/x-caf",
-    "mp4": "video/mp4",
-    "webm": "video/webm",
-    "mov": "video/quicktime",
-    "jpg": "image/jpeg",
-    "jpeg": "image/jpeg",
-    "png": "image/png",
-    "gif": "image/gif",
-    "webp": "image/webp",
-    "svg": "image/svg+xml",
-    "bmp": "image/bmp",
-    "tif": "image/tiff",
-    "tiff": "image/tiff",
-    "avif": "image/avif",
-    "heic": "image/heic",
-}
 
 
 def _get_yle_media_info(yle_program_id: str) -> dict:
@@ -83,8 +60,7 @@ async def serve_media(
         raise HTTPException(status_code=400, detail="Invalid filename")
 
     blob_name = f"media/{filename}"
-    extension = filename.rsplit(".", 1)[-1].lower()
-    content_type = _CONTENT_TYPES.get(extension, "application/octet-stream")
+    content_type = get_content_type_for_filename(filename)
 
     try:
         if range:

@@ -4,6 +4,7 @@ import logging
 
 from fastapi import APIRouter, HTTPException, Path
 
+from app.media_types import is_allowed_upload_audio_extension
 from app.models import InitUploadRequest, InitUploadResponse
 from app.storage import (
     delete_by_prefix,
@@ -16,8 +17,6 @@ from app.utils import validate_uuid_v4
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
-
-ALLOWED_EXTENSIONS = {"m4a", "flac", "amr", "wav", "opus", "caf"}
 
 
 @router.post("/v1/upload", response_model=InitUploadResponse)
@@ -37,7 +36,7 @@ async def init_upload(request: InitUploadRequest):
 
     file_prefix, file_suffix = filename.rsplit(".", 1)
 
-    if file_suffix.lower() not in ALLOWED_EXTENSIONS:
+    if not is_allowed_upload_audio_extension(file_suffix):
         raise HTTPException(
             status_code=400, detail=f"File extension .{file_suffix} not allowed"
         )
