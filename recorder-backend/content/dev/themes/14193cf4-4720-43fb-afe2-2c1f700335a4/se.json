@@ -3,7 +3,7 @@
     "title": "Sámi fáttát",
     "body1": "",
     "body2": "",
-    "url": "/temabild/url to an image that will be shown as a thumbnail for the theme"
+    "url": ""
   },
   "schedule": {
     "scheduleId": "2ddc0314-8d66-4f54-b2bb-fe9e0b4a9ba0",
@@ -11,13 +11,13 @@
       "title": "Giitu go finadat dás!",
       "body1": "Dás sáhtát earret eará muitalit luonddu, dálkki, jagiáiggiid ja mearkabeiviid birra.",
       "body2": "Mii háliidit čohkket lunddolaš hupmama. Jus bisánasttát ja geardduhat ságáid, de dat ii daga maidege.",
-      "url": "/start/url to an image, video or audio"
+      "url": "foto21_SVT.jpg"
     },
     "finish": {
       "title": "Eatnat giitu!",
       "body1": "Jus dus leat eanat maid háliidat muitalat, válljes eará fáttá ja juollut vel eanet du jienas midjiide!",
       "body2": "Hástal iežat ustibiid ja bearraša maid skeŋket sin suopmana midjiide.",
-      "url": "url to/finish/url to an image, video or audio an image, video or audio"
+      "url": "foto3_SVT.jpg"
     },
     "items": [
       {
@@ -30,19 +30,19 @@
           "title": "Báikki birra",
           "body1": "Muital báikki gos don leat eret, dahje báikki birra mii lea dehálaš dutnje.",
           "body2": "Deaddil ruoná báddenboalu, ja álgge muitalit báikki birra.",
-          "url": "url to an image, video or audio"
+          "url": "foto_SVT.jpg"
         },
         "recording": {
           "title": "Báikki birra",
           "body1": "Muital báikki gos don leat eret, dahje báikki birra mii lea dehálaš dutnje.",
           "body2": "Go leat geargan, deaddil rukses báddenboalu.",
-          "url": "url to an image, video or audio"
+          "url": "foto_SVT.jpg"
         },
         "finish": {
           "title": "Giitu – nu álki dat lei!",
           "body1": "",
           "body2": "De viidáseappot jagiáigefáddái.",
-          "url": "url to an image, video or audio"
+          "url": "foto_michael_koneckiy.jpg"
         }
       },
       {
@@ -55,19 +55,19 @@
           "title": "Jagiáiggi birra",
           "body1": "Muital jagiáiggi birra mas dus leat ollu doaimmat. Muital maid lávet bargat.",
           "body2": "Deaddil ruoná báddenboalu, ja álgge muitalit.",
-          "url": null
+          "url": "foto26_SVT.jpg"
         },
         "recording": {
           "title": "Jagiáiggi birra",
           "body1": "Muital jagiáiggi birra mas dus leat ollu doaimmat. Muital maid lávet bargat.",
           "body2": "Oaččut gal muitalit eanetge jagiáiggiid birra, jus háliidat.",
-          "url": null
+          "url": "foto26_SVT.jpg"
         },
         "finish": {
           "title": "Giitu go muitalit!",
           "body1": "",
           "body2": "",
-          "url": "url to an image, video or audio"
+          "url": "Foto_tom_fisk.jpg"
         }
       },
       {
@@ -80,19 +80,19 @@
           "title": "Árbevirolaš bargguid birra",
           "body1": "Lávetgo bivdit, duddjot, murjet, murret, gárddástallat, njuovvat dahje eará?",
           "body2": "Go leat deaddilan ruoná báddenboalu, de oaččut muitališgoahtit.",
-          "url": "url to an image, video or audio"
+          "url": "Foto_alina_bystrova.jpg"
         },
         "recording": {
           "title": "Árbevirolaš bargguid birra",
           "body1": "Lávetgo bivdit, duddjot, murjet, murret, gárddástallat, njuovvat dahje eará?",
           "body2": "Mo don lávet dan bargat? Gii lea dan oahpahan dutnje?",
-          "url": "url to an image, video or audio"
+          "url": "foto9_SVT.jpg"
         },
         "finish": {
           "title": "Giitu fas!",
           "body1": "Don leat dahkan hui buorre barggu :)",
           "body2": "Dasto livččii áigi hupmat sámegiela birra.",
-          "url": "url to an image, video or audio"
+          "url": "Foto_channnsy.jpg"
         }
       },
       {
@@ -105,13 +105,13 @@
           "title": "Sámegiela birra",
           "body1": "Mo don leat oahppan sámegiela?",
           "body2": "Maid sámegiella mearkkaša dutnje?",
-          "url": "url to an image, video or audio"
+          "url": "Foto_djimmer-koster.jpg"
         },
         "recording": {
           "title": "Sámegiela birra",
           "body1": "Mo don leat oahppan sámegiela?",
           "body2": "Maid sámegiella mearkkaša dutnje? Maid jurddašat sámegiela boahtteáiggi birra?",
-          "url": "url to an image, video or audio"
+          "url": "Foto_djimmer-koster.jpg"
         },
         "finish": {
           "title": "Miellagiddevaš jurdagat!",
@@ -130,19 +130,19 @@
           "title": "Ádjá dahje áhku birra",
           "body1": "Muital muhtun boares fuolkki birra gii lea bargan juoidá erenoamážit, dahje gii lea mávssolaš dutnje.",
           "body2": "",
-          "url": "url to an image, video or audio"
+          "url": "Foto-Anna-shvets.jpg"
         },
         "recording": {
           "title": "Ádjá dahje áhku birra",
           "body1": "Muital muhtun boares fuolkki birra gii lea bargan juoidá erenoamážit, dahje gii lea mávssolaš dutnje.",
           "body2": "",
-          "url": null
+          "url": "Foto-Anna-shvets.jpg"
         },
         "finish": {
           "title": "Giitu dán muitalusa ovddas!",
           "body1": "",
           "body2": "",
-          "url": null
+          "url": "sabina_kallari.jpg"
         }
       },
       {
@@ -155,19 +155,19 @@
           "title": "Máinnas, máinnasfuođđut",
           "body1": "(govat) dovddatgo ovtta dáin? Maid don leat gullan dan birra?",
           "body2": "Dovddatgo máidnasa maid sáhtát dál muitalit?",
-          "url": null
+          "url": "foto2_SVT.jpg"
         },
         "recording": {
           "title": "Máinnas, máinnasfuođđut",
           "body1": "(govat) dovddatgo ovtta dáin? Maid don leat gullan dan birra?",
           "body2": "Dovddatgo máidnasa maid sáhtát dál muitalit?",
-          "url": null
+          "url": "foto18_SVT.jpg"
         },
         "finish": {
           "title": "Fiinna muitalus!",
           "body1": "Dasto livččii áigi hupmat biktasiid ja gárvodeami birra.",
           "body2": "",
-          "url": null
+          "url": "illustrator_sunna_kuoljok_inga_wiktoria_pave.jpg"
         }
       },
       {
@@ -180,23 +180,23 @@
           "title": "Gárvodeapmi",
           "body1": "Muital mo don lávet gárvodit.",
           "body2": "",
-          "url": null
+          "url": "foto14_svt.jpg"
         },
         "recording": {
           "title": "Gárvodeapmi",
           "body1": "Muital mo don lávet gárvodit.",
           "body2": "Makkár biktasiid bijat álggus? ja de...?",
-          "url": null
+          "url": "foto13_SVT.jpg"
         },
         "finish": {
           "title": "Giitu go muitalit gárvodeami birra!",
           "body1": "",
           "body2": "",
-          "url": null
+          "url": "foto4_SVT.jpg"
         }
       },
       {
-        "itemId": "9dcf4308-c08a-44b1-973f-16a502624323",
+        "itemId": "ae7fda4f-76c9-4815-b6a1-351a407582ea",
         "kind": "media",
         "itemType": "image",
         "typeId": null,
@@ -205,19 +205,19 @@
           "title": "Muital erohusaid birra",
           "body1": "Dá leat guokte gova mat leat meastta ovttaláganat.",
           "body2": "Go leat deaddilan ruoná báddenboalu, de muital erohusaid birra.",
-          "url": null
+          "url": "Madssuhrpettersen3.jpg"
         },
         "recording": {
           "title": "Muital erohusaid birra",
           "body1": "Dá leat guokte gova mat leat meastta ovttaláganat.",
           "body2": "Muital erohusaid birra.",
-          "url": null
+          "url": "Madssuhrpettersen3.jpg"
         },
         "finish": {
           "title": "Buorre go gávdnet erohusaid!",
           "body1": "Dás bajábealde oainnát galle minuhta don leat skeŋken midjiide, eatnat giitu!",
           "body2": "De livččii áigi muitalit dálkki birra.",
-          "url": null
+          "url": "Madssuhrpettersen.jpg"
         }
       },
       {
@@ -230,19 +230,19 @@
           "title": "Dálki",
           "body1": "Go leat deaddilan ruoná báddenboalu, de muital makkár dálki lea leamaš dán jagi.",
           "body2": "",
-          "url": null
+          "url": "foto15_SVT.jpg"
         },
         "recording": {
           "title": "Dálki",
           "body1": "Makkár dálki lea leamaš dán jagi?",
           "body2": "Lea go dálki rievdan du mánnávuođa rájes?",
-          "url": null
+          "url": "foto15_SVT.jpg"
         },
         "finish": {
           "title": "",
           "body1": "",
           "body2": "",
-          "url": null
+          "url": "jill-wellington.jpg"
         }
       },
       {
@@ -255,19 +255,19 @@
           "title": "Mearkabeaivvit ja basit",
           "body1": "Vállje ovtta dahje eanet mearkabeaivvi dahje basi ja muital dan birra.",
           "body2": "Manne lea dehálaš? Maid don lávet bargat dalle?",
-          "url": null
+          "url": "foto10_SVT.jpg"
         },
         "recording": {
           "title": "Mearkabeaivvit ja basit",
           "body1": "Ovdamearkkat leat: Sámi álbmotbeaivvi, beassážat, juovllat, Márjjábeaivvit, mihcamárat, festiválat, Sámi Grand Prix",
           "body2": "Manne lea dehálaš? Maid don lávet bargat dalle?",
-          "url": null
+          "url": "foto10_SVT.jpg"
         },
         "finish": {
           "title": "",
           "body1": "",
           "body2": "De háliidivččiimet gullat ártistta dahje dáiddára masa liikot.",
-          "url": "url to an image, video or audio"
+          "url": "foto10_SVT.jpg"
         }
       },
       {
@@ -280,19 +280,294 @@
           "title": "Muital artistta dahje dáiddára birra masa liikot",
           "body1": "Gos son lea eret? Maid son láve bargat? Manne don liikot sutnje?",
           "body2": "Deaddil ruoná báddenboalu, ja álgge muitalit :)",
-          "url": "url to an image, video or audio"
+          "url": "sami_beassas_markanat-mads-suhr-pettersen.jpg"
         },
         "recording": {
           "title": "Muital artistta dahje dáiddára birra masa liikot",
           "body1": "Gos son lea eret? Maid son láve bargat? Manne don liikot sutnje?",
           "body2": "",
-          "url": "url to an image, video or audio"
+          "url": "sami_beassas_markanat-mads-suhr-pettersen.jpg"
         },
         "finish": {
           "title": "",
           "body1": "",
           "body2": "",
           "url": "url to an image, video or audio"
+        }
+      },
+      {
+        "itemId": "NEW Umesamiska",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "https://www.svtplay.se/klipp/84dnxzo/raven-klattrar-i-trad?video=visa"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": null
+        },
+        "finish": {
+          "title": "Giitu dán muitalusa ovddas!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      },
+      {
+        "itemId": "NEW Sydsamiska",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Ádjá dahje áhku birra",
+          "body1": "",
+          "body2": "",
+          "url": "https://www.svtplay.se/klipp/K5dbxwv/vandra?video=visa"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": null
+        },
+        "finish": {
+          "title": "Giitu dán muitalusa ovddas!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      },
+      {
+        "itemId": "NEW Nordsamiska",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "https://www.svtplay.se/klipp/ewqMX1Y/pa-gransen?video=visa"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": null
+        },
+        "finish": {
+          "title": "Giitu dán muitalusa ovddas!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      },
+      {
+        "itemId": "NEW Nordsamiska",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "https://www.svtplay.se/klipp/8myvmL9/gakti?video=visa"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": null
+        },
+        "finish": {
+          "title": "Giitu dán muitalusa ovddas!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      },
+      {
+        "itemId": "New All languages",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "https://www.svtplay.se/klipp/eQrwW7w/jahkamahke-marnana?video=visa"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": null
+        },
+        "finish": {
+          "title": "Giitu dán muitalusa ovddas!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      },
+      {
+        "itemId": "NEW Sydsamiska",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "https://www.svtplay.se/klipp/jqPzEW9/snoskoter?video=visa"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": null
+        },
+        "finish": {
+          "title": "Giitu dán muitalusa ovddas!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      },
+      {
+        "itemId": "NEW All languages",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "https://www.svtplay.se/klipp/jz7vnVZ/sangvinnare?video=visa"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": null
+        },
+        "finish": {
+          "title": "Giitu dán muitalusa ovddas!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      },
+      {
+        "itemId": "NEW Nordsamiska",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "https://www.svtplay.se/klipp/Ky2mbVZ/foregangaren-bengt-erik-grahn?video=visa"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": null
+        },
+        "finish": {
+          "title": "Giitu dán muitalusa ovddas!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      },
+      {
+        "itemId": "NEW Pitesamiska",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "https://www.svtplay.se/klipp/8p5EL3n/mytologi?video=visa"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": null
+        },
+        "finish": {
+          "title": "Giitu dán muitalusa ovddas!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      },
+      {
+        "itemId": "NEW Umesamiska",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "https://www.svtplay.se/klipp/jn4qvDP/begravningen?video=visa"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": null
+        },
+        "finish": {
+          "title": "Giitu dán muitalusa ovddas!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      },
+      {
+        "itemId": "NEW Pitesamiska",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "https://www.svtplay.se/klipp/e7dVG2E/stor-fiskaren?video=visa"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": null
+        },
+        "finish": {
+          "title": "Giitu dán muitalusa ovddas!",
+          "body1": "",
+          "body2": "",
+          "url": null
         }
       }
     ]
