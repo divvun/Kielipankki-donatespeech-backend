@@ -26,6 +26,17 @@ _CONTENT_TYPES: dict[str, str] = {
     "mp4": "video/mp4",
     "webm": "video/webm",
     "mov": "video/quicktime",
+    "jpg": "image/jpeg",
+    "jpeg": "image/jpeg",
+    "png": "image/png",
+    "gif": "image/gif",
+    "webp": "image/webp",
+    "svg": "image/svg+xml",
+    "bmp": "image/bmp",
+    "tif": "image/tiff",
+    "tiff": "image/tiff",
+    "avif": "image/avif",
+    "heic": "image/heic",
 }
 
 
@@ -61,7 +72,7 @@ async def serve_media(
     range: str = Header(None, description="HTTP Range header"),
 ):
     """
-    Serve media files (audio/video) for playback in the client app.
+    Serve media files (audio/video/images) for playback in the client app.
 
     Supports HTTP range requests for streaming and seeking.
     Required for AVPlayer on iOS/macOS.
