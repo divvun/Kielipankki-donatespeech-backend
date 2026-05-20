@@ -1,0 +1,75 @@
+{
+  "mediaState": {
+    "title": "Sámi fáttát",
+    "body1": "",
+    "body2": "",
+    "url": "/temabild/url to an image that will be shown as a thumbnail for the theme"
+  },
+  "schedule": {
+    "scheduleId": "2ddc0314-8d66-4f54-b2bb-fe9e0b4a9ba0",
+    "start": {
+      "title": "Giitu go finadat dás!",
+      "body1": "Dás sáhtát earret eará muitalit luonddu, dálkki, jagiáiggiid ja mearkabeiviid birra.",
+      "body2": "Mii háliidit čohkket lunddolaš hupmama. Jus bisánasttát ja geardduhat ságáid, de dat ii daga maidege.",
+      "url": "foto21_svt.jpg"
+    },
+    "finish": {
+      "title": "Eatnat giitu!",
+      "body1": "Jus dus leat eanat maid háliidat muitalat, válljes eará fáttá ja juollut vel eanet du jienas midjiide!",
+      "body2": "Hástal iežat ustibiid ja bearraša maid skeŋket sin suopmana midjiide.",
+      "url": "foto3_svt.jpg"
+    },
+    "items": [
+      {
+        "itemId": "5a127f9f-0a8b-4244-a3e7-0f95f128c738",
+        "kind": "media",
+        "itemType": "Choose one of image, audio, text, video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "https://www.svtplay.se/klipp/Ky2mbVZ/foregangaren-bengt-erik-grahn?video=visa"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": null
+        },
+        "finish": {
+          "title": "Giitu dán muitalusa ovddas!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      },
+      {
+        "itemId": "3869263b-f873-4d77-a7ad-a58d973cc42c",
+        "kind": "media",
+        "itemType": "Choose one of image, audio, text, video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "https://www.svtplay.se/klipp/8myvmL9/gakti?video=visa"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": null
+        },
+        "finish": {
+          "title": "Giitu dán muitalusa ovddas!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      }
+    ]
+  }
+}
