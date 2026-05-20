@@ -11,14 +11,6 @@ if ! podman info > /dev/null 2>&1; then
     exit 1
 fi
 
-# Check if uv is installed (optional but recommended)
-if command -v uv &> /dev/null; then
-    echo "✓ uv is installed"
-else
-    echo "Note: uv is not installed. Consider installing it for faster package management:"
-    echo "  curl -LsSf https://astral.sh/uv/install.sh | sh"
-fi
-
 # Start Azurite and API services
 echo "Starting Azurite and API services..."
 podman-compose -f recorder-backend/docker-compose.yml up -d --build
@@ -29,6 +21,15 @@ sleep 5
 
 # Initialize blob storage with test data
 echo "Initializing blob storage..."
+if [ ! -x "recorder-tooling/.venv/bin/python" ]; then
+    echo "Setting up recorder-tooling virtual environment..."
+    if ! command -v uv &> /dev/null; then
+        echo "Error: uv is required to bootstrap recorder-tooling/.venv"
+        echo "Install uv with: curl -LsSf https://astral.sh/uv/install.sh | sh"
+        exit 1
+    fi
+    (cd recorder-tooling && uv sync)
+fi
 source recorder-tooling/.venv/bin/activate
 python3 recorder-tooling/init-storage.py
 
