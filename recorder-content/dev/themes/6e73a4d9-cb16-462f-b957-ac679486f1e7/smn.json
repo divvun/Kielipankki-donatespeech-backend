@@ -1,0 +1,75 @@
+{
+  "mediaState": {
+    "title": "Sämifáádáh",
+    "body1": "",
+    "body2": "",
+    "url": "/temabild/url to an image that will be shown as a thumbnail for the theme"
+  },
+  "schedule": {
+    "scheduleId": "c48c5243-7cd2-49c7-a130-77854117fe58",
+    "start": {
+      "title": "Takkâ ko kolliih mii kulen!",
+      "body1": "Tääbbin puávtáh muštâliđ veikkâ luándust, šooŋâst, iveaaigijn teikkâ merkkâpeeivijn.",
+      "body2": "Mij halijdep čokkiđ luándulâš kielâkevttim. Ij häittid, jis pisánah teikkâ kiärduh saavâid",
+      "url": "/start/url to an image, video or audio"
+    },
+    "finish": {
+      "title": "Takkâ ennuv!",
+      "body1": "Jis tust lii eenâb maid halijdah muštâliđ, te valjii eres fáádá já skeŋkkii vala eenâb tuu jienâst mijjân!",
+      "body2": "Háástut tuu ustevijd já perruu meiddei skeŋkkiimân sii kuávlukielâ mijjân.",
+      "url": "url to/finish/url to an image, video or audio an image, video or audio"
+    },
+    "items": [
+      {
+        "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
+        "kind": "media",
+        "itemType": "Choose one of image, audio, text, video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Tiäđuh saajeest",
+          "body1": "Muštâl saje kost tun lah meddâl, teikkâ saajeest mii lii tunjin tehálâš.",
+          "body2": "Teedi ruánáá paddimpuálu já äälgi mustâliđ saajeest.",
+          "url": "url to an image, video or audio"
+        },
+        "recording": {
+          "title": "Tiäđuh saajeest",
+          "body1": "Muštâl saajeest kost tun lah meddâl, teikkâ maidnii saajeest mii lii tunjin tehâlâš.",
+          "body2": "Ko tun lah vaalmâs, teedi ruopsis paddimpáálu.",
+          "url": "url to an image, video or audio"
+        },
+        "finish": {
+          "title": "Takkâ – nuuvt älkkee tot lâi!",
+          "body1": "",
+          "body2": "Te vijđásubbooht iveäigifáádán.",
+          "url": "url to an image, video or audio"
+        }
+      },
+      {
+        "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
+        "kind": "media",
+        "itemType": "Choose one of image, audio, text, video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Tiäđuh saajeest",
+          "body1": "Muštâl saje kost tun lah meddâl, teikkâ saajeest mii lii tunjin tehálâš.",
+          "body2": "Teedi ruánáá paddimpuálu já äälgi mustâliđ saajeest.",
+          "url": "url to an image, video or audio"
+        },
+        "recording": {
+          "title": "Tiäđuh saajeest",
+          "body1": "Muštâl saajeest kost tun lah meddâl, teikkâ maidnii saajeest mii lii tunjin tehâlâš.",
+          "body2": "Ko tun lah vaalmâs, teedi ruopsis paddimpáálu.",
+          "url": "url to an image, video or audio"
+        },
+        "finish": {
+          "title": "Takkâ – nuuvt älkkee tot lâi!",
+          "body1": "",
+          "body2": "Te vijđásubbooht iveäigifáádán.",
+          "url": "url to an image, video or audio"
+        }
+      }
+    ]
+  }
+}
