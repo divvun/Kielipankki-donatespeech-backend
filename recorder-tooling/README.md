@@ -9,15 +9,47 @@ content for the Kielipankki speech donation project.
 ## Setup
 
 1. Install dependencies:
+
    ```sh
    uv sync
    ```
+
 2. Activate the environment:
+
    ```sh
    source .venv/bin/activate
    ```
 
 ## Example Scripts
+
 - convert_excel_to_json.py
 - migrate_storage.py
 - ...
+
+## CLI
+
+Use the central CLI entrypoint:
+
+```sh
+uv run recorder-tooling --help
+```
+
+First command (Excel -> JSON conversion):
+
+```sh
+uv run recorder-tooling convert-xlsx path/to/workbook.xlsx
+```
+
+Optional flags mirror the original script:
+
+```sh
+uv run recorder-tooling convert-xlsx path/to/workbook.xlsx \
+   --output-root ../recorder-content/dev/themes \
+   --overwrite
+```
+
+Direct script usage is still supported:
+
+```sh
+python convert_excel_to_json.py path/to/workbook.xlsx
+```
