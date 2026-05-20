@@ -40,6 +40,13 @@ First command (Excel -> JSON conversion):
 uv run recorder-tooling convert-xlsx path/to/workbook.xlsx
 ```
 
+Storage commands:
+
+```sh
+uv run recorder-tooling storage init
+uv run recorder-tooling storage cleanup
+```
+
 Optional flags mirror the original script:
 
 ```sh

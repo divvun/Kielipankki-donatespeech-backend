@@ -5,9 +5,12 @@ from pathlib import Path
 
 import typer
 
+from cleanup_storage import main as cleanup_storage_main
 from convert_excel_to_json import convert_workbook
+from init_storage import main as init_storage_main
 
 app = typer.Typer(help="Central CLI for recorder tooling scripts.", no_args_is_help=True)
+storage_app = typer.Typer(help="Storage management commands.", no_args_is_help=True)
 
 
 @app.callback()
@@ -48,6 +51,21 @@ def convert_xlsx(
     typer.echo(f"Wrote {len(written)} files")
     for path in written:
         typer.echo(str(path))
+
+
+@storage_app.command("init")
+def storage_init() -> None:
+    """Initialize storage with recorder content."""
+    raise typer.Exit(code=init_storage_main())
+
+
+@storage_app.command("cleanup")
+def storage_cleanup() -> None:
+    """Clean up blobs from storage container."""
+    raise typer.Exit(code=cleanup_storage_main())
+
+
+app.add_typer(storage_app, name="storage")
 
 
 if __name__ == "__main__":

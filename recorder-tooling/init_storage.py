@@ -1,26 +1,15 @@
 #!/usr/bin/env python3
-"""
-Initialize blob storage with content files.
+"""Initialize blob storage with content files."""
 
-This script:
-- Creates the recorder-content container
-- Uploads content/dev/ files to local Azurite storage
-- Uploads content/prod/ files to Azure remote storage
+from __future__ import annotations
 
-Works with both:
-- Azure Blob Storage (via AZURE_STORAGE_CONNECTION_STRING env var)
-- Local Azurite (default if env var not set)
-"""
-
-import os
-import sys
-import time
 import json
+import os
+import time
 from pathlib import Path
 
 from azure.storage.blob import BlobServiceClient
 
-# Azurite connection string (standard development credentials) - used as fallback
 AZURITE_CONNECTION_STRING = (
     "DefaultEndpointsProtocol=http;"
     "AccountName=devstoreaccount1;"
@@ -28,22 +17,16 @@ AZURITE_CONNECTION_STRING = (
     "BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;"
 )
 
-# Use Azure Storage if env var is set, otherwise use local Azurite
 CONNECTION_STRING = (
     os.environ.get("AZURE_STORAGE_CONNECTION_STRING") or AZURITE_CONNECTION_STRING
 )
 CONTAINER_NAME = os.environ.get("AZURE_STORAGE_CONTAINER_NAME") or "recorder-content"
-
-# Determine if we're using Azure or Azurite
 IS_AZURE = bool(os.environ.get("AZURE_STORAGE_CONNECTION_STRING"))
-
-# Select content directory based on target storage
 CONTENT_ENV = "prod" if IS_AZURE else "dev"
 
 
-def main():
+def main() -> int:
     """Initialize storage with content files."""
-    # Show which storage we're using
     if IS_AZURE:
         print("🔵 Using Azure Blob Storage (Production)")
         print(f"   Container: {CONTAINER_NAME}")
@@ -52,28 +35,24 @@ def main():
         print("🟡 Using local Azurite storage (Development)")
         print(f"   Container: {CONTAINER_NAME}")
         print("   Source: content/dev/\n")
-        # Wait briefly for Azurite to be ready
         time.sleep(2)
 
     try:
         client = BlobServiceClient.from_connection_string(CONNECTION_STRING)
         container_client = client.get_container_client(CONTAINER_NAME)
 
-        # Create container
         if not container_client.exists():
             container_client.create_container()
             print(f"✓ Created container '{CONTAINER_NAME}'")
         else:
             print(f"✓ Container '{CONTAINER_NAME}' already exists")
 
-        # Get content directory (now in ../recorder-content/)
         content_dir = Path(__file__).parent.parent / "recorder-content" / CONTENT_ENV
 
         if not content_dir.exists():
             print(f"❌ Error: Content directory not found: {content_dir}")
-            sys.exit(1)
+            return 1
 
-        # Upload schedules (supports both flat id.json and per-language id/lang.json layouts)
         schedules_dir = content_dir / "schedules"
         uploaded_schedule_keys: set[str] = set()
         if schedules_dir.exists():
@@ -83,12 +62,12 @@ def main():
                 for schedule_file in schedule_files:
                     relative = schedule_file.relative_to(schedules_dir)
                     blob_name = f"schedule/{relative.as_posix()}"
-                    with open(schedule_file, "rb") as f:
+                    with open(schedule_file, "rb") as file_obj:
                         blob_client = client.get_blob_client(
                             container=CONTAINER_NAME,
                             blob=blob_name,
                         )
-                        blob_client.upload_blob(f, overwrite=True)
+                        blob_client.upload_blob(file_obj, overwrite=True)
                     uploaded_schedule_keys.add(blob_name)
                     print(f"✓ Uploaded {blob_name}")
             else:
@@ -96,7 +75,6 @@ def main():
         else:
             print(f"⚠ Warning: Schedules directory not found: {schedules_dir}")
 
-        # Upload themes (supports both flat id.json and per-language id/lang.json layouts)
         themes_dir = content_dir / "themes"
         if themes_dir.exists():
             theme_files = list(themes_dir.rglob("*.json"))
@@ -105,16 +83,14 @@ def main():
                 for theme_file in theme_files:
                     relative = theme_file.relative_to(themes_dir)
                     blob_name = f"theme/{relative.as_posix()}"
-                    with open(theme_file, "rb") as f:
+                    with open(theme_file, "rb") as file_obj:
                         blob_client = client.get_blob_client(
                             container=CONTAINER_NAME,
                             blob=blob_name,
                         )
-                        blob_client.upload_blob(f, overwrite=True)
+                        blob_client.upload_blob(file_obj, overwrite=True)
                     print(f"✓ Uploaded {blob_name}")
 
-                # Derive schedule blobs from theme payloads for local content packs
-                # where schedule JSON files are embedded under each theme file.
                 generated_schedules = 0
                 for theme_file in theme_files:
                     relative = theme_file.relative_to(themes_dir)
@@ -128,8 +104,8 @@ def main():
 
                     language = language_filename[: -len(".json")]
 
-                    with open(theme_file, "r", encoding="utf-8") as f:
-                        theme_payload = json.load(f)
+                    with open(theme_file, "r", encoding="utf-8") as file_obj:
+                        theme_payload = json.load(file_obj)
 
                     schedule_payload = theme_payload.get("schedule")
                     if not isinstance(schedule_payload, dict):
@@ -164,7 +140,6 @@ def main():
         else:
             print(f"⚠ Warning: Themes directory not found: {themes_dir}")
 
-        # Upload media assets used by schedule/theme payloads.
         media_dir = content_dir / "media"
         if media_dir.exists():
             media_files = [f for f in media_dir.rglob("*") if f.is_file()]
@@ -173,12 +148,12 @@ def main():
                 for media_file in media_files:
                     relative = media_file.relative_to(media_dir)
                     blob_name = f"media/{relative.as_posix()}"
-                    with open(media_file, "rb") as f:
+                    with open(media_file, "rb") as file_obj:
                         blob_client = client.get_blob_client(
                             container=CONTAINER_NAME,
                             blob=blob_name,
                         )
-                        blob_client.upload_blob(f, overwrite=True)
+                        blob_client.upload_blob(file_obj, overwrite=True)
                     print(f"✓ Uploaded {blob_name}")
             else:
                 print("⚠ Warning: No media files found")
@@ -198,14 +173,15 @@ def main():
             print("  curl http://localhost:8000/v1/theme")
             print("  curl http://localhost:8000/v1/schedule")
             print("  open http://localhost:8000/docs")
-
-    except Exception as e:
-        print(f"❌ Error: {e}")
+    except Exception as exc:
+        print(f"❌ Error: {exc}")
         import traceback
 
         traceback.print_exc()
-        sys.exit(1)
+        return 1
+
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
