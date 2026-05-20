@@ -28,6 +28,32 @@ LANGUAGE_EXPORT_MAP = {
 
 IGNORED_LANGUAGES = {"bokmål", "suomi", "svenska", "ume", "pite"}
 
+DRIVE_FILENAME_MAP = {
+    "https://drive.google.com/file/d/1rRKcrEKdUXups7DF-MB1De42iSQTx6Ch/": "foto21_svt.jpg",
+    "https://drive.google.com/file/d/1dHOykpGjJUz21uQ7JFBEk8tT3MRe6338/": "foto3_svt.jpg",
+    "https://drive.google.com/file/d/1yTn-13QULyCPPpUdYWHnHI4TkGOwYKb4/": "foto_svt.jpg",
+    "https://drive.google.com/file/d/1cfUoo9vByYjn2Epv3ZEOCLvtD_NSR63p/": "foto_michael_koneckiy.jpg",
+    "https://drive.google.com/file/d/1b-Vp5Jd0S-z91gyqvZ6Q72hr3FQvOkV-": "foto26_svt.jpg",
+    "https://drive.google.com/file/d/1D6XO_TR4dXHB2UjHM2cIEcDnUukv23t5/": "foto_tom_fisk.jpg",
+    "https://drive.google.com/file/d/1abH6JOutlASs8Z2PzlipPbzaoSp6q7BR/": "foto_alina-bystrova.jpg",
+    "https://drive.google.com/file/d/1FJ26SNDYPW8KoIwXrx88ZIPuH3APXpca/": "foto9_svt.jpg",
+    "https://drive.google.com/file/d/1Uaebu4NumHUaCL5MESfkLQM_dyIi903R/": "foto_channnsy.jpg",
+    "https://drive.google.com/file/d/1V1FeND4asOnNaSfkJnN3ksHmiO-bURG9/": "foto_djimmer-koster.jpg",
+    "https://drive.google.com/file/d/17qWXXwLkl46--69Ksd02NL5--zJhLfi6/": "foto-anna-shvets.jpg",
+    "https://drive.google.com/file/d/1sfpiD6oQJjvMtvAP6k9b2TAJxpxlbZ2G/": "foto2_svt.jpg",
+    "https://drive.google.com/file/d/1uhM2LGlk4JYlO72ZuHH4yeIZPGHxa4a2/": "foto18_svt.jpg",
+    "https://drive.google.com/file/d/1lYW7jkrrg5-s6I5OP6oj9OGUd2MRXJZG/": "illustrator_sunna_kuoljok_inga_wiktoria_pave.jpg",
+    "https://drive.google.com/file/d/11yiBEMcUoDR9VhGenYA0t19q-lnAcCBs/": "foto14_svt.jpg",
+    "https://drive.google.com/file/d/1GVeTpmKGbGrgEuJItRpeL-VgCjIRmHaP/": "foto13_svt.jpg",
+    "https://drive.google.com/file/d/1RHd4g_LX7Au0BEN3OGPIYN4C823bpPY6/": "foto4_svt.jpg",
+    "https://drive.google.com/file/d/1siRdn3n_jxgSzt6AL9N01Z69WxpqiT6B/": "madssuhrpettersen3.jpg",
+    "https://drive.google.com/file/d/1Gh-voPSwncgNwPKv25ZpP8BMt_n2_v88/": "madssuhrpettersen.jpg",
+    "https://drive.google.com/file/d/13SQh1cgAe2PDuNHDr-8HNPd_j6TEwXzl/": "foto15_svt.jpg",
+    "https://drive.google.com/file/d/1whBnb_IlLoy7E011ljdCD5mJY-dPzJtm/": "jill-wellington.jpg",
+    "https://drive.google.com/file/d/107hNkcJdaCwhGw8KEJ8UUaaCEjAD4UkA/": "foto10_svt.jpg",
+    "https://drive.google.com/file/d/1qnP1Ax9Zf5vTz3ke6hlgmFpUgnmCAQ39/": "sami_beassas_markanat-mads-suhr-pettersen.jpg",
+}
+
 
 @dataclass
 class ParsedState:
@@ -329,11 +355,15 @@ def _localized_value(values: dict[str, str], language: str) -> str:
 def _build_state_for_language(
     state: ParsedState, language: str
 ) -> dict[str, str | None]:
+    url = (state.url or "").strip()
+    # Replace with mapped filename if url matches a key in DRIVE_FILENAME_MAP
+    if url in DRIVE_FILENAME_MAP:
+        url = DRIVE_FILENAME_MAP[url]
     return {
         "title": _localized_value(state.title, language),
         "body1": _localized_value(state.body1, language),
         "body2": _localized_value(state.body2, language),
-        "url": (state.url or "").strip() or None,
+        "url": url or None,
     }
 
 
