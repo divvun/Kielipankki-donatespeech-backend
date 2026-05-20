@@ -28,6 +28,7 @@ py-modules = [
     "convert_excel_to_json",
     "init_storage",
     "cleanup_storage",
+    "validate_content_json",
 ]
 
 [dependency-groups]

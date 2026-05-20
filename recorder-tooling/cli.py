@@ -8,6 +8,7 @@ import typer
 from cleanup_storage import main as cleanup_storage_main
 from convert_excel_to_json import convert_workbook
 from init_storage import main as init_storage_main
+from validate_content_json import main as validate_content_json_main
 
 app = typer.Typer(help="Central CLI for recorder tooling scripts.", no_args_is_help=True)
 storage_app = typer.Typer(help="Storage management commands.", no_args_is_help=True)
@@ -51,6 +52,23 @@ def convert_xlsx(
     typer.echo(f"Wrote {len(written)} files")
     for path in written:
         typer.echo(str(path))
+
+
+@app.command("validate-json")
+def validate_json(
+    content_root: Path = typer.Option(
+        Path("../recorder-content/dev"),
+        "--content-root",
+        help="Content root containing themes/, schedules/, and media/",
+    ),
+    media_dir: Path | None = typer.Option(
+        None,
+        "--media-dir",
+        help="Optional override path for media directory",
+    ),
+) -> None:
+    """Validate content JSON UUID collisions and media URL references."""
+    raise typer.Exit(code=validate_content_json_main(content_root, media_dir))
 
 
 @storage_app.command("init")

@@ -47,6 +47,20 @@ uv run recorder-tooling storage init
 uv run recorder-tooling storage cleanup
 ```
 
+Validate JSON content:
+
+```sh
+uv run recorder-tooling validate-json
+```
+
+Optional validation path overrides:
+
+```sh
+uv run recorder-tooling validate-json \
+   --content-root ../recorder-content/dev \
+   --media-dir ../recorder-content/dev/media
+```
+
 Optional flags mirror the original script:
 
 ```sh
