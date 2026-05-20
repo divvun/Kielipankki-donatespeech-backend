@@ -18,7 +18,7 @@ until curl -fsS http://localhost:8000/openapi.json > /dev/null 2>&1; do
     attempt=$((attempt + 1))
 done
 
-# Fetch OpenAPI spec
-curl http://localhost:8000/openapi.json | uv run python -m json.tool > openapi.json
+# Fetch OpenAPI spec and save to recorder-backend/
+curl http://localhost:8000/openapi.json | uv run python -m json.tool > recorder-backend/openapi.json
 
-echo "✓ Generated openapi.json ($(wc -c < openapi.json | tr -d ' ') bytes)"
+echo "✓ Generated recorder-backend/openapi.json ($(wc -c < recorder-backend/openapi.json | tr -d ' ') bytes)"
