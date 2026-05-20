@@ -21,7 +21,7 @@ fi
 
 # Start Azurite and API services
 echo "Starting Azurite and API services..."
-podman-compose up -d --build
+podman-compose -f recorder-backend/docker-compose.yml up -d --build
 
 # Wait for Azurite to be ready
 echo "Waiting for Azurite to start..."
@@ -29,8 +29,8 @@ sleep 5
 
 # Initialize blob storage with test data
 echo "Initializing blob storage..."
-source .venv/bin/activate
-python3 init-storage.py
+source recorder-tooling/.venv/bin/activate
+python3 recorder-tooling/init-storage.py
 
 # Wait for the API to be ready before reporting success
 echo "Waiting for FastAPI backend to start..."
