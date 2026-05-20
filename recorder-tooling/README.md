@@ -1,6 +1,7 @@
 # Recorder Tooling
 
-This directory contains scripts and utilities for managing and converting content for the Kielipankki speech donation project.
+This directory contains scripts and utilities for managing and converting
+content for the Kielipankki speech donation project.
 
 - Use a separate Python environment (managed by uv) for tooling dependencies.
 - Place all conversion, validation, and content organization scripts here.

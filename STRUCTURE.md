@@ -1,6 +1,7 @@
 # Project Structure: Three-Directory Organization
 
-This project is now organized into three separate, parallel directories with independent responsibilities:
+This project is now organized into three separate, parallel directories with
+independent responsibilities:
 
 ## Directory Structure
 
@@ -92,7 +93,7 @@ recorder-content/
    cd recorder-tooling
    python convert_excel_to_json.py ../recorder-content/dev/my-theme.xlsx
    ```
-   
+     
 3. **Output** is written to: `recorder-content/dev/themes/<uuid>/<lang>.json`
 
 4. **Initialize storage** to Azurite or Azure:
@@ -137,7 +138,8 @@ source .venv/bin/activate
 
 ## Future: Git LFS for Media
 
-When `recorder-content/` is converted to a separate repository, configure git-lfs for binary files:
+When `recorder-content/` is converted to a separate repository, configure
+git-lfs for binary files:
 
 ```bash
 git lfs install
@@ -151,7 +153,8 @@ git lfs track "*.jpg" "*.png" "*.mp3" "*.mp4" "*.wav"
 - Ensure `uv sync` was run in that directory
 
 ### "Content directory not found"
-- Check that paths in tooling scripts are correct (should use `../recorder-content/`)
+- Check that paths in tooling scripts are correct (should use
+  `../recorder-content/`)
 - Verify you're running scripts from `recorder-tooling/` directory
 
 ### Backend can't find content

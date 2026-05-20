@@ -1,6 +1,7 @@
 # Recorder Content
 
-This directory contains all content files for the Kielipankki speech donation project.
+This directory contains all content files for the Kielipankki speech donation
+project.
 
 - Excel files (source of truth for content creators)
 - Generated JSON files (for backend consumption)
@@ -8,8 +9,8 @@ This directory contains all content files for the Kielipankki speech donation pr
 
 ## Structure Example
 
-- excel/           # Source Excel files
-- json/            # Generated JSON files
-- media/           # Audio, image, video files
+- excel/ # Source Excel files
+- json/ # Generated JSON files
+- media/ # Audio, image, video files
 
 Organize as needed for your workflow.
