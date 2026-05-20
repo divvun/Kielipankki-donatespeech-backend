@@ -1,5 +1,4 @@
 import sys
-import uuid
 import json
 import csv
 import logging
@@ -1097,11 +1096,11 @@ def process_row(row, index):
             schedule['scheduleId'] = item_id
             latest_item_id = item_id
         if state == 'start':
-            if not 'start' in schedule:
+            if 'start' not in schedule:
                 schedule['start'] = {}
 
         if state == 'finish':
-            if not 'finish' in schedule:
+            if 'finish' not in schedule:
                 schedule['finish'] = {}
 
         schedule[state]['title'] = {'fi': title}
@@ -1128,7 +1127,7 @@ def process_row(row, index):
             return
         latest_item_id = item_id
 
-        if not item_id in pending_items: # need to set up a new item with this ID
+        if item_id not in pending_items: # need to set up a new item with this ID
             current_item_ordinal += 1
             pending_items[item_id] = {'ordinal': current_item_ordinal, 'itemId': item_id}
             #logging.info(f"added new item with id = '{item_id}', now pending_items = {str(pending_items)}")
@@ -1206,7 +1205,7 @@ def process_row(row, index):
             logging.error('error: no name defined for state')
             return
 
-        if not state in pending_items[latest_item_id]:
+        if state not in pending_items[latest_item_id]:
             pending_items[latest_item_id][state] = {}  # set up a new state
 
         final_title = {'fi': title}
@@ -1312,8 +1311,6 @@ def report():
         print()
 
 def main(arguments):
-    current_item_id = ''
-    current_item_index = 0
 
     if len(arguments) < 3:
         print('Need CSV description file and env (dev/prod)')

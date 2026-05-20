@@ -24,7 +24,7 @@ def is_valid_recording(md):
     if ('recordingBitDepth' in md) and ('recordingSampleRate' in md) and ('recordingNumberOfChannels' in md) and ('contentType' in md):
         # OK, all the keys exist, but are they zeroed out?
         #print(f"recordingBitDepth = {md['recordingBitDepth']}, recordingSampleRate = {md['recordingSampleRate']}, recordingNumberOfChannels = {md['recordingNumberOfChannels']}, contentType = {md['contentType']}")
-        if md['recordingBitDepth'] != 0 and md['recordingSampleRate'] != 0 and md['recordingNumberOfChannels'] != 0 and md['contentType'] != None:
+        if md['recordingBitDepth'] != 0 and md['recordingSampleRate'] != 0 and md['recordingNumberOfChannels'] != 0 and md['contentType'] is not None:
             result = True
     return result
 
@@ -46,11 +46,9 @@ def main(path):
 
     min_recording_duration = 0
     max_recording_duration = 0
-    average_recording_duration = 0
 
     # Save the metadata of the longest recording so that we can
     # easily find it and remove it if necessary.
-    longest_recording_metadata = None
 
     for file_name in all_file_names:
         json_data = None
@@ -75,7 +73,6 @@ def main(path):
                 min_recording_duration = seconds
             if seconds > max_recording_duration:
                 max_recording_duration = seconds
-                longest_recording_metadata = data
             if data['contentType'] == 'audio/flac':
                 counts['flac_type'] += 1
             elif data['contentType'] == 'audio/wave':
@@ -92,7 +89,6 @@ def main(path):
                 counts['stereo'] += 1
             elif data['recordingNumberOfChannels'] == 1:
                 counts['mono'] += 1
-            duration = data['recordingDuration']
 
             d = {'recordingDuration': seconds}
             d['clientId'] = data['clientId']

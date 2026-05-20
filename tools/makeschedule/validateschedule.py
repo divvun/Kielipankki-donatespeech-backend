@@ -1,9 +1,8 @@
 import sys
 import json
-import uuid
 
 def validate(schedule):
-    if schedule == None:
+    if schedule is None:
         print('error: no schedule')
         return False
 
