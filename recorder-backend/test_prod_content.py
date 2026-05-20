@@ -3,6 +3,7 @@
 
 import json
 import os
+import pytest
 from app.models import Schedule, Theme
 
 
@@ -36,6 +37,8 @@ def _validate_prod_schedules() -> tuple[int, int]:
 
 def test_prod_schedules():
     """Test production schedule files."""
+    if not os.path.isdir("content/prod/schedules"):
+        pytest.skip("content/prod/schedules not present in this workspace")
     _, failed = _validate_prod_schedules()
     assert failed == 0, f"{failed} production schedule files failed to parse"
 
@@ -70,6 +73,8 @@ def _validate_prod_themes() -> tuple[int, int]:
 
 def test_prod_themes():
     """Test production theme files."""
+    if not os.path.isdir("content/prod/themes"):
+        pytest.skip("content/prod/themes not present in this workspace")
     _, failed = _validate_prod_themes()
     assert failed == 0, f"{failed} production theme files failed to parse"
 
