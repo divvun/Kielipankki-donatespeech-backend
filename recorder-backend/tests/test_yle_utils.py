@@ -81,6 +81,37 @@ class TestGetMediaUrl:
     @patch("app.yle_utils.CLIENT_ID", "test_client_id")
     @patch("app.yle_utils.CLIENT_KEY", "test_client_key")
     @patch("app.yle_utils.urllib.request.urlopen")
+    def test_get_media_url_prefers_current_publication(self, mock_urlopen):
+        """Test currently active publication event is preferred over the first one."""
+        program_response = {
+            "data": {
+                "publicationEvent": [
+                    {
+                        "temporalStatus": "in_future",
+                        "media": {"id": "future-media-id"},
+                    },
+                    {
+                        "temporalStatus": "currently",
+                        "media": {"id": "current-media-id"},
+                    },
+                ]
+            }
+        }
+
+        mock_response = MagicMock()
+        mock_response.read.return_value = json.dumps(program_response).encode()
+        mock_response.__enter__.return_value = mock_response
+        mock_response.__exit__.return_value = None
+        mock_urlopen.return_value = mock_response
+
+        result = get_media_url("1-50000093")
+
+        assert "program_id=1-50000093" in result
+        assert "/v6/current-media-id/playouts.json" in result
+
+    @patch("app.yle_utils.CLIENT_ID", "test_client_id")
+    @patch("app.yle_utils.CLIENT_KEY", "test_client_key")
+    @patch("app.yle_utils.urllib.request.urlopen")
     def test_get_media_url_empty_publication_events(self, mock_urlopen):
         """Test handling when publication events are empty."""
         program_response = {"data": {"publicationEvent": []}}
