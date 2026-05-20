@@ -95,6 +95,8 @@ def _media_indexes(media_dir: Path) -> tuple[set[str], set[str]]:
 
 def _url_file_exists(url_value: str, rel_paths: set[str], basenames: set[str]) -> bool:
     parsed = urlparse(url_value)
+    if parsed.scheme == "https":
+        return True
     raw_path = (parsed.path or url_value).strip()
     if not raw_path:
         return True
