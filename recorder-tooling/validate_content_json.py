@@ -17,6 +17,7 @@ from urllib.parse import urlparse
 UUID_RE = re.compile(
     r"^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
 )
+SCHEDULE_ITEM_PATH_RE = re.compile(r"^schedule\.items\[(\d+)\](?:\.|$)")
 
 
 @dataclass
@@ -112,6 +113,34 @@ def _url_file_exists(url_value: str, rel_paths: set[str], basenames: set[str]) -
     return file_name in basenames
 
 
+def _is_yle_schedule_item_url(payload: object, json_path: str) -> bool:
+    match = SCHEDULE_ITEM_PATH_RE.match(json_path)
+    if not match:
+        return False
+
+    if not isinstance(payload, dict):
+        return False
+
+    schedule = payload.get("schedule")
+    if not isinstance(schedule, dict):
+        return False
+
+    items = schedule.get("items")
+    if not isinstance(items, list):
+        return False
+
+    index = int(match.group(1))
+    if index >= len(items):
+        return False
+
+    item = items[index]
+    if not isinstance(item, dict):
+        return False
+
+    item_type = item.get("itemType")
+    return isinstance(item_type, str) and item_type.startswith("yle-")
+
+
 def validate_content_json(content_root: Path, media_dir: Path) -> ValidationResult:
     issues: list[ValidationIssue] = []
     json_files = _collect_json_files(content_root)
@@ -155,8 +184,7 @@ def validate_content_json(content_root: Path, media_dir: Path) -> ValidationResu
                 ValidationIssue(
                     file_path=json_file,
                     message=(
-                        "Duplicate UUID in file: "
-                        f"{uuid_value} at {', '.join(paths)}"
+                        f"Duplicate UUID in file: {uuid_value} at {', '.join(paths)}"
                     ),
                 )
             )
@@ -164,14 +192,15 @@ def validate_content_json(content_root: Path, media_dir: Path) -> ValidationResu
         urls: list[tuple[str, str]] = []
         _collect_url_values(payload, "", urls)
         for url_value, json_path in urls:
+            if _is_yle_schedule_item_url(payload, json_path):
+                continue
             if _url_file_exists(url_value, rel_paths, basenames):
                 continue
             issues.append(
                 ValidationIssue(
                     file_path=json_file,
                     message=(
-                        "Missing media file for url at "
-                        f"{json_path}: '{url_value}'"
+                        f"Missing media file for url at {json_path}: '{url_value}'"
                     ),
                 )
             )
