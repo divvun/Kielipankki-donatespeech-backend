@@ -31,7 +31,7 @@ if [ ! -x "recorder-tooling/.venv/bin/python" ]; then
     (cd recorder-tooling && uv sync)
 fi
 source recorder-tooling/.venv/bin/activate
-python3 recorder-tooling/init-storage.py
+recorder-tooling storage init
 
 # Wait for the API to be ready before reporting success
 echo "Waiting for FastAPI backend to start..."
@@ -55,5 +55,5 @@ echo "  - Azurite Blob Storage: http://localhost:10000"
 echo "  - FastAPI Backend: http://localhost:8000"
 echo "  - API Docs: http://localhost:8000/docs"
 echo ""
-echo "To stop services: podman-compose down"
-echo "To view logs: podman-compose logs -f"
+echo "To stop services: cd recorder-backend && podman-compose down"
+echo "To view logs: cd recorder-backend && podman-compose logs -f"
