@@ -1,7 +1,6 @@
 import os
-import json
 import logging
-import urllib.request
+import requests
 
 from app.settings import get_settings
 
@@ -47,10 +46,15 @@ def map_yle_content(yle_program_id: str) -> str:
     try:
         media_url = get_media_url(yle_program_id)
 
-        with urllib.request.urlopen(media_url, timeout=10) as media_res:
-            media_item_url = json.loads(media_res.read()).get("data")[0].get("url")
-
-        logger.info("Successfully resolved YLE media URL")
+        media_response = requests.get(media_url, timeout=10)
+        media_response.raise_for_status()
+        media_data = media_response.json().get("data", {})
+        hls = media_data.get("hls", {})
+        media_item_url = hls.get("url")
+        if not media_item_url:
+            logger.error("No media item URL found in the media response for YLE program ID: {}".format(yle_program_id))
+            raise FileProcessingError("No media item URL found in the media response")
+        logger.info("Successfully mapped YLE program ID {} to media URL: {}".format(yle_program_id, media_item_url))
         return media_item_url
     except Exception as e:
         logger.error("Error resolving yle URL: {}".format(e))
@@ -73,34 +77,28 @@ def get_media_url(yle_program_id: str) -> str:
 
     base_url = f"https://programs.api.yle.fi/v3/schema/v1/items/{yle_program_id}?app_id={client_id}&app_key={client_key}"
 
-    with urllib.request.urlopen(processed_program_info_url, timeout=10) as res:
-        program_res = json.loads(res.read())
-        pub_events = program_res.get("data", {}).get("publicationEvent") or []
+    try:
+        response = requests.get(base_url, timeout=10)
+        response.raise_for_status()
+        program_data = response.json()
 
-        if not pub_events:
-            raise FileProcessingError("Media URL not found: no publication events")
+        publication_events = program_data.get("data", {}).get("publicationEvent", [])
+        if not publication_events:
+            raise FileProcessingError("No publication events found for the given YLE program ID")
 
-        pub_event = next(
-            (
-                event
-                for event in pub_events
-                if event.get("temporalStatus") == "currently"
-            ),
-            pub_events[0],
-        )
-        media_id = (pub_event.get("media") or {}).get("id")
+        media = publication_events[0].get("media")
+        media_id = media.get("id") if media else None
+        print("Media ID:", media_id)  # Debugging output
 
         if not media_id:
-            raise FileProcessingError("Media URL not found: media id missing")
-
-        return MEDIA_URL.format(
-            program_id=yle_program_id,
-            media_id=media_id,
-            client_id=client_id,
-            client_key=client_key,
-        )
+            logger.error("No media ID found in the publication event for YLE program ID: {}".format(yle_program_id))
+            raise FileProcessingError("No media ID found in the publication event")
 
         media_url = f"https://media.api.yle.fi/v6/{media_id}/playouts.json?app_id={client_id}&app_key={client_key}"
+        return media_url
+    except requests.RequestException as error:
+        logger.error("Error fetching program information: {}".format(error))
+        raise FileProcessingError(f"Error fetching program information: {error}")
 
 def _get_client_credentials() -> tuple[str | None, str | None]:
     settings = get_settings()
