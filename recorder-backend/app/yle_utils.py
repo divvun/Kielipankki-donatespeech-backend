@@ -20,10 +20,6 @@ _UNSET = object()
 CLIENT_ID = _UNSET
 CLIENT_KEY = _UNSET
 
-PROGRAM_INFO_URL = "https://programs.api.yle.fi/v3/schema/v1/programs/items/{program_id}.json?app_id={client_id}&app_key={client_key}"
-MEDIA_URL = "https://media.api.yle.fi/v6/{media_id}/playouts.json?program_id={program_id}&protocol=HLS&app_id={client_id}&app_key={client_key}"
-
-
 def map_yle_content(yle_program_id: str) -> str:
     """Maps YLE program ID to a media URL.
 
@@ -75,9 +71,7 @@ def get_media_url(yle_program_id: str) -> str:
     if not all([client_id, client_key]):
         raise FileProcessingError("YLE credentials not configured")
 
-    processed_program_info_url = PROGRAM_INFO_URL.format(
-        program_id=yle_program_id, client_id=client_id, client_key=client_key
-    )
+    base_url = f"https://programs.api.yle.fi/v3/schema/v1/items/{yle_program_id}?app_id={client_id}&app_key={client_key}"
 
     with urllib.request.urlopen(processed_program_info_url, timeout=10) as res:
         program_res = json.loads(res.read())
@@ -106,6 +100,7 @@ def get_media_url(yle_program_id: str) -> str:
             client_key=client_key,
         )
 
+        media_url = f"https://media.api.yle.fi/v6/{media_id}/playouts.json?app_id={client_id}&app_key={client_key}"
 
 def _get_client_credentials() -> tuple[str | None, str | None]:
     settings = get_settings()
