@@ -1,8 +1,6 @@
 """Media file serving endpoint."""
 
-import json
 import logging
-import urllib.request
 from io import BytesIO
 
 from fastapi import APIRouter, Header, HTTPException, Path
@@ -10,25 +8,11 @@ from fastapi.responses import StreamingResponse
 
 from app.media_types import get_content_type_for_filename
 from app.storage import load_blob_binary, load_blob_binary_range, StorageError
-from app.yle_utils import get_media_url, FileProcessingError
+from app.yle_utils import map_yle_content
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
-
-
-def _get_yle_media_info(yle_program_id: str) -> dict:
-    """Fetch YLE media information for a given program ID."""
-    try:
-        media_url = get_media_url(yle_program_id)
-        with urllib.request.urlopen(media_url, timeout=10) as res:
-            return json.loads(res.read())
-    except FileProcessingError as e:
-        logger.error(f"Error getting YLE media URL: {e}")
-        raise HTTPException(status_code=400, detail=f"Error fetching YLE media: {e}")
-    except Exception as e:
-        logger.error(f"Error fetching YLE media info: {e}")
-        raise HTTPException(status_code=500, detail="Error fetching YLE media information")
 
 
 @router.get("/v1/yle-media/{yle_program_id}")
@@ -40,7 +24,7 @@ async def get_yle_media(
 
     This endpoint is used for YleAudioMediaItem and YleVideoMediaItem types.
     """
-    return _get_yle_media_info(yle_program_id)
+    return map_yle_content(yle_program_id)
 
 
 @router.get("/v1/media/{filename}")
