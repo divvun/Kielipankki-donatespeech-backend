@@ -1,73 +1,148 @@
 {
   "mediaState": {
-    "title": "Sämifáádáh",
+    "title": "Sämifáádáh anarâškielân",
     "body1": "",
     "body2": "",
-    "url": "/temabild/url to an image that will be shown as a thumbnail for the theme"
+    "url": null
   },
   "schedule": {
     "scheduleId": "c48c5243-7cd2-49c7-a130-77854117fe58",
     "start": {
       "title": "Takkâ ko kolliih mii kulen!",
-      "body1": "Tääbbin puávtáh muštâliđ veikkâ luándust, šooŋâst, iveaaigijn teikkâ merkkâpeeivijn.",
+      "body1": "Tääbbin puávtáh muštâliđ maaŋgâlágánijn argâpeeivi aašijn tego luándust, speelâin já niävdusijn.",
       "body2": "Mij halijdep čokkiđ luándulâš kielâkevttim. Ij häittid, jis pisánah teikkâ kiärduh saavâid",
-      "url": "/start/url to an image, video or audio"
+      "url": "foto21_svt.jpg"
     },
     "finish": {
       "title": "Takkâ ennuv!",
-      "body1": "Jis tust lii eenâb maid halijdah muštâliđ, te valjii eres fáádá já skeŋkkii vala eenâb tuu jienâst mijjân!",
-      "body2": "Háástut tuu ustevijd já perruu meiddei skeŋkkiimân sii kuávlukielâ mijjân.",
-      "url": "url to/finish/url to an image, video or audio an image, video or audio"
+      "body1": "Jis tust lii eenâb maid halijdah muštâliđ, te valjii eres fáádá já skeŋkkii vala eenâb jienâd mijjân!",
+      "body2": "Háástut tuu ustevijd já perruu meiddei skeŋkkiđ sii kuávlukielâ mijjân.",
+      "url": "foto3_svt.jpg"
     },
     "items": [
       {
         "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
         "kind": "media",
-        "itemType": "Choose one of image, audio, text, video",
+        "itemType": "video",
         "typeId": null,
         "isRecording": true,
         "start": {
-          "title": "Tiäđuh saajeest",
-          "body1": "Muštâl saje kost tun lah meddâl, teikkâ saajeest mii lii tunjin tehálâš.",
-          "body2": "Teedi ruánáá paddimpuálu já äälgi mustâliđ saajeest.",
-          "url": "url to an image, video or audio"
+          "title": "Mađhâšem",
+          "body1": "Maht mađhâšem vaaigut tuu päikkikode ässei aargân? Mon ennuv mađhâšeijeeh láá tuu mielâst tuárvi?",
+          "body2": "Teddil ruánáá paddimpuálu já muštâlškyeđe.",
+          "url": "https://areena.yle.fi/1-76507326"
         },
         "recording": {
-          "title": "Tiäđuh saajeest",
-          "body1": "Muštâl saajeest kost tun lah meddâl, teikkâ maidnii saajeest mii lii tunjin tehâlâš.",
-          "body2": "Ko tun lah vaalmâs, teedi ruopsis paddimpáálu.",
-          "url": "url to an image, video or audio"
+          "title": "Mađhâšem",
+          "body1": "Maht mađhâšem vaaigut Aanaar ässei aargân? Mon ennuv mađhâšeijeeh láá tuu mielâst tuárvi.",
+          "body2": "Ko tun lah vaalmâs, teddil ruopsis paddimpáálu.",
+          "url": "https://areena.yle.fi/1-76507326"
         },
         "finish": {
           "title": "Takkâ – nuuvt älkkee tot lâi!",
           "body1": "",
-          "body2": "Te vijđásubbooht iveäigifáádán.",
-          "url": "url to an image, video or audio"
+          "body2": "Te sárnoon speelâin.",
+          "url": "https://areena.yle.fi/1-76507326"
         }
       },
       {
         "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
         "kind": "media",
-        "itemType": "Choose one of image, audio, text, video",
+        "itemType": "video",
         "typeId": null,
         "isRecording": true,
         "start": {
-          "title": "Tiäđuh saajeest",
-          "body1": "Muštâl saje kost tun lah meddâl, teikkâ saajeest mii lii tunjin tehálâš.",
-          "body2": "Teedi ruánáá paddimpuálu já äälgi mustâliđ saajeest.",
-          "url": "url to an image, video or audio"
+          "title": "Speelah",
+          "body1": "Kielâpiervâlist spellih uđđâ muštospellâkortijguin. Magarijd speelâid lah spellâm? Lah-uv spellâm sämikielân?",
+          "body2": "Teddil ruánáá paddimpuálu já puávtáh muštâliđ.",
+          "url": "https://areena.yle.fi/1-63615055"
         },
         "recording": {
-          "title": "Tiäđuh saajeest",
-          "body1": "Muštâl saajeest kost tun lah meddâl, teikkâ maidnii saajeest mii lii tunjin tehâlâš.",
-          "body2": "Ko tun lah vaalmâs, teedi ruopsis paddimpáálu.",
-          "url": "url to an image, video or audio"
+          "title": "Speelah",
+          "body1": "Kielâpiervâlist spellih uđđâ muštospellâkortijguin. Magarijd speelâid lah spellâm? Lah-uv spellâm sämikielân?",
+          "body2": "Ko tun lah vaalmâs, teddil ruopsis paddimpáálu.",
+          "url": "https://areena.yle.fi/1-63615055"
         },
         "finish": {
-          "title": "Takkâ – nuuvt älkkee tot lâi!",
+          "title": "Takkâ ko muštâlih!",
           "body1": "",
-          "body2": "Te vijđásubbooht iveäigifáádán.",
-          "url": "url to an image, video or audio"
+          "body2": "Čuávuvâžžân lii saahâ niävdusijn.",
+          "url": "https://areena.yle.fi/1-63615055"
+        }
+      },
+      {
+        "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Niävduseh",
+          "body1": "Riikka Morottaja muštâl ravvuid, maht čuávvuđ niävdusijd. Magareh niävduseh tust láá?",
+          "body2": "Teddil ruánáá paddimpuálu já muštâl tuu niävdusijn.",
+          "url": "https://areena.yle.fi/1-66190297"
+        },
+        "recording": {
+          "title": "Niävduseh",
+          "body1": "Riikka Morottaja muštâl ravvuid, maht čuávvuđ niävdusijd. Magareh niävduseh tust láá?",
+          "body2": "Ko tun lah vaalmâs, teddil ruopsis paddimpáálu.",
+          "url": "https://areena.yle.fi/1-66190297"
+        },
+        "finish": {
+          "title": "Takkâ – Tuáivui mield juuvsah tuu niävdusijd!",
+          "body1": "",
+          "body2": "Talle sárnoon aašijn, maid puáhtá porgâđ tälviv.",
+          "url": "https://areena.yle.fi/1-66190297"
+        }
+      },
+      {
+        "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Tälvipuđâldâsah",
+          "body1": "Anne-Karhu Angeli lii tälviolmooš. Maid tun laaviih porgâđ tälviv?",
+          "body2": "Teddil ruánáá paddimpuálu já puávtáh muštâliđ.",
+          "url": "https://areena.yle.fi/1-72558114"
+        },
+        "recording": {
+          "title": "Tälvipuđâldâsah",
+          "body1": "Anne-Karhu Angeli lii tälviolmooš. Maid tun laaviih porgâđ tälviv?",
+          "body2": "Ko tun lah vaalmâs, teddil ruopsis paddimpáálu.",
+          "url": "https://areena.yle.fi/1-72558114"
+        },
+        "finish": {
+          "title": "Takkâ ko muštâlih!",
+          "body1": "",
+          "body2": "Čuávuvâžžân lii saahâ pääihi ääigiájánâsâin.",
+          "url": "https://areena.yle.fi/1-72558114"
+        }
+      },
+      {
+        "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Päikkipuđâldâsah",
+          "body1": "Justus Paadar áásá škoovlâ asâttuvâst, kost láá ennuv äigiájánâsah. Maggaar lii tuu päikki, kost tun aasah? Magarijd aašijd tun laaviih porgâđ pääihist rijjâääigi?",
+          "body2": "Teddil ruánáá paddimpuálu já muštâl tuu niävdusijn.",
+          "url": "https://areena.yle.fi/1-76360185"
+        },
+        "recording": {
+          "title": "Päikkipuđâldâsah",
+          "body1": "Justus Paadar áásá škoovlâ asâttuvâst, kost láá ennuv äigiájánâsah. Maggaar lii tuu päikki, kost tun aasah? Magarijd aašijd tun laaviih porgâđ pääihist rijjâääigi?",
+          "body2": "Ko tun lah vaalmâs, teddil ruopsis paddimpáálu.",
+          "url": "https://areena.yle.fi/1-76360185"
+        },
+        "finish": {
+          "title": "Takkâ saavâin.",
+          "body1": "",
+          "body2": "",
+          "url": "https://areena.yle.fi/1-76360185"
         }
       }
     ]

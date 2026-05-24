@@ -23,7 +23,7 @@
       {
         "itemId": "5a127f9f-0a8b-4244-a3e7-0f95f128c738",
         "kind": "media",
-        "itemType": "Choose one of image, audio, text, video",
+        "itemType": "video",
         "typeId": null,
         "isRecording": true,
         "start": {
@@ -48,7 +48,7 @@
       {
         "itemId": "3869263b-f873-4d77-a7ad-a58d973cc42c",
         "kind": "media",
-        "itemType": "Choose one of image, audio, text, video",
+        "itemType": "video",
         "typeId": null,
         "isRecording": true,
         "start": {
