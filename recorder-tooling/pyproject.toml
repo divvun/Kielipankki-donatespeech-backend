@@ -13,6 +13,7 @@ dependencies = [
     "PyYAML>=6.0",
     "pydantic>=2.5.0",
     "python-dotenv>=1.0.0",
+    "kielipankki-recorder-backend",
 ]
 
 [project.scripts]
@@ -36,3 +37,6 @@ dev = [
     "pytest>=7.4.0",
     "ruff>=0.1.0",
 ]
+
+[tool.uv.sources]
+kielipankki-recorder-backend = { path = "../recorder-backend", editable = true }

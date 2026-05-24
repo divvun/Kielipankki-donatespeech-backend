@@ -14,6 +14,9 @@ content for the Kielipankki speech donation project.
    uv sync
    ```
 
+   Note: `validate-json` imports the Pydantic `Theme` model from the sibling
+   `../recorder-backend` project via a local uv source dependency.
+
 2. Activate the environment:
 
    ```sh
@@ -50,15 +53,7 @@ uv run recorder-tooling storage cleanup
 Validate JSON content:
 
 ```sh
-uv run recorder-tooling validate-json
-```
-
-Optional validation path overrides:
-
-```sh
-uv run recorder-tooling validate-json \
-   --content-root ../recorder-content/dev \
-   --media-dir ../recorder-content/dev/media
+uv run recorder-tooling validate-json ../recorder-content/dev/themes/news/fi.json
 ```
 
 Optional flags mirror the original script:

@@ -68,7 +68,7 @@ def validate_json(
     ),
 ) -> None:
     """Validate content JSON UUID collisions and media URL references."""
-    raise typer.Exit(code=validate_content_json_main(content_root, media_dir))
+    raise typer.Exit(code=validate_content_json_main(content_root))
 
 
 @storage_app.command("init")

@@ -6,60 +6,38 @@ from pathlib import Path
 from validate_content_json import validate_content_json
 
 
-def test_https_urls_are_not_flagged_as_missing_media(tmp_path: Path) -> None:
-    content_root = tmp_path / "content"
-    themes_dir = content_root / "themes"
-    media_dir = content_root / "media"
-    themes_dir.mkdir(parents=True)
-    media_dir.mkdir(parents=True)
-
-    (media_dir / "placeholder.jpg").write_bytes(b"data")
-    (themes_dir / "en.json").write_text(
+def test_valid_theme_payload_passes(tmp_path: Path) -> None:
+    theme_file = tmp_path / "fi.json"
+    theme_file.write_text(
         json.dumps(
             {
-                "items": [
-                    {
-                        "url": "https://example.com/image.jpg",
-                    }
-                ]
+                "mediaState": {
+                    "title": "Hello",
+                    "body1": "",
+                    "body2": "",
+                    "url": None,
+                },
+                "schedule": None,
             }
         ),
         encoding="utf-8",
     )
 
-    result = validate_content_json(content_root, media_dir)
-
+    result = validate_content_json(theme_file)
     assert result.issues == []
 
 
-def test_yle_schedule_item_urls_are_not_checked(tmp_path: Path) -> None:
-    content_root = tmp_path / "content"
-    themes_dir = content_root / "themes"
-    media_dir = content_root / "media"
-    themes_dir.mkdir(parents=True)
-    media_dir.mkdir(parents=True)
-
-    (media_dir / "placeholder.jpg").write_bytes(b"data")
-    (themes_dir / "nb.json").write_text(
+def test_invalid_theme_payload_fails(tmp_path: Path) -> None:
+    theme_file = tmp_path / "nb.json"
+    theme_file.write_text(
         json.dumps(
             {
-                "schedule": {
-                    "items": [
-                        {
-                            "itemId": "0937ca13-cc64-4965-8725-aca4a6eb18f9",
-                            "kind": "media",
-                            "itemType": "yle-video",
-                            "start": {
-                                "url": "1-50526459",
-                            },
-                        }
-                    ]
-                }
+                "schedule": None,
             }
         ),
         encoding="utf-8",
     )
 
-    result = validate_content_json(content_root, media_dir)
-
-    assert result.issues == []
+    result = validate_content_json(theme_file)
+    assert len(result.issues) == 1
+    assert "mediaState" in result.issues[0].message
