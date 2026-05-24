@@ -351,40 +351,6 @@ Response:
 }
 ```
 
-### Load Schedule Files
-
-List all schedules with their available languages:
-
-```http
-GET /v1/schedule
-```
-
-Response:
-
-```json
-[
-  { "id": "abc-123", "availableLanguages": ["fi", "nb"] }
-]
-```
-
-Fetch a schedule in a specific language (`lang` is required):
-
-```http
-GET /v1/schedule/{scheduleId}?lang=fi
-```
-
-Discover which languages are available for a specific schedule:
-
-```http
-GET /v1/schedule/{scheduleId}/languages
-```
-
-Response:
-
-```json
-{ "id": "abc-123", "availableLanguages": ["fi", "nb"] }
-```
-
 ### Load Theme Files
 
 List all themes with their available languages:
@@ -420,12 +386,6 @@ During development, the Tauri app connects to `http://localhost:8000`.
 // Example API configuration
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
 const lang = 'fi'; // or 'nb'
-
-// List schedules (returns availability — id + availableLanguages per schedule)
-const schedules = await fetch(`${API_BASE_URL}/v1/schedule`).then(r => r.json());
-
-// Fetch a schedule in a specific language
-const schedule = await fetch(`${API_BASE_URL}/v1/schedule/${scheduleId}?lang=${lang}`).then(r => r.json());
 
 // Fetch a theme in a specific language
 const theme = await fetch(`${API_BASE_URL}/v1/theme/${themeId}?lang=${lang}`).then(r => r.json());
@@ -467,8 +427,6 @@ cd recorder-backend
 ./setup-local.sh
 
 # Terminal 2: Test from command line
-curl http://localhost:8000/v1/schedule
-curl 'http://localhost:8000/v1/schedule/<scheduleId>?lang=fi'
 curl http://localhost:8000/v1/theme
 curl 'http://localhost:8000/v1/theme/<themeId>?lang=fi'
 ```
@@ -632,7 +590,6 @@ podman-compose up
 # Test endpoints
 curl http://localhost:8000/
 curl http://localhost:8000/v1/theme
-curl http://localhost:8000/v1/schedule
 ```
 
 ## Migration from Lambda
@@ -645,8 +602,8 @@ This FastAPI version maintains API compatibility with the Lambda version:
 
 **Endpoint changes:**
 
-- `/v1/configuration` → `/v1/schedule` (semantic rename for clarity)
-- Frontend app needs to update the base URL and schedule endpoint path
+- `/v1/configuration` → `/v1/theme` (theme now contains the schedule)
+- Frontend app needs to update the base URL and content endpoint path
 
 **Key differences:**
 
@@ -654,7 +611,7 @@ This FastAPI version maintains API compatibility with the Lambda version:
 - Async operations for better performance
 - Direct HTTP server instead of API Gateway + Lambda
 - Simpler local development with Azurite
-- `/v1/configuration` renamed to `/v1/schedule` for semantic clarity
+- `/v1/configuration` renamed to `/v1/theme`
 
 ## File Structure
 

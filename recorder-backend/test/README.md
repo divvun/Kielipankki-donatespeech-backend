@@ -68,8 +68,7 @@ These files are automatically uploaded to the Azurite blob storage when running
 
 Access via API:
 ```bash
-curl http://localhost:8000/v1/schedule/0b5cf885-5049-4e7a-83e0-05a63be53639
-curl http://localhost:8000/v1/theme/8d147f2c-9a3b-4e5d-b2c1-45a8f7e3c6d9
+curl 'http://localhost:8000/v1/theme/8d147f2c-9a3b-4e5d-b2c1-45a8f7e3c6d9?lang=fi'
 ```
 
 ## Converting Additional Files
