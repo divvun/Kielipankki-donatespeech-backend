@@ -323,7 +323,7 @@
       {
         "itemId": "",
         "kind": "media",
-        "itemType": "Choose one of image, audio, text, video",
+        "itemType": "video",
         "typeId": null,
         "isRecording": true,
         "start": {
