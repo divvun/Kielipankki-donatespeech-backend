@@ -319,13 +319,6 @@ class ThemeListItem(BaseModel):
     content: Theme
 
 
-class ScheduleAvailability(BaseModel):
-    """Availability info for one schedule across languages"""
-
-    id: str
-    availableLanguages: list[str]
-
-
 class ThemeAvailability(BaseModel):
     """Availability info for one theme across languages"""
 
