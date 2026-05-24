@@ -14,8 +14,8 @@
 
 ## Environment Variables
 
-This project uses FastAPI/Pydantic settings from app/settings.py.
-The same variable names are used in local development and Azure.
+This project uses FastAPI/Pydantic settings from app/settings.py. The same
+variable names are used in local development and Azure.
 
 Required variables for YLE integration:
 
@@ -26,8 +26,7 @@ Required variables for YLE integration:
 
 Create a .env file in the project root with:
 
-YLE_CLIENT_ID=your-client-id
-YLE_CLIENT_KEY=your-client-key
+YLE_CLIENT_ID=your-client-id YLE_CLIENT_KEY=your-client-key
 
 When running locally, settings are loaded from .env automatically.
 
@@ -38,7 +37,8 @@ Set the same variables as application environment variables:
 - YLE_CLIENT_ID
 - YLE_CLIENT_KEY
 
-Do not deploy .env to Azure. Azure should provide these values through App Settings / Environment Variables.
+Do not deploy .env to Azure. Azure should provide these values through App
+Settings / Environment Variables.
 
 ## Deployment
 

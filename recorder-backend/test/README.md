@@ -8,8 +8,8 @@ This directory contains test JSON files for local development.
   item types (audio, video, prompts)
 - **8d147f2c-9a3b-4e5d-b2c1-45a8f7e3c6d9.json**: Sample theme definition
 
-**Note:** Files are named with UUIDs to match production naming conventions.
-The UUID becomes the resource ID when uploaded to blob storage.
+**Note:** Files are named with UUIDs to match production naming conventions. The
+UUID becomes the resource ID when uploaded to blob storage.
 
 ## Format
 
