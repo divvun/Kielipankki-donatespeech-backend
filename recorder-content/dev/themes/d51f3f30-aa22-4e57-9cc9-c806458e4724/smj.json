@@ -1,0 +1,50 @@
+{
+  "mediaState": {
+    "title": "Samiska teman",
+    "body1": "",
+    "body2": "",
+    "url": null
+  },
+  "schedule": {
+    "scheduleId": "07744769-53e7-4092-9352-e908cd4b248e",
+    "start": {
+      "title": "Tack för att du besöker oss!",
+      "body1": "Här kan du bland annat berätta om naturen, årstiderna, traditionella aktiviteter och högtidsdagar.",
+      "body2": "Vi vill samla in naturligt tal. Om du stannar upp eller upprepar dig själv, gör det ingenting.",
+      "url": "foto21_svt.jpg"
+    },
+    "finish": {
+      "title": "Tusen tack!",
+      "body1": "Om du vill berätta mer, välj ett annat tema och donera mer tal till oss!",
+      "body2": "Uppmuntra gärna vänner och familj att donera sitt tal till oss också.",
+      "url": "foto3_svt.jpg"
+    },
+    "items": [
+      {
+        "itemId": "4d07bb33-7490-4e4a-aae8-540f62c6e299",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "På gränsen",
+          "body1": "I dag med pågående krig i Europa – hur tänker du om betydelsen av samiska erfarenheter om kriget skulle komma hit? Berätta!",
+          "body2": "",
+          "url": "https://api.svt.se/videoplayer-embed/ewqMX1Y"
+        },
+        "recording": {
+          "title": "På gränsen",
+          "body1": "I dag med pågående krig i Europa – hur tänker du om betydelsen av samiska erfarenheter om kriget skulle komma hit? Berätta!",
+          "body2": "",
+          "url": null
+        },
+        "finish": {
+          "title": "Tack för att du delade din berättelse!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      }
+    ]
+  }
+}

@@ -305,7 +305,7 @@
           "title": "",
           "body1": "",
           "body2": "",
-          "url": "https://www.svtplay.se/klipp/eQrwW7w/jahkamahke-marnana?video=visa"
+          "url": "https://api.svt.se/videoplayer-embed/eQrwW7w/jahkamahke-marnana?video=visa"
         },
         "recording": {
           "title": "",
@@ -330,7 +330,7 @@
           "title": "",
           "body1": "",
           "body2": "",
-          "url": "https://www.svtplay.se/klipp/jz7vnVZ/sangvinnare?video=visa"
+          "url": "https://api.svt.se/videoplayer-embed/jz7vnVZ/sangvinnare?video=visa"
         },
         "recording": {
           "title": "",

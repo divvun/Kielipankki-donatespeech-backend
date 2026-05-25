@@ -1,0 +1,119 @@
+{
+  "mediaState": {
+    "title": "Sääʹmteem",
+    "body1": "",
+    "body2": "",
+    "url": null
+  },
+  "schedule": {
+    "scheduleId": "2ddc0314-8d66-4f54-b2bb-fe9e0b4a9ba0",
+    "start": {
+      "title": "Tiõrv! Hääʹsǩ, ko pueʹttiǩ!",
+      "body1": "Tääiʹben vuäitak mušttled ǩiõlâst, luâđast, leeuʹdin da jeeʹres saaʹmid vääžnai aaʹššin. Mušttal jiijjâd pirr.",
+      "body2": "Mij haaʹleep noorrâd luâđlaž mainstummuž. Teeʹdd ruõppses puål da maainâst. Ij hääid jos mainstak määŋg vuâra seämma ääʹšš.",
+      "url": "foto3_svt.jpg"
+    },
+    "finish": {
+      "title": "Späʹsseb jiânnai - tät-han leäi hiâlbb.",
+      "body1": "Jos tuʹst lie jeänab saaǥǥ, koin mušttled miʹjjid, de vuäitak vaʹlljeed ođđ teemm da saǥstõõllâd lââʹss.",
+      "body2": "Piâzzak täʹst õõutårra liântteed lââʹss: oueʹtti teeʹmm lij ǩiõljeälltummuš.",
+      "url": "foto3_svt.jpg"
+    },
+    "items": [
+      {
+        "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
+        "kind": "media",
+        "itemType": "yle-video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "1-76739696"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "1-76739696"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      },
+      {
+        "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
+        "kind": "media",
+        "itemType": "yle-video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "1-76317058"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      },
+      {
+        "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
+        "kind": "media",
+        "itemType": "yle-video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "1-78103990"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "1-78103990"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "1-78103990"
+        }
+      },
+      {
+        "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
+        "kind": "media",
+        "itemType": "yle-video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "1-50830628"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "1-50830628"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "1-50830628"
+        }
+      }
+    ]
+  }
+}

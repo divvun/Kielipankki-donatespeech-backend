@@ -1,0 +1,75 @@
+{
+  "mediaState": {
+    "title": "Samiska teman",
+    "body1": "",
+    "body2": "",
+    "url": null
+  },
+  "schedule": {
+    "scheduleId": "e2c568ed-ed56-4850-8772-c700ad728ac0",
+    "start": {
+      "title": "Tack för att du besöker oss!",
+      "body1": "Här kan du bland annat berätta om naturen, årstiderna, traditionella aktiviteter och högtidsdagar.",
+      "body2": "Vi vill samla in naturligt tal. Om du stannar upp eller upprepar dig själv, gör det ingenting.",
+      "url": "foto21_svt.jpg"
+    },
+    "finish": {
+      "title": "Tusen tack!",
+      "body1": "Om du vill berätta mer, välj ett annat tema och donera mer tal till oss!",
+      "body2": "Uppmuntra gärna vänner och familj att donera sitt tal till oss också.",
+      "url": "foto3_svt.jpg"
+    },
+    "items": [
+      {
+        "itemId": "d125a759-0191-45c1-a5cd-899e08340700",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Snöskoter",
+          "body1": "Tycker du om att köra skoter? Vart är du helst ute och åker? Och hur gör du för att känna dig säker även på egen hand? Berätta!",
+          "body2": "",
+          "url": "https://api.svt.se/videoplayer-embed/jqPzEW9"
+        },
+        "recording": {
+          "title": "Snöskoter",
+          "body1": "Tycker du om att köra skoter? Vart är du helst ute och åker? Och hur gör du för att känna dig säker även på egen hand? Berätta!",
+          "body2": "",
+          "url": null
+        },
+        "finish": {
+          "title": "Tack för att du delade din berättelse!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      },
+      {
+        "itemId": "43ef2217-744a-4a2c-9903-950b16161740",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Till fots i fjällen",
+          "body1": "I vilka fjäll känner du dig hemma?  Och har du varit på någon färd som du aldrig glömmer? Vad hände? Berätta!",
+          "body2": "",
+          "url": "https://api.svt.se/videoplayer-embed/K5dbxwv"
+        },
+        "recording": {
+          "title": "Till fots i fjällen",
+          "body1": "I vilka fjäll känner du dig hemma?  Och har du varit på någon färd som du aldrig glömmer? Vad hände? Berätta!",
+          "body2": "",
+          "url": null
+        },
+        "finish": {
+          "title": "Tack för att du delade din berättelse!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      }
+    ]
+  }
+}

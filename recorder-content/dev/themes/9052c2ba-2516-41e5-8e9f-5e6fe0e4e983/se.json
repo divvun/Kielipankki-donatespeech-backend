@@ -30,7 +30,7 @@
           "title": "Alpint",
           "body1": "Gillar du idrott? Är det utförsåkning för dej också eller någon helt annan sport som hjärtat klappar för? Berätta!",
           "body2": "",
-          "url": "https://www.svtplay.se/klipp/Ky2mbVZ/foregangaren-bengt-erik-grahn?video=visa"
+          "url": "https://api.svt.se/videoplayer-embed/Ky2mbVZ"
         },
         "recording": {
           "title": "Alpint",
@@ -55,7 +55,7 @@
           "title": "Nikolaus Woulab Wollbergs koltinspiration",
           "body1": "Hur tänker du kring kolten? Måste allt vara som det alltid har varit eller kan man ta ut svängarna? Berätta!",
           "body2": "",
-          "url": "https://www.svtplay.se/klipp/8myvmL9/gakti?video=visa"
+          "url": "https://api.svt.se/videoplayer-embed/8myvmL9"
         },
         "recording": {
           "title": "Nikolaus Woulab Wollbergs koltinspiration",
