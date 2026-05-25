@@ -23,20 +23,20 @@
       {
         "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
         "kind": "media",
-        "itemType": "video",
+        "itemType": "yle-video",
         "typeId": null,
         "isRecording": true,
         "start": {
           "title": "Tiäđuh saajeest",
           "body1": "Muštâl saje kost tun lah meddâl, teikkâ saajeest mii lii tunjin tehálâš.",
           "body2": "Teedi ruánáá paddimpuálu já äälgi mustâliđ saajeest.",
-          "url": null
+          "url": "1-76739696"
         },
         "recording": {
           "title": "Tiäđuh saajeest",
           "body1": "Muštâl saajeest kost tun lah meddâl, teikkâ maidnii saajeest mii lii tunjin tehâlâš.",
           "body2": "Ko tun lah vaalmâs, teedi ruopsis paddimpáálu.",
-          "url": null
+          "url": "1-76739696"
         },
         "finish": {
           "title": "Takkâ – nuuvt älkkee tot lâi!",
@@ -48,14 +48,14 @@
       {
         "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
         "kind": "media",
-        "itemType": "video",
+        "itemType": "yle-video",
         "typeId": null,
         "isRecording": true,
         "start": {
           "title": "Tiäđuh saajeest",
           "body1": "Muštâl saje kost tun lah meddâl, teikkâ saajeest mii lii tunjin tehálâš.",
           "body2": "Teedi ruánáá paddimpuálu já äälgi mustâliđ saajeest.",
-          "url": null
+          "url": "1-76317058"
         },
         "recording": {
           "title": "Takkâ – nuuvt älkkee tot lâi!",
@@ -67,51 +67,51 @@
       {
         "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
         "kind": "media",
-        "itemType": "video",
+        "itemType": "yle-video",
         "typeId": null,
         "isRecording": true,
         "start": {
           "title": "",
           "body1": "",
           "body2": "",
-          "url": null
+          "url": "1-78103990"
         },
         "recording": {
           "title": "",
           "body1": "",
           "body2": "",
-          "url": null
+          "url": "1-78103990"
         },
         "finish": {
           "title": "",
           "body1": "",
           "body2": "",
-          "url": null
+          "url": "1-78103990"
         }
       },
       {
         "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
         "kind": "media",
-        "itemType": "video",
+        "itemType": "yle-video",
         "typeId": null,
         "isRecording": true,
         "start": {
           "title": "",
           "body1": "",
           "body2": "",
-          "url": null
+          "url": "1-50830628"
         },
         "recording": {
           "title": "",
           "body1": "",
           "body2": "",
-          "url": null
+          "url": "1-50830628"
         },
         "finish": {
           "title": "",
           "body1": "",
           "body2": "",
-          "url": null
+          "url": "1-50830628"
         }
       }
     ]

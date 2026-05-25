@@ -23,101 +23,101 @@
       {
         "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
         "kind": "media",
-        "itemType": "video",
+        "itemType": "yle-video",
         "typeId": null,
         "isRecording": true,
         "start": {
           "title": "Anarâškielâ oppâm",
           "body1": "Taah láá Säämi máttááttâskuávdáá anarâškielâ uáppeeh. Kost já maht tun lah oppâm anarâškielâ?",
           "body2": "Teddil ruánáá paddimpuálu já muštâlškyeđe.",
-          "url": "https://areena.yle.fi/1-76356814"
+          "url": "1-76356814"
         },
         "recording": {
           "title": "",
           "body1": "",
           "body2": "Ko tun lah vaalmâs, teddil ruopsis paddimpáálu.",
-          "url": "https://areena.yle.fi/1-76356814"
+          "url": "1-76356814"
         },
         "finish": {
           "title": "Takkâ ko muštâlih kielâst.",
           "body1": "",
           "body2": "Te sárnoon sämikielâ kevttimist pargoost",
-          "url": "https://areena.yle.fi/1-76356814"
+          "url": "1-76356814"
         }
       },
       {
         "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
         "kind": "media",
-        "itemType": "video",
+        "itemType": "yle-video",
         "typeId": null,
         "isRecording": true,
         "start": {
           "title": "Sämikielâ pargoost",
           "body1": "Neeta Jääskö jienâčaittâl Uccâ Myy muumijn. Kiävtáh-uv tun sämikielâ pargoost? Maggaar pargo tun poorgah?",
           "body2": "Teddil ruánáá paddimpuálu já puávtáh muštâliđ.",
-          "url": "https://areena.yle.fi/1-77157506"
+          "url": "1-77157506"
         },
         "recording": {
           "title": "Sämikielâ pargoost",
           "body1": "Neeta Jääskö jienâčaittâl Uccâ Myy muumijn. Kiävtáh-uv tun sämikielâ pargoost? Maggaar pargo tun poorgah?",
           "body2": "Ko tun lah vaalmâs, teddil ruopsis paddimpáálu.",
-          "url": "https://areena.yle.fi/1-77157506"
+          "url": "1-77157506"
         },
         "finish": {
           "title": "Takkâ ko muštâlih tuu pargoost!",
           "body1": "",
           "body2": "Talle lii sárnoon kirjálâšvuođâst.",
-          "url": "https://areena.yle.fi/1-77157506"
+          "url": "1-77157506"
         }
       },
       {
         "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
         "kind": "media",
-        "itemType": "video",
+        "itemType": "yle-video",
         "typeId": null,
         "isRecording": true,
         "start": {
           "title": "Kirjeh",
           "body1": "Ritva Kangasniemi čáittá puáris kielâpiervâl párnáikiirjijd. Magarijd kiirjijd tun käibidiččih eenâb anarâškielân?",
           "body2": "Teddil ruánáá paddimpuálu, te uážuh muštâliđ.",
-          "url": "https://areena.yle.fi/1-76207667"
+          "url": "1-76207667"
         },
         "recording": {
           "title": "Kirjeh",
           "body1": "Ritva Kangasniemi čáittá puáris kielâpiervâl párnáikiirjijd. Magarijd kiirjijd tun käibidiččih eenâb anarâškielân?",
           "body2": "Ko tun lah vaalmâs, teddil ruopsis paddimpáálu.",
-          "url": "https://areena.yle.fi/1-76207667"
+          "url": "1-76207667"
         },
         "finish": {
           "title": "Takkâ ko muštâlih!",
           "body1": "",
           "body2": "Čuávuvâš teema lii kuávlukielah.",
-          "url": "https://areena.yle.fi/1-76207667"
+          "url": "1-76207667"
         }
       },
       {
         "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
         "kind": "media",
-        "itemType": "video",
+        "itemType": "yle-video",
         "typeId": null,
         "isRecording": true,
         "start": {
           "title": "Kuávlukielah",
           "body1": "Martta Alajärvi muštâl ááhus ettâmvuovijn. Magarijd kuávlukielâi iäruid tun tiäđáh? Tâi magareh anarâškielâ säänih láá tagareh, maid eres sämikielâ sárnooh iä ibbeerd?",
           "body2": "Teddil ruánáá paddimpuálu já puávtáh muštâliđ.",
-          "url": "https://areena.yle.fi/1-72313353"
+          "url": "1-72313353"
         },
         "recording": {
           "title": "Kuávlukielah",
           "body1": "Martta Alajärvi muštâl ááhus ettâmvuovijn. Magarijd kuávlukielâi iäruid tun tiäđáh? Tâi magareh anarâškielâ säänih láá tagareh, maid eres sämikielâ sárnooh iä ibbeerd?",
           "body2": "Ko tun lah vaalmâs, teddil ruopsis paddimpáálu.",
-          "url": "https://areena.yle.fi/1-72313353"
+          "url": "1-72313353"
         },
         "finish": {
           "title": "Takkâ ko muštâlih!",
           "body1": "",
           "body2": "",
-          "url": "https://areena.yle.fi/1-72313353"
+          "url": "1-72313353"
         }
       }
     ]
