@@ -51,7 +51,7 @@ DRIVE_FILENAME_MAP = {
     "https://drive.google.com/file/d/13SQh1cgAe2PDuNHDr-8HNPd_j6TEwXzl/": "foto15_svt.jpg",
     "https://drive.google.com/file/d/1whBnb_IlLoy7E011ljdCD5mJY-dPzJtm/": "jill-wellington.jpg",
     "https://drive.google.com/file/d/107hNkcJdaCwhGw8KEJ8UUaaCEjAD4UkA/": "foto10_svt.jpg",
-    "https://drive.google.com/file/d/1qnP1Ax9Zf5vTz3ke6hlgmFpUgnmCAQ39/": "sami_beassas_markanat-mads-suhr-pettersen.jpg",
+    "https://drive.google.com/file/d/1qnP1Ax9Zf5vTz3ke6hlgmFpUgnmCAQ39/": "sami_beassas_markanat-mads_suhr_pettersen.jpg",
 }
 
 
