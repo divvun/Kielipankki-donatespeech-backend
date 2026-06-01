@@ -35,7 +35,7 @@
         "recording": {
           "title": "Ǩiõlljeälltummuš",
           "body1": "Tän pääiʹǩest saǥstõõlât ǩiõlljeälltummšest. Uʹčteeʹl Ida Hallantie vuäinn, što uʹcc ǩiõl škooulmäätt lij čuuʹt vääžnai ǩiõlljeälltummša. Ǩiõčč video.",
-          "body2": "",
+          "body2": "Måkkam tobddmõõžž täʹst šâʹdde tuʹnne? Mâiʹd ǩiõlljeälltummuš miârkkšââvv tuʹnne? Leʹbe leäk-a ton vuäǯǯam mättõõzz säämas škooulâst?",
           "url": "1-76739696"
         },
         "finish": {
@@ -58,7 +58,13 @@
           "url": "1-76317058"
         },
         "recording": {
-          "title": "Leuʹdd",
+          "title": "Leeuʹd",
+          "body1": "Leuʹdd lij saaʹmi vuämm musikkärbbvuõtt, leâša ânnˈjõžääiʹj mäŋggsid tõt iʹlla teänab toodvaž. Tååimteei Kelemeny Saraaʹje leäi vaiggâd mättʼtõõllâd jiijjâs maaddârääkk leeuʹd. Ǩiõčč videost, mäʹhtt tõt mõõʹni.",
+          "body2": "Lij-a leuʹddjummuš tuʹnne toodvaž? Måkkam tuu miõlâst leuʹddjummuš lij? Måkkam leeuʹdin ton tuʹǩǩääk? Mušttal, koon-ne leeuʹd pirr.",
+          "url": null
+        },
+        "finish": {
+          "title": "Takkâ – nuuvt älkkee tot lâi!",
           "body1": "Späʹsseb, ko leäk škiaŋkkâm jiijjâd jiõn.",
           "body2": "Pueʹtti teeʹmm lij jåtlõkmiârkk.",
           "url": null
@@ -77,7 +83,7 @@
           "url": "1-78103990"
         },
         "recording": {
-          "title": "",
+          "title": "Čuâǥǥaskõõlb",
           "body1": "Säʹmmlaid leʹčči vääžnai, što sij jälstemvuuʹdin čuâǥǥaskõõlb leʹčče sääʹmǩiõlid. Kuuitâǥ puk paaiʹǩid ij vueiʹt piijâd sääʹmǩiõllsa kõõlbid. Tååimteei Sara Kelemeny mušttal, mäʹhtt tõt leʹčči vueiʹtlvaž.",
           "body2": "Liâ-a tuu dommsiidâst sääʹmǩiõllsa kõõlb? Mõʹnt sääʹmǩiõllsa kõõlbid taarbšet? Mâid tuʹnne miârkkšââvv dommpäiʹǩǩ? Mušttal, måkkam tobddmõõžž da jurddjid tuʹst šâʹdde tän teeʹmast?",
           "url": "1-78103990"
@@ -97,19 +103,19 @@
         "isRecording": true,
         "start": {
           "title": "Piârr",
-          "body1": "",
-          "body2": "Piâr lie määŋgnallšem. Matleena Fofonoff lij jälstam puärrsab oummivuiʹm, ko suu jiijjâs jeäʹnn jaaʹmi, ko son leäi uʹcc niõđâž. Son mättji puk sääʹmǩiõtt-tuâj sääʹmääkkain da lij jiõčč še mättõõttâm jeärrsid saaʹmi tuâjaid.",
+          "body1": "Piâr lie määŋgnallšem. Matleena Fofonoff lij jälstam puärrsab oummivuiʹm, ko suu jiijjâs jeäʹnn jaaʹmi, ko son leäi uʹcc niõđâž. Son mättji puk sääʹmǩiõtt-tuâj sääʹmääkkain da lij jiõčč še mättõõttâm jeärrsid saaʹmi tuâjaid.",
+          "body2": "Mâiʹd ton leäk mättjam jiijjâd piârjest da ââʹldmõs oummuin? Måkam piârr tuʹst lij? Mâid ton laaʹvjak tuejjeed piârjin?",
           "url": "1-50830628"
         },
         "recording": {
-          "title": "Piâr lie määŋgnallšem. Matleena Fofonoff lij jälstam puärrsab oummivuiʹm, ko suu jiijjâs jeäʹnn jaaʹmi, ko son leäi uʹcc niõđâž. Son mättji puk sääʹmǩiõtt-tuâj sääʹmääkkain da lij jiõčč še mättõõttâm jeärrsid saaʹmi tuâjaid.",
-          "body1": "Mâiʹd ton leäk mättjam jiijjâd piârjest da ââʹldmõs oummuin? Måkam piârr tuʹst lij? Mâid ton laaʹvjak tuejjeed piârjin?",
-          "body2": "Späʹsseb, ko leäk škiaŋkkâm jiijjâd jiõn.",
+          "title": "",
+          "body1": "Piâr lie määŋgnallšem. Matleena Fofonoff lij jälstam puärrsab oummivuiʹm, ko suu jiijjâs jeäʹnn jaaʹmi, ko son leäi uʹcc niõđâž. Son mättji puk sääʹmǩiõtt-tuâj sääʹmääkkain da lij jiõčč še mättõõttâm jeärrsid saaʹmi tuâjaid.",
+          "body2": "Mâiʹd ton leäk mättjam jiijjâd piârjest da ââʹldmõs oummuin? Måkam piârr tuʹst lij? Mâid ton laaʹvjak tuejjeed piârjin?",
           "url": "1-50830628"
         },
         "finish": {
-          "title": "",
-          "body1": "",
+          "title": "Piârr",
+          "body1": "Späʹsseb, ko leäk škiaŋkkâm jiijjâd jiõn.",
           "body2": "Jietnašiella-prograaʹmmin haaʹleet noorrâd luâđlaž mainstummuž siõm ǩiõlin da viikkâd ooudâs tõi ǩiõllmaal.",
           "url": "1-50830628"
         }
