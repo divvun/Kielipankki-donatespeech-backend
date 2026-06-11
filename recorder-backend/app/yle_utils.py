@@ -88,7 +88,7 @@ def get_media_url(yle_program_id: str) -> str:
 
         media = publication_events[0].get("media")
         media_id = media.get("id") if media else None
-        print("Media ID:", media_id)  # Debugging output
+        logger.debug("Resolved YLE media ID for %s: %s", yle_program_id, media_id)
 
         if not media_id:
             logger.error("No media ID found in the publication event for YLE program ID: {}".format(yle_program_id))

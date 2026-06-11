@@ -27,6 +27,14 @@ async def get_yle_media(
     return map_yle_content(yle_program_id)
 
 
+@router.get("/v1/media/v1/yle-media/{yle_program_id}")
+async def get_yle_media_compat(
+    yle_program_id: str = Path(..., description="YLE program ID (e.g., 1-50525858)"),
+):
+    """Backward-compatible alias for clients that prepend /v1/media to YLE URLs."""
+    return map_yle_content(yle_program_id)
+
+
 @router.get("/v1/media/{filename}")
 async def serve_media(
     filename: str = Path(..., description="Media filename"),
