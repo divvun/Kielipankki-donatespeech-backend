@@ -27,9 +27,11 @@ build-backend = "setuptools.build_meta"
 py-modules = [
     "cli",
     "convert_excel_to_json",
+    "count_missing_translations",
     "init_storage",
     "cleanup_storage",
     "validate_content_json",
+    "lang_json",
 ]
 
 [dependency-groups]

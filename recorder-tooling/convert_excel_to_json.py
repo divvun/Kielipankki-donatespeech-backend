@@ -23,10 +23,10 @@ LANGUAGE_EXPORT_MAP = {
     "south": "sma",
     "lule": "smj",
     "inari": "smn",
-    "skolt": "sms",
+    "skolt": "sms", "ume": "sju", "pite": "sje",
 }
 
-IGNORED_LANGUAGES = {"bokmål", "suomi", "svenska", "ume", "pite"}
+IGNORED_LANGUAGES = {"bokmål", "suomi", "svenska"}
 
 DRIVE_FILENAME_MAP = {
     "https://drive.google.com/file/d/1rRKcrEKdUXups7DF-MB1De42iSQTx6Ch/": "foto21_svt.jpg",
