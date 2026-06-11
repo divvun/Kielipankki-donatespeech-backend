@@ -10,7 +10,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.models import Schedule
 from app.routers import content, media, upload
 from app.schedule_processing import pre_process_schedule as _pre_process_schedule
-from app.yle_utils import map_yle_content
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -41,8 +40,8 @@ async def root():
 
 
 def pre_process_schedule(schedule: Schedule) -> Schedule:
-    """Compatibility wrapper — keeps `main.map_yle_content` patchable in tests."""
-    return _pre_process_schedule(schedule, mapper=map_yle_content)
+    """Compatibility wrapper for schedule preprocessing."""
+    return _pre_process_schedule(schedule)
 
 
 if __name__ == "__main__":

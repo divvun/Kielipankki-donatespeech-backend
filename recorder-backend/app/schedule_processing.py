@@ -1,11 +1,9 @@
 """Schedule preprocessing helpers."""
 
 import logging
-from collections.abc import Callable
 from urllib.parse import quote
 
 from app.models import Schedule, ScheduleItem, YleAudioMediaItem, YleVideoMediaItem
-from app.yle_utils import map_yle_content
 
 logger = logging.getLogger(__name__)
 
@@ -21,20 +19,26 @@ def map_local_media_url(url: str | None) -> str | None:
     return f"/v1/media/{quote(url, safe='')}"
 
 
+def map_yle_program_url(url: str | None) -> str | None:
+    """Map raw YLE program IDs to the lazy YLE media endpoint."""
+    if not url:
+        return url
+
+    if url.startswith(("http://", "https://", "/v1/yle-media/")):
+        return url
+
+    return f"/v1/yle-media/{quote(url, safe='')}"
+
+
 def _map_yle_urls_in_states(
     item: YleAudioMediaItem | YleVideoMediaItem,
-    mapper: Callable[[str], str],
 ) -> None:
-    """Map YLE program IDs in media-state URLs to stream URLs when possible."""
+    """Map YLE program IDs in media-state URLs to lazy endpoint URLs."""
     for state_attr in ("start", "recording", "finish"):
         state = getattr(item, state_attr, None)
-        if not state or not state.url or state.url.startswith("http"):
+        if not state:
             continue
-
-        try:
-            state.url = mapper(state.url)
-        except Exception as exc:  # Keep original URL if mapping fails.
-            logger.warning("Failed to map YLE URL '%s': %s", state.url, exc)
+        state.url = map_yle_program_url(state.url)
 
 
 def _map_local_media_urls_in_states(item: ScheduleItem) -> None:
@@ -48,9 +52,8 @@ def _map_local_media_urls_in_states(item: ScheduleItem) -> None:
 
 def pre_process_schedule(
     schedule: Schedule,
-    mapper: Callable[[str], str] = map_yle_content,
 ) -> Schedule:
-    """Map YLE item URLs in-place and return the schedule."""
+    """Map schedule URLs in-place and return the schedule."""
     processed_items: list[ScheduleItem] = []
 
     if schedule.start:
@@ -60,7 +63,7 @@ def pre_process_schedule(
 
     for item in schedule.items:
         if isinstance(item, (YleAudioMediaItem, YleVideoMediaItem)):
-            _map_yle_urls_in_states(item, mapper)
+            _map_yle_urls_in_states(item)
         else:
             _map_local_media_urls_in_states(item)
         processed_items.append(item)

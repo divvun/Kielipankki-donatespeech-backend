@@ -1,7 +1,5 @@
 """Unit tests for pre_process_schedule YLE item conversion behavior."""
 
-from unittest.mock import patch
-
 from app.main import pre_process_schedule
 from app.models import (
     Schedule,
@@ -44,10 +42,12 @@ def test_pre_process_schedule_no_credentials_converts_yle_audio_with_all_fields(
 
     processed_item = processed.items[0]
     assert isinstance(processed_item, YleAudioMediaItem)
-
-    expected = original.model_dump()
-    expected["itemType"] = "yle-audio"
-    assert processed_item.model_dump() == expected
+    assert processed_item.start is not None
+    assert processed_item.start.url == "https://example.org/start.jpg"
+    assert processed_item.recording is not None
+    assert processed_item.recording.url == "/v1/yle-media/1-50000093"
+    assert processed_item.finish is not None
+    assert processed_item.finish.url == "https://example.org/finish.jpg"
 
 
 def test_pre_process_schedule_no_credentials_converts_yle_video_with_all_fields(
@@ -73,10 +73,12 @@ def test_pre_process_schedule_no_credentials_converts_yle_video_with_all_fields(
 
     processed_item = processed.items[0]
     assert isinstance(processed_item, YleVideoMediaItem)
-
-    expected = original.model_dump()
-    expected["itemType"] = "yle-video"
-    assert processed_item.model_dump() == expected
+    assert processed_item.start is not None
+    assert processed_item.start.url == "/v1/yle-media/1-50000094"
+    assert processed_item.recording is not None
+    assert processed_item.recording.url == "https://example.org/recording-video.jpg"
+    assert processed_item.finish is not None
+    assert processed_item.finish.url == "https://example.org/finish-video.jpg"
 
 
 def test_pre_process_schedule_map_error_falls_back_to_fake_with_full_data(monkeypatch):
@@ -99,10 +101,12 @@ def test_pre_process_schedule_map_error_falls_back_to_fake_with_full_data(monkey
 
     processed_item = processed.items[0]
     assert isinstance(processed_item, YleAudioMediaItem)
-
-    expected = original.model_dump()
-    expected["itemType"] = "yle-audio"
-    assert processed_item.model_dump() == expected
+    assert processed_item.start is not None
+    assert processed_item.start.url == "https://example.org/start-error.jpg"
+    assert processed_item.recording is not None
+    assert processed_item.recording.url == "/v1/yle-media/1-50000100"
+    assert processed_item.finish is not None
+    assert processed_item.finish.url == "https://example.org/finish-error.jpg"
 
 
 def test_pre_process_schedule_configured_keeps_real_item_and_maps_url(monkeypatch):
@@ -119,17 +123,12 @@ def test_pre_process_schedule_configured_keeps_real_item_and_maps_url(monkeypatc
         start=_state("start-map", url="1-50000101"),
     )
 
-    with patch(
-        "app.main.map_yle_content", return_value="https://example.org/stream.m3u8"
-    ):
-        processed = pre_process_schedule(Schedule(items=[original]))
+    processed = pre_process_schedule(Schedule(items=[original]))
 
     processed_item = processed.items[0]
     assert isinstance(processed_item, YleVideoMediaItem)
-    assert (
-        processed_item.start is not None
-        and processed_item.start.url == "https://example.org/stream.m3u8"
-    )
+    assert processed_item.start is not None
+    assert processed_item.start.url == "/v1/yle-media/1-50000101"
 
 
 def test_pre_process_schedule_maps_local_media_urls_for_non_yle_items():
