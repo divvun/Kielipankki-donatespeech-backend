@@ -5,12 +5,12 @@ from pathlib import Path
 
 import typer
 
-from cleanup_storage import main as cleanup_storage_main
-from count_missing_translations import write_multilang_workbook_json
-from convert_excel_to_json import convert_workbook
-from init_storage import main as init_storage_main
-from validate_content_json import main as validate_content_json_main
-from lang_json import read_json
+from .cleanup_storage import main as cleanup_storage_main
+from .count_missing_translations import write_multilang_workbook_json
+from .convert_excel_to_json import convert_workbook
+from .init_storage import main as init_storage_main
+from .validate_content_json import main as validate_content_json_main
+from .lang_json import read_json
 
 app = typer.Typer(help="Central CLI for recorder tooling scripts.", no_args_is_help=True)
 storage_app = typer.Typer(help="Storage management commands.", no_args_is_help=True)

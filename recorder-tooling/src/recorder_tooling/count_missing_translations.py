@@ -11,7 +11,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from convert_excel_to_json import DRIVE_FILENAME_MAP, ParsedState, _parse_sheet
+from .convert_excel_to_json import DRIVE_FILENAME_MAP, ParsedState, _parse_sheet
 from openpyxl import load_workbook  # type: ignore[import-untyped]
 
 

@@ -1,6 +1,6 @@
 [project]
 name = "recorder-tooling"
-version = "0.1.0"
+version = "0.2.0"
 description = "Tooling scripts for Kielipankki speech donation content management."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -17,22 +17,17 @@ dependencies = [
 ]
 
 [project.scripts]
-recorder-tooling = "cli:app"
+recorder-tooling = "recorder_tooling.cli:app"
 
 [build-system]
 requires = ["setuptools>=69.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-py-modules = [
-    "cli",
-    "convert_excel_to_json",
-    "count_missing_translations",
-    "init_storage",
-    "cleanup_storage",
-    "validate_content_json",
-    "lang_json",
-]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [dependency-groups]
 dev = [

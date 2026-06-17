@@ -25,8 +25,8 @@ content for the Kielipankki speech donation project.
 
 ## Example Scripts
 
-- convert_excel_to_json.py
-- migrate_storage.py
+- src/recorder_tooling/convert_excel_to_json.py
+- src/recorder_tooling/migrate_storage.py
 - ...
 
 ## CLI
@@ -53,7 +53,7 @@ uv run recorder-tooling storage cleanup
 Validate JSON content:
 
 ```sh
-uv run recorder-tooling validate-json ../recorder-content/dev/themes/news/fi.json
+uv run recorder-tooling validate-json --content-root ../recorder-content/dev
 ```
 
 Optional flags mirror the original script:
@@ -67,5 +67,14 @@ uv run recorder-tooling convert-xlsx path/to/workbook.xlsx \
 Direct script usage is still supported:
 
 ```sh
-python convert_excel_to_json.py path/to/workbook.xlsx
+python -m recorder_tooling.convert_excel_to_json path/to/workbook.xlsx
+```
+
+Other utilities:
+
+```sh
+python -m recorder_tooling.fill_schedule_uuids path/to/schedule.json --dry-run
+python -m recorder_tooling.convert_schedule old_schedule.json new_schedule.json
+python -m recorder_tooling.migrate_storage --lang fi --lang nb
+python -m recorder_tooling.replace_itemid path/to/schedule.json
 ```

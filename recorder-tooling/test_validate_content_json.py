@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from validate_content_json import validate_content_json
+from recorder_tooling.validate_content_json import validate_content_json
 
 
 def test_valid_theme_payload_passes(tmp_path: Path) -> None:
