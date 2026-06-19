@@ -8,7 +8,7 @@ import typer
 from .cleanup_storage import main as cleanup_storage_main
 from .count_missing_translations import write_multilang_workbook_json
 from .convert_excel_to_json import convert_workbook
-from .init_storage import main as init_storage_main
+from .init_storage import init_storage_main
 from .validate_content_json import main as validate_content_json_main
 from .lang_json import read_json
 
@@ -127,9 +127,13 @@ def validate_json(
 
 
 @storage_app.command("init")
-def storage_init() -> None:
+def storage_init(
+    content_dir: Path = typer.Argument(
+        ..., help="Content directory path containing themes/ and media/ directories"
+    ),
+) -> None:
     """Initialize storage with recorder content."""
-    raise typer.Exit(code=init_storage_main())
+    raise typer.Exit(code=init_storage_main(content_dir))
 
 
 @storage_app.command("cleanup")

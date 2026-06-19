@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Initialize blob storage with content files."""
 
 from __future__ import annotations
@@ -24,16 +23,17 @@ IS_AZURE = bool(os.environ.get("AZURE_STORAGE_CONNECTION_STRING"))
 CONTENT_ENV = "prod" if IS_AZURE else "dev"
 
 
-def main() -> int:
+def init_storage_main(content_dir: Path) -> int:
     """Initialize storage with content files."""
+    target = "prod" if IS_AZURE else "dev"
     if IS_AZURE:
         print("🔵 Using Azure Blob Storage (Production)")
         print(f"   Container: {CONTAINER_NAME}")
-        print("   Source: content/prod/\n")
+        print(f"   Source: {content_dir}/{target}/\n")
     else:
         print("🟡 Using local Azurite storage (Development)")
         print(f"   Container: {CONTAINER_NAME}")
-        print("   Source: content/dev/\n")
+        print(f"   Source: {content_dir}/{target}/\n")
         time.sleep(2)
 
     try:
@@ -46,13 +46,11 @@ def main() -> int:
         else:
             print(f"✓ Container '{CONTAINER_NAME}' already exists")
 
-        content_dir = Path(__file__).parent.parent / "recorder-content" / CONTENT_ENV
-
         if not content_dir.exists():
             print(f"❌ Error: Content directory not found: {content_dir}")
             return 1
 
-        themes_dir = content_dir / "themes"
+        themes_dir = content_dir / target / "themes"
         if themes_dir.exists():
             theme_files = list(themes_dir.rglob("*.json"))
             if theme_files:
@@ -73,7 +71,7 @@ def main() -> int:
         else:
             print(f"⚠ Warning: Themes directory not found: {themes_dir}")
 
-        media_dir = content_dir / "media"
+        media_dir = content_dir / target / "media"
         if media_dir.exists():
             media_files = [f for f in media_dir.rglob("*") if f.is_file()]
             if media_files:
@@ -114,7 +112,3 @@ def main() -> int:
         return 1
 
     return 0
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())

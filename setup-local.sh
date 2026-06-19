@@ -31,7 +31,7 @@ if [ ! -x "recorder-tooling/.venv/bin/python" ]; then
     (cd recorder-tooling && uv sync)
 fi
 source recorder-tooling/.venv/bin/activate
-recorder-tooling storage init
+recorder-tooling storage init recorder-content
 
 # Wait for the API to be ready before reporting success
 echo "Waiting for FastAPI backend to start..."
