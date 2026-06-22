@@ -1,6 +1,6 @@
 {
   "mediaState": {
-    "title": "Samiska teman",
+    "title": "Sáme tiemá",
     "body1": "",
     "body2": "",
     "url": null
@@ -8,15 +8,15 @@
   "schedule": {
     "scheduleId": "07744769-53e7-4092-9352-e908cd4b248e",
     "start": {
-      "title": "Tack för att du besöker oss!",
-      "body1": "Här kan du bland annat berätta om naturen, årstiderna, traditionella aktiviteter och högtidsdagar.",
-      "body2": "Vi vill samla in naturligt tal. Om du stannar upp eller upprepar dig själv, gör det ingenting.",
+      "title": "Gijtto gå dási sebra!",
+      "body1": "Dánna máhtá buojkulvissan subtsastit luondo, dálke, jábij ja mærkkabiejvij birra.",
+      "body2": "Mij sihtap luondulasj hållamav tjoahkkit. Jus gannuga håladijn jali gærddoda ietjat, de ij dat majdik dagá.",
       "url": "foto21_svt.jpg"
     },
     "finish": {
-      "title": "Tusen tack!",
-      "body1": "Om du vill berätta mer, välj ett annat tema och donera mer tal till oss!",
-      "body2": "Uppmuntra gärna vänner och familj att donera sitt tal till oss också.",
+      "title": "Edna gijtto!",
+      "body1": "Jus sidá ienebuv substastit, de válljista ietjá tiemav ja sállista ájn ienep hållamav midjij!",
+      "body2": "Hasoda ietjat rádnajt ja fuolkijt hållamav midjij sállit.",
       "url": "foto3_svt.jpg"
     },
     "items": [
@@ -27,19 +27,269 @@
         "typeId": null,
         "isRecording": true,
         "start": {
-          "title": "På gränsen",
-          "body1": "I dag med pågående krig i Europa – hur tänker du om betydelsen av samiska erfarenheter om kriget skulle komma hit? Berätta!",
+          "title": "Ráján",
+          "body1": "Uddni l doarro Euråvpån –",
           "body2": "",
           "url": "https://api.svt.se/videoplayer-embed/ewqMX1Y"
         },
         "recording": {
-          "title": "På gränsen",
-          "body1": "I dag med pågående krig i Europa – hur tänker du om betydelsen av samiska erfarenheter om kriget skulle komma hit? Berätta!",
+          "title": "Ráján",
+          "body1": "",
           "body2": "",
           "url": null
         },
         "finish": {
-          "title": "Tack för att du delade din berättelse!",
+          "title": "Gijtto gå subttsasav juohki!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      },
+      {
+        "itemId": "5d77f827-1ba3-49fd-9edd-a6c842a7e6d3",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Árbbedábálasj bargojt birra",
+          "body1": "Bruvkku gus bivddet, duodjuhit, muorjjit, miehttsit, gárdástallat, njuovvat jali muodugasj bargojt dahkat?",
+          "body2": "Gå la dieddelam báddimboalov, de la muddo subtsastahttját",
+          "url": "foto_alina-bystrova.jpg"
+        },
+        "recording": {
+          "title": "Árbbedábálasj bargojt birra",
+          "body1": "Bruvkku gus bivddet, duodjuhit, muorjjit, miehttsit, gárdástallat, njuovvat jali muodugasj bargojt dahkat?",
+          "body2": "Gåktu dáv dábálattjat barga? Gut la dav dunji åhpadam?",
+          "url": "foto9_svt.jpg"
+        },
+        "finish": {
+          "title": "Gijtto vas!",
+          "body1": "Dån la dahkam huj buorre bargov :)",
+          "body2": "Dálla l muddo hållat sámegiela birra",
+          "url": "foto_channnsy.jpg"
+        }
+      },
+      {
+        "itemId": "e7db33fd-d514-450a-bb7b-d8dbc01424df",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Sámegiela birra",
+          "body1": "Gåktu la sámegielav oahppam?",
+          "body2": "Majt merkaj sámegiella dunji?",
+          "url": "foto_djimmer-koster.jpg"
+        },
+        "recording": {
+          "title": "Sámegiela birra",
+          "body1": "Gåktu la sámegielav oahppam?",
+          "body2": "Majt merkaj sámegiella dunji? Majt ájádalá sámegiela boahtteájge birra?",
+          "url": "https://drive.google.com/file/d/1V1FeND4asOnNaSfkJnN3ksHmiO-bURG9/view?usp=sharing"
+        },
+        "finish": {
+          "title": "Miellagiddis ájádusá!",
+          "body1": "",
+          "body2": "",
+          "url": "url to an image, video or audio"
+        }
+      },
+      {
+        "itemId": "0da9eb1e-bcef-4200-a846-e2fbe844d904",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Subttsasa ja giehto",
+          "body1": "(gåvå) Dåbdå gus dájt? Majt la gullam daj birra?",
+          "body2": "Máhtá gus subttsasav jali giehtov? Subtsasta dal ájn dav midjij!",
+          "url": "foto2_svt.jpg"
+        },
+        "recording": {
+          "title": "Subttsasa ja giehto",
+          "body1": "(gåvå) Dåbdå gus dájt? Majt la gullam daj birra?",
+          "body2": "Máhtá gus subttsasav jali giehtov? Subtsasta dal ájn dav midjij!",
+          "url": "foto18_svt.jpg"
+        },
+        "finish": {
+          "title": "Fijna subtsas!",
+          "body1": "Dálla l muddo hållat biktasij ja gárvodime birra",
+          "body2": "",
+          "url": "illustrator_sunna_kuoljok_inga_wiktoria_pave.jpg"
+        }
+      },
+      {
+        "itemId": "73688cf3-73e6-4dfe-9edd-53e465344330",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Gárvodibme",
+          "body1": "Tjielggista gåk dábálattjat gárvoda.",
+          "body2": "",
+          "url": "foto14_svt.jpg"
+        },
+        "recording": {
+          "title": "Gárvodibme",
+          "body1": "Tjielggista gåk dábálattjat gárvoda.",
+          "body2": "Makkir biktasijda vuostatjin gávvuna? Ja de...?",
+          "url": "foto13_svt.jpg"
+        },
+        "finish": {
+          "title": "Gjitto gå tjielggiji gárvodime birra!",
+          "body1": "",
+          "body2": "",
+          "url": "foto4_svt.jpg"
+        }
+      },
+      {
+        "itemId": "ae7fda4f-76c9-4815-b6a1-351a407582ea",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Tjielggista sieradusájt",
+          "body1": "Dála vuojná guok muodugasj gåvå.",
+          "body2": "Gå la dieddelam báddimboalov, de la muddo tjielggit sieradusájt",
+          "url": "madssuhrpettersen3.jpg"
+        },
+        "recording": {
+          "title": "Tjielggista sieradusájt",
+          "body1": "Dála vuojná guok muodugasj gåvå.",
+          "body2": "Tjielggista sieradusájt",
+          "url": "madssuhrpettersen3.jpg"
+        },
+        "finish": {
+          "title": "Buorre gå sieradusájt ájttsi!",
+          "body1": "Badjelin vuojná galla minuhta hållamis dån la sállim midjij, gijtto!",
+          "body2": "Dálla l muddo hållat dálke birra",
+          "url": "madssuhrpettersen.jpg"
+        }
+      },
+      {
+        "itemId": "ae7fda4f-76c9-4815-b6a1-351a407582ea",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Dálkke",
+          "body1": "Gå la dieddelam báddimboalov, de la muddo substastit dálke birra.",
+          "body2": "",
+          "url": "foto15_svt.jpg"
+        },
+        "recording": {
+          "title": "",
+          "body1": "Makkir dálkke l læhkám maŋemus jage?",
+          "body2": "Le gus dálkke rievddam duv mánávuoda rájes?",
+          "url": "foto15_svt.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "jill-wellington.jpg"
+        }
+      },
+      {
+        "itemId": "165158cf-7b5d-429a-9a91-02f833fc3851",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Mærkkabiejve ja base",
+          "body1": "Vállji avtav jali ienep mærkkabiejve jali base ja subtsasta dan/daj birra.",
+          "body2": "Manen la dát ájnas? Majt dån dábálattjat barga de?",
+          "url": "foto10_svt.jpg"
+        },
+        "recording": {
+          "title": "Mærkkabiejve ja base",
+          "body1": "Åvddåmerka: Sáme álmmukbiejvve, bæssátja, javla, mihttsamárra, festivála, Sáme Grand Prix",
+          "body2": "Manen la dát ájnas? Majt dån dábálattjat barga de?",
+          "url": "foto10_svt.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "Subtsasta dal ájn artista jali dájddára birra gesi lijkku.",
+          "url": "foto10_svt.jpg"
+        }
+      },
+      {
+        "itemId": "c41f5b17-34c5-46a5-a1ec-12546a1530ad",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Subtsasta artista jali dájddára birra gesi lijkku",
+          "body1": "Gåsstå dát ulmusj boahtá? Majt sån dábálattjat dahká? Manen sunji lijkku?",
+          "body2": "Dieddela báddimboalov ja de subtsastahttjá :)",
+          "url": "sami_beassas_markanat-mads_suhr_pettersen.jpg"
+        },
+        "recording": {
+          "title": "Subtsasta artista jali dájddára birra gesi lijkku",
+          "body1": "Gåsstå dát ulmusj boahtá? Majt sån dábálattjat dahká? Manen sunji lijkku?",
+          "body2": "",
+          "url": "sami_beassas_markanat-mads_suhr_pettersen.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "url to an image, video or audio"
+        }
+      },
+      {
+        "itemId": "e8d23654-bb26-4ae1-937a-ac23ba469845",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Jåhkåmåhke márnána",
+          "body1": "Le gus Jåhkåmåhkemárnánijn mannam? Mij dat dunji merkaj? Mij la duv dåhku loaggám? Subtsasta!",
+          "body2": "",
+          "url": "https://api.svt.se/videoplayer-embed/eQrwW7w"
+        },
+        "recording": {
+          "title": "",
+          "body1": "Le gus Jåhkåmåhkemárnánijn mannam? Mij dat dunji merkaj? Mij la duv dåhku loaggám? Subtsasta!",
+          "body2": "",
+          "url": null
+        },
+        "finish": {
+          "title": "Gijtto gå subttsasav juohki!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      },
+      {
+        "itemId": "",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Sámi grand prix",
+          "body1": "Makkir musihkkaj lijkku? Le gus musihkka dunji ájnas? Tjuojaha jali juojga gus iesj? Subtsasta!",
+          "body2": "",
+          "url": "https://api.svt.se/videoplayer-embed/jz7vnVZ"
+        },
+        "recording": {
+          "title": "Sámi grand prix",
+          "body1": "Makkir musihkkaj lijkku? Le gus musihkka dunji ájnas? Tjuojaha jali juojga gus iesj? Subtsasta!",
+          "body2": "",
+          "url": null
+        },
+        "finish": {
+          "title": "Gjitto gå subtsasti!",
           "body1": "",
           "body2": "",
           "url": null

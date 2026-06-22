@@ -65,8 +65,8 @@
         },
         "finish": {
           "title": "Giitu go muitalit!",
-          "body1": "",
-          "body2": "",
+          "body1": "Du skeaŋka lea stuoridan hupmančoakkáldaga.",
+          "body2": "Galle minuhta leat skeŋken oainnát badjin olgešbealde",
           "url": "foto_tom_fisk.jpg"
         }
       },
@@ -79,7 +79,7 @@
         "start": {
           "title": "Árbevirolaš bargguid birra",
           "body1": "Lávetgo bivdit, duddjot, murjet, murret, gárddástallat, njuovvat dahje eará?",
-          "body2": "Go leat deaddilan ruoná báddenboalu, de oaččut muitališgoahtit.",
+          "body2": "Go leat deaddilan báddenboalu, de oaččut muitališgoahtit.",
           "url": "foto_alina-bystrova.jpg"
         },
         "recording": {
@@ -116,7 +116,7 @@
         "finish": {
           "title": "Miellagiddevaš jurdagat!",
           "body1": "",
-          "body2": "",
+          "body2": "Boahtte fáddá lea lágaš olbmuid birra.",
           "url": "url to an image, video or audio"
         }
       },
@@ -141,7 +141,7 @@
         "finish": {
           "title": "Giitu dán muitalusa ovddas!",
           "body1": "",
-          "body2": "",
+          "body2": "Boahtte fáttás beasat máinnastit!",
           "url": null
         }
       },
@@ -302,15 +302,15 @@
         "typeId": null,
         "isRecording": true,
         "start": {
-          "title": "",
-          "body1": "",
+          "title": "Johkamohki márkanat",
+          "body1": "Dá lea filmmaš márkanis, mii lea lágiduvvon badjel njeallječuođi geardde!",
           "body2": "",
           "url": "https://api.svt.se/videoplayer-embed/eQrwW7w"
         },
         "recording": {
-          "title": "",
-          "body1": "",
-          "body2": "",
+          "title": "Johkamohki márkanat",
+          "body1": "Leat go goasse finadan dáin márkaniin?",
+          "body2": "Muitalastte!",
           "url": null
         },
         "finish": {
