@@ -10,8 +10,7 @@ version = "2.0.0"
 description = "FastAPI backend for Kielipankki speech donation recorder"
 requires-python = ">=3.11"
 dependencies = [
-    "fastapi>=0.136.1",
-    "uvicorn[standard]>=0.47.0",
+    "fastapi[standard]>=0.136.1",
     "python-dotenv>=1.2.2",
     "pydantic>=2.13.4",
     "openpyxl>=3.1.0",
