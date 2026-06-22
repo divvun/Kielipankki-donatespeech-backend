@@ -1,6 +1,6 @@
 """Unit tests for pre_process_schedule YLE item conversion behavior."""
 
-from app.main import pre_process_schedule
+from app.schedule_processing import pre_process_schedule
 from app.models import (
     Schedule,
     YleAudioMediaItem,

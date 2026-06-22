@@ -7,9 +7,8 @@ import logging
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.models import Schedule
 from app.routers import content, media, upload
-from app.schedule_processing import pre_process_schedule as _pre_process_schedule
+
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -36,12 +35,7 @@ app.include_router(media.router)
 @app.get("/")
 async def root():
     """Health check endpoint."""
-    return {"status": "ok", "service": "kielipankki-recorder-backend"}
-
-
-def pre_process_schedule(schedule: Schedule) -> Schedule:
-    """Compatibility wrapper for schedule preprocessing."""
-    return _pre_process_schedule(schedule)
+    return {"status": "ok", "service": "jietnašiella-backend"}
 
 
 if __name__ == "__main__":
