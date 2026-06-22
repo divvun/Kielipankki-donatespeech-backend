@@ -634,7 +634,6 @@ recorder-backend/
 ├── cleanup-storage.py         # Storage cleanup (removes old content)
 ├── convert_schedule.py        # Convert old format JSON to new format
 ├── test/                      # Test data files (playlist.json, theme.json)
-└── custom_fleep/              # File type detection (unchanged)
 ```
 
 ## Troubleshooting
