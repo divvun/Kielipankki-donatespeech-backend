@@ -20,7 +20,7 @@ services:
       dockerfile: Dockerfile
     container_name: recorder-api
     ports:
-      - "8000:8000"
+      - "8000:80"
     env_file:
       - .env
     environment:
@@ -32,7 +32,7 @@ services:
     volumes:
       # Mount entire app directory for hot-reload during development
       - ./app:/app/app
-    command: "/app/.venv/bin/fastapi dev app/main.py --port 8000 --host 0.0.0.0"
+    command: "/app/.venv/bin/fastapi dev app/main.py --port 80 --host 0.0.0.0"
 
 volumes:
   azurite-data:
