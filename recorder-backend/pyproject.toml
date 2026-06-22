@@ -8,7 +8,7 @@
 name = "kielipankki-recorder-backend"
 version = "2.0.0"
 description = "FastAPI backend for Kielipankki speech donation recorder"
-requires-python = ">=3.11"
+requires-python = ">=3.14"
 dependencies = [
     "fastapi[standard]>=0.136.1",
     "python-dotenv>=1.2.2",
