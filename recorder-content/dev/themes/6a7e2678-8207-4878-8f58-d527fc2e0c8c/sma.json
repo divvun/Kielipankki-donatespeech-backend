@@ -1,6 +1,6 @@
 {
   "mediaState": {
-    "title": "Samiska teman",
+    "title": "Saemien aamhtesh",
     "body1": "",
     "body2": "",
     "url": null
@@ -8,15 +8,15 @@
   "schedule": {
     "scheduleId": "e2c568ed-ed56-4850-8772-c700ad728ac0",
     "start": {
-      "title": "Tack för att du besöker oss!",
-      "body1": "Här kan du bland annat berätta om naturen, årstiderna, traditionella aktiviteter och högtidsdagar.",
-      "body2": "Vi vill samla in naturligt tal. Om du stannar upp eller upprepar dig själv, gör det ingenting.",
+      "title": "Gæjhtoe ihke diekie böötih",
+      "body1": "Daesnie maahtah vuesiehtimmien gaavhtan eatnemen, jaepieboelhki, aerpiemaahtoen jallh mïerhke-biejjiej bïjre soptsestidh.",
+      "body2": "Mijjieh sïjhtebe iemie gïele tjöönghledh. Jis tjöödtjesth jallh ikt vielieh aalkah, ij maam darjoeh!",
       "url": "foto21_svt.jpg"
     },
     "finish": {
-      "title": "Tusen tack!",
-      "body1": "Om du vill berätta mer, välj ett annat tema och donera mer tal till oss!",
-      "body2": "Uppmuntra gärna vänner och familj att donera sitt tal till oss också.",
+      "title": "Jïjnjh gæjhtoe!",
+      "body1": "Jïh sïjhth jienebh soptsestidh, veeljh jeatjah aamhtese jïh vedtieh jienebh gïelh mijjese.",
+      "body2": "Haestieh amma voelph jïh fuelhkie dam darjodh!",
       "url": "foto3_svt.jpg"
     },
     "items": [
@@ -27,19 +27,19 @@
         "typeId": null,
         "isRecording": true,
         "start": {
-          "title": "Snöskoter",
-          "body1": "Tycker du om att köra skoter? Vart är du helst ute och åker? Och hur gör du för att känna dig säker även på egen hand? Berätta!",
-          "body2": "",
+          "title": "Skovtere",
+          "body1": "Datne lyjhkh skovtere vuejedh? Gusnie lyjhkh vuejedh?",
+          "body2": "Guktie darjoeh juktie vihties domtedh gåessie oktegh?",
           "url": "https://api.svt.se/videoplayer-embed/jqPzEW9"
         },
         "recording": {
-          "title": "Snöskoter",
-          "body1": "Tycker du om att köra skoter? Vart är du helst ute och åker? Och hur gör du för att känna dig säker även på egen hand? Berätta!",
-          "body2": "",
+          "title": "Skovtere",
+          "body1": "Datne lyjhkh skovtere vuejedh? Gusnie lyjhkh vuejedh?",
+          "body2": "Guktie darjoeh juktie vihties domtedh gåessie oktegh?",
           "url": null
         },
         "finish": {
-          "title": "Tack för att du delade din berättelse!",
+          "title": "Gæjhtoe soptsesen åvteste!",
           "body1": "",
           "body2": "",
           "url": null
@@ -52,22 +52,297 @@
         "typeId": null,
         "isRecording": true,
         "start": {
-          "title": "Till fots i fjällen",
-          "body1": "I vilka fjäll känner du dig hemma?  Och har du varit på någon färd som du aldrig glömmer? Vad hände? Berätta!",
-          "body2": "",
+          "title": "Vaeresne",
+          "body1": "Mah vaerine gåetesne domtoeh? Lea muvhten fealadimmie mij ih gåessie åajaldehtieh?",
+          "body2": "Maam deahpadi? Soptsesth!",
           "url": "https://api.svt.se/videoplayer-embed/K5dbxwv"
         },
         "recording": {
-          "title": "Till fots i fjällen",
-          "body1": "I vilka fjäll känner du dig hemma?  Och har du varit på någon färd som du aldrig glömmer? Vad hände? Berätta!",
-          "body2": "",
+          "title": "Vaeresne",
+          "body1": "Mah vaerine gåetesne domtoeh? Lea muvhten fealadimmie mij ih gåessie åajaldehtieh?",
+          "body2": "Maam deahpadi? Soptsesth!",
           "url": null
         },
         "finish": {
-          "title": "Tack för att du delade din berättelse!",
+          "title": "Gæjhtoe soptsesen åvteste!",
           "body1": "",
           "body2": "",
           "url": null
+        }
+      },
+      {
+        "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Sijjen bïjre",
+          "body1": "Soptsesth gubpelde båatah jallh akte vihkele sijjen bïjre.",
+          "body2": "Dïedth kruana båaloem jïh aelkieh sijjen bïjre soptsestidh.",
+          "url": "foto_svt.jpg"
+        },
+        "recording": {
+          "title": "Sijjen bïjre",
+          "body1": "Soptsesth gubpelde båatah jallh akte vihkele sijjen bïjre.",
+          "body2": "Gosse riejries, dïedth rööpses båaloem",
+          "url": "foto_svt.jpg"
+        },
+        "finish": {
+          "title": "Gäjhtoe - dan aelhkie lij!",
+          "body1": "",
+          "body2": "Daelie vijriebasse jaepieboelhkide.",
+          "url": "foto_michael_koneckiy.jpg"
+        }
+      },
+      {
+        "itemId": "970c4c8b-e277-41aa-801a-b4585549239f",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Jaepieboelhken bïjre",
+          "body1": "Soptsesth jaepieboelhken bïjre gosse gellie darjomh åtnah. Soptsesth maam dellie darjoeh.",
+          "body2": "Dïedth kruana båaloem jïh aelhkieh soptsestidh.",
+          "url": "foto26_svt.jpg"
+        },
+        "recording": {
+          "title": "Jaepieboelhken bïjre",
+          "body1": "Soptsesth jaepieboelhken bïjre gosse gellie darjomh åtnah. Soptsesth maam dellie darjoeh.",
+          "body2": "Åadtjoeh jienebi jaepiejboehki bïjre soptsestidh jis sïjth.",
+          "url": "foto26_svt.jpg"
+        },
+        "finish": {
+          "title": "Gæjhtoe soptsesen åvteste!",
+          "body1": "Dov soptsesh gïelebaanghkem stueriedamme.",
+          "body2": "Jollemes åelkies bielesne vuajnah man gellieh minuhth datne vedteme.",
+          "url": "foto_tom_fisk.jpg"
+        }
+      },
+      {
+        "itemId": "5d77f827-1ba3-49fd-9edd-a6c842a7e6d3",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Aerpievuekiej bïjre",
+          "body1": "Provhkh gööledh, vijredh, möörjedh, moerh tjoehpedh, giedtesne barkedh, slaaterdidh jallh maam jeatjah?",
+          "body2": "Gosse kruana båaloem dïedteme, dle maahtah aelhkedh soptsestidh!",
+          "url": "foto_alina-bystrova.jpg"
+        },
+        "recording": {
+          "title": "Aerpievuekiej bïjre",
+          "body1": "Provhkh gööledh, vijredh, möörjedh, moerh tjoehpedh, giedtesne barkedh, slaaterdidh jallh maam jeatjah?",
+          "body2": "Guktie provhkh daejnie barkedh? Gie datnem lïereme?",
+          "url": "foto9_svt.jpg"
+        },
+        "finish": {
+          "title": "Gäjhtoe vihth!",
+          "body1": "Datne buerie barkoe dorjeme!",
+          "body2": "Daelie aejkie saemiengïelen bïjre soptsestidh.",
+          "url": "foto_channnsy.jpg"
+        }
+      },
+      {
+        "itemId": "e7db33fd-d514-450a-bb7b-d8dbc01424df",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Saemiengïelen bïjre.",
+          "body1": "Guktie datne saemien lïereme?",
+          "body2": "Maam saemiengïele lea dutnjien?",
+          "url": "foto_djimmer-koster.jpg"
+        },
+        "recording": {
+          "title": "Saemiengïelen bïjre.",
+          "body1": "Guktie datne saemien lïereme?",
+          "body2": "Maam saemiengïele lea dutnjan?\nMagkeres åssjalommesh dov lea saemiengïelen båetije biejjien bïjre?",
+          "url": "https://drive.google.com/file/d/1V1FeND4asOnNaSfkJnN3ksHmiO-bURG9/view?usp=sharing"
+        },
+        "finish": {
+          "title": "Gieltegs åssjalommesh!",
+          "body1": "",
+          "body2": "Båetije aamhtese lea fuelhkien bïjre.",
+          "url": "url to an image, video or audio"
+        }
+      },
+      {
+        "itemId": "b54de1ef-d7be-4018-9ca4-0a0e6a5cbdd8",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Aahka jallh aajjan bïjre",
+          "body1": "Soptsesh båeries slïekten bïjre gie maam joekoen dorjeme, jallh vihkeles dutnjien orreme.",
+          "body2": "",
+          "url": "foto-anna-shvets.jpg"
+        },
+        "recording": {
+          "title": "Aahka jallh aajjan bïjre",
+          "body1": "Soptsesh båeries slïekten bïjre gie maam joekoen dorjeme, jallh vihkeles dutnjien orreme.",
+          "body2": "",
+          "url": "foto-anna-shvets.jpg"
+        },
+        "finish": {
+          "title": "Gäjhtoe soptsesen åvteste!",
+          "body1": "",
+          "body2": "Båetije aamhtese lea heamturi bïjre",
+          "url": null
+        }
+      },
+      {
+        "itemId": "0da9eb1e-bcef-4200-a846-e2fbe844d904",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Heamturh jïh vaajesh",
+          "body1": "Muvhten dejstie åehpies? Maam dej bïjre govleme?",
+          "body2": "Daajrah naan heamturh jallh vaajesh man bïjre maahtah soptsestidh?",
+          "url": "foto2_svt.jpg"
+        },
+        "recording": {
+          "title": "Heamturh jïh vaajesh",
+          "body1": "Muvhten dejstie åehpies? Maam dej bïjre govleme?",
+          "body2": "Daajrah naan heamturh jallh vaajesh man bïjre maahtah soptsestidh?",
+          "url": "foto18_svt.jpg"
+        },
+        "finish": {
+          "title": "Tjaebpies soptsese!",
+          "body1": "Daelie aejkie vaarjoeh- jïh gåårvedimmien bïjre soptsestidh!",
+          "body2": "",
+          "url": "illustrator_sunna_kuoljok_inga_wiktoria_pave.jpg"
+        }
+      },
+      {
+        "itemId": "73688cf3-73e6-4dfe-9edd-53e465344330",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Gåårvedimmie",
+          "body1": "Soptsesth guktie datne provhkh gåårvedidh.",
+          "body2": "",
+          "url": "foto14_svt.jpg"
+        },
+        "recording": {
+          "title": "Gåårvedimmie",
+          "body1": "Soptsesth guktie datne provhkh gåårvedidh.",
+          "body2": "Magkeres vaarjoegujmie aalkah? Jïh numhtie vijriebasse…?",
+          "url": "foto13_svt.jpg"
+        },
+        "finish": {
+          "title": "Gäjhtoe gåårvedimmie-soptsesen åvteste!",
+          "body1": "",
+          "body2": "",
+          "url": "foto4_svt.jpg"
+        }
+      },
+      {
+        "itemId": "ae7fda4f-76c9-4815-b6a1-351a407582ea",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Soptsesth joekehtsi bïjre",
+          "body1": "Daesnie göökte guvvieh mah madte seamma.",
+          "body2": "Gosse baadtehtahkebåaloem dïedteme, dle maahtah joekehtsi bïjre soptsestidh.",
+          "url": "madssuhrpettersen3.jpg"
+        },
+        "recording": {
+          "title": "Soptsesth joekehtsi bïjre",
+          "body1": "Daesnie göökte guvvieh mah madte seamma.",
+          "body2": "Soptsesth joekehtsi bïjre",
+          "url": "madssuhrpettersen3.jpg"
+        },
+        "finish": {
+          "title": "Hijven ahte joekehtsidie gaavnih!",
+          "body1": "Bijjielisnie vuajnah man gellieh minuhth datne vedteme, jjïjnjh gæjhtoe!",
+          "body2": "Daelie aejkie vearelden bïjre soptsestidh.",
+          "url": null
+        }
+      },
+      {
+        "itemId": "ae7fda4f-76c9-4815-b6a1-351a407582ea",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Vearelde",
+          "body1": "Gosse baadtehtahkebåaloem dïedteme, dle maahtah vearelden bïjre soptsestidh.",
+          "body2": "",
+          "url": "foto15_svt.jpg"
+        },
+        "recording": {
+          "title": "Vearelde",
+          "body1": "Guktie veareldem daan jaepien orreme?",
+          "body2": "Veareldem dov maanabaeleste jeatjahtahteme?",
+          "url": "foto15_svt.jpg"
+        },
+        "finish": {
+          "title": "Gæjhtoe!",
+          "body1": "",
+          "body2": "",
+          "url": "jill-wellington.jpg"
+        }
+      },
+      {
+        "itemId": "165158cf-7b5d-429a-9a91-02f833fc3851",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Mïerhke-biejjieh jïh heevehtimmieh",
+          "body1": "Veeljh akte jallh jïenebh mïerhke-biejjieh jallh heevehtimmieh jïh soptsesth dej bïjre.",
+          "body2": "Mannasinie vihkeles? Maam provhkh dellie darjodh?",
+          "url": "foto10_svt.jpg"
+        },
+        "recording": {
+          "title": "Mïerhke-biejjieh jïh heevehtimmieh",
+          "body1": "Vuesiehtimmieh: Saemiej åålmegebiejjie, påaskh, jåvle, suehpeden 1biejjien, jovnesåhkoeh, festivaalh, Sami Grand Prix.",
+          "body2": "Mannasinie vihkeles? Maam provhkh dellie darjodh?",
+          "url": "foto10_svt.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "Daelie sïjhtebe artiste jallh tjiehpiedæjjan bïjre goltelidh",
+          "url": "foto10_svt.jpg"
+        }
+      },
+      {
+        "itemId": "c41f5b17-34c5-46a5-a1ec-12546a1530ad",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Soptsesth artiste jallh tjiehpiedæjjan bïjre maam datne lyjhkh.",
+          "body1": "Gubpelde båata? Maam dorje? Mannasinie satnem lyjhkh?",
+          "body2": "Dïedth baandtedahke-båaloem jïh aelhkieh soptsestidh!",
+          "url": "sami_beassas_markanat-mads_suhr_pettersen.jpg"
+        },
+        "recording": {
+          "title": "Soptsesth artiste jallh tjiehpiedæjjan bïjre maam datne lyjhkh.",
+          "body1": "Gubpelde båata? Maam dorje? Mannasinie satnem lyjhkh?",
+          "body2": "",
+          "url": "sami_beassas_markanat-mads_suhr_pettersen.jpg"
+        },
+        "finish": {
+          "title": "Gäjhtoe!",
+          "body1": "Daate minngemes laavenjasse",
+          "body2": "Gäjhtoe barkoen åvteste!",
+          "url": "url to an image, video or audio"
         }
       }
     ]
