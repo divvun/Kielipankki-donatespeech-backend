@@ -1,0 +1,275 @@
+{
+  "mediaState": {
+    "title": "Sámien tiäbmah",
+    "body1": "",
+    "body2": "",
+    "url": null
+  },
+  "schedule": {
+    "scheduleId": "3bf96c48-7917-4a1c-8d70-3835ab092f8b",
+    "start": {
+      "title": "Gïjttuo mïjjub guessedh!",
+      "body1": "Dássnie máhtáh bujkalvis iädnamen, jábienäjgij, dábien dåjmij jah bissiebejvij bïjrra subtsastit.",
+      "body2": "Mïjja sïjttabe tjeälgga hållamiste tjåggiet. Ij máb dahkkh jüs tjuadtjsth jalla giärduoh.",
+      "url": "foto21_svt.jpg"
+    },
+    "finish": {
+      "title": "Gïjtuov!",
+      "body1": "Jüs sïjdh jiänabijde subtsasth, välljh tiäbmub jah váddieh jiänabe hållamub mïjjije!",
+      "body2": "Bädtjh amma duv guejmijde jah fuölkieb áj sïjjan hållamiste váddiet.",
+      "url": "foto3_svt.jpg"
+    },
+    "items": [
+      {
+        "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Sijjien bïjrra.",
+          "body1": "Subtsasth sijjien bïjrra gusstie bådáh , jalla sijjien bïjrra mij leä ájnas duv uvdaste.",
+          "body2": "Dieddieh bäddemeknåhppub jah álgieh sijjien bïjrra subtsastit.",
+          "url": "foto_svt.jpg"
+        },
+        "recording": {
+          "title": "Sijjien bïjrra.",
+          "body1": "Subtsasth sijjien bïjrra gusstie bådáh , jalla sijjien bïjrra mij leä ájnas duv uvdaste.",
+          "body2": "Gåssie leäh gárvies, dieddieh bäddemeknåppub.",
+          "url": "foto_svt.jpg"
+        },
+        "finish": {
+          "title": "Gïjttuo- dán alkkie lij!",
+          "body1": "",
+          "body2": "Jah dállie jábienäjgijde.",
+          "url": "foto_michael_koneckiy.jpg"
+        }
+      },
+      {
+        "itemId": "970c4c8b-e277-41aa-801a-b4585549239f",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Jábienájgien bïjrra.",
+          "body1": "Subtsasth jábienájgien bïjrra gåssie duvsnie leä uvmassie vïdnuoh. Subtsasth máb die dahkkh.",
+          "body2": "Dieddieh bäddemeknåhppub jah álgieh subtsastit",
+          "url": "foto26_svt.jpg"
+        },
+        "recording": {
+          "title": "Jábienájgien bïjrra.",
+          "body1": "Subtsasth jábienájgien bïjrra gåssie duvsnie leä uvmassie vïdnuoh. Subtsasth máb die dahkkh.",
+          "body2": "Majddie subtsasth villie jábienäjgij bïjrra, jüs sïjdh.",
+          "url": "foto26_svt.jpg"
+        },
+        "finish": {
+          "title": "Gïjttuo dådna subtsastih!",
+          "body1": "",
+          "body2": "Man ålluo hållamiste leäh váddáme vuajnáh ålgies tjiägane.",
+          "url": "foto_tom_fisk.jpg"
+        }
+      },
+      {
+        "itemId": "5d77f827-1ba3-49fd-9edd-a6c842a7e6d3",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Dábien dåjmij bïjrra",
+          "body1": "Güllh dådna, bivdáh, muerjijde tjåggáh, muarijde tjuahph, giärdane bargh, butsijde müddh jalla jiätjájne bargh?",
+          "body2": "Gåssie leäh diäddáme bäddemeknåhppub, máhtáh álggiet subtsastit.",
+          "url": "foto_alina-bystrova.jpg"
+        },
+        "recording": {
+          "title": "Dábien dåjmij bïjrra",
+          "body1": "Güllh dådna, bivdáh, muerjijde tjåggáh, muarijde tjuahph, giärdane bargh, butsijde müddh jalla jiätjájne bargh?",
+          "body2": "Gukttie bruvkkh dajna barggat? Giäb leä liärrame duv?",
+          "url": "foto9_svt.jpg"
+        },
+        "finish": {
+          "title": "Gïjttuo viht!",
+          "body1": "Dådna leäh åvduos barguob dahkkame",
+          "body2": "Dállie leä ájggie sámiengiälan bïjrra nålggasit.",
+          "url": "foto_channnsy.jpg"
+        }
+      },
+      {
+        "itemId": "e7db33fd-d514-450a-bb7b-d8dbc01424df",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Sámiengiälan bïjrra.",
+          "body1": "Gukttie leäh sámiengiälub liärrame?",
+          "body2": "Máb sámiengiälla merkkije duv uvdaste?",
+          "url": "foto_djimmer-koster.jpg"
+        },
+        "recording": {
+          "title": "Sámiengiälan bïjrra.",
+          "body1": "Gukttie leäh sámiengiälub liärrame?",
+          "body2": "Máb sámiengiälla merkkije duv uvdaste? Máb ussjadh giälan båhtieje ájgien bïjrra?",
+          "url": "https://drive.google.com/file/d/1V1FeND4asOnNaSfkJnN3ksHmiO-bURG9/view?usp=sharing"
+        },
+        "finish": {
+          "title": "Ålluo gyöldalatje ussjuolmassh!",
+          "body1": "",
+          "body2": "",
+          "url": "url to an image, video or audio"
+        }
+      },
+      {
+        "itemId": "0da9eb1e-bcef-4200-a846-e2fbe844d904",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Subtsash jah åvduos subtsash",
+          "body1": "Dåbdh såmmásh dajsstie? Máb leäh guvllame dán bïjrra?",
+          "body2": "Leä duvsnie subtsash jalla åvduos subtsash dájsstie sïjdh subtsastit?",
+          "url": "foto2_svt.jpg"
+        },
+        "recording": {
+          "title": "Subtsash jah åvduos subtsash",
+          "body1": "Dåbdh såmmásh dajsstie? Máb leäh guvllame dán bïjrra?",
+          "body2": "Leä duvsnie subtsash jalla åvduos subtsash dájsstie sïjdh subtsastit?",
+          "url": "foto18_svt.jpg"
+        },
+        "finish": {
+          "title": "Tjábbies subtsas!",
+          "body1": "Dállie leä ájggie gárvuoj jah gårvadiemien bïjrra nålggasit.",
+          "body2": "",
+          "url": "illustrator_sunna_kuoljok_inga_wiktoria_pave.jpg"
+        }
+      },
+      {
+        "itemId": "73688cf3-73e6-4dfe-9edd-53e465344330",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Gårvadiemmie",
+          "body1": "Subtsasth gukttie bruvkkh gårvadit.",
+          "body2": "",
+          "url": "foto14_svt.jpg"
+        },
+        "recording": {
+          "title": "Gårvadiemmie",
+          "body1": "Subtsasth gukttie bruvkkh gårvadit.",
+          "body2": "Mággar gárvuojgüjme álgáh? Jah nuv?",
+          "url": "foto13_svt.jpg"
+        },
+        "finish": {
+          "title": "Gïjttuo subtsastih gårvadiemien bïjrra!",
+          "body1": "",
+          "body2": "",
+          "url": "foto4_svt.jpg"
+        }
+      },
+      {
+        "itemId": "ae7fda4f-76c9-4815-b6a1-351a407582ea",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Subtsasth juagatassij bïjrra.",
+          "body1": "Dássnie leä guektte gåvvah mah vuejnnh sammáláhkáje.",
+          "body2": "Gåssie leäh diäddáme bäddemeknåhppub, máhtáh juagatassij bïjrra subtsastit.",
+          "url": "madssuhrpettersen3.jpg"
+        },
+        "recording": {
+          "title": "Subtsasth juagatassij bïjrra.",
+          "body1": "Dássnie leä guektte gåvvah mah vuejnnh sammáláhkáje.",
+          "body2": "Subtsasth juagatassij bïjrra.",
+          "url": "madssuhrpettersen3.jpg"
+        },
+        "finish": {
+          "title": "Man buörrie juagatassijde gävnnh!",
+          "body1": "Dássnie bijjiele vuajnná man gelleh mïnuvtijde leäh vaddáme, gïjtuov!",
+          "body2": "Dállie leä ájggie dálkien bïjrra nålggasit.",
+          "url": null
+        }
+      },
+      {
+        "itemId": "ae7fda4f-76c9-4815-b6a1-351a407582ea",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Dálkkie",
+          "body1": "Gåssie leäh diäddáme bäddemeknåhppub, máhtáh subtsastit gukttie dálkkie leä urrame dán jábien.",
+          "body2": "",
+          "url": "foto15_svt.jpg"
+        },
+        "recording": {
+          "title": "Dálkkie",
+          "body1": "Gukttie leä dálkkie urrame dán jábien?",
+          "body2": "Leä dálkkie jiätjátahttáme duv mánnábálieste?",
+          "url": "foto15_svt.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "jill-wellington.jpg"
+        }
+      },
+      {
+        "itemId": "165158cf-7b5d-429a-9a91-02f833fc3851",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Bissiebiejvieh",
+          "body1": "Välljh aktub jalla jiäŋa bissiebejvijde jah subtsasth daj bïjrra.",
+          "body2": "Man dehte leä ájnas? Máb die bruvkkh dahkkat?",
+          "url": "foto10_svt.jpg"
+        },
+        "recording": {
+          "title": "",
+          "body1": "Dådna leäh åvduos barguob dahkkame",
+          "body2": "Man dehte leä ájnas? Máb die bruvkkh dahkkat?",
+          "url": "foto10_svt.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "Dállie sïjttabe guvllat artistan jalla dájddáran bïjrra giäb dådna lyjkkh.",
+          "url": "foto10_svt.jpg"
+        }
+      },
+      {
+        "itemId": "c41f5b17-34c5-46a5-a1ec-12546a1530ad",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Subtsasth artistan jalla dájddáran bïjrra giäb dådna lyjkkh.",
+          "body1": "Gusstie dán artissta båhtá? Máb dahkká? Man dehte lyjkkije suv?",
+          "body2": "Dieddieh bäddemeknåhppub jah álgieh subtsastit.",
+          "url": "sami_beassas_markanat-mads_suhr_pettersen.jpg"
+        },
+        "recording": {
+          "title": "Subtsasth artistan jalla dájddáran bïjrra giäb dådna lyjkkh.",
+          "body1": "Gusstie dán artissta båhtá? Máb dahkká? Man dehte lyjkkije suv?",
+          "body2": "",
+          "url": "sami_beassas_markanat-mads_suhr_pettersen.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "url to an image, video or audio"
+        }
+      }
+    ]
+  }
+}
