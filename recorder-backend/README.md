@@ -72,10 +72,35 @@ Push to `main` branch triggers automatic deployment:
 Production deployment is implemented in
 [deploy-prod.yml](../.github/workflows/deploy-prod.yml).
 
+Infrastructure-as-code for production is in:
+
+- [infra/prod/main.bicep](infra/prod/main.bicep)
+- [infra/prod/main.bicepparam](infra/prod/main.bicepparam)
+
 Trigger options:
 
 - Push a Git tag matching `v*` (for example `v1.0.0`)
 - Run the workflow manually from GitHub Actions
+
+Provision production infrastructure in p-sami:
+
+```bash
+az login
+az account set --subscription "p-sami"
+
+# Export these in your shell first
+export YLE_CLIENT_ID="<your-yle-client-id>"
+export YLE_CLIENT_KEY="<your-yle-client-key>"
+
+az group create \
+  --name rg-kielipankki-recorder-prod \
+  --location northeurope
+
+az deployment group create \
+  --resource-group rg-kielipankki-recorder-prod \
+  --template-file infra/prod/main.bicep \
+  --parameters infra/prod/main.bicepparam
+```
 
 Set up steps:
 
@@ -167,14 +192,14 @@ az containerapp update \
   --image <acr-name>.azurecr.io/recorder-backend:dev-manual
 ```
 
-### Future: Production Deployment
+### Production Release
 
-When production is ready:
+After infrastructure and secrets are in place:
 
-1. Create production Azure resources (mirroring dev setup)
-2. Add production federated credential for tag pattern `v*`
-3. Configure production GitHub secrets
-4. Create tag to deploy: `git tag v1.0.0 && git push origin v1.0.0`
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
 
 ## Quick Start - Local Development
 
