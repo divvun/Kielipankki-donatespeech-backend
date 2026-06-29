@@ -47,7 +47,7 @@ Settings / Environment Variables.
 The backend automatically deploys to environments based on branch activity:
 
 - **Development Environment**: Auto-deploys on every push to `main` branch
-- **Production Environment**: *(Planned)* Will deploy from tagged releases
+- **Production Environment**: Deploys from release tags (for example `v1.0.0`)
   (e.g., `v1.0.0`)
 
 ### Current Setup (Dev Only)
@@ -67,6 +67,50 @@ Push to `main` branch triggers automatic deployment:
 - GitHub Actions: [Deployment Workflows](../../actions)
 - Development URL: Provided by Container App ingress
 
+### Production Deployment Setup (p-sami subscription)
+
+Production deployment is implemented in
+[deploy-prod.yml](../.github/workflows/deploy-prod.yml).
+
+Trigger options:
+
+- Push a Git tag matching `v*` (for example `v1.0.0`)
+- Run the workflow manually from GitHub Actions
+
+Set up steps:
+
+- Create production resources in the **p-sami** subscription (or reuse existing
+  ones): resource group, Container Registry (ACR), Container Apps Environment,
+  Container App (backend), and Key Vault secrets for `YLE_CLIENT_ID` and
+  `YLE_CLIENT_KEY`.
+- Ensure the GitHub OIDC service principal has access in p-sami: `AcrPush` on
+  the production ACR and `Contributor` on the production resource group (or
+  narrower equivalent roles that still allow Container App updates).
+- Add a federated credential for production releases with subject pattern
+  `repo:<org>/<repo>:ref:refs/tags/v*`.
+- Configure repository GitHub Actions secrets for production values.
+
+Recommended production secret values:
+
+- `AZURE_SUBSCRIPTION_ID`: subscription ID of **p-sami**
+- `PROD_ACR_NAME`: production ACR name
+- `PROD_RESOURCE_GROUP`: production resource group name
+- `PROD_CONTAINER_APP`: production Container App name
+
+To release to production:
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+The workflow builds and pushes image tags:
+
+- `prod-v1.0.0` (versioned)
+- `prod-latest` (rolling)
+
+Then it updates the production Container App to the versioned image.
+
 ### GitHub Secrets Required
 
 Configure these in repository Settings → Secrets and variables → Actions:
@@ -79,6 +123,15 @@ Configure these in repository Settings → Secrets and variables → Actions:
 | `DEV_ACR_NAME` | Container registry name | `acrkielipankkirec` |
 | `DEV_RESOURCE_GROUP` | Resource group name | `rg-kielipankki-recorder-dev` |
 | `DEV_CONTAINER_APP` | Container app name | `ca-recorder-backend-dev` |
+
+For production, add these additional repository secrets:
+
+- `AZURE_CLIENT_ID`: OIDC app/service principal client ID
+- `AZURE_TENANT_ID`: Azure AD tenant ID
+- `AZURE_SUBSCRIPTION_ID`: **p-sami** subscription ID
+- `PROD_ACR_NAME`: production container registry name
+- `PROD_RESOURCE_GROUP`: production resource group name
+- `PROD_CONTAINER_APP`: production container app name
 
 ### Azure Resources Required
 

@@ -1,0 +1,154 @@
+name: Deploy to Production Environment
+
+on:
+    push:
+        tags:
+            - "v*"
+
+    # Allow manual trigger for a specific image tag
+    workflow_dispatch:
+        inputs:
+            image_tag:
+                description: "Existing image tag to deploy (for example: prod-v1.2.3 or prod-latest)"
+                required: false
+                default: ""
+
+permissions:
+    id-token: write # Required for OIDC authentication
+    contents: read
+
+env:
+    WORKING_DIRECTORY: recorder-backend
+
+jobs:
+    test:
+        name: Run Tests
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: ${{ env.WORKING_DIRECTORY }}
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v5
+
+            - name: Set up Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "3.14"
+                  cache: "pip"
+
+            - name: Install uv
+              run: pip install uv
+
+            - name: Install dependencies
+              run: uv sync
+
+            - name: Run tests
+              run: uv run pytest tests/ -v
+
+    deploy:
+        name: Deploy to Production Container App
+        runs-on: ubuntu-latest
+        needs: test
+
+        defaults:
+            run:
+                working-directory: ${{ env.WORKING_DIRECTORY }}
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v5
+
+            - name: Get short SHA
+              id: vars
+              run: echo "short_sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+            - name: Resolve image tag
+              id: image
+              env:
+                  INPUT_IMAGE_TAG: ${{ github.event.inputs.image_tag }}
+                  GIT_TAG: ${{ github.ref_name }}
+                  SHORT_SHA: ${{ steps.vars.outputs.short_sha }}
+              run: |
+                  if [ -n "${INPUT_IMAGE_TAG}" ]; then
+                    IMAGE_TAG="${INPUT_IMAGE_TAG}"
+                  elif [[ "${GIT_TAG}" == v* ]]; then
+                    IMAGE_TAG="prod-${GIT_TAG}"
+                  else
+                    IMAGE_TAG="prod-${SHORT_SHA}"
+                  fi
+
+                  echo "image_tag=${IMAGE_TAG}" >> $GITHUB_OUTPUT
+                  echo "Using image tag: ${IMAGE_TAG}"
+
+            - name: Azure Login via OIDC
+              uses: azure/login@v2
+              with:
+                  client-id: ${{ secrets.AZURE_CLIENT_ID }}
+                  tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+                  subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+            - name: Login to Azure Container Registry
+              run: |
+                  az acr login --name ${{ secrets.PROD_ACR_NAME }}
+
+            - name: Build and push Docker image
+              if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.image_tag == '' }}
+              env:
+                  ACR_NAME: ${{ secrets.PROD_ACR_NAME }}
+                  IMAGE_TAG: ${{ steps.image.outputs.image_tag }}
+              run: |
+                  IMAGE_NAME="${ACR_NAME}.azurecr.io/recorder-backend"
+
+                  docker build -t ${IMAGE_NAME}:${IMAGE_TAG} \
+                               -t ${IMAGE_NAME}:prod-latest \
+                               .
+
+                  docker push ${IMAGE_NAME}:${IMAGE_TAG}
+                  docker push ${IMAGE_NAME}:prod-latest
+
+                  echo "Pushed images:"
+                  echo "  - ${IMAGE_NAME}:${IMAGE_TAG}"
+                  echo "  - ${IMAGE_NAME}:prod-latest"
+
+            - name: Deploy to Container App
+              id: deploy
+              env:
+                  ACR_NAME: ${{ secrets.PROD_ACR_NAME }}
+                  IMAGE_TAG: ${{ steps.image.outputs.image_tag }}
+                  RESOURCE_GROUP: ${{ secrets.PROD_RESOURCE_GROUP }}
+                  CONTAINER_APP: ${{ secrets.PROD_CONTAINER_APP }}
+                  SHORT_SHA: ${{ steps.vars.outputs.short_sha }}
+              run: |
+                  IMAGE_NAME="${ACR_NAME}.azurecr.io/recorder-backend:${IMAGE_TAG}"
+
+                  az containerapp update \
+                    --name ${CONTAINER_APP} \
+                    --resource-group ${RESOURCE_GROUP} \
+                    --image ${IMAGE_NAME} \
+                    --revision-suffix ${SHORT_SHA}
+
+                  APP_URL=$(az containerapp show \
+                    --name ${CONTAINER_APP} \
+                    --resource-group ${RESOURCE_GROUP} \
+                    --query properties.configuration.ingress.fqdn \
+                    --output tsv)
+
+                  echo "url=https://${APP_URL}" >> $GITHUB_OUTPUT
+                  echo "Deployed to: https://${APP_URL}"
+
+            - name: Deployment Summary
+              env:
+                  APP_URL: ${{ steps.deploy.outputs.url }}
+                  IMAGE_TAG: ${{ steps.image.outputs.image_tag }}
+              run: |
+                  echo "## Deployment Successful! :rocket:" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "**Environment:** Production" >> $GITHUB_STEP_SUMMARY
+                  echo "**Image:** \`${{ secrets.PROD_ACR_NAME }}.azurecr.io/recorder-backend:${IMAGE_TAG}\`" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "### :link: Links" >> $GITHUB_STEP_SUMMARY
+                  echo "- **App URL:** ${APP_URL}" >> $GITHUB_STEP_SUMMARY
+                  echo "- **API Docs:** ${APP_URL}/docs" >> $GITHUB_STEP_SUMMARY
+                  echo "- **Health Check:** ${APP_URL}/" >> $GITHUB_STEP_SUMMARY
