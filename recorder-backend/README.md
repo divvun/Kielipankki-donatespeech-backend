@@ -112,8 +112,9 @@ Set up steps:
   the production ACR and `Contributor` on the production resource group (or
   narrower equivalent roles that still allow Container App updates).
 - Add a federated credential for production releases with subject pattern
-  `repo:<org>/<repo>:ref:refs/tags/v*`.
-- Configure repository GitHub Actions secrets for production values.
+  `repo:divvun/Kielipankki-donatespeech-backend:ref:refs/tags/v*`.
+- Configure repository GitHub Actions secrets for production values using the
+  separate prod Azure names below.
 
 Recommended production secret values:
 
@@ -151,9 +152,9 @@ Configure these in repository Settings → Secrets and variables → Actions:
 
 For production, add these additional repository secrets:
 
-- `AZURE_CLIENT_ID`: OIDC app/service principal client ID
-- `AZURE_TENANT_ID`: Azure AD tenant ID
-- `AZURE_SUBSCRIPTION_ID`: **p-sami** subscription ID
+- `AZURE_PROD_CLIENT_ID`: prod account OIDC app/service principal client ID
+- `AZURE_PROD_TENANT_ID`: prod Azure AD tenant ID
+- `AZURE_PROD_SUBSCRIPTION_ID`: prod subscription ID
 - `PROD_ACR_NAME`: production container registry name
 - `PROD_RESOURCE_GROUP`: production resource group name
 - `PROD_CONTAINER_APP`: production container app name
