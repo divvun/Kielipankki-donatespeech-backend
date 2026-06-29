@@ -1,0 +1,350 @@
+{
+  "mediaState": {
+    "title": "Sääʹmteem",
+    "body1": "",
+    "body2": "",
+    "url": null
+  },
+  "schedule": {
+    "scheduleId": "2ddc0314-8d66-4f54-b2bb-fe9e0b4a9ba0",
+    "start": {
+      "title": "Tiõrv! Hääʹsǩ, ko pueʹttiǩ!",
+      "body1": "Tääiʹben vuäitak mušttled ǩiõlâst, luâđast, leeuʹdin da jeeʹres saaʹmid vääžnai aaʹššin. Mušttal jiijjâd pirr.",
+      "body2": "Mij haaʹleep noorrâd luâđlaž mainstummuž. Teeʹdd ruõppses puål da maainâst. Ij hääid jos mainstak määŋg vuâra seämma ääʹšš.",
+      "url": "foto3_svt.jpg"
+    },
+    "finish": {
+      "title": "Späʹsseb jiânnai - tät-han leäi hiâlbb.",
+      "body1": "Jos tuʹst lie jeänab saaǥǥ, koin mušttled miʹjjid, de vuäitak vaʹlljeed ođđ teemm da saǥstõõllâd lââʹss.",
+      "body2": "Piâzzak täʹst õõutårra liântteed lââʹss: oueʹtti teeʹmm lij ǩiõljeälltummuš.",
+      "url": "foto3_svt.jpg"
+    },
+    "items": [
+      {
+        "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
+        "kind": "media",
+        "itemType": "yle-video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Ǩiõljeälltummuš",
+          "body1": "Tän pääiʹǩest saǥstõõlât ǩiõlljeälltummšest. Uʹčteeʹl Ida Hallantie vuäinn, što uʹcc ǩiõl škooulmäätt lij čuuʹt vääžnai ǩiõlljeälltummša. Ǩiõčč video.",
+          "body2": "Måkkam tobddmõõžž täʹst šâʹdde tuʹnne? Mâiʹd ǩiõlljeälltummuš miârkkšââvv tuʹnne? Leʹbe leäk-a ton vuäǯǯam mättõõzz säämas škooulâst? Teeʹdd mikrofooʹn da mušttal.",
+          "url": "1-76739696"
+        },
+        "recording": {
+          "title": "Ǩiõlljeälltummuš",
+          "body1": "Tän pääiʹǩest saǥstõõlât ǩiõlljeälltummšest. Uʹčteeʹl Ida Hallantie vuäinn, što uʹcc ǩiõl škooulmäätt lij čuuʹt vääžnai ǩiõlljeälltummša. Ǩiõčč video.",
+          "body2": "Måkkam tobddmõõžž täʹst šâʹdde tuʹnne? Mâiʹd ǩiõlljeälltummuš miârkkšââvv tuʹnne? Leʹbe leäk-a ton vuäǯǯam mättõõzz säämas škooulâst?",
+          "url": "1-76739696"
+        },
+        "finish": {
+          "title": "Ǩiõlljeälltummuš",
+          "body1": "Späʹsseb, ko leäk škiâŋkkâm jiijjâd jiõn.",
+          "body2": "Pueʹtti teeʹmm lij leeuʹd.",
+          "url": null
+        }
+      },
+      {
+        "itemId": "677d48d6-0466-430e-abab-b3290d9d3eb6",
+        "kind": "media",
+        "itemType": "yle-video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Leeuʹd",
+          "body1": "Leuʹdd lij saaʹmi vuämm musikkärbbvuõtt, leâša ânnˈjõžääiʹj mäŋggsid tõt iʹlla teänab toodvaž. Tååimteei Kelemeny Saraaʹje leäi vaiggâd mättʼtõõllâd jiijjâs maaddârääkk leeuʹd. Ǩiõčč videost, mäʹhtt tõt mõõʹni.",
+          "body2": "Lij-a leuʹddjummuš tuʹnne toodvaž? Måkkam tuu miõlâst leuʹddjummuš lij? Måkkam leeuʹdin ton tuʹǩǩääk? Mušttal, koon-ne leeuʹd pirr.",
+          "url": "1-76317058"
+        },
+        "recording": {
+          "title": "Leeuʹd",
+          "body1": "Leuʹdd lij saaʹmi vuämm musikkärbbvuõtt, leâša ânnˈjõžääiʹj mäŋggsid tõt iʹlla teänab toodvaž. Tååimteei Kelemeny Saraaʹje leäi vaiggâd mättʼtõõllâd jiijjâs maaddârääkk leeuʹd. Ǩiõčč videost, mäʹhtt tõt mõõʹni.",
+          "body2": "Lij-a leuʹddjummuš tuʹnne toodvaž? Måkkam tuu miõlâst leuʹddjummuš lij? Måkkam leeuʹdin ton tuʹǩǩääk? Mušttal, koon-ne leeuʹd pirr.",
+          "url": null
+        },
+        "finish": {
+          "title": "Takkâ – nuuvt älkkee tot lâi!",
+          "body1": "Späʹsseb, ko leäk škiaŋkkâm jiijjâd jiõn.",
+          "body2": "Pueʹtti teeʹmm lij jåtlõkmiârkk.",
+          "url": null
+        }
+      },
+      {
+        "itemId": "009705f9-66d7-4086-bc11-7be2f996add7",
+        "kind": "media",
+        "itemType": "yle-video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Čuâǥǥaskõõlb",
+          "body1": "Säʹmmlaid leʹčči vääžnai, što sij jälstemvuuʹdin čuâǥǥaskõõlb leʹčče sääʹmǩiõlid. Kuuitâǥ puk paaiʹǩid ij vueiʹt piijâd sääʹmǩiõllsa kõõlbid. Tååimteei Sara Kelemeny mušttal, mäʹhtt tõt leʹčči vueiʹtlvaž.",
+          "body2": "Liâ-a tuu dommsiidâst sääʹmǩiõllsa kõõlb? Mõʹnt sääʹmǩiõllsa kõõlbid taarbšet? Mâid tuʹnne miârkkšââvv dommpäiʹǩǩ? Mušttal, måkkam tobddmõõžž da jurddjid tuʹst šâʹdde tän teeʹmast?",
+          "url": "1-78103990"
+        },
+        "recording": {
+          "title": "Čuâǥǥaskõõlb",
+          "body1": "Säʹmmlaid leʹčči vääžnai, što sij jälstemvuuʹdin čuâǥǥaskõõlb leʹčče sääʹmǩiõlid. Kuuitâǥ puk paaiʹǩid ij vueiʹt piijâd sääʹmǩiõllsa kõõlbid. Tååimteei Sara Kelemeny mušttal, mäʹhtt tõt leʹčči vueiʹtlvaž.",
+          "body2": "Liâ-a tuu dommsiidâst sääʹmǩiõllsa kõõlb? Mõʹnt sääʹmǩiõllsa kõõlbid taarbšet? Mâid tuʹnne miârkkšââvv dommpäiʹǩǩ? Mušttal, måkkam tobddmõõžž da jurddjid tuʹst šâʹdde tän teeʹmast?",
+          "url": "1-78103990"
+        },
+        "finish": {
+          "title": "Čuâǥǥaskõõlb",
+          "body1": "Späʹsseb, ko leäk škiaŋkkâm jiijjâd jiõn.",
+          "body2": "Pueʹtti teeʹmast mainstet piârjest.",
+          "url": "1-78103990"
+        }
+      },
+      {
+        "itemId": "3d0cf80f-44d1-41b3-8d8e-05478b30d41c",
+        "kind": "media",
+        "itemType": "yle-video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Piârr",
+          "body1": "Piâr lie määŋgnallšem. Matleena Fofonoff lij jälstam puärrsab oummivuiʹm, ko suu jiijjâs jeäʹnn jaaʹmi, ko son leäi uʹcc niõđâž. Son mättji puk sääʹmǩiõtt-tuâj sääʹmääkkain da lij jiõčč še mättõõttâm jeärrsid saaʹmi tuâjaid.",
+          "body2": "Mâiʹd ton leäk mättjam jiijjâd piârjest da ââʹldmõs oummuin? Måkam piârr tuʹst lij? Mâid ton laaʹvjak tuejjeed piârjin?",
+          "url": "1-50830628"
+        },
+        "recording": {
+          "title": "",
+          "body1": "Piâr lie määŋgnallšem. Matleena Fofonoff lij jälstam puärrsab oummivuiʹm, ko suu jiijjâs jeäʹnn jaaʹmi, ko son leäi uʹcc niõđâž. Son mättji puk sääʹmǩiõtt-tuâj sääʹmääkkain da lij jiõčč še mättõõttâm jeärrsid saaʹmi tuâjaid.",
+          "body2": "Mâiʹd ton leäk mättjam jiijjâd piârjest da ââʹldmõs oummuin? Måkam piârr tuʹst lij? Mâid ton laaʹvjak tuejjeed piârjin?",
+          "url": "1-50830628"
+        },
+        "finish": {
+          "title": "Piârr",
+          "body1": "Späʹsseb, ko leäk škiaŋkkâm jiijjâd jiõn.",
+          "body2": "Jietnašiella-prograaʹmmin haaʹleet noorrâd luâđlaž mainstummuž siõm ǩiõlin da viikkâd ooudâs tõi ǩiõllmaal.",
+          "url": "1-50830628"
+        }
+      },
+      {
+        "itemId": "5d77f827-1ba3-49fd-9edd-a6c842a7e6d3",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "foto_alina-bystrova.jpg"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "foto9_svt.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "foto_channnsy.jpg"
+        }
+      },
+      {
+        "itemId": "e7db33fd-d514-450a-bb7b-d8dbc01424df",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "foto_djimmer-koster.jpg"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "https://drive.google.com/file/d/1V1FeND4asOnNaSfkJnN3ksHmiO-bURG9/view?usp=sharing"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "url to an image, video or audio"
+        }
+      },
+      {
+        "itemId": "b54de1ef-d7be-4018-9ca4-0a0e6a5cbdd8",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "foto-anna-shvets.jpg"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "foto-anna-shvets.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      },
+      {
+        "itemId": "0da9eb1e-bcef-4200-a846-e2fbe844d904",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "foto2_svt.jpg"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "foto18_svt.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "illustrator_sunna_kuoljok_inga_wiktoria_pave.jpg"
+        }
+      },
+      {
+        "itemId": "73688cf3-73e6-4dfe-9edd-53e465344330",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "foto14_svt.jpg"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "foto13_svt.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "foto4_svt.jpg"
+        }
+      },
+      {
+        "itemId": "ae7fda4f-76c9-4815-b6a1-351a407582ea",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "madssuhrpettersen3.jpg"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "madssuhrpettersen3.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "madssuhrpettersen.jpg"
+        }
+      },
+      {
+        "itemId": "ae7fda4f-76c9-4815-b6a1-351a407582ea",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "foto15_svt.jpg"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "foto15_svt.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "jill-wellington.jpg"
+        }
+      },
+      {
+        "itemId": "165158cf-7b5d-429a-9a91-02f833fc3851",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "foto10_svt.jpg"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "foto10_svt.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "foto10_svt.jpg"
+        }
+      },
+      {
+        "itemId": "c41f5b17-34c5-46a5-a1ec-12546a1530ad",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "sami_beassas_markanat-mads_suhr_pettersen.jpg"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "sami_beassas_markanat-mads_suhr_pettersen.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "url to an image, video or audio"
+        }
+      }
+    ]
+  }
+}

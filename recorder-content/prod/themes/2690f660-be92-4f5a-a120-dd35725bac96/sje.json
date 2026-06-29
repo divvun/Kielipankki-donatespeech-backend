@@ -1,0 +1,325 @@
+{
+  "mediaState": {
+    "title": "Sáme tiema",
+    "body1": "",
+    "body2": "",
+    "url": null
+  },
+  "schedule": {
+    "scheduleId": "3bf96c48-7917-4a1c-8d70-3835ab092f8b",
+    "start": {
+      "title": "Gijjto gu gussuda mijav!",
+      "body1": "Dánne dån máhtá gähttot natuvra, jáhpeäjgij, iemelágatj dåjmåj ja bisij birra.",
+      "body2": "Mija sihtap tjuhkkit albma hålåv. Ij daga akktagav jus dån ginuga jala mubbádis ságasta.",
+      "url": "foto21_svt.jpg"
+    },
+    "finish": {
+      "title": "Iedna gijto!",
+      "body1": "",
+      "body2": "Alode rádnajt ja fuolkev hålåv vaddet mijjij áj.",
+      "url": "foto3_svt.jpg"
+    },
+    "items": [
+      {
+        "itemId": "c117a6da-621b-40b4-8dc9-923a43de6160",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "https://api.svt.se/videoplayer-embed/e7dVG2E"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": null
+        },
+        "finish": {
+          "title": "Gijjto gu viddi ietjat giehtov!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      },
+      {
+        "itemId": "9c328c42-932a-4929-a208-a8918fece174",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "https://api.svt.se/videoplayer-embed/e7dVG2E"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": null
+        },
+        "finish": {
+          "title": "Gijjto gu viddi ietjat giehtov!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      },
+      {
+        "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Saje birra",
+          "body1": "Giehto dan saje birra gusste bådá, jala saje birra mij lä ájnas dunji.",
+          "body2": "Depptji gruodna spiellambålov ja álge gähttot saje birra.",
+          "url": "foto_svt.jpg"
+        },
+        "recording": {
+          "title": "Saje birra",
+          "body1": "Giehto dan saje birra gusste bådá, jala saje birra mij lä ájnas dunji.",
+          "body2": "Gu lä fierok, depptji ruppsis spiellambålov.",
+          "url": "foto_svt.jpg"
+        },
+        "finish": {
+          "title": "Gijjto - nåv állke lij!",
+          "body1": "",
+          "body2": "Ja dál lä tiema jáhpeäjgij birra.",
+          "url": "foto_michael_koneckiy.jpg"
+        }
+      },
+      {
+        "itemId": "970c4c8b-e277-41aa-801a-b4585549239f",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Jáhpeájge birra",
+          "body1": "Giehto jáhpeájge birra gåsse dån aná iedna bargov. Giehto mav dån dä daga.",
+          "body2": "Depptji gruodna spiellambålov ja álge gähttot",
+          "url": "foto26_svt.jpg"
+        },
+        "recording": {
+          "title": "Jáhpeájge birra",
+          "body1": "Giehto jáhpeájge birra gåsse dån aná iedna bargov. Giehto mav dån dä daga.",
+          "body2": "Giehto ienap jáhpeäjgij birra, jus sida.",
+          "url": "foto26_svt.jpg"
+        },
+        "finish": {
+          "title": "Gijjto gu gehttu!",
+          "body1": "",
+          "body2": "Man iedna hålå dån lä vaddám vuojná bajjen ålges tjiegan.",
+          "url": "foto_tom_fisk.jpg"
+        }
+      },
+      {
+        "itemId": "5d77f827-1ba3-49fd-9edd-a6c842a7e6d3",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Iemelágatj dåjmåj birra",
+          "body1": "Gulli dån, bivdá dån, tjåggá murjijt, tjuola muorajt, barga gierdan, njuova buhtsujt jala iehtjágav?",
+          "body2": "Gu lä depptjim gruodna spiellambålov, dä máhtá állget gähttot.",
+          "url": "foto_alina-bystrova.jpg"
+        },
+        "recording": {
+          "title": "Iemelágatj dåjmåj birra",
+          "body1": "Gulli dån, bivdá dån, tjåggá murjijt, tjuola muorajt, barga gierdan, njuova buhtsujt jala iehtjágav?",
+          "body2": "Gukkte dån barga dajna? Gie lä dunji dav lieradam?",
+          "url": "foto9_svt.jpg"
+        },
+        "finish": {
+          "title": "Gijjto vistik!",
+          "body1": "Dån lä buoragav dahkam :)",
+          "body2": "Dál lä ájjge ságastit gárvoj ja gärrvudime birra.",
+          "url": "foto_channnsy.jpg"
+        }
+      },
+      {
+        "itemId": "e7db33fd-d514-450a-bb7b-d8dbc01424df",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Sámegiela birra",
+          "body1": "Gukkte dån lä lierram sámegielav?",
+          "body2": "Mav sámegiella dunji merrkija?",
+          "url": "foto_djimmer-koster.jpg"
+        },
+        "recording": {
+          "title": "Sámegiela birra",
+          "body1": "Gukkte dån lä lierram sámegielav?",
+          "body2": "Mav sámegiella dunji merrkija? Mav dån usjuda sámegiela båhtej ájge birra?",
+          "url": "https://drive.google.com/file/d/1V1FeND4asOnNaSfkJnN3ksHmiO-bURG9/view?usp=sharing"
+        },
+        "finish": {
+          "title": "Iedna suohtas ussjulmasa!",
+          "body1": "",
+          "body2": "",
+          "url": "url to an image, video or audio"
+        }
+      },
+      {
+        "itemId": "0da9eb1e-bcef-4200-a846-e2fbe844d904",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Subbtsasa ja giehto",
+          "body1": "Dåbdå dån náganav dájst? Gunne lä dån gullam dav?",
+          "body2": "Dåbdå dån nágan subbtsasijt vaj giehtojt mav máhtá gähttot?",
+          "url": "foto2_svt.jpg"
+        },
+        "recording": {
+          "title": "Subbtsasa ja giehto",
+          "body1": "Dåbdå dån náganav dájst? Gunne lä dån gullam dav?",
+          "body2": "Dåbdå dån nágan subbtsasijt vaj giehtojt mav sida gähttot?",
+          "url": "foto18_svt.jpg"
+        },
+        "finish": {
+          "title": "Tjábba gähtto!",
+          "body1": "Dál lä ájjge ságastit gárvoj ja gärrvudime birra.",
+          "body2": "",
+          "url": "illustrator_sunna_kuoljok_inga_wiktoria_pave.jpg"
+        }
+      },
+      {
+        "itemId": "73688cf3-73e6-4dfe-9edd-53e465344330",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Gärrvudibme",
+          "body1": "Giehto gukkte dån bruvvku gärrvudit.",
+          "body2": "",
+          "url": "foto14_svt.jpg"
+        },
+        "recording": {
+          "title": "Gärrvudibme",
+          "body1": "Giehto gukkte dån bruvvku gärrvudit.",
+          "body2": "Maggár gárvojgum dån álgá? Ja nåv vil...?",
+          "url": "foto13_svt.jpg"
+        },
+        "finish": {
+          "title": "Gijjto gu gehttu gärrvudime birra!",
+          "body1": "",
+          "body2": "",
+          "url": "foto4_svt.jpg"
+        }
+      },
+      {
+        "itemId": "ae7fda4f-76c9-4815-b6a1-351a407582ea",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Giehto juogadasaj birra.",
+          "body1": "Dánne lä guäkkte gåvå ma lä akktalágatj.",
+          "body2": "Gu lä depptjim gruodna spiellambålov, dä máhtá gähttot juogadasaj birra.",
+          "url": "madssuhrpettersen3.jpg"
+        },
+        "recording": {
+          "title": "Giehto juogadasaj birra.",
+          "body1": "Dánne lä guäkkte gåvå ma lä akktalágatj.",
+          "body2": "Giehto juogadasaj birra.",
+          "url": "madssuhrpettersen3.jpg"
+        },
+        "finish": {
+          "title": "Man buorak gu gävdni juogadasajt!",
+          "body1": "Dánne bajjen vuojná galle minuvta dån lä vaddám, gijtov ane!",
+          "body2": "Dál lä ájjge ságastit dálke birra.",
+          "url": null
+        }
+      },
+      {
+        "itemId": "ae7fda4f-76c9-4815-b6a1-351a407582ea",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Dállke",
+          "body1": "Gu lä depptjim gruodna spiellambålov, dä máhtá gähttot dán jábe dálke birra.",
+          "body2": "",
+          "url": "foto15_svt.jpg"
+        },
+        "recording": {
+          "title": "Dállke",
+          "body1": "Gukkte lä dállke urrum dán jáben?",
+          "body2": "Lä dállke virrtum gåssátj dån li mánná?",
+          "url": "foto15_svt.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "jill-wellington.jpg"
+        }
+      },
+      {
+        "itemId": "165158cf-7b5d-429a-9a91-02f833fc3851",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Base",
+          "body1": "Vällji aktav vaj ienap bisijt ja giehto daj birra.",
+          "body2": "Manen lä ájnas? Mav dån bruvvku dahkat?",
+          "url": "foto10_svt.jpg"
+        },
+        "recording": {
+          "title": "",
+          "body1": "Base lä åvvdåmärrkan: Sämij älbmukbäjjve, bässátja, jåvlå, Válbårrjå, jåvdnåsa, festivála, Sámi Grand Prix",
+          "body2": "Manen lä ájnas? Mav dån bruvvku dahkat?",
+          "url": "foto10_svt.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "Dál mija sihtap gullat artista jala gåvvåtjiehpe birra mav tuhttji.",
+          "url": "foto10_svt.jpg"
+        }
+      },
+      {
+        "itemId": "c41f5b17-34c5-46a5-a1ec-12546a1530ad",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Giehto artista jala gåvvåtjiehpe birra mav dån tuhttji",
+          "body1": "Gusste dát artissta båhtá? Mav sån dahká? Manen dån tuhttji suv?",
+          "body2": "Depptji gruodna spiellambålov ja álge gähttot.",
+          "url": "sami_beassas_markanat-mads_suhr_pettersen.jpg"
+        },
+        "recording": {
+          "title": "Giehto artista jala gåvvåtjiehpe birra mav dån tuhttji",
+          "body1": "Gusste dát artissta båhtá? Mav sån dahká? Manen dån tuhttji suv?",
+          "body2": "",
+          "url": "sami_beassas_markanat-mads_suhr_pettersen.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "url to an image, video or audio"
+        }
+      }
+    ]
+  }
+}

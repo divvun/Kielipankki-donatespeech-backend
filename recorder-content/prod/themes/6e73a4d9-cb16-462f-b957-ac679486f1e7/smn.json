@@ -1,0 +1,525 @@
+{
+  "mediaState": {
+    "title": "Sämifáádáh anarâškielân",
+    "body1": "",
+    "body2": "",
+    "url": null
+  },
+  "schedule": {
+    "scheduleId": "c48c5243-7cd2-49c7-a130-77854117fe58",
+    "start": {
+      "title": "Takkâ ko kolliih mii kulen!",
+      "body1": "Tääbbin puávtáh muštâliđ maaŋgâlágánijn argâpeeivi aašijn tego luándust, speelâin já niävdusijn.",
+      "body2": "Mij halijdep čokkiđ luándulâš kielâkevttim. Ij häittid, jis pisánah teikkâ kiärduh saavâid",
+      "url": "foto21_svt.jpg"
+    },
+    "finish": {
+      "title": "Takkâ ennuv!",
+      "body1": "Jis tust lii eenâb maid halijdah muštâliđ, te valjii eres fáádá já skeŋkkii vala eenâb jienâd mijjân!",
+      "body2": "Háástut tuu ustevijd já perruu meiddei skeŋkkiđ sii kuávlukielâ mijjân.",
+      "url": "foto3_svt.jpg"
+    },
+    "items": [
+      {
+        "itemId": "58c791a7-d4ec-44bb-b6bd-e4c7f7647981",
+        "kind": "media",
+        "itemType": "yle-video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Mađhâšem",
+          "body1": "Maht mađhâšem vaaigut tuu päikkikode ässei aargân? Mon ennuv mađhâšeijeeh láá tuu mielâst tuárvi?",
+          "body2": "Teddil ruánáá paddimpuálu já muštâlškyeđe.",
+          "url": "1-76507326"
+        },
+        "recording": {
+          "title": "Mađhâšem",
+          "body1": "Maht mađhâšem vaaigut Aanaar ässei aargân? Mon ennuv mađhâšeijeeh láá tuu mielâst tuárvi.",
+          "body2": "Ko tun lah vaalmâs, teddil ruopsis paddimpáálu.",
+          "url": "1-76507326"
+        },
+        "finish": {
+          "title": "Takkâ – nuuvt älkkee tot lâi!",
+          "body1": "",
+          "body2": "Te sárnoon speelâin.",
+          "url": "1-76507326"
+        }
+      },
+      {
+        "itemId": "57d465f9-644f-4c0d-ac89-ad0130d49200",
+        "kind": "media",
+        "itemType": "yle-video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Speelah",
+          "body1": "Kielâpiervâlist spellih uđđâ muštospellâkortijguin. Magarijd speelâid lah spellâm? Lah-uv spellâm sämikielân?",
+          "body2": "Teddil ruánáá paddimpuálu já puávtáh muštâliđ.",
+          "url": "1-63615055"
+        },
+        "recording": {
+          "title": "Speelah",
+          "body1": "Kielâpiervâlist spellih uđđâ muštospellâkortijguin. Magarijd speelâid lah spellâm? Lah-uv spellâm sämikielân?",
+          "body2": "Ko tun lah vaalmâs, teddil ruopsis paddimpáálu.",
+          "url": "1-63615055"
+        },
+        "finish": {
+          "title": "Takkâ ko muštâlih!",
+          "body1": "",
+          "body2": "Čuávuvâžžân lii saahâ niävdusijn.",
+          "url": "1-63615055"
+        }
+      },
+      {
+        "itemId": "5f9beebd-609e-43d6-b059-fbc247277561",
+        "kind": "media",
+        "itemType": "yle-video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Niävduseh",
+          "body1": "Riikka Morottaja muštâl ravvuid, maht čuávvuđ niävdusijd. Magareh niävduseh tust láá?",
+          "body2": "Teddil ruánáá paddimpuálu já muštâl tuu niävdusijn.",
+          "url": "1-66190297"
+        },
+        "recording": {
+          "title": "Niävduseh",
+          "body1": "Riikka Morottaja muštâl ravvuid, maht čuávvuđ niävdusijd. Magareh niävduseh tust láá?",
+          "body2": "Ko tun lah vaalmâs, teddil ruopsis paddimpáálu.",
+          "url": "1-66190297"
+        },
+        "finish": {
+          "title": "Takkâ – Tuáivui mield juuvsah tuu niävdusijd!",
+          "body1": "",
+          "body2": "Talle sárnoon aašijn, maid puáhtá porgâđ tälviv.",
+          "url": "1-66190297"
+        }
+      },
+      {
+        "itemId": "f078fae5-fd79-4da9-91de-84b8a665882",
+        "kind": "media",
+        "itemType": "yle-video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Tälvipuđâldâsah",
+          "body1": "Anne-Karhu Angeli lii tälviolmooš. Maid tun laaviih porgâđ tälviv?",
+          "body2": "Teddil ruánáá paddimpuálu já puávtáh muštâliđ.",
+          "url": "1-72558114"
+        },
+        "recording": {
+          "title": "Tälvipuđâldâsah",
+          "body1": "Anne-Karhu Angeli lii tälviolmooš. Maid tun laaviih porgâđ tälviv?",
+          "body2": "Ko tun lah vaalmâs, teddil ruopsis paddimpáálu.",
+          "url": "1-72558114"
+        },
+        "finish": {
+          "title": "Takkâ ko muštâlih!",
+          "body1": "",
+          "body2": "Čuávuvâžžân lii saahâ pääihi ääigiájánâsâin.",
+          "url": "1-72558114"
+        }
+      },
+      {
+        "itemId": "7aac4c63-4d85-4be8-8f04-6d75a0190703",
+        "kind": "media",
+        "itemType": "yle-video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Päikkipuđâldâsah",
+          "body1": "Justus Paadar áásá škoovlâ asâttuvâst, kost láá ennuv äigiájánâsah. Maggaar lii tuu päikki, kost tun aasah? Magarijd aašijd tun laaviih porgâđ pääihist rijjâääigi?",
+          "body2": "Teddil ruánáá paddimpuálu já muštâl tuu niävdusijn.",
+          "url": "1-76360185"
+        },
+        "recording": {
+          "title": "Päikkipuđâldâsah",
+          "body1": "Justus Paadar áásá škoovlâ asâttuvâst, kost láá ennuv äigiájánâsah. Maggaar lii tuu päikki, kost tun aasah? Magarijd aašijd tun laaviih porgâđ pääihist rijjâääigi?",
+          "body2": "Ko tun lah vaalmâs, teddil ruopsis paddimpáálu.",
+          "url": "1-76360185"
+        },
+        "finish": {
+          "title": "Takkâ saavâin.",
+          "body1": "",
+          "body2": "",
+          "url": "1-76360185"
+        }
+      },
+      {
+        "itemId": "5e3ec2e9-29b8-4152-b113-aae96f03f6be",
+        "kind": "media",
+        "itemType": "yle-video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Anarâškielâ oppâm",
+          "body1": "Taah láá Säämi máttááttâskuávdáá anarâškielâ uáppeeh. Kost já maht tun lah oppâm anarâškielâ?",
+          "body2": "Teddil ruánáá paddimpuálu já muštâlškyeđe.",
+          "url": "1-76356814"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "Ko tun lah vaalmâs, teddil ruopsis paddimpáálu.",
+          "url": "1-76356814"
+        },
+        "finish": {
+          "title": "Takkâ ko muštâlih kielâst.",
+          "body1": "",
+          "body2": "Te sárnoon sämikielâ kevttimist pargoost",
+          "url": "1-76356814"
+        }
+      },
+      {
+        "itemId": "5ea72540-5fdf-43d4-b237-41bb1d1725f",
+        "kind": "media",
+        "itemType": "yle-video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Sämikielâ pargoost",
+          "body1": "Neeta Jääskö jienâčaittâl Uccâ Myy muumijn. Kiävtáh-uv tun sämikielâ pargoost? Maggaar pargo tun poorgah?",
+          "body2": "Teddil ruánáá paddimpuálu já puávtáh muštâliđ.",
+          "url": "1-77157506"
+        },
+        "recording": {
+          "title": "Sämikielâ pargoost",
+          "body1": "Neeta Jääskö jienâčaittâl Uccâ Myy muumijn. Kiävtáh-uv tun sämikielâ pargoost? Maggaar pargo tun poorgah?",
+          "body2": "Ko tun lah vaalmâs, teddil ruopsis paddimpáálu.",
+          "url": "1-77157506"
+        },
+        "finish": {
+          "title": "Takkâ ko muštâlih tuu pargoost!",
+          "body1": "",
+          "body2": "Talle lii sárnoon kirjálâšvuođâst.",
+          "url": "1-77157506"
+        }
+      },
+      {
+        "itemId": "150f1a15-ca59-4494-9b70-415310a8e609",
+        "kind": "media",
+        "itemType": "yle-video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Kirjeh",
+          "body1": "Ritva Kangasniemi čáittá puáris kielâpiervâl párnáikiirjijd. Magarijd kiirjijd tun käibidiččih eenâb anarâškielân?",
+          "body2": "Teddil ruánáá paddimpuálu, te uážuh muštâliđ.",
+          "url": "1-76207667"
+        },
+        "recording": {
+          "title": "Kirjeh",
+          "body1": "Ritva Kangasniemi čáittá puáris kielâpiervâl párnáikiirjijd. Magarijd kiirjijd tun käibidiččih eenâb anarâškielân?",
+          "body2": "Ko tun lah vaalmâs, teddil ruopsis paddimpáálu.",
+          "url": "1-76207667"
+        },
+        "finish": {
+          "title": "Takkâ ko muštâlih!",
+          "body1": "",
+          "body2": "Čuávuvâš teema lii kuávlukielah.",
+          "url": "1-76207667"
+        }
+      },
+      {
+        "itemId": "47aa9901-0adc-4c04-bcde-33f74e18f4cf",
+        "kind": "media",
+        "itemType": "yle-video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Kuávlukielah",
+          "body1": "Martta Alajärvi muštâl ááhus ettâmvuovijn. Magarijd kuávlukielâi iäruid tun tiäđáh? Tâi magareh anarâškielâ säänih láá tagareh, maid eres sämikielâ sárnooh iä ibbeerd?",
+          "body2": "Teddil ruánáá paddimpuálu já puávtáh muštâliđ.",
+          "url": "1-72313353"
+        },
+        "recording": {
+          "title": "Kuávlukielah",
+          "body1": "Martta Alajärvi muštâl ááhus ettâmvuovijn. Magarijd kuávlukielâi iäruid tun tiäđáh? Tâi magareh anarâškielâ säänih láá tagareh, maid eres sämikielâ sárnooh iä ibbeerd?",
+          "body2": "Ko tun lah vaalmâs, teddil ruopsis paddimpáálu.",
+          "url": "1-72313353"
+        },
+        "finish": {
+          "title": "Takkâ ko muštâlih!",
+          "body1": "",
+          "body2": "",
+          "url": "1-72313353"
+        }
+      },
+      {
+        "itemId": "c714b839-fe75-4672-b61a-a2549abe195d",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Tiäđuh saajeest",
+          "body1": "Muštâl saje kost tun lah meddâl, teikkâ saajeest mii lii tunjin tehálâš.",
+          "body2": "Teddil ruánáá paddimpuálu já äälgi mustâliđ saajeest.",
+          "url": "foto_svt.jpg"
+        },
+        "recording": {
+          "title": "Tiäđuh saajeest",
+          "body1": "Muštâl saajeest kost tun lah meddâl, teikkâ maidnii saajeest mii lii tunjin tehâlâš.",
+          "body2": "Ko tun lah vaalmâs, teddil ruopsis paddimpáálu.",
+          "url": "foto_svt.jpg"
+        },
+        "finish": {
+          "title": "Takkâ – nuuvt älkkee tot lâi!",
+          "body1": "",
+          "body2": "Te vijđásubbooht iveäigifáádán.",
+          "url": "foto_michael_koneckiy.jpg"
+        }
+      },
+      {
+        "itemId": "970c4c8b-e277-41aa-801a-b4585549239f",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Iveaaigijn",
+          "body1": "Muštâl iveääigist, mast tust láá ennuv tooimah. Muštâl maid tun laaviih porgâđ.",
+          "body2": "Tddil ruánáá paddimpuálu já äälgi mustâliđ.",
+          "url": "foto26_svt.jpg"
+        },
+        "recording": {
+          "title": "Iveaaigijn",
+          "body1": "Muštâl iveääigist, mast tust láá ennuv tooimah. Muštâl maid tun laaviih porgâđ.",
+          "body2": "Tun uážuh kale muštâliđ eenâb-uv iveaaigijn, jis halijdah.",
+          "url": "foto26_svt.jpg"
+        },
+        "finish": {
+          "title": "Takkâ ko muštâlih!",
+          "body1": "",
+          "body2": "",
+          "url": "foto_tom_fisk.jpg"
+        }
+      },
+      {
+        "itemId": "5d77f827-1ba3-49fd-9edd-a6c842a7e6d3",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Ärbivuáválijn pargoin",
+          "body1": "Laaviih-uv pivdeđ, tuoijuđ, muorjiđ, muorriđ, pygálystiđ, njuovvâđ teikkâ muide?",
+          "body2": "Ko lah teddilâm ruánáá paddimpuálu, te uážuh muštâlškyettiđ.",
+          "url": "foto_alina-bystrova.jpg"
+        },
+        "recording": {
+          "title": "Ärbivuáválijn pargoin",
+          "body1": "Laaviih-uv pivdeđ, tuoijuđ, muorjiđ, muorriđ, pygálystiđ, njuovvâđ teikkâ muide?",
+          "body2": "Maht tun laaviih taam porgâđ? Kii lii máttááttâm taam tunjin?",
+          "url": "foto9_svt.jpg"
+        },
+        "finish": {
+          "title": "Takkâ oppeet!",
+          "body1": "Tun lah ráhtám uáli šiev pargo :)",
+          "body2": "Talle ličij äigi sárnuđ sämikielâst.",
+          "url": "foto_channnsy.jpg"
+        }
+      },
+      {
+        "itemId": "e7db33fd-d514-450a-bb7b-d8dbc01424df",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Sämikielâst",
+          "body1": "Maht tun lah oppâm sämikielâ?",
+          "body2": "Maid sämikielâ meerhâš tunjin?",
+          "url": "foto_djimmer-koster.jpg"
+        },
+        "recording": {
+          "title": "Sämikielâst",
+          "body1": "Maht tun lah oppâm sämikielâ?",
+          "body2": "Maid sämikielâ meerhâš tunjin? Maid jurdâččah sämikielâ puátteevuođâst?",
+          "url": "https://drive.google.com/file/d/1V1FeND4asOnNaSfkJnN3ksHmiO-bURG9/view?usp=sharing"
+        },
+        "finish": {
+          "title": "Mielâkiddiivâš jurduuh!",
+          "body1": "",
+          "body2": "",
+          "url": "url to an image, video or audio"
+        }
+      },
+      {
+        "itemId": "b54de1ef-d7be-4018-9ca4-0a0e6a5cbdd8",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Äijihist teikkâ ááhust",
+          "body1": "Muštâl kiästnii puáris hyelhist, kii lii porgâm maidnii eromâš teikkâ kii lii mávsulâš tunjin.",
+          "body2": "",
+          "url": "foto-anna-shvets.jpg"
+        },
+        "recording": {
+          "title": "Äijihist teikkâ ááhust",
+          "body1": "Muštâl kiästnii puáris hyelhist, kii lii porgâm maidnii eromâš teikkâ kii lii mávsulâš tunjin.",
+          "body2": "",
+          "url": "foto-anna-shvets.jpg"
+        },
+        "finish": {
+          "title": "Takkâ taan mainâsist!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      },
+      {
+        "itemId": "0da9eb1e-bcef-4200-a846-e2fbe844d904",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Maainâs, muštâlus",
+          "body1": "Tuubdâh-uv oovtâ täin? Maid tun lah kuullâm täst?",
+          "body2": "Tuubdâh-uv mainâsijd, maid puávtáh muštâliđ?",
+          "url": "foto2_svt.jpg"
+        },
+        "recording": {
+          "title": "Maainâs, muštâlus",
+          "body1": "Tuubdâh-uv oovtâ täin? Maid tun lah kuullâm täst?",
+          "body2": "Tuubdâh-uv mainâsijd, maid puávtáh muštâliđ?",
+          "url": "foto18_svt.jpg"
+        },
+        "finish": {
+          "title": "Šiev maainâs!",
+          "body1": "Talle ličij äigi sárnuđ pihtâsijn já káárvuin.",
+          "body2": "",
+          "url": "illustrator_sunna_kuoljok_inga_wiktoria_pave.jpg"
+        }
+      },
+      {
+        "itemId": "73688cf3-73e6-4dfe-9edd-53e465344330",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Kárvudâttâm",
+          "body1": "Muštâl maht tun laaviih kárvudâttâđ.",
+          "body2": "",
+          "url": "foto14_svt.jpg"
+        },
+        "recording": {
+          "title": "Kárvudâttâm",
+          "body1": "Muštâl maht tun laaviih kárvudâttâđ.",
+          "body2": "Magarijd pihtâsijd tun kárvudâđah vuosmustáá? Ja te...?",
+          "url": "foto13_svt.jpg"
+        },
+        "finish": {
+          "title": "Takkâ ko muštâlih pihtâsijn!",
+          "body1": "",
+          "body2": "",
+          "url": "foto4_svt.jpg"
+        }
+      },
+      {
+        "itemId": "ae7fda4f-76c9-4815-b6a1-351a407582ea",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Muštâl iäruin",
+          "body1": "Taa láá kyehti kove, moh láá masa siämmáálágáneh.",
+          "body2": "Ko lah teddilâm ruánáá paddimpuálu, te muštâl iäruin.",
+          "url": "madssuhrpettersen3.jpg"
+        },
+        "recording": {
+          "title": "Muštâl iäruin",
+          "body1": "Taa láá kyehti kove, moh láá masa siämmáálágáneh.",
+          "body2": "Muštâl iäruin.",
+          "url": "madssuhrpettersen3.jpg"
+        },
+        "finish": {
+          "title": "Pyeri ko kavnih iäruid!",
+          "body1": "Taa paajaabeln uáináh kalle miinut tun lah skeŋkkim mijjân, takkâ ennuv!",
+          "body2": "Te ličij äigi muštâliđ šooŋâst.",
+          "url": "madssuhrpettersen.jpg"
+        }
+      },
+      {
+        "itemId": "ae7fda4f-76c9-4815-b6a1-351a407582ea",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Šoŋŋâ",
+          "body1": "Ko lah teddilâm ruánáá paddimpuálu, te muštâl maggaar šoŋŋâ lii lamaš taan ive.",
+          "body2": "",
+          "url": "foto15_svt.jpg"
+        },
+        "recording": {
+          "title": "Šoŋŋâ",
+          "body1": "Maggaar šoŋŋâ lii lamaš taan ive?",
+          "body2": "Lii-uv šoŋŋâ nubástum tuu pärnivuođâ rääjist?",
+          "url": "foto15_svt.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "jill-wellington.jpg"
+        }
+      },
+      {
+        "itemId": "165158cf-7b5d-429a-9a91-02f833fc3851",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Merkkâpeeivih já paseh",
+          "body1": "Vääldi oovtâ teikkâ maŋgâ merkkâpeeivi teikkâ pase já muštâl tast.",
+          "body2": "Mondiet tot lii tehâlâš? Maid tun laaviih porgâđ talle?",
+          "url": "foto10_svt.jpg"
+        },
+        "recording": {
+          "title": "Merkkâpeeivih já paseh",
+          "body1": "Ovdâmeerhah láá: Säämi aalmugpeivi, pessijááh, juovlah, válbur, Máárjápeivi, jonsahpeivi, festivaaleh, Sámi Grand Prix",
+          "body2": "Mondiet tot lii tehâlâš? Maid tun laaviih porgâđ talle?",
+          "url": "foto10_svt.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "Te halijdiččijm kuullâđ artistist teikkâ taidârist kotemužân tun lijkkuuh.",
+          "url": "foto10_svt.jpg"
+        }
+      },
+      {
+        "itemId": "c41f5b17-34c5-46a5-a1ec-12546a1530ad",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Muštâl artistist teikkâ taidârist kotemužân tun lijkkuuh.",
+          "body1": "Kost sun lii meddâl? Maid sun läävee porgâđ? Mondiet tun lijkkuuh sunjin?",
+          "body2": "Teddil ruánáá paddimpuálu já äälgi mustâliđ :)",
+          "url": "sami_beassas_markanat-mads_suhr_pettersen.jpg"
+        },
+        "recording": {
+          "title": "Muštâl artistist teikkâ taidârist kotemužân tun lijkkuuh",
+          "body1": "Kost sun lii meddâl? Maid sun läävee porgâđ? Mondiet tun lijkkuuh sunjin?",
+          "body2": "",
+          "url": "sami_beassas_markanat-mads_suhr_pettersen.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      }
+    ]
+  }
+}

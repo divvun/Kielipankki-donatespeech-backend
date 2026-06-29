@@ -1,0 +1,400 @@
+{
+  "mediaState": {
+    "title": "Sámi fáttát",
+    "body1": "",
+    "body2": "",
+    "url": null
+  },
+  "schedule": {
+    "scheduleId": "2ddc0314-8d66-4f54-b2bb-fe9e0b4a9ba0",
+    "start": {
+      "title": "Giitu go finadat dás!",
+      "body1": "Dás sáhtát earret eará muitalit luonddu, dálkki, jagiáiggiid ja mearkabeiviid birra.",
+      "body2": "Mii háliidit čohkket lunddolaš hupmama. Jus bisánasttát ja geardduhat ságáid, de dat ii daga maidege.",
+      "url": "foto21_svt.jpg"
+    },
+    "finish": {
+      "title": "Eatnat giitu!",
+      "body1": "Jus dus leat eanat maid háliidat muitalat, válljes eará fáttá ja juollut vel eanet du jienas midjiide!",
+      "body2": "Hástal iežat ustibiid ja bearraša maid skeŋket sin suopmana midjiide.",
+      "url": "foto3_svt.jpg"
+    },
+    "items": [
+      {
+        "itemId": "602a6168-f980-483e-be7b-d11614ddb5ac",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Báikki birra",
+          "body1": "Muital báikki gos don leat eret, dahje báikki birra mii lea dehálaš dutnje.",
+          "body2": "Deaddil ruoná báddenboalu, ja álgge muitalit báikki birra.",
+          "url": "foto_svt.jpg"
+        },
+        "recording": {
+          "title": "Báikki birra",
+          "body1": "Muital báikki gos don leat eret, dahje báikki birra mii lea dehálaš dutnje.",
+          "body2": "Go leat geargan, deaddil rukses báddenboalu.",
+          "url": "foto_svt.jpg"
+        },
+        "finish": {
+          "title": "Giitu – nu álki dat lei!",
+          "body1": "",
+          "body2": "De viidáseappot jagiáigefáddái.",
+          "url": "foto_michael_koneckiy.jpg"
+        }
+      },
+      {
+        "itemId": "970c4c8b-e277-41aa-801a-b4585549239f",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Jagiáiggi birra",
+          "body1": "Muital jagiáiggi birra mas dus leat ollu doaimmat. Muital maid lávet bargat.",
+          "body2": "Deaddil ruoná báddenboalu, ja álgge muitalit.",
+          "url": "foto26_svt.jpg"
+        },
+        "recording": {
+          "title": "Jagiáiggi birra",
+          "body1": "Muital jagiáiggi birra mas dus leat ollu doaimmat. Muital maid lávet bargat.",
+          "body2": "Oaččut gal muitalit eanetge jagiáiggiid birra, jus háliidat.",
+          "url": "foto26_svt.jpg"
+        },
+        "finish": {
+          "title": "Giitu go muitalit!",
+          "body1": "Du skeaŋka lea stuoridan hupmančoakkáldaga.",
+          "body2": "Galle minuhta leat skeŋken oainnát badjin olgešbealde",
+          "url": "foto_tom_fisk.jpg"
+        }
+      },
+      {
+        "itemId": "5d77f827-1ba3-49fd-9edd-a6c842a7e6d3",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Árbevirolaš bargguid birra",
+          "body1": "Lávetgo bivdit, duddjot, murjet, murret, gárddástallat, njuovvat dahje eará?",
+          "body2": "Go leat deaddilan báddenboalu, de oaččut muitališgoahtit.",
+          "url": "foto_alina-bystrova.jpg"
+        },
+        "recording": {
+          "title": "Árbevirolaš bargguid birra",
+          "body1": "Lávetgo bivdit, duddjot, murjet, murret, gárddástallat, njuovvat dahje eará?",
+          "body2": "Mo don lávet dan bargat? Gii lea dan oahpahan dutnje?",
+          "url": "foto9_svt.jpg"
+        },
+        "finish": {
+          "title": "Giitu fas!",
+          "body1": "Don leat dahkan hui buorre barggu :)",
+          "body2": "Dasto livččii áigi hupmat sámegiela birra.",
+          "url": "foto_channnsy.jpg"
+        }
+      },
+      {
+        "itemId": "e7db33fd-d514-450a-bb7b-d8dbc01424df",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Sámegiela birra",
+          "body1": "Mo don leat oahppan sámegiela?",
+          "body2": "Maid sámegiella mearkkaša dutnje?",
+          "url": "foto_djimmer-koster.jpg"
+        },
+        "recording": {
+          "title": "Sámegiela birra",
+          "body1": "Mo don leat oahppan sámegiela?",
+          "body2": "Maid sámegiella mearkkaša dutnje? Maid jurddašat sámegiela boahtteáiggi birra?",
+          "url": "https://drive.google.com/file/d/1V1FeND4asOnNaSfkJnN3ksHmiO-bURG9/view?usp=sharing"
+        },
+        "finish": {
+          "title": "Miellagiddevaš jurdagat!",
+          "body1": "",
+          "body2": "Boahtte fáddá lea lágaš olbmuid birra.",
+          "url": "url to an image, video or audio"
+        }
+      },
+      {
+        "itemId": "b54de1ef-d7be-4018-9ca4-0a0e6a5cbdd8",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Ádjá dahje áhku birra",
+          "body1": "Muital muhtun boares fuolkki birra gii lea bargan juoidá erenoamážit, dahje gii lea mávssolaš dutnje.",
+          "body2": "",
+          "url": "foto-anna-shvets.jpg"
+        },
+        "recording": {
+          "title": "Ádjá dahje áhku birra",
+          "body1": "Muital muhtun boares fuolkki birra gii lea bargan juoidá erenoamážit, dahje gii lea mávssolaš dutnje.",
+          "body2": "",
+          "url": "foto-anna-shvets.jpg"
+        },
+        "finish": {
+          "title": "Giitu dán muitalusa ovddas!",
+          "body1": "",
+          "body2": "Boahtte fáttás beasat máinnastit!",
+          "url": null
+        }
+      },
+      {
+        "itemId": "0da9eb1e-bcef-4200-a846-e2fbe844d904",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Máinnas, máinnasfuođđut",
+          "body1": "(govat) dovddatgo ovtta dáin? Maid don leat gullan dan birra?",
+          "body2": "Dovddatgo máidnasa maid sáhtát dál muitalit?",
+          "url": "foto2_svt.jpg"
+        },
+        "recording": {
+          "title": "Máinnas, máinnasfuođđut",
+          "body1": "(govat) dovddatgo ovtta dáin? Maid don leat gullan dan birra?",
+          "body2": "Dovddatgo máidnasa maid sáhtát dál muitalit?",
+          "url": "foto18_svt.jpg"
+        },
+        "finish": {
+          "title": "Fiinna muitalus!",
+          "body1": "Dasto livččii áigi hupmat biktasiid ja gárvodeami birra.",
+          "body2": "",
+          "url": "illustrator_sunna_kuoljok_inga_wiktoria_pave.jpg"
+        }
+      },
+      {
+        "itemId": "73688cf3-73e6-4dfe-9edd-53e465344330",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Gárvodeapmi",
+          "body1": "Muital mo don lávet gárvodit.",
+          "body2": "",
+          "url": "foto14_svt.jpg"
+        },
+        "recording": {
+          "title": "Gárvodeapmi",
+          "body1": "Muital mo don lávet gárvodit.",
+          "body2": "Makkár biktasiid bijat álggus? ja de...?",
+          "url": "foto13_svt.jpg"
+        },
+        "finish": {
+          "title": "Giitu go muitalit gárvodeami birra!",
+          "body1": "",
+          "body2": "",
+          "url": "foto4_svt.jpg"
+        }
+      },
+      {
+        "itemId": "ae7fda4f-76c9-4815-b6a1-351a407582ea",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Muital erohusaid birra",
+          "body1": "Dá leat guokte gova mat leat meastta ovttaláganat.",
+          "body2": "Go leat deaddilan ruoná báddenboalu, de muital erohusaid birra.",
+          "url": "madssuhrpettersen3.jpg"
+        },
+        "recording": {
+          "title": "Muital erohusaid birra",
+          "body1": "Dá leat guokte gova mat leat meastta ovttaláganat.",
+          "body2": "Muital erohusaid birra.",
+          "url": "madssuhrpettersen3.jpg"
+        },
+        "finish": {
+          "title": "Buorre go gávdnet erohusaid!",
+          "body1": "Dás bajábealde oainnát galle minuhta don leat skeŋken midjiide, eatnat giitu!",
+          "body2": "De livččii áigi muitalit dálkki birra.",
+          "url": "madssuhrpettersen.jpg"
+        }
+      },
+      {
+        "itemId": "ae7fda4f-76c9-4815-b6a1-351a407582ea",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Dálki",
+          "body1": "Go leat deaddilan ruoná báddenboalu, de muital makkár dálki lea leamaš dán jagi.",
+          "body2": "",
+          "url": "foto15_svt.jpg"
+        },
+        "recording": {
+          "title": "Dálki",
+          "body1": "Makkár dálki lea leamaš dán jagi?",
+          "body2": "Lea go dálki rievdan du mánnávuođa rájes?",
+          "url": "foto15_svt.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "jill-wellington.jpg"
+        }
+      },
+      {
+        "itemId": "165158cf-7b5d-429a-9a91-02f833fc3851",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Mearkabeaivvit ja basit",
+          "body1": "Vállje ovtta dahje eanet mearkabeaivvi dahje basi ja muital dan birra.",
+          "body2": "Manne lea dehálaš? Maid don lávet bargat dalle?",
+          "url": "foto10_svt.jpg"
+        },
+        "recording": {
+          "title": "Mearkabeaivvit ja basit",
+          "body1": "Ovdamearkkat leat: Sámi álbmotbeaivvi, beassážat, juovllat, Márjjábeaivvit, mihcamárat, festiválat, Sámi Grand Prix",
+          "body2": "Manne lea dehálaš? Maid don lávet bargat dalle?",
+          "url": "foto10_svt.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "De háliidivččiimet gullat ártistta dahje dáiddára masa liikot.",
+          "url": "foto10_svt.jpg"
+        }
+      },
+      {
+        "itemId": "c41f5b17-34c5-46a5-a1ec-12546a1530ad",
+        "kind": "media",
+        "itemType": "image",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Muital artistta dahje dáiddára birra masa liikot",
+          "body1": "Gos son lea eret? Maid son láve bargat? Manne don liikot sutnje?",
+          "body2": "Deaddil ruoná báddenboalu, ja álgge muitalit :)",
+          "url": "sami_beassas_markanat-mads_suhr_pettersen.jpg"
+        },
+        "recording": {
+          "title": "Muital artistta dahje dáiddára birra masa liikot",
+          "body1": "Gos son lea eret? Maid son láve bargat? Manne don liikot sutnje?",
+          "body2": "",
+          "url": "sami_beassas_markanat-mads_suhr_pettersen.jpg"
+        },
+        "finish": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "url to an image, video or audio"
+        }
+      },
+      {
+        "itemId": "e8d23654-bb26-4ae1-937a-ac23ba469845",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Johkamohki márkanat",
+          "body1": "Dá lea filmmaš márkanis, mii lea lágiduvvon badjel njeallječuođi geardde!",
+          "body2": "",
+          "url": "https://api.svt.se/videoplayer-embed/eQrwW7w"
+        },
+        "recording": {
+          "title": "Johkamohki márkanat",
+          "body1": "Leat go goasse finadan dáin márkaniin?",
+          "body2": "Muitalastte!",
+          "url": null
+        },
+        "finish": {
+          "title": "Giitu dán muitalusa ovddas!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      },
+      {
+        "itemId": "",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": "https://api.svt.se/videoplayer-embed/jz7vnVZ"
+        },
+        "recording": {
+          "title": "",
+          "body1": "",
+          "body2": "",
+          "url": null
+        },
+        "finish": {
+          "title": "Giitu dán muitalusa ovddas!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      },
+      {
+        "itemId": "5a127f9f-0a8b-4244-a3e7-0f95f128c738",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Alpint",
+          "body1": "Gillar du idrott? Är det utförsåkning för dej också eller någon helt annan sport som hjärtat klappar för? Berätta!",
+          "body2": "",
+          "url": "https://api.svt.se/videoplayer-embed/Ky2mbVZ"
+        },
+        "recording": {
+          "title": "Alpint",
+          "body1": "Gillar du idrott? Är det utförsåkning för dej också eller någon helt annan sport som hjärtat klappar för? Berätta!",
+          "body2": "",
+          "url": null
+        },
+        "finish": {
+          "title": "Giitu dán muitalusa ovddas!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      },
+      {
+        "itemId": "3869263b-f873-4d77-a7ad-a58d973cc42c",
+        "kind": "media",
+        "itemType": "video",
+        "typeId": null,
+        "isRecording": true,
+        "start": {
+          "title": "Nikolaus Woulab Wollbergs koltinspiration",
+          "body1": "Hur tänker du kring kolten? Måste allt vara som det alltid har varit eller kan man ta ut svängarna? Berätta!",
+          "body2": "",
+          "url": "https://api.svt.se/videoplayer-embed/8myvmL9"
+        },
+        "recording": {
+          "title": "Nikolaus Woulab Wollbergs koltinspiration",
+          "body1": "Hur tänker du kring kolten? Måste allt vara som det alltid har varit eller kan man ta ut svängarna? Berätta!",
+          "body2": "",
+          "url": null
+        },
+        "finish": {
+          "title": "Giitu dán muitalusa ovddas!",
+          "body1": "",
+          "body2": "",
+          "url": null
+        }
+      }
+    ]
+  }
+}
