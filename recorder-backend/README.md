@@ -93,11 +93,11 @@ export YLE_CLIENT_ID="<your-yle-client-id>"
 export YLE_CLIENT_KEY="<your-yle-client-key>"
 
 az group create \
-  --name rg-kielipankki-recorder-prod \
+  --name rg-jietnasiella-recorder-prod \
   --location northeurope
 
 az deployment group create \
-  --resource-group rg-kielipankki-recorder-prod \
+  --resource-group rg-jietnasiella-recorder-prod \
   --template-file infra/prod/main.bicep \
   --parameters infra/prod/main.bicepparam
 ```
