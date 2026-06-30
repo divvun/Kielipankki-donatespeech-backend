@@ -20,7 +20,7 @@ FastAPI backend service with Azure Blob Storage. See
 **Quick start:**
 
 ```bash
-cd recorder-backend
+podman machine start
 ./setup-local.sh  # Start local environment
 open http://localhost:8000/docs  # API documentation
 ```
