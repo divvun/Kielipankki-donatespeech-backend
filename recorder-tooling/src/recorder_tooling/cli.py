@@ -9,6 +9,7 @@ from .cleanup_storage import main as cleanup_storage_main
 from .count_missing_translations import write_multilang_workbook_json
 from .convert_excel_to_json import convert_workbook
 from .init_storage import init_storage_main
+from .optimize_media_images import optimize_media_images
 from .validate_content_json import main as validate_content_json_main
 from .lang_json import read_json
 
@@ -124,6 +125,53 @@ def validate_json(
 ) -> None:
     """Validate content JSON UUID collisions and media URL references."""
     raise typer.Exit(code=validate_content_json_main(content_root))
+
+
+@app.command("optimize-images")
+def optimize_images(
+    media_root: Path = typer.Argument(
+        ..., help="Path to media directory, for example ../recorder-content/prod/media"
+    ),
+    jpeg_quality: int = typer.Option(
+        82,
+        "--jpeg-quality",
+        min=40,
+        max=95,
+        help="JPEG quality (lower = smaller files)",
+    ),
+    max_dimension: int | None = typer.Option(
+        1920,
+        "--max-dimension",
+        min=256,
+        help="Max width/height in pixels. Use --max-dimension 0 to disable resizing.",
+    ),
+    dry_run: bool = typer.Option(
+        False,
+        "--dry-run",
+        help="Calculate savings without modifying image files",
+    ),
+) -> None:
+    """Optimize JPEG/PNG images for lower bandwidth and faster loading."""
+    if not media_root.exists() or not media_root.is_dir():
+        raise typer.BadParameter(f"Media directory not found: {media_root}")
+
+    effective_max_dimension = None if not max_dimension or max_dimension <= 0 else max_dimension
+
+    summary = optimize_media_images(
+        media_root=media_root,
+        jpeg_quality=jpeg_quality,
+        max_dimension=effective_max_dimension,
+        dry_run=dry_run,
+    )
+
+    saved_bytes = summary.bytes_before - summary.bytes_after
+    saved_percent = (saved_bytes / summary.bytes_before * 100) if summary.bytes_before else 0
+
+    typer.echo(f"Processed {summary.files_processed} image files")
+    typer.echo(f"Changed {summary.files_changed} files")
+    typer.echo(f"Before: {summary.bytes_before / (1024 * 1024):.2f} MiB")
+    typer.echo(f"After:  {summary.bytes_after / (1024 * 1024):.2f} MiB")
+    typer.echo(f"Saved:  {saved_bytes / (1024 * 1024):.2f} MiB ({saved_percent:.1f}%)")
 
 
 @storage_app.command("init")

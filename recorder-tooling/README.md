@@ -56,6 +56,14 @@ Validate JSON content:
 uv run recorder-tooling validate-json --content-root ../recorder-content/dev
 ```
 
+Optimize large media images (JPEG/PNG):
+
+```sh
+uv run recorder-tooling optimize-images ../recorder-content/prod/media \
+   --jpeg-quality 82 \
+   --max-dimension 1920
+```
+
 Optional flags mirror the original script:
 
 ```sh
