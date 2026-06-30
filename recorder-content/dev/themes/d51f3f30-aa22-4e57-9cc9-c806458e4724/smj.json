@@ -15,8 +15,8 @@
     },
     "finish": {
       "title": "Edna gijtto!",
-      "body1": "Jus sidá ienebuv substastit, de válljista ietjá tiemav ja sállista ájn ienep hållamav midjij!",
-      "body2": "Hasoda ietjat rádnajt ja fuolkijt hållamav midjij sállit.",
+      "body1": "Jus sidá ienebuv substastit, de válljista ietjá tiemav ja donieri ájn ienep hållamav midjij!",
+      "body2": "Hasoda ietjat rádnajt ja fuolkijt hållamav midjij donieritjit.",
       "url": "foto3_svt.jpg"
     },
     "items": [
@@ -52,13 +52,13 @@
         "typeId": null,
         "isRecording": true,
         "start": {
-          "title": "Árbbedábálasj bargojt birra",
+          "title": "Árbbedábálasj bargoj birra",
           "body1": "Bruvkku gus bivddet, duodjuhit, muorjjit, miehttsit, gárdástallat, njuovvat jali muodugasj bargojt dahkat?",
           "body2": "Gå la dieddelam báddimboalov, de la muddo subtsastahttját",
           "url": "foto_alina-bystrova.jpg"
         },
         "recording": {
-          "title": "Árbbedábálasj bargojt birra",
+          "title": "Árbbedábálasj bargoj birra",
           "body1": "Bruvkku gus bivddet, duodjuhit, muorjjit, miehttsit, gárdástallat, njuovvat jali muodugasj bargojt dahkat?",
           "body2": "Gåktu dáv dábálattjat barga? Gut la dav dunji åhpadam?",
           "url": "foto9_svt.jpg"
@@ -154,7 +154,7 @@
         "start": {
           "title": "Tjielggista sieradusájt",
           "body1": "Dála vuojná guok muodugasj gåvå.",
-          "body2": "Gå la dieddelam báddimboalov, de la muddo tjielggit sieradusájt",
+          "body2": "Gå la dieddelam báddimboalov, de la muddo sieradusájt tjielggit",
           "url": "madssuhrpettersen3.jpg"
         },
         "recording": {
@@ -165,8 +165,8 @@
         },
         "finish": {
           "title": "Buorre gå sieradusájt ájttsi!",
-          "body1": "Badjelin vuojná galla minuhta hållamis dån la sállim midjij, gijtto!",
-          "body2": "Dálla l muddo hållat dálke birra",
+          "body1": "Badjelin vuojná galla minuhta hållamis dån la donierim midjij, edna gijtto!",
+          "body2": "Dálla l muddo dálke birra hållat",
           "url": "madssuhrpettersen.jpg"
         }
       },
@@ -203,7 +203,7 @@
         "isRecording": true,
         "start": {
           "title": "Mærkkabiejve ja base",
-          "body1": "Vállji avtav jali ienep mærkkabiejve jali base ja subtsasta dan/daj birra.",
+          "body1": "Vállji avtav jali ienep mærkkabiejvijt jali basijt ja subtsasta dan/daj birra.",
           "body2": "Manen la dát ájnas? Majt dån dábálattjat barga de?",
           "url": "foto10_svt.jpg"
         },
